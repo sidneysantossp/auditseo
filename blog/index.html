@@ -78,29 +78,67 @@
         .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
         .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
         .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;z-index:101}
+        .hamburger span{width:25px;height:2px;background:var(--accent-gold);transition:all .3s}
+        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .hamburger.active span:nth-child(2){opacity:0}
+        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+        .mobile-menu{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,.98);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2rem;z-index:99;opacity:0;visibility:hidden;transition:all .3s}
+        .mobile-menu.active{opacity:1;visibility:visible}
+        .mobile-menu a{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);text-decoration:none;letter-spacing:2px;transition:color .3s}
+        .mobile-menu a:hover{color:var(--accent-gold)}
+        .mobile-menu .nav-cta{font-size:1rem;padding:1rem 2rem;margin-top:1rem}
+        .footer{background:linear-gradient(180deg,var(--bg-dark)0%,#060606 100%);border-top:1px solid rgba(255,255,255,.08);padding:0}
+        .footer-main{max-width:1400px;margin:0 auto;padding:5rem 3rem 3rem;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem}
+        .footer-about{max-width:400px}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1rem}
+        .footer-desc{font-size:1rem;color:var(--text-muted);line-height:1.8;margin:1.5rem 0}
+        .footer-social{display:flex;gap:1rem;margin-top:1.5rem}
+        .footer-social a{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .3s;text-decoration:none}
+        .footer-social a:hover{border-color:var(--accent-red);color:var(--accent-red);transform:translateY(-2px)}
+        .footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:1px;color:var(--text-light);margin-bottom:1.25rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.75rem}
+        .footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}
+        .footer-links a:hover{color:var(--accent-gold)}
+        .footer-cta{display:inline-block;margin-top:1.5rem;padding:.75rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;transition:all .3s}
+        .footer-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:1.5rem 3rem;text-align:center}
+        .footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
         @media(max-width:1200px){.posts-grid{grid-template-columns:repeat(3,1fr)}}
-        @media(max-width:900px){.featured-post{grid-template-columns:1fr}.posts-grid{grid-template-columns:repeat(2,1fr)}.footer-content{grid-template-columns:1fr 1fr}}
-        @media(max-width:600px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.breadcrumbs,.hero,.section{padding-left:1.5rem;padding-right:1.5rem}.categories-bar{padding:1rem 1.5rem;top:60px}.posts-grid{grid-template-columns:1fr}.newsletter-form{flex-direction:column}.footer-content{grid-template-columns:1fr}.pagination{flex-wrap:wrap}}
+        @media(max-width:1024px){.footer-main{grid-template-columns:1fr 1fr;gap:3rem}}
+        @media(max-width:900px){.featured-post{grid-template-columns:1fr}.posts-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:600px){.nav{padding:1rem 1.5rem}.nav-links,.nav-cta{display:none}.hamburger{display:flex}.breadcrumbs,.hero,.section{padding-left:1.5rem;padding-right:1.5rem}.categories-bar{padding:1rem 1.5rem;top:60px}.posts-grid{grid-template-columns:1fr}.newsletter-form{flex-direction:column}.footer-main{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}.footer-bottom{padding:1.25rem 1.5rem}.pagination{flex-wrap:wrap}}
     </style>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Blog AUDITSEO","description":"Artigos, guias e novidades sobre SEO, AI Overviews e busca generativa","url":"https://www.auditseo.com.br/blog/","publisher":{"@type":"Organization","name":"AUDITSEO","logo":{"@type":"ImageObject","url":"https://www.auditseo.com.br/logo.png"}}}</script>
-    <link rel="stylesheet" href="/assets/site-shell.css">
-    <script defer src="/assets/site-shell.js"></script>
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="alternate" hreflang="pt-BR" href="https://www.auditseo.com.br/blog/">
     <link rel="alternate" hreflang="x-default" href="https://www.auditseo.com.br/blog/">
 </head>
 <body>
-    <nav class="nav">
-        <a href="/" class="logo">AUDITSEO</a>
+    <nav class="nav" role="navigation" aria-label="Navegação principal">
+        <a href="https://www.auditseo.com.br/" class="logo" aria-label="AUDITSEO – Ir para a página inicial">AUDITSEO</a>
         <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/agencia-de-seo/">Agência de SEO</a></li>
-            <li><a href="/servicos/">Serviços</a></li>
-            <li><a href="/sobre/">Sobre</a></li>
-            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://www.auditseo.com.br/">Home</a></li>
+            <li><a href="https://www.auditseo.com.br/agencia-de-seo/">Agência de SEO</a></li>
+            <li><a href="https://www.auditseo.com.br/servicos/">Serviços</a></li>
+            <li><a href="https://www.auditseo.com.br/sobre/">Sobre</a></li>
+            <li><a href="https://www.auditseo.com.br/blog/">Blog</a></li>
         </ul>
-        <a href="https://wa.me/5511996384376?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20de%20SEO." class="nav-cta">Falar com Especialista</a>
+        <div class="hamburger" onclick="toggleMobileMenu()" aria-label="Abrir menu" role="button" tabindex="0">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="https://wa.me/5511996384376" class="nav-cta" target="_blank" rel="noopener">Falar com Especialista</a>
     </nav>
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
+        <a href="https://www.auditseo.com.br/" onclick="closeMobileMenu()">Home</a>
+        <a href="https://www.auditseo.com.br/agencia-de-seo/" onclick="closeMobileMenu()">Agência de SEO</a>
+        <a href="https://www.auditseo.com.br/servicos/" onclick="closeMobileMenu()">Serviços</a>
+        <a href="https://www.auditseo.com.br/sobre/" onclick="closeMobileMenu()">Sobre</a>
+        <a href="https://www.auditseo.com.br/blog/" onclick="closeMobileMenu()">Blog</a>
+        <a href="https://wa.me/5511996384376" class="nav-cta" onclick="closeMobileMenu()" target="_blank" rel="noopener">Falar com Especialista</a>
+    </div>
 
     <div class="breadcrumbs"><a href="/">Home</a><span>›</span><span class="current">Blog</span></div>
 
@@ -395,42 +433,63 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-brand">
+    <footer class="footer" role="contentinfo">
+        <div class="footer-main">
+            <div class="footer-col footer-about">
                 <div class="footer-logo">AUDITSEO</div>
-                <p class="footer-desc">Agência de SEO em São Paulo especializada em Search Intelligence AI para a era da busca generativa.</p>
-                <div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil<br>contato@auditseo.com.br</div>
+                <p class="footer-desc">Agência de SEO em São Paulo especializada em Search Intelligence AI. Fundada em 2024 por Sidney Santos. Preparamos marcas para a nova era das buscas: AI Overviews, LLMs, assistentes de voz e buscas generativas.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/auditseo" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+                    <a href="https://linkedin.com/company/auditseo" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 10v7m0-4c0-2 1.5-3 3-3s3 1 3 3v4"/></svg></a>
+                    <a href="https://facebook.com/auditseo" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M15 3v4h-2c-1 0-1 1-1 2v2h3l-1 4h-2v6M10 21v-6H7v-4h3"/></svg></a>
+                    <a href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO." target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21l1.5-4.5A9 9 0 1 1 7.5 19.5L3 21"/><path d="M9 10c.5-1 1.5-1 2 0 .5 1 1.5 1 2 0m-5 3c1.5 2 4 2 5.5 0"/></svg></a>
+                </div>
             </div>
             <div class="footer-col">
                 <h4 class="footer-title">Serviços</h4>
                 <ul class="footer-links">
-                    <li><a href="/servicos/consultoria-seo/">Consultoria SEO</a></li>
-                    <li><a href="/servicos/ai-overview-optimization/">AI Overview</a></li>
-                    <li><a href="/servicos/seo-local/">SEO Local</a></li>
-                    <li><a href="/servicos/llm-brand-presence/">LLM Brand</a></li>
+                    <li><a href="https://www.auditseo.com.br/servicos/consultoria-seo/">Consultoria SEO</a></li>
+                    <li><a href="https://www.auditseo.com.br/servicos/auditoria-seo/">Auditoria SEO</a></li>
+                    <li><a href="https://www.auditseo.com.br/servicos/seo-local/">SEO Local</a></li>
+                    <li><a href="https://www.auditseo.com.br/servicos/google-meu-negocio/">Google Meu Negócio</a></li>
+                    <li><a href="https://www.auditseo.com.br/servicos/ai-overview-optimization/">AI Overview Optimization</a></li>
+                    <li><a href="https://www.auditseo.com.br/servicos/llm-brand-presence/">LLM Brand Presence</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4 class="footer-title">Empresa</h4>
+                <h4 class="footer-title">Institucional</h4>
                 <ul class="footer-links">
-                    <li><a href="/sobre/">Sobre</a></li>
-                    <li><a href="/agencia-de-seo/">Agência de SEO</a></li>
-                    <li><a href="/cases/">Cases</a></li>
-                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="https://www.auditseo.com.br/sobre/">Sobre Nós</a></li>
+                    <li><a href="https://www.auditseo.com.br/agencia-de-seo/">Agência de SEO</a></li>
+                    <li><a href="https://www.auditseo.com.br/blog/">Blog</a></li>
+                    <li><a href="https://www.auditseo.com.br/politica-de-privacidade/">Política de Privacidade</a></li>
+                    <li><a href="https://www.auditseo.com.br/termos-de-uso/">Termos de Uso</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4 class="footer-title">Contato</h4>
                 <ul class="footer-links">
-                    <li><a href="https://wa.me/5511996384376">WhatsApp</a></li>
-                    <li><a href="tel:+5511996384376">(11) 99638-4376</a></li>
-                    <li><a href="mailto:contato@auditseo.com.br">E-mail</a></li>
+                    <li><a href="https://wa.me/5511996384376" target="_blank" rel="noopener">+55 (11) 99638-4376</a></li>
+                    <li><a href="mailto:contato@auditseo.com.br">contato@auditseo.com.br</a></li>
                 </ul>
+                <address style="font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: 1rem; line-height: 1.6;">
+                    Rua Baronesa de Bela Vista, 411<br>
+                    São Paulo, SP – 01520-000<br>
+                    Brasil
+                </address>
+                <a href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." class="footer-cta" target="_blank" rel="noopener">Diagnóstico Grátis</a>
             </div>
         </div>
-        <div class="footer-bottom"><p>© 2026 AUDITSEO — Agência de SEO em São Paulo. Todos os direitos reservados.</p></div>
+        <div class="footer-bottom">
+            <p>&copy; 2024–2026 AUDITSEO — Todos os direitos reservados. Search Intelligence Consultancy. CNPJ: XX.XXX.XXX/0001-XX</p>
+        </div>
     </footer>
+
+    <script>
+        function toggleMobileMenu(){document.querySelector('.hamburger').classList.toggle('active');document.getElementById('mobileMenu').classList.toggle('active');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('active')?'hidden':''}
+        function closeMobileMenu(){document.querySelector('.hamburger').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow=''}
+        document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeMobileMenu();}});
+    </script>
 
     <a href="https://wa.me/5511996384376?text=Olá!%20Vim%20pelo%20blog%20e%20gostaria%20de%20saber%20mais%20sobre%20SEO." class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 </body>
