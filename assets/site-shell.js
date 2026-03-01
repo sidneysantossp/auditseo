@@ -46,12 +46,10 @@
 
     var navLinks = [
       { href: '/', label: 'Home' },
-      { href: '/agencia-de-seo/', label: 'Agência' },
+      { href: '/agencia-de-seo/', label: 'Agência de SEO' },
       { href: '/servicos/', label: 'Serviços' },
-      { href: '/nichos/', label: 'Nichos' },
-      { href: '/cidades/', label: 'Cidades' },
-      { href: '/blog/', label: 'Blog' },
-      { href: '/sobre/', label: 'Sobre' }
+      { href: '/sobre/', label: 'Sobre' },
+      { href: '/blog/', label: 'Blog' }
     ];
 
     var navDesktop = navLinks.map(function (item) {
@@ -66,34 +64,47 @@
       '<footer class="as-footer" role="contentinfo">' +
         '<div class="as-footer-inner">' +
           '<div class="as-footer-grid">' +
-            '<section>' +
-              '<h3 class="as-footer-title">AUDITSEO</h3>' +
-              '<p class="as-footer-text">Search Intelligence AI para SEO, AI Overviews e presença em LLMs.</p>' +
-              '<p class="as-footer-text">Rua Baronesa de Bela Vista, 411 · São Paulo, SP</p>' +
-              '<p class="as-footer-text"><a class="as-footer-link" href="tel:+5511996384376">+55 11 99638-4376</a> · <a class="as-footer-link" href="mailto:contato@auditseo.com.br">contato@auditseo.com.br</a></p>' +
+            '<section class="as-footer-col as-footer-about">' +
+              '<h3 class="as-footer-brand">AUDITSEO</h3>' +
+              '<p class="as-footer-text">Agência de SEO em São Paulo especializada em Search Intelligence AI. Fundada em 2024 por Sidney Santos. Preparamos marcas para AI Overviews, LLMs e buscas generativas.</p>' +
+              '<div class="as-footer-social">' +
+                '<a class="as-footer-link" href="https://instagram.com/auditseo" target="_blank" rel="noopener">Instagram</a>' +
+                '<a class="as-footer-link" href="https://linkedin.com/company/auditseo" target="_blank" rel="noopener">LinkedIn</a>' +
+                '<a class="as-footer-link" href="https://facebook.com/auditseo" target="_blank" rel="noopener">Facebook</a>' +
+                '<a class="as-footer-link" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO." target="_blank" rel="noopener">WhatsApp</a>' +
+              '</div>' +
             '</section>' +
-            '<nav>' +
-              '<h3 class="as-footer-title">Serviços</h3>' +
+            '<nav class="as-footer-col">' +
+              '<h4 class="as-footer-title">Serviços</h4>' +
               '<div class="as-footer-list">' +
                 '<a class="as-footer-link" href="/servicos/consultoria-seo/">Consultoria SEO</a>' +
+                '<a class="as-footer-link" href="/servicos/auditoria-seo/">Auditoria SEO</a>' +
+                '<a class="as-footer-link" href="/servicos/seo-local/">SEO Local</a>' +
+                '<a class="as-footer-link" href="/servicos/google-meu-negocio/">Google Meu Negócio</a>' +
                 '<a class="as-footer-link" href="/servicos/ai-overview-optimization/">AI Overview Optimization</a>' +
                 '<a class="as-footer-link" href="/servicos/llm-brand-presence/">LLM Brand Presence</a>' +
-                '<a class="as-footer-link" href="/servicos/seo-local/">SEO Local</a>' +
               '</div>' +
             '</nav>' +
-            '<nav>' +
-              '<h3 class="as-footer-title">Empresa</h3>' +
+            '<nav class="as-footer-col">' +
+              '<h4 class="as-footer-title">Institucional</h4>' +
               '<div class="as-footer-list">' +
+                '<a class="as-footer-link" href="/sobre/">Sobre Nós</a>' +
+                '<a class="as-footer-link" href="/agencia-de-seo/">Agência de SEO</a>' +
                 '<a class="as-footer-link" href="/blog/">Blog</a>' +
-                '<a class="as-footer-link" href="/agencia-de-seo/">Agência</a>' +
-                '<a class="as-footer-link" href="/sobre/">Sobre</a>' +
-                '<a class="as-footer-link" href="/servicos/">Todos os serviços</a>' +
               '</div>' +
             '</nav>' +
+            '<section class="as-footer-col">' +
+              '<h4 class="as-footer-title">Contato</h4>' +
+              '<div class="as-footer-list">' +
+                '<a class="as-footer-link" href="https://wa.me/5511996384376" target="_blank" rel="noopener">+55 (11) 99638-4376</a>' +
+                '<a class="as-footer-link" href="mailto:contato@auditseo.com.br">contato@auditseo.com.br</a>' +
+              '</div>' +
+              '<address class="as-footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP - 01520-000<br>Brasil</address>' +
+              '<a class="as-footer-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Diagnóstico Grátis</a>' +
+            '</section>' +
           '</div>' +
           '<div class="as-footer-bottom">' +
-            '<p class="as-footer-copy">© 2024–2026 AUDITSEO. Todos os direitos reservados.</p>' +
-            '<p class="as-footer-copy">Search Intelligence AI Consultancy</p>' +
+            '<p class="as-footer-copy">© 2024–2026 AUDITSEO — Todos os direitos reservados. Search Intelligence Consultancy.</p>' +
           '</div>' +
         '</div>' +
       '</footer>';
@@ -105,7 +116,7 @@
         '<div class="as-header-inner">' +
           '<a class="as-logo" href="/" aria-label="AUDITSEO"><span>AUDITSEO</span></a>' +
           '<nav class="as-nav" aria-label="Navegação principal">' + navDesktop + '</nav>' +
-          '<a class="as-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Diagnóstico Grátis</a>' +
+          '<a class="as-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Falar com Especialista</a>' +
           '<button class="as-burger" type="button" aria-label="Abrir menu" aria-expanded="false">' +
             '<span></span><span></span><span></span>' +
           '</button>' +
@@ -120,7 +131,7 @@
           '</div>' +
           '<nav class="as-mobile-nav" aria-label="Navegação mobile">' + navMobile + '</nav>' +
           '<div class="as-mobile-cta">' +
-            '<a class="as-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Falar no WhatsApp</a>' +
+            '<a class="as-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Falar com Especialista</a>' +
           '</div>' +
         '</aside>' +
       '</div>';

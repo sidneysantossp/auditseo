@@ -198,13 +198,35 @@ function injectClusterLinks(html, file) {
   const cluster = clusterForArticle(file);
   const serviceTargets = targetsForCluster(cluster);
   const nicheTarget = pickNicheTarget(file);
-  const block = `\n<!-- SEO_CLUSTER_LINKS_START -->\n<section class="seo-cluster-links" aria-label="Links internos estratégicos" style="margin:48px 0;padding:24px;border:1px solid #2a2a2a;border-radius:12px;background:#111;">\n  <h2 style="margin:0 0 10px;font-size:1.35rem;">Serviços relacionados a este conteúdo</h2>\n  <p style="margin:0 0 12px;color:#b8b8b8;line-height:1.7;">Se você quer aplicar esta estratégia no seu negócio, comece por estes serviços da AUDITSEO:</p>\n  <ul style="margin:0 0 12px 20px;line-height:1.9;">\n    ${serviceTargets.map((target) => `<li><a href="${target}" style="color:#c8ff00;text-decoration:underline;">${target}</a></li>`).join('\n    ')}\n  </ul>\n  <p style="margin:0;color:#b8b8b8;line-height:1.7;">Para aplicação setorial, veja também: <a href="${nicheTarget}" style="color:#c8ff00;text-decoration:underline;">${nicheTarget}</a></p>\n</section>\n<!-- SEO_CLUSTER_LINKS_END -->\n`;
+  const labelFromTarget = (target) => {
+    const slug = target.replace(/^\/|\/$/g, '').split('/').pop() || '';
+    return slug
+      .split('-')
+      .map((part) => (part ? part[0].toUpperCase() + part.slice(1) : part))
+      .join(' ');
+  };
+  const block = `\n<!-- SEO_CLUSTER_LINKS_START -->\n<section class="seo-cluster-links" aria-label="Links internos estratégicos">\n  <h2>Serviços relacionados a este conteúdo</h2>\n  <p>Se você quer aplicar esta estratégia no seu negócio, comece por estes serviços da AUDITSEO:</p>\n  <ul>\n    ${serviceTargets.map((target) => `<li><a href="${target}">${labelFromTarget(target)}</a></li>`).join('\n    ')}\n  </ul>\n  <p>Para aplicação setorial, veja também: <a href="${nicheTarget}">${labelFromTarget(nicheTarget)}</a></p>\n</section>\n<!-- SEO_CLUSTER_LINKS_END -->\n`;
 
   html = html.replace(/\n?<!-- SEO_CLUSTER_LINKS_START -->[\s\S]*?<!-- SEO_CLUSTER_LINKS_END -->\n?/g, '\n');
 
   if (/<footer\b/i.test(html)) return html.replace(/<footer\b/i, `${block}<footer`);
   if (/<\/body>/i.test(html)) return html.replace(/<\/body>/i, `${block}</body>`);
   return `${html}\n${block}`;
+}
+
+function ensureSiteShell(html, file) {
+  if (!file.startsWith('blog/') || file === 'blog/index.html' || /blog\/blog-pagina-\d+\.html$/i.test(file)) return html;
+
+  const cssTag = '<link rel="stylesheet" href="/assets/site-shell.css">';
+  const jsTag = '<script defer src="/assets/site-shell.js"></script>';
+
+  if (!/href=["']\/assets\/site-shell\.css["']/i.test(html)) {
+    html = html.replace(/<\/head>/i, `    ${cssTag}\n</head>`);
+  }
+  if (!/src=["']\/assets\/site-shell\.js["']/i.test(html)) {
+    html = html.replace(/<\/head>/i, `    ${jsTag}\n</head>`);
+  }
+  return html;
 }
 
 function createFullPage(file, url) {
@@ -214,6 +236,10 @@ function createFullPage(file, url) {
   const description = meta?.description || `Conteúdo de ${h1} na AUDITSEO.`;
   const isBlog = file.startsWith('blog/');
   const mainCta = isBlog ? '/servicos/consultoria-seo/' : '/servicos/seo-para-ia/';
+
+  const shellAssets = isBlog
+    ? '    <link rel="stylesheet" href="/assets/site-shell.css">\n    <script defer src="/assets/site-shell.js"></script>\n'
+    : '';
 
   return `<!DOCTYPE html>
 <html lang="pt-BR">
@@ -232,11 +258,12 @@ function createFullPage(file, url) {
     <meta property="og:url" content="${url}">
     <meta property="og:site_name" content="AUDITSEO">
     ${schemaBlock(file, title, url)}
+${shellAssets}    
     <style>
-      body{font-family:Arial,sans-serif;max-width:980px;margin:0 auto;padding:32px 18px;line-height:1.7;color:#1d1d1d}
+      body{font-family:Arial,sans-serif;max-width:980px;margin:0 auto;padding:32px 18px;line-height:1.7;color:${isBlog ? '#f2f2f2' : '#1d1d1d'};background:${isBlog ? '#0a0a0a' : '#fff'}}
       h1{font-size:2rem;margin-bottom:12px}
-      .box{border:1px solid #ddd;border-radius:10px;padding:20px;background:#fafafa}
-      a{color:#0a58ca}
+      .box{border:1px solid ${isBlog ? 'rgba(255,255,255,.2)' : '#ddd'};border-radius:10px;padding:20px;background:${isBlog ? '#111' : '#fafafa'}}
+      a{color:${isBlog ? '#d4a574' : '#0a58ca'}}
     </style>
 </head>
 <body>
@@ -281,6 +308,7 @@ function applyForFile(file) {
   html = ensureHreflang(html, url);
   html = ensureMetaTag(html, /<meta[^>]+property=["']og:url["'][^>]*>/i, `<meta property="og:url" content="${url}">`);
   html = ensureSchema(html, file, titleMeta, url);
+  html = ensureSiteShell(html, file);
   html = injectClusterLinks(html, file);
 
   fs.writeFileSync(absolute, html, 'utf8');
