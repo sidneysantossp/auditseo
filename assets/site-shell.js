@@ -122,18 +122,9 @@
           '</button>' +
         '</div>' +
       '</header>' +
-      '<div class="as-mobile" aria-hidden="true">' +
-        '<div class="as-mobile-overlay"></div>' +
-        '<aside class="as-mobile-panel" aria-label="Menu mobile">' +
-          '<div class="as-mobile-top">' +
-            '<a class="as-logo" href="/"><span>AUDITSEO</span></a>' +
-            '<button class="as-mobile-close" type="button" aria-label="Fechar menu">×</button>' +
-          '</div>' +
-          '<nav class="as-mobile-nav" aria-label="Navegação mobile">' + navMobile + '</nav>' +
-          '<div class="as-mobile-cta">' +
-            '<a class="as-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Falar com Especialista</a>' +
-          '</div>' +
-        '</aside>' +
+      '<div class="as-mobile" id="asMobile" role="dialog" aria-label="Menu mobile">' +
+        '<nav class="as-mobile-nav" aria-label="Navegação mobile">' + navMobile + '</nav>' +
+        '<a class="as-cta as-mobile-cta-btn" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Falar com Especialista</a>' +
       '</div>';
 
     var skipLink = document.querySelector('body > .skip-link');
@@ -150,8 +141,6 @@
 
     var burger = root.querySelector('.as-burger');
     var mobile = root.querySelector('.as-mobile');
-    var overlay = root.querySelector('.as-mobile-overlay');
-    var closeBtn = root.querySelector('.as-mobile-close');
 
     function closeMenu() {
       document.body.classList.remove('as-mobile-open');
@@ -171,10 +160,7 @@
       }
     });
 
-    overlay.addEventListener('click', closeMenu);
-    closeBtn.addEventListener('click', closeMenu);
-
-    mobile.querySelectorAll('.as-mobile-link').forEach(function (link) {
+    mobile.querySelectorAll('.as-mobile-link, .as-mobile-cta-btn').forEach(function (link) {
       link.addEventListener('click', closeMenu);
     });
 
