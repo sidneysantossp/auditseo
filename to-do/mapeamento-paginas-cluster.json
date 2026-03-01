@@ -1,0 +1,2263 @@
+{
+  "generatedAt": "2026-03-01T21:53:42.307Z",
+  "domain": "https://www.auditseo.com.br",
+  "summary": {
+    "total": 92,
+    "byType": {
+      "service_niche": 12,
+      "blog_article": 61,
+      "blog_pagination": 2,
+      "blog_hub": 1,
+      "service_main": 15,
+      "service_hub": 1
+    },
+    "canonical": {
+      "ok": 92,
+      "mismatch": 0,
+      "missing": 0
+    },
+    "schemaMissing": []
+  },
+  "pages": [
+    {
+      "file": "b2b/energia-solar.html",
+      "pageType": "service_niche",
+      "title": "SEO para Energia Solar | Marketing Digital Fotovoltaico | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/b2b/energia-solar/",
+      "canonicalPath": "/b2b/energia-solar/",
+      "expectedPath": "/b2b/energia-solar/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Organization",
+        "Service"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "blog/ai-overviews-vs-featured-snippets.html",
+      "pageType": "blog_article",
+      "title": "AI Overviews vs Featured Snippets: Qual a Diferença e Como Otimizar | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/ai-overviews-vs-featured-snippets/",
+      "canonicalPath": "/blog/ai-overviews-vs-featured-snippets/",
+      "expectedPath": "/blog/ai-overviews-vs-featured-snippets/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 10,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/alertas-citacao-ia.html",
+      "pageType": "blog_article",
+      "title": "Alertas de Citação em IAs: Como Configurar Monitoramento Proativo | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/alertas-citacao-ia/",
+      "canonicalPath": "/blog/alertas-citacao-ia/",
+      "expectedPath": "/blog/alertas-citacao-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Person"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/analytics-ai-overviews.html",
+      "pageType": "blog_article",
+      "title": "Analytics de AI Overviews: Dados no Google Search Console | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/analytics-ai-overviews/",
+      "canonicalPath": "/blog/analytics-ai-overviews/",
+      "expectedPath": "/blog/analytics-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Person"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/auditoria-tecnica-ai-seo.html",
+      "pageType": "blog_article",
+      "title": "Auditoria Técnica Para AI SEO: Guia Completo de Diagnóstico | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/auditoria-tecnica-ai-seo/",
+      "canonicalPath": "/blog/auditoria-tecnica-ai-seo/",
+      "expectedPath": "/blog/auditoria-tecnica-ai-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Technical AI SEO",
+      "recommendedTargets": [
+        "/servicos/auditoria-seo/",
+        "/servicos/seo-para-ia/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/benchmark-competitivo-ia.html",
+      "pageType": "blog_article",
+      "title": "Benchmark Competitivo em IA | Como Mapear Presença da Marca nos LLMs | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/benchmark-competitivo-ia/",
+      "canonicalPath": "/blog/benchmark-competitivo-ia/",
+      "expectedPath": "/blog/benchmark-competitivo-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Strategy and Measurement",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/llm-brand-presence/"
+      ]
+    },
+    {
+      "file": "blog/blog-pagina-2.html",
+      "pageType": "blog_pagination",
+      "title": "Blog de SEO - Página 2 | Artigos sobre SEO e AI | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/blog-pagina-2/",
+      "canonicalPath": "/blog/blog-pagina-2/",
+      "expectedPath": "/blog/blog-pagina-2/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "blog/blog-pagina-3.html",
+      "pageType": "blog_pagination",
+      "title": "Blog de SEO - Página 3 | AI Overviews e LLM SEO | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/blog-pagina-3/",
+      "canonicalPath": "/blog/blog-pagina-3/",
+      "expectedPath": "/blog/blog-pagina-3/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "blog/brand-mentions-ia.html",
+      "pageType": "blog_article",
+      "title": "Monitoramento de Brand Mentions em IAs: Guia Completo | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/brand-mentions-ia/",
+      "canonicalPath": "/blog/brand-mentions-ia/",
+      "expectedPath": "/blog/brand-mentions-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Person"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/case-study-ai-overviews.html",
+      "pageType": "blog_article",
+      "title": "Case Study: Como Aumentamos 340% a Presença em AI Overviews | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/case-study-ai-overviews/",
+      "canonicalPath": "/blog/case-study-ai-overviews/",
+      "expectedPath": "/blog/case-study-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList",
+        "ListItem",
+        "Organization",
+        "Person"
+      ],
+      "schemaCount": 5,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/cases-sucesso-seo-ia.html",
+      "pageType": "blog_article",
+      "title": "Cases de Sucesso: Marcas Que Dominam IAs | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/cases-sucesso-seo-ia/",
+      "canonicalPath": "/blog/cases-sucesso-seo-ia/",
+      "expectedPath": "/blog/cases-sucesso-seo-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Strategy and Measurement",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/llm-brand-presence/"
+      ]
+    },
+    {
+      "file": "blog/chatgpt-claude-perplexity.html",
+      "pageType": "blog_article",
+      "title": "ChatGPT, Claude ou Perplexity: Onde Sua Marca Precisa Estar? | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/chatgpt-claude-perplexity/",
+      "canonicalPath": "/blog/chatgpt-claude-perplexity/",
+      "expectedPath": "/blog/chatgpt-claude-perplexity/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 8,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/checklist-final-presenca-ia.html",
+      "pageType": "blog_article",
+      "title": "Checklist Final: Presença Completa em IAs | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/checklist-final-presenca-ia/",
+      "canonicalPath": "/blog/checklist-final-presenca-ia/",
+      "expectedPath": "/blog/checklist-final-presenca-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/checklist-prompt-optimization.html",
+      "pageType": "blog_article",
+      "title": "Checklist Completo de Prompt Optimization: Guia Prático | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/checklist-prompt-optimization/",
+      "canonicalPath": "/blog/checklist-prompt-optimization/",
+      "expectedPath": "/blog/checklist-prompt-optimization/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/checklist-tecnico-ai-seo.html",
+      "pageType": "blog_article",
+      "title": "Auditoria Técnica Para AI SEO: Guia Completo de Diagnóstico | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/checklist-tecnico-ai-seo/",
+      "canonicalPath": "/blog/checklist-tecnico-ai-seo/",
+      "expectedPath": "/blog/checklist-tecnico-ai-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/como-aparecer-ai-overviews.html",
+      "pageType": "blog_article",
+      "title": "Como Aparecer nos AI Overviews do Google: 12 Estratégias Comprovadas | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/como-aparecer-ai-overviews/",
+      "canonicalPath": "/blog/como-aparecer-ai-overviews/",
+      "expectedPath": "/blog/como-aparecer-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 12,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/como-aparecer-chatgpt.html",
+      "pageType": "blog_article",
+      "title": "Como Fazer Sua Marca Ser Citada Pelo ChatGPT: 10 Estratégias | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/como-aparecer-chatgpt/",
+      "canonicalPath": "/blog/como-aparecer-chatgpt/",
+      "expectedPath": "/blog/como-aparecer-chatgpt/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 8,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/como-comecar-seo-ia.html",
+      "pageType": "blog_article",
+      "title": "Como Começar com SEO Para IAs: Guia Para Iniciantes | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/como-comecar-seo-ia/",
+      "canonicalPath": "/blog/como-comecar-seo-ia/",
+      "expectedPath": "/blog/como-comecar-seo-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/como-escolher-agencia-seo.html",
+      "pageType": "blog_article",
+      "title": "Como Escolher uma Agência de SEO em 2026 | Guia Definitivo | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/como-escolher-agencia-seo/",
+      "canonicalPath": "/blog/como-escolher-agencia-seo/",
+      "expectedPath": "/blog/como-escolher-agencia-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 9,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/core-web-vitals-ai-overviews.html",
+      "pageType": "blog_article",
+      "title": "Core Web Vitals e AI Overviews: A Conexão Entre Métricas e Citações | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/core-web-vitals-ai-overviews/",
+      "canonicalPath": "/blog/core-web-vitals-ai-overviews/",
+      "expectedPath": "/blog/core-web-vitals-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/core-web-vitals-guia.html",
+      "pageType": "blog_article",
+      "title": "Core Web Vitals: O Guia Definitivo 2026 | Como Otimizar LCP, INP e CLS | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/core-web-vitals-guia/",
+      "canonicalPath": "/blog/core-web-vitals-guia/",
+      "expectedPath": "/blog/core-web-vitals-guia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 9,
+      "articleCluster": "Technical AI SEO",
+      "recommendedTargets": [
+        "/servicos/auditoria-seo/",
+        "/servicos/seo-para-ia/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/crawlers-ia.html",
+      "pageType": "blog_article",
+      "title": "Crawlers de IA | Como Bots de LLM Descobrem e Usam Seu Conteúdo | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/crawlers-ia/",
+      "canonicalPath": "/blog/crawlers-ia/",
+      "expectedPath": "/blog/crawlers-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Technical AI SEO",
+      "recommendedTargets": [
+        "/servicos/auditoria-seo/",
+        "/servicos/seo-para-ia/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/dashboard-seo-ia.html",
+      "pageType": "blog_article",
+      "title": "Dashboard de SEO Para IAs: Como Criar e O Que Incluir | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/dashboard-seo-ia/",
+      "canonicalPath": "/blog/dashboard-seo-ia/",
+      "expectedPath": "/blog/dashboard-seo-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Person"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Strategy and Measurement",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/llm-brand-presence/"
+      ]
+    },
+    {
+      "file": "blog/definicoes-claras-ia.html",
+      "pageType": "blog_article",
+      "title": "Definições Claras Para IAs: Como Escrever Para Ser Citado | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/definicoes-claras-ia/",
+      "canonicalPath": "/blog/definicoes-claras-ia/",
+      "expectedPath": "/blog/definicoes-claras-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/equipe-seo-ia-skills.html",
+      "pageType": "blog_article",
+      "title": "Equipe de SEO Para IAs: Skills e Competências Necessárias | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/equipe-seo-ia-skills/",
+      "canonicalPath": "/blog/equipe-seo-ia-skills/",
+      "expectedPath": "/blog/equipe-seo-ia-skills/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/erros-comuns-seo-ia.html",
+      "pageType": "blog_article",
+      "title": "Erros Comuns em SEO Para IAs: O Que Evitar | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/erros-comuns-seo-ia/",
+      "canonicalPath": "/blog/erros-comuns-seo-ia/",
+      "expectedPath": "/blog/erros-comuns-seo-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/especialista-em-seo.html",
+      "pageType": "blog_article",
+      "title": "Especialista em SEO: O Que Faz, Como Trabalha e Como se Tornar Um | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/especialista-em-seo/",
+      "canonicalPath": "/blog/especialista-em-seo/",
+      "expectedPath": "/blog/especialista-em-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 9,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/estrategia-seo-ia.html",
+      "pageType": "blog_article",
+      "title": "Estratégia de SEO Para IAs: Guia Completo 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/estrategia-seo-ia/",
+      "canonicalPath": "/blog/estrategia-seo-ia/",
+      "expectedPath": "/blog/estrategia-seo-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/estrutura-html-para-ia.html",
+      "pageType": "blog_article",
+      "title": "Estrutura HTML Para IAs: Como Organizar Conteúdo Para LLMs Entenderem | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/estrutura-html-para-ia/",
+      "canonicalPath": "/blog/estrutura-html-para-ia/",
+      "expectedPath": "/blog/estrutura-html-para-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Technical AI SEO",
+      "recommendedTargets": [
+        "/servicos/auditoria-seo/",
+        "/servicos/seo-para-ia/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/estruturar-conteudo-ai-overviews.html",
+      "pageType": "blog_article",
+      "title": "Como Estruturar Conteúdo Para AI Overviews: Guia Técnico 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/estruturar-conteudo-ai-overviews/",
+      "canonicalPath": "/blog/estruturar-conteudo-ai-overviews/",
+      "expectedPath": "/blog/estruturar-conteudo-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 12,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/ferramentas-monitoramento-ai-overviews.html",
+      "pageType": "blog_article",
+      "title": "Ferramentas de Monitoramento de AI Overviews: Guia Completo 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/ferramentas-monitoramento-ai-overviews/",
+      "canonicalPath": "/blog/ferramentas-monitoramento-ai-overviews/",
+      "expectedPath": "/blog/ferramentas-monitoramento-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 8,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/ferramentas-rastreamento-llm.html",
+      "pageType": "blog_article",
+      "title": "Como Monitorar Citações em IAs: Guia Completo de Tracking | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/ferramentas-rastreamento-llm/",
+      "canonicalPath": "/blog/ferramentas-rastreamento-llm/",
+      "expectedPath": "/blog/ferramentas-rastreamento-llm/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/fontes-dados-ll.html",
+      "pageType": "blog_article",
+      "title": "Fontes de Dados dos LLMs: Wikipedia, Reddit e Onde Estar | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/fontes-dados-ll/",
+      "canonicalPath": "/blog/fontes-dados-ll/",
+      "expectedPath": "/blog/fontes-dados-ll/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 8,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/futuro-llm-seo.html",
+      "pageType": "blog_article",
+      "title": "Futuro do LLM SEO: Tendências e Previsões Para 2026-2030 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/futuro-llm-seo/",
+      "canonicalPath": "/blog/futuro-llm-seo/",
+      "expectedPath": "/blog/futuro-llm-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 8,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/futuro-seo-tendencias.html",
+      "pageType": "blog_article",
+      "title": "Futuro do SEO: Tendências Para 2026-2030 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/futuro-seo-tendencias/",
+      "canonicalPath": "/blog/futuro-seo-tendencias/",
+      "expectedPath": "/blog/futuro-seo-tendencias/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/geo-vs-seo.html",
+      "pageType": "blog_article",
+      "title": "GEO vs SEO: Diferença Entre Generative Engine Optimization e SEO Tradicional | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/geo-vs-seo/",
+      "canonicalPath": "/blog/geo-vs-seo/",
+      "expectedPath": "/blog/geo-vs-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 8,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/google-ai-mode.html",
+      "pageType": "blog_article",
+      "title": "Google AI Mode: O Que É, Como Funciona e Impacto no SEO 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/google-ai-mode/",
+      "canonicalPath": "/blog/google-ai-mode/",
+      "expectedPath": "/blog/google-ai-mode/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 10,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/google-meu-negocio-guia-completo.html",
+      "pageType": "blog_article",
+      "title": "Google Meu Negócio: Guia Completo 2026 | Como Otimizar seu Perfil | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/google-meu-negocio-guia-completo/",
+      "canonicalPath": "/blog/google-meu-negocio-guia-completo/",
+      "expectedPath": "/blog/google-meu-negocio-guia-completo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 9,
+      "articleCluster": "Local SEO",
+      "recommendedTargets": [
+        "/servicos/seo-local/",
+        "/servicos/google-meu-negocio/"
+      ]
+    },
+    {
+      "file": "blog/guia-definitivo-seo-2026.html",
+      "pageType": "blog_article",
+      "title": "Guia Definitivo de SEO 2026: Domine a Era da Busca Generativa | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/guia-definitivo-seo-2026/",
+      "canonicalPath": "/blog/guia-definitivo-seo-2026/",
+      "expectedPath": "/blog/guia-definitivo-seo-2026/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 10,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/index.html",
+      "pageType": "blog_hub",
+      "title": "Blog de SEO | Artigos, Guias e Novidades sobre SEO | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/",
+      "canonicalPath": "/blog/",
+      "expectedPath": "/blog/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Blog",
+        "ImageObject",
+        "Organization"
+      ],
+      "schemaCount": 3,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "blog/integrar-seo-tradicional-ia.html",
+      "pageType": "blog_article",
+      "title": "Como Integrar SEO Tradicional e SEO Para IAs | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/integrar-seo-tradicional-ia/",
+      "canonicalPath": "/blog/integrar-seo-tradicional-ia/",
+      "expectedPath": "/blog/integrar-seo-tradicional-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/javascript-llms.html",
+      "pageType": "blog_article",
+      "title": "JavaScript e LLMs: Como Renderização Afeta Extração de Conteúdo Por IAs | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/javascript-llms/",
+      "canonicalPath": "/blog/javascript-llms/",
+      "expectedPath": "/blog/javascript-llms/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/linguagem-natural-keywords.html",
+      "pageType": "blog_article",
+      "title": "Contexto e Completude: Como Escrever Conteúdo Autocontido Para IAs | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/linguagem-natural-keywords/",
+      "canonicalPath": "/blog/linguagem-natural-keywords/",
+      "expectedPath": "/blog/linguagem-natural-keywords/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/listas-tabelas-ia.html",
+      "pageType": "blog_article",
+      "title": "FAQs Otimizadas Para IAs: Como Criar Perguntas e Respostas Citáveis | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/listas-tabelas-ia/",
+      "canonicalPath": "/blog/listas-tabelas-ia/",
+      "expectedPath": "/blog/listas-tabelas-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/metricas-presenca-ia.html",
+      "pageType": "blog_article",
+      "title": "Métricas de Presença em IA: O Que Medir e Como | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/metricas-presenca-ia/",
+      "canonicalPath": "/blog/metricas-presenca-ia/",
+      "expectedPath": "/blog/metricas-presenca-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Strategy and Measurement",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/llm-brand-presence/"
+      ]
+    },
+    {
+      "file": "blog/monitorar-citacoes-ia.html",
+      "pageType": "blog_article",
+      "title": "Como Monitorar Citações em IAs: Guia Completo de Tracking | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/monitorar-citacoes-ia/",
+      "canonicalPath": "/blog/monitorar-citacoes-ia/",
+      "expectedPath": "/blog/monitorar-citacoes-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/monitorar-citacoes-marca-ia.html",
+      "pageType": "blog_article",
+      "title": "Como Monitorar Citações da Sua Marca em IAs: Guia de LLM Brand Tracking | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/monitorar-citacoes-marca-ia/",
+      "canonicalPath": "/blog/monitorar-citacoes-marca-ia/",
+      "expectedPath": "/blog/monitorar-citacoes-marca-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 8,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/o-que-e-llm-seo.html",
+      "pageType": "blog_article",
+      "title": "O Que é LLM SEO: Guia Completo de Otimização para ChatGPT e IAs 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/o-que-e-llm-seo/",
+      "canonicalPath": "/blog/o-que-e-llm-seo/",
+      "expectedPath": "/blog/o-que-e-llm-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 8,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/o-que-e-prompt-optimization.html",
+      "pageType": "blog_article",
+      "title": "O Que É Prompt Optimization Para SEO: Guia Completo | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/o-que-e-prompt-optimization/",
+      "canonicalPath": "/blog/o-que-e-prompt-optimization/",
+      "expectedPath": "/blog/o-que-e-prompt-optimization/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/o-que-sao-ai-overviews-google.html",
+      "pageType": "blog_article",
+      "title": "O Que São AI Overviews do Google: Guia Completo 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/o-que-sao-ai-overviews-google/",
+      "canonicalPath": "/blog/o-que-sao-ai-overviews-google/",
+      "expectedPath": "/blog/o-que-sao-ai-overviews-google/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 10,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/o-que-sao-ai-overviews.html",
+      "pageType": "blog_article",
+      "title": "O Que São AI Overviews e Como Aparecer Neles | Guia Completo 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/o-que-sao-ai-overviews/",
+      "canonicalPath": "/blog/o-que-sao-ai-overviews/",
+      "expectedPath": "/blog/o-que-sao-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 10,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/paragrafos-citaveis.html",
+      "pageType": "blog_article",
+      "title": "Parágrafos Citáveis: Como Escrever Conteúdo Que IAs Extraem | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/paragrafos-citaveis/",
+      "canonicalPath": "/blog/paragrafos-citaveis/",
+      "expectedPath": "/blog/paragrafos-citaveis/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/quanto-custa-seo.html",
+      "pageType": "blog_article",
+      "title": "Quanto Custa SEO em 2026? Preços, Investimento e ROI | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/quanto-custa-seo/",
+      "canonicalPath": "/blog/quanto-custa-seo/",
+      "expectedPath": "/blog/quanto-custa-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 9,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/queries-ai-overviews.html",
+      "pageType": "blog_article",
+      "title": "Quais Tipos de Query Acionam AI Overviews: Análise Completa 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/queries-ai-overviews/",
+      "canonicalPath": "/blog/queries-ai-overviews/",
+      "expectedPath": "/blog/queries-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 10,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/queries-ia-otimizar.html",
+      "pageType": "blog_article",
+      "title": "Formatação Para Citação: Como Estruturar Conteúdo Para IAs | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/queries-ia-otimizar/",
+      "canonicalPath": "/blog/queries-ia-otimizar/",
+      "expectedPath": "/blog/queries-ia-otimizar/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/relatorios-presenca-ia.html",
+      "pageType": "blog_article",
+      "title": "Relatórios de Presença em IA: O Que Incluir e Como Apresentar | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/relatorios-presenca-ia/",
+      "canonicalPath": "/blog/relatorios-presenca-ia/",
+      "expectedPath": "/blog/relatorios-presenca-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Person"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Strategy and Measurement",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/llm-brand-presence/"
+      ]
+    },
+    {
+      "file": "blog/roadmap-seo-ia.html",
+      "pageType": "blog_article",
+      "title": "Roadmap de Implementação de SEO Para IAs: 90 Dias | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/roadmap-seo-ia/",
+      "canonicalPath": "/blog/roadmap-seo-ia/",
+      "expectedPath": "/blog/roadmap-seo-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Strategy and Measurement",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/llm-brand-presence/"
+      ]
+    },
+    {
+      "file": "blog/robots-txt-para-ia.html",
+      "pageType": "blog_article",
+      "title": "Robots.txt Para IAs: Guia Completo de Configuração Para LLMs | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/robots-txt-para-ia/",
+      "canonicalPath": "/blog/robots-txt-para-ia/",
+      "expectedPath": "/blog/robots-txt-para-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Technical AI SEO",
+      "recommendedTargets": [
+        "/servicos/auditoria-seo/",
+        "/servicos/seo-para-ia/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/roi-seo-ia.html",
+      "pageType": "blog_article",
+      "title": "ROI de SEO Para IAs: Como Medir Retorno do Investimento | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/roi-seo-ia/",
+      "canonicalPath": "/blog/roi-seo-ia/",
+      "expectedPath": "/blog/roi-seo-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Person"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Strategy and Measurement",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/llm-brand-presence/"
+      ]
+    },
+    {
+      "file": "blog/schema-markup-ai-overviews.html",
+      "pageType": "blog_article",
+      "title": "Schema Markup Para AI Overviews: Guia Técnico de Dados Estruturados 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/schema-markup-ai-overviews/",
+      "canonicalPath": "/blog/schema-markup-ai-overviews/",
+      "expectedPath": "/blog/schema-markup-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ImageObject",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 10,
+      "articleCluster": "AI Overviews",
+      "recommendedTargets": [
+        "/servicos/ai-overview-optimization/",
+        "/servicos/aparecer-no-google-ai-overviews/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/seo-chatgpt-claude.html",
+      "pageType": "blog_article",
+      "title": "Como Aparecer no ChatGPT e Claude: Guia de LLM SEO 2026 | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/seo-chatgpt-claude/",
+      "canonicalPath": "/blog/seo-chatgpt-claude/",
+      "expectedPath": "/blog/seo-chatgpt-claude/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question",
+        "WebPage"
+      ],
+      "schemaCount": 9,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/seo-ia-vs-tradicional.html",
+      "pageType": "blog_article",
+      "title": "SEO Para IAs vs SEO Tradicional: Diferenças e Semelhanças | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/seo-ia-vs-tradicional/",
+      "canonicalPath": "/blog/seo-ia-vs-tradicional/",
+      "expectedPath": "/blog/seo-ia-vs-tradicional/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Article",
+        "Organization"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "Commercial and SEO General",
+      "recommendedTargets": [
+        "/servicos/consultoria-seo/",
+        "/servicos/auditoria-seo/"
+      ]
+    },
+    {
+      "file": "blog/sitemap-para-ia.html",
+      "pageType": "blog_article",
+      "title": "Sitemap Otimizado Para LLMs: Como Estruturar Para IAs Encontrarem Seu Conteúdo | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/sitemap-para-ia/",
+      "canonicalPath": "/blog/sitemap-para-ia/",
+      "expectedPath": "/blog/sitemap-para-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Technical AI SEO",
+      "recommendedTargets": [
+        "/servicos/auditoria-seo/",
+        "/servicos/seo-para-ia/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "blog/treinar-ia-reconhecer-marca.html",
+      "pageType": "blog_article",
+      "title": "Como Treinar IAs Para Reconhecerem Sua Marca: O Guia Completo | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/treinar-ia-reconhecer-marca/",
+      "canonicalPath": "/blog/treinar-ia-reconhecer-marca/",
+      "expectedPath": "/blog/treinar-ia-reconhecer-marca/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 8,
+      "articleCluster": "LLM Visibility",
+      "recommendedTargets": [
+        "/servicos/llm-brand-presence/",
+        "/servicos/seo-para-ia/",
+        "/servicos/aparecer-chatgpt-claude-perplexity/"
+      ]
+    },
+    {
+      "file": "blog/velocidade-pagina-ia.html",
+      "pageType": "blog_article",
+      "title": "Velocidade de Página e IAs: Como Performance Afeta Visibilidade em LLMs | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/blog/velocidade-pagina-ia/",
+      "canonicalPath": "/blog/velocidade-pagina-ia/",
+      "expectedPath": "/blog/velocidade-pagina-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "Person",
+        "Question"
+      ],
+      "schemaCount": 6,
+      "articleCluster": "Technical AI SEO",
+      "recommendedTargets": [
+        "/servicos/auditoria-seo/",
+        "/servicos/seo-para-ia/",
+        "/servicos/geo-generative-engine-optimization/"
+      ]
+    },
+    {
+      "file": "nichos/academias.html",
+      "pageType": "service_niche",
+      "title": "SEO para Academias | Captação de Alunos e Visibilidade Local | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/nichos/academias/",
+      "canonicalPath": "/nichos/academias/",
+      "expectedPath": "/nichos/academias/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Organization",
+        "Service"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "nichos/clinicas-medicas.html",
+      "pageType": "service_niche",
+      "title": "SEO para Clínicas Médicas | Marketing Digital para Médicos | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/nichos/clinicas-medicas/",
+      "canonicalPath": "/nichos/clinicas-medicas/",
+      "expectedPath": "/nichos/clinicas-medicas/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service"
+      ],
+      "schemaCount": 7,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "nichos/clinicas-odontologicas.html",
+      "pageType": "service_niche",
+      "title": "SEO para Clínicas Odontológicas | Marketing Digital para Dentistas | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/nichos/clinicas-odontologicas/",
+      "canonicalPath": "/nichos/clinicas-odontologicas/",
+      "expectedPath": "/nichos/clinicas-odontologicas/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Organization",
+        "Service"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "nichos/escritorios-advocacia.html",
+      "pageType": "service_niche",
+      "title": "SEO para Advogados | Marketing Digital Jurídico | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/nichos/escritorios-advocacia/",
+      "canonicalPath": "/nichos/escritorios-advocacia/",
+      "expectedPath": "/nichos/escritorios-advocacia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service"
+      ],
+      "schemaCount": 7,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "saude/cardiologistas.html",
+      "pageType": "service_niche",
+      "title": "SEO para Cardiologistas | Autoridade Digital para Especialistas | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/saude/cardiologistas/",
+      "canonicalPath": "/saude/cardiologistas/",
+      "expectedPath": "/saude/cardiologistas/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Organization",
+        "Service"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "saude/cirurgioes-plasticos.html",
+      "pageType": "service_niche",
+      "title": "SEO para Cirurgiões Plásticos | Crescimento Orgânico e Marca | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/saude/cirurgioes-plasticos/",
+      "canonicalPath": "/saude/cirurgioes-plasticos/",
+      "expectedPath": "/saude/cirurgioes-plasticos/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Organization",
+        "Service"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "saude/dermatologistas.html",
+      "pageType": "service_niche",
+      "title": "SEO para Dermatologistas | Marketing Digital Dermatologia | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/saude/dermatologistas/",
+      "canonicalPath": "/saude/dermatologistas/",
+      "expectedPath": "/saude/dermatologistas/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "FAQPage",
+        "ListItem",
+        "Organization",
+        "Question",
+        "Service"
+      ],
+      "schemaCount": 7,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "saude/oftalmologistas.html",
+      "pageType": "service_niche",
+      "title": "SEO para Oftalmologistas | Tráfego Qualificado e Autoridade | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/saude/oftalmologistas/",
+      "canonicalPath": "/saude/oftalmologistas/",
+      "expectedPath": "/saude/oftalmologistas/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Organization",
+        "Service"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "saude/ortopedistas.html",
+      "pageType": "service_niche",
+      "title": "SEO para Ortopedistas | Estratégia Digital para Clínicas e Especialistas | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/saude/ortopedistas/",
+      "canonicalPath": "/saude/ortopedistas/",
+      "expectedPath": "/saude/ortopedistas/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Organization",
+        "Service"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "saude/psiquiatras.html",
+      "pageType": "service_niche",
+      "title": "SEO para Psiquiatras | Presença Digital com Confiança e Ética | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/saude/psiquiatras/",
+      "canonicalPath": "/saude/psiquiatras/",
+      "expectedPath": "/saude/psiquiatras/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Organization",
+        "Service"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "saude/urologistas.html",
+      "pageType": "service_niche",
+      "title": "SEO para Urologistas | Crescimento de Consultas por Busca Orgânica | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/saude/urologistas/",
+      "canonicalPath": "/saude/urologistas/",
+      "expectedPath": "/saude/urologistas/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Organization",
+        "Service"
+      ],
+      "schemaCount": 2,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/ai-overview-optimization.html",
+      "pageType": "service_main",
+      "title": "AI Overview Optimization | Apareça nas Respostas IA do Google | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/ai-overview-optimization/",
+      "canonicalPath": "/servicos/ai-overview-optimization/",
+      "expectedPath": "/servicos/ai-overview-optimization/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 19,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/aparecer-chatgpt-claude-perplexity.html",
+      "pageType": "service_main",
+      "title": "AI Overview Optimization | Apareça nas Respostas IA do Google | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/aparecer-chatgpt-claude-perplexity/",
+      "canonicalPath": "/servicos/aparecer-chatgpt-claude-perplexity/",
+      "expectedPath": "/servicos/aparecer-chatgpt-claude-perplexity/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "Offer",
+        "OfferCatalog",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 21,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/aparecer-no-chatgpt.html",
+      "pageType": "service_main",
+      "title": "Como Aparecer no ChatGPT | Faça Sua Empresa Ser Citada e Recomendada | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/aparecer-no-chatgpt/",
+      "canonicalPath": "/servicos/aparecer-no-chatgpt/",
+      "expectedPath": "/servicos/aparecer-no-chatgpt/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 19,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/aparecer-no-claude.html",
+      "pageType": "service_main",
+      "title": "Como Aparecer no Claude | Faça Sua Empresa Ser Citada e Recomendada pela IA da Anthropic | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/aparecer-no-claude/",
+      "canonicalPath": "/servicos/aparecer-no-claude/",
+      "expectedPath": "/servicos/aparecer-no-claude/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 19,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/aparecer-no-gemini.html",
+      "pageType": "service_main",
+      "title": "Como Aparecer no Google Gemini | Faça Sua Empresa Ser Citada e Recomendada | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/aparecer-no-gemini/",
+      "canonicalPath": "/servicos/aparecer-no-gemini/",
+      "expectedPath": "/servicos/aparecer-no-gemini/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 19,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/aparecer-no-google-ai-overviews.html",
+      "pageType": "service_main",
+      "title": "Aparecer no Google AI Overviews | Seja Citado nos Resumos de IA do Google | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/aparecer-no-google-ai-overviews/",
+      "canonicalPath": "/servicos/aparecer-no-google-ai-overviews/",
+      "expectedPath": "/servicos/aparecer-no-google-ai-overviews/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 19,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/aparecer-no-perplexity.html",
+      "pageType": "service_main",
+      "title": "Aparecer no Perplexity AI | Seja Citado no Motor de Respostas com IA | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/aparecer-no-perplexity/",
+      "canonicalPath": "/servicos/aparecer-no-perplexity/",
+      "expectedPath": "/servicos/aparecer-no-perplexity/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 19,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/auditoria-seo.html",
+      "pageType": "service_main",
+      "title": "Auditoria SEO | Diagnóstico Técnico Completo do Seu Site | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/auditoria-seo/",
+      "canonicalPath": "/servicos/auditoria-seo/",
+      "expectedPath": "/servicos/auditoria-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "Offer",
+        "OfferCatalog",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 21,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/consultoria-seo.html",
+      "pageType": "service_main",
+      "title": "Consultoria SEO | Estratégia e Acompanhamento Contínuo | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/consultoria-seo/",
+      "canonicalPath": "/servicos/consultoria-seo/",
+      "expectedPath": "/servicos/consultoria-seo/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "Offer",
+        "OfferCatalog",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 21,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/geo-generative-engine-optimization.html",
+      "pageType": "service_main",
+      "title": "GEO – Generative Engine Optimization | Apareça no ChatGPT, Perplexity e Claude | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/geo-generative-engine-optimization/",
+      "canonicalPath": "/servicos/geo-generative-engine-optimization/",
+      "expectedPath": "/servicos/geo-generative-engine-optimization/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 19,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/google-meu-negocio.html",
+      "pageType": "service_main",
+      "title": "Google Meu Negócio | Gestão Profissional de Perfil GBP | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/google-meu-negocio/",
+      "canonicalPath": "/servicos/google-meu-negocio/",
+      "expectedPath": "/servicos/google-meu-negocio/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "Offer",
+        "OfferCatalog",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 21,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/index.html",
+      "pageType": "service_hub",
+      "title": "Serviços de SEO AI-First | Consultoria Search Intelligence | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/",
+      "canonicalPath": "/servicos/",
+      "expectedPath": "/servicos/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "ImageObject",
+        "ItemList",
+        "ListItem",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 18,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/llm-brand-presence-ias.html",
+      "pageType": "service_main",
+      "title": "LLM Brand Presence | Sua Marca Citada por ChatGPT, Claude e Perplexity | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/llm-brand-presence-ias/",
+      "canonicalPath": "/servicos/llm-brand-presence-ias/",
+      "expectedPath": "/servicos/llm-brand-presence-ias/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "Offer",
+        "OfferCatalog",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "QuantitativeValue",
+        "Question",
+        "Service",
+        "UnitPriceSpecification",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 23,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/llm-brand-presence.html",
+      "pageType": "service_main",
+      "title": "LLM Brand Presence | Apareça no ChatGPT, Claude e Perplexity | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/llm-brand-presence/",
+      "canonicalPath": "/servicos/llm-brand-presence/",
+      "expectedPath": "/servicos/llm-brand-presence/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "Offer",
+        "OfferCatalog",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "UnitPriceSpecification",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 22,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/seo-local.html",
+      "pageType": "service_main",
+      "title": "SEO Local | Domine o Google Maps e Local Pack | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/seo-local/",
+      "canonicalPath": "/servicos/seo-local/",
+      "expectedPath": "/servicos/seo-local/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "Offer",
+        "OfferCatalog",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "UnitPriceSpecification",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 22,
+      "articleCluster": "",
+      "recommendedTargets": []
+    },
+    {
+      "file": "servicos/seo-para-ia.html",
+      "pageType": "service_main",
+      "title": "SEO para IA | Otimize Seu Site para ChatGPT, Perplexity, Gemini e AI Overviews | AUDITSEO",
+      "canonical": "https://www.auditseo.com.br/servicos/seo-para-ia/",
+      "canonicalPath": "/servicos/seo-para-ia/",
+      "expectedPath": "/servicos/seo-para-ia/",
+      "canonicalStatus": "ok",
+      "schemaTypes": [
+        "Answer",
+        "BreadcrumbList",
+        "ContactPoint",
+        "Country",
+        "FAQPage",
+        "GeoCoordinates",
+        "HowTo",
+        "HowToStep",
+        "ImageObject",
+        "ListItem",
+        "OpeningHoursSpecification",
+        "Organization",
+        "Person",
+        "PostalAddress",
+        "ProfessionalService",
+        "Question",
+        "Service",
+        "WebPage",
+        "WebSite"
+      ],
+      "schemaCount": 19,
+      "articleCluster": "",
+      "recommendedTargets": []
+    }
+  ]
+}

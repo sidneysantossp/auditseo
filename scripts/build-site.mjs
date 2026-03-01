@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 
 const root = process.cwd();
 const distDir = path.join(root, 'dist');
@@ -121,14 +122,6 @@ function patchHomeFile() {
   fs.writeFileSync(homeFile, html, 'utf8');
 }
 
-function writeSitemapFromStatic() {
-  const sourceSitemap = path.join(root, 'sitemap-data.xml');
-  const targetSitemap = path.join(distDir, 'sitemap.xml');
-  if (fs.existsSync(sourceSitemap)) {
-    fs.copyFileSync(sourceSitemap, targetSitemap);
-  }
-}
-
 if (fs.existsSync(distDir)) {
   fs.rmSync(distDir, { recursive: true, force: true });
 }
@@ -136,6 +129,6 @@ fs.mkdirSync(distDir, { recursive: true });
 
 copyTree(root, distDir);
 patchHomeFile();
-writeSitemapFromStatic();
+execFileSync('node', [path.join(root, 'scripts', 'generate-sitemaps.mjs'), distDir], { stdio: 'inherit' });
 
 console.log(`Build do site concluido: ${distDir}`);

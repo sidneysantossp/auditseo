@@ -1,11 +1,11 @@
 # =============================================================================
 # ROBOTS.TXT — AUDITSEO
-# https://auditseo.com.br
-# Última atualização: 2026-02-13
+# https://www.auditseo.com.br
+# Última atualização: 2026-03-01
 # =============================================================================
 #
 # ESTRATÉGIA:
-# 1. Domínio canônico: https://auditseo.com.br (sem www)
+# 1. Domínio canônico: https://www.auditseo.com.br
 # 2. Permitir indexação total para motores de busca
 # 3. Permitir crawling de IA para RAG/grounding (ai-input=yes)
 # 4. Bloquear treinamento de modelos de IA (ai-train=no)
@@ -14,9 +14,9 @@
 # 7. Otimizar crawl budget bloqueando URLs sem valor de indexação
 #
 # NOTA SOBRE WWW:
-# Redirect 301 de https://www.auditseo.com.br → https://auditseo.com.br
+# Redirect 301 de https://auditseo.com.br → https://www.auditseo.com.br
 # deve estar configurado no servidor/Cloudflare. Este robots.txt assume
-# que o domínio canônico é https://auditseo.com.br
+# que o domínio canônico é https://www.auditseo.com.br
 # =============================================================================
 
 
@@ -400,13 +400,13 @@ Disallow: /
 # SEÇÃO 9: SITEMAPS
 # =============================================================================
 
-Sitemap: https://auditseo.com.br/sitemap.xml
-Sitemap: https://auditseo.com.br/sitemap-blog.xml
-Sitemap: https://auditseo.com.br/sitemap-pages.xml
-Sitemap: https://auditseo.com.br/sitemap-services.xml
+Sitemap: https://www.auditseo.com.br/sitemap.xml
+Sitemap: https://www.auditseo.com.br/sitemap-blog.xml
+Sitemap: https://www.auditseo.com.br/sitemap-pages.xml
+Sitemap: https://www.auditseo.com.br/sitemap-services.xml
 
 # =============================================================================
 # FIM DO ARQUIVO
 # Mantido por: AUDITSEO — Search Intelligence AI
-# Documentação: https://auditseo.com.br/blog/robots-txt-para-ia/
+# Documentação: https://www.auditseo.com.br/blog/robots-txt-para-ia/
 # =============================================================================

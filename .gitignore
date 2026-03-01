@@ -22,3 +22,4 @@ dist/
 *.pid.lock
 .tmp/
 tmp/
+.vercel

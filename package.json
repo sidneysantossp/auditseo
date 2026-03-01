@@ -7,6 +7,9 @@
     "build:home": "node scripts/build-home.mjs",
     "build:site": "node scripts/build-site.mjs",
     "build": "npm run build:site",
-    "preview:dist": "node scripts/preview-dist.mjs"
+    "preview:dist": "node scripts/preview-dist.mjs",
+    "map:pages": "node scripts/map-pages.mjs",
+    "seo:implement": "node scripts/seo-implement.mjs",
+    "sitemap:generate": "node scripts/generate-sitemaps.mjs"
   }
 }

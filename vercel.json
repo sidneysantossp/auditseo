@@ -6,6 +6,17 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "auditseo.com.br"
+        }
+      ],
+      "destination": "https://www.auditseo.com.br/$1",
+      "permanent": true
+    },
+    {
       "source": "/sitemap.php",
       "destination": "/sitemap.xml",
       "permanent": true
