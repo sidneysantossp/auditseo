@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Definições Claras Para IAs: Como Escrever Para Ser Citado | AUDITSEO</title>
+    <meta name="description" content="Aprenda a escrever definições que IAs extraem e citam. Fórmulas, estruturas e exemplos práticos para responder 'O que é X?' e ser a fonte escolhida.">
+    <meta name="keywords" content="definicoes para ia, escrever definicao, o que e seo ia, conteudo citavel, definicao chatgpt">
+    <link rel="canonical" href="https://www.auditseo.com.br/blog/definicoes-claras-ia/">
+    <meta property="og:title" content="Definições Claras Para IAs: Como Escrever Para Ser Citado">
+    <meta property="og:description" content="Como escrever definições que IAs extraem e citam.">
+    <meta property="og:url" content="https://www.auditseo.com.br/blog/definicoes-claras-ia/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-01-27">
+    <meta property="article:modified_time" content="2026-01-27">
+    <meta property="article:author" content="Sidney Santos">
+    <meta property="article:section" content="Prompt Optimization">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--accent-cream:#f4e8d8;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555;--green:#2ecc71;--yellow:#f1c40f;--red:#e74c3c;--blue:#3498db;--purple:#9b59b6}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.8}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);transition:all .3s;text-decoration:none}.nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .article-header{padding:8rem 3rem 4rem;position:relative;background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(212,165,116,.04) 100%)}
+        .article-header-content{max-width:900px;margin:0 auto}
+        .breadcrumbs{margin-bottom:2rem}.breadcrumbs a,.breadcrumbs span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:1px}.breadcrumbs a:hover{color:var(--accent-gold)}.breadcrumbs span{margin:0 .5rem}
+        .article-category{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:3px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block}
+        .article-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);line-height:1;letter-spacing:-1px;margin-bottom:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .article-excerpt{font-size:1.3rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.7}
+        .article-meta{display:flex;flex-wrap:wrap;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+        .meta-item{display:flex;align-items:center;gap:.75rem}
+        .meta-avatar{width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:2px solid var(--accent-gold);overflow:hidden}
+        .meta-avatar img{width:100%;height:100%;object-fit:cover}
+        .meta-info{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:1px}
+        .meta-info strong{display:block;color:var(--text-light);font-size:.75rem;margin-bottom:.25rem}
+        .article-layout{max-width:1400px;margin:0 auto;padding:4rem 3rem;display:grid;grid-template-columns:250px 1fr;gap:4rem}
+        .article-toc{position:sticky;top:100px;height:fit-content}
+        .toc-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:1px}
+        .toc-list{list-style:none}.toc-list li{margin-bottom:.75rem}
+        .toc-list a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:.5px;transition:color .3s;display:block;padding:.25rem 0;border-left:2px solid transparent;padding-left:1rem;margin-left:-1rem}
+        .toc-list a:hover,.toc-list a.active{color:var(--accent-gold);border-left-color:var(--accent-gold)}
+        .article-content{max-width:800px}
+        .article-content h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin:3rem 0 1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--text-light);margin:2.5rem 0 1rem;letter-spacing:1px}
+        .article-content p{font-size:1.15rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9}
+        .article-content p strong{color:var(--accent-cream)}
+        .article-content a{color:var(--accent-gold);text-decoration:underline;text-underline-offset:3px}
+        .article-content ul,.article-content ol{margin:1.5rem 0;padding-left:1.5rem}
+        .article-content li{font-size:1.1rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.7}
+        .article-content li strong{color:var(--text-light)}
+        .highlight-box{background:linear-gradient(135deg,rgba(230,57,70,.1) 0%,rgba(212,165,116,.05) 100%);border-left:4px solid var(--accent-red);padding:2rem;margin:2rem 0;border-radius:0 8px 8px 0}
+        .highlight-box p{margin-bottom:0;font-size:1.1rem}
+        .formula-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:12px;text-align:center}
+        .formula-box .label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem;display:block}
+        .formula-box .formula{font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:var(--text-light);padding:1.5rem;background:rgba(255,255,255,.03);border-radius:8px;display:inline-block}
+        .formula-box .formula .term{color:var(--accent-gold)}
+        .formula-box .formula .verb{color:var(--green)}
+        .formula-box .formula .def{color:var(--blue)}
+        .formula-box .formula .context{color:var(--purple)}
+        .example-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:12px}
+        .example-box h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem}
+        .example-box .bad,.example-box .good{padding:1.25rem;border-radius:8px;margin:.75rem 0;font-size:1rem;line-height:1.7}
+        .example-box .bad{background:rgba(231,76,60,.1);border-left:4px solid var(--red)}
+        .example-box .good{background:rgba(46,204,113,.1);border-left:4px solid var(--green)}
+        .example-box .label{font-family:'JetBrains Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:.75rem;display:block}
+        .example-box .label.bad-label{color:var(--red)}
+        .example-box .label.good-label{color:var(--green)}
+        .example-box .breakdown{font-size:.85rem;color:var(--text-dim);margin-top:1rem;padding:1rem;background:rgba(255,255,255,.03);border-radius:6px}
+        .example-box .breakdown strong{color:var(--accent-gold)}
+        .pattern-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.5rem;margin:1rem 0;border-radius:12px}
+        .pattern-card .name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--accent-gold);margin-bottom:.75rem}
+        .pattern-card .structure{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--text-muted);padding:1rem;background:rgba(255,255,255,.03);border-radius:6px;margin-bottom:.75rem}
+        .pattern-card .example{font-size:.95rem;color:var(--text-dim);font-style:italic}
+        .tip-box{background:rgba(212,165,116,.1);border:1px solid rgba(212,165,116,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .tip-box h4{color:var(--accent-gold);margin-bottom:.5rem}
+        .tip-box h4::before{content:'💡 '}
+        .warning-box{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .warning-box h4{color:var(--red);margin-bottom:.5rem}
+        .warning-box h4::before{content:'⚠️ '}
+        .use-case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin:2rem 0}
+        .use-case{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.25rem;border-radius:8px}
+        .use-case .type{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
+        .use-case .text{font-size:.9rem;color:var(--text-muted)}
+        .cta-box{background:linear-gradient(135deg,rgba(230,57,70,.15) 0%,rgba(212,165,116,.08) 100%);border:1px solid rgba(230,57,70,.3);padding:3rem;margin:3rem 0;text-align:center;border-radius:12px}
+        .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:1rem}
+        .cta-box p{font-size:1.1rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .cta-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1rem 2.5rem;background:var(--gradient-fire);border:none;color:var(--bg-dark);cursor:pointer;transition:all .3s;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block;border-radius:4px}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(230,57,70,.4)}
+        .author-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin:4rem 0;display:flex;gap:2rem;align-items:center;border-radius:8px}
+        .author-avatar{width:100px;height:100px;border-radius:50%;background:var(--bg-dark);border:3px solid var(--accent-gold);overflow:hidden;flex-shrink:0}
+        .author-avatar img{width:100%;height:100%;object-fit:cover}
+        .author-info h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:.5rem}
+        .author-info p{font-size:1rem;color:var(--text-muted);margin-bottom:1rem}
+        .author-links{display:flex;gap:1rem}
+        .author-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-decoration:none}
+        .related-posts{margin:4rem 0}
+        .related-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:2rem}
+        .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .related-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);padding:1.5rem;transition:all .3s;border-radius:8px}
+        .related-card:hover{border-color:rgba(230,57,70,.3);transform:translateY(-3px)}
+        .related-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:.5rem}
+        .related-card h4 a{text-decoration:none;color:inherit}
+        .related-card p{font-size:.9rem;color:var(--text-dim)}
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card)}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}.footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
+        .footer-address{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);line-height:1.8}.footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1.5rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        @media(max-width:1100px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}.related-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr 1fr}.use-case-grid{grid-template-columns:1fr}}
+        @media(max-width:768px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.article-header{padding:6rem 1.5rem 3rem}.article-layout{padding:2rem 1.5rem}.article-meta{flex-direction:column;gap:1.5rem}.author-box{flex-direction:column;text-align:center}.footer-content{grid-template-columns:1fr}}
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Definições Claras Para IAs: Como Escrever Para Ser Citado","description":"Como escrever definições que IAs extraem e citam.","author":{"@type":"Person","name":"Sidney Santos"},"publisher":{"@type":"Organization","name":"AUDITSEO"},"datePublished":"2026-01-27","dateModified":"2026-01-27"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como escrever uma definição citável para IAs?","acceptedAnswer":{"@type":"Answer","text":"Use a fórmula: [Termo] é [categoria] que [função/característica distintiva]. A definição deve ser autocontida, começar com o termo sendo definido, e ter entre 1-3 frases."}},{"@type":"Question","name":"Por que definições são importantes para SEO de IAs?","acceptedAnswer":{"@type":"Answer","text":"Perguntas do tipo 'O que é X?' são extremamente comuns em IAs. Se você tem uma definição clara e citável, sua marca aparece como fonte de referência nessas respostas."}},{"@type":"Question","name":"Onde colocar definições no conteúdo?","acceptedAnswer":{"@type":"Answer","text":"Coloque a definição no primeiro ou segundo parágrafo do conteúdo. IAs priorizam conteúdo no início da página. Não enterre definições no meio do texto."}}]}</script>
+    <link rel="stylesheet" href="/assets/site-shell.css">
+    <script defer src="/assets/site-shell.js"></script>
+</head>
+<body>
+    <nav class="nav"><a href="/" class="logo">AUDITSEO</a><ul class="nav-links"><li><a href="/agencia-de-seo/">Agência de SEO</a></li><li><a href="/servicos/">Serviços</a></li><li><a href="/sobre/">Sobre</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://wa.me/5511996384376" class="nav-cta">Falar com Especialista</a></nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumbs"><a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span>Definições Claras Para IAs</span></div>
+            <span class="article-category">Prompt Optimization</span>
+            <h1 class="article-title">Definições Claras Para IAs: Como Escrever Para Ser Citado</h1>
+            <p class="article-excerpt">Perguntas "O que é X?" são as mais comuns em IAs. Aprenda a escrever definições que essas IAs extraem e citam como fonte.</p>
+            <div class="article-meta">
+                <div class="meta-item"><div class="meta-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div><div class="meta-info"><strong>Sidney Santos</strong>Especialista em Search Intelligence AI</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Publicado</strong>27 de Janeiro, 2026</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Tempo de leitura</strong>10 minutos</div></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-layout">
+        <aside class="article-toc">
+            <h4 class="toc-title">ÍNDICE</h4>
+            <ul class="toc-list">
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#importancia">Por Que Importa</a></li>
+                <li><a href="#formula">A Fórmula</a></li>
+                <li><a href="#padroes">5 Padrões</a></li>
+                <li><a href="#exemplos">Exemplos</a></li>
+                <li><a href="#posicao">Onde Posicionar</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </aside>
+
+        <article class="article-content">
+            <section id="introducao">
+                <p>Quando alguém pergunta "O que é SEO?" a uma IA, ela busca em suas fontes uma definição clara para extrair e citar. A pergunta é: essa definição virá do seu site ou do concorrente?</p>
+
+                <p>Definições são o tipo de conteúdo mais citado por IAs. São respostas diretas a perguntas diretas — exatamente o que usuários buscam e IAs precisam entregar.</p>
+
+                <p>Neste guia, vou ensinar fórmulas e padrões para escrever <strong>definições que IAs escolhem citar</strong>.</p>
+            </section>
+
+            <section id="importancia">
+                <h2>Por Que Definições São Tão Importantes</h2>
+
+                <p>Perguntas do tipo "O que é...?" representam uma parcela enorme das consultas em IAs:</p>
+
+                <ul>
+                    <li><strong>Alta frequência:</strong> São perguntas naturais e intuitivas</li>
+                    <li><strong>Intenção clara:</strong> Usuário quer uma explicação direta</li>
+                    <li><strong>Fácil extração:</strong> IAs identificam definições facilmente</li>
+                    <li><strong>Alto valor de marca:</strong> Ser a fonte de uma definição estabelece autoridade</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>O prêmio:</strong> Se sua definição é citada quando alguém pergunta "O que é [termo do seu nicho]?", você se posiciona como referência no tema.</p>
+                </div>
+            </section>
+
+            <section id="formula">
+                <h2>A Fórmula da Definição Citável</h2>
+
+                <div class="formula-box">
+                    <span class="label">Fórmula Básica</span>
+                    <div class="formula">
+                        <span class="term">[Termo]</span> <span class="verb">é</span> <span class="def">[categoria/tipo]</span> <span class="context">que [função distintiva]</span>
+                    </div>
+                </div>
+
+                <p>A fórmula tem três componentes essenciais:</p>
+
+                <ol>
+                    <li><strong>Termo:</strong> O que está sendo definido (sujeito explícito)</li>
+                    <li><strong>Categoria:</strong> A classe ou tipo a que pertence</li>
+                    <li><strong>Função distintiva:</strong> O que diferencia de outros da mesma categoria</li>
+                </ol>
+
+                <div class="example-box">
+                    <h4>Aplicando a Fórmula</h4>
+                    <div class="good">
+                        <span class="label good-label">✓ Exemplo</span>
+                        <p>"SEO é o conjunto de técnicas que otimizam sites para aparecerem nos primeiros resultados de buscadores como Google."</p>
+                    </div>
+                    <div class="breakdown">
+                        <strong>Termo:</strong> SEO | <strong>Categoria:</strong> conjunto de técnicas | <strong>Função:</strong> otimizam sites para primeiros resultados
+                    </div>
+                </div>
+            </section>
+
+            <section id="padroes">
+                <h2>5 Padrões de Definição</h2>
+
+                <div class="pattern-card">
+                    <div class="name">1. Definição Clássica</div>
+                    <div class="structure">[Termo] é [categoria] que [característica distintiva].</div>
+                    <div class="example">"Marketing de conteúdo é uma estratégia de marketing que atrai e engaja audiências através da criação de conteúdo relevante."</div>
+                </div>
+
+                <div class="pattern-card">
+                    <div class="name">2. Definição Funcional</div>
+                    <div class="structure">[Termo] é [o que faz] para [quem/o quê].</div>
+                    <div class="example">"Um CRM é um software que gerencia relacionamentos e interações de uma empresa com clientes e prospects."</div>
+                </div>
+
+                <div class="pattern-card">
+                    <div class="name">3. Definição por Contraste</div>
+                    <div class="structure">[Termo] é [definição], diferente de [termo relacionado] que [diferença].</div>
+                    <div class="example">"SEO off-page são técnicas de otimização feitas fora do site, diferente do SEO on-page que foca em elementos internos."</div>
+                </div>
+
+                <div class="pattern-card">
+                    <div class="name">4. Definição Expandida</div>
+                    <div class="structure">[Termo] é [definição curta]. [Expansão com contexto ou exemplo].</div>
+                    <div class="example">"TTFB é o tempo até o primeiro byte de resposta do servidor. Mede a velocidade inicial de resposta e impacta diretamente a experiência do usuário."</div>
+                </div>
+
+                <div class="pattern-card">
+                    <div class="name">5. Definição com Sigla</div>
+                    <div class="structure">[Sigla] ([nome completo]) é [definição].</div>
+                    <div class="example">"LCP (Largest Contentful Paint) é uma métrica do Core Web Vitals que mede o tempo de carregamento do maior elemento visível da página."</div>
+                </div>
+            </section>
+
+            <section id="exemplos">
+                <h2>Exemplos Práticos: Antes e Depois</h2>
+
+                <div class="example-box">
+                    <h4>Definição de E-commerce</h4>
+                    <div class="bad">
+                        <span class="label bad-label">❌ Não citável</span>
+                        <p>"É basicamente quando você vende coisas pela internet. Todo mundo faz isso hoje em dia e é muito importante para os negócios."</p>
+                    </div>
+                    <div class="good">
+                        <span class="label good-label">✓ Citável</span>
+                        <p>"E-commerce é o modelo de negócio que realiza transações comerciais através de plataformas digitais. Inclui venda de produtos físicos, digitais e serviços em lojas virtuais, marketplaces e aplicativos."</p>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Definição de Conversão</h4>
+                    <div class="bad">
+                        <span class="label bad-label">❌ Não citável</span>
+                        <p>"Conversão é quando o usuário faz o que você quer. Pode ser várias coisas diferentes dependendo do caso."</p>
+                    </div>
+                    <div class="good">
+                        <span class="label good-label">✓ Citável</span>
+                        <p>"Conversão em marketing digital é a ação desejada que um visitante realiza em um site ou campanha. Exemplos incluem compras, cadastros, downloads e solicitações de contato."</p>
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h4>Definição de Persona</h4>
+                    <div class="bad">
+                        <span class="label bad-label">❌ Não citável</span>
+                        <p>"A persona é tipo um cliente ideal fictício que a gente cria pra entender melhor quem compra da gente, sabe?"</p>
+                    </div>
+                    <div class="good">
+                        <span class="label good-label">✓ Citável</span>
+                        <p>"Persona é uma representação semifictícia do cliente ideal de uma empresa, baseada em dados reais de clientes e pesquisa de mercado. Inclui informações demográficas, comportamentais, motivações e desafios."</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="posicao">
+                <h2>Onde Posicionar Definições</h2>
+
+                <p>A posição da definição no conteúdo afeta sua citabilidade:</p>
+
+                <div class="use-case-grid">
+                    <div class="use-case">
+                        <div class="type">✓ Recomendado</div>
+                        <div class="text">Primeiro ou segundo parágrafo do conteúdo. IAs priorizam início de página.</div>
+                    </div>
+                    <div class="use-case">
+                        <div class="type">✓ Recomendado</div>
+                        <div class="text">Logo após H1 ou H2 que contém o termo sendo definido.</div>
+                    </div>
+                    <div class="use-case">
+                        <div class="type">✗ Evitar</div>
+                        <div class="text">Enterrada no meio do conteúdo após longos preâmbulos.</div>
+                    </div>
+                    <div class="use-case">
+                        <div class="type">✗ Evitar</div>
+                        <div class="text">Apenas em sidebar, rodapé ou elementos secundários.</div>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>Dica de Estrutura</h4>
+                    <p>Crie uma seção específica "O que é [termo]?" com H2 no início do artigo. A definição vem imediatamente após o heading. Isso sinaliza claramente para IAs onde está a resposta.</p>
+                </div>
+            </section>
+
+            <div class="warning-box">
+                <h4>Erros Comuns a Evitar</h4>
+                <p>Não comece definições com "Basicamente...", "Na verdade...", "É tipo...". Evite linguagem informal ou vaga. Não use o termo sendo definido na própria definição ("SEO é a otimização SEO de sites").</p>
+            </div>
+
+            <div class="cta-box">
+                <h3>Quer Definições Profissionais?</h3>
+                <p>A AUDITSEO cria e otimiza definições para <strong>posicionar sua marca como referência</strong> em IAs.</p>
+                <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20otimizar%20definições%20para%20IAs." class="cta-btn">Falar com Especialista</a>
+            </div>
+
+            <section id="faq">
+                <h2>Perguntas Frequentes</h2>
+
+                <h3>Como escrever uma definição citável para IAs?</h3>
+                <p>Use a fórmula: [Termo] é [categoria] que [função/característica distintiva]. A definição deve ser autocontida, começar com o termo sendo definido, e ter entre 1-3 frases.</p>
+
+                <h3>Por que definições são importantes para SEO de IAs?</h3>
+                <p>Perguntas do tipo "O que é X?" são extremamente comuns em IAs. Se você tem uma definição clara e citável, sua marca aparece como fonte de referência nessas respostas.</p>
+
+                <h3>Onde colocar definições no conteúdo?</h3>
+                <p>Coloque a definição no primeiro ou segundo parágrafo do conteúdo. IAs priorizam conteúdo no início da página. Não enterre definições no meio do texto.</p>
+
+                <h3>Qual o tamanho ideal de uma definição?</h3>
+                <p>Entre 1-3 frases, ou 25-75 palavras. Longa o suficiente para ser completa, curta o suficiente para ser extraída inteira sem truncamento.</p>
+
+                <h3>Posso ter múltiplas definições no mesmo conteúdo?</h3>
+                <p>Sim. Se seu conteúdo aborda múltiplos termos, defina cada um claramente em sua própria seção. Use H2 ou H3 para sinalizar cada definição.</p>
+            </section>
+
+            <section>
+                <h2>Conclusão</h2>
+
+                <p>Definições citáveis seguem princípios claros:</p>
+
+                <ul>
+                    <li><strong>Fórmula:</strong> [Termo] é [categoria] que [função distintiva]</li>
+                    <li><strong>5 padrões:</strong> Clássica, Funcional, Contraste, Expandida, com Sigla</li>
+                    <li><strong>Posição:</strong> Início do conteúdo, após heading relevante</li>
+                    <li><strong>Tamanho:</strong> 1-3 frases, 25-75 palavras</li>
+                </ul>
+
+                <p>Domine a arte de escrever definições e sua marca se torna fonte de referência quando usuários perguntam "O que é...?" às IAs.</p>
+
+                <p>Continue aprendendo: <a href="/blog/paragrafos-citaveis/">parágrafos citáveis</a>, <a href="/blog/faqs-otimizadas-ia/">FAQs otimizadas</a> e <a href="/blog/o-que-e-prompt-optimization/">o que é Prompt Optimization</a>.</p>
+            </section>
+
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                <div class="author-info">
+                    <h4>Sidney Santos</h4>
+                    <p>Especialista em Search Intelligence AI com mais de 12 anos de experiência em SEO. Fundador da AUDITSEO.</p>
+                    <div class="author-links"><a href="https://www.linkedin.com/in/sidney-especialista-em-seo/">LinkedIn</a><a href="https://instagram.com/sidneyespecialistaseo">Instagram</a></div>
+                </div>
+            </div>
+
+            <div class="related-posts">
+                <h3 class="related-title">Artigos Relacionados</h3>
+                <div class="related-grid">
+                    <div class="related-card"><h4><a href="/blog/paragrafos-citaveis/">Parágrafos Citáveis</a></h4><p>Como escrever para extração.</p></div>
+                    <div class="related-card"><h4><a href="/blog/faqs-otimizadas-ia/">FAQs Para IAs</a></h4><p>Perguntas e respostas otimizadas.</p></div>
+                    <div class="related-card"><h4><a href="/blog/o-que-e-prompt-optimization/">Prompt Optimization</a></h4><p>O que é e como funciona.</p></div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand"><div class="footer-logo">AUDITSEO</div><p class="footer-desc">Agência de SEO especializada em Search Intelligence AI.</p><div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil</div></div>
+            <div class="footer-col"><h4 class="footer-title">Serviços</h4><ul class="footer-links"><li><a href="/servicos/">Todos os Serviços</a></li><li><a href="/servicos/prompt-optimization/">Prompt Optimization</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Empresa</h4><ul class="footer-links"><li><a href="/sobre/">Sobre Nós</a></li><li><a href="/blog/">Blog</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Contato</h4><ul class="footer-links"><li><a href="https://wa.me/5511996384376">WhatsApp</a></li><li><a href="tel:+5511996384376">(11) 99638-4376</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 AUDITSEO — Todos os direitos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>

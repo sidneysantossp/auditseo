@@ -1,0 +1,1720 @@
+Now I have comprehensive data. Let me build the complete HymnsForge platform. Given the massive size, I'll deliver it as a single integrated HTML file with all 6 modules and the sidebar navigation.
+
+Aqui está a plataforma completa **HymnsForge** — todos os 6 módulos integrados com sidebar de navegação:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HymnsForge — Plataforma CCB</title>
+<style>
+:root{
+  --bg:#0a0e1a;--surface:#111827;--surface2:#1a2236;--surface3:#232d44;
+  --border:#2a3550;--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --gold:#f59e0b;--gold2:#d97706;--blue:#3b82f6;--blue2:#2563eb;
+  --green:#10b981;--green2:#059669;--red:#ef4444;--purple:#8b5cf6;
+  --cyan:#06b6d4;--pink:#ec4899;
+  --sidebar-w:260px;--header-h:56px;
+  --radius:10px;--radius-sm:6px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh;}
+::selection{background:var(--gold);color:var(--bg);}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--surface);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+
+/* SIDEBAR */
+.sidebar{position:fixed;left:0;top:0;width:var(--sidebar-w);height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;transition:transform .3s;}
+.sidebar-brand{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;}
+.sidebar-brand .logo{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--bg);}
+.sidebar-brand h1{font-size:16px;font-weight:700;color:var(--gold);}
+.sidebar-brand small{display:block;font-size:10px;color:var(--text3);font-weight:400;letter-spacing:.5px;text-transform:uppercase;}
+.sidebar-nav{flex:1;overflow-y:auto;padding:12px 0;}
+.nav-section{padding:8px 20px 4px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);font-weight:600;}
+.nav-item{display:flex;align-items:center;gap:12px;padding:10px 20px;cursor:pointer;transition:all .2s;border-left:3px solid transparent;color:var(--text2);font-size:13px;font-weight:500;}
+.nav-item:hover{background:var(--surface2);color:var(--text);}
+.nav-item.active{background:rgba(245,158,11,.08);color:var(--gold);border-left-color:var(--gold);}
+.nav-item .icon{font-size:18px;width:24px;text-align:center;}
+.nav-item .badge{margin-left:auto;background:var(--gold);color:var(--bg);font-size:10px;padding:2px 7px;border-radius:10px;font-weight:700;}
+.sidebar-footer{padding:12px 20px;border-top:1px solid var(--border);font-size:11px;color:var(--text3);text-align:center;}
+
+/* MAIN AREA */
+.main{margin-left:var(--sidebar-w);height:100vh;overflow-y:auto;padding:24px 28px 60px;}
+.page{display:none;}
+.page.active{display:block;}
+.page-header{margin-bottom:24px;}
+.page-header h2{font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.page-header p{font-size:13px;color:var(--text3);}
+
+/* CARDS & PANELS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px;}
+.card-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+
+/* KPI */
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;}
+.kpi .value{font-size:28px;font-weight:800;color:var(--gold);}
+.kpi .label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:4px;}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--surface2);color:var(--text);transition:all .2s;}
+.btn:hover{background:var(--surface3);}
+.btn-gold{background:var(--gold);color:var(--bg);border-color:var(--gold);}
+.btn-gold:hover{background:var(--gold2);}
+.btn-blue{background:var(--blue);color:#fff;border-color:var(--blue);}
+.btn-green{background:var(--green);color:#fff;border-color:var(--green);}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red);}
+.btn-sm{padding:5px 10px;font-size:11px;}
+
+/* FORM ELEMENTS */
+select,input[type="text"],input[type="number"],input[type="date"],textarea{
+  background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:var(--radius-sm);
+  padding:8px 12px;font-size:13px;width:100%;font-family:inherit;transition:border .2s;}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--gold);}
+textarea{resize:vertical;min-height:80px;}
+label{font-size:12px;color:var(--text2);font-weight:500;display:block;margin-bottom:4px;}
+.form-group{margin-bottom:12px;}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{background:var(--surface2);color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.5px;font-size:10px;padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);position:sticky;top:0;cursor:pointer;}
+th:hover{color:var(--gold);}
+td{padding:10px 12px;border-bottom:1px solid rgba(42,53,80,.5);vertical-align:middle;}
+tr:hover td{background:rgba(245,158,11,.03);}
+
+/* TAGS */
+.tag{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;}
+.tag-gold{background:rgba(245,158,11,.15);color:var(--gold);}
+.tag-blue{background:rgba(59,130,246,.15);color:var(--blue);}
+.tag-green{background:rgba(16,185,129,.15);color:var(--green);}
+.tag-red{background:rgba(239,68,68,.15);color:var(--red);}
+.tag-purple{background:rgba(139,92,246,.15);color:var(--purple);}
+.tag-cyan{background:rgba(6,182,212,.15);color:var(--cyan);}
+.tag-pink{background:rgba(236,72,153,.15);color:var(--pink);}
+
+/* SCORE BAR */
+.score-bar{height:6px;background:var(--surface3);border-radius:3px;overflow:hidden;margin-top:4px;}
+.score-fill{height:100%;border-radius:3px;transition:width .5s;}
+
+/* TITLE RESULT CARDS */
+.title-card{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;margin-bottom:10px;position:relative;}
+.title-card .title-text{font-size:14px;font-weight:600;color:var(--text);line-height:1.5;margin-bottom:8px;}
+.title-card .title-meta{display:flex;gap:12px;font-size:11px;color:var(--text3);flex-wrap:wrap;align-items:center;}
+.title-card .actions{position:absolute;top:10px;right:10px;display:flex;gap:4px;}
+.title-card .actions .btn-sm{padding:4px 8px;font-size:14px;background:transparent;border:none;color:var(--text3);cursor:pointer;}
+.title-card .actions .btn-sm:hover{color:var(--gold);}
+
+/* COMPETITOR VIDEO ROW */
+.comp-video{display:flex;gap:16px;padding:14px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:10px;align-items:center;}
+.comp-video .rank{font-size:20px;font-weight:800;color:var(--gold);min-width:30px;text-align:center;}
+.comp-video .info{flex:1;min-width:0;}
+.comp-video .info h4{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.comp-video .info .meta{display:flex;gap:10px;font-size:11px;color:var(--text3);flex-wrap:wrap;}
+.comp-video .bar-col{width:120px;}
+
+/* CALENDAR */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+.cal-header-cell{text-align:center;font-size:10px;font-weight:600;color:var(--text3);padding:8px 0;text-transform:uppercase;}
+.cal-day{background:var(--surface2);border:1px solid transparent;border-radius:4px;min-height:80px;padding:4px 6px;font-size:11px;cursor:pointer;transition:all .2s;}
+.cal-day:hover{border-color:var(--gold);}
+.cal-day.today{border-color:var(--gold);background:rgba(245,158,11,.06);}
+.cal-day.other{opacity:.3;}
+.cal-day .day-num{font-weight:700;margin-bottom:3px;font-size:12px;}
+.cal-chip{display:block;padding:2px 4px;border-radius:3px;font-size:9px;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;font-weight:600;}
+
+/* PLAYLIST BUILDER */
+.playlist-item{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:6px;cursor:move;}
+.playlist-item .pi-num{font-weight:800;color:var(--gold);min-width:30px;font-size:14px;}
+.playlist-item .pi-title{flex:1;font-size:13px;}
+.playlist-item .pi-dur{font-size:12px;color:var(--text3);min-width:50px;text-align:right;}
+.playlist-item .pi-remove{background:none;border:none;color:var(--red);cursor:pointer;font-size:16px;padding:2px 6px;}
+
+/* CHANNEL TABS */
+.channel-tabs{display:flex;gap:4px;margin-bottom:16px;flex-wrap:wrap;}
+.channel-tab{padding:8px 16px;border-radius:var(--radius-sm);font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--surface2);color:var(--text2);transition:all .2s;}
+.channel-tab.active{background:var(--gold);color:var(--bg);border-color:var(--gold);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;}
+.modal-overlay.show{display:flex;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);width:90%;max-width:600px;max-height:85vh;overflow-y:auto;padding:24px;}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:16px;color:var(--gold);}
+
+/* ANALYTICS CHART PLACEHOLDER */
+.chart-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.chart-box canvas{width:100%!important;height:100%!important;}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--green);color:#fff;padding:12px 20px;border-radius:var(--radius-sm);font-size:13px;font-weight:600;z-index:300;transform:translateY(80px);opacity:0;transition:all .3s;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%);}
+  .sidebar.open{transform:translateX(0);}
+  .main{margin-left:0;}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
+  .menu-toggle{display:flex!important;}
+}
+.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:150;width:40px;height:40px;background:var(--gold);border:none;border-radius:8px;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:var(--bg);}
+
+/* FILTERS ROW */
+.filters-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:flex-end;}
+.filters-row .form-group{margin-bottom:0;min-width:150px;}
+
+/* STATUS CHIPS */
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;}
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo">H</div>
+    <div><h1>HymnsForge</h1><small>Plataforma CCB</small></div>
+  </div>
+  <div class="sidebar-nav">
+    <div class="nav-section">Principal</div>
+    <div class="nav-item active" onclick="goTo('titles')">
+      <span class="icon">🎵</span>Gerador de Títulos<span class="badge" id="badgeTitles">0</span>
+    </div>
+    <div class="nav-item" onclick="goTo('compilations')">
+      <span class="icon">📀</span>Planejador de Compilações
+    </div>
+    <div class="nav-item" onclick="goTo('calendar')">
+      <span class="icon">📅</span>Calendário Editorial
+    </div>
+    <div class="nav-section">Análise</div>
+    <div class="nav-item" onclick="goTo('analytics')">
+      <span class="icon">📊</span>Analytics Tracker
+    </div>
+    <div class="nav-item" onclick="goTo('competitors')">
+      <span class="icon">🔍</span>Análise de Concorrentes<span class="badge" style="background:var(--purple)">NEW</span>
+    </div>
+    <div class="nav-section">Sistema</div>
+    <div class="nav-item" onclick="goTo('export')">
+      <span class="icon">📦</span>Central de Exportação
+    </div>
+  </div>
+  <div class="sidebar-footer">
+    HymnsForge v1.0 — 480 Hinos do Hinário 5<br>
+    <span style="color:var(--gold)">Ana Marques · Stella · Clayton</span>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+<!-- ===================== MODULE 1: TITLE GENERATOR ===================== -->
+<div class="page active" id="page-titles">
+  <div class="page-header">
+    <h2>🎵 Gerador de Títulos Virais CCB</h2>
+    <p>Gere títulos otimizados para hinos individuais, avulsos e compilações</p>
+  </div>
+
+  <div class="grid-3" style="margin-bottom:16px">
+    <div class="kpi"><div class="value" id="kpiGenerated">0</div><div class="label">Títulos Gerados</div></div>
+    <div class="kpi"><div class="value" id="kpiSaved">0</div><div class="label">Salvos</div></div>
+    <div class="kpi"><div class="value" id="kpiAvgScore">0</div><div class="label">Score Médio</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚙️ Configuração</div>
+    <div class="grid-3">
+      <div class="form-group">
+        <label>Canal</label>
+        <select id="t_channel">
+          <option value="ana">Ana Marques (Voz Serena)</option>
+          <option value="stella">Stella Meireles (Com Letra)</option>
+          <option value="clayton">Clayton Dias (Arranjos)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tipo de Conteúdo</label>
+        <select id="t_type">
+          <option value="avulso">Hino Avulso</option>
+          <option value="individual">Hino Individual (Hinário 5)</option>
+          <option value="compilacao">Compilação / Seleção</option>
+          <option value="arranjo">Arranjo / Cover</option>
+          <option value="shorts">Shorts / Trecho</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Quantidade</label>
+        <select id="t_qty">
+          <option value="5">5 títulos</option>
+          <option value="10" selected>10 títulos</option>
+          <option value="20">20 títulos</option>
+          <option value="50">50 títulos</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="form-group">
+        <label>Hino Específico (opcional)</label>
+        <select id="t_hino"><option value="">Aleatório</option></select>
+      </div>
+      <div class="form-group">
+        <label>Tema Emocional</label>
+        <select id="t_theme">
+          <option value="">Aleatório</option>
+          <option value="paz">Paz e Tranquilidade</option>
+          <option value="suplica">Súplica e Perdão</option>
+          <option value="adoracao">Adoração e Louvor</option>
+          <option value="fe">Fé e Esperança</option>
+          <option value="consolo">Consolo e Conforto</option>
+          <option value="mocidade">Mocidade / Juventude</option>
+          <option value="familia">Família</option>
+          <option value="cura">Cura e Libertação</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Instrumento (compilação)</label>
+        <select id="t_instrument">
+          <option value="">Qualquer</option>
+          <option value="clarinete">Clarinete</option>
+          <option value="orgao">Órgão</option>
+          <option value="violao">Violão</option>
+          <option value="piano">Piano</option>
+          <option value="tuba">Tuba</option>
+          <option value="acordeon">Acordeão</option>
+          <option value="acustico">Acústico (voz e violão)</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:8px;">
+      <button class="btn btn-gold" onclick="generateTitles()">🎯 Gerar Títulos</button>
+      <button class="btn" onclick="exportTitlesCsv()">📥 Exportar CSV</button>
+      <button class="btn" onclick="clearTitleResults()">🗑️ Limpar</button>
+    </div>
+  </div>
+
+  <div id="titleResults"></div>
+</div>
+
+<!-- ===================== MODULE 2: COMPILATION PLANNER ===================== -->
+<div class="page" id="page-compilations">
+  <div class="page-header">
+    <h2>📀 Planejador de Compilações</h2>
+    <p>Monte compilações otimizadas com timestamps automáticos e duração calculada</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">📋 Banco de Hinos — Selecione e Adicione</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <input type="text" id="comp_search" placeholder="Buscar hino por número ou nome..." oninput="filterHinosBank()">
+        <select id="comp_theme_filter" onchange="filterHinosBank()" style="width:auto;min-width:120px;">
+          <option value="">Todos</option>
+          <option value="paz">Paz</option>
+          <option value="suplica">Súplica</option>
+          <option value="adoracao">Adoração</option>
+          <option value="fe">Fé</option>
+          <option value="consolo">Consolo</option>
+        </select>
+      </div>
+      <div id="hinosBank" style="max-height:400px;overflow-y:auto;"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🎶 Compilação Atual <span id="compCount" style="margin-left:auto;font-size:12px;color:var(--text3)">0 hinos</span></div>
+      <div class="form-group">
+        <label>Título da Compilação</label>
+        <input type="text" id="comp_title" placeholder="Ex: Hinos CCB Que Trazem Paz — Seleção Especial 2026">
+      </div>
+      <div id="compPlaylist" style="min-height:200px;max-height:350px;overflow-y:auto;"></div>
+      <div class="grid-3" style="margin-top:12px;">
+        <div class="kpi"><div class="value" id="compDuration">0:00</div><div class="label">Duração Total</div></div>
+        <div class="kpi"><div class="value" id="compHinos">0</div><div class="label">Hinos</div></div>
+        <div class="kpi"><div class="value" id="compType">—</div><div class="label">Tipo</div></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:12px;">
+        <button class="btn btn-gold" onclick="genTimestamps()">⏱️ Gerar Timestamps</button>
+        <button class="btn btn-blue" onclick="genDescription()">📝 Gerar Descrição</button>
+        <button class="btn" onclick="saveCompilation()">💾 Salvar</button>
+        <button class="btn btn-red" onclick="clearCompilation()">🗑️</button>
+      </div>
+      <textarea id="compOutput" style="margin-top:12px;display:none;min-height:150px;" readonly></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODULE 3: EDITORIAL CALENDAR ===================== -->
+<div class="page" id="page-calendar">
+  <div class="page-header">
+    <h2>📅 Calendário Editorial CCB</h2>
+    <p>Planeje publicações com datas sazonais e pipeline por canal</p>
+  </div>
+
+  <div class="channel-tabs" id="calChannelTabs">
+    <div class="channel-tab active" onclick="setCalChannel('all',this)">Todos</div>
+    <div class="channel-tab" onclick="setCalChannel('ana',this)">Ana Marques</div>
+    <div class="channel-tab" onclick="setCalChannel('stella',this)">Stella Meireles</div>
+    <div class="channel-tab" onclick="setCalChannel('clayton',this)">Clayton Dias</div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="btn btn-sm" onclick="calNav(-1)">◀</button>
+        <h3 id="calMonthLabel" style="font-size:16px;min-width:180px;text-align:center;"></h3>
+        <button class="btn btn-sm" onclick="calNav(1)">▶</button>
+        <button class="btn btn-sm" onclick="calToday()">Hoje</button>
+      </div>
+      <button class="btn btn-gold" onclick="openCalModal()">+ Adicionar Vídeo</button>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+  </div>
+
+  <div class="grid-2" style="margin-top:16px;">
+    <div class="card">
+      <div class="card-title">🎯 Pipeline de Produção</div>
+      <div id="calPipeline" style="max-height:300px;overflow-y:auto;"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">📌 Datas Sazonais CCB</div>
+      <div id="calSeasonal" style="max-height:300px;overflow-y:auto;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODULE 4: ANALYTICS ===================== -->
+<div class="page" id="page-analytics">
+  <div class="page-header">
+    <h2>📊 Analytics Tracker</h2>
+    <p>Acompanhe métricas dos seus canais e identifique padrões</p>
+  </div>
+
+  <div class="channel-tabs" id="anaChannelTabs">
+    <div class="channel-tab active" onclick="setAnaChannel('all',this)">Todos</div>
+    <div class="channel-tab" onclick="setAnaChannel('ana',this)">Ana Marques</div>
+    <div class="channel-tab" onclick="setAnaChannel('stella',this)">Stella</div>
+    <div class="channel-tab" onclick="setAnaChannel('clayton',this)">Clayton</div>
+  </div>
+
+  <div class="grid-4" style="margin-bottom:16px;">
+    <div class="kpi"><div class="value" id="anaViews">0</div><div class="label">Views Totais</div></div>
+    <div class="kpi"><div class="value" id="anaInscritos">0</div><div class="label">Inscritos (soma)</div></div>
+    <div class="kpi"><div class="value" id="anaCTR">0%</div><div class="label">CTR Médio</div></div>
+    <div class="kpi"><div class="value" id="anaRPM">$0</div><div class="label">RPM Médio</div></div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="card-title" style="margin-bottom:0;">📋 Vídeos Registrados</div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-gold btn-sm" onclick="openAnaModal()">+ Adicionar</button>
+        <button class="btn btn-sm" onclick="loadSampleAnalytics()">📥 Dados Exemplo</button>
+        <button class="btn btn-sm" onclick="exportAnalyticsCsv()">📤 CSV</button>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table id="anaTable">
+        <thead>
+          <tr>
+            <th onclick="sortAna('title')">Título</th>
+            <th onclick="sortAna('channel')">Canal</th>
+            <th onclick="sortAna('type')">Tipo</th>
+            <th onclick="sortAna('views')">Views ▼</th>
+            <th onclick="sortAna('ctr')">CTR</th>
+            <th onclick="sortAna('retention')">Retenção</th>
+            <th onclick="sortAna('date')">Publicação</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="anaBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">📈 Views por Tipo de Conteúdo</div>
+      <div class="chart-box"><canvas id="chartType"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🏆 Top Insights</div>
+      <div id="anaInsights"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODULE 5: COMPETITORS ===================== -->
+<div class="page" id="page-competitors">
+  <div class="page-header">
+    <h2>🔍 Análise de Concorrentes</h2>
+    <p>Estude os canais de referência, seus vídeos virais e padrões de sucesso</p>
+  </div>
+
+  <div class="channel-tabs" id="compTabs"></div>
+
+  <div class="grid-4" style="margin-bottom:16px;">
+    <div class="kpi"><div class="value" id="compSubs">—</div><div class="label">Inscritos (est.)</div></div>
+    <div class="kpi"><div class="value" id="compTopView">—</div><div class="label">Top Vídeo (views)</div></div>
+    <div class="kpi"><div class="value" id="compAvgView">—</div><div class="label">Média por Vídeo</div></div>
+    <div class="kpi"><div class="value" id="compFreq">—</div><div class="label">Frequência</div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">🏆 Vídeos Mais Virais</div>
+      <div id="compVideosList" style="max-height:500px;overflow-y:auto;"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">💡 Padrões Identificados</div>
+      <div id="compPatterns"></div>
+      <div class="card-title" style="margin-top:16px;">🎯 Como Usar a Favor</div>
+      <div id="compActions"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title">📊 Comparativo de Estrutura de Títulos</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Padrão de Título</th><th>Exemplo</th><th>Views Médias</th><th>Usado por</th><th>Recomendação</th></tr>
+        </thead>
+        <tbody id="compTitlePatterns"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="card-title" style="margin-bottom:0;">➕ Adicionar Vídeo de Concorrente</div>
+    </div>
+    <div class="grid-3">
+      <div class="form-group"><label>Canal Concorrente</label><select id="addComp_channel"></select></div>
+      <div class="form-group"><label>Título do Vídeo</label><input type="text" id="addComp_title"></div>
+      <div class="form-group"><label>Views</label><input type="number" id="addComp_views"></div>
+    </div>
+    <div class="grid-4">
+      <div class="form-group"><label>Duração (min)</label><input type="number" id="addComp_dur"></div>
+      <div class="form-group"><label>Data Publicação</label><input type="date" id="addComp_date"></div>
+      <div class="form-group"><label>Tipo</label>
+        <select id="addComp_type">
+          <option>Compilação</option><option>Individual</option><option>Avulso</option><option>Cover/Arranjo</option><option>Shorts</option>
+        </select>
+      </div>
+      <div class="form-group"><label>&nbsp;</label><button class="btn btn-gold" onclick="addCompVideo()" style="width:100%">+ Adicionar</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MODULE 6: EXPORT CENTER ===================== -->
+<div class="page" id="page-export">
+  <div class="page-header">
+    <h2>📦 Central de Exportação</h2>
+    <p>Exporte dados, faça backup e restaure toda a plataforma</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="card" style="text-align:center;">
+      <div style="font-size:40px;margin-bottom:8px;">💾</div>
+      <h3 style="font-size:14px;margin-bottom:8px;">Backup Completo</h3>
+      <p style="font-size:12px;color:var(--text3);margin-bottom:12px;">Exporta todos os dados (títulos, compilações, calendário, analytics, concorrentes) em JSON</p>
+      <button class="btn btn-gold" onclick="fullBackup()">Fazer Backup</button>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:40px;margin-bottom:8px;">📂</div>
+      <h3 style="font-size:14px;margin-bottom:8px;">Restaurar Backup</h3>
+      <p style="font-size:12px;color:var(--text3);margin-bottom:12px;">Carregue um arquivo JSON de backup para restaurar todos os dados</p>
+      <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="fullRestore(event)">
+      <button class="btn btn-blue" onclick="document.getElementById('restoreFile').click()">Restaurar</button>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:40px;margin-bottom:8px;">🗑️</div>
+      <h3 style="font-size:14px;margin-bottom:8px;">Limpar Tudo</h3>
+      <p style="font-size:12px;color:var(--text3);margin-bottom:12px;">Remove todos os dados armazenados localmente (irreversível)</p>
+      <button class="btn btn-red" onclick="clearAllData()">Limpar Dados</button>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:16px;">
+    <div class="card">
+      <div class="card-title">📤 Exportações Individuais</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <button class="btn" onclick="exportTitlesCsv()">📥 Títulos Salvos → CSV</button>
+        <button class="btn" onclick="exportCompilationsTxt()">📥 Compilações → TXT</button>
+        <button class="btn" onclick="exportCalendarIcs()">📥 Calendário → ICS</button>
+        <button class="btn" onclick="exportAnalyticsCsv()">📥 Analytics → CSV</button>
+        <button class="btn" onclick="exportCompetitorsCsv()">📥 Concorrentes → CSV</button>
+        <button class="btn" onclick="exportSEODescription()">📥 Descrição SEO → TXT</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">📊 Resumo dos Dados</div>
+      <div id="exportSummary"></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- END MAIN -->
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modalCal">
+  <div class="modal">
+    <h3>📅 Adicionar/Editar Vídeo no Calendário</h3>
+    <div class="grid-2">
+      <div class="form-group"><label>Canal</label>
+        <select id="calM_channel"><option value="ana">Ana Marques</option><option value="stella">Stella Meireles</option><option value="clayton">Clayton Dias</option></select>
+      </div>
+      <div class="form-group"><label>Data</label><input type="date" id="calM_date"></div>
+    </div>
+    <div class="form-group"><label>Título</label><input type="text" id="calM_title"></div>
+    <div class="grid-3">
+      <div class="form-group"><label>Tipo</label>
+        <select id="calM_type"><option>Avulso</option><option>Individual</option><option>Compilação</option><option>Arranjo</option><option>Shorts</option></select>
+      </div>
+      <div class="form-group"><label>Status</label>
+        <select id="calM_status"><option value="idea">💡 Ideia</option><option value="script">📝 Roteiro</option><option value="recording">🎤 Gravação</option><option value="editing">✂️ Edição</option><option value="thumb">🖼️ Thumbnail</option><option value="published">✅ Publicado</option></select>
+      </div>
+      <div class="form-group"><label>Hino (nº)</label><input type="text" id="calM_hino" placeholder="Ex: 42, avulso"></div>
+    </div>
+    <div class="form-group"><label>Notas</label><textarea id="calM_notes" rows="2"></textarea></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;">
+      <button class="btn" onclick="closeModal('modalCal')">Cancelar</button>
+      <button class="btn btn-gold" onclick="saveCalVideo()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalAna">
+  <div class="modal">
+    <h3>📊 Adicionar Vídeo ao Analytics</h3>
+    <div class="grid-2">
+      <div class="form-group"><label>Canal</label>
+        <select id="anaM_channel"><option value="ana">Ana Marques</option><option value="stella">Stella Meireles</option><option value="clayton">Clayton Dias</option></select>
+      </div>
+      <div class="form-group"><label>Tipo</label>
+        <select id="anaM_type"><option>Avulso</option><option>Individual</option><option>Compilação</option><option>Arranjo</option><option>Shorts</option></select>
+      </div>
+    </div>
+    <div class="form-group"><label>Título</label><input type="text" id="anaM_title"></div>
+    <div class="grid-4">
+      <div class="form-group"><label>Views</label><input type="number" id="anaM_views" value="0"></div>
+      <div class="form-group"><label>CTR (%)</label><input type="number" id="anaM_ctr" step="0.1" value="0"></div>
+      <div class="form-group"><label>Retenção (%)</label><input type="number" id="anaM_ret" step="0.1" value="0"></div>
+      <div class="form-group"><label>Data Publicação</label><input type="date" id="anaM_date"></div>
+    </div>
+    <div class="grid-3">
+      <div class="form-group"><label>Duração (min)</label><input type="number" id="anaM_dur" step="0.5" value="0"></div>
+      <div class="form-group"><label>RPM ($)</label><input type="number" id="anaM_rpm" step="0.01" value="0"></div>
+      <div class="form-group"><label>Receita ($)</label><input type="number" id="anaM_rev" step="0.01" value="0"></div>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;">
+      <button class="btn" onclick="closeModal('modalAna')">Cancelar</button>
+      <button class="btn btn-gold" onclick="saveAnaVideo()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// GLOBAL DATA
+// ============================================================
+const CHANNELS = {
+  ana: {name:'Ana Marques',brand:'Voz Serena',color:'#f59e0b',subs:1170},
+  stella: {name:'Stella Meireles',brand:'Com Letra',color:'#3b82f6',subs:200},
+  clayton: {name:'Clayton Dias',brand:'Arranjos',color:'#10b981',subs:475}
+};
+
+const STATUS_MAP = {
+  idea:{label:'Ideia',emoji:'💡',color:'#64748b'},
+  script:{label:'Roteiro',emoji:'📝',color:'#8b5cf6'},
+  recording:{label:'Gravação',emoji:'🎤',color:'#06b6d4'},
+  editing:{label:'Edição',emoji:'✂️',color:'#f59e0b'},
+  thumb:{label:'Thumbnail',emoji:'🖼️',color:'#ec4899'},
+  published:{label:'Publicado',emoji:'✅',color:'#10b981'}
+};
+
+// 50 representative hymns from Hinário 5 (expandable)
+const HINOS_DB = [
+  {n:1,nome:'Deus de Amor',tema:'adoracao',dur:3.2},{n:2,nome:'Conta as Bençãos',tema:'fe',dur:3.5},
+  {n:7,nome:'Granjeai os Talentos',tema:'fe',dur:4.0},{n:13,nome:'Confiemos em Deus',tema:'fe',dur:3.1},
+  {n:21,nome:'Não Mais Oprimidos Seremos',tema:'consolo',dur:3.4},{n:23,nome:'O Senhor é o Meu Pastor',tema:'paz',dur:2.5},
+  {n:29,nome:'Senhor Jesus Tu És o Meu Rochedo',tema:'fe',dur:3.3},{n:31,nome:'Forte Rocha',tema:'fe',dur:3.8},
+  {n:34,nome:'O Mestre Que Desceu dos Céus',tema:'adoracao',dur:2.5},{n:35,nome:'Eis Que Multidão Mui Grande',tema:'adoracao',dur:3.0},
+  {n:36,nome:'A Fiel Proteção',tema:'consolo',dur:4.2},{n:38,nome:'Ó Senhor, És Minha Vida',tema:'suplica',dur:3.8},
+  {n:42,nome:'Ó Minha Alma, Por Que Te Abates',tema:'consolo',dur:3.3},{n:47,nome:'Sublime É o Perdão!',tema:'suplica',dur:2.6},
+  {n:50,nome:'Glória a Jesus! Aleluia!',tema:'adoracao',dur:3.1},{n:61,nome:'A Minha Alma',tema:'suplica',dur:3.5},
+  {n:69,nome:'A Família de Jesus',tema:'familia',dur:3.0},{n:70,nome:'Senhor Tu és a Minha Esperança',tema:'fe',dur:3.2},
+  {n:74,nome:'Louvemos Todos ao Senhor',tema:'adoracao',dur:2.8},{n:83,nome:'Vinde as Bodas',tema:'adoracao',dur:3.9},
+  {n:91,nome:'Quão Bondoso Amigo',tema:'paz',dur:3.6},{n:100,nome:'Sim, Cristo Me Ama',tema:'consolo',dur:2.9},
+  {n:102,nome:'Sinto a Voz Divina',tema:'suplica',dur:3.4},{n:106,nome:'Celeste Pátria',tema:'fe',dur:3.1},
+  {n:109,nome:'Vem, Ó Senhor, Ajudar-me',tema:'suplica',dur:3.7},{n:115,nome:'Minha Alma Engrandece',tema:'adoracao',dur:3.3},
+  {n:116,nome:'Amo ao Senhor',tema:'adoracao',dur:2.6},{n:118,nome:'Oh! Quão Doce É Confiar',tema:'paz',dur:3.0},
+  {n:133,nome:'Hino 133',tema:'adoracao',dur:3.2},{n:144,nome:'A Vida Eterna',tema:'fe',dur:3.5},
+  {n:147,nome:'É Bom Louvar ao Criador',tema:'adoracao',dur:3.8},{n:168,nome:'Em Nome do Nosso Redentor',tema:'adoracao',dur:4.0},
+  {n:191,nome:'Ó Que Amor!',tema:'adoracao',dur:2.9},{n:194,nome:'Há Um Amigo',tema:'paz',dur:3.3},
+  {n:221,nome:'A Descida do Espírito Santo',tema:'adoracao',dur:3.6},{n:228,nome:'Salvação! Salvação!',tema:'fe',dur:3.1},
+  {n:230,nome:'A Ti Rendemos Graças',tema:'adoracao',dur:2.7},{n:234,nome:'Hino 234',tema:'suplica',dur:3.4},
+  {n:250,nome:'Hino 250',tema:'paz',dur:3.0},{n:260,nome:'Sou Servo Inútil',tema:'suplica',dur:3.2},
+  {n:275,nome:'Hino 275',tema:'fe',dur:3.5},{n:283,nome:'Hino 283',tema:'consolo',dur:3.0},
+  {n:300,nome:'Hino 300',tema:'adoracao',dur:3.3},{n:310,nome:'Hino 310',tema:'paz',dur:2.8},
+  {n:332,nome:'Hino 332',tema:'fe',dur:3.1},{n:355,nome:'Hino 355',tema:'suplica',dur:3.6},
+  {n:357,nome:'Aguardo a Vinda do Senhor',tema:'fe',dur:3.9},{n:372,nome:'Da Igreja, Fiel Fundamento',tema:'adoracao',dur:3.4},
+  {n:374,nome:'Hino 374',tema:'adoracao',dur:3.7},{n:394,nome:'Hino 394',tema:'consolo',dur:3.2},
+  {n:409,nome:'Que Júbilo Sem Par',tema:'adoracao',dur:3.5},{n:421,nome:'Recorda, Por Fé, Minha Alma',tema:'fe',dur:3.8},
+  {n:438,nome:'Hino 438',tema:'suplica',dur:3.3},{n:446,nome:'Hino 446',tema:'paz',dur:3.0},
+  {n:454,nome:'Hino 454',tema:'fe',dur:3.1},{n:457,nome:'Hino 457',tema:'adoracao',dur:3.4},
+  {n:463,nome:'Mocidade! Vamos Combater!',tema:'mocidade',dur:3.6},{n:469,nome:'Pai Nosso Que Estás Nos Céus',tema:'suplica',dur:2.9},
+  {n:480,nome:'Último Hino',tema:'adoracao',dur:3.2}
+];
+
+const AVULSOS_POPULARES = [
+  'Caquinho','Adoração','Hoje Eu Vim Te Perguntar','Pisa Na Cabeça do Inimigo',
+  'A Prova Te Cercou','Fala Pra Mim Criador','Efraim','Oh Minha Flor',
+  'Dependente','Jardineiro Fiel','O Grande Mar','Deus do Meu Viver',
+  'Asas Feridas','Se Como Um Pássaro','Cantares de Salomão','Me Leva Pra Casa',
+  'Hinos Que Acalmam o Coração','Se Eu Tiver Que Levantar do Trono',
+  'Quem Nasceu Para Pregar','Deixa Senhor','A Última Chance'
+];
+
+const THEMES = {
+  paz:{label:'Paz e Tranquilidade',emoji:'☮️',words:['paz','tranquilidade','descanso','serenidade','acalma','repouso']},
+  suplica:{label:'Súplica e Perdão',emoji:'🙏',words:['súplica','perdão','misericórdia','clama','socorro','ajuda']},
+  adoracao:{label:'Adoração e Louvor',emoji:'🎶',words:['louvor','adoração','glória','aleluia','exaltação','magnificar']},
+  fe:{label:'Fé e Esperança',emoji:'✨',words:['fé','esperança','confiança','promessa','certeza','vitória']},
+  consolo:{label:'Consolo e Conforto',emoji:'💛',words:['consolo','conforto','abrigo','refúgio','amparo','fortalece']},
+  mocidade:{label:'Mocidade / Juventude',emoji:'🔥',words:['mocidade','jovem','combater','servir','avante']},
+  familia:{label:'Família',emoji:'👨‍👩‍👧',words:['família','lar','filhos','mãe','pai']},
+  cura:{label:'Cura e Libertação',emoji:'🕊️',words:['cura','libertação','livrar','restaurar','renovar']}
+};
+
+const INSTRUMENTS = ['clarinete','órgão','violão','piano','tuba','acordeão','acústico','orquestra'];
+
+// COMPETITOR DATA (pre-loaded from research)
+const COMPETITORS = [
+  {
+    id:'harmonia',name:'Harmonia Celeste CCB',subs:'400K+',freq:'3-5x/semana',
+    focus:'Compilações longas com paisagens 4K',
+    videos:[
+      {title:'Seleção de Hinos CCB | Louvores que traz Paz, Fé e Esperança',views:1600000,dur:55,date:'2025-12-17',type:'Compilação'},
+      {title:'Hinos CCB Selecionados - Louvores que tocam o coração',views:1600000,dur:48,date:'2026-01-13',type:'Compilação'},
+      {title:'Hinos CCB Selecionados - Louvores que tocam o coração (Oct)',views:993000,dur:50,date:'2025-10-01',type:'Compilação'},
+      {title:'Hinos CCB Cantados — Uma Seleção Que Toca o Coração e a Alma',views:607000,dur:42,date:'2025-11-15',type:'Compilação'},
+      {title:'Hinos CCB Cantados | Seleção Especial de Louvor e Adoração',views:363000,dur:45,date:'2026-01-06',type:'Compilação'},
+      {title:'Os Melhores e Mais Belos HINOS CCB - Bênçãos Deus Derramará',views:328000,dur:60,date:'2024-07-07',type:'Compilação'},
+      {title:'Hino 69 CCB – A Família de Jesus | Belas Paisagens 4K',views:58000,dur:5,date:'2025-09-01',type:'Individual'},
+      {title:'Hinos de Louvor CCB (collab)',views:57000,dur:35,date:'2026-01-15',type:'Compilação'},
+      {title:'Hinos CCB Selecionados – Louvores de Gratidão e Adoração',views:44000,dur:40,date:'2025-11-25',type:'Compilação'}
+    ],
+    patterns:['Títulos com emoção explícita (tocam o coração, paz, fé, esperança)','Duração 40-60 min como padrão','Paisagens naturais em 4K como visual','Uso de emojis ✨ nos títulos','Upload consistente 3-5x por semana','Séries de "Seleção Especial"'],
+    actions:['Adotar fórmula de título emocional similar mas com marca "Voz Serena"','Investir em visuais de natureza/paisagens','Manter compilações na faixa de 40-60 min','Criar séries numeradas (Vol.1, Vol.2...)']
+  },
+  {
+    id:'familia',name:'Família Nogueira CCB',subs:'199K+',freq:'2-3x/semana',
+    focus:'Performance familiar ao vivo, elemento humano forte',
+    videos:[
+      {title:'Louvando a Deus @FamíliaNogueiraCCB @douglasalvesccb',views:1400000,dur:39,date:'2023-08-05',type:'Compilação'},
+      {title:'Coletânea em vídeos os mais assistidos',views:713000,dur:65,date:'2022-11-28',type:'Compilação'},
+      {title:'10 Hinos mais ouvidos em 2021 - Família Nogueira',views:717000,dur:35,date:'2021-11-17',type:'Compilação'},
+      {title:'Coletânea em vídeos / Família Nogueira CCB',views:714000,dur:60,date:'2023-04-18',type:'Compilação'},
+      {title:'HINOS CCB - Coletânea com os 10 vídeos mais assistidos',views:404000,dur:55,date:'2024-03-14',type:'Compilação'},
+      {title:'Coletânea de louvores 2023 - MIX HINOS CCB',views:233000,dur:70,date:'2024-02-22',type:'Compilação'},
+      {title:'Família Nogueira, Gauchito, Licia - Hino 228',views:189000,dur:4,date:'2025-04-01',type:'Individual'},
+      {title:'Coletânea Volume 7 em vídeos',views:156000,dur:80,date:'2022-12-22',type:'Compilação'},
+      {title:'Melhores vídeos de 2024 - Família Nogueira',views:54000,dur:50,date:'2025-01-12',type:'Compilação'}
+    ],
+    patterns:['Vídeo com família reunida (elemento humano)','Coletâneas de "mais assistidos" e "mais ouvidos"','Uso de ano no título (2021, 2023, 2024)','Colaborações com outros canais','Séries de Volumes (Vol.6, Vol.7...)','Especiais de marcos (80K inscritos, 20K inscritos)'],
+    actions:['Criar conteúdo com elemento pessoal (rosto, história)','Fazer coletâneas "mais ouvidos do ano"','Buscar colaborações com outros cantores CCB','Criar marcos/especiais de inscritos para gerar engajamento']
+  },
+  {
+    id:'silas',name:'Silas Patrício CCB',subs:'100K+ (est.)',freq:'Diário',
+    focus:'Upload diário com data no título, compilações de hinos do Hinário 5',
+    videos:[
+      {title:'Hinos Cantados CCB - Hinário 5 - Hinos mas tocados em 22/02/2026',views:150000,dur:45,date:'2026-02-22',type:'Compilação'},
+      {title:'BELOS Hinos CCB - 14/02/2026',views:120000,dur:50,date:'2026-02-14',type:'Compilação'},
+      {title:'Hinos 1,2,3,4,5,6,7,8,9,10,11,12 21/02/2026',views:90000,dur:40,date:'2026-02-21',type:'Compilação'},
+      {title:'HINO 260 - Sou Servo Inútil - Com Legenda',views:80000,dur:4,date:'2022-01-25',type:'Individual'},
+      {title:'Hinos CCB - 20/02/2026 - 250,251,260,275,289,290,310,312',views:75000,dur:35,date:'2026-02-20',type:'Compilação'},
+      {title:'CCB. Hinos Hinário 4 332, 384, 446, 372...',views:60000,dur:53,date:'2023-01-01',type:'Compilação'},
+      {title:'GLORIOSOS HINOS CCB - IRMÃO SILAS',views:55000,dur:30,date:'2019-02-05',type:'Compilação'},
+      {title:'HINO CCB 374 - Com Legenda',views:40000,dur:4,date:'2022-03-09',type:'Individual'}
+    ],
+    patterns:['Data no título TODOS os dias (ex: "20/02/2026")','Lista de números de hinos no título','Upload diário (às vezes 2x)','Formato "Hinos mas tocados em [data]"','Legendas/letras nos vídeos','Mix de Hinário 4 e 5'],
+    actions:['Adotar upload diário com data no título para um dos canais','Usar formato "Hinos mais tocados em [DATA]" para recorrência','Incluir sempre legenda/letra como diferencial','Criar versões com data para capturar buscas diárias']
+  },
+  {
+    id:'rick',name:'Rick Nascimento',subs:'100K+ (est.)',freq:'1-2x/mês',
+    focus:'Hinos avulsos autorais com produção musical profissional',
+    videos:[
+      {title:'Oh Minha Flor - Rick Nascimento - Hino Avulso CCB',views:7300000,dur:4,date:'2023-09-01',type:'Avulso'},
+      {title:'Caquinho - Rick Nascimento - Hino Avulso CCB',views:7000000,dur:4,date:'2023-09-30',type:'Avulso'},
+      {title:'Dependente - Rick Nascimento - Hino Avulso CCB',views:57000,dur:4,date:'2024-01-01',type:'Avulso'},
+      {title:'Jardineiro Fiel - Rick Nascimento - Hino Avulso CCB',views:45000,dur:4,date:'2024-03-01',type:'Avulso'},
+      {title:'Cantares de Salomão - Rick Nascimento - Hino Avulso CCB',views:15000,dur:4,date:'2025-06-01',type:'Avulso'}
+    ],
+    patterns:['Títulos simples: [Nome do Hino] - [Artista] - Hino Avulso CCB','Produção musical profissional (estúdio)','Poucos uploads mas altíssimo impacto','Foco 100% em avulsos autorais','2 vídeos com 7M+ views cada','Presença no Shazam e YouTube Music'],
+    actions:['Para hinos avulsos, investir em produção musical de qualidade','Manter formato limpo de título para avulsos','Publicar avulsos com espaçamento (criar expectativa)','Distribuir avulsos no Spotify/YouTube Music via DistroKid']
+  },
+  {
+    id:'cover',name:'Hinos CCB Cover',subs:'50K+ (est.)',freq:'3-4x/semana',
+    focus:'Covers com voz e instrumentos, séries de volumes numerados',
+    videos:[
+      {title:'14 HINOS ANTIGOS | HINÁRIO 3 CCB',views:157000,dur:45,date:'2024-06-01',type:'Compilação'},
+      {title:'COLETÂNEA DE BELOS HINOS - VOL 20',views:94000,dur:62,date:'2025-01-01',type:'Compilação'},
+      {title:'OS MAIS BELOS HINOS CCB PARA OUVIR EM 2026',views:76000,dur:55,date:'2025-12-25',type:'Compilação'},
+      {title:'HINOS AVULSOS COLETÂNEA VOL.01',views:45000,dur:33,date:'2025-06-01',type:'Compilação'},
+      {title:'HINÁRIO 4 CCB – HINOS ANTIGOS E INSPIRADORES',views:26000,dur:40,date:'2026-02-01',type:'Compilação'},
+      {title:'HINÁRIO 4 CCB - HINOS ANTIGOS | BOAS LEMBRANÇAS',views:20000,dur:42,date:'2025-11-01',type:'Compilação'},
+      {title:'CCB HINÁRIO 4 – CÂNTICOS DE EDIFICAÇÃO ESPIRITUAL',views:14000,dur:41,date:'2026-02-17',type:'Compilação'},
+      {title:'HINOS CCB - COLETÂNEA | VOL 2',views:12000,dur:59,date:'2025-08-01',type:'Compilação'},
+      {title:'HINOS AVULSOS CCB - COLETÂNEA VOL 2',views:12000,dur:33,date:'2025-09-01',type:'Compilação'}
+    ],
+    patterns:['Séries numeradas (VOL 1, VOL 2... até VOL 28+)','Títulos em MAIÚSCULO para destaque','Mix de Hinário 3, 4 e 5 (nostalgia)','Uso de "BELOS", "ANTIGOS", "INSPIRADORES"','Formato "ano" no título (PARA OUVIR EM 2026)','Coletâneas de avulsos separadas'],
+    actions:['Criar séries de volumes para compilações (garante recorrência)','Explorar Hinário 3 e 4 para conteúdo de nostalgia','Usar títulos em maiúsculo para CTR','Separar compilações de avulsos das do hinário']
+  },
+  {
+    id:'nelson',name:'Nelson Santiago (Clarinete)',subs:'13.1K',freq:'1-2x/semana',
+    focus:'Clarinete solo e com voz, ensino de clarinete CCB',
+    videos:[
+      {title:'Clarinete CCB Hino 147 Cantado - Nelson Santiago',views:1400000,dur:4,date:'2018-02-07',type:'Individual'},
+      {title:'Clarinete CCB Hino 234 Cantado Franciele Santos e Nelson Santiago',views:200000,dur:4,date:'2018-02-02',type:'Individual'},
+      {title:'Hino 100 CCB Clarinete Solo - Nelson Santiago',views:50000,dur:3,date:'2023-01-29',type:'Individual'},
+      {title:'Hino 438 Clarinete CCB',views:20000,dur:4,date:'2022-06-29',type:'Individual'},
+      {title:'Hino 133 Clarinete Solo CCB',views:15000,dur:4,date:'2022-06-06',type:'Individual'},
+      {title:'Hino 144 Clarinete CCB A vida eterna',views:1200,dur:4,date:'2022-06-06',type:'Individual'}
+    ],
+    patterns:['Instrumento específico no título (Clarinete CCB)','Hinos individuais (não compilações)','Colaboração com cantores (Franciele Santos)','Shorts de trechos de hinos','Aulas de clarinete como conteúdo paralelo','13K inscritos com nicho ultra-específico'],
+    actions:['Para Clayton: inspirar-se no modelo de instrumento+hino','Criar conteúdo de "como tocar" como funil','Usar instrumento no título como diferencial de busca','Colaborar com instrumentistas para compilações temáticas']
+  }
+];
+
+// SEASONAL DATES
+const SEASONAL = [
+  {month:1,day:1,label:'Ano Novo',theme:'Renovação, gratidão, esperança'},
+  {month:3,day:8,label:'Dia da Mulher',theme:'Hinos sobre mães, irmãs, fé feminina'},
+  {month:3,day:29,label:'Páscoa 2026 (aprox)',theme:'Sacrifício, ressurreição, redenção'},
+  {month:5,day:10,label:'Dia das Mães',theme:'Família, gratidão, amor maternal'},
+  {month:6,day:24,label:'São João',theme:'Hinos regionais, nostalgia'},
+  {month:8,day:10,label:'Dia dos Pais',theme:'Pai, família, proteção divina'},
+  {month:9,day:7,label:'Independência',theme:'Liberdade, libertação espiritual'},
+  {month:10,day:12,label:'Dia das Crianças',theme:'Mocidade, juventude, futuro'},
+  {month:11,day:2,label:'Finados',theme:'Saudade, esperança eterna, consolo'},
+  {month:12,day:25,label:'Natal',theme:'Nascimento, esperança, alegria'},
+  {month:4,day:15,label:'Período de Batismo (aprox)',theme:'Batismo, conversão, nova vida'},
+  {month:10,day:15,label:'Período de Batismo (aprox)',theme:'Batismo, conversão, nova vida'}
+];
+
+// ============================================================
+// STORAGE
+// ============================================================
+const LS = {
+  get(k,d=[]){try{return JSON.parse(localStorage.getItem('hf_'+k))||d}catch(e){return d}},
+  set(k,v){localStorage.setItem('hf_'+k,JSON.stringify(v))},
+  del(k){localStorage.removeItem('hf_'+k)}
+};
+
+let savedTitles = LS.get('titles',[]);
+let savedCompilations = LS.get('compilations',[]);
+let calVideos = LS.get('calendar',[]);
+let anaVideos = LS.get('analytics',[]);
+let compUserVideos = LS.get('comp_videos',[]);
+let currentCompPlaylist = [];
+let calDate = new Date();
+let calChannelFilter = 'all';
+let anaChannelFilter = 'all';
+let activeCompetitor = 'harmonia';
+let anaSortKey = 'views';
+let anaSortDir = -1;
+let titleGenCount = LS.get('titleCount',0);
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function goTo(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.querySelector('.sidebar').classList.remove('open');
+  if(page==='competitors') renderCompetitors();
+  if(page==='calendar') renderCalendar();
+  if(page==='analytics') renderAnalytics();
+  if(page==='export') renderExportSummary();
+  if(page==='compilations') renderHinosBank();
+}
+
+// ============================================================
+// MODULE 1: TITLE GENERATOR
+// ============================================================
+const TITLE_FORMULAS = {
+  avulso:[
+    (h,t)=>`${h.toUpperCase()} — Hino Avulso CCB 2026 | Voz Serena`,
+    (h,t)=>`${h.toUpperCase()} - Hino Avulso CCB | Voz Serena • 2026`,
+    (h,t)=>`${h} — ${pickRandom(THEMES[t]?.words||['Louvor'])} e Fé | Hino Avulso CCB`,
+    (h,t)=>`${h.toUpperCase()} | Hino Avulso CCB Que Toca a Alma — Voz Serena`,
+    (h,t)=>`${h} — Hino Avulso CCB 2026 | Uma Voz, Uma Oração`,
+  ],
+  individual:[
+    (h,n,t)=>`HINO ${n} CCB CANTADO — ${h} | Hinário 5 Com Letra`,
+    (h,n,t)=>`HINO ${n} — ${h} | CCB Hinário 5 Cantado Com Letra 2026`,
+    (h,n,t)=>`${h} — Hino ${n} CCB | Com Letra e Voz | Hinário 5`,
+    (h,n,t)=>`HINO ${n} CCB — ${h} | Louvor Que Toca o Coração`,
+    (h,n,t)=>`Hino ${n} CCB Cantado por ${pickRandom(['Ana Marques','Stella Meireles'])} — ${h}`,
+  ],
+  compilacao:[
+    (t,n,ins)=>`${n} Hinos CCB Que ${pickRandom(['Trazem Paz','Tocam a Alma','Fortalecem a Fé','Acalmam o Coração'])} — Hinário 5 | Voz Serena 2026`,
+    (t,n,ins)=>`Seleção Especial de Hinos CCB — ${THEMES[t]?.label||'Louvores de Adoração'} | ${n} Hinos`,
+    (t,n,ins)=>`Hinos CCB Para ${pickRandom(['Momentos de Oração','Dormir em Paz','Fortalecer a Fé','Horas de Aflição'])} — ${n} Louvores`,
+    (t,n,ins)=>`Os ${n} Hinos CCB Mais ${pickRandom(['Belos','Pedidos','Cantados','Amados'])} — Compilação ${pickRandom(['Especial','2026','Abençoada'])}`,
+    (t,n,ins)=>`BELOS HINOS CCB — ${THEMES[t]?.label||'Louvor e Súplica'} | Seleção ${new Date().getFullYear()}`,
+    (t,n,ins)=>ins?`Hinos CCB com ${ins.charAt(0).toUpperCase()+ins.slice(1)} — Seleção de ${n} Louvores | Hinário 5`:
+      `${n} Hinos CCB Cantados — Hinário 5 | Louvores Que ${pickRandom(['Edificam','Renovam','Consolam'])}`,
+  ],
+  arranjo:[
+    (h,n,ins)=>`HINO ${n} CCB — ${ins||'Acústico'} | Clayton Dias`,
+    (h,n,ins)=>`Quando a Comunhão Vira Louvor — Hino ${n} Hinário 5 CCB | Clayton Dias`,
+    (h,n,ins)=>`${h} — Hino ${n} CCB | Versão ${ins||'Acústica'} | Clayton Dias`,
+    (h,n,ins)=>`HINO ${n} CCB — ${h} | Arranjo ${ins||'Especial'} por Clayton Dias`,
+  ],
+  shorts:[
+    (h,n)=>`Hino ${n} CCB — Trecho Que Toca a Alma 🎵 #hinosccb #ccb #hinário5`,
+    (h,n)=>`${h} — Hino ${n} #ccb #shorts #hinosccb`,
+    (h,n)=>`O momento mais lindo do Hino ${n} CCB 🙏 #hinosccb #congregaçãocristã`,
+  ]
+};
+
+function pickRandom(arr){return arr[Math.floor(Math.random()*arr.length)];}
+
+function scoreTitle(title, type){
+  let s = 0;
+  const len = title.length;
+  if(len>=60&&len<=120) s+=20; else if(len>=40&&len<=140) s+=10;
+  if(/CCB/i.test(title)) s+=10;
+  if(/Hinário\s*5/i.test(title)) s+=8;
+  if(/Hino\s*Avulso/i.test(title)) s+=8;
+  if(/Voz\s*Serena/i.test(title)) s+=7;
+  if(/2026/.test(title)) s+=5;
+  if(/Com\s*Letra/i.test(title)) s+=6;
+  if(/—|–/.test(title)) s+=5;
+  if(/toca|alma|coração|paz|fé|esperança|consol|edific/i.test(title)) s+=10;
+  if(/HINO\s*\d+/.test(title)) s+=5;
+  if(/Seleção|Compilação|Coletânea/i.test(title)) s+=6;
+  if(/Clayton|Ana|Stella/i.test(title)) s+=3;
+  if(type==='avulso') s+=5;
+  if(type==='compilacao') s+=5;
+  if(/[A-Z]{3,}/.test(title)) s+=3;
+  return Math.min(100, Math.max(0, s));
+}
+
+function generateTitles(){
+  const channel = document.getElementById('t_channel').value;
+  const type = document.getElementById('t_type').value;
+  const qty = parseInt(document.getElementById('t_qty').value);
+  const hinoSel = document.getElementById('t_hino').value;
+  const theme = document.getElementById('t_theme').value || pickRandom(Object.keys(THEMES));
+  const instrument = document.getElementById('t_instrument').value;
+  const results = [];
+
+  for(let i=0;i<qty;i++){
+    let title='';
+    const hino = hinoSel ? HINOS_DB.find(h=>h.n==hinoSel) : pickRandom(HINOS_DB);
+    const avulso = pickRandom(AVULSOS_POPULARES);
+
+    if(type==='avulso'){
+      const f = pickRandom(TITLE_FORMULAS.avulso);
+      title = f(avulso, theme);
+    } else if(type==='individual'){
+      const f = pickRandom(TITLE_FORMULAS.individual);
+      title = f(hino.nome, hino.n, theme);
+    } else if(type==='compilacao'){
+      const f = pickRandom(TITLE_FORMULAS.compilacao);
+      const n = pickRandom([10,12,15,20,25,30]);
+      title = f(theme, n, instrument);
+    } else if(type==='arranjo'){
+      const f = pickRandom(TITLE_FORMULAS.arranjo);
+      title = f(hino.nome, hino.n, instrument||pickRandom(INSTRUMENTS));
+    } else if(type==='shorts'){
+      const f = pickRandom(TITLE_FORMULAS.shorts);
+      title = f(hino.nome, hino.n);
+    }
+
+    const sc = scoreTitle(title, type);
+    results.push({title, score:sc, type, channel, theme, hino:hino?.n||'avulso', id:Date.now()+i});
+  }
+
+  results.sort((a,b)=>b.score-a.score);
+  titleGenCount += qty;
+  LS.set('titleCount', titleGenCount);
+  renderTitleResults(results);
+  updateTitleKPIs();
+}
+
+function renderTitleResults(results){
+  const c = document.getElementById('titleResults');
+  let html = '';
+  results.forEach((r,i)=>{
+    const scoreColor = r.score>=80?'var(--green)':r.score>=60?'var(--gold)':'var(--red)';
+    const typeTag = {avulso:'tag-gold',individual:'tag-blue',compilacao:'tag-purple',arranjo:'tag-green',shorts:'tag-cyan'}[r.type]||'tag-blue';
+    html+=`<div class="title-card">
+      <div class="actions">
+        <span class="btn-sm" onclick="copyText('${r.title.replace(/'/g,"\\'")}')">📋</span>
+        <span class="btn-sm" onclick="saveTitle(${JSON.stringify(r).replace(/"/g,'&quot;')})">⭐</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+        <span style="font-size:16px;font-weight:800;color:var(--gold);">#${i+1}</span>
+        <span class="tag ${typeTag}">${r.type}</span>
+      </div>
+      <div class="title-text">${r.title}</div>
+      <div class="title-meta">
+        <span>📏 ${r.title.length} chars</span>
+        <span>🎵 Hino: ${r.hino}</span>
+        <span>📺 ${CHANNELS[r.channel]?.name||r.channel}</span>
+        <span style="color:${scoreColor};font-weight:700;">⚡ Score: ${r.score}/100</span>
+      </div>
+      <div class="score-bar"><div class="score-fill" style="width:${r.score}%;background:${scoreColor}"></div></div>
+    </div>`;
+  });
+  c.innerHTML = html;
+}
+
+function saveTitle(data){
+  savedTitles.push({...data,savedAt:new Date().toISOString()});
+  LS.set('titles',savedTitles);
+  updateTitleKPIs();
+  toast('Título salvo!');
+}
+
+function updateTitleKPIs(){
+  document.getElementById('kpiGenerated').textContent = titleGenCount;
+  document.getElementById('kpiSaved').textContent = savedTitles.length;
+  document.getElementById('badgeTitles').textContent = savedTitles.length;
+  const avg = savedTitles.length ? Math.round(savedTitles.reduce((a,b)=>a+b.score,0)/savedTitles.length) : 0;
+  document.getElementById('kpiAvgScore').textContent = avg;
+}
+
+function clearTitleResults(){document.getElementById('titleResults').innerHTML='';}
+
+function exportTitlesCsv(){
+  if(!savedTitles.length) return toast('Nenhum título salvo');
+  let csv='Titulo,Score,Tipo,Canal,Hino,Data\n';
+  savedTitles.forEach(t=>{csv+=`"${t.title}",${t.score},${t.type},${t.channel},${t.hino},${t.savedAt}\n`;});
+  download('hymnsforge_titulos.csv',csv,'text/csv');
+  toast('CSV exportado!');
+}
+
+// ============================================================
+// MODULE 2: COMPILATION PLANNER
+// ============================================================
+function renderHinosBank(){
+  const search = (document.getElementById('comp_search')?.value||'').toLowerCase();
+  const tf = document.getElementById('comp_theme_filter')?.value||'';
+  let filtered = HINOS_DB.filter(h=>{
+    if(search && !`${h.n} ${h.nome}`.toLowerCase().includes(search)) return false;
+    if(tf && h.tema!==tf) return false;
+    return true;
+  });
+  const c = document.getElementById('hinosBank');
+  c.innerHTML = filtered.map(h=>{
+    const inPlaylist = currentCompPlaylist.some(p=>p.n===h.n);
+    return `<div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-bottom:1px solid var(--border);${inPlaylist?'opacity:.4':''}">
+      <span style="font-weight:700;color:var(--gold);min-width:36px;">Nº${h.n}</span>
+      <span style="flex:1;font-size:12px;">${h.nome}</span>
+      <span class="tag tag-${h.tema==='paz'?'blue':h.tema==='suplica'?'purple':h.tema==='adoracao'?'gold':h.tema==='fe'?'green':'cyan'}" style="font-size:9px;">${h.tema}</span>
+      <span style="font-size:11px;color:var(--text3);min-width:40px;">${h.dur}min</span>
+      <button class="btn btn-sm btn-gold" onclick="addToCompilation(${h.n})" ${inPlaylist?'disabled':''}>+</button>
+    </div>`;
+  }).join('');
+}
+function filterHinosBank(){renderHinosBank();}
+
+function addToCompilation(n){
+  const h = HINOS_DB.find(x=>x.n===n);
+  if(!h||currentCompPlaylist.some(p=>p.n===n)) return;
+  currentCompPlaylist.push({...h});
+  renderCompPlaylist();
+  renderHinosBank();
+}
+
+function removeFromCompilation(idx){
+  currentCompPlaylist.splice(idx,1);
+  renderCompPlaylist();
+  renderHinosBank();
+}
+
+function renderCompPlaylist(){
+  const c = document.getElementById('compPlaylist');
+  let totalDur = 0;
+  c.innerHTML = currentCompPlaylist.map((h,i)=>{
+    totalDur += h.dur;
+    return `<div class="playlist-item">
+      <span class="pi-num">${i+1}</span>
+      <span class="pi-title">Hino ${h.n} — ${h.nome}</span>
+      <span class="pi-dur">${h.dur}min</span>
+      <button class="pi-remove" onclick="removeFromCompilation(${i})">✕</button>
+    </div>`;
+  }).join('');
+  const mins = Math.floor(totalDur);
+  const secs = Math.round((totalDur-mins)*60);
+  document.getElementById('compDuration').textContent = `${mins}:${secs.toString().padStart(2,'0')}`;
+  document.getElementById('compHinos').textContent = currentCompPlaylist.length;
+  document.getElementById('compCount').textContent = currentCompPlaylist.length + ' hinos';
+  const type = totalDur>90?'Mega':totalDur>35?'Âncora':totalDur>15?'Flash':'Mini';
+  document.getElementById('compType').textContent = type;
+}
+
+function genTimestamps(){
+  if(!currentCompPlaylist.length) return toast('Adicione hinos primeiro');
+  let ts = 'TIMESTAMPS:\n';
+  let acc = 0;
+  currentCompPlaylist.forEach((h,i)=>{
+    const m = Math.floor(acc);
+    const s = Math.round((acc-m)*60);
+    ts += `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')} — Hino ${h.n} — ${h.nome}\n`;
+    acc += h.dur;
+  });
+  const out = document.getElementById('compOutput');
+  out.style.display='block';
+  out.value = ts;
+  toast('Timestamps gerados!');
+}
+
+function genDescription(){
+  if(!currentCompPlaylist.length) return toast('Adicione hinos primeiro');
+  const title = document.getElementById('comp_title').value || 'Seleção Especial de Hinos CCB';
+  let desc = `${title}\n\n`;
+  desc += `A Santa Paz de Deus! Seja bem-vindo(a) ao canal.\n`;
+  desc += `Nesta seleção especial, preparamos ${currentCompPlaylist.length} hinos do Hinário 5 da Congregação Cristã no Brasil para edificar sua alma.\n\n`;
+  desc += `TIMESTAMPS:\n`;
+  let acc = 0;
+  currentCompPlaylist.forEach(h=>{
+    const m=Math.floor(acc),s=Math.round((acc-m)*60);
+    desc+=`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')} — Hino ${h.n} — ${h.nome}\n`;
+    acc+=h.dur;
+  });
+  desc += `\n📌 Se este louvor edificou seu coração, inscreva-se no canal e ative o sininho!\n`;
+  desc += `\n🔍 Tags: hinos ccb, hinos ccb cantados, hinário 5, hinário 5 ccb, congregação cristã no brasil, `;
+  desc += `hinos avulsos ccb, louvores ccb, ccb hinos cantados, hinos ccb 2026, `;
+  desc += currentCompPlaylist.map(h=>`hino ${h.n} ccb`).join(', ');
+  desc += `\n\n#hinosccb #hinário5 #ccb #congregaçãocristã #louvoresccb #hinosccbcantados`;
+  const out = document.getElementById('compOutput');
+  out.style.display='block';
+  out.value = desc;
+  toast('Descrição com SEO gerada!');
+}
+
+function saveCompilation(){
+  if(!currentCompPlaylist.length) return toast('Adicione hinos primeiro');
+  savedCompilations.push({
+    title: document.getElementById('comp_title').value || 'Compilação sem título',
+    hinos: [...currentCompPlaylist],
+    createdAt: new Date().toISOString()
+  });
+  LS.set('compilations', savedCompilations);
+  toast('Compilação salva!');
+}
+
+function clearCompilation(){
+  currentCompPlaylist=[];
+  renderCompPlaylist();
+  renderHinosBank();
+  document.getElementById('compOutput').style.display='none';
+}
+
+// ============================================================
+// MODULE 3: CALENDAR
+// ============================================================
+const MONTH_NAMES=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const DAY_NAMES=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+
+function setCalChannel(ch,el){
+  calChannelFilter=ch;
+  document.querySelectorAll('#calChannelTabs .channel-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderCalendar();
+}
+
+function calNav(dir){calDate.setMonth(calDate.getMonth()+dir);renderCalendar();}
+function calToday(){calDate=new Date();renderCalendar();}
+
+function renderCalendar(){
+  const y=calDate.getFullYear(), m=calDate.getMonth();
+  document.getElementById('calMonthLabel').textContent=`${MONTH_NAMES[m]} ${y}`;
+  const first=new Date(y,m,1), last=new Date(y,m+1,0);
+  const startDay=first.getDay();
+  const today=new Date();
+  let html=DAY_NAMES.map(d=>`<div class="cal-header-cell">${d}</div>`).join('');
+
+  const filteredVids = calVideos.filter(v=>calChannelFilter==='all'||v.channel===calChannelFilter);
+  const seasonalThisMonth = SEASONAL.filter(s=>s.month===m+1);
+
+  for(let i=0;i<startDay;i++){
+    const d=new Date(y,m,0-startDay+i+1);
+    html+=`<div class="cal-day other"><div class="day-num">${d.getDate()}</div></div>`;
+  }
+  for(let d=1;d<=last.getDate();d++){
+    const dateStr=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isToday=today.getFullYear()===y&&today.getMonth()===m&&today.getDate()===d;
+    const dayVids=filteredVids.filter(v=>v.date===dateStr);
+    const daySeas=seasonalThisMonth.filter(s=>s.day===d);
+    let chips='';
+    daySeas.forEach(s=>{chips+=`<div class="cal-chip" style="background:var(--pink)">📌 ${s.label}</div>`;});
+    dayVids.forEach(v=>{
+      const col=CHANNELS[v.channel]?.color||'#666';
+      const statusEmoji=STATUS_MAP[v.status]?.emoji||'📝';
+      chips+=`<div class="cal-chip" style="background:${col}">${statusEmoji} ${v.title?.substring(0,20)||'Sem título'}...</div>`;
+    });
+    html+=`<div class="cal-day ${isToday?'today':''}" onclick="openCalModal('${dateStr}')">
+      <div class="day-num">${d}</div>${chips}</div>`;
+  }
+  document.getElementById('calGrid').innerHTML=html;
+  renderPipeline();
+  renderSeasonalList();
+}
+
+function renderPipeline(){
+  const filtered=calVideos.filter(v=>calChannelFilter==='all'||v.channel===calChannelFilter);
+  const c=document.getElementById('calPipeline');
+  if(!filtered.length){c.innerHTML='<p style="color:var(--text3);font-size:12px;padding:12px;">Nenhum vídeo no pipeline. Clique em um dia para adicionar.</p>';return;}
+  c.innerHTML=filtered.sort((a,b)=>a.date.localeCompare(b.date)).map(v=>{
+    const st=STATUS_MAP[v.status]||STATUS_MAP.idea;
+    const ch=CHANNELS[v.channel];
+    return `<div style="display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid var(--border);font-size:12px;">
+      <span style="color:${st.color}">${st.emoji}</span>
+      <span style="min-width:75px;color:var(--text3)">${v.date}</span>
+      <span class="tag" style="background:${ch?.color}20;color:${ch?.color};font-size:9px;">${ch?.name?.split(' ')[0]||'?'}</span>
+      <span style="flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${v.title||'—'}</span>
+      <button class="btn btn-sm" style="padding:2px 6px;font-size:11px;color:var(--red);background:none;border:none;" onclick="deleteCalVideo('${v.id}')">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function renderSeasonalList(){
+  document.getElementById('calSeasonal').innerHTML=SEASONAL.map(s=>{
+    return `<div style="display:flex;gap:8px;padding:6px 8px;border-bottom:1px solid var(--border);font-size:12px;">
+      <span style="min-width:50px;font-weight:700;color:var(--pink)">${String(s.day).padStart(2,'0')}/${String(s.month).padStart(2,'0')}</span>
+      <span style="min-width:100px;font-weight:600;">${s.label}</span>
+      <span style="color:var(--text3);font-size:11px;">${s.theme}</span>
+    </div>`;
+  }).join('');
+}
+
+function openCalModal(dateStr){
+  document.getElementById('calM_date').value=dateStr||new Date().toISOString().split('T')[0];
+  document.getElementById('calM_title').value='';
+  document.getElementById('calM_notes').value='';
+  document.getElementById('modalCal').classList.add('show');
+}
+
+function saveCalVideo(){
+  calVideos.push({
+    id:Date.now().toString(),
+    channel:document.getElementById('calM_channel').value,
+    date:document.getElementById('calM_date').value,
+    title:document.getElementById('calM_title').value,
+    type:document.getElementById('calM_type').value,
+    status:document.getElementById('calM_status').value,
+    hino:document.getElementById('calM_hino').value,
+    notes:document.getElementById('calM_notes').value
+  });
+  LS.set('calendar',calVideos);
+  closeModal('modalCal');
+  renderCalendar();
+  toast('Vídeo adicionado ao calendário!');
+}
+
+function deleteCalVideo(id){
+  calVideos=calVideos.filter(v=>v.id!==id);
+  LS.set('calendar',calVideos);
+  renderCalendar();
+}
+
+// ============================================================
+// MODULE 4: ANALYTICS
+// ============================================================
+function setAnaChannel(ch,el){
+  anaChannelFilter=ch;
+  document.querySelectorAll('#anaChannelTabs .channel-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderAnalytics();
+}
+
+function renderAnalytics(){
+  const filtered=anaVideos.filter(v=>anaChannelFilter==='all'||v.channel===anaChannelFilter);
+  const totalViews=filtered.reduce((a,v)=>a+(v.views||0),0);
+  const totalSubs=anaChannelFilter==='all'?Object.values(CHANNELS).reduce((a,c)=>a+c.subs,0):CHANNELS[anaChannelFilter]?.subs||0;
+  const avgCTR=filtered.length?filtered.reduce((a,v)=>a+(v.ctr||0),0)/filtered.length:0;
+  const avgRPM=filtered.length?filtered.reduce((a,v)=>a+(v.rpm||0),0)/filtered.length:0;
+
+  document.getElementById('anaViews').textContent=fmtNum(totalViews);
+  document.getElementById('anaInscritos').textContent=fmtNum(totalSubs);
+  document.getElementById('anaCTR').textContent=avgCTR.toFixed(1)+'%';
+  document.getElementById('anaRPM').textContent='$'+avgRPM.toFixed(2);
+
+  const sorted=[...filtered].sort((a,b)=>{
+    const av=a[anaSortKey]||0, bv=b[anaSortKey]||0;
+    return typeof av==='string'?av.localeCompare(bv)*anaSortDir:(bv-av)*anaSortDir;
+  });
+
+  const typeColors={Avulso:'tag-gold',Individual:'tag-blue',Compilação:'tag-purple','Arranjo':'tag-green',Shorts:'tag-cyan'};
+  document.getElementById('anaBody').innerHTML=sorted.map(v=>{
+    const ch=CHANNELS[v.channel];
+    return `<tr>
+      <td style="max-width:250px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${v.title}">${v.title}</td>
+      <td><span class="tag" style="background:${ch?.color}20;color:${ch?.color}">${ch?.name?.split(' ')[0]||'?'}</span></td>
+      <td><span class="tag ${typeColors[v.type]||'tag-blue'}">${v.type}</span></td>
+      <td style="font-weight:700;">${fmtNum(v.views||0)}</td>
+      <td>${(v.ctr||0).toFixed(1)}%</td>
+      <td>${(v.retention||0).toFixed(1)}%</td>
+      <td style="color:var(--text3)">${v.date||'—'}</td>
+      <td><button class="btn btn-sm btn-red" onclick="deleteAnaVideo('${v.id}')">✕</button></td>
+    </tr>`;
+  }).join('');
+
+  renderAnaInsights(filtered);
+  renderTypeChart(filtered);
+}
+
+function sortAna(key){
+  if(anaSortKey===key) anaSortDir*=-1; else {anaSortKey=key;anaSortDir=-1;}
+  renderAnalytics();
+}
+
+function renderAnaInsights(data){
+  if(!data.length){document.getElementById('anaInsights').innerHTML='<p style="color:var(--text3);font-size:12px;">Adicione vídeos para ver insights.</p>';return;}
+  const byType={};
+  data.forEach(v=>{if(!byType[v.type])byType[v.type]={views:0,count:0};byType[v.type].views+=v.views||0;byType[v.type].count++;});
+  const bestType=Object.entries(byType).sort((a,b)=>(b[1].views/b[1].count)-(a[1].views/a[1].count))[0];
+  const topVideo=data.sort((a,b)=>(b.views||0)-(a.views||0))[0];
+  const avgDur=data.reduce((a,v)=>a+(v.duration||0),0)/data.length;
+
+  document.getElementById('anaInsights').innerHTML=`
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="padding:10px;background:var(--surface2);border-radius:6px;">
+        <div style="font-size:11px;color:var(--text3);">🏆 Melhor Tipo de Conteúdo</div>
+        <div style="font-size:16px;font-weight:700;color:var(--gold);">${bestType?bestType[0]:'—'}</div>
+        <div style="font-size:11px;color:var(--text3);">Média: ${bestType?fmtNum(Math.round(bestType[1].views/bestType[1].count)):'0'} views</div>
+      </div>
+      <div style="padding:10px;background:var(--surface2);border-radius:6px;">
+        <div style="font-size:11px;color:var(--text3);">📈 Vídeo Mais Visto</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${topVideo?.title||'—'}</div>
+        <div style="font-size:11px;color:var(--gold);">${fmtNum(topVideo?.views||0)} views</div>
+      </div>
+      <div style="padding:10px;background:var(--surface2);border-radius:6px;">
+        <div style="font-size:11px;color:var(--text3);">⏱️ Duração Média</div>
+        <div style="font-size:16px;font-weight:700;color:var(--cyan);">${avgDur.toFixed(1)} min</div>
+      </div>
+    </div>`;
+}
+
+function renderTypeChart(data){
+  const canvas=document.getElementById('chartType');
+  const ctx=canvas.getContext('2d');
+  const rect=canvas.parentElement.getBoundingClientRect();
+  canvas.width=rect.width;canvas.height=220;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  const byType={};
+  data.forEach(v=>{if(!byType[v.type])byType[v.type]=0;byType[v.type]+=v.views||0;});
+  const entries=Object.entries(byType).sort((a,b)=>b[1]-a[1]);
+  if(!entries.length){ctx.fillStyle='#64748b';ctx.font='13px sans-serif';ctx.textAlign='center';ctx.fillText('Sem dados',canvas.width/2,110);return;}
+
+  const max=Math.max(...entries.map(e=>e[1]),1);
+  const barW=Math.min(60, (canvas.width-80)/entries.length-10);
+  const startX=(canvas.width-(entries.length*(barW+10)))/2;
+  const colors=['#f59e0b','#3b82f6','#8b5cf6','#10b981','#06b6d4','#ec4899'];
+
+  entries.forEach(([type,views],i)=>{
+    const h=(views/max)*160;
+    const x=startX+i*(barW+10);
+    const y=190-h;
+    ctx.fillStyle=colors[i%colors.length];
+    ctx.beginPath();
+    if(ctx.roundRect) ctx.roundRect(x,y,barW,h,4); else ctx.rect(x,y,barW,h);
+    ctx.fill();
+    ctx.fillStyle='#e2e8f0';ctx.font='bold 10px sans-serif';ctx.textAlign='center';
+    ctx.fillText(fmtNum(views),x+barW/2,y-6);
+    ctx.fillStyle='#94a3b8';ctx.font='10px sans-serif';
+    ctx.fillText(type,x+barW/2,205);
+  });
+}
+
+function openAnaModal(){
+  document.getElementById('anaM_date').value=new Date().toISOString().split('T')[0];
+  document.getElementById('modalAna').classList.add('show');
+}
+
+function saveAnaVideo(){
+  anaVideos.push({
+    id:Date.now().toString(),
+    channel:document.getElementById('anaM_channel').value,
+    type:document.getElementById('anaM_type').value,
+    title:document.getElementById('anaM_title').value,
+    views:parseInt(document.getElementById('anaM_views').value)||0,
+    ctr:parseFloat(document.getElementById('anaM_ctr').value)||0,
+    retention:parseFloat(document.getElementById('anaM_ret').value)||0,
+    date:document.getElementById('anaM_date').value,
+    duration:parseFloat(document.getElementById('anaM_dur').value)||0,
+    rpm:parseFloat(document.getElementById('anaM_rpm').value)||0,
+    revenue:parseFloat(document.getElementById('anaM_rev').value)||0
+  });
+  LS.set('analytics',anaVideos);
+  closeModal('modalAna');
+  renderAnalytics();
+  toast('Vídeo adicionado!');
+}
+
+function deleteAnaVideo(id){anaVideos=anaVideos.filter(v=>v.id!==id);LS.set('analytics',anaVideos);renderAnalytics();}
+
+function loadSampleAnalytics(){
+  const samples=[
+    {channel:'ana',type:'Avulso',title:'CAQUINHO - HINO AVULSO CCB | Voz Serena • 2026',views:62000,ctr:8.5,retention:65,date:'2026-01-20',duration:4,rpm:2.5,revenue:15.5},
+    {channel:'ana',type:'Avulso',title:'ADORAÇÃO - Hino Avulso CCB | Voz Serena',views:4700,ctr:6.2,retention:58,date:'2026-01-22',duration:4,rpm:2.3,revenue:1.08},
+    {channel:'ana',type:'Avulso',title:'HOJE EU VIM TE PERGUNTAR - Hino Avulso CCB 2026',views:4500,ctr:7.1,retention:62,date:'2026-01-18',duration:4,rpm:2.4,revenue:1.08},
+    {channel:'ana',type:'Compilação',title:'Hinário 5 - Louvores para Edificar o Espírito',views:14000,ctr:5.8,retention:45,date:'2026-01-15',duration:35,rpm:3.1,revenue:4.34},
+    {channel:'ana',type:'Avulso',title:'PISA NA CABEÇA DO INIMIGO - Hino Avulso CCB 2026',views:2200,ctr:5.5,retention:55,date:'2026-01-25',duration:4,rpm:2.2,revenue:0.48},
+    {channel:'ana',type:'Individual',title:'HINO 42 - Ó Minha Alma, Por Que Te Abates',views:698,ctr:3.2,retention:52,date:'2026-02-01',duration:3.3,rpm:1.8,revenue:0.13},
+    {channel:'ana',type:'Individual',title:'HINO 13 - Confiemos em Deus por Ana Marques CCB',views:594,ctr:3.0,retention:50,date:'2026-02-08',duration:3.1,rpm:1.7,revenue:0.1},
+    {channel:'clayton',type:'Arranjo',title:'Quando a Comunhão do HINO 50 - Clayton Dias',views:1200,ctr:4.1,retention:48,date:'2026-02-01',duration:3,rpm:1.9,revenue:0.23},
+    {channel:'clayton',type:'Arranjo',title:'HINO 83 - Vinde as Bodas - Acústico',views:894,ctr:3.8,retention:46,date:'2026-01-28',duration:3.9,rpm:1.8,revenue:0.16},
+    {channel:'clayton',type:'Arranjo',title:'HINO 102 CCB - Arranjo Acústico Clayton Dias',views:1600,ctr:4.5,retention:50,date:'2026-01-20',duration:3.4,rpm:2.0,revenue:0.32},
+    {channel:'stella',type:'Individual',title:'HINO 42 CCB CANTADO por Stella Meireles - Com Letra',views:450,ctr:3.5,retention:55,date:'2026-02-05',duration:3.3,rpm:1.6,revenue:0.07},
+    {channel:'stella',type:'Individual',title:'HINO 38 CCB CANTADO por Stella Meireles - Com Letra',views:380,ctr:3.3,retention:53,date:'2026-02-03',duration:3.8,rpm:1.5,revenue:0.06}
+  ];
+  samples.forEach(s=>{s.id=Date.now().toString()+Math.random();anaVideos.push(s);});
+  LS.set('analytics',anaVideos);
+  renderAnalytics();
+  toast('Dados de exemplo carregados!');
+}
+
+function exportAnalyticsCsv(){
+  if(!anaVideos.length) return toast('Sem dados');
+  let csv='Titulo,Canal,Tipo,Views,CTR,Retenção,Data,Duração,RPM,Receita\n';
+  anaVideos.forEach(v=>{csv+=`"${v.title}",${v.channel},${v.type},${v.views},${v.ctr},${v.retention},${v.date},${v.duration},${v.rpm},${v.revenue}\n`;});
+  download('hymnsforge_analytics.csv',csv,'text/csv');
+  toast('Analytics exportado!');
+}
+
+// ============================================================
+// MODULE 5: COMPETITORS
+// ============================================================
+function renderCompetitors(){
+  // Tabs
+  const tabs=document.getElementById('compTabs');
+  tabs.innerHTML=COMPETITORS.map(c=>`<div class="channel-tab ${c.id===activeCompetitor?'active':''}" onclick="switchCompetitor('${c.id}',this)">${c.name}</div>`).join('');
+
+  const comp=COMPETITORS.find(c=>c.id===activeCompetitor);
+  if(!comp) return;
+
+  // Merge user-added videos
+  const userVids=compUserVideos.filter(v=>v.channelId===comp.id);
+  const allVids=[...comp.videos,...userVids].sort((a,b)=>(b.views||0)-(a.views||0));
+
+  // KPIs
+  document.getElementById('compSubs').textContent=comp.subs;
+  document.getElementById('compTopView').textContent=fmtNum(allVids[0]?.views||0);
+  const avgV=allVids.length?Math.round(allVids.reduce((a,v)=>a+v.views,0)/allVids.length):0;
+  document.getElementById('compAvgView').textContent=fmtNum(avgV);
+  document.getElementById('compFreq').textContent=comp.freq;
+
+  // Videos list
+  document.getElementById('compVideosList').innerHTML=allVids.map((v,i)=>{
+    const viewsColor=v.views>=1000000?'var(--gold)':v.views>=100000?'var(--green)':'var(--text)';
+    const typeColors={Compilação:'tag-purple',Individual:'tag-blue',Avulso:'tag-gold','Cover/Arranjo':'tag-green',Shorts:'tag-cyan'};
+    return `<div class="comp-video">
+      <div class="rank">${i+1}</div>
+      <div class="info">
+        <h4>${v.title}</h4>
+        <div class="meta">
+          <span class="tag ${typeColors[v.type]||'tag-blue'}">${v.type}</span>
+          <span>⏱️ ${v.dur||'?'}min</span>
+          <span>📅 ${v.date||'?'}</span>
+        </div>
+      </div>
+      <div class="bar-col">
+        <div style="font-size:16px;font-weight:800;color:${viewsColor};text-align:right;">${fmtNum(v.views)}</div>
+        <div class="score-bar"><div class="score-fill" style="width:${Math.min(100,(v.views/Math.max(allVids[0]?.views,1))*100)}%;background:${viewsColor}"></div></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Patterns
+  document.getElementById('compPatterns').innerHTML=`<ul style="list-style:none;padding:0;">${comp.patterns.map(p=>`<li style="padding:6px 0;border-bottom:1px solid var(--border);font-size:12px;color:var(--text2);">🔹 ${p}</li>`).join('')}</ul>`;
+
+  // Actions
+  document.getElementById('compActions').innerHTML=`<ul style="list-style:none;padding:0;">${comp.actions.map(a=>`<li style="padding:6px 0;border-bottom:1px solid var(--border);font-size:12px;color:var(--green);">✅ ${a}</li>`).join('')}</ul>`;
+
+  // Title patterns table
+  renderTitlePatternsTable();
+
+  // Populate add-video channel selector
+  const sel=document.getElementById('addComp_channel');
+  sel.innerHTML=COMPETITORS.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+  sel.value=activeCompetitor;
+}
+
+function switchCompetitor(id,el){
+  activeCompetitor=id;
+  document.querySelectorAll('#compTabs .channel-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderCompetitors();
+}
+
+function renderTitlePatternsTable(){
+  const patterns=[
+    {pattern:'[Emoção] + Compilação + Hinário 5',example:'Seleção de Hinos CCB | Louvores que traz Paz, Fé e Esperança',avgViews:'600K-1.6M',usedBy:'Harmonia Celeste',rec:'⭐⭐⭐ Adotar para compilações do canal Ana Marques'},
+    {pattern:'Data no Título (diário)',example:'Hinos Cantados CCB - Hinário 5 - Hinos mas tocados em 22/02/2026',avgViews:'50K-150K',usedBy:'Silas Patrício',rec:'⭐⭐ Bom para um dos canais (upload diário)'},
+    {pattern:'[Nome] - Artista - Hino Avulso CCB',example:'Caquinho - Rick Nascimento - Hino Avulso CCB',avgViews:'7M (topo) / 15K-57K (média)',usedBy:'Rick Nascimento',rec:'⭐⭐⭐ Usar para avulsos "Voz Serena"'},
+    {pattern:'Coletânea + Volume + Série',example:'COLETÂNEA DE BELOS HINOS - VOL 20',avgViews:'12K-94K',usedBy:'Hinos CCB Cover',rec:'⭐⭐ Criar séries numeradas para fidelizar'},
+    {pattern:'Família + Coletânea + Ano',example:'10 Hinos mais ouvidos em 2021 - Família Nogueira',avgViews:'54K-717K',usedBy:'Família Nogueira',rec:'⭐⭐ "Mais ouvidos do ano" como compilação anual'},
+    {pattern:'HINO [Nº] CCB CANTADO COM LETRA',example:'HINO 42 CCB CANTADO COM LETRA — Ó Minha Alma',avgViews:'500-5K',usedBy:'Vários canais pequenos',rec:'⭐ Base para Stella Meireles (SEO de busca direta)'},
+    {pattern:'Instrumento + Hino + Solo',example:'Clarinete CCB Hino 147 Cantado - Nelson Santiago',avgViews:'1.4M (topo) / 1K-50K',usedBy:'Nelson Santiago',rec:'⭐⭐ Inspiração para Clayton (arranjos por instrumento)'},
+    {pattern:'MAIÚSCULO + Superlativos',example:'OS MAIS BELOS HINOS CCB PARA OUVIR EM 2026',avgViews:'14K-76K',usedBy:'Hinos CCB Cover',rec:'⭐ Efetivo para CTR, usar com moderação'}
+  ];
+  document.getElementById('compTitlePatterns').innerHTML=patterns.map(p=>`<tr>
+    <td style="font-weight:600;color:var(--gold);font-size:11px;">${p.pattern}</td>
+    <td style="font-size:11px;max-width:250px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${p.example}">${p.example}</td>
+    <td style="font-weight:700;font-size:11px;">${p.avgViews}</td>
+    <td style="font-size:11px;color:var(--text3);">${p.usedBy}</td>
+    <td style="font-size:11px;">${p.rec}</td>
+  </tr>`).join('');
+}
+
+function addCompVideo(){
+  const vid={
+    channelId:document.getElementById('addComp_channel').value,
+    title:document.getElementById('addComp_title').value,
+    views:parseInt(document.getElementById('addComp_views').value)||0,
+    dur:parseInt(document.getElementById('addComp_dur').value)||0,
+    date:document.getElementById('addComp_date').value,
+    type:document.getElementById('addComp_type').value
+  };
+  if(!vid.title) return toast('Preencha o título');
+  compUserVideos.push(vid);
+  LS.set('comp_videos',compUserVideos);
+  document.getElementById('addComp_title').value='';
+  document.getElementById('addComp_views').value='';
+  renderCompetitors();
+  toast('Vídeo de concorrente adicionado!');
+}
+
+function exportCompetitorsCsv(){
+  let csv='Canal,Titulo,Views,Duração,Data,Tipo\n';
+  COMPETITORS.forEach(c=>{
+    const userVids=compUserVideos.filter(v=>v.channelId===c.id);
+    [...c.videos,...userVids].forEach(v=>{csv+=`"${c.name}","${v.title}",${v.views},${v.dur||''},${v.date||''},${v.type}\n`;});
+  });
+  download('hymnsforge_concorrentes.csv',csv,'text/csv');
+  toast('Concorrentes exportado!');
+}
+
+// ============================================================
+// MODULE 6: EXPORT CENTER
+// ============================================================
+function renderExportSummary(){
+  document.getElementById('exportSummary').innerHTML=`
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;justify-content:space-between;padding:8px;background:var(--surface2);border-radius:6px;">
+        <span style="font-size:12px;">🎵 Títulos Salvos</span><span style="font-weight:700;color:var(--gold)">${savedTitles.length}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px;background:var(--surface2);border-radius:6px;">
+        <span style="font-size:12px;">📀 Compilações</span><span style="font-weight:700;color:var(--purple)">${savedCompilations.length}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px;background:var(--surface2);border-radius:6px;">
+        <span style="font-size:12px;">📅 Vídeos no Calendário</span><span style="font-weight:700;color:var(--blue)">${calVideos.length}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px;background:var(--surface2);border-radius:6px;">
+        <span style="font-size:12px;">📊 Vídeos no Analytics</span><span style="font-weight:700;color:var(--green)">${anaVideos.length}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px;background:var(--surface2);border-radius:6px;">
+        <span style="font-size:12px;">🔍 Vídeos de Concorrentes (adicionados)</span><span style="font-weight;font-weight:700;color:var(--cyan)">${compUserVideos.length}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:8px;background:var(--surface2);border-radius:6px;">
+        <span style="font-size:12px;">📦 Tamanho Total (localStorage)</span><span style="font-weight:700;color:var(--pink)">${(new Blob(Object.values(localStorage)).size/1024).toFixed(1)} KB</span>
+      </div>
+    </div>`;
+}
+
+function fullBackup(){
+  const data={
+    version:'1.0',
+    date:new Date().toISOString(),
+    titles:savedTitles,
+    compilations:savedCompilations,
+    calendar:calVideos,
+    analytics:anaVideos,
+    comp_videos:compUserVideos,
+    titleCount:titleGenCount
+  };
+  download('hymnsforge_backup_'+new Date().toISOString().split('T')[0]+'.json',JSON.stringify(data,null,2),'application/json');
+  toast('Backup completo realizado!');
+}
+
+function fullRestore(e){
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      const data=JSON.parse(ev.target.result);
+      if(data.titles) {savedTitles=data.titles;LS.set('titles',savedTitles);}
+      if(data.compilations) {savedCompilations=data.compilations;LS.set('compilations',savedCompilations);}
+      if(data.calendar) {calVideos=data.calendar;LS.set('calendar',calVideos);}
+      if(data.analytics) {anaVideos=data.analytics;LS.set('analytics',anaVideos);}
+      if(data.comp_videos) {compUserVideos=data.comp_videos;LS.set('comp_videos',compUserVideos);}
+      if(data.titleCount) {titleGenCount=data.titleCount;LS.set('titleCount',titleGenCount);}
+      updateTitleKPIs();
+      toast('Backup restaurado com sucesso!');
+    }catch(err){toast('Erro ao restaurar: arquivo inválido');}
+  };
+  reader.readAsText(file);
+  e.target.value='';
+}
+
+function clearAllData(){
+  if(!confirm('Tem certeza? Todos os dados serão apagados permanentemente.')) return;
+  ['titles','compilations','calendar','analytics','comp_videos','titleCount'].forEach(k=>LS.del(k));
+  savedTitles=[];savedCompilations=[];calVideos=[];anaVideos=[];compUserVideos=[];titleGenCount=0;
+  updateTitleKPIs();
+  toast('Todos os dados foram limpos.');
+}
+
+function exportCompilationsTxt(){
+  if(!savedCompilations.length) return toast('Nenhuma compilação salva');
+  let txt='';
+  savedCompilations.forEach((c,i)=>{
+    txt+=`=== COMPILAÇÃO ${i+1}: ${c.title} ===\n`;
+    txt+=`Criada em: ${c.createdAt}\n`;
+    txt+=`Total de hinos: ${c.hinos.length}\n`;
+    let acc=0;
+    c.hinos.forEach((h,j)=>{
+      const m=Math.floor(acc),s=Math.round((acc-m)*60);
+      txt+=`${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')} — Hino ${h.n} — ${h.nome} (${h.dur}min)\n`;
+      acc+=h.dur;
+    });
+    txt+=`Duração total: ${acc.toFixed(1)} min\n\n`;
+  });
+  download('hymnsforge_compilacoes.txt',txt,'text/plain');
+  toast('Compilações exportadas!');
+}
+
+function exportCalendarIcs(){
+  if(!calVideos.length) return toast('Calendário vazio');
+  let ics='BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//HymnsForge//CCB//PT\n';
+  calVideos.forEach(v=>{
+    const d=(v.date||'2026-01-01').replace(/-/g,'');
+    ics+=`BEGIN:VEVENT\nDTSTART;VALUE=DATE:${d}\nSUMMARY:${v.title||'Sem título'} [${CHANNELS[v.channel]?.name||v.channel}]\nDESCRIPTION:Tipo: ${v.type}\\nStatus: ${v.status}\\nHino: ${v.hino||'N/A'}\\nNotas: ${v.notes||''}\nEND:VEVENT\n`;
+  });
+  ics+='END:VCALENDAR';
+  download('hymnsforge_calendario.ics',ics,'text/calendar');
+  toast('Calendário ICS exportado!');
+}
+
+function exportSEODescription(){
+  const desc=`MODELO DE DESCRIÇÃO SEO PARA VÍDEOS CCB
+==========================================
+
+[TÍTULO DO VÍDEO]
+
+A Santa Paz de Deus! Seja bem-vindo(a) ao canal [NOME DO CANAL].
+
+Neste vídeo, apresentamos [DESCRIÇÃO DO CONTEÚDO] do Hinário 5 da Congregação Cristã no Brasil.
+
+Se este louvor edificou seu coração, inscreva-se no canal, deixe seu like e compartilhe com a irmandade. Assim, mais pessoas serão alcançadas por esses louvores abençoados.
+
+TIMESTAMPS:
+[INSERIR TIMESTAMPS AQUI]
+
+HINOS INCLUÍDOS:
+[LISTA DE HINOS]
+
+═══════════════════════════════
+TAGS RECOMENDADAS (copiar):
+hinos ccb, hinos ccb cantados, hinário 5, hinário 5 ccb, congregação cristã no brasil, hinos avulsos ccb, louvores ccb, ccb hinos cantados, hinos ccb 2026, ccb culto online, hinos de louvor e súplica, hinos ccb com letra, hinos mais tocados ccb, belos hinos ccb, seleção hinos ccb, hinos ccb que tocam a alma, hinos ccb para dormir, compilação hinos ccb, hinário 5 cantado, hinos ccb cantados com letra
+
+HASHTAGS:
+#hinosccb #hinário5 #ccb #congregaçãocristã #louvoresccb #hinosccbcantados #hinosavulsos #vozserena #ccbhinos #hinosdelouvor
+
+═══════════════════════════════
+DICAS SEO:
+- Título: 60-100 caracteres, incluir "CCB", "Hinário 5" ou "Hino Avulso"
+- Descrição: mínimo 300 palavras, timestamps obrigatórios
+- Tags: máximo 500 caracteres, começar com as mais relevantes
+- Thumbnail: texto com nome do hino, fundo emocional, marca do canal
+- Primeiras 2 linhas da descrição aparecem na busca — usar palavras-chave
+`;
+  download('hymnsforge_modelo_seo.txt',desc,'text/plain');
+  toast('Modelo SEO exportado!');
+}
+
+// ============================================================
+// UTILITIES
+// ============================================================
+function fmtNum(n){
+  if(n>=1000000) return (n/1000000).toFixed(1)+'M';
+  if(n>=1000) return (n/1000).toFixed(1)+'K';
+  return n.toString();
+}
+
+function download(name,content,type){
+  const blob=new Blob([content],{type:type+';charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download=name;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function copyText(text){
+  navigator.clipboard.writeText(text).then(()=>toast('Copiado!')).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('Copiado!');
+  });
+}
+
+function closeModal(id){document.getElementById(id).classList.remove('show');}
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(o=>{
+  o.addEventListener('click',function(e){if(e.target===this)this.classList.remove('show');});
+});
+
+// ============================================================
+// INIT
+// ============================================================
+function init(){
+  // Populate hino selector
+  const sel=document.getElementById('t_hino');
+  HINOS_DB.forEach(h=>{
+    const opt=document.createElement('option');
+    opt.value=h.n;opt.textContent=`Nº${h.n} — ${h.nome}`;
+    sel.appendChild(opt);
+  });
+
+  updateTitleKPIs();
+  renderHinosBank();
+  renderCalendar();
+
+  // Dynamic channel change adjustments for title generator
+  document.getElementById('t_channel').addEventListener('change',function(){
+    const ch=this.value;
+    const typeEl=document.getElementById('t_type');
+    if(ch==='ana'){typeEl.value='avulso';}
+    else if(ch==='stella'){typeEl.value='individual';}
+    else if(ch==='clayton'){typeEl.value='arranjo';}
+  });
+}
+
+init();
+</script>
+</body>
+</html>

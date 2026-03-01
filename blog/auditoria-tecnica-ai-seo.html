@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoria Técnica Para AI SEO: Guia Completo de Diagnóstico | AUDITSEO</title>
+    <meta name="description" content="Aprenda a fazer auditoria técnica focada em AI SEO. Metodologia completa para diagnosticar e otimizar seu site para IAs como ChatGPT e AI Overviews.">
+    <meta name="keywords" content="auditoria ai seo, auditoria tecnica ia, diagnostico llm seo, checklist ai seo, auditoria chatgpt">
+    <link rel="canonical" href="https://www.auditseo.com.br/blog/auditoria-tecnica-ai-seo/">
+    <meta property="og:title" content="Auditoria Técnica Para AI SEO: Guia Completo de Diagnóstico">
+    <meta property="og:description" content="Metodologia completa de auditoria técnica para AI SEO.">
+    <meta property="og:url" content="https://www.auditseo.com.br/blog/auditoria-tecnica-ai-seo/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-01-27">
+    <meta property="article:modified_time" content="2026-01-27">
+    <meta property="article:author" content="Sidney Santos">
+    <meta property="article:section" content="Technical AI SEO">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--accent-cream:#f4e8d8;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555;--green:#2ecc71;--yellow:#f1c40f;--red:#e74c3c;--blue:#3498db;--purple:#9b59b6}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.8}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);transition:all .3s;text-decoration:none}.nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .article-header{padding:8rem 3rem 4rem;position:relative;background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(212,165,116,.04) 100%)}
+        .article-header-content{max-width:900px;margin:0 auto}
+        .breadcrumbs{margin-bottom:2rem}.breadcrumbs a,.breadcrumbs span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:1px}.breadcrumbs a:hover{color:var(--accent-gold)}.breadcrumbs span{margin:0 .5rem}
+        .article-category{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:3px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block}
+        .article-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);line-height:1;letter-spacing:-1px;margin-bottom:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .article-excerpt{font-size:1.3rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.7}
+        .article-meta{display:flex;flex-wrap:wrap;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+        .meta-item{display:flex;align-items:center;gap:.75rem}
+        .meta-avatar{width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:2px solid var(--accent-gold);overflow:hidden}
+        .meta-avatar img{width:100%;height:100%;object-fit:cover}
+        .meta-info{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:1px}
+        .meta-info strong{display:block;color:var(--text-light);font-size:.75rem;margin-bottom:.25rem}
+        .article-layout{max-width:1400px;margin:0 auto;padding:4rem 3rem;display:grid;grid-template-columns:250px 1fr;gap:4rem}
+        .article-toc{position:sticky;top:100px;height:fit-content}
+        .toc-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:1px}
+        .toc-list{list-style:none}.toc-list li{margin-bottom:.75rem}
+        .toc-list a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:.5px;transition:color .3s;display:block;padding:.25rem 0;border-left:2px solid transparent;padding-left:1rem;margin-left:-1rem}
+        .toc-list a:hover,.toc-list a.active{color:var(--accent-gold);border-left-color:var(--accent-gold)}
+        .article-content{max-width:800px}
+        .article-content h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin:3rem 0 1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--text-light);margin:2.5rem 0 1rem;letter-spacing:1px}
+        .article-content p{font-size:1.15rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9}
+        .article-content p strong{color:var(--accent-cream)}
+        .article-content a{color:var(--accent-gold);text-decoration:underline;text-underline-offset:3px}
+        .article-content ul,.article-content ol{margin:1.5rem 0;padding-left:1.5rem}
+        .article-content li{font-size:1.1rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.7}
+        .article-content li strong{color:var(--text-light)}
+        .highlight-box{background:linear-gradient(135deg,rgba(230,57,70,.1) 0%,rgba(212,165,116,.05) 100%);border-left:4px solid var(--accent-red);padding:2rem;margin:2rem 0;border-radius:0 8px 8px 0}
+        .highlight-box p{margin-bottom:0;font-size:1.1rem}
+        .phase-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:12px;position:relative}
+        .phase-card .phase-num{position:absolute;top:-15px;left:20px;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;padding:0 .5rem;background-color:var(--bg-dark)}
+        .phase-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--text-light);margin-bottom:1rem;padding-top:.5rem}
+        .phase-card p{font-size:.95rem;margin-bottom:1rem}
+        .phase-card .items{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+        .phase-card .item{font-size:.9rem;color:var(--text-muted);padding:.5rem .75rem;background:rgba(255,255,255,.03);border-radius:6px;display:flex;align-items:center;gap:.5rem}
+        .phase-card .item::before{content:'→';color:var(--accent-gold)}
+        .audit-section{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.5rem;margin:1.5rem 0;border-radius:12px}
+        .audit-section .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem}
+        .audit-section .header h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin:0}
+        .audit-section .header .priority{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.25rem .5rem;border-radius:4px}
+        .audit-section .header .priority.critical{background:rgba(230,57,70,.2);color:var(--accent-red)}
+        .audit-section .header .priority.high{background:rgba(46,204,113,.2);color:var(--green)}
+        .audit-section .header .priority.medium{background:rgba(241,196,15,.2);color:var(--yellow)}
+        .audit-section p{font-size:.9rem;margin-bottom:1rem}
+        .audit-section .checks{list-style:none;padding:0;margin:0}
+        .audit-section .checks li{font-size:.85rem;color:var(--text-muted);padding:.4rem 0;padding-left:1.5rem;position:relative}
+        .audit-section .checks li::before{content:'☐';position:absolute;left:0;color:var(--accent-gold)}
+        .tool-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);padding:1rem;margin:.75rem 0;border-radius:8px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+        .tool-card .name{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--text-light)}
+        .tool-card .use{font-size:.8rem;color:var(--text-dim)}
+        .timeline-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:12px}
+        .timeline-box h4{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--text-light);margin-bottom:1.5rem}
+        .timeline-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+        .timeline-item:last-child{border-bottom:none}
+        .timeline-item .time{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--accent-gold);width:80px;flex-shrink:0}
+        .timeline-item .desc{font-size:.9rem;color:var(--text-muted)}
+        .tip-box{background:rgba(212,165,116,.1);border:1px solid rgba(212,165,116,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .tip-box h4{color:var(--accent-gold);margin-bottom:.5rem}
+        .tip-box h4::before{content:'💡 '}
+        .warning-box{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .warning-box h4{color:var(--red);margin-bottom:.5rem}
+        .warning-box h4::before{content:'⚠️ '}
+        .cta-box{background:linear-gradient(135deg,rgba(230,57,70,.15) 0%,rgba(212,165,116,.08) 100%);border:1px solid rgba(230,57,70,.3);padding:3rem;margin:3rem 0;text-align:center;border-radius:12px}
+        .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:1rem}
+        .cta-box p{font-size:1.1rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .cta-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1rem 2.5rem;background:var(--gradient-fire);border:none;color:var(--bg-dark);cursor:pointer;transition:all .3s;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block;border-radius:4px}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(230,57,70,.4)}
+        .author-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin:4rem 0;display:flex;gap:2rem;align-items:center;border-radius:8px}
+        .author-avatar{width:100px;height:100px;border-radius:50%;background:var(--bg-dark);border:3px solid var(--accent-gold);overflow:hidden;flex-shrink:0}
+        .author-avatar img{width:100%;height:100%;object-fit:cover}
+        .author-info h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:.5rem}
+        .author-info p{font-size:1rem;color:var(--text-muted);margin-bottom:1rem}
+        .author-links{display:flex;gap:1rem}
+        .author-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-decoration:none}
+        .related-posts{margin:4rem 0}
+        .related-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:2rem}
+        .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .related-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);padding:1.5rem;transition:all .3s;border-radius:8px}
+        .related-card:hover{border-color:rgba(230,57,70,.3);transform:translateY(-3px)}
+        .related-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:.5rem}
+        .related-card h4 a{text-decoration:none;color:inherit}
+        .related-card p{font-size:.9rem;color:var(--text-dim)}
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card)}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}.footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
+        .footer-address{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);line-height:1.8}.footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1.5rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        @media(max-width:1100px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}.related-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr 1fr}.phase-card .items{grid-template-columns:1fr}}
+        @media(max-width:768px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.article-header{padding:6rem 1.5rem 3rem}.article-layout{padding:2rem 1.5rem}.article-meta{flex-direction:column;gap:1.5rem}.author-box{flex-direction:column;text-align:center}.footer-content{grid-template-columns:1fr}}
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Auditoria Técnica Para AI SEO: Guia Completo de Diagnóstico","description":"Metodologia completa de auditoria técnica para AI SEO.","author":{"@type":"Person","name":"Sidney Santos"},"publisher":{"@type":"Organization","name":"AUDITSEO"},"datePublished":"2026-01-27","dateModified":"2026-01-27"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"O que é auditoria de AI SEO?","acceptedAnswer":{"@type":"Answer","text":"É uma análise técnica focada em identificar problemas e oportunidades de otimização para IAs como ChatGPT e AI Overviews. Inclui verificação de rastreabilidade, estrutura de dados, conteúdo e presença em fontes de treino."}},{"@type":"Question","name":"Quanto tempo leva uma auditoria de AI SEO?","acceptedAnswer":{"@type":"Answer","text":"Uma auditoria completa leva de 2 a 5 dias dependendo do tamanho do site. A análise básica pode ser feita em algumas horas, mas diagnóstico profundo requer mais tempo."}},{"@type":"Question","name":"Preciso de ferramentas especiais para auditoria de AI SEO?","acceptedAnswer":{"@type":"Answer","text":"Não necessariamente. Muitas verificações podem ser feitas com ferramentas gratuitas como PageSpeed Insights, Schema Validator e inspeção manual. Ferramentas pagas ajudam em escala."}}]}</script>
+    <link rel="stylesheet" href="/assets/site-shell.css">
+    <script defer src="/assets/site-shell.js"></script>
+</head>
+<body>
+    <nav class="nav"><a href="/" class="logo">AUDITSEO</a><ul class="nav-links"><li><a href="/agencia-de-seo/">Agência de SEO</a></li><li><a href="/servicos/">Serviços</a></li><li><a href="/sobre/">Sobre</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://wa.me/5511996384376" class="nav-cta">Falar com Especialista</a></nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumbs"><a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span>Auditoria Técnica AI SEO</span></div>
+            <span class="article-category">Technical AI SEO</span>
+            <h1 class="article-title">Auditoria Técnica Para AI SEO: Guia Completo de Diagnóstico</h1>
+            <p class="article-excerpt">Metodologia passo a passo para auditar seu site e identificar problemas que afetam visibilidade em IAs. Do diagnóstico à ação.</p>
+            <div class="article-meta">
+                <div class="meta-item"><div class="meta-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div><div class="meta-info"><strong>Sidney Santos</strong>Especialista em Search Intelligence AI</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Publicado</strong>27 de Janeiro, 2026</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Tempo de leitura</strong>14 minutos</div></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-layout">
+        <aside class="article-toc">
+            <h4 class="toc-title">ÍNDICE</h4>
+            <ul class="toc-list">
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#metodologia">Metodologia</a></li>
+                <li><a href="#fase1">Fase 1: Rastreabilidade</a></li>
+                <li><a href="#fase2">Fase 2: Estrutura</a></li>
+                <li><a href="#fase3">Fase 3: Conteúdo</a></li>
+                <li><a href="#fase4">Fase 4: Autoridade</a></li>
+                <li><a href="#ferramentas">Ferramentas</a></li>
+                <li><a href="#relatorio">Relatório</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </aside>
+
+        <article class="article-content">
+            <section id="introducao">
+                <p>Auditoria técnica de AI SEO é o processo de analisar seu site para identificar problemas que afetam visibilidade em IAs como ChatGPT, Claude e AI Overviews.</p>
+
+                <p>Diferente de auditoria SEO tradicional, o foco aqui é em <strong>rastreabilidade por crawlers de IA</strong>, estrutura de dados para extração e presença em fontes que alimentam treinamento de LLMs.</p>
+
+                <p>Neste guia, vou apresentar a metodologia completa que usamos na AUDITSEO para diagnosticar e otimizar sites.</p>
+            </section>
+
+            <section id="metodologia">
+                <h2>Metodologia de Auditoria</h2>
+
+                <p>Nossa auditoria de AI SEO é dividida em 4 fases principais:</p>
+
+                <div class="phase-card">
+                    <span class="phase-num">FASE 01</span>
+                    <h3>Rastreabilidade</h3>
+                    <p>Verificar se crawlers de IA conseguem acessar e processar seu conteúdo.</p>
+                    <div class="items">
+                        <div class="item">Robots.txt</div>
+                        <div class="item">Sitemap</div>
+                        <div class="item">Velocidade/TTFB</div>
+                        <div class="item">Renderização JS</div>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <span class="phase-num">FASE 02</span>
+                    <h3>Estrutura de Dados</h3>
+                    <p>Analisar se a estrutura do site facilita extração por IAs.</p>
+                    <div class="items">
+                        <div class="item">Schema Markup</div>
+                        <div class="item">HTML Semântico</div>
+                        <div class="item">Hierarquia de Headings</div>
+                        <div class="item">Metadados</div>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <span class="phase-num">FASE 03</span>
+                    <h3>Conteúdo</h3>
+                    <p>Avaliar se o conteúdo está otimizado para citação por IAs.</p>
+                    <div class="items">
+                        <div class="item">Clareza e Estrutura</div>
+                        <div class="item">Parágrafos Citáveis</div>
+                        <div class="item">FAQs e Definições</div>
+                        <div class="item">Atualização</div>
+                    </div>
+                </div>
+
+                <div class="phase-card">
+                    <span class="phase-num">FASE 04</span>
+                    <h3>Autoridade e Presença</h3>
+                    <p>Verificar sinais de autoridade que influenciam citação.</p>
+                    <div class="items">
+                        <div class="item">E-E-A-T</div>
+                        <div class="item">Menções Externas</div>
+                        <div class="item">Wikipedia/Fontes</div>
+                        <div class="item">Citações Atuais</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="fase1">
+                <h2>Fase 1: Auditoria de Rastreabilidade</h2>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>1.1 Robots.txt</h4>
+                        <span class="priority critical">Crítico</span>
+                    </div>
+                    <p>Verificar se crawlers de IA estão bloqueados ou permitidos.</p>
+                    <ul class="checks">
+                        <li>GPTBot está permitido ou bloqueado?</li>
+                        <li>ClaudeBot está permitido ou bloqueado?</li>
+                        <li>Google-Extended está configurado?</li>
+                        <li>PerplexityBot tem acesso?</li>
+                        <li>Há bloqueios acidentais em diretórios importantes?</li>
+                    </ul>
+                </div>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>1.2 Sitemap</h4>
+                        <span class="priority high">Alto</span>
+                    </div>
+                    <p>Verificar se sitemap está correto e atualizado.</p>
+                    <ul class="checks">
+                        <li>Sitemap existe e está acessível?</li>
+                        <li>Declarado no robots.txt?</li>
+                        <li>URLs retornam status 200?</li>
+                        <li>lastmod está preciso?</li>
+                        <li>Enviado no Search Console?</li>
+                    </ul>
+                </div>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>1.3 Velocidade e TTFB</h4>
+                        <span class="priority critical">Crítico</span>
+                    </div>
+                    <p>Medir performance que afeta rastreamento.</p>
+                    <ul class="checks">
+                        <li>TTFB abaixo de 600ms?</li>
+                        <li>LCP abaixo de 2.5s?</li>
+                        <li>Core Web Vitals passando?</li>
+                        <li>CDN configurada?</li>
+                        <li>Cache funcionando?</li>
+                    </ul>
+                </div>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>1.4 Renderização JavaScript</h4>
+                        <span class="priority critical">Crítico</span>
+                    </div>
+                    <p>Verificar se conteúdo é acessível sem JavaScript.</p>
+                    <ul class="checks">
+                        <li>Conteúdo visível em "View Source"?</li>
+                        <li>Página funciona com JS desabilitado?</li>
+                        <li>SSR ou SSG implementado?</li>
+                        <li>Pré-renderização para SPAs?</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="fase2">
+                <h2>Fase 2: Auditoria de Estrutura</h2>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>2.1 Schema Markup</h4>
+                        <span class="priority high">Alto</span>
+                    </div>
+                    <p>Verificar implementação de dados estruturados.</p>
+                    <ul class="checks">
+                        <li>Organization schema na homepage?</li>
+                        <li>Person schema para autores?</li>
+                        <li>Article schema em posts?</li>
+                        <li>FAQPage onde aplicável?</li>
+                        <li>Schemas validam sem erros?</li>
+                    </ul>
+                </div>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>2.2 HTML Semântico</h4>
+                        <span class="priority high">Alto</span>
+                    </div>
+                    <p>Verificar uso correto de elementos semânticos.</p>
+                    <ul class="checks">
+                        <li>Usa &lt;main&gt; para conteúdo principal?</li>
+                        <li>Usa &lt;article&gt; para posts?</li>
+                        <li>Navegação em &lt;nav&gt;?</li>
+                        <li>Sidebar em &lt;aside&gt;?</li>
+                        <li>Evita divs genéricos em excesso?</li>
+                    </ul>
+                </div>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>2.3 Hierarquia de Headings</h4>
+                        <span class="priority medium">Médio</span>
+                    </div>
+                    <p>Verificar estrutura lógica de títulos.</p>
+                    <ul class="checks">
+                        <li>Apenas um H1 por página?</li>
+                        <li>Hierarquia lógica (H1→H2→H3)?</li>
+                        <li>Nenhum nível pulado?</li>
+                        <li>Headings descritivos?</li>
+                        <li>Keywords naturais nos headings?</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="fase3">
+                <h2>Fase 3: Auditoria de Conteúdo</h2>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>3.1 Estrutura de Conteúdo</h4>
+                        <span class="priority high">Alto</span>
+                    </div>
+                    <p>Verificar se conteúdo é facilmente extraível.</p>
+                    <ul class="checks">
+                        <li>Parágrafos são autocontidos?</li>
+                        <li>Evita referências vagas ("isso", "acima")?</li>
+                        <li>Definições claras de conceitos?</li>
+                        <li>Respostas diretas a perguntas?</li>
+                        <li>Formato pergunta-resposta onde adequado?</li>
+                    </ul>
+                </div>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>3.2 Atualização e Precisão</h4>
+                        <span class="priority medium">Médio</span>
+                    </div>
+                    <p>Verificar frescor e qualidade do conteúdo.</p>
+                    <ul class="checks">
+                        <li>Conteúdo atualizado recentemente?</li>
+                        <li>Datas de publicação/atualização visíveis?</li>
+                        <li>Informações factualmente corretas?</li>
+                        <li>Fontes citadas quando relevante?</li>
+                        <li>Conteúdo desatualizado removido/atualizado?</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="fase4">
+                <h2>Fase 4: Auditoria de Autoridade</h2>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>4.1 E-E-A-T</h4>
+                        <span class="priority high">Alto</span>
+                    </div>
+                    <p>Verificar sinais de expertise e autoridade.</p>
+                    <ul class="checks">
+                        <li>Autores identificados com bio?</li>
+                        <li>Credenciais visíveis?</li>
+                        <li>Página "Sobre" completa?</li>
+                        <li>Informações de contato disponíveis?</li>
+                        <li>Links para perfis profissionais?</li>
+                    </ul>
+                </div>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>4.2 Presença Externa</h4>
+                        <span class="priority high">Alto</span>
+                    </div>
+                    <p>Verificar menções e citações externas.</p>
+                    <ul class="checks">
+                        <li>Marca mencionada em fontes autoritativas?</li>
+                        <li>Cobertura de imprensa?</li>
+                        <li>Presença em Wikipedia (se elegível)?</li>
+                        <li>Citações em publicações do setor?</li>
+                        <li>Participação em comunidades (Reddit, forums)?</li>
+                    </ul>
+                </div>
+
+                <div class="audit-section">
+                    <div class="header">
+                        <h4>4.3 Citações em IAs (Baseline)</h4>
+                        <span class="priority medium">Médio</span>
+                    </div>
+                    <p>Verificar presença atual em respostas de IAs.</p>
+                    <ul class="checks">
+                        <li>Testar perguntas sobre a marca em ChatGPT</li>
+                        <li>Testar em Claude</li>
+                        <li>Testar em Perplexity</li>
+                        <li>Documentar citações atuais</li>
+                        <li>Identificar gaps vs concorrentes</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="ferramentas">
+                <h2>Ferramentas Recomendadas</h2>
+
+                <h3>Gratuitas</h3>
+
+                <div class="tool-card">
+                    <span class="name">PageSpeed Insights</span>
+                    <span class="use">Core Web Vitals, velocidade</span>
+                </div>
+
+                <div class="tool-card">
+                    <span class="name">Schema Validator</span>
+                    <span class="use">Validação de dados estruturados</span>
+                </div>
+
+                <div class="tool-card">
+                    <span class="name">Rich Results Test</span>
+                    <span class="use">Schema e elegibilidade rich snippets</span>
+                </div>
+
+                <div class="tool-card">
+                    <span class="name">Chrome DevTools</span>
+                    <span class="use">Lighthouse, Network, View Source</span>
+                </div>
+
+                <div class="tool-card">
+                    <span class="name">Google Search Console</span>
+                    <span class="use">Indexação, CWV, erros</span>
+                </div>
+
+                <h3>Pagas</h3>
+
+                <div class="tool-card">
+                    <span class="name">Screaming Frog</span>
+                    <span class="use">Crawl completo, análise técnica</span>
+                </div>
+
+                <div class="tool-card">
+                    <span class="name">Ahrefs / Semrush</span>
+                    <span class="use">Backlinks, menções, autoridade</span>
+                </div>
+
+                <div class="tool-card">
+                    <span class="name">Otterly.ai / Knowatoa</span>
+                    <span class="use">Monitoramento de citações em IAs</span>
+                </div>
+            </section>
+
+            <section id="relatorio">
+                <h2>Estrutura do Relatório</h2>
+
+                <p>Após a auditoria, compile um relatório com:</p>
+
+                <div class="timeline-box">
+                    <h4>Seções do Relatório</h4>
+                    <div class="timeline-item">
+                        <span class="time">Sumário</span>
+                        <span class="desc">Visão geral dos principais problemas e oportunidades encontrados</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="time">Críticos</span>
+                        <span class="desc">Problemas que impedem rastreamento ou extração — resolver imediatamente</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="time">Alta Prioridade</span>
+                        <span class="desc">Problemas significativos que afetam visibilidade — resolver em 30 dias</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="time">Média Prioridade</span>
+                        <span class="desc">Otimizações importantes — resolver em 60-90 dias</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="time">Oportunidades</span>
+                        <span class="desc">Melhorias adicionais para maximizar presença</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="time">Plano de Ação</span>
+                        <span class="desc">Cronograma detalhado com responsáveis e prazos</span>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4>Priorização Por Impacto</h4>
+                    <p>Nem todos os problemas têm o mesmo peso. Priorize: (1) bloqueios de rastreamento, (2) problemas de renderização, (3) estrutura de dados, (4) otimizações de conteúdo.</p>
+                </div>
+            </section>
+
+            <div class="cta-box">
+                <h3>Quer Auditoria Profissional?</h3>
+                <p>A AUDITSEO oferece <strong>auditoria técnica completa de AI SEO</strong> com diagnóstico detalhado e plano de ação personalizado.</p>
+                <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20auditoria%20técnica%20de%20AI%20SEO." class="cta-btn">Solicitar Auditoria</a>
+            </div>
+
+            <section id="faq">
+                <h2>Perguntas Frequentes</h2>
+
+                <h3>O que é auditoria de AI SEO?</h3>
+                <p>É uma análise técnica focada em identificar problemas e oportunidades de otimização para IAs como ChatGPT e AI Overviews. Inclui verificação de rastreabilidade, estrutura de dados, conteúdo e presença em fontes de treino.</p>
+
+                <h3>Quanto tempo leva uma auditoria de AI SEO?</h3>
+                <p>Uma auditoria completa leva de 2 a 5 dias dependendo do tamanho do site. A análise básica pode ser feita em algumas horas, mas diagnóstico profundo requer mais tempo.</p>
+
+                <h3>Preciso de ferramentas especiais para auditoria de AI SEO?</h3>
+                <p>Não necessariamente. Muitas verificações podem ser feitas com ferramentas gratuitas como PageSpeed Insights, Schema Validator e inspeção manual. Ferramentas pagas ajudam em escala.</p>
+
+                <h3>Com que frequência devo fazer auditoria?</h3>
+                <p>Recomendamos auditoria completa a cada 6 meses e verificações rápidas mensais. Se fizer mudanças significativas no site, audite novamente.</p>
+
+                <h3>Auditoria de AI SEO substitui auditoria SEO tradicional?</h3>
+                <p>Não, complementa. Muitos aspectos se sobrepõem (velocidade, estrutura), mas AI SEO tem foco adicional em rastreabilidade por LLMs e otimização para citação.</p>
+            </section>
+
+            <section>
+                <h2>Conclusão</h2>
+
+                <p>Auditoria técnica de AI SEO é fundamental para identificar e corrigir problemas:</p>
+
+                <ul>
+                    <li><strong>Fase 1:</strong> Garanta que crawlers de IA acessam seu conteúdo</li>
+                    <li><strong>Fase 2:</strong> Estruture dados para facilitar extração</li>
+                    <li><strong>Fase 3:</strong> Otimize conteúdo para citação</li>
+                    <li><strong>Fase 4:</strong> Construa autoridade que influencia LLMs</li>
+                </ul>
+
+                <p>Use a metodologia deste guia para fazer sua própria auditoria ou contrate profissionais para diagnóstico mais profundo.</p>
+
+                <p>Continue aprendendo: <a href="/blog/checklist-tecnico-ai-seo/">checklist técnico completo</a>, <a href="/blog/crawlers-ia/">crawlers de IAs</a> e <a href="/blog/schema-markup-para-ias/">schema markup</a>.</p>
+            </section>
+
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                <div class="author-info">
+                    <h4>Sidney Santos</h4>
+                    <p>Especialista em Search Intelligence AI com mais de 12 anos de experiência em SEO. Fundador da AUDITSEO.</p>
+                    <div class="author-links"><a href="https://www.linkedin.com/in/sidney-especialista-em-seo/">LinkedIn</a><a href="https://instagram.com/sidneyespecialistaseo">Instagram</a></div>
+                </div>
+            </div>
+
+            <div class="related-posts">
+                <h3 class="related-title">Artigos Relacionados</h3>
+                <div class="related-grid">
+                    <div class="related-card"><h4><a href="/blog/checklist-tecnico-ai-seo/">Checklist Técnico AI SEO</a></h4><p>Lista completa de verificação.</p></div>
+                    <div class="related-card"><h4><a href="/blog/crawlers-ia/">Crawlers de IAs</a></h4><p>GPTBot, ClaudeBot e mais.</p></div>
+                    <div class="related-card"><h4><a href="/blog/schema-markup-para-ias/">Schema Markup Para IAs</a></h4><p>Dados estruturados.</p></div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand"><div class="footer-logo">AUDITSEO</div><p class="footer-desc">Agência de SEO especializada em Search Intelligence AI.</p><div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil</div></div>
+            <div class="footer-col"><h4 class="footer-title">Serviços</h4><ul class="footer-links"><li><a href="/servicos/">Todos os Serviços</a></li><li><a href="/servicos/technical-ai-seo/">Technical AI SEO</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Empresa</h4><ul class="footer-links"><li><a href="/sobre/">Sobre Nós</a></li><li><a href="/blog/">Blog</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Contato</h4><ul class="footer-links"><li><a href="https://wa.me/5511996384376">WhatsApp</a></li><li><a href="tel:+5511996384376">(11) 99638-4376</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 AUDITSEO — Todos os direitos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>

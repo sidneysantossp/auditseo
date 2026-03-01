@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal do Cliente | AUDITSEO</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="https://auditseo.com.br/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #fafbfc;
+  --bg-card: #ffffff;
+  --bg-dark: #0f172a;
+  --bg-sidebar: #0f172a;
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --accent: #e63946;
+  --accent-light: #fee2e2;
+  --green: #22c55e;
+  --green-light: #dcfce7;
+  --blue: #3b82f6;
+  --blue-light: #dbeafe;
+  --purple: #8b5cf6;
+  --purple-light: #ede9fe;
+  --orange: #f97316;
+  --orange-light: #ffedd5;
+  --cyan: #06b6d4;
+  --cyan-light: #cffafe;
+  --yellow: #eab308;
+  --red: #ef4444;
+  --font: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+  --shadow: 0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.08);
+  --transition: .2s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
+a { color: var(--blue); text-decoration: none; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+/* ══════ LOGIN ══════ */
+#login-screen {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  padding: 24px;
+}
+.login-card {
+  background: var(--bg-card); border-radius: var(--radius); padding: 48px 40px;
+  width: 100%; max-width: 440px; box-shadow: var(--shadow-lg); text-align: center;
+}
+.login-card .login-logo { margin-bottom: 8px; }
+.login-card .login-logo img { height: 48px; }
+.login-card .login-logo h1 {
+  font-size: 1.8rem; font-weight: 700; color: var(--accent);
+  letter-spacing: -.02em;
+}
+.login-card .login-subtitle {
+  color: var(--text-secondary); font-size: .95rem; margin-bottom: 36px;
+}
+.login-card label {
+  display: block; text-align: left; font-size: .78rem; font-weight: 600;
+  color: var(--text-secondary); text-transform: uppercase; letter-spacing: .04em;
+  margin-bottom: 6px;
+}
+.login-card input {
+  width: 100%; padding: 12px 16px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-family: var(--font); font-size: 1rem;
+  color: var(--text); background: var(--bg); margin-bottom: 20px;
+  transition: border var(--transition);
+}
+.login-card input:focus { outline: none; border-color: var(--accent); }
+.login-card button {
+  width: 100%; padding: 14px; background: var(--accent); color: #fff;
+  border: none; border-radius: var(--radius-sm); font-family: var(--font);
+  font-size: 1rem; font-weight: 600; cursor: pointer; transition: background var(--transition);
+}
+.login-card button:hover { background: #c1121f; }
+.login-error { color: var(--red); font-size: .85rem; margin-top: 12px; display: none; }
+.login-footer { margin-top: 28px; font-size: .8rem; color: var(--text-muted); }
+.login-footer a { color: var(--accent); }
+
+/* ══════ LAYOUT ══════ */
+#app { display: none; }
+#app.active { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 260px; background: var(--bg-sidebar); color: #fff;
+  display: flex; flex-direction: column; position: fixed;
+  top: 0; left: 0; height: 100vh; z-index: 50;
+  transition: transform .3s ease;
+}
+.sidebar-header {
+  padding: 24px 20px; border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.sidebar-header .client-name {
+  font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 2px;
+}
+.sidebar-header .client-service {
+  font-size: .75rem; color: rgba(255,255,255,.5); font-family: var(--font-mono);
+}
+.sidebar-header .powered-by {
+  font-size: .65rem; color: rgba(255,255,255,.25); margin-top: 8px;
+}
+.sidebar-nav { flex: 1; padding: 16px 0; overflow-y: auto; }
+.sidebar-nav a {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 20px; color: rgba(255,255,255,.6);
+  font-size: .85rem; font-weight: 500; text-decoration: none;
+  border-left: 3px solid transparent; cursor: pointer;
+  transition: all var(--transition);
+}
+.sidebar-nav a:hover { color: #fff; background: rgba(255,255,255,.04); }
+.sidebar-nav a.active {
+  color: #fff; background: rgba(255,255,255,.06);
+  border-left-color: var(--accent);
+}
+.sidebar-nav a .nav-icon { font-size: 1.1rem; width: 24px; text-align: center; }
+.sidebar-nav .nav-section {
+  font-size: .65rem; text-transform: uppercase; letter-spacing: .1em;
+  color: rgba(255,255,255,.25); padding: 20px 20px 6px;
+  font-weight: 600;
+}
+.sidebar-bottom {
+  padding: 16px 20px; border-top: 1px solid rgba(255,255,255,.08);
+}
+.sidebar-bottom .user-info {
+  font-size: .78rem; color: rgba(255,255,255,.5);
+}
+.sidebar-bottom .user-info strong { color: #fff; display: block; margin-bottom: 2px; }
+.sidebar-bottom .logout-link {
+  color: var(--accent); font-size: .75rem; cursor: pointer; margin-top: 6px;
+  display: inline-block;
+}
+
+.main-content {
+  flex: 1; margin-left: 260px; padding: 32px;
+  max-width: calc(100vw - 260px);
+}
+
+.mobile-toggle {
+  display: none; position: fixed; top: 14px; left: 14px; z-index: 100;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-xs); padding: 8px 12px;
+  font-size: 1.1rem; cursor: pointer; box-shadow: var(--shadow-sm);
+}
+@media (max-width: 860px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); }
+  .mobile-toggle { display: block; }
+  .main-content { margin-left: 0; padding: 20px 16px; padding-top: 60px; max-width: 100vw; }
+}
+
+/* ══════ PAGE ══════ */
+.page { display: none; }
+.page.active { display: block; }
+.page-title {
+  font-size: 1.6rem; font-weight: 700; color: var(--text);
+  margin-bottom: 6px; letter-spacing: -.02em;
+}
+.page-subtitle {
+  font-size: .9rem; color: var(--text-muted); margin-bottom: 28px;
+}
+
+/* ══════ SCORE CARD ══════ */
+.health-score {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px; text-align: center;
+  margin-bottom: 28px; box-shadow: var(--shadow-sm);
+  position: relative; overflow: hidden;
+}
+.health-score::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+}
+.health-score.score-high::before { background: var(--green); }
+.health-score.score-mid::before { background: var(--orange); }
+.health-score.score-low::before { background: var(--red); }
+.score-number {
+  font-size: 4rem; font-weight: 800; line-height: 1;
+  letter-spacing: -.04em; margin-bottom: 4px;
+}
+.score-high .score-number { color: var(--green); }
+.score-mid .score-number { color: var(--orange); }
+.score-low .score-number { color: var(--red); }
+.score-label { font-size: .85rem; color: var(--text-muted); font-weight: 500; }
+.score-sublabel {
+  font-size: .75rem; color: var(--text-muted); font-family: var(--font-mono);
+  margin-top: 8px;
+}
+
+/* ══════ METRIC CARDS ══════ */
+.metrics-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 28px;
+}
+.metric-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 20px;
+  box-shadow: var(--shadow-sm); transition: box-shadow var(--transition);
+}
+.metric-card:hover { box-shadow: var(--shadow); }
+.metric-card .mc-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-xs);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 12px;
+}
+.mc-icon.green { background: var(--green-light); }
+.mc-icon.blue { background: var(--blue-light); }
+.mc-icon.purple { background: var(--purple-light); }
+.mc-icon.orange { background: var(--orange-light); }
+.mc-icon.cyan { background: var(--cyan-light); }
+.mc-icon.red { background: var(--accent-light); }
+.metric-card .mc-value {
+  font-size: 1.8rem; font-weight: 700; color: var(--text);
+  letter-spacing: -.02em; line-height: 1.1;
+}
+.metric-card .mc-label {
+  font-size: .78rem; color: var(--text-muted); margin-top: 4px; font-weight: 500;
+}
+.metric-card .mc-trend {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: .72rem; font-weight: 600; margin-top: 8px;
+  padding: 2px 8px; border-radius: 20px;
+}
+.mc-trend.up { background: var(--green-light); color: var(--green); }
+.mc-trend.down { background: var(--accent-light); color: var(--red); }
+.mc-trend.neutral { background: var(--border-light); color: var(--text-muted); }
+
+/* ══════ CARDS / SECTIONS ══════ */
+.card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 24px;
+  box-shadow: var(--shadow-sm); margin-bottom: 20px;
+}
+.card h3 {
+  font-size: .95rem; font-weight: 700; color: var(--text);
+  margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+}
+.card h3 .badge {
+  font-size: .65rem; font-weight: 600; padding: 2px 8px;
+  border-radius: 20px; text-transform: uppercase;
+}
+.card-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  margin-bottom: 20px;
+}
+@media (max-width: 768px) { .card-grid { grid-template-columns: 1fr; } }
+
+/* ══════ PROGRESS PHASES ══════ */
+.phases-bar {
+  display: flex; gap: 4px; margin-bottom: 24px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 16px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.phase-item {
+  flex: 1; text-align: center; padding: 12px 8px;
+  border-radius: var(--radius-xs); position: relative;
+  transition: all var(--transition);
+}
+.phase-item .phase-name {
+  font-size: .72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .04em; margin-bottom: 4px;
+}
+.phase-item .phase-progress {
+  font-size: 1.1rem; font-weight: 700;
+}
+.phase-item .phase-bar {
+  width: 100%; height: 4px; background: var(--border);
+  border-radius: 2px; margin-top: 6px; overflow: hidden;
+}
+.phase-item .phase-bar-fill {
+  height: 100%; border-radius: 2px; transition: width .5s ease;
+}
+.phase-item.done { background: var(--green-light); }
+.phase-item.done .phase-name { color: var(--green); }
+.phase-item.done .phase-progress { color: var(--green); }
+.phase-item.done .phase-bar-fill { background: var(--green); }
+.phase-item.active-phase { background: var(--blue-light); }
+.phase-item.active-phase .phase-name { color: var(--blue); }
+.phase-item.active-phase .phase-progress { color: var(--blue); }
+.phase-item.active-phase .phase-bar-fill { background: var(--blue); }
+.phase-item.pending .phase-name { color: var(--text-muted); }
+.phase-item.pending .phase-progress { color: var(--text-muted); }
+.phase-item.pending .phase-bar-fill { background: var(--border); }
+.phase-connector {
+  width: 24px; display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: .8rem;
+}
+
+/* ══════ TASK LIST ══════ */
+.task-list { list-style: none; }
+.task-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid var(--border-light);
+}
+.task-list li:last-child { border-bottom: none; }
+.task-check {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--border); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px; font-size: .7rem;
+}
+.task-check.done { background: var(--green); border-color: var(--green); color: #fff; }
+.task-check.doing { background: var(--blue-light); border-color: var(--blue); }
+.task-check.review { background: var(--purple-light); border-color: var(--purple); }
+.task-info { flex: 1; }
+.task-info .task-name {
+  font-size: .88rem; font-weight: 600; color: var(--text);
+}
+.task-info .task-desc {
+  font-size: .78rem; color: var(--text-muted); margin-top: 2px;
+}
+.task-info .task-name.completed {
+  text-decoration: line-through; color: var(--text-muted);
+}
+.task-badge {
+  font-size: .62rem; font-weight: 600; padding: 2px 8px;
+  border-radius: 20px; text-transform: uppercase; white-space: nowrap;
+}
+.tb-doing { background: var(--blue-light); color: var(--blue); }
+.tb-review { background: var(--purple-light); color: var(--purple); }
+.tb-done { background: var(--green-light); color: var(--green); }
+.tb-todo { background: var(--border-light); color: var(--text-muted); }
+
+/* ══════ KEYWORD TABLE ══════ */
+.data-table {
+  width: 100%; border-collapse: collapse;
+}
+.data-table th {
+  text-align: left; padding: 10px 14px;
+  font-size: .72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .04em; color: var(--text-muted);
+  border-bottom: 2px solid var(--border);
+}
+.data-table td {
+  padding: 10px 14px; font-size: .85rem; color: var(--text);
+  border-bottom: 1px solid var(--border-light);
+}
+.data-table tr:hover td { background: var(--bg); }
+.pos-change {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-family: var(--font-mono); font-size: .78rem; font-weight: 600;
+}
+.pos-up { color: var(--green); }
+.pos-down { color: var(--red); }
+.pos-same { color: var(--text-muted); }
+
+/* ══════ AI PRESENCE ══════ */
+.ai-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 18px;
+  margin-bottom: 12px; box-shadow: var(--shadow-sm);
+}
+.ai-card .ai-platform {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.ai-card .ai-platform-name {
+  font-size: .82rem; font-weight: 700; color: var(--text);
+}
+.ai-card .ai-platform-icon {
+  width: 28px; height: 28px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem;
+}
+.ai-card .ai-query {
+  font-size: .8rem; color: var(--text-secondary);
+  background: var(--bg); padding: 8px 12px;
+  border-radius: var(--radius-xs); margin-bottom: 8px;
+  font-style: italic;
+}
+.ai-card .ai-status {
+  font-size: .72rem; font-weight: 600; padding: 3px 10px;
+  border-radius: 20px; display: inline-block;
+}
+.ai-cited { background: var(--green-light); color: var(--green); }
+.ai-not-cited { background: var(--accent-light); color: var(--red); }
+.ai-partial { background: var(--orange-light); color: var(--orange); }
+
+/* ══════ CHART CARD ══════ */
+.chart-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 24px;
+  box-shadow: var(--shadow-sm); margin-bottom: 20px;
+}
+.chart-card h3 {
+  font-size: .88rem; font-weight: 700; color: var(--text);
+  margin-bottom: 16px;
+}
+.chart-card canvas { max-height: 280px; }
+
+/* ══════ DOCUMENTS ══════ */
+.doc-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 0; border-bottom: 1px solid var(--border-light);
+}
+.doc-item:last-child { border-bottom: none; }
+.doc-icon {
+  width: 42px; height: 42px; border-radius: var(--radius-xs);
+  background: var(--accent-light); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.doc-info { flex: 1; }
+.doc-info .doc-name { font-size: .88rem; font-weight: 600; color: var(--text); }
+.doc-info .doc-meta { font-size: .72rem; color: var(--text-muted); margin-top: 2px; }
+.doc-btn {
+  padding: 6px 14px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-xs); font-size: .75rem; font-weight: 600;
+  color: var(--text-secondary); cursor: pointer; transition: all var(--transition);
+}
+.doc-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ══════ MESSAGE ══════ */
+.msg-list { max-height: 400px; overflow-y: auto; }
+.msg-item {
+  display: flex; gap: 12px; margin-bottom: 16px;
+}
+.msg-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--blue-light); color: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 700; flex-shrink: 0;
+}
+.msg-avatar.client { background: var(--green-light); color: var(--green); }
+.msg-bubble { flex: 1; }
+.msg-bubble .msg-author {
+  font-size: .72rem; font-weight: 600; color: var(--text-muted);
+  margin-bottom: 3px;
+}
+.msg-bubble .msg-text {
+  font-size: .88rem; color: var(--text); background: var(--bg);
+  padding: 10px 14px; border-radius: var(--radius-xs);
+  border: 1px solid var(--border-light);
+}
+.msg-bubble .msg-time {
+  font-size: .65rem; color: var(--text-muted); margin-top: 4px;
+  font-family: var(--font-mono);
+}
+.msg-input-row {
+  display: flex; gap: 8px; margin-top: 16px; padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.msg-input-row input {
+  flex: 1; padding: 10px 14px; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); font-family: var(--font); font-size: .9rem;
+}
+.msg-input-row input:focus { outline: none; border-color: var(--accent); }
+.msg-input-row button {
+  padding: 10px 20px; background: var(--accent); color: #fff;
+  border: none; border-radius: var(--radius-sm);
+  font-family: var(--font); font-weight: 600; cursor: pointer;
+}
+
+/* ══════ NOTIFICATION BAR ══════ */
+.notif-bar {
+  background: linear-gradient(135deg, var(--green), #16a34a);
+  color: #fff; padding: 12px 20px; border-radius: var(--radius-sm);
+  margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
+  font-size: .85rem; font-weight: 500;
+}
+.notif-bar.info { background: linear-gradient(135deg, var(--blue), #2563eb); }
+.notif-bar .notif-icon { font-size: 1.2rem; }
+
+/* ══════ NEXT MEETING ══════ */
+.meeting-card {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff; border-radius: var(--radius-sm); padding: 24px;
+  margin-bottom: 20px;
+}
+.meeting-card h4 {
+  font-size: .78rem; text-transform: uppercase; letter-spacing: .06em;
+  color: rgba(255,255,255,.6); margin-bottom: 8px;
+}
+.meeting-card .meeting-date {
+  font-size: 1.4rem; font-weight: 700;
+}
+.meeting-card .meeting-time {
+  font-size: .9rem; color: rgba(255,255,255,.7); margin-top: 4px;
+}
+
+/* ══════ ROI ══════ */
+.roi-card {
+  background: linear-gradient(135deg, var(--green), #16a34a);
+  color: #fff; border-radius: var(--radius); padding: 28px;
+  text-align: center; margin-bottom: 28px;
+}
+.roi-card .roi-value { font-size: 3rem; font-weight: 800; letter-spacing: -.04em; }
+.roi-card .roi-label { font-size: .85rem; opacity: .85; margin-top: 4px; }
+.roi-card .roi-detail { font-size: .78rem; opacity: .7; margin-top: 8px; }
+
+/* TOAST */
+.toast-container{position:fixed;bottom:20px;right:20px;z-index:600;display:flex;flex-direction:column;gap:6px}
+.toast{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 18px;font-size:.82rem;color:var(--text);box-shadow:var(--shadow);animation:toastIn .3s}
+.toast.success{border-left:3px solid var(--green)}.toast.info{border-left:3px solid var(--blue)}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<!-- ══════ LOGIN ══════ -->
+<div id="login-screen">
+<div class="login-card">
+  <div class="login-logo"><h1>AUDITSEO</h1></div>
+  <div class="login-subtitle">Portal do Cliente — Acompanhe seus resultados em tempo real</div>
+  <label>Código de acesso</label>
+  <input type="text" id="login-code" placeholder="Insira seu código de acesso" autofocus>
+  <label>Senha</label>
+  <input type="password" id="login-pass" placeholder="Sua senha">
+  <button id="btn-login">Acessar Portal</button>
+  <div class="login-error" id="login-error">Código ou senha inválidos.</div>
+  <div class="login-footer">Portal exclusivo para clientes AUDITSEO<br><a href="https://auditseo.com.br" target="_blank">auditseo.com.br</a></div>
+</div>
+</div>
+
+<!-- ══════ APP ══════ -->
+<div id="app">
+<button class="mobile-toggle" id="btn-mobile">☰</button>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="client-name" id="s-client-name">—</div>
+    <div class="client-service" id="s-client-service">—</div>
+    <div class="powered-by">Powered by AUDITSEO</div>
+  </div>
+  <div class="sidebar-nav" id="sidebar-nav">
+    <div class="nav-section">Visão Geral</div>
+    <a data-page="overview" class="active"><span class="nav-icon">📊</span> Resumo</a>
+    <a data-page="tasks"><span class="nav-icon">✅</span> Entregas</a>
+    <div class="nav-section">Resultados</div>
+    <a data-page="rankings"><span class="nav-icon">🔍</span> Rankings</a>
+    <a data-page="ai-presence"><span class="nav-icon">🤖</span> Presença em IA</a>
+    <a data-page="traffic"><span class="nav-icon">📈</span> Tráfego</a>
+    <div class="nav-section">Comunicação</div>
+    <a data-page="docs"><span class="nav-icon">📁</span> Documentos</a>
+    <a data-page="messages"><span class="nav-icon">💬</span> Mensagens</a>
+  </div>
+  <div class="sidebar-bottom">
+    <div class="user-info"><strong id="s-user-name">—</strong><span id="s-user-email">—</span></div>
+    <div class="logout-link" id="btn-logout">Sair do portal</div>
+  </div>
+</nav>
+
+<div class="main-content" id="main-content"></div>
+</div>
+
+<div class="toast-container" id="toast-container"></div>
+
+<!-- ══════ JAVASCRIPT ══════ -->
+<script>
+(function(){
+"use strict";
+
+var G=function(id){return document.getElementById(id)};
+var Q=function(s){return document.querySelectorAll(s)};
+var LS=function(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}};
+var SS=function(k,v){localStorage.setItem(k,JSON.stringify(v))};
+var fmtDate=function(d){if(!d)return '—';var p=d.split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:'—'};
+var todayStr=function(){return new Date().toISOString().slice(0,10)};
+var fmt=function(n){return 'R$ '+Number(n||0).toLocaleString('pt-BR',{minimumFractionDigits:0})};
+var SVC={seo:'SEO Técnico',ai:'AI Overview Optimization',local:'SEO Local',llm:'LLM Brand Presence',audit:'Auditoria SEO',entity:'Entity Building'};
+var MO=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+var charts={};
+function destroyChart(n){if(charts[n]){charts[n].destroy();delete charts[n];}}
+function toast(m,t){t=t||'success';var c=G('toast-container'),d=document.createElement('div');d.className='toast '+t;d.textContent=m;c.appendChild(d);setTimeout(function(){if(d.parentNode)d.remove()},3500);}
+
+/* ══════ CLIENT DATA (demo) ══════ */
+function getClientAccounts(){
+  var a=LS('rp_accounts');
+  if(!a){
+    a=[
+      {id:'cli_1',code:'CLINICA2026',password:'acesso123',empresa:'Clínica Derma SP',contato:'Dra. Marina',email:'marina@dermasp.com.br',servico:'seo',valor:5500,inicio:'2026-01-05',duracao:12},
+      {id:'cli_2',code:'MODAX2026',password:'acesso123',empresa:'E-commerce ModaX',contato:'Thiago',email:'thiago@modax.com.br',servico:'ai',valor:6000,inicio:'2026-01-15',duracao:6},
+      {id:'cli_3',code:'IMOB2026',password:'acesso123',empresa:'Imobiliária Centro',contato:'Paulo',email:'paulo@imobcentro.com.br',servico:'local',valor:3500,inicio:'2026-02-08',duracao:12}
+    ];
+    SS('rp_accounts',a);
+  }
+  return a;
+}
+
+function getClientProject(clientId){
+  var p=LS('rp_project_'+clientId);
+  if(!p){
+    // Generate demo project
+    var accts=getClientAccounts(),acct=null;
+    for(var i=0;i<accts.length;i++){if(accts[i].id===clientId){acct=accts[i];break;}}
+    if(!acct)return null;
+    p=generateDemoProject(acct);
+    SS('rp_project_'+clientId,p);
+  }
+  return p;
+}
+
+function getClientResults(clientId){
+  var r=LS('rp_results_'+clientId);
+  if(!r){
+    r=generateDemoResults(clientId);
+    SS('rp_results_'+clientId,r);
+  }
+  return r;
+}
+
+function getClientMessages(clientId){
+  var m=LS('rp_msgs_'+clientId);
+  if(!m){
+    m=[
+      {id:'m1',from:'auditseo',author:'Sidney — AUDITSEO',text:'Bem-vindo ao seu portal exclusivo! Aqui você acompanha todas as entregas e resultados do seu projeto em tempo real.',date:'2026-02-01 09:00'},
+      {id:'m2',from:'auditseo',author:'Sidney — AUDITSEO',text:'A fase de auditoria foi concluída. O relatório completo está na aba Documentos. Na reunião mensal vamos apresentar os achados e o plano estratégico.',date:'2026-02-10 14:30'}
+    ];
+    SS('rp_msgs_'+clientId,m);
+  }
+  return m;
+}
+function saveClientMessages(clientId,m){SS('rp_msgs_'+clientId,m);}
+
+function generateDemoProject(acct){
+  var phases=[
+    {key:'audit',name:'Auditoria',tasks:[
+      {title:'Auditoria técnica completa',desc:'Crawl, Core Web Vitals, indexação',status:'done',completed:'2026-02-05'},
+      {title:'Análise de palavras-chave',desc:'Rankings atuais via Semrush',status:'done',completed:'2026-02-06'},
+      {title:'Análise de concorrentes',desc:'Benchmark top 5 concorrentes',status:'done',completed:'2026-02-07'},
+      {title:'Relatório de diagnóstico',desc:'Documento consolidado',status:'done',completed:'2026-02-10'}
+    ]},
+    {key:'strategy',name:'Estratégia',tasks:[
+      {title:'Pesquisa de keywords expandida',desc:'Clusters por intenção de busca',status:'done',completed:'2026-02-12'},
+      {title:'Arquitetura de conteúdo',desc:'Silos e topic clusters',status:'doing',completed:''},
+      {title:'Plano de conteúdo (3 meses)',desc:'Calendário editorial',status:'todo',completed:''},
+      {title:'Roadmap técnico',desc:'Priorização de correções',status:'todo',completed:''}
+    ]},
+    {key:'exec',name:'Execução',tasks:[
+      {title:'Correções técnicas prioritárias',desc:'Indexação, velocidade, mobile',status:'backlog',completed:''},
+      {title:'Schema Markup',desc:'FAQ, HowTo, Organization',status:'backlog',completed:''},
+      {title:'Otimização on-page Top 20',desc:'Title, meta, H1, links internos',status:'backlog',completed:''},
+      {title:'Criação de conteúdo',desc:'Artigos do calendário editorial',status:'backlog',completed:''},
+      {title:'Otimização para AI Overviews',desc:'Reestruturação para citação IA',status:'backlog',completed:''}
+    ]},
+    {key:'monitor',name:'Monitoramento',tasks:[
+      {title:'Setup de monitoramento',desc:'GSC, GA4, Semrush tracking',status:'backlog',completed:''},
+      {title:'Relatório mensal',desc:'Rankings, tráfego, conversões',status:'backlog',completed:''},
+      {title:'Tracking de citações IA',desc:'ChatGPT, Perplexity, Claude',status:'backlog',completed:''}
+    ]}
+  ];
+  return {phases:phases,nextMeeting:'2026-03-05',nextMeetingTime:'14:00 — Via Google Meet'};
+}
+
+function generateDemoResults(clientId){
+  return {
+    keywords:[
+      {kw:'clínica dermatológica sp',vol:2400,posBefore:23,posAfter:8,change:-15},
+      {kw:'dermatologista zona sul',vol:1800,posBefore:45,posAfter:12,change:-33},
+      {kw:'tratamento acne são paulo',vol:1200,posBefore:0,posAfter:18,change:18},
+      {kw:'botox preço sp',vol:3600,posBefore:67,posAfter:15,change:-52},
+      {kw:'peeling facial clínica',vol:880,posBefore:34,posAfter:5,change:-29},
+      {kw:'limpeza de pele profissional',vol:2100,posBefore:0,posAfter:22,change:22},
+      {kw:'dermatologia estética sp',vol:1500,posBefore:51,posAfter:9,change:-42},
+      {kw:'microagulhamento resultados',vol:720,posBefore:28,posAfter:3,change:-25}
+    ],
+    traffic:{
+      months:['Set','Out','Nov','Dez','Jan','Fev'],
+      organic:[1200,1350,1280,1450,2100,3200],
+      aiTraffic:[0,0,12,45,180,420]
+    },
+    aiPresence:[
+      {platform:'Google AI Overview',icon:'🔍',query:'melhor clínica dermatológica em São Paulo',status:'cited',detail:'Citado como referência na 2ª posição'},
+      {platform:'ChatGPT',icon:'💬',query:'recomendação de dermatologista em SP',status:'cited',detail:'Mencionado entre as 3 principais clínicas'},
+      {platform:'Perplexity',icon:'🔎',query:'clínica de dermatologia zona sul SP',status:'partial',detail:'Mencionado mas sem link direto'},
+      {platform:'Claude',icon:'🤖',query:'dermatologista especialista em acne SP',status:'not_cited',detail:'Não mencionado — em otimização'},
+      {platform:'Google AI Overview',icon:'🔍',query:'preço botox em São Paulo',status:'cited',detail:'Citado com informação de preço'},
+      {platform:'ChatGPT',icon:'💬',query:'tratamento para manchas no rosto SP',status:'not_cited',detail:'Em fase de construção de autoridade'}
+    ],
+    conversions:{formsBefore:12,formsAfter:34,callsBefore:8,callsAfter:22,whatsappBefore:15,whatsappAfter:48},
+    brandSearch:{before:320,after:890},
+    docs:[
+      {name:'Relatório de Auditoria Técnica',type:'PDF',date:'2026-02-10',size:'2.4 MB'},
+      {name:'Análise de Concorrentes',type:'PDF',date:'2026-02-08',size:'1.8 MB'},
+      {name:'Contrato de Prestação de Serviços',type:'PDF',date:'2026-01-05',size:'340 KB'},
+      {name:'Relatório Mensal — Janeiro 2026',type:'PDF',date:'2026-02-01',size:'3.1 MB'},
+      {name:'Plano Estratégico SEO',type:'PDF',date:'2026-02-12',size:'1.5 MB'}
+    ]
+  };
+}
+
+/* ══════ AUTH ══════ */
+var currentClient=null;
+
+function doLogin(){
+  var code=G('login-code').value.trim().toUpperCase(),pass=G('login-pass').value;
+  var accts=getClientAccounts(),found=null;
+  for(var i=0;i<accts.length;i++){if(accts[i].code===code&&accts[i].password===pass){found=accts[i];break;}}
+  if(!found){G('login-error').style.display='block';return;}
+  currentClient=found;
+  SS('rp_session',{clientId:found.id});
+  showApp();
+}
+
+function doLogout(){
+  localStorage.removeItem('rp_session');currentClient=null;
+  G('app').classList.remove('active');G('login-screen').style.display='flex';
+  G('login-code').value='';G('login-pass').value='';G('login-error').style.display='none';
+}
+
+function checkSession(){
+  var s=LS('rp_session');if(!s)return;
+  var accts=getClientAccounts(),found=null;
+  for(var i=0;i<accts.length;i++){if(accts[i].id===s.clientId){found=accts[i];break;}}
+  if(!found)return;
+  currentClient=found;showApp();
+}
+
+function showApp(){
+  G('login-screen').style.display='none';G('app').classList.add('active');
+  G('s-client-name').textContent=currentClient.empresa;
+  G('s-client-service').textContent=SVC[currentClient.servico]||currentClient.servico;
+  G('s-user-name').textContent=currentClient.contato;
+  G('s-user-email').textContent=currentClient.email;
+  renderPage('overview');
+}
+
+/* ══════ NAVIGATION ══════ */
+function navigateTo(page){
+  var links=Q('#sidebar-nav a');for(var i=0;i<links.length;i++){links[i].classList.remove('active');if(links[i].getAttribute('data-page')===page)links[i].classList.add('active');}
+  G('sidebar').classList.remove('open');
+  renderPage(page);
+}
+
+function renderPage(page){
+  var main=G('main-content');
+  switch(page){
+    case 'overview': main.innerHTML=renderOverview(); initOverviewCharts(); break;
+    case 'tasks': main.innerHTML=renderTasks(); break;
+    case 'rankings': main.innerHTML=renderRankings(); initRankingsChart(); break;
+    case 'ai-presence': main.innerHTML=renderAIPresence(); break;
+    case 'traffic': main.innerHTML=renderTraffic(); initTrafficCharts(); break;
+    case 'docs': main.innerHTML=renderDocs(); break;
+    case 'messages': main.innerHTML=renderMessages(); initMessages(); break;
+    default: main.innerHTML=renderOverview(); initOverviewCharts();
+  }
+}
+
+/* ══════ PAGE: OVERVIEW ══════ */
+function renderOverview(){
+  var proj=getClientProject(currentClient.id),res=getClientResults(currentClient.id);
+  if(!proj||!res)return '<p>Carregando...</p>';
+  var allTasks=[],doneTasks=0;
+  for(var p=0;p<proj.phases.length;p++){for(var t=0;t<proj.phases[p].tasks.length;t++){allTasks.push(proj.phases[p].tasks[t]);if(proj.phases[p].tasks[t].status==='done')doneTasks++;}}
+  var pct=allTasks.length>0?Math.round(doneTasks/allTasks.length*100):0;
+  var scoreClass=pct>=70?'score-high':pct>=40?'score-mid':'score-low';
+
+  // ROI calc
+  var monthsActive=Math.max(1,Math.ceil((new Date()-new Date(currentClient.inicio))/(30*864e5)));
+  var totalInvested=currentClient.valor*monthsActive;
+  var trafficValue=res.traffic.organic[res.traffic.organic.length-1]*2.5; // estimated CPC value
+  var roiMultiple=totalInvested>0?(trafficValue*monthsActive/totalInvested).toFixed(1):'—';
+
+  var h='';
+  // Notification
+  var doingCount=allTasks.filter(function(t){return t.status==='doing'}).length;
+  if(doingCount>0)h+='<div class="notif-bar info"><span class="notif-icon">⚡</span> '+doingCount+' tarefa(s) em execução agora</div>';
+
+  h+='<div class="page-title">Bem-vindo, '+currentClient.contato+'</div>';
+  h+='<div class="page-subtitle">Acompanhe o progresso do seu projeto de '+(SVC[currentClient.servico]||'')+'</div>';
+
+  // Health score + ROI
+  h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px">';
+  h+='<div class="health-score '+scoreClass+'"><div class="score-number">'+pct+'</div><div class="score-label">Health Score do Projeto</div><div class="score-sublabel">'+doneTasks+' de '+allTasks.length+' entregas concluídas</div></div>';
+  h+='<div class="roi-card"><div class="roi-value">'+roiMultiple+'x</div><div class="roi-label">ROI Estimado</div><div class="roi-detail">Investido: '+fmt(totalInvested)+' · Valor gerado em tráfego: '+fmt(trafficValue*monthsActive)+'</div></div>';
+  h+='</div>';
+
+  // Phase progress bar
+  h+=renderPhasesBar(proj);
+
+  // KPIs
+  var kwImproved=res.keywords.filter(function(k){return k.change<0}).length;
+  var aiCited=res.aiPresence.filter(function(a){return a.status==='cited'}).length;
+  var lastTraffic=res.traffic.organic[res.traffic.organic.length-1];
+  var prevTraffic=res.traffic.organic[res.traffic.organic.length-2]||lastTraffic;
+  var trafficPct=prevTraffic>0?Math.round((lastTraffic-prevTraffic)/prevTraffic*100):0;
+
+  h+='<div class="metrics-grid">';
+  h+='<div class="metric-card"><div class="mc-icon green">🔍</div><div class="mc-value">'+kwImproved+'/'+res.keywords.length+'</div><div class="mc-label">Keywords melhoraram posição</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon blue">📈</div><div class="mc-value">'+lastTraffic.toLocaleString('pt-BR')+'</div><div class="mc-label">Sessões orgânicas/mês</div><div class="mc-trend '+(trafficPct>=0?'up':'down')+'">'+(trafficPct>=0?'▲':'▼')+' '+Math.abs(trafficPct)+'% vs mês anterior</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon purple">🤖</div><div class="mc-value">'+aiCited+'</div><div class="mc-label">Citações em IA ativas</div><div class="mc-trend up">de '+res.aiPresence.length+' queries monitoradas</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon cyan">🔎</div><div class="mc-value">'+res.brandSearch.after.toLocaleString('pt-BR')+'</div><div class="mc-label">Brand search /mês</div><div class="mc-trend up">▲ '+Math.round((res.brandSearch.after-res.brandSearch.before)/res.brandSearch.before*100)+'% vs início</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon orange">📞</div><div class="mc-value">'+(res.conversions.formsAfter+res.conversions.callsAfter+res.conversions.whatsappAfter)+'</div><div class="mc-label">Conversões este mês</div><div class="mc-trend up">▲ vs '+(res.conversions.formsBefore+res.conversions.callsBefore+res.conversions.whatsappBefore)+' antes</div></div>';
+  h+='</div>';
+
+  // Charts
+  h+='<div class="card-grid">';
+  h+='<div class="chart-card"><h3>📈 Tráfego Orgânico</h3><canvas id="ov-chart-traffic"></canvas></div>';
+  h+='<div class="chart-card"><h3>🤖 Tráfego via IA</h3><canvas id="ov-chart-ai"></canvas></div>';
+  h+='</div>';
+
+  // Next meeting
+  h+='<div class="meeting-card"><h4>Próxima Reunião</h4><div class="meeting-date">'+fmtDate(proj.nextMeeting)+'</div><div class="meeting-time">'+proj.nextMeetingTime+'</div></div>';
+
+  return h;
+}
+
+function initOverviewCharts(){
+  var res=getClientResults(currentClient.id);if(!res)return;
+  destroyChart('ov-traffic');
+  var ctx1=document.getElementById('ov-chart-traffic');
+  if(ctx1)charts['ov-traffic']=new Chart(ctx1,{type:'line',data:{labels:res.traffic.months,datasets:[{label:'Orgânico',data:res.traffic.organic,borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.08)',fill:true,tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f1f5f9'},ticks:{callback:function(v){return v.toLocaleString('pt-BR')}}}}}});
+  destroyChart('ov-ai');
+  var ctx2=document.getElementById('ov-chart-ai');
+  if(ctx2)charts['ov-ai']=new Chart(ctx2,{type:'bar',data:{labels:res.traffic.months,datasets:[{label:'Via IA',data:res.traffic.aiTraffic,backgroundColor:'#8b5cf6',borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f1f5f9'}}}}});
+}
+
+/* ══════ PHASES BAR ══════ */
+function renderPhasesBar(proj){
+  var h='<div class="phases-bar">';
+  var phaseNames={audit:'Auditoria',strategy:'Estratégia',exec:'Execução',monitor:'Monitoramento'};
+  for(var p=0;p<proj.phases.length;p++){
+    if(p>0)h+='<div class="phase-connector">→</div>';
+    var phase=proj.phases[p],done=0,total=phase.tasks.length;
+    for(var t=0;t<phase.tasks.length;t++){if(phase.tasks[t].status==='done')done++;}
+    var pct=total>0?Math.round(done/total*100):0;
+    var cls=pct===100?'done':done>0?'active-phase':'pending';
+    h+='<div class="phase-item '+cls+'"><div class="phase-name">'+(phaseNames[phase.key]||phase.name)+'</div><div class="phase-progress">'+pct+'%</div><div class="phase-bar"><div class="phase-bar-fill" style="width:'+pct+'%"></div></div></div>';
+  }
+  h+='</div>';return h;
+}
+
+/* ══════ PAGE: TASKS ══════ */
+function renderTasks(){
+  var proj=getClientProject(currentClient.id);if(!proj)return '';
+  var h='<div class="page-title">Entregas e Tarefas</div><div class="page-subtitle">Acompanhe cada etapa do seu projeto</div>';
+  h+=renderPhasesBar(proj);
+  var phaseNames={audit:'Auditoria',strategy:'Estratégia',exec:'Execução',monitor:'Monitoramento'};
+  var statusLabels={done:'Concluída',doing:'Em execução',review:'Em revisão',todo:'A fazer',backlog:'Aguardando'};
+  for(var p=0;p<proj.phases.length;p++){
+    var phase=proj.phases[p],done=0;
+    for(var t=0;t<phase.tasks.length;t++){if(phase.tasks[t].status==='done')done++;}
+    h+='<div class="card"><h3>'+(phaseNames[phase.key]||phase.name)+' <span class="badge" style="background:'+(done===phase.tasks.length?'var(--green-light);color:var(--green)':'var(--blue-light);color:var(--blue)')+'">'+done+'/'+phase.tasks.length+'</span></h3>';
+    h+='<ul class="task-list">';
+    for(var t=0;t<phase.tasks.length;t++){
+      var task=phase.tasks[t];
+      var checkCls=task.status==='done'?'done':task.status==='doing'?'doing':task.status==='review'?'review':'';
+      var checkIcon=task.status==='done'?'✓':task.status==='doing'?'◉':task.status==='review'?'◎':'';
+      var nameCls=task.status==='done'?'completed':'';
+      var badgeCls=task.status==='doing'?'tb-doing':task.status==='review'?'tb-review':task.status==='done'?'tb-done':'tb-todo';
+      h+='<li><div class="task-check '+checkCls+'">'+checkIcon+'</div><div class="task-info"><div class="task-name '+nameCls+'">'+task.title+'</div><div class="task-desc">'+task.desc+(task.completed?' · Concluída em '+fmtDate(task.completed):'')+'</div></div><span class="task-badge '+badgeCls+'">'+(statusLabels[task.status]||task.status)+'</span></li>';
+    }
+    h+='</ul></div>';
+  }
+  return h;
+}
+
+/* ══════ PAGE: RANKINGS ══════ */
+function renderRankings(){
+  var res=getClientResults(currentClient.id);if(!res)return '';
+  var h='<div class="page-title">Rankings de Keywords</div><div class="page-subtitle">Posições das suas palavras-chave no Google</div>';
+  h+='<div class="chart-card"><h3>Evolução de posição média</h3><canvas id="rankings-chart"></canvas></div>';
+  h+='<div class="card"><h3>🔍 Keywords monitoradas</h3><table class="data-table"><thead><tr><th>Keyword</th><th>Vol/mês</th><th>Antes</th><th>Agora</th><th>Variação</th></tr></thead><tbody>';
+  var sorted=res.keywords.slice().sort(function(a,b){return a.posAfter-b.posAfter;});
+  for(var i=0;i<sorted.length;i++){
+    var k=sorted[i],improved=k.change<0;
+    var changeStr=k.posBefore===0?'Novo':'';
+    if(!changeStr)changeStr=improved?'▲ '+Math.abs(k.change):'▼ '+Math.abs(k.change);
+    var cls=k.posBefore===0?'pos-up':improved?'pos-up':'pos-down';
+    h+='<tr><td style="font-weight:600">'+k.kw+'</td><td>'+k.vol.toLocaleString('pt-BR')+'</td><td>'+(k.posBefore||'—')+'º</td><td style="font-weight:700;color:'+(k.posAfter<=10?'var(--green)':k.posAfter<=20?'var(--orange)':'var(--text)')+'">'+k.posAfter+'º</td><td><span class="pos-change '+cls+'">'+changeStr+'</span></td></tr>';
+  }
+  h+='</tbody></table></div>';
+  return h;
+}
+
+function initRankingsChart(){
+  var res=getClientResults(currentClient.id);if(!res)return;
+  destroyChart('rankings');
+  var ctx=document.getElementById('rankings-chart');if(!ctx)return;
+  var avgBefore=0,avgAfter=0,ct=0;
+  for(var i=0;i<res.keywords.length;i++){if(res.keywords[i].posBefore>0){avgBefore+=res.keywords[i].posBefore;ct++;}avgAfter+=res.keywords[i].posAfter;}
+  avgBefore=ct>0?Math.round(avgBefore/ct):0;avgAfter=Math.round(avgAfter/res.keywords.length);
+  charts['rankings']=new Chart(ctx,{type:'bar',data:{labels:['Posição Média Antes','Posição Média Agora'],datasets:[{data:[avgBefore,avgAfter],backgroundColor:['#f1f5f9','#22c55e'],borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{max:Math.max(avgBefore,avgAfter)+10,grid:{color:'#f1f5f9'},ticks:{callback:function(v){return v+'º'}}},y:{grid:{display:false}}}}});
+}
+
+/* ══════ PAGE: AI PRESENCE ══════ */
+function renderAIPresence(){
+  var res=getClientResults(currentClient.id);if(!res)return '';
+  var cited=res.aiPresence.filter(function(a){return a.status==='cited'}).length;
+  var total=res.aiPresence.length;
+  var h='<div class="page-title">Presença em IA</div><div class="page-subtitle">Como sua marca aparece em buscas por inteligência artificial</div>';
+  h+='<div class="metrics-grid">';
+  h+='<div class="metric-card"><div class="mc-icon green">✅</div><div class="mc-value">'+cited+'</div><div class="mc-label">Citações ativas</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon orange">⏳</div><div class="mc-value">'+(total-cited)+'</div><div class="mc-label">Em otimização</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon purple">📊</div><div class="mc-value">'+Math.round(cited/total*100)+'%</div><div class="mc-label">Taxa de citação</div></div>';
+  h+='</div>';
+  for(var i=0;i<res.aiPresence.length;i++){
+    var a=res.aiPresence[i];
+    var statusCls=a.status==='cited'?'ai-cited':a.status==='partial'?'ai-partial':'ai-not-cited';
+    var statusLabel=a.status==='cited'?'Citado':a.status==='partial'?'Parcial':'Não citado';
+    h+='<div class="ai-card"><div class="ai-platform"><div class="ai-platform-icon" style="background:var(--blue-light)">'+a.icon+'</div><div class="ai-platform-name">'+a.platform+'</div><span class="ai-status '+statusCls+'">'+statusLabel+'</span></div><div class="ai-query">"'+a.query+'"</div><div style="font-size:.8rem;color:var(--text-secondary)">'+a.detail+'</div></div>';
+  }
+  return h;
+}
+
+/* ══════ PAGE: TRAFFIC ══════ */
+function renderTraffic(){
+  var res=getClientResults(currentClient.id);if(!res)return '';
+  var last=res.traffic.organic[res.traffic.organic.length-1],prev=res.traffic.organic[res.traffic.organic.length-2]||last;
+  var aiLast=res.traffic.aiTraffic[res.traffic.aiTraffic.length-1];
+  var h='<div class="page-title">Tráfego e Conversões</div><div class="page-subtitle">Performance orgânica do seu site</div>';
+  h+='<div class="metrics-grid">';
+  h+='<div class="metric-card"><div class="mc-icon green">📈</div><div class="mc-value">'+last.toLocaleString('pt-BR')+'</div><div class="mc-label">Sessões orgânicas</div><div class="mc-trend up">▲ '+Math.round((last-prev)/prev*100)+'%</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon purple">🤖</div><div class="mc-value">'+aiLast+'</div><div class="mc-label">Sessões via IA</div><div class="mc-trend up">Novo canal</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon orange">📝</div><div class="mc-value">'+res.conversions.formsAfter+'</div><div class="mc-label">Formulários/mês</div><div class="mc-trend up">▲ '+Math.round((res.conversions.formsAfter-res.conversions.formsBefore)/res.conversions.formsBefore*100)+'%</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon cyan">📞</div><div class="mc-value">'+res.conversions.callsAfter+'</div><div class="mc-label">Ligações/mês</div><div class="mc-trend up">▲ '+Math.round((res.conversions.callsAfter-res.conversions.callsBefore)/res.conversions.callsBefore*100)+'%</div></div>';
+  h+='<div class="metric-card"><div class="mc-icon green">💬</div><div class="mc-value">'+res.conversions.whatsappAfter+'</div><div class="mc-label">WhatsApp/mês</div><div class="mc-trend up">▲ '+Math.round((res.conversions.whatsappAfter-res.conversions.whatsappBefore)/res.conversions.whatsappBefore*100)+'%</div></div>';
+  h+='</div>';
+  h+='<div class="card-grid"><div class="chart-card"><h3>Tráfego Orgânico Mensal</h3><canvas id="traffic-organic"></canvas></div><div class="chart-card"><h3>Conversões — Antes vs Depois</h3><canvas id="traffic-conv"></canvas></div></div>';
+  return h;
+}
+
+function initTrafficCharts(){
+  var res=getClientResults(currentClient.id);if(!res)return;
+  destroyChart('traffic-org');
+  var ctx1=document.getElementById('traffic-organic');
+  if(ctx1)charts['traffic-org']=new Chart(ctx1,{type:'line',data:{labels:res.traffic.months,datasets:[{label:'Orgânico',data:res.traffic.organic,borderColor:'#22c55e',backgroundColor:'rgba(34,197,94,.08)',fill:true,tension:.4},{label:'Via IA',data:res.traffic.aiTraffic,borderColor:'#8b5cf6',backgroundColor:'rgba(139,92,246,.08)',fill:true,tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{family:'Inter',size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f1f5f9'}}}}});
+  destroyChart('traffic-conv');
+  var ctx2=document.getElementById('traffic-conv');
+  if(ctx2)charts['traffic-conv']=new Chart(ctx2,{type:'bar',data:{labels:['Formulários','Ligações','WhatsApp'],datasets:[{label:'Antes',data:[res.conversions.formsBefore,res.conversions.callsBefore,res.conversions.whatsappBefore],backgroundColor:'#e2e8f0',borderRadius:6},{label:'Depois',data:[res.conversions.formsAfter,res.conversions.callsAfter,res.conversions.whatsappAfter],backgroundColor:'#22c55e',borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{font:{family:'Inter',size:11}}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f1f5f9'}}}}});
+}
+
+/* ══════ PAGE: DOCS ══════ */
+function renderDocs(){
+  var res=getClientResults(currentClient.id);if(!res)return '';
+  var h='<div class="page-title">Documentos</div><div class="page-subtitle">Relatórios, contratos e entregas</div>';
+  h+='<div class="card">';
+  for(var i=0;i<res.docs.length;i++){
+    var d=res.docs[i];
+    h+='<div class="doc-item"><div class="doc-icon">📄</div><div class="doc-info"><div class="doc-name">'+d.name+'</div><div class="doc-meta">'+d.type+' · '+d.size+' · '+fmtDate(d.date)+'</div></div><button class="doc-btn">Download</button></div>';
+  }
+  h+='</div>';
+  return h;
+}
+
+/* ══════ PAGE: MESSAGES ══════ */
+function renderMessages(){
+  var msgs=getClientMessages(currentClient.id);
+  var h='<div class="page-title">Mensagens</div><div class="page-subtitle">Comunique-se com sua equipe AUDITSEO</div>';
+  h+='<div class="card"><div class="msg-list" id="msg-list">';
+  for(var i=0;i<msgs.length;i++){
+    var m=msgs[i],isClient=m.from==='client';
+    h+='<div class="msg-item"><div class="msg-avatar '+(isClient?'client':'')+'">'+(isClient?currentClient.contato.charAt(0):'A')+'</div><div class="msg-bubble"><div class="msg-author">'+m.author+'</div><div class="msg-text">'+m.text+'</div><div class="msg-time">'+m.date+'</div></div></div>';
+  }
+  h+='</div>';
+  h+='<div class="msg-input-row"><input type="text" id="msg-input" placeholder="Escreva sua mensagem..."><button id="btn-send-msg">Enviar</button></div></div>';
+  return h;
+}
+
+function initMessages(){
+  var btn=G('btn-send-msg'),input=G('msg-input');
+  if(btn)btn.addEventListener('click',sendMessage);
+  if(input)input.addEventListener('keydown',function(e){if(e.key==='Enter')sendMessage();});
+  var list=G('msg-list');if(list)list.scrollTop=list.scrollHeight;
+}
+
+function sendMessage(){
+  var input=G('msg-input'),text=input.value.trim();if(!text)return;
+  var msgs=getClientMessages(currentClient.id);
+  var now=new Date();var dateStr=now.toISOString().slice(0,10)+' '+now.toTimeString().slice(0,5);
+  msgs.push({id:'m_'+Date.now(),from:'client',author:currentClient.contato,text:text,date:dateStr});
+  saveClientMessages(currentClient.id,msgs);
+  input.value='';
+  renderPage('messages');
+  toast('Mensagem enviada!','info');
+}
+
+/* ══════ EVENTS ══════ */
+G('btn-login').addEventListener('click',doLogin);
+G('login-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
+G('login-code').addEventListener('keydown',function(e){if(e.key==='Enter')G('login-pass').focus();});
+G('btn-logout').addEventListener('click',doLogout);
+G('btn-mobile').addEventListener('click',function(){G('sidebar').classList.toggle('open');});
+
+var navLinks=Q('#sidebar-nav a');
+for(var i=0;i<navLinks.length;i++){
+  navLinks[i].addEventListener('click',function(e){
+    e.preventDefault();navigateTo(this.getAttribute('data-page'));
+  });
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')G('sidebar').classList.remove('open');
+});
+
+checkSession();
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Web Vitals e AI Overviews: A Conexão Entre Métricas e Citações | AUDITSEO</title>
+    <meta name="description" content="Entenda como Core Web Vitals afetam sua presença em AI Overviews do Google. Dados, correlações e estratégias para otimizar métricas e aumentar citações.">
+    <meta name="keywords" content="core web vitals ai overviews, cwv seo ia, lcp fid cls google ia, metricas ai overviews, performance google sge">
+    <link rel="canonical" href="https://www.auditseo.com.br/blog/core-web-vitals-ai-overviews/">
+    <meta property="og:title" content="Core Web Vitals e AI Overviews: A Conexão Entre Métricas e Citações">
+    <meta property="og:description" content="Como Core Web Vitals afetam sua presença em AI Overviews.">
+    <meta property="og:url" content="https://www.auditseo.com.br/blog/core-web-vitals-ai-overviews/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-01-27">
+    <meta property="article:modified_time" content="2026-01-27">
+    <meta property="article:author" content="Sidney Santos">
+    <meta property="article:section" content="Technical AI SEO">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--accent-cream:#f4e8d8;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555;--green:#2ecc71;--yellow:#f1c40f;--red:#e74c3c;--blue:#3498db;--purple:#9b59b6}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.8}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);transition:all .3s;text-decoration:none}.nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .article-header{padding:8rem 3rem 4rem;position:relative;background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(212,165,116,.04) 100%)}
+        .article-header-content{max-width:900px;margin:0 auto}
+        .breadcrumbs{margin-bottom:2rem}.breadcrumbs a,.breadcrumbs span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:1px}.breadcrumbs a:hover{color:var(--accent-gold)}.breadcrumbs span{margin:0 .5rem}
+        .article-category{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:3px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block}
+        .article-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);line-height:1;letter-spacing:-1px;margin-bottom:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .article-excerpt{font-size:1.3rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.7}
+        .article-meta{display:flex;flex-wrap:wrap;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+        .meta-item{display:flex;align-items:center;gap:.75rem}
+        .meta-avatar{width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:2px solid var(--accent-gold);overflow:hidden}
+        .meta-avatar img{width:100%;height:100%;object-fit:cover}
+        .meta-info{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:1px}
+        .meta-info strong{display:block;color:var(--text-light);font-size:.75rem;margin-bottom:.25rem}
+        .article-layout{max-width:1400px;margin:0 auto;padding:4rem 3rem;display:grid;grid-template-columns:250px 1fr;gap:4rem}
+        .article-toc{position:sticky;top:100px;height:fit-content}
+        .toc-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:1px}
+        .toc-list{list-style:none}.toc-list li{margin-bottom:.75rem}
+        .toc-list a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:.5px;transition:color .3s;display:block;padding:.25rem 0;border-left:2px solid transparent;padding-left:1rem;margin-left:-1rem}
+        .toc-list a:hover,.toc-list a.active{color:var(--accent-gold);border-left-color:var(--accent-gold)}
+        .article-content{max-width:800px}
+        .article-content h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin:3rem 0 1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--text-light);margin:2.5rem 0 1rem;letter-spacing:1px}
+        .article-content p{font-size:1.15rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9}
+        .article-content p strong{color:var(--accent-cream)}
+        .article-content a{color:var(--accent-gold);text-decoration:underline;text-underline-offset:3px}
+        .article-content ul,.article-content ol{margin:1.5rem 0;padding-left:1.5rem}
+        .article-content li{font-size:1.1rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.7}
+        .article-content li strong{color:var(--text-light)}
+        .highlight-box{background:linear-gradient(135deg,rgba(230,57,70,.1) 0%,rgba(212,165,116,.05) 100%);border-left:4px solid var(--accent-red);padding:2rem;margin:2rem 0;border-radius:0 8px 8px 0}
+        .highlight-box p{margin-bottom:0;font-size:1.1rem}
+        .vital-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:1.5rem 0;border-radius:12px;position:relative;overflow:hidden}
+        .vital-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px}
+        .vital-card.lcp::before{background:var(--blue)}
+        .vital-card.inp::before{background:var(--green)}
+        .vital-card.cls::before{background:var(--purple)}
+        .vital-card .header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:1rem}
+        .vital-card .header h3{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--text-light);margin:0}
+        .vital-card .header .badge{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.3rem .6rem;border-radius:4px;background:rgba(255,255,255,.1)}
+        .vital-card .thresholds{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+        .vital-card .threshold{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.4rem .8rem;border-radius:6px}
+        .vital-card .threshold.good{background:rgba(46,204,113,.2);color:var(--green)}
+        .vital-card .threshold.needs{background:rgba(241,196,15,.2);color:var(--yellow)}
+        .vital-card .threshold.poor{background:rgba(231,76,60,.2);color:var(--red)}
+        .vital-card p{font-size:.95rem;margin-bottom:1rem}
+        .vital-card .ai-impact{font-size:.9rem;color:var(--text-dim);padding:1rem;background:rgba(255,255,255,.03);border-radius:8px;margin-top:1rem}
+        .vital-card .ai-impact strong{color:var(--accent-gold)}
+        .correlation-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:12px}
+        .correlation-box h4{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--text-light);margin-bottom:1.5rem;text-align:center}
+        .correlation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+        .correlation-item{text-align:center;padding:1rem;background:rgba(255,255,255,.03);border-radius:8px}
+        .correlation-item .metric{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;margin-bottom:.25rem}
+        .correlation-item .metric.positive{color:var(--green)}
+        .correlation-item .metric.neutral{color:var(--yellow)}
+        .correlation-item .label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+        .strategy-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.5rem;margin:1rem 0;border-radius:12px;display:flex;gap:1.5rem}
+        .strategy-card .num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--accent-gold);width:50px;flex-shrink:0;text-align:center}
+        .strategy-card .content h4{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--text-light);margin-bottom:.5rem}
+        .strategy-card .content p{font-size:.95rem;color:var(--text-muted);margin:0}
+        .tip-box{background:rgba(212,165,116,.1);border:1px solid rgba(212,165,116,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .tip-box h4{color:var(--accent-gold);margin-bottom:.5rem}
+        .tip-box h4::before{content:'💡 '}
+        .warning-box{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .warning-box h4{color:var(--red);margin-bottom:.5rem}
+        .warning-box h4::before{content:'⚠️ '}
+        .data-box{background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .data-box h4{color:var(--blue);margin-bottom:.5rem}
+        .data-box h4::before{content:'📊 '}
+        .cta-box{background:linear-gradient(135deg,rgba(230,57,70,.15) 0%,rgba(212,165,116,.08) 100%);border:1px solid rgba(230,57,70,.3);padding:3rem;margin:3rem 0;text-align:center;border-radius:12px}
+        .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:1rem}
+        .cta-box p{font-size:1.1rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .cta-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1rem 2.5rem;background:var(--gradient-fire);border:none;color:var(--bg-dark);cursor:pointer;transition:all .3s;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block;border-radius:4px}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(230,57,70,.4)}
+        .author-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin:4rem 0;display:flex;gap:2rem;align-items:center;border-radius:8px}
+        .author-avatar{width:100px;height:100px;border-radius:50%;background:var(--bg-dark);border:3px solid var(--accent-gold);overflow:hidden;flex-shrink:0}
+        .author-avatar img{width:100%;height:100%;object-fit:cover}
+        .author-info h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:.5rem}
+        .author-info p{font-size:1rem;color:var(--text-muted);margin-bottom:1rem}
+        .author-links{display:flex;gap:1rem}
+        .author-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-decoration:none}
+        .related-posts{margin:4rem 0}
+        .related-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:2rem}
+        .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .related-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);padding:1.5rem;transition:all .3s;border-radius:8px}
+        .related-card:hover{border-color:rgba(230,57,70,.3);transform:translateY(-3px)}
+        .related-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:.5rem}
+        .related-card h4 a{text-decoration:none;color:inherit}
+        .related-card p{font-size:.9rem;color:var(--text-dim)}
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card)}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}.footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
+        .footer-address{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);line-height:1.8}.footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1.5rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        @media(max-width:1100px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}.related-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr 1fr}.correlation-grid{grid-template-columns:1fr}}
+        @media(max-width:768px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.article-header{padding:6rem 1.5rem 3rem}.article-layout{padding:2rem 1.5rem}.article-meta{flex-direction:column;gap:1.5rem}.author-box{flex-direction:column;text-align:center}.footer-content{grid-template-columns:1fr}.strategy-card{flex-direction:column}.vital-card .thresholds{flex-direction:column}}
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Core Web Vitals e AI Overviews: A Conexão Entre Métricas e Citações","description":"Como Core Web Vitals afetam presença em AI Overviews.","author":{"@type":"Person","name":"Sidney Santos"},"publisher":{"@type":"Organization","name":"AUDITSEO"},"datePublished":"2026-01-27","dateModified":"2026-01-27"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Core Web Vitals afetam AI Overviews?","acceptedAnswer":{"@type":"Answer","text":"Sim. Google usa sinais de qualidade de página, incluindo Core Web Vitals, para selecionar fontes para AI Overviews. Páginas com boas métricas têm maior probabilidade de serem citadas."}},{"@type":"Question","name":"Qual métrica é mais importante para AI Overviews?","acceptedAnswer":{"@type":"Answer","text":"LCP (Largest Contentful Paint) é a mais impactante porque indica quando o conteúdo principal está disponível. Para o sistema extrair informações, o conteúdo precisa carregar rapidamente."}},{"@type":"Question","name":"Páginas com CWV ruins podem aparecer em AI Overviews?","acceptedAnswer":{"@type":"Answer","text":"Podem, se o conteúdo for muito relevante. Mas páginas com boas métricas têm vantagem competitiva. CWV não é fator de exclusão, mas de priorização."}}]}</script>
+    <link rel="stylesheet" href="/assets/site-shell.css">
+    <script defer src="/assets/site-shell.js"></script>
+</head>
+<body>
+    <nav class="nav"><a href="/" class="logo">AUDITSEO</a><ul class="nav-links"><li><a href="/agencia-de-seo/">Agência de SEO</a></li><li><a href="/servicos/">Serviços</a></li><li><a href="/sobre/">Sobre</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://wa.me/5511996384376" class="nav-cta">Falar com Especialista</a></nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumbs"><a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span>Core Web Vitals e AI Overviews</span></div>
+            <span class="article-category">Technical AI SEO</span>
+            <h1 class="article-title">Core Web Vitals e AI Overviews: A Conexão Entre Métricas e Citações</h1>
+            <p class="article-excerpt">Google usa sinais de qualidade de página para selecionar fontes em AI Overviews. Entenda como Core Web Vitals influenciam suas chances de citação.</p>
+            <div class="article-meta">
+                <div class="meta-item"><div class="meta-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div><div class="meta-info"><strong>Sidney Santos</strong>Especialista em Search Intelligence AI</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Publicado</strong>27 de Janeiro, 2026</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Tempo de leitura</strong>10 minutos</div></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-layout">
+        <aside class="article-toc">
+            <h4 class="toc-title">ÍNDICE</h4>
+            <ul class="toc-list">
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#conexao">A Conexão</a></li>
+                <li><a href="#metricas">As 3 Métricas</a></li>
+                <li><a href="#correlacao">Dados de Correlação</a></li>
+                <li><a href="#estrategias">Estratégias</a></li>
+                <li><a href="#priorizacao">Priorização</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </aside>
+
+        <article class="article-content">
+            <section id="introducao">
+                <p>Core Web Vitals são métricas do Google que medem experiência do usuário. Desde 2021, são fatores de ranking. Mas como elas afetam sua presença em <a href="/blog/o-que-sao-ai-overviews/">AI Overviews</a>?</p>
+
+                <p>A resposta: <strong>de forma significativa</strong>. Google usa sinais de qualidade de página para selecionar fontes confiáveis para respostas de IA. Páginas com boas métricas têm vantagem competitiva.</p>
+
+                <p>Neste guia, vou explicar cada métrica, mostrar dados de correlação e dar estratégias práticas de otimização.</p>
+            </section>
+
+            <section id="conexao">
+                <h2>A Conexão: CWV e AI Overviews</h2>
+
+                <p>AI Overviews do Google precisam de fontes confiáveis e de qualidade. O sistema usa múltiplos sinais para selecionar quais páginas citar, incluindo:</p>
+
+                <ul>
+                    <li><strong>Relevância do conteúdo:</strong> A página responde a pergunta?</li>
+                    <li><strong>Autoridade:</strong> A fonte é confiável no tema?</li>
+                    <li><strong>Qualidade técnica:</strong> A página funciona bem?</li>
+                </ul>
+
+                <p>Core Web Vitals são parte do sinal de "qualidade técnica". Páginas lentas, instáveis ou não responsivas indicam menor qualidade geral.</p>
+
+                <div class="highlight-box">
+                    <p><strong>O princípio:</strong> Google não citaria uma fonte que oferece má experiência aos usuários. Boas métricas de CWV são um sinal de qualidade que aumenta confiança do sistema em citar sua página.</p>
+                </div>
+            </section>
+
+            <section id="metricas">
+                <h2>As 3 Métricas Core Web Vitals</h2>
+
+                <div class="vital-card lcp">
+                    <div class="header">
+                        <h3>LCP — Largest Contentful Paint</h3>
+                        <span class="badge">Carregamento</span>
+                    </div>
+                    <div class="thresholds">
+                        <span class="threshold good">Bom: ≤ 2.5s</span>
+                        <span class="threshold needs">Precisa melhorar: ≤ 4.0s</span>
+                        <span class="threshold poor">Ruim: > 4.0s</span>
+                    </div>
+                    <p>Mede o tempo até o maior elemento visível (imagem, bloco de texto) carregar. Indica quando o conteúdo principal está disponível para o usuário.</p>
+                    <div class="ai-impact">
+                        <strong>Impacto em AI Overviews:</strong> LCP é a métrica mais importante. Se o conteúdo demora para carregar, o sistema pode não conseguir extraí-lo eficientemente. Páginas com LCP rápido são mais facilmente processadas.
+                    </div>
+                </div>
+
+                <div class="vital-card inp">
+                    <div class="header">
+                        <h3>INP — Interaction to Next Paint</h3>
+                        <span class="badge">Interatividade</span>
+                    </div>
+                    <div class="thresholds">
+                        <span class="threshold good">Bom: ≤ 200ms</span>
+                        <span class="threshold needs">Precisa melhorar: ≤ 500ms</span>
+                        <span class="threshold poor">Ruim: > 500ms</span>
+                    </div>
+                    <p>Mede a responsividade da página às interações do usuário (cliques, toques, teclas). Substituiu FID em 2024 como métrica oficial.</p>
+                    <div class="ai-impact">
+                        <strong>Impacto em AI Overviews:</strong> Impacto indireto. Crawlers não interagem com páginas, mas INP ruim geralmente indica JavaScript pesado que pode atrasar renderização de conteúdo.
+                    </div>
+                </div>
+
+                <div class="vital-card cls">
+                    <div class="header">
+                        <h3>CLS — Cumulative Layout Shift</h3>
+                        <span class="badge">Estabilidade</span>
+                    </div>
+                    <div class="thresholds">
+                        <span class="threshold good">Bom: ≤ 0.1</span>
+                        <span class="threshold needs">Precisa melhorar: ≤ 0.25</span>
+                        <span class="threshold poor">Ruim: > 0.25</span>
+                    </div>
+                    <p>Mede quanto os elementos visuais se movem durante o carregamento. Layouts que "pulam" causam má experiência.</p>
+                    <div class="ai-impact">
+                        <strong>Impacto em AI Overviews:</strong> CLS alto pode indicar conteúdo carregando dinamicamente que pode não ser capturado corretamente. Layouts estáveis são mais confiáveis para extração.
+                    </div>
+                </div>
+            </section>
+
+            <section id="correlacao">
+                <h2>Dados de Correlação</h2>
+
+                <p>Análises de páginas que aparecem em AI Overviews mostram padrões claros:</p>
+
+                <div class="correlation-box">
+                    <h4>Páginas Citadas em AI Overviews vs Média da Web</h4>
+                    <div class="correlation-grid">
+                        <div class="correlation-item">
+                            <div class="metric positive">78%</div>
+                            <div class="label">Passam em LCP</div>
+                        </div>
+                        <div class="correlation-item">
+                            <div class="metric positive">82%</div>
+                            <div class="label">Passam em INP</div>
+                        </div>
+                        <div class="correlation-item">
+                            <div class="metric positive">85%</div>
+                            <div class="label">Passam em CLS</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-box">
+                    <h4>O Que os Dados Mostram</h4>
+                    <p>Páginas citadas em AI Overviews têm taxas de aprovação em CWV significativamente acima da média da web (~40%). Isso não prova causalidade, mas mostra forte correlação entre qualidade técnica e citação.</p>
+                </div>
+
+                <h3>Correlação ≠ Causalidade</h3>
+                <p>É importante notar: páginas com bom CWV também tendem a ter outros sinais de qualidade (conteúdo melhor, mais autoridade). CWV é parte de um conjunto de fatores, não o único determinante.</p>
+
+                <div class="tip-box">
+                    <h4>O Que Isso Significa na Prática</h4>
+                    <p>Otimizar CWV não garante citação em AI Overviews. Mas ter métricas ruins pode ser um fator limitante. Pense em CWV como pré-requisito, não como diferencial único.</p>
+                </div>
+            </section>
+
+            <section id="estrategias">
+                <h2>Estratégias de Otimização</h2>
+
+                <div class="strategy-card">
+                    <div class="num">01</div>
+                    <div class="content">
+                        <h4>Otimize LCP Primeiro</h4>
+                        <p>LCP é a métrica mais impactante para AI Overviews. Foque em: imagens otimizadas, preload de recursos críticos, servidor rápido (TTFB baixo), eliminação de render-blocking resources.</p>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <div class="num">02</div>
+                    <div class="content">
+                        <h4>Estabilize o Layout</h4>
+                        <p>CLS alto indica conteúdo dinâmico que pode não ser capturado. Reserve espaço para imagens com width/height, evite inserção de conteúdo acima do existente, use font-display: swap.</p>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <div class="num">03</div>
+                    <div class="content">
+                        <h4>Minimize JavaScript Pesado</h4>
+                        <p>JavaScript excessivo afeta INP e pode atrasar renderização de conteúdo. Defer scripts não essenciais, code-split, remova código não utilizado.</p>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <div class="num">04</div>
+                    <div class="content">
+                        <h4>Prefira Conteúdo Estático</h4>
+                        <p>Conteúdo renderizado em servidor (SSR) ou estático é mais facilmente capturado que client-side rendering. Se usar frameworks JS, implemente SSR ou pré-renderização.</p>
+                    </div>
+                </div>
+
+                <div class="strategy-card">
+                    <div class="num">05</div>
+                    <div class="content">
+                        <h4>Monitore Dados de Campo</h4>
+                        <p>Use dados do CrUX (Chrome User Experience Report) no Search Console. Dados de campo refletem experiência real e são o que Google usa para rankings.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="priorizacao">
+                <h2>Priorização: Por Onde Começar</h2>
+
+                <p>Se suas métricas estão ruins, priorize nesta ordem:</p>
+
+                <ol>
+                    <li><strong>LCP:</strong> Maior impacto em carregamento de conteúdo</li>
+                    <li><strong>CLS:</strong> Afeta estabilidade e captura de conteúdo</li>
+                    <li><strong>INP:</strong> Menor impacto direto para crawlers, mas indica qualidade geral</li>
+                </ol>
+
+                <div class="warning-box">
+                    <h4>Não Ignore Nenhuma Métrica</h4>
+                    <p>Mesmo que INP tenha menor impacto direto em crawlers, Google considera CWV como conjunto. Uma métrica vermelha pode prejudicar a percepção geral de qualidade.</p>
+                </div>
+
+                <h3>Metas Recomendadas</h3>
+                <p>Para maximizar chances em AI Overviews, busque estar no grupo "Bom" em todas as métricas:</p>
+                <ul>
+                    <li><strong>LCP:</strong> Abaixo de 2.5 segundos</li>
+                    <li><strong>INP:</strong> Abaixo de 200ms</li>
+                    <li><strong>CLS:</strong> Abaixo de 0.1</li>
+                </ul>
+            </section>
+
+            <div class="cta-box">
+                <h3>Quer Auditoria de Core Web Vitals?</h3>
+                <p>A AUDITSEO oferece auditoria técnica de <strong>Core Web Vitals</strong> com diagnóstico detalhado e plano de otimização.</p>
+                <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20auditoria%20de%20Core%20Web%20Vitals." class="cta-btn">Solicitar Auditoria</a>
+            </div>
+
+            <section id="faq">
+                <h2>Perguntas Frequentes</h2>
+
+                <h3>Core Web Vitals afetam AI Overviews?</h3>
+                <p>Sim. Google usa sinais de qualidade de página, incluindo Core Web Vitals, para selecionar fontes para AI Overviews. Páginas com boas métricas têm maior probabilidade de serem citadas.</p>
+
+                <h3>Qual métrica é mais importante para AI Overviews?</h3>
+                <p>LCP (Largest Contentful Paint) é a mais impactante porque indica quando o conteúdo principal está disponível. Para o sistema extrair informações, o conteúdo precisa carregar rapidamente.</p>
+
+                <h3>Páginas com CWV ruins podem aparecer em AI Overviews?</h3>
+                <p>Podem, se o conteúdo for muito relevante. Mas páginas com boas métricas têm vantagem competitiva. CWV não é fator de exclusão absoluto, mas de priorização.</p>
+
+                <h3>INP substituiu FID. Qual a diferença?</h3>
+                <p>FID media apenas a primeira interação. INP mede todas as interações durante a sessão, dando visão mais completa da responsividade. INP é mais exigente e representativo.</p>
+
+                <h3>Como verificar se passo nos Core Web Vitals?</h3>
+                <p>Use PageSpeed Insights ou o relatório de Core Web Vitals no Google Search Console. Priorize dados de campo (CrUX) sobre dados de lab (Lighthouse).</p>
+            </section>
+
+            <section>
+                <h2>Conclusão</h2>
+
+                <p>Core Web Vitals são parte do ecossistema de qualidade que Google considera para AI Overviews:</p>
+
+                <ul>
+                    <li><strong>LCP:</strong> Foque primeiro — afeta diretamente extração de conteúdo</li>
+                    <li><strong>CLS:</strong> Layouts estáveis são mais confiáveis para captura</li>
+                    <li><strong>INP:</strong> Indica qualidade geral, mesmo que impacto seja indireto</li>
+                </ul>
+
+                <p>CWV não são o único fator, mas são parte importante. Páginas tecnicamente sólidas têm vantagem competitiva em um sistema que precisa selecionar fontes confiáveis.</p>
+
+                <p>Continue aprendendo: <a href="/blog/velocidade-pagina-ia/">velocidade de página</a>, <a href="/blog/javascript-llms/">JavaScript e LLMs</a> e <a href="/blog/como-aparecer-ai-overviews/">como aparecer em AI Overviews</a>.</p>
+            </section>
+
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                <div class="author-info">
+                    <h4>Sidney Santos</h4>
+                    <p>Especialista em Search Intelligence AI com mais de 12 anos de experiência em SEO. Fundador da AUDITSEO.</p>
+                    <div class="author-links"><a href="https://www.linkedin.com/in/sidney-especialista-em-seo/">LinkedIn</a><a href="https://instagram.com/sidneyespecialistaseo">Instagram</a></div>
+                </div>
+            </div>
+
+            <div class="related-posts">
+                <h3 class="related-title">Artigos Relacionados</h3>
+                <div class="related-grid">
+                    <div class="related-card"><h4><a href="/blog/velocidade-pagina-ia/">Velocidade de Página e IAs</a></h4><p>Performance e visibilidade em LLMs.</p></div>
+                    <div class="related-card"><h4><a href="/blog/como-aparecer-ai-overviews/">Aparecer em AI Overviews</a></h4><p>Estratégias completas.</p></div>
+                    <div class="related-card"><h4><a href="/blog/estrutura-html-para-ia/">Estrutura HTML Para IAs</a></h4><p>HTML semântico otimizado.</p></div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand"><div class="footer-logo">AUDITSEO</div><p class="footer-desc">Agência de SEO especializada em Search Intelligence AI.</p><div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil</div></div>
+            <div class="footer-col"><h4 class="footer-title">Serviços</h4><ul class="footer-links"><li><a href="/servicos/">Todos os Serviços</a></li><li><a href="/servicos/technical-ai-seo/">Technical AI SEO</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Empresa</h4><ul class="footer-links"><li><a href="/sobre/">Sobre Nós</a></li><li><a href="/blog/">Blog</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Contato</h4><ul class="footer-links"><li><a href="https://wa.me/5511996384376">WhatsApp</a></li><li><a href="tel:+5511996384376">(11) 99638-4376</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 AUDITSEO — Todos os direitos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>

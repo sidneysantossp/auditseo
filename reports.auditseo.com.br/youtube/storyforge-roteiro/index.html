@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryForge — Editor de Roteiro Estruturado</title>
+<style>
+/* ============================================
+   STORYFORGE MODULE 2 — CSS COMPLETO
+   ============================================ */
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a2e;
+  --bg-card-hover: #22223a;
+  --bg-input: #16162a;
+  --bg-editor: #111122;
+  --border-color: #2a2a4a;
+  --border-focus: #6c5ce7;
+  --text-primary: #e8e8f0;
+  --text-secondary: #9999bb;
+  --text-muted: #666688;
+  --accent-primary: #6c5ce7;
+  --accent-secondary: #a29bfe;
+  --accent-gradient: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  --success: #00cec9;
+  --warning: #fdcb6e;
+  --danger: #ff6b6b;
+  --hook-color: #ff6b6b;
+  --act1-color: #fdcb6e;
+  --act2-color: #e17055;
+  --act3-color: #ff6b6b;
+  --epilog-color: #00cec9;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ---- HEADER ---- */
+.header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.logo { display: flex; align-items: center; gap: 12px; }
+
+.logo-icon {
+  width: 38px; height: 38px;
+  background: var(--accent-gradient);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: bold; color: white;
+}
+
+.logo-text {
+  font-size: 20px; font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-sub {
+  font-size: 10px; color: var(--text-muted);
+  letter-spacing: 2px; text-transform: uppercase;
+}
+
+.header-actions { display: flex; gap: 10px; align-items: center; }
+
+.btn-header {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  color: var(--text-secondary); padding: 7px 14px;
+  border-radius: var(--radius-sm); cursor: pointer;
+  font-size: 12px; transition: var(--transition);
+}
+.btn-header:hover { border-color: var(--accent-primary); color: var(--text-primary); }
+
+.btn-header.active {
+  background: rgba(108,92,231,0.2); border-color: var(--accent-primary);
+  color: var(--accent-secondary);
+}
+
+/* ---- LAYOUT PRINCIPAL ---- */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 0;
+  min-height: calc(100vh - 65px);
+}
+
+/* ---- EDITOR CENTRAL ---- */
+.editor-area {
+  padding: 24px 32px;
+  overflow-y: auto;
+  max-height: calc(100vh - 65px);
+}
+
+/* ---- SIDEBAR DIREITA ---- */
+.right-sidebar {
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-color);
+  padding: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 65px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ---- TÍTULO DO ROTEIRO ---- */
+.script-title-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.script-title-label {
+  font-size: 11px; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.script-title-input {
+  width: 100%;
+  background: transparent; border: none;
+  color: var(--text-primary);
+  font-size: 20px; font-weight: 600;
+  outline: none; padding: 4px 0;
+  border-bottom: 2px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.script-title-input:focus {
+  border-bottom-color: var(--accent-primary);
+}
+
+.script-title-input::placeholder { color: var(--text-muted); }
+
+.script-meta-row {
+  display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap;
+}
+
+.meta-select-group { flex: 1; min-width: 140px; }
+.meta-select-group label {
+  display: block; font-size: 10px; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;
+}
+
+.meta-select {
+  width: 100%; background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary); padding: 7px 10px;
+  border-radius: var(--radius-sm); font-size: 12px;
+  appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%239999bb' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 28px;
+}
+.meta-select:focus { outline: none; border-color: var(--accent-primary); }
+.meta-select option { background: var(--bg-secondary); }
+
+/* ---- SEÇÕES DO ROTEIRO ---- */
+.script-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.script-section:hover {
+  border-color: rgba(108,92,231,0.3);
+}
+
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: var(--transition);
+}
+
+.section-header:hover { background: rgba(255,255,255,0.02); }
+
+.section-header-left {
+  display: flex; align-items: center; gap: 12px;
+}
+
+.section-dot {
+  width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0;
+}
+
+.section-name {
+  font-size: 14px; font-weight: 600;
+}
+
+.section-timing {
+  font-size: 11px; color: var(--text-muted);
+  background: var(--bg-input); padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.section-header-right {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.section-word-count {
+  font-size: 11px; color: var(--text-muted);
+}
+
+.section-duration {
+  font-size: 11px; font-weight: 600; color: var(--accent-secondary);
+}
+
+.section-toggle {
+  font-size: 14px; color: var(--text-muted);
+  transition: transform 0.3s ease;
+}
+
+.section-toggle.collapsed { transform: rotate(-90deg); }
+
+.section-body {
+  padding: 0 20px 20px;
+  display: block;
+}
+
+.section-body.hidden { display: none; }
+
+.section-hint {
+  font-size: 12px; color: var(--text-muted);
+  margin-bottom: 10px; font-style: italic;
+  padding: 8px 12px;
+  background: rgba(108,92,231,0.05);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-primary);
+  line-height: 1.5;
+}
+
+/* ---- TEXTAREA DO EDITOR ---- */
+.script-textarea {
+  width: 100%;
+  min-height: 140px;
+  background: var(--bg-editor);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  line-height: 1.8;
+  resize: vertical;
+  transition: var(--transition);
+}
+
+.script-textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(108,92,231,0.1);
+}
+
+.script-textarea::placeholder {
+  color: var(--text-muted); font-style: italic;
+}
+
+.script-textarea.hook-area { min-height: 80px; border-left: 3px solid var(--hook-color); }
+.script-textarea.act1-area { min-height: 200px; border-left: 3px solid var(--act1-color); }
+.script-textarea.act2-area { min-height: 300px; border-left: 3px solid var(--act2-color); }
+.script-textarea.act3-area { min-height: 200px; border-left: 3px solid var(--act3-color); }
+.script-textarea.epilog-area { min-height: 80px; border-left: 3px solid var(--epilog-color); }
+
+/* ---- ELEMENTOS ESTRUTURAIS ---- */
+.structure-elements {
+  margin-top: 14px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.struct-element {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+}
+
+.struct-icon {
+  font-size: 16px; flex-shrink: 0; margin-top: 2px;
+}
+
+.struct-content { flex: 1; }
+
+.struct-label {
+  font-size: 11px; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.struct-input {
+  width: 100%; background: transparent;
+  border: none; border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary); font-size: 13px;
+  padding: 4px 0; outline: none;
+  transition: var(--transition);
+}
+
+.struct-input:focus { border-bottom-color: var(--accent-primary); }
+.struct-input::placeholder { color: #444466; }
+
+.struct-check {
+  width: 20px; height: 20px; flex-shrink: 0;
+  background: var(--bg-input); border: 2px solid var(--border-color);
+  border-radius: 4px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: transparent;
+  transition: var(--transition); margin-top: 2px;
+}
+
+.struct-check.checked {
+  background: var(--accent-primary); border-color: var(--accent-primary);
+  color: white;
+}
+
+/* ---- MID-ROLL MARKERS ---- */
+.midroll-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px;
+  background: rgba(253,203,110,0.05);
+  border: 1px dashed rgba(253,203,110,0.3);
+  border-radius: var(--radius-sm);
+  margin-top: 10px;
+}
+
+.midroll-icon { font-size: 14px; }
+.midroll-label {
+  font-size: 11px; color: var(--warning);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.midroll-input {
+  width: 70px; background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--warning); font-size: 12px;
+  padding: 4px 8px; border-radius: 4px;
+  text-align: center; outline: none;
+}
+.midroll-input:focus { border-color: var(--warning); }
+
+/* ---- PAINEL LATERAL DIREITO ---- */
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.panel-title {
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--text-muted); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+
+/* ---- MÉTRICAS ---- */
+.metrics-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
+
+.metric-box {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 20px; font-weight: 700;
+  color: var(--accent-secondary);
+}
+
+.metric-label {
+  font-size: 10px; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.metric-box.full-width {
+  grid-column: span 2;
+}
+
+/* ---- CHECKLIST ---- */
+.checklist { display: flex; flex-direction: column; gap: 6px; }
+
+.check-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 10px;
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  transition: var(--transition);
+}
+
+.check-status {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; flex-shrink: 0;
+}
+
+.check-pass { background: rgba(0,206,201,0.2); color: var(--success); }
+.check-fail { background: rgba(255,107,107,0.2); color: var(--danger); }
+.check-warn { background: rgba(253,203,110,0.2); color: var(--warning); }
+
+.check-text { color: var(--text-secondary); }
+.check-item.passed .check-text { color: var(--text-primary); }
+
+/* ---- BARRA DE PROGRESSO DA SEÇÃO ---- */
+.section-progress-bar {
+  display: flex; gap: 3px; margin-bottom: 16px;
+  padding: 0 4px;
+}
+
+.progress-segment {
+  height: 6px; border-radius: 3px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.progress-segment .progress-tooltip {
+  display: none; position: absolute;
+  bottom: 14px; left: 50%; transform: translateX(-50%);
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  padding: 4px 8px; border-radius: 4px;
+  font-size: 10px; color: var(--text-secondary);
+  white-space: nowrap; z-index: 10;
+}
+
+.progress-segment:hover .progress-tooltip { display: block; }
+
+/* ---- TIMELINE ---- */
+.timeline-bar {
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+
+.timeline-track {
+  display: flex; height: 24px; border-radius: 4px; overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.timeline-segment {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 600; color: rgba(0,0,0,0.7);
+  transition: var(--transition);
+  cursor: default;
+}
+
+.timeline-labels {
+  display: flex; justify-content: space-between;
+  font-size: 9px; color: var(--text-muted);
+}
+
+/* ---- SAVED SCRIPTS ---- */
+.saved-scripts-list {
+  display: flex; flex-direction: column; gap: 6px;
+  max-height: 180px; overflow-y: auto;
+}
+
+.saved-script-item {
+  padding: 8px 10px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.saved-script-item:hover {
+  border-color: var(--accent-primary);
+  background: rgba(108,92,231,0.05);
+}
+
+.saved-script-title {
+  font-size: 12px; font-weight: 500;
+  color: var(--text-primary);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.saved-script-meta {
+  font-size: 10px; color: var(--text-muted); margin-top: 2px;
+  display: flex; gap: 8px;
+}
+
+.saved-script-actions {
+  display: flex; gap: 4px; margin-top: 6px;
+}
+
+.btn-tiny {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  color: var(--text-muted); padding: 3px 8px;
+  border-radius: 4px; cursor: pointer; font-size: 10px;
+  transition: var(--transition);
+}
+.btn-tiny:hover { border-color: var(--accent-primary); color: var(--text-primary); }
+.btn-tiny.danger:hover { border-color: var(--danger); color: var(--danger); }
+
+/* ---- BOTÕES DE AÇÃO ---- */
+.action-btn {
+  width: 100%; padding: 10px 16px;
+  border: none; border-radius: var(--radius-sm);
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: var(--transition);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+
+.action-primary {
+  background: var(--accent-gradient); color: white;
+  box-shadow: 0 4px 12px rgba(108,92,231,0.3);
+}
+.action-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(108,92,231,0.4); }
+
+.action-secondary {
+  background: var(--bg-input); border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+.action-secondary:hover { border-color: var(--accent-primary); color: var(--text-primary); }
+
+.action-group { display: flex; flex-direction: column; gap: 8px; }
+
+/* ---- TTS PREVIEW ---- */
+.tts-controls {
+  display: flex; gap: 6px; align-items: center;
+}
+
+.tts-btn {
+  width: 36px; height: 36px;
+  background: var(--bg-input); border: 1px solid var(--border-color);
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; transition: var(--transition);
+  color: var(--text-muted);
+}
+.tts-btn:hover { border-color: var(--accent-primary); color: var(--text-primary); }
+.tts-btn.playing { background: rgba(108,92,231,0.2); border-color: var(--accent-primary); color: var(--accent-secondary); }
+
+.tts-select {
+  flex: 1; background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary); padding: 6px 8px;
+  border-radius: var(--radius-sm); font-size: 11px;
+  appearance: none; cursor: pointer;
+}
+
+.tts-speed {
+  width: 50px; background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary); padding: 6px;
+  border-radius: var(--radius-sm); font-size: 11px;
+  text-align: center;
+}
+
+/* ---- WORD TARGET INDICATOR ---- */
+.word-target {
+  display: flex; align-items: center; gap: 6px; margin-top: 8px;
+}
+
+.word-bar-bg {
+  flex: 1; height: 4px; background: var(--bg-input);
+  border-radius: 2px; overflow: hidden;
+}
+
+.word-bar-fill {
+  height: 100%; border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.word-bar-fill.optimal { background: var(--success); }
+.word-bar-fill.under { background: var(--warning); }
+.word-bar-fill.over { background: var(--danger); }
+
+.word-target-label {
+  font-size: 10px; color: var(--text-muted); white-space: nowrap;
+}
+
+/* ---- TOAST ---- */
+.toast {
+  position: fixed; bottom: 24px; right: 24px;
+  background: var(--bg-card); border: 1px solid var(--success);
+  color: var(--text-primary); padding: 12px 20px;
+  border-radius: var(--radius-sm); font-size: 13px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(100px); opacity: 0;
+  transition: var(--transition); z-index: 1000;
+  display: flex; align-items: center; gap: 8px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+  .main-layout { grid-template-columns: 1fr; }
+  .right-sidebar {
+    border-left: none; border-top: 1px solid var(--border-color);
+    max-height: none;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .editor-area { padding: 16px; }
+  .right-sidebar { grid-template-columns: 1fr; padding: 16px; }
+  .script-meta-row { flex-direction: column; }
+  .header { padding: 10px 16px; }
+  .header-actions { gap: 6px; }
+}
+
+/* ---- IMPORT TITLES MODAL ---- */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none; align-items: center; justify-content: center;
+  z-index: 200;
+}
+.modal-overlay.active { display: flex; }
+
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px; width: 90%; max-width: 500px;
+  max-height: 80vh; overflow-y: auto;
+}
+
+.modal-title {
+  font-size: 16px; font-weight: 600; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+.modal-close {
+  margin-left: auto; background: none; border: none;
+  color: var(--text-muted); font-size: 18px; cursor: pointer;
+}
+
+.import-title-item {
+  padding: 10px 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  margin-bottom: 6px; cursor: pointer;
+  transition: var(--transition);
+  font-size: 13px; color: var(--text-secondary);
+}
+.import-title-item:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  background: rgba(108,92,231,0.05);
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-icon">SF</div>
+    <div>
+      <div class="logo-text">StoryForge</div>
+      <div class="logo-sub">Editor de Roteiro · Módulo 2</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-header" onclick="newScript()">📝 Novo Roteiro</button>
+    <button class="btn-header" onclick="openImportModal()">📥 Importar Título</button>
+    <button class="btn-header" onclick="exportTXT()">📄 Exportar .TXT</button>
+    <button class="btn-header" onclick="exportJSON()">💾 Salvar Projeto</button>
+    <button class="btn-header" onclick="document.getElementById('loadFile').click()">📂 Carregar</button>
+    <input type="file" id="loadFile" accept=".json" style="display:none" onchange="loadProject(event)">
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+
+  <!-- EDITOR CENTRAL -->
+  <div class="editor-area" id="editorArea">
+
+    <!-- Barra de Progresso das Seções -->
+    <div class="section-progress-bar" id="progressBar"></div>
+
+    <!-- Título do Roteiro -->
+    <div class="script-title-bar">
+      <div class="script-title-label">Título do Vídeo</div>
+      <input class="script-title-input" id="scriptTitle" type="text"
+        placeholder="Cole ou digite o título do vídeo aqui..."
+        oninput="onScriptChange()">
+      
+      <div class="script-meta-row">
+        <div class="meta-select-group">
+          <label>Categoria</label>
+          <select class="meta-select" id="metaCategory" onchange="onScriptChange()"></select>
+        </div>
+        <div class="meta-select-group">
+          <label>Personagem</label>
+          <select class="meta-select" id="metaCharacter" onchange="onScriptChange()"></select>
+        </div>
+        <div class="meta-select-group">
+          <label>Idioma</label>
+          <select class="meta-select" id="metaLanguage" onchange="onLanguageChange()"></select>
+        </div>
+        <div class="meta-select-group">
+          <label>Duração Alvo</label>
+          <select class="meta-select" id="metaDuration" onchange="onDurationChange()">
+            <option value="25">25 min</option>
+            <option value="35">35 min</option>
+            <option value="50" selected>50 min</option>
+            <option value="60">60 min</option>
+            <option value="70">70 min</option>
+            <option value="90">90 min</option>
+            <option value="120">120 min</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÕES DO ROTEIRO -->
+    <div id="sectionsContainer"></div>
+
+  </div>
+
+  <!-- SIDEBAR DIREITA -->
+  <aside class="right-sidebar">
+
+    <!-- Métricas -->
+    <div class="panel">
+      <div class="panel-title">📊 Métricas do Roteiro</div>
+      <div class="metrics-grid">
+        <div class="metric-box">
+          <div class="metric-value" id="metricWords">0</div>
+          <div class="metric-label">Palavras</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-value" id="metricDuration">0:00</div>
+          <div class="metric-label">Duração Est.</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-value" id="metricChars">0</div>
+          <div class="metric-label">Caracteres</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-value" id="metricMidrolls">0</div>
+          <div class="metric-label">Mid-rolls</div>
+        </div>
+      </div>
+
+      <!-- Timeline Visual -->
+      <div class="timeline-bar" style="margin-top:12px;">
+        <div class="timeline-track" id="timelineTrack"></div>
+        <div class="timeline-labels">
+          <span>0:00</span>
+          <span id="timelineEnd">50:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checklist de Qualidade -->
+    <div class="panel">
+      <div class="panel-title">✅ Checklist de Qualidade</div>
+      <div class="checklist" id="checklist"></div>
+    </div>
+
+    <!-- TTS Preview -->
+    <div class="panel">
+      <div class="panel-title">🔊 Preview de Áudio (TTS)</div>
+      <div class="tts-controls">
+        <button class="tts-btn" id="ttsPlayBtn" onclick="toggleTTS()">▶</button>
+        <button class="tts-btn" onclick="stopTTS()">⏹</button>
+        <select class="tts-select" id="ttsVoice"></select>
+        <input class="tts-speed" id="ttsSpeed" type="number" value="1.0" min="0.5" max="2.0" step="0.1" title="Velocidade">
+      </div>
+      <div style="margin-top:8px;">
+        <select class="meta-select" id="ttsSectionSelect" style="font-size:11px;">
+          <option value="all">Roteiro completo</option>
+          <option value="hook">Apenas Hook</option>
+          <option value="act1">Apenas Ato 1</option>
+          <option value="act2">Apenas Ato 2</option>
+          <option value="act3">Apenas Ato 3</option>
+          <option value="epilog">Apenas Epílogo</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Roteiros Salvos -->
+    <div class="panel">
+      <div class="panel-title">📁 Roteiros Salvos <span id="savedScriptCount" style="color:var(--accent-secondary);margin-left:4px;"></span></div>
+      <div class="saved-scripts-list" id="savedScriptsList">
+        <div style="font-size:11px;color:var(--text-muted);text-align:center;padding:12px;">Nenhum roteiro salvo</div>
+      </div>
+    </div>
+
+    <!-- Ações -->
+    <div class="action-group">
+      <button class="action-btn action-primary" onclick="saveScript()">💾 Salvar Roteiro</button>
+      <button class="action-btn action-secondary" onclick="exportTXT()">📄 Exportar .TXT</button>
+      <button class="action-btn action-secondary" onclick="clearAll()">🗑️ Limpar Tudo</button>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- MODAL: Importar Título -->
+<div class="modal-overlay" id="importModal">
+  <div class="modal">
+    <div class="modal-title">
+      📥 Importar Título do Módulo 1
+      <button class="modal-close" onclick="closeImportModal()">✕</button>
+    </div>
+    <div id="importTitlesList"></div>
+    <div style="margin-top:12px;font-size:11px;color:var(--text-muted);">
+      Clique em um título para importá-lo como base do roteiro.
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span id="toastIcon">✅</span>
+  <span id="toastMsg"></span>
+</div>
+
+<script>
+// ============================================
+// STORYFORGE MODULE 2 — ENGINE COMPLETA
+// ============================================
+
+// ---- CONFIGURAÇÃO ----
+const CONFIG = {
+  wpm: { // Words per minute por idioma (narração)
+    en: 145, es: 135, pt: 130, it: 135, pl: 125, hr: 120, ro: 130, fr: 140
+  },
+  sectionRatios: { // Proporção de cada seção
+    hook:   0.01,  // ~1% do tempo
+    act1:   0.24,  // ~24%
+    act2:   0.46,  // ~46%
+    act3:   0.24,  // ~24%
+    epilog: 0.05   // ~5%
+  },
+  colors: {
+    hook:   '#ff6b6b',
+    act1:   '#fdcb6e',
+    act2:   '#e17055',
+    act3:   '#ff6b6b',
+    epilog: '#00cec9'
+  }
+};
+
+// ---- DADOS COMPARTILHADOS (mesmo do Módulo 1) ----
+const CATEGORIES = [
+  "Exclusão em Evento Familiar","Herança Roubada ou Injusta","Humilhação Pública",
+  "Conflito Familiar + Vingança","Conflito Familiar + Lição de Vida",
+  "Ascensão ou Vingança Profissional","Reconhecimento Inesperado","Favoritismo Familiar",
+  "Desprezo por Conquistas Pessoais","Empoderamento na Velhice",
+  "Injustiça em Casamentos e Festas","Corte de Relacionamentos / Pertencimento",
+  "Falas que Machucam + Virada Pública","Desprezo por Ajuda Silenciosa",
+  "Sacrifício Financeiro Ignorado","Humilhação Legal + Virada Jurídica",
+  "Reconhecimento em Eventos Formais","Protagonista Invisível + Revelação de Valor",
+  "Casamento Arranjado + Reação Inesperada","Infidelidade + Reviravolta Emocional",
+  "Cancelamento de Celebração Familiar","Constrangimento Infantil em Evento",
+  "Corte ou Bloqueio Digital em Crise","Desprezo Durante Gravidez ou Parto",
+  "Força de Criança Ignorada","Exposição de Traição em Público",
+  "Humilhação em Transporte Familiar","Negligência em Situação Médica",
+  "Sabotagem Familiar na Vida Profissional","Reviravolta Financeira em Relação Amorosa",
+  "Abandono Parental na Velhice","Internação Forçada em Asilo",
+  "Ignorado em Férias de Família","Desprezo por Quem Construiu Tudo",
+  "Presente Planejado + Ingratidão","Expulsão do Próprio Lar + Revelação",
+  "Humilhação em Refeição Familiar","Abandono em Viagem + Reação",
+  "Recusa em Encontro + Contribuição Invisível","Reviravolta em Funeral",
+  "Carta Escondida + Virada Pós-Morte","Abandono em Local Público",
+  "Proposta Inconveniente + Suspense Jurídico","Mistério Oculto + Frase-Chave",
+  "Julgamento Injusto + Reviravolta em Testamento"
+];
+
+const CHARACTERS = [
+  "My Parents","My Sister","My Family","My Mother-in-Law","My Sister-in-Law",
+  "My Husband","My Wife","My Boss","My Daughter","My Son","My Grandfather",
+  "My Grandmother","My Brother","My Cousin","My Children","My Daughter-in-Law",
+  "My Assistant","The Lawyer","The CEO","My Fiancé/Fiancée"
+];
+
+const LANGUAGES = [
+  { id: "en", label: "English" },
+  { id: "es", label: "Español" },
+  { id: "pt", label: "Português" },
+  { id: "it", label: "Italiano" },
+  { id: "pl", label: "Polski" },
+  { id: "hr", label: "Hrvatski" },
+  { id: "ro", label: "Română" },
+  { id: "fr", label: "Français" }
+];
+
+// ---- DEFINIÇÃO DAS SEÇÕES ----
+const SECTIONS = [
+  {
+    id: 'hook',
+    name: 'HOOK',
+    emoji: '🔴',
+    color: CONFIG.colors.hook,
+    ratio: CONFIG.sectionRatios.hook,
+    hint: 'Comece pelo momento de MAIOR IMPACTO da história. Não contextualize ainda — jogue o espectador direto no clímax. Use uma frase curta e chocante. Ex: "Quando abri o testamento, meu nome não estava lá. Mas o que eu fiz nos 6 meses seguintes mudou tudo."',
+    placeholder: 'Escreva o hook aqui. Comece pelo clímax. Máximo impacto em 30 segundos...',
+    cssClass: 'hook-area',
+    structElements: [
+      { type: 'input', id: 'hook_phrase', label: 'Frase de impacto inicial', icon: '💥', placeholder: 'Ex: "Quando abri a porta, todos ficaram em silêncio..."' }
+    ]
+  },
+  {
+    id: 'act1',
+    name: 'ATO 1 — SETUP',
+    emoji: '🟡',
+    color: CONFIG.colors.act1,
+    ratio: CONFIG.sectionRatios.act1,
+    hint: 'Apresente o protagonista: quem é, onde vive, relação com os outros personagens. Construa empatia. Insira o primeiro sinal de que algo está errado. Termine com um micro-clímax que prende a atenção.',
+    placeholder: 'Contextualize a história. Quem é o protagonista? Qual é sua situação? Quem são os personagens ao redor?...',
+    cssClass: 'act1-area',
+    structElements: [
+      { type: 'input', id: 'act1_microclímax', label: 'Micro-clímax 1 (cena de tensão)', icon: '⚡', placeholder: 'Ex: "Foi quando minha irmã disse aquela frase no jantar..."' },
+      { type: 'input', id: 'act1_openloop', label: 'Open Loop 1 (pergunta não respondida)', icon: '🔓', placeholder: 'Ex: "Mas eu ainda não sabia o que ela guardava no cofre..."' },
+      { type: 'check', id: 'act1_empathy', label: 'Empatia construída com o protagonista', icon: '❤️' },
+      { type: 'check', id: 'act1_villain', label: 'Vilão/antagonista claramente identificado', icon: '😈' }
+    ]
+  },
+  {
+    id: 'act2',
+    name: 'ATO 2 — CONFLITO & ESCALADA',
+    emoji: '🟠',
+    color: CONFIG.colors.act2,
+    ratio: CONFIG.sectionRatios.act2,
+    hint: 'Este é o coração da história. Escale o conflito progressivamente: humilhação, traição, exclusão. Cada novo evento piora a situação. Insira 2 micro-clímax e 1 open loop. Aqui é onde os mid-rolls geram mais receita.',
+    placeholder: 'Desenvolva o conflito. Cada parágrafo deve escalar a tensão. Insira falas cruéis, momentos de injustiça, cenas que fazem o público torcer pelo protagonista...',
+    cssClass: 'act2-area',
+    structElements: [
+      { type: 'input', id: 'act2_microclímax1', label: 'Micro-clímax 2 (escalada de tensão)', icon: '⚡', placeholder: 'Ex: "Quando cheguei ao jantar, meu lugar não estava na mesa..."' },
+      { type: 'input', id: 'act2_microclímax2', label: 'Micro-clímax 3 (ponto de virada)', icon: '⚡', placeholder: 'Ex: "Foi quando li a mensagem no celular que entendi tudo..."' },
+      { type: 'input', id: 'act2_openloop', label: 'Open Loop 2 (suspense)', icon: '🔓', placeholder: 'Ex: "Mas havia algo que eles não sabiam sobre o documento..."' },
+      { type: 'input', id: 'act2_cruelphrase', label: 'Frase cruel do vilão (entre aspas)', icon: '🗣️', placeholder: 'Ex: "Você nunca vai ser como sua irmã"' },
+      { type: 'check', id: 'act2_escalation', label: 'Tensão escalando a cada parágrafo', icon: '📈' },
+      { type: 'check', id: 'act2_audience', label: 'Público torcendo pelo protagonista', icon: '👏' }
+    ],
+    midrolls: [
+      { label: 'Mid-roll 1', defaultMin: 15 },
+      { label: 'Mid-roll 2', defaultMin: 22 },
+      { label: 'Mid-roll 3', defaultMin: 30 }
+    ]
+  },
+  {
+    id: 'act3',
+    name: 'ATO 3 — CLÍMAX & RESOLUÇÃO',
+    emoji: '🔴',
+    color: CONFIG.colors.act3,
+    ratio: CONFIG.sectionRatios.act3,
+    hint: 'A grande reviravolta. O protagonista revela seu poder, o documento aparece, o status é exposto. Este é o momento que o público esperou. Termine com a "frase de poder" — a frase que fica na memória.',
+    placeholder: 'A reviravolta acontece aqui. O protagonista age. O documento é revelado. O poder é mostrado. O vilão é confrontado...',
+    cssClass: 'act3-area',
+    structElements: [
+      { type: 'input', id: 'act3_reveal', label: 'Momento da revelação/vingança', icon: '🎯', placeholder: 'Ex: "Foi quando o advogado abriu o segundo envelope..."' },
+      { type: 'input', id: 'act3_powerphrase', label: 'Frase de poder final', icon: '👑', placeholder: 'Ex: "Seus rostos ficaram pálidos quando leram meu nome na escritura"' },
+      { type: 'check', id: 'act3_justice', label: 'Justiça ou vingança sentida pelo público', icon: '⚖️' },
+      { type: 'check', id: 'act3_emotional', label: 'Impacto emocional forte na cena final', icon: '😢' }
+    ]
+  },
+  {
+    id: 'epilog',
+    name: 'EPÍLOGO',
+    emoji: '🟢',
+    color: CONFIG.colors.epilog,
+    ratio: CONFIG.sectionRatios.epilog,
+    hint: 'Reflexão breve. O que mudou? Como o protagonista se sente agora? Termine com CTA: pergunta para comentários, pedido de like/subscribe, ou teaser do próximo vídeo.',
+    placeholder: 'Reflexão final. O que o protagonista aprendeu? Pergunta para os comentários. Call-to-action...',
+    cssClass: 'epilog-area',
+    structElements: [
+      { type: 'input', id: 'epilog_reflection', label: 'Reflexão ou moral da história', icon: '💭', placeholder: 'Ex: "Naquele dia aprendi que silêncio também é poder"' },
+      { type: 'input', id: 'epilog_cta', label: 'CTA (Call to Action)', icon: '📢', placeholder: 'Ex: "O que você teria feito? Comenta aqui embaixo"' },
+      { type: 'check', id: 'epilog_cta_done', label: 'CTA para comentários incluído', icon: '💬' }
+    ]
+  }
+];
+
+// ---- ESTADO ----
+let scriptData = {
+  title: '',
+  category: '',
+  character: '',
+  language: 'en',
+  targetDuration: 50,
+  sections: {},
+  structElements: {},
+  midrolls: {},
+  createdAt: null,
+  updatedAt: null
+};
+
+let savedScripts = JSON.parse(localStorage.getItem('sf_scripts') || '[]');
+let ttsPlaying = false;
+let ttsUtterance = null;
+
+// ---- INICIALIZAÇÃO ----
+function init() {
+  populateMetaSelects();
+  renderSections();
+  renderSavedScripts();
+  updateAllMetrics();
+  loadTTSVoices();
+}
+
+function populateMetaSelects() {
+  const catSel = document.getElementById('metaCategory');
+  catSel.innerHTML = '<option value="">— Selecionar —</option>';
+  CATEGORIES.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c; o.textContent = c;
+    catSel.appendChild(o);
+  });
+
+  const charSel = document.getElementById('metaCharacter');
+  charSel.innerHTML = '<option value="">— Selecionar —</option>';
+  CHARACTERS.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c; o.textContent = c;
+    charSel.appendChild(o);
+  });
+
+  const langSel = document.getElementById('metaLanguage');
+  langSel.innerHTML = '';
+  LANGUAGES.forEach(l => {
+    const o = document.createElement('option');
+    o.value = l.id; o.textContent = l.label;
+    langSel.appendChild(o);
+  });
+}
+
+// ---- RENDERIZAR SEÇÕES ----
+function renderSections() {
+  const container = document.getElementById('sectionsContainer');
+  const dur = parseInt(document.getElementById('metaDuration').value) || 50;
+  
+  container.innerHTML = SECTIONS.map(sec => {
+    const secMinutes = Math.round(dur * sec.ratio);
+    const secSeconds = Math.round(dur * 60 * sec.ratio);
+    const startMin = getStartMinute(sec.id, dur);
+    const endMin = startMin + secMinutes;
+    const timingLabel = `${formatTime(startMin)} → ${formatTime(endMin)}`;
+    
+    const lang = document.getElementById('metaLanguage').value || 'en';
+    const wpm = CONFIG.wpm[lang] || 140;
+    const targetWords = Math.round(secSeconds / 60 * wpm);
+
+    const currentText = scriptData.sections[sec.id] || '';
+    const currentWords = countWords(currentText);
+
+    let structHTML = '';
+    if (sec.structElements && sec.structElements.length > 0) {
+      structHTML = `<div class="structure-elements">
+        ${sec.structElements.map(el => {
+          if (el.type === 'input') {
+            const val = scriptData.structElements[el.id] || '';
+            return `<div class="struct-element">
+              <span class="struct-icon">${el.icon}</span>
+              <div class="struct-content">
+                <div class="struct-label">${el.label}</div>
+                <input class="struct-input" type="text" placeholder="${el.placeholder}"
+                  value="${escapeHTML(val)}"
+                  oninput="onStructInput('${el.id}', this.value)">
+              </div>
+            </div>`;
+          } else if (el.type === 'check') {
+            const checked = scriptData.structElements[el.id] || false;
+            return `<div class="struct-element">
+              <div class="struct-check ${checked ? 'checked' : ''}" 
+                onclick="toggleCheck('${el.id}', this)">✓</div>
+              <span class="struct-icon">${el.icon}</span>
+              <div class="struct-label" style="margin-bottom:0">${el.label}</div>
+            </div>`;
+          }
+          return '';
+        }).join('')}
+      </div>`;
+    }
+
+    let midrollHTML = '';
+    if (sec.midrolls) {
+      midrollHTML = sec.midrolls.map((mr, i) => {
+        const key = `${sec.id}_midroll_${i}`;
+        const val = scriptData.midrolls[key] || mr.defaultMin;
+        return `<div class="midroll-row">
+          <span class="midroll-icon">💰</span>
+          <span class="midroll-label">${mr.label}</span>
+          <input class="midroll-input" type="text" value="${val}:00"
+            oninput="onMidrollChange('${key}', this.value)">
+          <span style="font-size:10px;color:var(--text-muted);">min</span>
+        </div>`;
+      }).join('');
+    }
+
+    const wordPct = targetWords > 0 ? Math.min(100, Math.round(currentWords / targetWords * 100)) : 0;
+    const wordClass = wordPct >= 90 && wordPct <= 110 ? 'optimal' : wordPct < 90 ? 'under' : 'over';
+
+    return `
+      <div class="script-section" id="section-${sec.id}">
+        <div class="section-header" onclick="toggleSection('${sec.id}')">
+          <div class="section-header-left">
+            <div class="section-dot" style="background:${sec.color}"></div>
+            <span class="section-name">${sec.emoji} ${sec.name}</span>
+            <span class="section-timing">${timingLabel}</span>
+          </div>
+          <div class="section-header-right">
+            <span class="section-word-count">${currentWords}/${targetWords} palavras</span>
+            <span class="section-duration">~${secMinutes} min</span>
+            <span class="section-toggle" id="toggle-${sec.id}">▼</span>
+          </div>
+        </div>
+        <div class="section-body" id="body-${sec.id}">
+          <div class="section-hint">${sec.hint}</div>
+          <textarea class="script-textarea ${sec.cssClass}"
+            id="textarea-${sec.id}"
+            placeholder="${sec.placeholder}"
+            oninput="onTextChange('${sec.id}', this.value)">${escapeHTML(currentText)}</textarea>
+          <div class="word-target">
+            <div class="word-bar-bg">
+              <div class="word-bar-fill ${wordClass}" style="width:${wordPct}%"></div>
+            </div>
+            <span class="word-target-label">${wordPct}% do alvo</span>
+          </div>
+          ${structHTML}
+          ${midrollHTML}
+        </div>
+      </div>`;
+  }).join('');
+
+  renderProgressBar();
+  updateTimeline();
+}
+
+// ---- FUNÇÕES DE SEÇÃO ----
+function toggleSection(sectionId) {
+  const body = document.getElementById(`body-${sectionId}`);
+  const toggle = document.getElementById(`toggle-${sectionId}`);
+  body.classList.toggle('hidden');
+  toggle.classList.toggle('collapsed');
+}
+
+function onTextChange(sectionId, value) {
+  scriptData.sections[sectionId] = value;
+  scriptData.updatedAt = new Date().toISOString();
+  updateAllMetrics();
+  // Atualizar word count no header da seção
+  renderSections(); // Re-render leve — pode otimizar depois
+  // Manter foco no textarea correto
+  const textarea = document.getElementById(`textarea-${sectionId}`);
+  if (textarea) textarea.focus();
+}
+
+function onStructInput(elementId, value) {
+  scriptData.structElements[elementId] = value;
+  updateChecklist();
+}
+
+function toggleCheck(elementId, el) {
+  const current = scriptData.structElements[elementId] || false;
+  scriptData.structElements[elementId] = !current;
+  el.classList.toggle('checked');
+  updateChecklist();
+}
+
+function onMidrollChange(key, value) {
+  scriptData.midrolls[key] = value.replace(':00', '');
+  updateAllMetrics();
+}
+
+function onScriptChange() {
+  scriptData.title = document.getElementById('scriptTitle').value;
+  scriptData.category = document.getElementById('metaCategory').value;
+  scriptData.character = document.getElementById('metaCharacter').value;
+  scriptData.updatedAt = new Date().toISOString();
+}
+
+function onLanguageChange() {
+  scriptData.language = document.getElementById('metaLanguage').value;
+  renderSections();
+}
+
+function onDurationChange() {
+  scriptData.targetDuration = parseInt(document.getElementById('metaDuration').value);
+  renderSections();
+}
+
+// ---- CÁLCULOS ----
+function countWords(text) {
+  if (!text || !text.trim()) return 0;
+  return text.trim().split(/\s+/).length;
+}
+
+function getStartMinute(sectionId, totalDur) {
+  let start = 0;
+  for (const sec of SECTIONS) {
+    if (sec.id === sectionId) break;
+    start += totalDur * sec.ratio;
+  }
+  return Math.round(start);
+}
+
+function formatTime(minutes) {
+  const m = Math.floor(minutes);
+  const s = Math.round((minutes - m) * 60);
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+function formatTimeFull(totalSeconds) {
+  const h = Math.floor(totalSeconds / 3600);
+  const m = Math.floor((totalSeconds % 3600) / 60);
+  const s = totalSeconds % 60;
+  if (h > 0) return `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  return `${m}:${String(s).padStart(2,'0')}`;
+}
+
+function getTotalWords() {
+  let total = 0;
+  SECTIONS.forEach(sec => {
+    total += countWords(scriptData.sections[sec.id] || '');
+  });
+  return total;
+}
+
+function getEstimatedDuration() {
+  const lang = scriptData.language || 'en';
+  const wpm = CONFIG.wpm[lang] || 140;
+  const totalWords = getTotalWords();
+  return Math.round(totalWords / wpm * 60); // em segundos
+}
+
+function countMidrolls() {
+  return Object.keys(scriptData.midrolls).length || 
+    SECTIONS.reduce((sum, s) => sum + (s.midrolls ? s.midrolls.length : 0), 0);
+}
+
+// ---- ATUALIZAR MÉTRICAS ----
+function updateAllMetrics() {
+  const totalWords = getTotalWords();
+  const estSeconds = getEstimatedDuration();
+  const totalChars = SECTIONS.reduce((sum, s) => sum + (scriptData.sections[s.id] || '').length, 0);
+
+  document.getElementById('metricWords').textContent = totalWords.toLocaleString();
+  document.getElementById('metricDuration').textContent = formatTimeFull(estSeconds);
+  document.getElementById('metricChars').textContent = totalChars.toLocaleString();
+  document.getElementById('metricMidrolls').textContent = countMidrolls();
+
+  updateTimeline();
+  renderProgressBar();
+  updateChecklist();
+}
+
+// ---- TIMELINE VISUAL ----
+function updateTimeline() {
+  const track = document.getElementById('timelineTrack');
+  const dur = parseInt(document.getElementById('metaDuration').value) || 50;
+  document.getElementById('timelineEnd').textContent = `${dur}:00`;
+
+  track.innerHTML = SECTIONS.map(sec => {
+    const pct = Math.round(sec.ratio * 100);
+    const words = countWords(scriptData.sections[sec.id] || '');
+    const opacity = words > 0 ? 1 : 0.4;
+    return `<div class="timeline-segment" style="width:${pct}%;background:${sec.color};opacity:${opacity};"
+      title="${sec.name}: ${Math.round(dur * sec.ratio)} min">${sec.id === 'act2' ? sec.name.split('—')[0].trim() : ''}</div>`;
+  }).join('');
+}
+
+// ---- BARRA DE PROGRESSO ----
+function renderProgressBar() {
+  const bar = document.getElementById('progressBar');
+  const lang = scriptData.language || 'en';
+  const wpm = CONFIG.wpm[lang] || 140;
+  const dur = parseInt(document.getElementById('metaDuration').value) || 50;
+
+  bar.innerHTML = SECTIONS.map(sec => {
+    const targetWords = Math.round(dur * 60 * sec.ratio / 60 * wpm);
+    const currentWords = countWords(scriptData.sections[sec.id] || '');
+    const pct = targetWords > 0 ? Math.min(100, Math.round(currentWords / targetWords * 100)) : 0;
+    const fillColor = pct >= 90 ? sec.color : pct > 0 ? sec.color + '80' : 'var(--border-color)';
+    const widthPct = Math.round(sec.ratio * 100);
+
+    return `<div class="progress-segment" style="width:${widthPct}%;background:${fillColor};">
+      <span class="progress-tooltip">${sec.emoji} ${sec.name}: ${pct}%</span>
+    </div>`;
+  }).join('');
+}
+
+// ---- CHECKLIST DE QUALIDADE ----
+function updateChecklist() {
+  const checks = [];
+  const totalWords = getTotalWords();
+  const dur = parseInt(document.getElementById('metaDuration').value) || 50;
+  const lang = scriptData.language || 'en';
+  const wpm = CONFIG.wpm[lang] || 140;
+  const targetTotal = Math.round(dur * wpm);
+
+  // 1. Título preenchido
+  checks.push({
+    pass: (scriptData.title || document.getElementById('scriptTitle').value || '').length > 20,
+    label: 'Título preenchido (>20 chars)',
+    level: 'critical'
+  });
+
+  // 2. Hook escrito
+  const hookWords = countWords(scriptData.sections['hook'] || '');
+  checks.push({
+    pass: hookWords >= 20,
+    label: `Hook escrito (${hookWords} palavras)`,
+    level: 'critical'
+  });
+
+  // 3. Frase de impacto no hook
+  checks.push({
+    pass: !!(scriptData.structElements['hook_phrase'] || '').trim(),
+    label: 'Frase de impacto definida',
+    level: 'important'
+  });
+
+  // 4. Ato 1 com micro-clímax
+  checks.push({
+    pass: !!(scriptData.structElements['act1_microclímax'] || '').trim(),
+    label: 'Micro-clímax 1 definido (Ato 1)',
+    level: 'important'
+  });
+
+  // 5. Open Loop 1
+  checks.push({
+    pass: !!(scriptData.structElements['act1_openloop'] || '').trim(),
+    label: 'Open Loop 1 definido (Ato 1)',
+    level: 'important'
+  });
+
+  // 6. Ato 2 micro-clímax
+  checks.push({
+    pass: !!(scriptData.structElements['act2_microclímax1'] || '').trim() && 
+          !!(scriptData.structElements['act2_microclímax2'] || '').trim(),
+    label: 'Micro-clímax 2 e 3 definidos (Ato 2)',
+    level: 'important'
+  });
+
+  // 7. Frase cruel
+  checks.push({
+    pass: !!(scriptData.structElements['act2_cruelphrase'] || '').trim(),
+    label: 'Frase cruel do vilão definida',
+    level: 'recommended'
+  });
+
+  // 8. Frase de poder
+  checks.push({
+    pass: !!(scriptData.structElements['act3_powerphrase'] || '').trim(),
+    label: 'Frase de poder final definida',
+    level: 'critical'
+  });
+
+  // 9. CTA
+  checks.push({
+    pass: !!(scriptData.structElements['epilog_cta'] || '').trim() || 
+          !!(scriptData.structElements['epilog_cta_done']),
+    label: 'CTA para comentários incluído',
+    level: 'recommended'
+  });
+
+  // 10. Duração alvo atingida
+  const wordPct = targetTotal > 0 ? Math.round(totalWords / targetTotal * 100) : 0;
+  checks.push({
+    pass: wordPct >= 80,
+    warn: wordPct >= 50 && wordPct < 80,
+    label: `Palavras: ${totalWords}/${targetTotal} (${wordPct}%)`,
+    level: 'critical'
+  });
+
+  // 11. Todas as seções preenchidas
+  const filledSections = SECTIONS.filter(s => countWords(scriptData.sections[s.id] || '') > 10).length;
+  checks.push({
+    pass: filledSections === SECTIONS.length,
+    warn: filledSections >= 3,
+    label: `Seções preenchidas: ${filledSections}/${SECTIONS.length}`,
+    level: 'critical'
+  });
+
+  // Renderizar
+  const container = document.getElementById('checklist');
+  container.innerHTML = checks.map(c => {
+    const statusClass = c.pass ? 'check-pass' : (c.warn ? 'check-warn' : 'check-fail');
+    const statusIcon = c.pass ? '✓' : (c.warn ? '!' : '✕');
+    const itemClass = c.pass ? 'passed' : '';
+    return `<div class="check-item ${itemClass}">
+      <div class="check-status ${statusClass}">${statusIcon}</div>
+      <span class="check-text">${c.label}</span>
+    </div>`;
+  }).join('');
+}
+
+// ---- TTS PREVIEW ----
+function loadTTSVoices() {
+  const sel = document.getElementById('ttsVoice');
+  
+  function populateVoices() {
+    const voices = speechSynthesis.getVoices();
+    sel.innerHTML = '';
+    const langMap = { en: 'en', es: 'es', pt: 'pt', it: 'it', pl: 'pl', hr: 'hr', ro: 'ro', fr: 'fr' };
+    
+    voices.forEach((v, i) => {
+      const o = document.createElement('option');
+      o.value = i;
+      o.textContent = `${v.name} (${v.lang})`;
+      sel.appendChild(o);
+    });
+  }
+
+  populateVoices();
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoices;
+  }
+}
+
+function toggleTTS() {
+  if (ttsPlaying) {
+    speechSynthesis.pause();
+    ttsPlaying = false;
+    document.getElementById('ttsPlayBtn').textContent = '▶';
+    document.getElementById('ttsPlayBtn').classList.remove('playing');
+    return;
+  }
+
+  if (speechSynthesis.paused) {
+    speechSynthesis.resume();
+    ttsPlaying = true;
+    document.getElementById('ttsPlayBtn').textContent = '⏸';
+    document.getElementById('ttsPlayBtn').classList.add('playing');
+    return;
+  }
+
+  const sectionSel = document.getElementById('ttsSectionSelect').value;
+  let text = '';
+  
+  if (sectionSel === 'all') {
+    SECTIONS.forEach(s => {
+      text += (scriptData.sections[s.id] || '') + ' ';
+    });
+  } else {
+    text = scriptData.sections[sectionSel] || '';
+  }
+
+  if (!text.trim()) {
+    showToast('Nenhum texto para reproduzir!', '⚠️');
+    return;
+  }
+
+  ttsUtterance = new SpeechSynthesisUtterance(text.trim());
+  
+  const voices = speechSynthesis.getVoices();
+  const voiceIdx = parseInt(document.getElementById('ttsVoice').value);
+  if (voices[voiceIdx]) ttsUtterance.voice = voices[voiceIdx];
+  
+  ttsUtterance.rate = parseFloat(document.getElementById('ttsSpeed').value) || 1.0;
+  
+  ttsUtterance.onend = () => {
+    ttsPlaying = false;
+    document.getElementById('ttsPlayBtn').textContent = '▶';
+    document.getElementById('ttsPlayBtn').classList.remove('playing');
+  };
+
+  speechSynthesis.speak(ttsUtterance);
+  ttsPlaying = true;
+  document.getElementById('ttsPlayBtn').textContent = '⏸';
+  document.getElementById('ttsPlayBtn').classList.add('playing');
+}
+
+function stopTTS() {
+  speechSynthesis.cancel();
+  ttsPlaying = false;
+  document.getElementById('ttsPlayBtn').textContent = '▶';
+  document.getElementById('ttsPlayBtn').classList.remove('playing');
+}
+
+// ---- SALVAR / CARREGAR ----
+function saveScript() {
+  scriptData.title = document.getElementById('scriptTitle').value;
+  scriptData.category = document.getElementById('metaCategory').value;
+  scriptData.character = document.getElementById('metaCharacter').value;
+  scriptData.language = document.getElementById('metaLanguage').value;
+  scriptData.targetDuration = parseInt(document.getElementById('metaDuration').value);
+  
+  if (!scriptData.createdAt) scriptData.createdAt = new Date().toISOString();
+  scriptData.updatedAt = new Date().toISOString();
+
+  // Verificar se já existe (por título)
+  const existingIdx = savedScripts.findIndex(s => s.title === scriptData.title && s.createdAt === scriptData.createdAt);
+  
+  const saveObj = JSON.parse(JSON.stringify(scriptData));
+  saveObj.totalWords = getTotalWords();
+  saveObj.estDuration = formatTimeFull(getEstimatedDuration());
+
+  if (existingIdx >= 0) {
+    savedScripts[existingIdx] = saveObj;
+  } else {
+    savedScripts.push(saveObj);
+  }
+
+  localStorage.setItem('sf_scripts', JSON.stringify(savedScripts));
+  renderSavedScripts();
+  showToast('Roteiro salvo com sucesso!');
+}
+
+function loadScript(index) {
+  const data = savedScripts[index];
+  if (!data) return;
+
+  scriptData = JSON.parse(JSON.stringify(data));
+  
+  document.getElementById('scriptTitle').value = data.title || '';
+  document.getElementById('metaCategory').value = data.category || '';
+  document.getElementById('metaCharacter').value = data.character || '';
+  document.getElementById('metaLanguage').value = data.language || 'en';
+  document.getElementById('metaDuration').value = data.targetDuration || 50;
+
+  renderSections();
+  updateAllMetrics();
+  showToast('Roteiro carregado!', '📂');
+}
+
+function deleteScript(index) {
+  if (!confirm('Tem certeza que deseja excluir este roteiro?')) return;
+  savedScripts.splice(index, 1);
+  localStorage.setItem('sf_scripts', JSON.stringify(savedScripts));
+  renderSavedScripts();
+  showToast('Roteiro excluído!', '🗑️');
+}
+
+function renderSavedScripts() {
+  const list = document.getElementById('savedScriptsList');
+  const count = document.getElementById('savedScriptCount');
+  count.textContent = savedScripts.length > 0 ? `(${savedScripts.length})` : '';
+
+  if (savedScripts.length === 0) {
+    list.innerHTML = '<div style="font-size:11px;color:var(--text-muted);text-align:center;padding:12px;">Nenhum roteiro salvo</div>';
+    return;
+  }
+
+  list.innerHTML = savedScripts.map((s, i) => `
+    <div class="saved-script-item">
+      <div class="saved-script-title">${s.title || 'Sem título'}</div>
+      <div class="saved-script-meta">
+        <span>${s.totalWords || 0} palavras</span>
+        <span>${s.estDuration || '0:00'}</span>
+        <span>${(s.language || 'en').toUpperCase()}</span>
+      </div>
+      <div class="saved-script-actions">
+        <button class="btn-tiny" onclick="loadScript(${i})">📂 Abrir</button>
+        <button class="btn-tiny danger" onclick="deleteScript(${i})">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ---- NOVO ROTEIRO ----
+function newScript() {
+  if (getTotalWords() > 50) {
+    if (!confirm('Você tem conteúdo não salvo. Deseja criar um novo roteiro?')) return;
+  }
+  scriptData = {
+    title: '', category: '', character: '', language: 'en',
+    targetDuration: 50, sections: {}, structElements: {}, midrolls: {},
+    createdAt: null, updatedAt: null
+  };
+  document.getElementById('scriptTitle').value = '';
+  document.getElementById('metaCategory').value = '';
+  document.getElementById('metaCharacter').value = '';
+  document.getElementById('metaLanguage').value = 'en';
+  document.getElementById('metaDuration').value = '50';
+  renderSections();
+  updateAllMetrics();
+  showToast('Novo roteiro criado!', '📝');
+}
+
+function clearAll() {
+  if (!confirm('Limpar TODO o conteúdo do roteiro atual?')) return;
+  scriptData.sections = {};
+  scriptData.structElements = {};
+  scriptData.midrolls = {};
+  renderSections();
+  updateAllMetrics();
+  showToast('Conteúdo limpo!', '🗑️');
+}
+
+// ---- IMPORTAR TÍTULO DO MÓDULO 1 ----
+function openImportModal() {
+  const modal = document.getElementById('importModal');
+  const list = document.getElementById('importTitlesList');
+  
+  // Ler títulos salvos do Módulo 1
+  const savedFromM1 = JSON.parse(localStorage.getItem('sf_saved') || '[]');
+  
+  if (savedFromM1.length === 0) {
+    list.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px;">Nenhum título salvo no Módulo 1.<br>Salve títulos no Gerador de Títulos primeiro.</div>';
+  } else {
+    list.innerHTML = savedFromM1.map((t, i) => `
+      <div class="import-title-item" onclick="importTitle(${i})">
+        ${t.text}
+        <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">
+          ${t.category || ''} · ${t.character || ''} · Score: ${t.score || '—'}
+        </div>
+      </div>
+    `).join('');
+  }
+  
+  modal.classList.add('active');
+}
+
+function closeImportModal() {
+  document.getElementById('importModal').classList.remove('active');
+}
+
+function importTitle(index) {
+  const savedFromM1 = JSON.parse(localStorage.getItem('sf_saved') || '[]');
+  const title = savedFromM1[index];
+  if (!title) return;
+
+  document.getElementById('scriptTitle').value = title.text;
+  scriptData.title = title.text;
+  
+  // Tentar mapear categoria e personagem
+  if (title.category) {
+    const catMatch = CATEGORIES.find(c => c.toLowerCase().includes(title.category.toLowerCase().split(' ')[0]));
+    if (catMatch) document.getElementById('metaCategory').value = catMatch;
+  }
+  if (title.character) {
+    const charMatch = CHARACTERS.find(c => c === title.character);
+    if (charMatch) document.getElementById('metaCharacter').value = charMatch;
+  }
+
+  closeImportModal();
+  showToast('Título importado!', '📥');
+}
+
+// ---- EXPORTAÇÕES ----
+function exportTXT() {
+  const title = document.getElementById('scriptTitle').value || 'Sem título';
+  const dur = document.getElementById('metaDuration').value;
+  const lang = document.getElementById('metaLanguage').value;
+
+  let txt = '═══════════════════════════════════════════\n';
+  txt += `  STORYFORGE — ROTEIRO\n`;
+  txt += '═══════════════════════════════════════════\n\n';
+  txt += `Título: ${title}\n`;
+  txt += `Categoria: ${document.getElementById('metaCategory').value || '—'}\n`;
+  txt += `Personagem: ${document.getElementById('metaCharacter').value || '—'}\n`;
+  txt += `Idioma: ${lang.toUpperCase()} | Duração alvo: ${dur} min\n`;
+  txt += `Palavras: ${getTotalWords()} | Duração est.: ${formatTimeFull(getEstimatedDuration())}\n`;
+  txt += `Data: ${new Date().toLocaleDateString()}\n\n`;
+
+  SECTIONS.forEach(sec => {
+    const text = scriptData.sections[sec.id] || '';
+    const startMin = getStartMinute(sec.id, parseInt(dur));
+    const endMin = startMin + Math.round(parseInt(dur) * sec.ratio);
+    
+    txt += '───────────────────────────────────────────\n';
+    txt += `${sec.emoji} ${sec.name} (${formatTime(startMin)} → ${formatTime(endMin)})\n`;
+    txt += '───────────────────────────────────────────\n\n';
+    
+    if (text) {
+      txt += text + '\n\n';
+    } else {
+      txt += '[Seção vazia]\n\n';
+    }
+
+    // Elementos estruturais preenchidos
+    if (sec.structElements) {
+      sec.structElements.forEach(el => {
+        const val = scriptData.structElements[el.id];
+        if (val && typeof val === 'string' && val.trim()) {
+          txt += `  ${el.icon} ${el.label}: ${val}\n`;
+        }
+      });
+      txt += '\n';
+    }
+
+    // Mid-rolls
+    if (sec.midrolls) {
+      sec.midrolls.forEach((mr, i) => {
+        const key = `${sec.id}_midroll_${i}`;
+        const val = scriptData.midrolls[key] || mr.defaultMin;
+        txt += `  💰 ${mr.label}: ${val}:00\n`;
+      });
+      txt += '\n';
+    }
+  });
+
+  txt += '═══════════════════════════════════════════\n';
+  txt += '  Gerado por StoryForge\n';
+  txt += '═══════════════════════════════════════════\n';
+
+  downloadFile(txt, `roteiro_${sanitizeFilename(title)}.txt`, 'text/plain');
+  showToast('Roteiro exportado como .TXT!', '📄');
+}
+
+function exportJSON() {
+  scriptData.title = document.getElementById('scriptTitle').value;
+  scriptData.category = document.getElementById('metaCategory').value;
+  scriptData.character = document.getElementById('metaCharacter').value;
+  scriptData.language = document.getElementById('metaLanguage').value;
+  scriptData.targetDuration = parseInt(document.getElementById('metaDuration').value);
+  scriptData.updatedAt = new Date().toISOString();
+
+  const data = {
+    version: '2.0',
+    module: 'script-editor',
+    exportDate: new Date().toISOString(),
+    script: scriptData,
+    allSavedScripts: savedScripts
+  };
+
+  downloadFile(JSON.stringify(data, null, 2), `storyforge_project.json`, 'application/json');
+  showToast('Projeto exportado!', '💾');
+}
+
+function loadProject(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.script) {
+        scriptData = data.script;
+        document.getElementById('scriptTitle').value = scriptData.title || '';
+        document.getElementById('metaCategory').value = scriptData.category || '';
+        document.getElementById('metaCharacter').value = scriptData.character || '';
+        document.getElementById('metaLanguage').value = scriptData.language || 'en';
+        document.getElementById('metaDuration').value = scriptData.targetDuration || 50;
+        renderSections();
+        updateAllMetrics();
+      }
+      if (data.allSavedScripts) {
+        savedScripts = data.allSavedScripts;
+        localStorage.setItem('sf_scripts', JSON.stringify(savedScripts));
+        renderSavedScripts();
+      }
+      showToast('Projeto carregado com sucesso!', '✅');
+    } catch (err) {
+      showToast('Erro ao carregar arquivo!', '❌');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+// ---- UTILIDADES ----
+function escapeHTML(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function sanitizeFilename(str) {
+  return str.replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 40);
+}
+
+function downloadFile(content, filename, type) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+function showToast(msg, icon = '✅') {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  document.getElementById('toastIcon').textContent = icon;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ---- DEBOUNCE para o onTextChange (evitar re-renders excessivos) ----
+let renderTimeout = null;
+const originalOnTextChange = onTextChange;
+
+// Override com debounce leve
+window.onTextChange = function(sectionId, value) {
+  scriptData.sections[sectionId] = value;
+  scriptData.updatedAt = new Date().toISOString();
+  
+  // Atualizar métricas imediatamente (leve)
+  updateAllMetrics();
+  
+  // Debounce o re-render completo
+  clearTimeout(renderTimeout);
+  renderTimeout = setTimeout(() => {
+    // Atualizar apenas o word count no header sem re-render completo
+    const lang = scriptData.language || 'en';
+    const wpm = CONFIG.wpm[lang] || 140;
+    const dur = parseInt(document.getElementById('metaDuration').value) || 50;
+    
+    SECTIONS.forEach(sec => {
+      const secSeconds = Math.round(dur * 60 * sec.ratio);
+      const targetWords = Math.round(secSeconds / 60 * wpm);
+      const currentWords = countWords(scriptData.sections[sec.id] || '');
+      
+      // Atualizar header da seção
+      const header = document.querySelector(`#section-${sec.id} .section-word-count`);
+      if (header) header.textContent = `${currentWords}/${targetWords} palavras`;
+      
+      // Atualizar barra de progresso da palavra
+      const wordBar = document.querySelector(`#section-${sec.id} .word-bar-fill`);
+      const wordLabel = document.querySelector(`#section-${sec.id} .word-target-label`);
+      if (wordBar && wordLabel) {
+        const pct = targetWords > 0 ? Math.min(100, Math.round(currentWords / targetWords * 100)) : 0;
+        wordBar.style.width = `${pct}%`;
+        wordBar.className = `word-bar-fill ${pct >= 90 && pct <= 110 ? 'optimal' : pct < 90 ? 'under' : 'over'}`;
+        wordLabel.textContent = `${pct}% do alvo`;
+      }
+    });
+  }, 300);
+};
+
+// ---- INICIAR ----
+init();
+</script>
+
+</body>
+</html>

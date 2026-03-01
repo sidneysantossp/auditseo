@@ -1,0 +1,12 @@
+{
+  "name": "auditseo-static-home-poc",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:home": "node scripts/build-home.mjs",
+    "build:site": "node scripts/build-site.mjs",
+    "build": "npm run build:site",
+    "preview:dist": "node scripts/preview-dist.mjs"
+  }
+}

@@ -1,0 +1,412 @@
+# =============================================================================
+# ROBOTS.TXT — AUDITSEO
+# https://auditseo.com.br
+# Última atualização: 2026-02-13
+# =============================================================================
+#
+# ESTRATÉGIA:
+# 1. Domínio canônico: https://auditseo.com.br (sem www)
+# 2. Permitir indexação total para motores de busca
+# 3. Permitir crawling de IA para RAG/grounding (ai-input=yes)
+# 4. Bloquear treinamento de modelos de IA (ai-train=no)
+# 5. Bloquear crawlers abusivos e scrapers conhecidos
+# 6. Proteger arquivos de sistema e rotas administrativas
+# 7. Otimizar crawl budget bloqueando URLs sem valor de indexação
+#
+# NOTA SOBRE WWW:
+# Redirect 301 de https://www.auditseo.com.br → https://auditseo.com.br
+# deve estar configurado no servidor/Cloudflare. Este robots.txt assume
+# que o domínio canônico é https://auditseo.com.br
+# =============================================================================
+
+
+# =============================================================================
+# SEÇÃO 1: CONTENT SIGNALS (Cloudflare / Padrão C2PA)
+# =============================================================================
+# Permitimos busca e RAG/grounding. Bloqueamos treinamento de modelos.
+# Referência: https://blog.cloudflare.com/content-credentials
+
+# Content-Signal: search=yes, ai-input=yes, ai-train=no
+
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF
+# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
+# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
+
+
+# =============================================================================
+# SEÇÃO 2: REGRAS GLOBAIS (Todos os crawlers)
+# =============================================================================
+
+User-agent: *
+
+# --- Permitir conteúdo principal ---
+Allow: /
+Allow: /blog/
+Allow: /servicos/
+Allow: /agencia-de-seo/
+Allow: /sobre/
+
+# --- Permitir recursos de renderização ---
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.woff2$
+Allow: /*.woff$
+Allow: /*.ttf$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.avif$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.ico$
+
+# --- Permitir sitemap explicitamente ---
+Allow: /sitemap.xml
+Allow: /sitemap-*.xml
+
+# --- Bloquear áreas administrativas e de sistema ---
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /xmlrpc.php
+Disallow: /api/
+Disallow: /_next/data/
+Disallow: /cdn-cgi/
+Disallow: /.env
+Disallow: /.git/
+Disallow: /node_modules/
+
+# --- Bloquear arquivos de configuração (exceto sitemap) ---
+Disallow: /package.json
+Disallow: /tsconfig.json
+Disallow: /next.config.*
+Disallow: /vercel.json
+Disallow: /.well-known/
+
+# --- Bloquear URLs com parâmetros (anti-duplicação) ---
+Disallow: /*?ref=*
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+Disallow: /*?source=*
+Disallow: /*?preview=*
+Disallow: /*?draft=*
+
+# --- Bloquear versões de paginação profunda (preservar crawl budget) ---
+Disallow: /blog?page=*
+Disallow: /blog/?page=*
+
+# --- Bloquear páginas de busca interna ---
+Disallow: /search
+Disallow: /search?*
+Disallow: /busca
+Disallow: /busca?*
+
+# --- Bloquear feeds e arquivos auxiliares ---
+Disallow: /feed/
+Disallow: /rss/
+Disallow: /*.json$
+
+# --- Sem Crawl-delay para não prejudicar crawling ---
+
+
+# =============================================================================
+# SEÇÃO 3: GOOGLEBOT (Prioridade máxima — sem restrições adicionais)
+# =============================================================================
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /images/
+Allow: /*.webp$
+Allow: /*.avif$
+Allow: /*.jpg$
+Allow: /*.png$
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /blog/
+
+User-agent: Google-InspectionTool
+Allow: /
+
+# Google AdsBot (não respeita wildcard, precisa de regra explícita)
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+# Storebot (Google Shopping — permitir se tiver serviços com preço)
+User-agent: Storebot-Google
+Allow: /servicos/
+
+
+# =============================================================================
+# SEÇÃO 4: BINGBOT E MICROSOFT
+# =============================================================================
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: msnbot
+Allow: /
+Crawl-delay: 1
+
+# BingPreview — renderiza thumbnails para Bing
+User-agent: BingPreview
+Allow: /
+
+
+# =============================================================================
+# SEÇÃO 5: OUTROS MOTORES DE BUSCA LEGÍTIMOS
+# =============================================================================
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: Applebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+
+# =============================================================================
+# SEÇÃO 6: CRAWLERS DE IA — ESTRATÉGIA DELIBERADA
+# =============================================================================
+#
+# DECISÃO ESTRATÉGICA: Como agência especializada em presença de marcas
+# em LLMs, PERMITIMOS crawling para RAG/grounding (respostas em tempo real)
+# mas BLOQUEAMOS treinamento de modelos (fine-tuning, dataset building).
+#
+# - GPTBot: Usado pelo ChatGPT para busca web e RAG → PERMITIR
+# - ClaudeBot: Usado pelo Claude para busca web → PERMITIR
+# - PerplexityBot: Busca e citação em tempo real → PERMITIR
+# - Google-Extended: Controla uso em Gemini/Bard → PERMITIR (AI Overviews)
+# - Applebot-Extended: Apple Intelligence → PERMITIR
+#
+# - CCBot (Common Crawl): Dataset de treinamento puro → BLOQUEAR
+# - Bytespider (ByteDance): Treinamento de modelos → BLOQUEAR
+# - Amazonbot: Treinamento Alexa/AI → BLOQUEAR
+# - meta-externalagent: Treinamento Meta AI → BLOQUEAR
+# - cohere-ai: Treinamento Cohere → BLOQUEAR
+# - Diffbot: Scraping/treinamento → BLOQUEAR
+# - Omgili: Scraping de conteúdo → BLOQUEAR
+# =============================================================================
+
+# --- IAs PERMITIDAS (RAG, grounding, citação em tempo real) ---
+
+User-agent: GPTBot
+Allow: /
+Allow: /blog/
+Allow: /servicos/
+Allow: /agencia-de-seo/
+Allow: /sobre/
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 2
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /blog/
+Allow: /servicos/
+Allow: /agencia-de-seo/
+Allow: /sobre/
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 2
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /blog/
+Allow: /servicos/
+Disallow: /admin/
+Disallow: /api/
+Crawl-delay: 2
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+Crawl-delay: 2
+
+# Cohere para RAG (se usarem retrieval, não treinamento)
+User-agent: cohere-ai
+Allow: /blog/
+Disallow: /
+Crawl-delay: 5
+
+# --- IAs BLOQUEADAS (treinamento, scraping, datasets) ---
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: ISSCyberRiskCrawler
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Sogou
+Disallow: /
+
+
+# =============================================================================
+# SEÇÃO 7: CRAWLERS DE SEO (Ferramentas — limitar para economia de recursos)
+# =============================================================================
+
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 10
+
+User-agent: DotBot
+Allow: /
+Crawl-delay: 10
+
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+User-agent: SiteAuditBot
+Allow: /
+
+User-agent: Ryte
+Allow: /
+
+
+# =============================================================================
+# SEÇÃO 8: BLOQUEIO DE SCRAPERS E BOTS MALICIOSOS CONHECIDOS
+# =============================================================================
+
+User-agent: MauiBot
+Disallow: /
+
+User-agent: SeznamBot
+Disallow: /
+
+User-agent: AhrefsSiteAudit
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: Linguee
+Disallow: /
+
+User-agent: Seekport
+Disallow: /
+
+User-agent: Cocolyzebot
+Disallow: /
+
+User-agent: Megaindex
+Disallow: /
+
+User-agent: Rogerbot
+Disallow: /
+
+User-agent: SEOkicks
+Disallow: /
+
+User-agent: BacklinkCrawler
+Disallow: /
+
+User-agent: Exabot
+Disallow: /
+
+User-agent: ZoominfoBot
+Disallow: /
+
+User-agent: Buck
+Disallow: /
+
+
+# =============================================================================
+# SEÇÃO 9: SITEMAPS
+# =============================================================================
+
+Sitemap: https://auditseo.com.br/sitemap.xml
+Sitemap: https://auditseo.com.br/sitemap-blog.xml
+Sitemap: https://auditseo.com.br/sitemap-pages.xml
+Sitemap: https://auditseo.com.br/sitemap-services.xml
+
+# =============================================================================
+# FIM DO ARQUIVO
+# Mantido por: AUDITSEO — Search Intelligence AI
+# Documentação: https://auditseo.com.br/blog/robots-txt-para-ia/
+# =============================================================================

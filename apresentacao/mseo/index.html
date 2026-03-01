@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO com IA em 2026: Como sua agência vira parceira indispensável</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/theme/black.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111;
+            --accent-red: #e63946;
+            --accent-gold: #d4a574;
+            --accent-cream: #f4e8d8;
+            --gradient-fire: linear-gradient(135deg, #e63946 0%, #d4a574 100%);
+            --text-light: #f8f8f8;
+            --text-muted: #888;
+            --text-dim: #555;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
+        
+        /* Adapt Reveal.js to site style */
+        .reveal { font-family: 'Crimson Pro', Georgia, serif; color: var(--text-light); }
+        .reveal section { background: var(--bg-dark); display: flex !important; flex-direction: column; justify-content: center; padding: 2rem; }
+        .reveal h1, .reveal h2 { font-family: 'Bebas Neue', sans-serif; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+        .reveal h1 { font-size: clamp(2rem, 5vw, 4rem); }
+        .reveal h2 { font-size: clamp(1.2rem, 3vw, 2.5rem); }
+        .reveal p { font-size: 1rem; color: var(--text-muted); }
+        .reveal ul { list-style: none; margin-left: 0; font-size: 0.9rem; }
+        .reveal ul li { margin-bottom: 0.8rem; position: relative; padding-left: 1.5rem; font-size: 0.9rem; }
+        .reveal ul li::before { content: ''; position: absolute; left: 0; top: 0.6rem; width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; }
+        .reveal table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.8rem; }
+        .reveal th, .reveal td { border: 1px solid rgba(255,255,255,.05); padding: 0.8rem; text-align: left; font-size: 0.8rem; }
+        .reveal th { background: var(--bg-card); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); }
+        .reveal img { max-width: 60%; height: auto; margin: 1rem auto; display: block; border: 1px solid rgba(255,255,255,.1); }
+        
+        /* Site-specific elements */
+        .section-label { font-family: 'JetBrains Mono', monospace; font-size: .6rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
+        .section-label::before { content: ''; width: 25px; height: 1px; background: var(--accent-gold); }
+        .reveal .btn-primary { font-family: 'JetBrains Mono', monospace; font-size: .7rem; padding: 0.8rem 1.5rem; background: var(--gradient-fire); border: none; color: var(--bg-dark); text-decoration: none; transition: all .3s; }
+        .reveal .btn-primary:hover { box-shadow: 0 10px 40px rgba(230,57,70,.4); }
+        
+        /* Responsivity from site */
+        @media (max-width: 768px) { 
+            .reveal h1 { font-size: 2.5rem; }
+            .reveal h2 { font-size: 1.8rem; }
+            .reveal p { font-size: 0.9rem; }
+            .reveal ul li { font-size: 0.8rem; }
+            .reveal table { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Slide 1: Abertura -->
+            <section>
+                <span class="section-label">APRESENTAÇÃO</span>
+                <h1>O SEO não morreu! Ele apenas evoluiu...</h1>
+                <img src="https://auditseo.com.br/apresentacao/mseo/image.jpg" alt="Foto do apresentador">
+                <p>Sidney – Especialista em SEO e IA</p>
+                <h2>Bem vindos a nova era das Buscas Generativas</h2>
+                <p>Onde o Futuro, já se faz presente, todos os dias!</p>
+            </section>
+
+            <!-- Slide 2: Agenda -->
+            <section>
+                <span class="section-label">AGENDA</span>
+                <h2>Direto ao ponto</h2>
+                <ul>
+                    <li>1. O jogo mudou: o que tá rolando agora</li>
+                    <li>2. GEO: o novo SEO para Agências</li>
+                    <li>3. Arquitetura e conteúdo que as IAs amam</li>
+                    <li>4. Ferramentas e APIs que vocês usam hoje</li>
+                    <li>5. Passo a passo pra implementar na Agência</li>
+                    <li>6. Checklist</li>
+                </ul>
+                <h4>Tudo pra vocês aplicarem hoje</h4>
+            </section>
+
+            <!-- Slide 3: O jogo mudou -->
+            <section>
+                <span class="section-label">O JOGO MUDOU</span>
+                <h2>O que tá rolando agora</h2>
+                <img src="https://cdn.prod.website-files.com/6876b87fcdcec4dc81409391/68efe2925926ea4fc2bfc872_AI%20Content%20Vs%20Human.png" alt="Gráfico de queda de tráfego orgânico">
+                <ul>
+                    <li>65% das buscas são zero-click (Google responde direto).</li>
+                    <li>AI Overviews já citam só 3-5 sites por query.</li>
+                    <li>Tráfego orgânico caiu 40% em média pra agências em 2025.</li>
+                </ul>
+                <p><strong><span class="section-label">Cliente cobra:</strong></span> 'Por que meu site não aparece mais?' <strong>Resposta:</strong> Porque o Google não manda tráfego – ele responde.</p>
+            </section>
+
+            <!-- Slide 4: Perguntas comuns (O jogo mudou) -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Perguntas que vocês vão ter agora</h2>
+                <ul>
+                    <li>"Se o tráfego caiu, por que investir em SEO?" → Valor não é volume, é qualidade. Citações na IA viram endosso gratuito – brand search +20-40%, conversões indiretas sobem.</li>
+                    <li>"Vai piorar mais pro meu cliente?" → Pode cair um pouco no curto prazo, mas GEO para a queda e faz subir em citações. Valor total de IA já supera orgânico em 2026.</li>
+                    <li>"Google vai mudar tudo de novo?" → Muda sempre, mas E-E-A-T e conteúdo útil nunca perdem. GEO foca nisso – não é hack, é qualidade.</li>
+                    <li>"Zero-click é definitivo?" → Buscas rasas sim, mas intenção alta (comprar) ainda clica. GEO pega visibilidade + cliques qualificados.</li>
+                    <li>"Como provo pro cliente que funciona?" → Trackeia citações (Rankscale/Semrush), brand search (Google Trends), conversão do tráfego que sobra. Cases mostram faturamento dobrado mesmo com menos visitas.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 5: GEO -->
+            <section>
+                <span class="section-label">GEO</span>
+                <h2>Generative Engine Optimization</h2>
+                <p>Ser a fonte que a IA escolhe, não só rankear</p>
+                <table>
+                    <tr><th>SEO Tradicional</th><th>GEO (2026)</th></tr>
+                    <tr><td>Palavras-chave exatas</td><td>Queries conversacionais</td></tr>
+                    <tr><td>Backlinks</td><td>Autoridade + E-E-A-T</td></tr>
+                    <tr><td>Rank no Google</td><td>Citação em AI Overviews/ChatGPT</td></tr>
+                    <tr><td>Tráfego direto</td><td>Visibilidade + brand lift</td></tr>
+                </table>
+                <img src="https://auditseo.com.br/apresentacao/mseo/generative.jpg" alt="Diferença SEO vs GEO">
+                <h5>Não é mais sobre cliques. É sobre ser recomendado pelo Google e pelo ChatGPT.</h5>
+            </section>
+
+            <!-- Slide Extra: Perguntas GEO -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Sobre GEO</h2>
+                <ul>
+                    <li>"GEO é só mais um nome para o novo SEO?" → Não, muda tudo: de rankear pra ser citado como fonte. É endosso da IA, não cliques.</li>
+                    <li>"Como sei se meu cliente já esta sendo citado?" → Ferramentas como Rankscale.ai, Profound, SERanking ou Semrush AI Overview mostram citações reais em minutos.</li>
+                    <li>"Preciso mudar tudo o que faço?" → Não, mantém SEO bom e adiciona E-E-A-T + estrutura conversacional.</li>
+                    <li>"O ChatGPT cita qualquer site?" → Não é aleatório: prioriza conteúdo claro, fontes, autoridade e formato fácil (listas, schema).</li>
+                    <li>"Funciona só pro Google?" → Não, vale pra ChatGPT, Perplexity, Gemini, Copilot – cada um tem seu truque, mas o core é o mesmo.</li>
+                    <li>"Quanto tempo leva pra ver resultado?" → 1-3 meses pra citações aparecerem, dependendo do nicho.</li>
+                    <li>"E se meu cliente não tem autoridade nenhuma?" → Começa com conteúdo forte (autoria real, fontes, cases), schema e silos.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 6: Arquitetura -->
+            <section>
+                <span class="section-label">ARQUITETURA</span>
+                <h2>Do site que a IA ama</h2>
+                <ul>
+                    <li>Flat hierarchy: Máximo 3 cliques da home.</li>
+                    <li>Silos tópicos: Agrupe conteúdos por tema.</li>
+                    <li>Internal linking pesado: Links internos fortes entre páginas relacionadas.</li>
+                    <li>Schema markup obrigatório: FAQ, HowTo, Product, VideoObject.</li>
+                </ul>
+                
+                <img src="https://auditseo.com.br/apresentacao/mseo/silo.jpg" alt="Diagrama de internal linking">
+                <h6>IA não lê site bagunçado. Estrutura clara = mais citações.</h6>
+            </section>
+
+            <!-- Slide 7: Perguntas Arquitetura -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Sobre arquitetura</h2>
+                <ul>
+                    <li>"Flat hierarchy é obrigatório?" → Não, mas ajuda muito. Máximo 3 cliques = mais chance de citação.</li>
+                    <li>"Silos tópicos dão muito trabalho?" → Dá, mas ferramentas como Surfer/Semrush mapeiam rápido.</li>
+                    <li>"Internal linking pesado não é spam?" → Não, se natural e relevante.</li>
+                    <li>"Schema markup é complicado?" → Não: plugins como Rank Math/Yoast geram em minutos.</li>
+                    <li>"Meu site é antigo, tenho que refazer tudo?" → Não. Começa pelas top pages.</li>
+                    <li>"Isso muda o design? Cliente não quer mexer." → Não mexe no visual. Só URLs, menus e links internos.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 8: Conteúdo -->
+            <section>
+                <span class="section-label">CONTEÚDO</span>
+                <h2>O Que vira resposta</h2>
+                <ul>
+                    <li>Primeiro parágrafo responde direto à query (60-100 palavras).</li>
+                    <li>Listas numeradas ou bullets pra facilitar leitura.</li>
+                    <li>Tabelas com stats + fontes citáveis.</li>
+                    <li>Perguntas como títulos (ex: "O que é GEO?").</li>
+                    <li>Linguagem conversacional + E-E-A-T (autoria real, cases, fontes).</li>
+                </ul>
+                <h5>IA escolhe quem responde rápido e claro.<br> Conteúdo assim vira citação.</h5>
+            </section>
+
+            <!-- Slide 9: Perguntas Conteúdo -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Sobre conteúdo</h2>
+                <ul>
+                    <li>"Preciso reescrever tudo que já tenho?" → Não. Começa pelas páginas top.</li>
+                    <li>"Linguagem conversacional não fica informal demais?" → Não, se equilibrar. Tom natural, mas profissional.</li>
+                    <li>"E-E-A-T é só colocar nome do autor?" → Não. Autor real, cases, fontes linkadas.</li>
+                    <li>"Listas e tabelas ajudam mesmo?" → Sim, muito. Perplexity e ChatGPT puxam direto.</li>
+                    <li>"Quanto tempo leva pra IA começar a citar?" → 2-6 semanas se atualizar páginas chave.</li>
+                    <li>"Posso usar IA pra gerar esse conteúdo?" → Sim, mas humano edita. Adiciona E-E-A-T.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 10: Ferramentas -->
+            <section>
+                <span class="section-label">FERRAMENTAS</span>
+                <h2>E APIs que vocês usam hoje</h2>
+                <ul>
+                    <li>Semrush / Ahrefs / SERanking(API pra trackear AI Overviews + citações)</li>
+                    <li>Surfer SEO / NeuronWriter (otimização de conteúdo AI-friendly)</li>
+                    <li>Alli AI (edição on-page em massa, schema automático)</li>
+                    <li>Rankscale.ai / Profound (monitora citações reais em ChatGPT, Perplexity)</li>
+                    <li>Rank Math / Yoast (schema markup rápido)</li>
+                    <li>Perplexity + ChatGPT Search (teste manual de queries)</li>
+                    <li>Desenvolvimento de Agentes de IA</li>
+                </ul>
+                <img src="https://writesonic.com/blog/wp-content/uploads/AI-SEO-tools.png" alt="Lista de ferramentas SEO com IA">
+                <h5>Não precisa de tudo. Começa com 2-3 e escala.</h5>
+            </section>
+
+            <!-- Slide 11: Perguntas Ferramentas -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Sobre ferramentas</h2>
+                <ul>
+                    <li>"Preciso comprar todas essas ferramentas?" → Não.</li>
+                    <li>"API é complicada? Preciso de programador?" → Não precisa.</li>
+                    <li>"Essas ferramentas de citação, funcionam mesmo?" → Sim, trackeiam citações reais.</li>
+                    <li>"Quanto custa tudo isso pra agência?" → R$ 600-1700/mês para 2-3 ferramentas.</li>
+                    <li>"Posso usar só IA gratuita (ChatGPT) pra testar?" → Sim, mas pra escalar, precisa de tracker.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 12: Passo a passo -->
+            <section>
+                <span class="section-label">PASSO A PASSO</span>
+                <h2>Como implementar na agência</h2>
+                <ul>
+                    <li>Auditar clientes – Use Semrush/Rankscale/SERanking pra checar citações.</li>
+                    <li>Refazer arquitetura – Silos/Cluster + flat + schema.</li>
+                    <li>Treinar time – Prompt engineering + GEO.</li>
+                    <li>Produzir conteúdo AI-first – Template com respostas diretas.</li>
+                    <li>Monitorar e ajustar – Dashboard com citações semanalmente.</li>
+                </ul>
+                <p>Começa amanhã: auditoria + schema. Em 2 meses já vê citações.</p>
+                <img src="https://auditseo.com.br/apresentacao/mseo/etapa.jpg" alt="Timeline de implementação"width="400px">
+                
+            </section>
+
+            <!-- Slide 13: Perguntas Implementação -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Sobre implementação</h2>
+                <ul>
+                    <li>"Quanto tempo leva pra ver resultado real?" → 4-8 semanas pra primeiras citações.</li>
+                    <li>"Meu time é pequeno, consigo fazer isso?" → Sim. Começa com 1 cliente piloto.</li>
+                    <li>"Cliente vai aceitar mudar arquitetura?" → Explica como investimento.</li>
+                    <li>"Preciso contratar mais gente?" → Depende!</li>
+                    <li>"Como cobrar isso do cliente?" → Proposta de Valor.</li>
+                    <li>"E se não der certo?" → Risco baixo: monitora e ajusta.</li>
+                    
+                </ul>
+            </section>
+
+            <!-- Slide 14: Casos reais -->
+            <section>
+                <span class="section-label">CASOS REAIS</span>
+                <h2>Casos reais</h2>
+                <ul>
+                    <li>Cliente do segmento Meteorológico ( Clima )</li>
+                    <li>Cliente do segmento religioso ( Multinacional ).</li>
+                    <li>Cliente do segmento de Manutenção de Carros Elétricos.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 15: Perguntas Casos -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Sobre Cases reais</h2>
+                <ul>
+                    <li>"Estratégias implementadas e resultados obtidos em menos de 6 meses.</li>
+                    <li>"Quanto tempo levou pra dobrar faturamento?" → SEO não pode ser vendido como promessa de faturamento.</li>
+                    <li>"O cliente viu diferença no GA e GSC?" → Sim, em brand queries e conversão.</li>
+                    <li>"E se meu nicho for muito competitivo?" → Funciona melhor: quem otimiza primeiro ganha.</li>
+                    
+                </ul>
+            </section>
+
+            <!-- Slide 16: Fechamento -->
+            <section>
+                <span class="section-label">FECHAMENTO</span>
+                <h2>considerações</h2>
+                <ul>
+                    <li>SEO não morreu. Virou GEO.</li>
+                    <li>Fórmula perfeita para IA: Começe quanto antes: auditoria + schema + 1 Top Page.</li>
+                    <li>Não venda tráfego nem posições no Google: Venda Brand Search + Inovação.</li>
+                </ul>
+                <p>Perguntas? Bora!</p>
+            </section>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide'
+        });
+    </script>
+</body>
+</html>

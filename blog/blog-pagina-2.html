@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de SEO - Página 2 | Artigos sobre SEO e AI | AUDITSEO</title>
+    <meta name="description" content="Página 2 do Blog AUDITSEO. Artigos sobre Prompt Optimization, SEO Técnico para IAs e otimização de conteúdo para LLMs.">
+    <link rel="canonical" href="https://www.auditseo.com.br/blog/blog-pagina-2">
+    <meta property="og:title" content="Blog de SEO - Página 2 | AUDITSEO">
+    <meta property="og:url" content="https://www.auditseo.com.br/blog/blog-pagina-2">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.7}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);transition:all .3s;text-decoration:none}.nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .breadcrumbs{padding:6rem 3rem 1rem;max-width:1400px;margin:0 auto}.breadcrumbs a,.breadcrumbs span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:1px}.breadcrumbs a:hover{color:var(--accent-gold)}.breadcrumbs span{margin:0 .5rem}.breadcrumbs .current{color:var(--accent-gold)}
+        .page-header{padding:2rem 3rem 4rem;text-align:center}
+        .page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);line-height:1;margin-bottom:1rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .page-subtitle{font-size:1.1rem;color:var(--text-muted)}
+        .section{padding:2rem 3rem 4rem}.section-header{max-width:1400px;margin:0 auto 3rem;display:flex;justify-content:space-between;align-items:center}
+        .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--text-light)}
+        .section-link{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-decoration:none}
+        .posts-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+        .post-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);transition:all .4s;overflow:hidden}
+        .post-card:hover{transform:translateY(-5px);border-color:rgba(230,57,70,.3)}
+        .post-image{aspect-ratio:16/10;background:linear-gradient(135deg,rgba(230,57,70,.15) 0%,rgba(212,165,116,.08) 100%);position:relative}
+        .post-category{position:absolute;top:.75rem;left:.75rem;font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:1px;padding:.3rem .6rem;background:rgba(10,10,10,.9);color:var(--accent-gold);text-transform:uppercase}
+        .post-content{padding:1.25rem}
+        .post-title{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;line-height:1.2;margin-bottom:.5rem}
+        .post-title a{text-decoration:none;color:var(--text-light);transition:color .3s}.post-title a:hover{color:var(--accent-gold)}
+        .post-excerpt{font-size:.85rem;color:var(--text-muted);line-height:1.5;margin-bottom:.75rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+        .post-meta{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--text-dim)}
+        .pagination{max-width:1400px;margin:4rem auto 0;display:flex;justify-content:center;align-items:center;gap:1rem}
+        .pagination a,.pagination span{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:.75rem 1.25rem;border:1px solid rgba(255,255,255,.1);color:var(--text-muted);text-decoration:none;transition:all .3s}
+        .pagination a:hover{border-color:var(--accent-gold);color:var(--accent-gold)}
+        .pagination .current{background:var(--gradient-fire);border-color:transparent;color:var(--bg-dark);font-weight:600}
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card);margin-top:4rem}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}.footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
+        .footer-address{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);line-height:1.8}.footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1.5rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        @media(max-width:1200px){.posts-grid{grid-template-columns:repeat(3,1fr)}}
+        @media(max-width:900px){.posts-grid{grid-template-columns:repeat(2,1fr)}.footer-content{grid-template-columns:1fr 1fr}}
+        @media(max-width:600px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.breadcrumbs,.page-header,.section{padding-left:1.5rem;padding-right:1.5rem}.posts-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr}.pagination{flex-wrap:wrap}}
+    </style>
+    <link rel="stylesheet" href="/assets/site-shell.css">
+    <script defer src="/assets/site-shell.js"></script>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="logo">AUDITSEO</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/agencia-de-seo/">Agência de SEO</a></li>
+            <li><a href="/servicos/">Serviços</a></li>
+            <li><a href="/sobre/">Sobre</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <a href="https://wa.me/5511996384376" class="nav-cta">Falar com Especialista</a>
+    </nav>
+
+    <div class="breadcrumbs"><a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span class="current">Página 2</span></div>
+
+    <header class="page-header">
+        <h1 class="page-title">BLOG AUDITSEO</h1>
+        <p class="page-subtitle">Página 2 de 3 — Prompt Optimization e SEO Técnico para IAs</p>
+    </header>
+
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title">ARTIGOS OTIMIZADOS PARA VOCÊ APRENDER -)</h2>
+            <span class="section-link">Página 2 de 3</span>
+        </div>
+        
+        <div class="posts-grid">
+            <!-- CLUSTER 04: PROMPT OPTIMIZATION -->
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/o-que-e-prompt-optimization/">O Que é Prompt Optimization</a></h3>
+                    <p class="post-excerpt">Introdução ao conceito de otimizar conteúdo para ser citado por IAs conversacionais.</p>
+                    <div class="post-meta"><span>10 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/paragrafos-citaveis/">Como Criar Parágrafos Citáveis</a></h3>
+                    <p class="post-excerpt">Técnicas para escrever parágrafos que IAs podem extrair e citar facilmente.</p>
+                    <div class="post-meta"><span>12 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/definicoes-claras-ia/">Definições Claras Para IAs</a></h3>
+                    <p class="post-excerpt">Como estruturar definições que IAs conseguem identificar e citar corretamente.</p>
+                    <div class="post-meta"><span>9 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/faqs-otimizadas-ia/">FAQs Otimizadas Para IAs</a></h3>
+                    <p class="post-excerpt">Como criar seções de FAQ que maximizam chances de citação em LLMs.</p>
+                    <div class="post-meta"><span>11 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/listas-tabelas-ia/">Listas e Tabelas Para IAs</a></h3>
+                    <p class="post-excerpt">Formatar listas e tabelas de forma que IAs consigam processar e citar.</p>
+                    <div class="post-meta"><span>8 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/contexto-completude-ia/">Contexto e Completude Para IAs</a></h3>
+                    <p class="post-excerpt">Por que cada trecho deve ser autocontido e como garantir completude.</p>
+                    <div class="post-meta"><span>10 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/linguagem-natural-keywords/">Linguagem Natural vs Keywords</a></h3>
+                    <p class="post-excerpt">Como equilibrar otimização para keywords com linguagem natural para IAs.</p>
+                    <div class="post-meta"><span>9 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/formatacao-citacao-ia/">Formatação Para Citação em IAs</a></h3>
+                    <p class="post-excerpt">Heading, negrito, estrutura: como formatação impacta citabilidade.</p>
+                    <div class="post-meta"><span>8 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/queries-ia-otimizar/">Queries de IA Para Otimizar</a></h3>
+                    <p class="post-excerpt">Identifique os tipos de perguntas que seu conteúdo deve responder.</p>
+                    <div class="post-meta"><span>10 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">Prompt Optimization</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/checklist-prompt-optimization/">Checklist Prompt Optimization</a></h3>
+                    <p class="post-excerpt">Lista completa de verificação para otimizar conteúdo para IAs.</p>
+                    <div class="post-meta"><span>8 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <!-- CLUSTER 03: TECHNICAL AI SEO -->
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/schema-markup-para-ias/">Schema Markup Para IAs</a></h3>
+                    <p class="post-excerpt">Como usar dados estruturados para melhorar presença em inteligências artificiais.</p>
+                    <div class="post-meta"><span>14 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/estrutura-html-para-ia/">Estrutura HTML Para IA</a></h3>
+                    <p class="post-excerpt">HTML semântico e hierarquia de conteúdo para crawlers de IA.</p>
+                    <div class="post-meta"><span>12 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/crawlers-ia/">Crawlers de IA: Guia Completo</a></h3>
+                    <p class="post-excerpt">GPTBot, ClaudeBot e outros crawlers: como identificar e otimizar para cada um.</p>
+                    <div class="post-meta"><span>15 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/robots-txt-para-ia/">Robots.txt Para IAs</a></h3>
+                    <p class="post-excerpt">Como configurar robots.txt para permitir ou bloquear crawlers de IA.</p>
+                    <div class="post-meta"><span>10 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/sitemap-para-ia/">Sitemap Otimizado Para IAs</a></h3>
+                    <p class="post-excerpt">Boas práticas de sitemap para indexação por inteligências artificiais.</p>
+                    <div class="post-meta"><span>8 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/velocidade-pagina-ia/">Velocidade de Página e IAs</a></h3>
+                    <p class="post-excerpt">Como performance afeta o crawling e indexação por IAs.</p>
+                    <div class="post-meta"><span>9 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/core-web-vitals-ai-overviews/">Core Web Vitals e AI Overviews</a></h3>
+                    <p class="post-excerpt">A relação entre métricas de performance e presença em AI Overviews.</p>
+                    <div class="post-meta"><span>10 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/javascript-llms/">JavaScript e LLMs</a></h3>
+                    <p class="post-excerpt">Crawlers de IA e JavaScript: o que renderizam e o que não renderizam.</p>
+                    <div class="post-meta"><span>11 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/auditoria-tecnica-ai-seo/">Auditoria Técnica de AI SEO</a></h3>
+                    <p class="post-excerpt">Como fazer auditoria técnica completa focada em otimização para IAs.</p>
+                    <div class="post-meta"><span>16 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+
+            <article class="post-card">
+                <div class="post-image">
+                    <span class="post-category">SEO Técnico</span>
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title"><a href="/blog/checklist-tecnico-ai-seo/">Checklist Técnico AI SEO</a></h3>
+                    <p class="post-excerpt">Lista de verificação técnica para garantir presença em IAs.</p>
+                    <div class="post-meta"><span>10 min</span><span>Jan 2026</span></div>
+                </div>
+            </article>
+        </div>
+
+        <div class="pagination">
+            <a href="./">← Anterior</a>
+            <a href="./">1</a>
+            <span class="current">2</span>
+            <a href="blog-pagina-3">3</a>
+            <a href="blog-pagina-3">Próxima →</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">AUDITSEO</div>
+                <p class="footer-desc">Agência de SEO em São Paulo especializada em Search Intelligence AI para a era da busca generativa.</p>
+                <div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil<br>contato@auditseo.com.br</div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Serviços</h4>
+                <ul class="footer-links">
+                    <li><a href="/servicos/consultoria-seo/">Consultoria SEO</a></li>
+                    <li><a href="/servicos/ai-overview-optimization/">AI Overview</a></li>
+                    <li><a href="/servicos/seo-local/">SEO Local</a></li>
+                    <li><a href="/servicos/llm-brand-presence/">LLM Brand</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Empresa</h4>
+                <ul class="footer-links">
+                    <li><a href="/sobre/">Sobre</a></li>
+                    <li><a href="/agencia-de-seo/">Agência de SEO</a></li>
+                    <li><a href="/cases/">Cases</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/5511996384376">WhatsApp</a></li>
+                    <li><a href="tel:+5511996384376">(11) 99638-4376</a></li>
+                    <li><a href="mailto:contato@auditseo.com.br">E-mail</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 AUDITSEO — Agência de SEO em São Paulo. Todos os direitos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>

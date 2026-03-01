@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryForge — Gerador de Títulos Virais</title>
+<style>
+/* ============================================
+   STORYFORGE — CSS COMPLETO
+   ============================================ */
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a2e;
+  --bg-card-hover: #22223a;
+  --bg-input: #16162a;
+  --border-color: #2a2a4a;
+  --border-focus: #6c5ce7;
+  --text-primary: #e8e8f0;
+  --text-secondary: #9999bb;
+  --text-muted: #666688;
+  --accent-primary: #6c5ce7;
+  --accent-secondary: #a29bfe;
+  --accent-gradient: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  --success: #00cec9;
+  --warning: #fdcb6e;
+  --danger: #ff6b6b;
+  --gold: #f9ca24;
+  --silver: #dfe6e9;
+  --bronze: #e17055;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ---- HEADER ---- */
+.header {
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-gradient);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-header {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 13px;
+  transition: var(--transition);
+}
+
+.btn-header:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+/* ---- LAYOUT PRINCIPAL ---- */
+.main-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+  min-height: calc(100vh - 73px);
+}
+
+/* ---- PAINEL LATERAL ---- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: var(--transition);
+}
+
+.panel:hover {
+  border-color: rgba(108, 92, 231, 0.3);
+}
+
+.panel-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-title .icon {
+  font-size: 16px;
+}
+
+/* ---- SELECTS E INPUTS ---- */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-select, .form-input {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  transition: var(--transition);
+  appearance: none;
+  cursor: pointer;
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239999bb' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.form-select:focus, .form-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+}
+
+.form-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* ---- IDIOMAS ---- */
+.language-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.lang-btn {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 8px 4px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.lang-btn:hover {
+  border-color: var(--accent-primary);
+}
+
+.lang-btn.active {
+  background: rgba(108, 92, 231, 0.2);
+  border-color: var(--accent-primary);
+  color: var(--accent-secondary);
+}
+
+/* ---- BOTÕES DE AÇÃO ---- */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btn-generate {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+}
+
+.btn-secondary {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+/* ---- ÁREA DE RESULTADOS ---- */
+.results-area {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.results-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.results-count {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.results-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-sm {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 12px;
+  transition: var(--transition);
+}
+
+.btn-sm:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+/* ---- CARDS DE TÍTULO ---- */
+.title-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.title-card:hover {
+  border-color: rgba(108, 92, 231, 0.4);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.title-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.title-rank {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rank-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.rank-1 { background: var(--gold); color: #333; }
+.rank-2 { background: var(--silver); color: #333; }
+.rank-3 { background: var(--bronze); color: white; }
+.rank-default { background: var(--bg-input); color: var(--text-secondary); border: 1px solid var(--border-color); }
+
+.title-category-badge {
+  font-size: 11px;
+  background: rgba(108, 92, 231, 0.15);
+  color: var(--accent-secondary);
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.title-text {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  cursor: text;
+}
+
+.title-text em {
+  color: var(--accent-secondary);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.title-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.meta-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meta-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-char { background: #00cec9; }
+.dot-loc { background: #fdcb6e; }
+.dot-form { background: #ff6b6b; }
+.dot-lang { background: #a29bfe; }
+
+.char-count {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.char-optimal { background: rgba(0, 206, 201, 0.15); color: var(--success); }
+.char-short { background: rgba(253, 203, 110, 0.15); color: var(--warning); }
+.char-long { background: rgba(255, 107, 107, 0.15); color: var(--danger); }
+
+.title-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.viral-score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.score-bar-bg {
+  width: 100px;
+  height: 6px;
+  background: var(--bg-input);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.score-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.score-high { background: var(--success); }
+.score-mid { background: var(--warning); }
+.score-low { background: var(--danger); }
+
+.score-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.title-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  transition: var(--transition);
+  color: var(--text-muted);
+}
+
+.btn-icon:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  background: rgba(108, 92, 231, 0.1);
+}
+
+.btn-icon.saved {
+  background: rgba(108, 92, 231, 0.2);
+  border-color: var(--accent-primary);
+  color: var(--accent-secondary);
+}
+
+/* ---- ESTADO VAZIO ---- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+  opacity: 0.4;
+}
+
+.empty-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.empty-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 400px;
+}
+
+/* ---- STATS BAR ---- */
+.stats-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-secondary);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* ---- SAVED PANEL ---- */
+.saved-count-badge {
+  background: var(--accent-primary);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+.saved-list {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.saved-item {
+  font-size: 12px;
+  color: var(--text-secondary);
+  padding: 8px 10px;
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.saved-item:hover {
+  background: rgba(108, 92, 231, 0.1);
+  color: var(--text-primary);
+}
+
+.saved-item-text {
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.saved-item-remove {
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.saved-item-remove:hover {
+  color: var(--danger);
+}
+
+/* ---- TOAST ---- */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--success);
+  color: var(--text-primary);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: var(--transition);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ---- SCROLLBAR ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ---- ANIMAÇÕES ---- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title-card {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.title-card:nth-child(2) { animation-delay: 0.05s; }
+.title-card:nth-child(3) { animation-delay: 0.1s; }
+.title-card:nth-child(4) { animation-delay: 0.15s; }
+.title-card:nth-child(5) { animation-delay: 0.2s; }
+.title-card:nth-child(6) { animation-delay: 0.25s; }
+.title-card:nth-child(7) { animation-delay: 0.3s; }
+.title-card:nth-child(8) { animation-delay: 0.35s; }
+.title-card:nth-child(9) { animation-delay: 0.4s; }
+.title-card:nth-child(10) { animation-delay: 0.45s; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 12px 16px;
+  }
+  .main-container {
+    padding: 16px;
+  }
+  .language-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stats-bar {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---- FORMULA PREVIEW ---- */
+.formula-preview {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.formula-preview strong {
+  color: var(--accent-secondary);
+  font-style: normal;
+}
+
+/* ---- EDIT MODE ---- */
+.title-text[contenteditable="true"] {
+  outline: 2px solid var(--accent-primary);
+  border-radius: 4px;
+  padding: 4px 8px;
+  background: rgba(108, 92, 231, 0.05);
+}
+
+/* ---- FILTER CHIPS ---- */
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.chip {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.chip:hover, .chip.active {
+  background: rgba(108, 92, 231, 0.15);
+  border-color: var(--accent-primary);
+  color: var(--accent-secondary);
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-icon">SF</div>
+    <div>
+      <div class="logo-text">StoryForge</div>
+      <div class="logo-sub">Gerador de Títulos Virais</div>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-header" onclick="exportAllSaved()" title="Exportar salvos como CSV">📤 Exportar CSV</button>
+    <button class="btn-header" onclick="exportJSON()" title="Backup completo">💾 Backup</button>
+    <button class="btn-header" onclick="importJSON()" title="Restaurar backup">📥 Restaurar</button>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main-container">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Painel: Categoria -->
+    <div class="panel">
+      <div class="panel-title"><span class="icon">📋</span> Categoria</div>
+      <div class="form-group">
+        <select class="form-select" id="selCategory" onchange="onCategoryChange()">
+          <option value="">— Selecionar categoria —</option>
+        </select>
+      </div>
+      <div id="categoryInfo" style="display:none;">
+        <div class="formula-preview" id="categoryDesc"></div>
+      </div>
+    </div>
+
+    <!-- Painel: Personagem -->
+    <div class="panel">
+      <div class="panel-title"><span class="icon">👤</span> Personagem Principal</div>
+      <div class="form-group">
+        <select class="form-select" id="selCharacter">
+          <option value="">— Selecionar personagem —</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Personagem Secundário (opcional)</label>
+        <select class="form-select" id="selCharacter2">
+          <option value="">— Nenhum —</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Painel: Local -->
+    <div class="panel">
+      <div class="panel-title"><span class="icon">📍</span> Local / Evento</div>
+      <div class="form-group">
+        <select class="form-select" id="selLocation">
+          <option value="">— Selecionar local —</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Painel: Fórmula -->
+    <div class="panel">
+      <div class="panel-title"><span class="icon">⚡</span> Fórmula Narrativa</div>
+      <div class="form-group">
+        <select class="form-select" id="selFormula">
+          <option value="">— Selecionar fórmula —</option>
+        </select>
+      </div>
+      <div id="formulaPreview" class="formula-preview" style="display:none;"></div>
+    </div>
+
+    <!-- Painel: Idioma -->
+    <div class="panel">
+      <div class="panel-title"><span class="icon">🌍</span> Idioma</div>
+      <div class="language-grid" id="langGrid"></div>
+    </div>
+
+    <!-- Painel: Quantidade -->
+    <div class="panel">
+      <div class="panel-title"><span class="icon">🔢</span> Quantidade</div>
+      <div class="form-group">
+        <select class="form-select" id="selQuantity">
+          <option value="5">5 títulos</option>
+          <option value="10" selected>10 títulos</option>
+          <option value="15">15 títulos</option>
+          <option value="20">20 títulos</option>
+          <option value="30">30 títulos</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Botões de Ação -->
+    <div class="action-buttons">
+      <button class="btn-generate btn-primary" onclick="generateTitles()">
+        🎲 Gerar Títulos Virais
+      </button>
+      <button class="btn-generate btn-secondary" onclick="generateRandom()">
+        🎰 Aleatório Completo
+      </button>
+    </div>
+
+    <!-- Painel: Salvos -->
+    <div class="panel">
+      <div class="panel-title">
+        <span class="icon">⭐</span> Títulos Salvos
+        <span class="saved-count-badge" id="savedCount">0</span>
+      </div>
+      <div class="saved-list" id="savedList">
+        <div style="font-size:12px; color:var(--text-muted); text-align:center; padding:16px;">
+          Nenhum título salvo ainda
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ÁREA DE RESULTADOS -->
+  <section class="results-area">
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" id="statsBar">
+      <div class="stat-item">
+        <div class="stat-value" id="statGenerated">0</div>
+        <div class="stat-label">Gerados</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="statAvgScore">—</div>
+        <div class="stat-label">Score Médio</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="statAvgChars">—</div>
+        <div class="stat-label">Média Chars</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" id="statSaved">0</div>
+        <div class="stat-label">Salvos</div>
+      </div>
+    </div>
+
+    <!-- Header dos Resultados -->
+    <div class="results-header">
+      <div>
+        <div class="results-title">Títulos Gerados</div>
+        <div class="results-count" id="resultsCount"></div>
+      </div>
+      <div class="results-actions">
+        <button class="btn-sm" onclick="copyAllTitles()">📋 Copiar Todos</button>
+        <button class="btn-sm" onclick="sortByScore()">📊 Ordenar por Score</button>
+      </div>
+    </div>
+
+    <!-- Container dos Títulos -->
+    <div id="titlesContainer">
+      <div class="empty-state">
+        <div class="empty-icon">✨</div>
+        <div class="empty-title">Pronto para criar títulos virais</div>
+        <div class="empty-subtitle">Selecione os parâmetros ao lado e clique em "Gerar Títulos Virais", ou use "Aleatório Completo" para inspiração instantânea.</div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <span id="toastIcon">✅</span>
+  <span id="toastMsg"></span>
+</div>
+
+<!-- Input oculto para importação -->
+<input type="file" id="importFile" accept=".json" style="display:none" onchange="handleImport(event)">
+
+<script>
+// ============================================
+// STORYFORGE — BANCO DE DADOS COMPLETO
+// ============================================
+
+const DB = {
+  
+  // ---- 45 CATEGORIAS ----
+  categories: [
+    { id: 1,  name: "Exclusão em Evento Familiar", emoji: "🚫", views: 2400000, desc: "Protagonista é excluído de casamentos, jantares, aniversários. Reviravolta com reconhecimento público." },
+    { id: 2,  name: "Herança Roubada ou Injusta", emoji: "📜", views: 1600000, desc: "Família entrega tudo ao irmão preferido. Revelação jurídica surpreendente com documento oculto." },
+    { id: 3,  name: "Humilhação Pública", emoji: "😤", views: 1700000, desc: "Comentários ofensivos, julgamento de status. Reviravolta com revelação de poder ou reconhecimento." },
+    { id: 4,  name: "Conflito Familiar + Vingança", emoji: "⚔️", views: 1400000, desc: "Exclusão, injustiça material. Protagonista age estrategicamente com vingança financeira ou social." },
+    { id: 5,  name: "Conflito Familiar + Lição de Vida", emoji: "💡", views: 950000, desc: "Sacrifício ignorado é revelado. Família descobre tarde o que o protagonista fez por eles." },
+    { id: 6,  name: "Ascensão ou Vingança Profissional", emoji: "🚀", views: 1100000, desc: "Protagonista humilhado por status. Reconhecimento público como CEO, fundador, investidor." },
+    { id: 7,  name: "Reconhecimento Inesperado", emoji: "🏆", views: 900000, desc: "Ninguém sabia o valor do protagonista. Pessoa respeitada revela publicamente suas contribuições." },
+    { id: 8,  name: "Favoritismo Familiar", emoji: "💔", views: 1200000, desc: "Pais preferem irmã/irmão. Protagonista prova valor próprio com reconhecimento externo." },
+    { id: 9,  name: "Desprezo por Conquistas Pessoais", emoji: "🏅", views: 800000, desc: "Família minimiza conquistas. Terceiros revelam o verdadeiro impacto do protagonista." },
+    { id: 10, name: "Empoderamento na Velhice", emoji: "👴", views: 750000, desc: "Idoso subestimado mostra sabedoria, poder patrimonial ou influência escondida." },
+    { id: 11, name: "Injustiça em Casamentos e Festas", emoji: "💒", views: 1400000, desc: "Humilhação ou rebaixamento durante casamento ou festa. Virada social dramática." },
+    { id: 12, name: "Corte de Relacionamentos / Pertencimento", emoji: "✂️", views: 850000, desc: "Protagonista é cortado da família ou grupo. Reação com dignidade e poder oculto." },
+    { id: 13, name: "Falas que Machucam + Virada Pública", emoji: "🗣️", views: 950000, desc: "Frase cruel dita publicamente. Reviravolta imediata com revelação ou reação impactante." },
+    { id: 14, name: "Desprezo por Ajuda Silenciosa", emoji: "🤫", views: 700000, desc: "Protagonista ajudou em silêncio por anos. Ingratidão revelada, seguida de corte ou exposição." },
+    { id: 15, name: "Sacrifício Financeiro Ignorado", emoji: "💰", views: 800000, desc: "Protagonista pagou contas, hipoteca, tratamento. Ninguém sabia até a revelação." },
+    { id: 16, name: "Humilhação Legal + Virada Jurídica", emoji: "⚖️", views: 750000, desc: "Injustiça processual. Documento, cláusula ou testemunho surpreendente muda tudo." },
+    { id: 17, name: "Reconhecimento em Eventos Formais", emoji: "🎓", views: 900000, desc: "Protagonista ignorado é homenageado publicamente em formatura, gala ou cerimônia." },
+    { id: 18, name: "Protagonista Invisível + Revelação de Valor", emoji: "👻", views: 700000, desc: "Ninguém sabia quem ele era. Identidade ou poder revelado no momento certo." },
+    { id: 19, name: "Casamento Arranjado + Reação Inesperada", emoji: "💍", views: 500000, desc: "Casamento forçado ou manipulado. Protagonista reverte a situação com surpresa." },
+    { id: 20, name: "Infidelidade + Reviravolta Emocional", emoji: "💊", views: 600000, desc: "Traição conjugal descoberta. Protagonista reage com inteligência estratégica." },
+    { id: 21, name: "Cancelamento de Celebração Familiar", emoji: "🎂", views: 550000, desc: "Família cancela ou sabota celebração do protagonista. Reação irrevogável." },
+    { id: 22, name: "Constrangimento Infantil em Evento", emoji: "🧒", views: 500000, desc: "Criança humilhada ou negligenciada em evento familiar. Adulto intervém." },
+    { id: 23, name: "Corte ou Bloqueio Digital em Crise", emoji: "📱", views: 450000, desc: "Protagonista removido de grupo familiar digital. Reação emocional ou estratégica." },
+    { id: 24, name: "Desprezo Durante Gravidez ou Parto", emoji: "🤰", views: 500000, desc: "Família negligencia durante momento vulnerável. Revelação posterior muda dinâmica." },
+    { id: 25, name: "Força de Criança Ignorada", emoji: "💪", views: 400000, desc: "Criança subestimada demonstra capacidade surpreendente que transforma a situação." },
+    { id: 26, name: "Exposição de Traição em Público", emoji: "🎭", views: 550000, desc: "Traição amorosa exposta em evento público. Consequências dramáticas imediatas." },
+    { id: 27, name: "Humilhação em Transporte Familiar", emoji: "🚗", views: 350000, desc: "Protagonista humilhado durante viagem familiar. Revelação durante o trajeto." },
+    { id: 28, name: "Negligência em Situação Médica", emoji: "🏥", views: 500000, desc: "Família ausente durante cirurgia ou internação. Profissional ou estranho faz diferença." },
+    { id: 29, name: "Sabotagem Familiar na Vida Profissional", emoji: "🔪", views: 600000, desc: "Família tenta sabotar carreira. Protagonista supera e é reconhecido publicamente." },
+    { id: 30, name: "Reviravolta Financeira em Relação Amorosa", emoji: "💎", views: 550000, desc: "Parceiro descobre riqueza oculta ou status financeiro surpreendente." },
+    { id: 31, name: "Abandono Parental na Velhice", emoji: "🏚️", views: 650000, desc: "Filhos abandonam pais idosos. Retorno surpreendente com poder ou patrimônio." },
+    { id: 32, name: "Internação Forçada em Asilo", emoji: "🏛️", views: 500000, desc: "Filhos forçam internação. Idoso revela autonomia, patrimônio ou documento escondido." },
+    { id: 33, name: "Ignorado em Férias de Família", emoji: "✈️", views: 450000, desc: "Excluído de viagem familiar. Vingança silenciosa com controle patrimonial." },
+    { id: 34, name: "Desprezo Oculto por Quem Construiu Tudo", emoji: "🏗️", views: 500000, desc: "Quem construiu a família/negócio é desprezado. Revelação de que tudo depende dele." },
+    { id: 35, name: "Presente Planejado + Ingratidão", emoji: "🎁", views: 400000, desc: "Presente preparado com carinho é desprezado. Revelação do verdadeiro valor." },
+    { id: 36, name: "Expulsão do Próprio Lar + Revelação", emoji: "🏠", views: 600000, desc: "Protagonista expulso de casa que é dele. Documento de propriedade revelado." },
+    { id: 37, name: "Humilhação em Refeição Familiar", emoji: "🍽️", views: 700000, desc: "Ofensas durante jantar. Retirada digna ou revelação surpreendente à mesa." },
+    { id: 38, name: "Abandono em Viagem + Reação", emoji: "🧳", views: 400000, desc: "Abandonado em aeroporto, hotel ou estação. Ação estratégica imediata." },
+    { id: 39, name: "Recusa em Encontro + Contribuição Invisível", emoji: "🤝", views: 350000, desc: "Família recusa presença mas depende da contribuição oculta do protagonista." },
+    { id: 40, name: "Reviravolta em Funeral", emoji: "⚰️", views: 550000, desc: "Revelação surpreendente durante funeral. Testamento, carta ou verdade emerge." },
+    { id: 41, name: "Carta Escondida + Virada Pós-Morte", emoji: "✉️", views: 500000, desc: "Carta, gravação ou documento encontrado após falecimento muda tudo." },
+    { id: 42, name: "Abandono em Local Público", emoji: "🚶", views: 400000, desc: "Protagonista abandonado em público. Ação silenciosa e estratégica." },
+    { id: 43, name: "Proposta Inconveniente + Suspense Jurídico", emoji: "📋", views: 350000, desc: "Proposta ou pedido inadequado. Suspense com consequência legal." },
+    { id: 44, name: "Mistério Oculto + Frase-Chave", emoji: "🔑", views: 450000, desc: "Frase reveladora muda o contexto. Mistério familiar ou profissional desvendado." },
+    { id: 45, name: "Julgamento Injusto + Reviravolta em Testamento", emoji: "📖", views: 500000, desc: "Protagonista julgado injustamente. Testamento revela verdade e corrige injustiça." }
+  ],
+
+  // ---- PERSONAGENS ----
+  characters: [
+    { id: "parents",      label: "My Parents",              emoji: "👫", views: 2400000, pairsWith: ["sister","inheritance","wedding","graduation"] },
+    { id: "sister",       label: "My Sister",               emoji: "👩", views: 1900000, pairsWith: ["parents","fiance","wedding","competition"] },
+    { id: "family",       label: "My Family",               emoji: "👨‍👩‍👧‍👦", views: 1500000, pairsWith: ["exclusion","business","dinner","reunion"] },
+    { id: "mil",          label: "My Mother-in-Law",        emoji: "👵", views: 900000, pairsWith: ["dinner","son","competition","home"] },
+    { id: "sil",          label: "My Sister-in-Law",        emoji: "👩‍🦰", views: 900000, pairsWith: ["dinner","competition","wedding","home"] },
+    { id: "husband",      label: "My Husband",              emoji: "👨", views: 600000, pairsWith: ["wife","betrayal","gala","pregnancy"] },
+    { id: "wife",         label: "My Wife",                 emoji: "👩", views: 550000, pairsWith: ["husband","betrayal","dinner","secret"] },
+    { id: "boss",         label: "My Boss",                 emoji: "👔", views: 500000, pairsWith: ["assistant","meeting","office","recognition"] },
+    { id: "daughter",     label: "My Daughter",             emoji: "👧", views: 400000, pairsWith: ["son","inheritance","neglect","elderly"] },
+    { id: "son",          label: "My Son",                  emoji: "👦", views: 400000, pairsWith: ["daughter","inheritance","neglect","elderly"] },
+    { id: "grandpa",      label: "My Grandfather",          emoji: "👴", views: 300000, pairsWith: ["company","inheritance","holiday","wisdom"] },
+    { id: "grandma",      label: "My Grandmother",          emoji: "👵", views: 300000, pairsWith: ["inheritance","funeral","letter","care"] },
+    { id: "brother",      label: "My Brother",              emoji: "🧑", views: 450000, pairsWith: ["parents","favoritism","business","wedding"] },
+    { id: "cousin",       label: "My Cousin",               emoji: "🧒", views: 350000, pairsWith: ["family","inheritance","competition","event"] },
+    { id: "children",     label: "My Children",             emoji: "👶", views: 350000, pairsWith: ["elderly","inheritance","nursing_home","abandon"] },
+    { id: "dil",          label: "My Daughter-in-Law",      emoji: "👩‍🦱", views: 400000, pairsWith: ["son","home","inheritance","cooking"] },
+    { id: "assistant",    label: "My Assistant",             emoji: "💼", views: 350000, pairsWith: ["boss","revelation","meeting","power"] },
+    { id: "lawyer",       label: "The Lawyer",              emoji: "⚖️", views: 300000, pairsWith: ["will","inheritance","document","court"] },
+    { id: "ceo",          label: "The CEO",                 emoji: "🏢", views: 250000, pairsWith: ["meeting","gala","revelation","business"] },
+    { id: "fiance",       label: "My Fiancé/Fiancée",      emoji: "💑", views: 300000, pairsWith: ["sister","wedding","betrayal","revelation"] }
+  ],
+
+  // ---- LOCAIS ----
+  locations: [
+    { id: "wedding",     label: "Wedding",                    emoji: "💒", views: 2400000 },
+    { id: "reunion",     label: "Family Reunion / Retreat",   emoji: "🏡", views: 1900000 },
+    { id: "dinner",      label: "Family Dinner",              emoji: "🍽️", views: 1700000 },
+    { id: "will",        label: "Will Reading",               emoji: "📜", views: 1600000 },
+    { id: "birthday",    label: "Birthday Party",             emoji: "🎂", views: 1400000 },
+    { id: "gala",        label: "Gala / Formal Event",        emoji: "🎩", views: 1100000 },
+    { id: "graduation",  label: "Graduation",                 emoji: "🎓", views: 1200000 },
+    { id: "office",      label: "Office / Business Meeting",  emoji: "🏢", views: 900000 },
+    { id: "home",        label: "Family Home",                emoji: "🏠", views: 950000 },
+    { id: "restaurant",  label: "Restaurant / Café",          emoji: "☕", views: 750000 },
+    { id: "hospital",    label: "Hospital / Surgery",         emoji: "🏥", views: 500000 },
+    { id: "funeral",     label: "Funeral / Memorial",         emoji: "⚰️", views: 550000 },
+    { id: "airport",     label: "Airport / Travel",           emoji: "✈️", views: 450000 },
+    { id: "church",      label: "Church / Ceremony",          emoji: "⛪", views: 400000 },
+    { id: "courtroom",   label: "Courtroom",                  emoji: "⚖️", views: 600000 }
+  ],
+
+  // ---- FÓRMULAS NARRATIVAS ----
+  formulas: [
+    { 
+      id: "exclusion_recognition", 
+      name: "Exclusão + Reconhecimento Público",
+      desc: "Protagonista é excluído → Pessoa respeitada revela seu valor publicamente",
+      weight: 10,
+      example: "They Excluded Me — Then The CEO Stood Up And Thanked Me"
+    },
+    { 
+      id: "humiliation_status", 
+      name: "Humilhação + Revelação de Status",
+      desc: "Protagonista é humilhado por aparência/cargo → Status real é revelado",
+      weight: 9,
+      example: "They Called Me Poor — Then The Waiter Said 'Welcome Back, Owner'"
+    },
+    { 
+      id: "injustice_legal", 
+      name: "Injustiça + Virada Jurídica",
+      desc: "Roubo ou fraude familiar → Documento/cláusula oculta muda tudo",
+      weight: 9,
+      example: "They Burned My Check — Then The Lawyer Handed Me A Second Envelope"
+    },
+    { 
+      id: "favoritism_revenge", 
+      name: "Favoritismo + Vingança Silenciosa",
+      desc: "Família favorece outro → Protagonista age estrategicamente com poder financeiro",
+      weight: 8,
+      example: "She Got It All — Until I Froze Their Accounts"
+    },
+    { 
+      id: "betrayal_redemption", 
+      name: "Traição + Redenção Pública",
+      desc: "Traição por familiar/parceiro → Redenção pública ou reconhecimento",
+      weight: 7,
+      example: "They Mocked Me — Then My Husband Arrived And Changed Everything"
+    },
+    { 
+      id: "sacrifice_revelation", 
+      name: "Sacrifício Ignorado + Revelação",
+      desc: "Protagonista ajudou em silêncio por anos → Verdade é revelada por terceiro",
+      weight: 8,
+      example: "They Said I Never Helped — Then The Lawyer Revealed Who Paid Everything"
+    },
+    { 
+      id: "cruelty_comeback", 
+      name: "Frase Cruel + Retorno Impactante",
+      desc: "Frase ofensiva dita em público → Reação imediata com poder ou verdade",
+      weight: 9,
+      example: "She Said 'You're Nothing' — Then The Host Introduced Me As The Owner"
+    },
+    {
+      id: "expulsion_property",
+      name: "Expulsão + Revelação de Propriedade",
+      desc: "Protagonista expulso de casa/negócio → Documento prova que ele é o dono",
+      weight: 8,
+      example: "They Kicked Me Out — Then The Deed Fell Out With My Name On It"
+    },
+    {
+      id: "abandon_fortune",
+      name: "Abandono + Fortuna Secreta",
+      desc: "Protagonista abandonado ou descartado → Riqueza/poder oculto revelado",
+      weight: 7,
+      example: "They Left Me At The Nursing Home — Then The Bank Called About My Millions"
+    },
+    {
+      id: "hidden_document",
+      name: "Documento Oculto + Virada Total",
+      desc: "Carta, gravação ou contrato escondido → Revelação que inverte a situação",
+      weight: 9,
+      example: "They Made Me Sign A Paper — But Didn't Read What I Actually Wrote"
+    }
+  ],
+
+  // ---- IDIOMAS ----
+  languages: [
+    { id: "en", label: "EN", flag: "🇬🇧", name: "English" },
+    { id: "es", label: "ES", flag: "🇪🇸", name: "Español" },
+    { id: "pt", label: "PT", flag: "🇧🇷", name: "Português" },
+    { id: "it", label: "IT", flag: "🇮🇹", name: "Italiano" },
+    { id: "pl", label: "PL", flag: "🇵🇱", name: "Polski" },
+    { id: "hr", label: "HR", flag: "🇭🇷", name: "Hrvatski" },
+    { id: "ro", label: "RO", flag: "🇷🇴", name: "Română" },
+    { id: "fr", label: "FR", flag: "🇫🇷", name: "Français" }
+  ],
+
+  // ---- COMPONENTES DE TÍTULO (INGLÊS) ----
+  titleParts: {
+    en: {
+      exclusionActs: [
+        "They Excluded Me From {event}",
+        "I Wasn't Invited To {event}",
+        "They Didn't Save Me A Seat At {event}",
+        "They Told Me Not To Come To {event}",
+        "My {char} Said I Shouldn't Attend {event}",
+        "They Left Me Off The Guest List For {event}",
+        "They Said 'No Room For You' At {event}",
+        "My Name Was Removed From {event}",
+        "They Blocked Me From Attending {event}",
+        "They Sent Me Away Before {event}"
+      ],
+      humiliationActs: [
+        "They Called Me Poor At {location}",
+        "They Called Me 'Just A {job}' At {location}",
+        "My {char} Mocked My {target} At {location}",
+        "They Laughed At My {target} At {location}",
+        "They Said I Was 'Nothing' At {location}",
+        "My {char} Whispered 'She's Embarrassing' At {location}",
+        "They Seated Me In The Kitchen At {location}",
+        "They Told Me To Sit In The Back At {location}",
+        "My {char} Said 'Don't Speak' At {location}",
+        "They Rolled Their Eyes When I Arrived At {location}"
+      ],
+      cruelQuotes: [
+        "You're Not Family Anymore",
+        "There's No Room For You",
+        "You'll Never Be Like Her",
+        "Don't Embarrass Us",
+        "You're Just A Burden",
+        "We Don't Need You Here",
+        "She's The Smart One, Not You",
+        "You'll Never Amount To Anything",
+        "You're Not Welcome Here",
+        "Nobody Asked For Your Opinion",
+        "Stay In Your Place",
+        "You're Dead To Us",
+        "We Already Have Enough People",
+        "Don't Ruin This For Everyone",
+        "You Can Watch From Home"
+      ],
+      injusticeActs: [
+        "They Burned My Inheritance Check",
+        "They Gave Everything To My {char}",
+        "They Sold My Share Without Telling Me",
+        "They Changed The Will Last Minute",
+        "They Took My Trust Fund",
+        "They Split Everything Without Including Me",
+        "They Transferred All Assets To My {char}",
+        "They Forged My Signature On The Documents",
+        "They Hid Grandpa's Final Wishes",
+        "They Claimed I Had No Right To Inherit"
+      ],
+      revengeActs: [
+        "So I Froze Their Credit Cards",
+        "So I Bought The House And Changed The Locks",
+        "So I Pulled My Company's Contract",
+        "So I Withdrew Every Penny I'd Been Giving Them",
+        "So I Cancelled The Event They Were Counting On",
+        "So I Bought The Venue And Closed It",
+        "So I Funded Their Rival's Company",
+        "So I Took My Name Off The Deed",
+        "So I Sent Them A Bill For Every Dollar",
+        "So I Sponsored Everything And Then Pulled Out"
+      ],
+      surpriseReveals: [
+        "Then The Groom Introduced Me As His Business Partner",
+        "Then The CEO Stood Up And Thanked Me",
+        "Then The Lawyer Handed Me A Second Envelope",
+        "Then Grandpa Booked Me The Presidential Suite",
+        "Then The Host Announced Me As The Lead Sponsor",
+        "Then The Dean Called My Name First",
+        "Then The Waiter Said 'Welcome Back, Owner'",
+        "Then My Assistant Walked In And Said 'Your Car Is Ready, Director'",
+        "Then The Judge Read My Name On Every Asset",
+        "Then The Band Played A Song Dedicated To Me",
+        "Then The Photographer Asked Me To Stand In The Center",
+        "Then The Minister Paused And Invited Me To The Stage",
+        "Then The Chef Walked Out And Called Me His Investor",
+        "Then The Mayor Walked In And Said 'Where's My VIP Guest?'",
+        "Then The Designer Hugged Me And Thanked Me",
+        "Then The Bride Stopped The Ceremony And Called My Name",
+        "Then The Banker Arrived With A Contract In My Name",
+        "Then The Accountant Refused The Transfer Without My Approval",
+        "Then The Doctor Said 'Your Daughter Paid For Everything'",
+        "Then The Priest Read A Dedication I Never Knew Was Coming"
+      ],
+      statusReveals: [
+        "Then The Waiter Said 'Welcome Back, Owner'",
+        "Then My Assistant Announced Me As CEO",
+        "Then The MC Thanked Me For Sponsoring The Event",
+        "Then The Investor Said I Funded Their Company",
+        "Then The CEO Introduced Me As His Successor",
+        "Then The Restaurant Owner Called Me 'Partner'",
+        "Then The App Hit 2 Million Users That Same Day",
+        "Then My Podcast Hit A Million Downloads",
+        "Then The Conference Gave Me A Standing Ovation",
+        "Then Forbes Featured Me On Their Cover"
+      ],
+      legalReveals: [
+        "Then The Lawyer Pulled Out A Second Will",
+        "Then The Judge Handed Me The Deed To Their House",
+        "Then The Bank Froze Their Transfer With My Authority",
+        "Then I Played The Video Grandpa Left Behind",
+        "Then The Court Played Grandma's Hidden Message",
+        "Then The Executor Announced My Secret Trust Fund",
+        "Then I Showed The Backup Copy Grandpa Sent Me",
+        "Then The Safe Opened With A Document No One Expected",
+        "Then The DNA Test Results Changed Everything",
+        "Then The Recording From The Funeral Was Played In Court"
+      ],
+      sacrificeReveals: [
+        "Then The Lawyer Explained Who Paid Their Mortgage",
+        "Then The Doctor Said I'd Paid For Every Visit",
+        "Then The Church Announced I Was Their Biggest Donor",
+        "Then The Therapist Said I'd Funded His Recovery",
+        "Then The Old Neighbor Told Them What I Did Every Year",
+        "Then My Sister Read A Letter That Made Everyone Cry",
+        "Then The School Principal Revealed Who Funded The Scholarship",
+        "Then The Hospital Director Called Me Their Biggest Benefactor",
+        "Then The Judge Revealed Who Covered Their Legal Fees",
+        "Then My Mentor Told Them I'd Been Protecting Them In Silence"
+      ],
+      events: [
+        "The Wedding", "The Dinner", "The Gala", "The Reunion",
+        "The Birthday", "The Graduation", "The Ceremony", "Christmas",
+        "The Family Trip", "The Anniversary", "The Party", "Thanksgiving"
+      ],
+      jobs: [
+        "Waitress", "Mechanic", "Nanny", "Cleaner", "Babysitter",
+        "Driver", "Secretary", "Intern", "Cashier", "Freelancer"
+      ],
+      mockTargets: [
+        "Job", "Outfit", "Gift", "Car", "Accent", "Degree",
+        "Handmade Dress", "Cooking", "Apartment", "Phone", "Shoes"
+      ]
+    }
+  }
+};
+
+// ============================================
+// ENGINE DE GERAÇÃO
+// ============================================
+
+let generatedTitles = [];
+let savedTitles = JSON.parse(localStorage.getItem('sf_saved') || '[]');
+let currentLang = 'en';
+let totalGenerated = parseInt(localStorage.getItem('sf_totalGen') || '0');
+
+// ---- INICIALIZAÇÃO ----
+function init() {
+  populateSelects();
+  renderLanguages();
+  renderSavedList();
+  updateStats();
+}
+
+function populateSelects() {
+  const catSel = document.getElementById('selCategory');
+  DB.categories.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.id;
+    opt.textContent = `${c.emoji} ${c.name}`;
+    catSel.appendChild(opt);
+  });
+
+  const charSel = document.getElementById('selCharacter');
+  const charSel2 = document.getElementById('selCharacter2');
+  DB.characters.forEach(c => {
+    const opt1 = document.createElement('option');
+    opt1.value = c.id;
+    opt1.textContent = `${c.emoji} ${c.label}`;
+    charSel.appendChild(opt1);
+    charSel2.appendChild(opt1.cloneNode(true));
+  });
+
+  const locSel = document.getElementById('selLocation');
+  DB.locations.forEach(l => {
+    const opt = document.createElement('option');
+    opt.value = l.id;
+    opt.textContent = `${l.emoji} ${l.label}`;
+    locSel.appendChild(opt);
+  });
+
+  const formSel = document.getElementById('selFormula');
+  DB.formulas.forEach(f => {
+    const opt = document.createElement('option');
+    opt.value = f.id;
+    opt.textContent = f.name;
+    formSel.appendChild(opt);
+  });
+
+  formSel.addEventListener('change', () => {
+    const f = DB.formulas.find(x => x.id === formSel.value);
+    const prev = document.getElementById('formulaPreview');
+    if (f) {
+      prev.style.display = 'block';
+      prev.innerHTML = `<strong>Estrutura:</strong> ${f.desc}<br><strong>Exemplo:</strong> "${f.example}"`;
+    } else {
+      prev.style.display = 'none';
+    }
+  });
+}
+
+function onCategoryChange() {
+  const catId = parseInt(document.getElementById('selCategory').value);
+  const cat = DB.categories.find(c => c.id === catId);
+  const info = document.getElementById('categoryInfo');
+  const desc = document.getElementById('categoryDesc');
+  if (cat) {
+    info.style.display = 'block';
+    desc.innerHTML = `<strong>Views Est.:</strong> ${formatNumber(cat.views)}+<br><strong>${cat.desc}</strong>`;
+  } else {
+    info.style.display = 'none';
+  }
+}
+
+function renderLanguages() {
+  const grid = document.getElementById('langGrid');
+  grid.innerHTML = '';
+  DB.languages.forEach(lang => {
+    const btn = document.createElement('button');
+    btn.className = `lang-btn ${lang.id === currentLang ? 'active' : ''}`;
+    btn.textContent = `${lang.flag} ${lang.label}`;
+    btn.onclick = () => {
+      currentLang = lang.id;
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    };
+    grid.appendChild(btn);
+  });
+}
+
+// ---- UTILIDADES ----
+function pick(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function pickN(arr, n) {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, n);
+}
+
+function formatNumber(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000) return (n / 1000).toFixed(0) + 'K';
+  return n.toString();
+}
+
+function showToast(msg, icon = '✅') {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  document.getElementById('toastIcon').textContent = icon;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ---- CÁLCULO DO SCORE DE VIRALIDADE ----
+function calculateScore(title, charId, locId, formulaId, catId) {
+  let score = 50; // base
+
+  // Pontos por personagem
+  const char = DB.characters.find(c => c.id === charId);
+  if (char) score += Math.min(20, Math.floor(char.views / 150000));
+
+  // Pontos por local
+  const loc = DB.locations.find(l => l.id === locId);
+  if (loc) score += Math.min(15, Math.floor(loc.views / 200000));
+
+  // Pontos por fórmula
+  const form = DB.formulas.find(f => f.id === formulaId);
+  if (form) score += form.weight;
+
+  // Pontos por categoria
+  const cat = DB.categories.find(c => c.id === catId);
+  if (cat) score += Math.min(10, Math.floor(cat.views / 300000));
+
+  // Penalidade por comprimento
+  const len = title.length;
+  if (len >= 105 && len <= 115) score += 5;
+  else if (len >= 95 && len <= 120) score += 2;
+  else if (len > 130 || len < 80) score -= 5;
+
+  // Bonus por aspas (fala direta)
+  if (title.includes('"') || title.includes("'")) score += 3;
+
+  // Bonus por travessão
+  if (title.includes('—') || title.includes('–')) score += 2;
+
+  return Math.max(10, Math.min(100, score));
+}
+
+// ---- GERAÇÃO DE TÍTULOS ----
+function generateTitles() {
+  const catId = parseInt(document.getElementById('selCategory').value) || null;
+  const charId = document.getElementById('selCharacter').value || null;
+  const char2Id = document.getElementById('selCharacter2').value || null;
+  const locId = document.getElementById('selLocation').value || null;
+  const formulaId = document.getElementById('selFormula').value || null;
+  const quantity = parseInt(document.getElementById('selQuantity').value);
+
+  const titles = [];
+  const attempts = quantity * 8; // tentar mais para filtrar duplicatas
+  const seen = new Set();
+
+  for (let i = 0; i < attempts && titles.length < quantity; i++) {
+    const title = buildTitle(catId, charId, char2Id, locId, formulaId);
+    if (title && !seen.has(title.text)) {
+      seen.add(title.text);
+      titles.push(title);
+    }
+  }
+
+  // Ordenar por score
+  titles.sort((a, b) => b.score - a.score);
+
+  generatedTitles = titles;
+  totalGenerated += titles.length;
+  localStorage.setItem('sf_totalGen', totalGenerated);
+  
+  renderTitles(titles);
+  updateStats();
+}
+
+function buildTitle(catId, charId, char2Id, locId, formulaId) {
+  const parts = DB.titleParts.en;
+  
+  // Resolver parâmetros (usar fornecidos ou random)
+  const usedCatId = catId || pick(DB.categories).id;
+  const usedCharId = charId || pick(DB.characters).id;
+  const usedLocId = locId || pick(DB.locations).id;
+  const usedFormulaId = formulaId || pick(DB.formulas).id;
+
+  const char = DB.characters.find(c => c.id === usedCharId);
+  const char2 = char2Id ? DB.characters.find(c => c.id === char2Id) : null;
+  const loc = DB.locations.find(l => l.id === usedLocId);
+  const formula = DB.formulas.find(f => f.id === usedFormulaId);
+  const cat = DB.categories.find(c => c.id === usedCatId);
+
+  let titleText = '';
+
+  // Selecionar estratégia de construção baseada na fórmula
+  switch (usedFormulaId) {
+    case 'exclusion_recognition':
+      titleText = buildExclusionRecognition(parts, char, loc);
+      break;
+    case 'humiliation_status':
+      titleText = buildHumiliationStatus(parts, char, loc);
+      break;
+    case 'injustice_legal':
+      titleText = buildInjusticeLegal(parts, char, loc);
+      break;
+    case 'favoritism_revenge':
+      titleText = buildFavoritismRevenge(parts, char, loc);
+      break;
+    case 'betrayal_redemption':
+      titleText = buildBetrayalRedemption(parts, char, loc);
+      break;
+    case 'sacrifice_revelation':
+      titleText = buildSacrificeRevelation(parts, char, loc);
+      break;
+    case 'cruelty_comeback':
+      titleText = buildCrueltyComeback(parts, char, loc);
+      break;
+    case 'expulsion_property':
+      titleText = buildExpulsionProperty(parts, char, loc);
+      break;
+    case 'abandon_fortune':
+      titleText = buildAbandonFortune(parts, char, loc);
+      break;
+    case 'hidden_document':
+      titleText = buildHiddenDocument(parts, char, loc);
+      break;
+    default:
+      titleText = buildGeneric(parts, char, loc);
+  }
+
+  if (!titleText) return null;
+
+  const score = calculateScore(titleText, usedCharId, usedLocId, usedFormulaId, usedCatId);
+
+  return {
+    text: titleText,
+    score: score,
+    charId: usedCharId,
+    charLabel: char.label,
+    locId: usedLocId,
+    locLabel: loc.label,
+    formulaId: usedFormulaId,
+    formulaName: formula.name,
+    catId: usedCatId,
+    catName: cat.name,
+    catEmoji: cat.emoji,
+    lang: currentLang,
+    chars: titleText.length
+  };
+}
+
+// ---- BUILDERS POR FÓRMULA ----
+
+function buildExclusionRecognition(parts, char, loc) {
+  const event = pick(parts.events);
+  const exclusion = pick(parts.exclusionActs)
+    .replace('{event}', event)
+    .replace('{char}', char.label.replace('My ', ''));
+  const reveal = pick(parts.surpriseReveals);
+  return `${exclusion} — ${reveal}`;
+}
+
+function buildHumiliationStatus(parts, char, loc) {
+  const mockTarget = pick(parts.mockTargets);
+  const job = pick(parts.jobs);
+  const humiliation = pick(parts.humiliationActs)
+    .replace('{location}', loc.label)
+    .replace('{char}', char.label.replace('My ', ''))
+    .replace('{target}', mockTarget)
+    .replace('{job}', job);
+  const reveal = pick(parts.statusReveals);
+  return `${humiliation} — ${reveal}`;
+}
+
+function buildInjusticeLegal(parts, char, loc) {
+  const injustice = pick(parts.injusticeActs)
+    .replace('{char}', char.label.replace('My ', ''));
+  const reveal = pick(parts.legalReveals);
+  return `${injustice} — ${reveal}`;
+}
+
+function buildFavoritismRevenge(parts, char, loc) {
+  const templates = [
+    `My Parents Paid For ${char.label.replace('My ', "My "+(pick(["Sister's","Brother's"])))} College — Then I Graduated First And ${pick(parts.surpriseReveals).replace('Then ','')}`  ,
+    `They Always Chose ${char.label.replace('My ','Her')} Over Me — ${pick(parts.revengeActs)}`,
+    `${char.label} Got The Master Bedroom — ${pick(parts.revengeActs)}`,
+    `They Celebrated ${char.label.replace('My ','Her')} Promotion — Then I Quietly ${pick(["Funded The Company She Works For","Sent Her Boss My Resume","Bought Their Competitor"])}`,
+    `My Parents Called ${char.label.replace('My ','Her')} A Star — ${pick(parts.surpriseReveals)}`,
+    `They Forgot My Birthday But Flew Across The Country For Hers — ${pick(parts.revengeActs)}`,
+    `My Parents Spent Thousands On Her Wedding — Then Told Me To Elope Quietly`,
+    `They Framed My Accomplishments As Luck — While Her Minor Efforts Were Glorified`
+  ];
+  return pick(templates);
+}
+
+function buildBetrayalRedemption(parts, char, loc) {
+  const templates = [
+    `${char.label} Betrayed Me At ${loc.label} — ${pick(parts.surpriseReveals)}`,
+    `${char.label} Took Credit For My Work — Then ${pick(["Her Boss Asked One Question She Couldn't Answer","The Client Called Me Directly","The Award Went To Me Instead"])}`,
+    `${char.label} Turned Everyone Against Me — ${pick(parts.surpriseReveals)}`,
+    `${char.label} Stole My Idea At ${loc.label} — Then The Investor ${pick(["Shook My Hand On Live TV","Asked For My Business Card","Revealed The Truth"])}`,
+    `${char.label} Mocked Me In Front Of Everyone — Then ${pick(["My Husband Took The Mic","The Bride Called My Name","The CEO Walked Over"])} And Told Them The Truth`
+  ];
+  return pick(templates);
+}
+
+function buildSacrificeRevelation(parts, char, loc) {
+  const templates = [
+    `${char.label} Said I Never Helped — ${pick(parts.sacrificeReveals)}`,
+    `They Called Me Selfish For Years — ${pick(parts.sacrificeReveals)}`,
+    `${char.label} Told Everyone I Was A Burden — ${pick(parts.sacrificeReveals)}`,
+    `They Said "You Never Do Anything For Us" — ${pick(parts.sacrificeReveals)}`,
+    `${char.label} Blamed Me For Everything — ${pick(parts.sacrificeReveals)}`
+  ];
+  return pick(templates);
+}
+
+function buildCrueltyComeback(parts, char, loc) {
+  const quote = pick(parts.cruelQuotes);
+  const reveal = pick([...parts.surpriseReveals, ...parts.statusReveals]);
+  return `${char.label} Said "${quote}" — ${reveal}`;
+}
+
+function buildExpulsionProperty(parts, char, loc) {
+  const templates = [
+    `They Kicked Me Out Of My Own Home — Then The Deed Fell Out With My Name On It`,
+    `${char.label} Changed The Locks — Then I Showed The Property Title In My Name`,
+    `They Told Me To Leave The House — Then The Lawyer Arrived With The Real Documents`,
+    `${char.label} Moved Into My House — Then The Sheriff Arrived With An Eviction Notice For Them`,
+    `They Sold My House While I Was In The Hospital — Then I Froze The Sale As Legal Owner`,
+    `${char.label} Said "This Isn't Your Home Anymore" — Then I Showed Them The Mortgage Payments In My Name`
+  ];
+  return pick(templates);
+}
+
+function buildAbandonFortune(parts, char, loc) {
+  const templates = [
+    `${char.label} Left Me At The Nursing Home — Then The Bank Called About My Secret Account`,
+    `They Abandoned Me On My Birthday — Then I Withdrew My Support And Watched Them Struggle`,
+    `${char.label} Said "We Don't Need You" — Then They Discovered I Was Funding Their Lifestyle`,
+    `They Left Me Out Of The Family Trip — Then I Bought The Resort And Cancelled Their Booking`,
+    `${char.label} Dropped Me Off At A Shelter — Then The Owner Said "Welcome Back, Mrs. Founder"`,
+    `They Forgot About Me For Three Years — Then I Showed Up At The Gala As The Main Donor`
+  ];
+  return pick(templates);
+}
+
+function buildHiddenDocument(parts, char, loc) {
+  const templates = [
+    `${char.label} Made Me Sign A Paper — But Didn't Read What I Actually Wrote On The Back`,
+    `They Found A Letter In Grandpa's Safe — It Changed Who Gets Everything`,
+    `I Kept A Recording Of What ${char.label} Said At Dinner — The Lawyer Used It At The Will Reading`,
+    `They Burned The Old Will — But I Had Already Sent A Copy To The Judge`,
+    `${char.label} Thought The Contract Was Destroyed — But I Found It Inside My Childhood Toy Box`,
+    `They Made Me Sign Away My Rights — But The Lawyer Found A Clause That Reversed Everything`
+  ];
+  return pick(templates);
+}
+
+function buildGeneric(parts, char, loc) {
+  const strategies = [
+    () => buildExclusionRecognition(parts, char, loc),
+    () => buildHumiliationStatus(parts, char, loc),
+    () => buildCrueltyComeback(parts, char, loc),
+    () => buildInjusticeLegal(parts, char, loc),
+    () => buildSacrificeRevelation(parts, char, loc)
+  ];
+  return pick(strategies)();
+}
+
+// ---- GERAR ALEATÓRIO ----
+function generateRandom() {
+  document.getElementById('selCategory').value = '';
+  document.getElementById('selCharacter').value = '';
+  document.getElementById('selCharacter2').value = '';
+  document.getElementById('selLocation').value = '';
+  document.getElementById('selFormula').value = '';
+  document.getElementById('formulaPreview').style.display = 'none';
+  document.getElementById('categoryInfo').style.display = 'none';
+  generateTitles();
+}
+
+// ---- RENDERIZAR TÍTULOS ----
+function renderTitles(titles) {
+  const container = document.getElementById('titlesContainer');
+  
+  if (titles.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">🤔</div>
+        <div class="empty-title">Nenhum título gerado</div>
+        <div class="empty-subtitle">Tente ajustar os parâmetros ou use o botão "Aleatório Completo".</div>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = titles.map((t, i) => {
+    const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-default';
+    const charClass = t.chars >= 105 && t.chars <= 115 ? 'char-optimal' : t.chars < 95 ? 'char-short' : t.chars > 125 ? 'char-long' : 'char-optimal';
+    const scoreClass = t.score >= 75 ? 'score-high' : t.score >= 50 ? 'score-mid' : 'score-low';
+    const scoreColor = t.score >= 75 ? 'var(--success)' : t.score >= 50 ? 'var(--warning)' : 'var(--danger)';
+    const isSaved = savedTitles.some(s => s.text === t.text);
+
+    // Destacar a parte após o travessão
+    let displayText = t.text;
+    const dashPos = t.text.indexOf('—');
+    if (dashPos > 0) {
+      displayText = t.text.substring(0, dashPos) + '— <em>' + t.text.substring(dashPos + 2) + '</em>';
+    }
+
+    return `
+      <div class="title-card" style="animation-delay: ${i * 0.05}s">
+        <div class="title-card-header">
+          <div class="title-rank">
+            <div class="rank-badge ${rankClass}">${i + 1}</div>
+            <span class="title-category-badge">${t.catEmoji} ${t.catName}</span>
+          </div>
+          <span class="${charClass} char-count">${t.chars} chars</span>
+        </div>
+        
+        <div class="title-text" id="title-${i}">${displayText}</div>
+        
+        <div class="title-meta">
+          <span class="meta-tag"><span class="dot dot-char"></span> ${t.charLabel}</span>
+          <span class="meta-tag"><span class="dot dot-loc"></span> ${t.locLabel}</span>
+          <span class="meta-tag"><span class="dot dot-form"></span> ${t.formulaName}</span>
+          <span class="meta-tag"><span class="dot dot-lang"></span> ${currentLang.toUpperCase()}</span>
+        </div>
+        
+        <div class="title-footer">
+          <div class="viral-score">
+            <div class="score-bar-bg">
+              <div class="score-bar-fill ${scoreClass}" style="width: ${t.score}%"></div>
+            </div>
+            <span class="score-label" style="color: ${scoreColor}">${t.score}/100</span>
+          </div>
+          <div class="title-actions">
+            <button class="btn-icon ${isSaved ? 'saved' : ''}" onclick="toggleSave(${i})" title="Salvar">⭐</button>
+            <button class="btn-icon" onclick="copyTitle(${i})" title="Copiar">📋</button>
+            <button class="btn-icon" onclick="editTitle(${i})" title="Editar">✏️</button>
+            <button class="btn-icon" onclick="regenerateOne(${i})" title="Regenerar">🔄</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('resultsCount').textContent = `${titles.length} títulos gerados`;
+}
+
+// ---- AÇÕES DOS TÍTULOS ----
+
+function toggleSave(index) {
+  const title = generatedTitles[index];
+  const existingIndex = savedTitles.findIndex(s => s.text === title.text);
+  
+  if (existingIndex >= 0) {
+    savedTitles.splice(existingIndex, 1);
+    showToast('Título removido dos salvos', '🗑️');
+  } else {
+    savedTitles.push({
+      text: title.text,
+      score: title.score,
+      category: title.catName,
+      character: title.charLabel,
+      location: title.locLabel,
+      formula: title.formulaName,
+      lang: title.lang,
+      savedAt: new Date().toISOString()
+    });
+    showToast('Título salvo com sucesso!');
+  }
+  
+  localStorage.setItem('sf_saved', JSON.stringify(savedTitles));
+  renderTitles(generatedTitles);
+  renderSavedList();
+  updateStats();
+}
+
+function copyTitle(index) {
+  const title = generatedTitles[index];
+  navigator.clipboard.writeText(title.text).then(() => {
+    showToast('Título copiado!', '📋');
+  });
+}
+
+function editTitle(index) {
+  const el = document.getElementById(`title-${index}`);
+  el.contentEditable = true;
+  el.focus();
+  
+  el.onblur = () => {
+    el.contentEditable = false;
+    const newText = el.textContent.trim();
+    generatedTitles[index].text = newText;
+    generatedTitles[index].chars = newText.length;
+    generatedTitles[index].score = calculateScore(
+      newText,
+      generatedTitles[index].charId,
+      generatedTitles[index].locId,
+      generatedTitles[index].formulaId,
+      generatedTitles[index].catId
+    );
+    renderTitles(generatedTitles);
+    showToast('Título editado!', '✏️');
+  };
+}
+
+function regenerateOne(index) {
+  const old = generatedTitles[index];
+  let newTitle = null;
+  for (let i = 0; i < 20; i++) {
+    newTitle = buildTitle(old.catId, old.charId, null, old.locId, old.formulaId);
+    if (newTitle && newTitle.text !== old.text) break;
+  }
+  if (newTitle) {
+    generatedTitles[index] = newTitle;
+    renderTitles(generatedTitles);
+    showToast('Título regenerado!', '🔄');
+  }
+}
+
+function copyAllTitles() {
+  const text = generatedTitles.map((t, i) => `${i + 1}. ${t.text}`).join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    showToast(`${generatedTitles.length} títulos copiados!`, '📋');
+  });
+}
+
+function sortByScore() {
+  generatedTitles.sort((a, b) => b.score - a.score);
+  renderTitles(generatedTitles);
+  showToast('Ordenado por score!', '📊');
+}
+
+// ---- LISTA DE SALVOS ----
+function renderSavedList() {
+  const list = document.getElementById('savedList');
+  document.getElementById('savedCount').textContent = savedTitles.length;
+  
+  if (savedTitles.length === 0) {
+    list.innerHTML = '<div style="font-size:12px; color:var(--text-muted); text-align:center; padding:16px;">Nenhum título salvo ainda</div>';
+    return;
+  }
+
+  list.innerHTML = savedTitles.map((s, i) => `
+    <div class="saved-item" onclick="navigator.clipboard.writeText('${s.text.replace(/'/g, "\\'")}'); showToast('Copiado!','📋')">
+      <span class="saved-item-text">${s.text}</span>
+      <span class="saved-item-remove" onclick="event.stopPropagation(); removeSaved(${i})">✕</span>
+    </div>
+  `).join('');
+}
+
+function removeSaved(index) {
+  savedTitles.splice(index, 1);
+  localStorage.setItem('sf_saved', JSON.stringify(savedTitles));
+  renderSavedList();
+  updateStats();
+  showToast('Removido!', '🗑️');
+}
+
+// ---- STATS ----
+function updateStats() {
+  document.getElementById('statGenerated').textContent = totalGenerated;
+  document.getElementById('statSaved').textContent = savedTitles.length;
+  
+  if (generatedTitles.length > 0) {
+    const avgScore = Math.round(generatedTitles.reduce((sum, t) => sum + t.score, 0) / generatedTitles.length);
+    const avgChars = Math.round(generatedTitles.reduce((sum, t) => sum + t.chars, 0) / generatedTitles.length);
+    document.getElementById('statAvgScore').textContent = avgScore + '/100';
+    document.getElementById('statAvgChars').textContent = avgChars;
+  }
+}
+
+// ---- EXPORTAÇÃO ----
+function exportAllSaved() {
+  if (savedTitles.length === 0) {
+    showToast('Nenhum título salvo para exportar!', '⚠️');
+    return;
+  }
+
+  const headers = ['Title', 'Score', 'Category', 'Character', 'Location', 'Formula', 'Language', 'Saved At'];
+  const rows = savedTitles.map(s => [
+    `"${s.text.replace(/"/g, '""')}"`,
+    s.score,
+    `"${s.category}"`,
+    `"${s.character}"`,
+    `"${s.location}"`,
+    `"${s.formula}"`,
+    s.lang,
+    s.savedAt
+  ]);
+
+  const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+  downloadFile(csv, 'storyforge_titles.csv', 'text/csv');
+  showToast(`${savedTitles.length} títulos exportados!`, '📤');
+}
+
+function exportJSON() {
+  const data = {
+    version: '1.0',
+    exportDate: new Date().toISOString(),
+    savedTitles: savedTitles,
+    totalGenerated: totalGenerated,
+    settings: { language: currentLang }
+  };
+  downloadFile(JSON.stringify(data, null, 2), 'storyforge_backup.json', 'application/json');
+  showToast('Backup exportado!', '💾');
+}
+
+function importJSON() {
+  document.getElementById('importFile').click();
+}
+
+function handleImport(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.savedTitles) {
+        savedTitles = data.savedTitles;
+        localStorage.setItem('sf_saved', JSON.stringify(savedTitles));
+      }
+      if (data.totalGenerated) {
+        totalGenerated = data.totalGenerated;
+        localStorage.setItem('sf_totalGen', totalGenerated);
+      }
+      renderSavedList();
+      updateStats();
+      showToast('Backup restaurado com sucesso!', '✅');
+    } catch (err) {
+      showToast('Erro ao importar arquivo!', '❌');
+    }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function downloadFile(content, filename, type) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ---- INICIAR ----
+init();
+</script>
+
+</body>
+</html>

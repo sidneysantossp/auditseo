@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryForge — Analytics Tracker · Módulo 4</title>
+<style>
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a2e;
+  --bg-input: #16162a;
+  --border-color: #2a2a4a;
+  --text-primary: #e8e8f0;
+  --text-secondary: #9999bb;
+  --text-muted: #666688;
+  --accent-primary: #6c5ce7;
+  --accent-secondary: #a29bfe;
+  --accent-gradient: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  --success: #00cec9;
+  --warning: #fdcb6e;
+  --danger: #ff6b6b;
+  --chart-1: #6c5ce7;
+  --chart-2: #00cec9;
+  --chart-3: #fdcb6e;
+  --chart-4: #e17055;
+  --chart-5: #a29bfe;
+  --chart-6: #55efc4;
+  --chart-7: #fab1a0;
+  --chart-8: #74b9ff;
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary); color: var(--text-primary);
+  min-height: 100vh; line-height: 1.5;
+}
+
+/* HEADER */
+.header {
+  background: var(--bg-secondary); border-bottom: 1px solid var(--border-color);
+  padding: 12px 24px; display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon {
+  width: 36px; height: 36px; background: var(--accent-gradient);
+  border-radius: 9px; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: bold; color: white;
+}
+.logo-text { font-size: 19px; font-weight: 700; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.logo-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+.header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn-h {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  color: var(--text-secondary); padding: 7px 12px; border-radius: var(--radius-sm);
+  cursor: pointer; font-size: 11px; transition: var(--transition);
+}
+.btn-h:hover { border-color: var(--accent-primary); color: var(--text-primary); }
+
+/* MAIN */
+.main-area { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+/* KPI ROW */
+.kpi-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 20px; }
+.kpi-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); padding: 16px; text-align: center;
+  transition: var(--transition);
+}
+.kpi-card:hover { border-color: rgba(108,92,231,0.3); }
+.kpi-value { font-size: 26px; font-weight: 700; }
+.kpi-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+.kpi-change { font-size: 11px; margin-top: 4px; font-weight: 600; }
+.kpi-up { color: var(--success); }
+.kpi-down { color: var(--danger); }
+.kpi-neutral { color: var(--text-muted); }
+
+/* GRID DE CHARTS */
+.charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.chart-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); padding: 18px; overflow: hidden;
+}
+.chart-card.full { grid-column: span 2; }
+.chart-title {
+  font-size: 13px; font-weight: 600; color: var(--text-secondary);
+  margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between;
+}
+.chart-title-left { display: flex; align-items: center; gap: 6px; }
+.chart-filter {
+  background: var(--bg-input); border: 1px solid var(--border-color);
+  color: var(--text-muted); padding: 3px 8px; border-radius: 4px;
+  font-size: 10px; cursor: pointer; appearance: none;
+}
+canvas { display: block; width: 100% !important; }
+
+/* TABELA DE VÍDEOS */
+.table-wrapper { overflow-x: auto; }
+.data-table {
+  width: 100%; border-collapse: collapse; font-size: 12px;
+}
+.data-table th {
+  text-align: left; padding: 10px 12px; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--text-muted); border-bottom: 1px solid var(--border-color);
+  cursor: pointer; user-select: none; white-space: nowrap;
+}
+.data-table th:hover { color: var(--accent-secondary); }
+.data-table th.sorted { color: var(--accent-secondary); }
+.data-table td {
+  padding: 10px 12px; border-bottom: 1px solid rgba(42,42,74,0.5);
+  color: var(--text-secondary); vertical-align: middle;
+}
+.data-table tr:hover td { background: rgba(108,92,231,0.03); color: var(--text-primary); }
+.data-table .title-cell { max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-primary); font-weight: 500; }
+.lang-badge {
+  display: inline-block; font-size: 10px; padding: 2px 6px;
+  border-radius: 4px; background: rgba(108,92,231,0.12); color: var(--accent-secondary); font-weight: 600;
+}
+.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+.views-bar-bg { width: 80px; height: 6px; background: var(--bg-input); border-radius: 3px; display: inline-block; vertical-align: middle; margin-left: 6px; }
+.views-bar-fill { height: 100%; border-radius: 3px; background: var(--accent-primary); }
+.edit-btn {
+  background: var(--bg-input); border: 1px solid var(--border-color);
+  color: var(--text-muted); padding: 3px 8px; border-radius: 4px;
+  cursor: pointer; font-size: 10px; transition: var(--transition);
+}
+.edit-btn:hover { border-color: var(--accent-primary); color: var(--text-primary); }
+
+/* RANKING BARS */
+.rank-list { display: flex; flex-direction: column; gap: 8px; }
+.rank-item { display: flex; align-items: center; gap: 10px; }
+.rank-position { font-size: 12px; font-weight: 700; color: var(--text-muted); width: 20px; text-align: right; }
+.rank-label { font-size: 12px; color: var(--text-secondary); width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rank-bar-bg { flex: 1; height: 20px; background: var(--bg-input); border-radius: 4px; overflow: hidden; position: relative; }
+.rank-bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 10px; font-weight: 600; color: rgba(0,0,0,0.7); transition: width 0.6s ease; }
+.rank-value { font-size: 12px; font-weight: 600; color: var(--text-primary); width: 70px; text-align: right; }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  display: none; align-items: center; justify-content: center; z-index: 200;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: 16px; padding: 24px; width: 92%; max-width: 560px; max-height: 85vh; overflow-y: auto;
+}
+.modal-title { font-size: 15px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.modal-close { margin-left: auto; background: none; border: none; color: var(--text-muted); font-size: 18px; cursor: pointer; }
+.form-group { margin-bottom: 12px; }
+.form-label { display: block; font-size: 11px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.form-input, .form-select {
+  width: 100%; background: var(--bg-input); border: 1px solid var(--border-color);
+  color: var(--text-primary); padding: 9px 12px; border-radius: var(--radius-sm); font-size: 13px;
+}
+.form-select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%239999bb' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 30px; }
+.form-input:focus, .form-select:focus { outline: none; border-color: var(--accent-primary); }
+.form-select option { background: var(--bg-secondary); }
+.form-row { display: flex; gap: 10px; }
+.form-row .form-group { flex: 1; }
+.btn-action { width: 100%; padding: 11px; border: none; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 6px; }
+.btn-primary { background: var(--accent-gradient); color: white; }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(108,92,231,0.3); }
+.btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); }
+.btn-outline:hover { border-color: var(--accent-primary); color: var(--text-primary); }
+.btn-danger { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); }
+.btn-danger:hover { border-color: var(--danger); color: var(--danger); }
+.modal-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+
+/* CSV IMPORT AREA */
+.csv-area {
+  background: var(--bg-input); border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md); padding: 30px; text-align: center;
+  cursor: pointer; transition: var(--transition); margin-bottom: 16px;
+}
+.csv-area:hover { border-color: var(--accent-primary); }
+.csv-area.dragover { border-color: var(--accent-secondary); background: rgba(108,92,231,0.05); }
+.csv-icon { font-size: 36px; margin-bottom: 8px; opacity: 0.5; }
+.csv-text { font-size: 13px; color: var(--text-secondary); }
+.csv-sub { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+/* INSIGHTS */
+.insights-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.insight-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); padding: 14px;
+}
+.insight-icon { font-size: 20px; margin-bottom: 6px; }
+.insight-title { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.insight-value { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+.insight-detail { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--bg-card); border: 1px solid var(--success);
+  color: var(--text-primary); padding: 10px 18px;
+  border-radius: var(--radius-sm); font-size: 12px;
+  box-shadow: var(--shadow-md); transform: translateY(80px); opacity: 0;
+  transition: var(--transition); z-index: 1000;
+  display: flex; align-items: center; gap: 6px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+
+/* RESPONSIVE */
+@media (max-width: 1100px) { .charts-grid { grid-template-columns: 1fr; } .chart-card.full { grid-column: span 1; } .kpi-row { grid-template-columns: repeat(3, 1fr); } .insights-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } .insights-grid { grid-template-columns: 1fr; } .main-area { padding: 12px; } .header { padding: 10px 14px; flex-wrap: wrap; gap: 6px; } }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">
+    <div class="logo-icon">SF</div>
+    <div><div class="logo-text">StoryForge</div><div class="logo-sub">Analytics Tracker · Módulo 4</div></div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-h" onclick="openAddDataModal()">➕ Adicionar Dados</button>
+    <button class="btn-h" onclick="openImportModal()">📥 Importar CSV</button>
+    <button class="btn-h" onclick="exportCSV()">📤 Exportar CSV</button>
+    <button class="btn-h" onclick="backupAll()">💾 Backup</button>
+    <button class="btn-h" onclick="document.getElementById('restoreF').click()">📂 Restaurar</button>
+    <input type="file" id="restoreF" accept=".json" style="display:none" onchange="restoreAll(event)">
+    <button class="btn-h" onclick="loadSampleData()">🎲 Dados de Exemplo</button>
+  </div>
+</header>
+
+<div class="main-area">
+
+  <!-- KPIs -->
+  <div class="kpi-row" id="kpiRow"></div>
+
+  <!-- INSIGHTS -->
+  <div class="insights-grid" id="insightsGrid"></div>
+
+  <!-- CHARTS -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <div class="chart-title"><div class="chart-title-left">📊 Views por Idioma</div></div>
+      <canvas id="chartLang" height="220"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><div class="chart-title-left">📈 Top Categorias (Views/Vídeo)</div></div>
+      <canvas id="chartCategory" height="220"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><div class="chart-title-left">👤 Top Personagens</div></div>
+      <div id="rankCharacters" class="rank-list"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title"><div class="chart-title-left">💰 RPM por Idioma</div></div>
+      <canvas id="chartRPM" height="220"></canvas>
+    </div>
+    <div class="chart-card full">
+      <div class="chart-title">
+        <div class="chart-title-left">📉 Views ao Longo do Tempo</div>
+        <select class="chart-filter" id="timelineFilter" onchange="renderCharts()">
+          <option value="all">Todos os idiomas</option>
+          <option value="en">EN</option><option value="es">ES</option>
+          <option value="pt">PT</option><option value="pl">PL</option>
+          <option value="it">IT</option><option value="hr">HR</option>
+          <option value="ro">RO</option><option value="fr">FR</option>
+        </select>
+      </div>
+      <canvas id="chartTimeline" height="180"></canvas>
+    </div>
+  </div>
+
+  <!-- TABELA -->
+  <div class="chart-card full" style="margin-bottom:20px;">
+    <div class="chart-title">
+      <div class="chart-title-left">📋 Todos os Vídeos</div>
+      <span style="font-size:11px;color:var(--text-muted);" id="tableCount"></span>
+    </div>
+    <div class="table-wrapper">
+      <table class="data-table" id="dataTable">
+        <thead><tr id="tableHead"></tr></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL: Adicionar Dados -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
+    <div class="modal-title">
+      <span id="addModalIcon">➕</span><span id="addModalTitle">Adicionar Dados de Vídeo</span>
+      <button class="modal-close" onclick="closeAddModal()">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Importar do Calendário (Módulo 3)</label>
+      <select class="form-select" id="importFromCal" onchange="onCalImport()">
+        <option value="">— Selecionar vídeo publicado —</option>
+      </select>
+    </div>
+    <div class="form-group"><label class="form-label">Título</label><input class="form-input" id="addTitle" placeholder="Título do vídeo"></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Views</label><input class="form-input" id="addViews" type="number" placeholder="0"></div>
+      <div class="form-group"><label class="form-label">CTR (%)</label><input class="form-input" id="addCTR" type="number" step="0.1" placeholder="0.0"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Retenção Média (%)</label><input class="form-input" id="addRetention" type="number" step="0.1" placeholder="0.0"></div>
+      <div class="form-group"><label class="form-label">RPM ($)</label><input class="form-input" id="addRPM" type="number" step="0.01" placeholder="0.00"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Receita ($)</label><input class="form-input" id="addRevenue" type="number" step="0.01" placeholder="0.00"></div>
+      <div class="form-group"><label class="form-label">Watch Time (horas)</label><input class="form-input" id="addWatchTime" type="number" step="0.1" placeholder="0"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Likes</label><input class="form-input" id="addLikes" type="number" placeholder="0"></div>
+      <div class="form-group"><label class="form-label">Comentários</label><input class="form-input" id="addComments" type="number" placeholder="0"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Idioma</label>
+        <select class="form-select" id="addLang"><option value="en">EN</option><option value="es">ES</option><option value="pt">PT</option><option value="it">IT</option><option value="pl">PL</option><option value="hr">HR</option><option value="ro">RO</option><option value="fr">FR</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Data Publicação</label><input class="form-input" id="addDate" type="date"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Categoria</label><select class="form-select" id="addCategory"></select></div>
+      <div class="form-group"><label class="form-label">Personagem</label><select class="form-select" id="addCharacter"></select></div>
+    </div>
+    <div class="form-group"><label class="form-label">Duração (minutos)</label><input class="form-input" id="addDuration" type="number" placeholder="0"></div>
+    <div class="modal-actions">
+      <button class="btn-action btn-primary" id="addSaveBtn" onclick="saveVideoData()">💾 Salvar</button>
+      <button class="btn-action btn-outline" onclick="closeAddModal()">Cancelar</button>
+      <button class="btn-action btn-danger" id="addDeleteBtn" style="display:none" onclick="deleteVideoData()">🗑️ Excluir</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Import CSV -->
+<div class="modal-overlay" id="csvModal">
+  <div class="modal">
+    <div class="modal-title">📥 Importar CSV<button class="modal-close" onclick="closeCSVModal()">✕</button></div>
+    <div class="csv-area" id="csvDrop" onclick="document.getElementById('csvFile').click()">
+      <div class="csv-icon">📄</div>
+      <div class="csv-text">Clique ou arraste um arquivo CSV aqui</div>
+      <div class="csv-sub">Formato: title, views, ctr, retention, rpm, revenue, watchtime, likes, comments, lang, date, category, character, duration</div>
+    </div>
+    <input type="file" id="csvFile" accept=".csv,.txt" style="display:none" onchange="handleCSV(event)">
+    <div id="csvPreview" style="display:none;">
+      <div style="font-size:12px;color:var(--text-secondary);margin-bottom:8px;" id="csvPreviewInfo"></div>
+      <button class="btn-action btn-primary" onclick="confirmCSVImport()">✅ Confirmar Importação</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span id="toastIcon">✅</span><span id="toastMsg"></span></div>
+
+<script>
+// ============================================
+// STORYFORGE MODULE 4 — ANALYTICS ENGINE
+// ============================================
+
+const COLORS = ['#6c5ce7','#00cec9','#fdcb6e','#e17055','#a29bfe','#55efc4','#fab1a0','#74b9ff','#fd79a8','#ffeaa7'];
+const LANG_FLAGS = { en:'🇬🇧', es:'🇪🇸', pt:'🇧🇷', it:'🇮🇹', pl:'🇵🇱', hr:'🇭🇷', ro:'🇷🇴', fr:'🇫🇷' };
+const CATEGORIES = ["Exclusão em Evento Familiar","Herança Roubada ou Injusta","Humilhação Pública","Conflito Familiar + Vingança","Conflito Familiar + Lição de Vida","Ascensão / Vingança Profissional","Reconhecimento Inesperado","Favoritismo Familiar","Desprezo por Conquistas","Empoderamento na Velhice","Injustiça em Casamentos","Falas que Machucam","Desprezo por Ajuda Silenciosa","Sacrifício Financeiro Ignorado","Humilhação Legal","Protagonista Invisível","Infidelidade + Reviravolta","Abandono Parental","Internação Forçada","Humilhação em Refeição","Expulsão do Lar","Carta Escondida","Reviravolta em Funeral"];
+const CHARACTERS = ["My Parents","My Sister","My Family","My Mother-in-Law","My Sister-in-Law","My Husband","My Wife","My Boss","My Daughter","My Son","My Grandfather","My Brother","My Cousin","My Children","My Daughter-in-Law","The Lawyer"];
+
+let analyticsData = JSON.parse(localStorage.getItem('sf_analytics') || '[]');
+let editingId = null;
+let pendingCSV = [];
+let tableSortCol = 'date';
+let tableSortAsc = false;
+
+// ---- INIT ----
+function init() {
+  populateFormSelects();
+  setupCSVDrop();
+  renderAll();
+}
+
+function populateFormSelects() {
+  const cs = document.getElementById('addCategory');
+  cs.innerHTML = '<option value="">—</option>';
+  CATEGORIES.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; cs.appendChild(o); });
+  const ch = document.getElementById('addCharacter');
+  ch.innerHTML = '<option value="">—</option>';
+  CHARACTERS.forEach(c => { const o = document.createElement('option'); o.value = c; o.textContent = c; ch.appendChild(o); });
+}
+
+function renderAll() {
+  renderKPIs();
+  renderInsights();
+  renderCharts();
+  renderTable();
+}
+
+// ---- KPIs ----
+function renderKPIs() {
+  const d = analyticsData;
+  const totalViews = d.reduce((s,v) => s + (v.views||0), 0);
+  const totalRevenue = d.reduce((s,v) => s + (v.revenue||0), 0);
+  const avgCTR = d.length ? (d.reduce((s,v) => s + (v.ctr||0), 0) / d.length) : 0;
+  const avgRetention = d.length ? (d.reduce((s,v) => s + (v.retention||0), 0) / d.length) : 0;
+  const avgRPM = d.length ? (d.reduce((s,v) => s + (v.rpm||0), 0) / d.length) : 0;
+  const totalWT = d.reduce((s,v) => s + (v.watchtime||0), 0);
+
+  document.getElementById('kpiRow').innerHTML = `
+    <div class="kpi-card"><div class="kpi-value" style="color:var(--accent-secondary)">${fmtNum(totalViews)}</div><div class="kpi-label">Views Totais</div><div class="kpi-change kpi-neutral">${d.length} vídeos</div></div>
+    <div class="kpi-card"><div class="kpi-value" style="color:var(--success)">$${fmtNum(totalRevenue)}</div><div class="kpi-label">Receita Total</div><div class="kpi-change kpi-neutral">${d.length ? '$'+avgRPM.toFixed(2)+' RPM méd.' : '—'}</div></div>
+    <div class="kpi-card"><div class="kpi-value" style="color:var(--warning)">${avgCTR.toFixed(1)}%</div><div class="kpi-label">CTR Médio</div><div class="kpi-change ${avgCTR>=5?'kpi-up':'kpi-down'}">${avgCTR>=5?'✓ Bom':'⚠ Melhorar'}</div></div>
+    <div class="kpi-card"><div class="kpi-value" style="color:var(--chart-4)">${avgRetention.toFixed(1)}%</div><div class="kpi-label">Retenção Média</div><div class="kpi-change ${avgRetention>=40?'kpi-up':'kpi-down'}">${avgRetention>=40?'✓ Bom':'⚠ Melhorar'}</div></div>
+    <div class="kpi-card"><div class="kpi-value" style="color:var(--chart-5)">$${avgRPM.toFixed(2)}</div><div class="kpi-label">RPM Médio</div><div class="kpi-change kpi-neutral">${d.length} vídeos</div></div>
+    <div class="kpi-card"><div class="kpi-value" style="color:var(--chart-6)">${fmtNum(totalWT)}h</div><div class="kpi-label">Watch Time</div><div class="kpi-change kpi-neutral">Total acumulado</div></div>
+  `;
+}
+
+// ---- INSIGHTS ----
+function renderInsights() {
+  const d = analyticsData;
+  if (d.length < 2) {
+    document.getElementById('insightsGrid').innerHTML = '<div class="insight-card" style="grid-column:span 3;text-align:center;"><div class="insight-icon">💡</div><div class="insight-value">Adicione pelo menos 2 vídeos para ver insights</div></div>';
+    return;
+  }
+
+  // Melhor categoria
+  const catMap = {};
+  d.forEach(v => { if(v.category) { if(!catMap[v.category]) catMap[v.category]={views:0,count:0}; catMap[v.category].views+=v.views||0; catMap[v.category].count++; }});
+  let bestCat = { name: '—', avg: 0 };
+  Object.entries(catMap).forEach(([k,v]) => { const avg = v.views/v.count; if(avg > bestCat.avg) bestCat = {name:k, avg}; });
+
+  // Melhor personagem
+  const charMap = {};
+  d.forEach(v => { if(v.character) { if(!charMap[v.character]) charMap[v.character]={views:0,count:0}; charMap[v.character].views+=v.views||0; charMap[v.character].count++; }});
+  let bestChar = { name: '—', avg: 0 };
+  Object.entries(charMap).forEach(([k,v]) => { const avg = v.views/v.count; if(avg > bestChar.avg) bestChar = {name:k, avg}; });
+
+  // Melhor idioma por RPM
+  const langRPM = {};
+  d.forEach(v => { if(v.lang && v.rpm) { if(!langRPM[v.lang]) langRPM[v.lang]={sum:0,count:0}; langRPM[v.lang].sum+=v.rpm; langRPM[v.lang].count++; }});
+  let bestLangRPM = { name: '—', rpm: 0 };
+  Object.entries(langRPM).forEach(([k,v]) => { const avg = v.sum/v.count; if(avg > bestLangRPM.rpm) bestLangRPM = {name:k.toUpperCase(), rpm: avg}; });
+
+  // Melhor vídeo
+  const bestVideo = d.reduce((best, v) => (v.views||0) > (best.views||0) ? v : best, d[0]);
+
+  // Recomendação
+  const lowRetLang = {};
+  d.forEach(v => { if(v.lang && v.retention) { if(!lowRetLang[v.lang]) lowRetLang[v.lang]={sum:0,count:0}; lowRetLang[v.lang].sum+=v.retention; lowRetLang[v.lang].count++; }});
+  let worstRetLang = { name: '—', ret: 100 };
+  Object.entries(lowRetLang).forEach(([k,v]) => { const avg = v.sum/v.count; if(avg < worstRetLang.ret) worstRetLang = {name:k.toUpperCase(), ret: avg}; });
+
+  // Duração ideal
+  const durBuckets = {};
+  d.forEach(v => {
+    if(v.duration && v.views) {
+      const bucket = v.duration < 30 ? '<30 min' : v.duration < 50 ? '30-50 min' : v.duration < 70 ? '50-70 min' : '70+ min';
+      if(!durBuckets[bucket]) durBuckets[bucket] = {views:0,count:0};
+      durBuckets[bucket].views += v.views; durBuckets[bucket].count++;
+    }
+  });
+  let bestDur = { name: '—', avg: 0 };
+  Object.entries(durBuckets).forEach(([k,v]) => { const avg = v.views/v.count; if(avg > bestDur.avg) bestDur = {name:k, avg}; });
+
+  document.getElementById('insightsGrid').innerHTML = `
+    <div class="insight-card"><div class="insight-icon">🏆</div><div class="insight-title">Melhor Categoria</div><div class="insight-value">${bestCat.name}</div><div class="insight-detail">${fmtNum(bestCat.avg)} views/vídeo</div></div>
+    <div class="insight-card"><div class="insight-icon">👤</div><div class="insight-title">Melhor Personagem</div><div class="insight-value">${bestChar.name}</div><div class="insight-detail">${fmtNum(bestChar.avg)} views/vídeo</div></div>
+    <div class="insight-card"><div class="insight-icon">💰</div><div class="insight-title">Melhor RPM</div><div class="insight-value">${LANG_FLAGS[bestLangRPM.name.toLowerCase()]||'🌐'} ${bestLangRPM.name}</div><div class="insight-detail">$${bestLangRPM.rpm.toFixed(2)} média</div></div>
+    <div class="insight-card"><div class="insight-icon">🎬</div><div class="insight-title">Vídeo Top</div><div class="insight-value">${fmtNum(bestVideo.views||0)} views</div><div class="insight-detail">${(bestVideo.title||'—').substring(0,40)}...</div></div>
+    <div class="insight-card"><div class="insight-icon">⚠️</div><div class="insight-title">Retenção Baixa</div><div class="insight-value">${LANG_FLAGS[worstRetLang.name.toLowerCase()]||'🌐'} ${worstRetLang.name}</div><div class="insight-detail">${worstRetLang.ret.toFixed(1)}% média — melhorar hooks</div></div>
+    <div class="insight-card"><div class="insight-icon">⏱️</div><div class="insight-title">Duração Ideal</div><div class="insight-value">${bestDur.name}</div><div class="insight-detail">${fmtNum(bestDur.avg)} views/vídeo</div></div>
+  `;
+}
+
+// ---- CHARTS (Canvas puro) ----
+function renderCharts() {
+  renderLangChart();
+  renderCategoryChart();
+  renderCharacterRanking();
+  renderRPMChart();
+  renderTimelineChart();
+}
+
+function renderLangChart() {
+  const canvas = document.getElementById('chartLang');
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.parentElement.clientWidth - 36;
+  canvas.height = 220;
+
+  const langData = {};
+  analyticsData.forEach(v => {
+    const l = (v.lang||'en').toUpperCase();
+    if(!langData[l]) langData[l] = { views: 0, count: 0 };
+    langData[l].views += v.views||0;
+    langData[l].count++;
+  });
+
+  const entries = Object.entries(langData).sort((a,b) => b[1].views - a[1].views);
+  if(entries.length === 0) { drawEmpty(ctx, canvas); return; }
+
+  const maxVal = Math.max(...entries.map(e => e[1].views));
+  const barW = Math.min(60, (canvas.width - 60) / entries.length - 10);
+  const chartH = canvas.height - 40;
+  const startX = 50;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  entries.forEach(([lang, data], i) => {
+    const x = startX + i * (barW + 12);
+    const h = maxVal > 0 ? (data.views / maxVal) * (chartH - 20) : 0;
+    const y = chartH - h;
+
+    const grad = ctx.createLinearGradient(x, y, x, chartH);
+    grad.addColorStop(0, COLORS[i % COLORS.length]);
+    grad.addColorStop(1, COLORS[i % COLORS.length] + '40');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.roundRect(x, y, barW, h, [4,4,0,0]);
+    ctx.fill();
+
+    ctx.fillStyle = '#9999bb';
+    ctx.font = '10px Segoe UI';
+    ctx.textAlign = 'center';
+    ctx.fillText((LANG_FLAGS[lang.toLowerCase()]||'') + ' ' + lang, x + barW/2, chartH + 14);
+
+    ctx.fillStyle = '#e8e8f0';
+    ctx.font = 'bold 10px Segoe UI';
+    ctx.fillText(fmtNum(data.views), x + barW/2, y - 6);
+  });
+}
+
+function renderCategoryChart() {
+  const canvas = document.getElementById('chartCategory');
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.parentElement.clientWidth - 36;
+  canvas.height = 220;
+
+  const catData = {};
+  analyticsData.forEach(v => {
+    if(v.category) {
+      if(!catData[v.category]) catData[v.category] = { views: 0, count: 0 };
+      catData[v.category].views += v.views||0;
+      catData[v.category].count++;
+    }
+  });
+
+  const entries = Object.entries(catData).map(([k,v]) => [k, v.views/v.count]).sort((a,b) => b[1]-a[1]).slice(0,8);
+  if(entries.length === 0) { drawEmpty(ctx, canvas); return; }
+
+  const maxVal = Math.max(...entries.map(e => e[1]));
+  const barH = 22;
+  const gap = 6;
+  const startY = 10;
+  const chartW = canvas.width - 160;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  entries.forEach(([cat, avg], i) => {
+    const y = startY + i * (barH + gap);
+    const w = maxVal > 0 ? (avg / maxVal) * chartW : 0;
+
+    ctx.fillStyle = '#9999bb';
+    ctx.font = '10px Segoe UI';
+    ctx.textAlign = 'right';
+    const shortCat = cat.length > 18 ? cat.substring(0,18)+'…' : cat;
+    ctx.fillText(shortCat, 148, y + barH/2 + 3);
+
+    const grad = ctx.createLinearGradient(155, y, 155+w, y);
+    grad.addColorStop(0, COLORS[i % COLORS.length]);
+    grad.addColorStop(1, COLORS[i % COLORS.length] + '60');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.roundRect(155, y, w, barH, [0,4,4,0]);
+    ctx.fill();
+
+    ctx.fillStyle = '#e8e8f0';
+    ctx.font = 'bold 10px Segoe UI';
+    ctx.textAlign = 'left';
+    ctx.fillText(fmtNum(avg), 155 + w + 6, y + barH/2 + 3);
+  });
+}
+
+function renderCharacterRanking() {
+  const charData = {};
+  analyticsData.forEach(v => {
+    if(v.character) {
+      if(!charData[v.character]) charData[v.character] = { views: 0, count: 0, ctr: 0 };
+      charData[v.character].views += v.views||0;
+      charData[v.character].count++;
+      charData[v.character].ctr += v.ctr||0;
+    }
+  });
+
+  const entries = Object.entries(charData).map(([k,v]) => ({
+    name: k, avgViews: v.views/v.count, avgCTR: v.ctr/v.count, count: v.count, total: v.views
+  })).sort((a,b) => b.avgViews - a.avgViews).slice(0,8);
+
+  const container = document.getElementById('rankCharacters');
+  if(entries.length === 0) { container.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:12px;">Sem dados de personagens</div>'; return; }
+
+  const maxAvg = Math.max(...entries.map(e => e.avgViews));
+  container.innerHTML = entries.map((e,i) => {
+    const pct = maxAvg > 0 ? (e.avgViews/maxAvg*100) : 0;
+    return `<div class="rank-item">
+      <span class="rank-position">${i+1}</span>
+      <span class="rank-label" title="${e.name}">${e.name}</span>
+      <div class="rank-bar-bg"><div class="rank-bar-fill" style="width:${pct}%;background:${COLORS[i%COLORS.length]}">${e.count} vids</div></div>
+      <span class="rank-value">${fmtNum(e.avgViews)}/vid</span>
+    </div>`;
+  }).join('');
+}
+
+function renderRPMChart() {
+  const canvas = document.getElementById('chartRPM');
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.parentElement.clientWidth - 36;
+  canvas.height = 220;
+
+  const langRPM = {};
+  analyticsData.forEach(v => {
+    if(v.lang && v.rpm) {
+      const l = v.lang.toUpperCase();
+      if(!langRPM[l]) langRPM[l] = { sum: 0, count: 0 };
+      langRPM[l].sum += v.rpm; langRPM[l].count++;
+    }
+  });
+
+  const entries = Object.entries(langRPM).map(([k,v]) => [k, v.sum/v.count]).sort((a,b) => b[1]-a[1]);
+  if(entries.length === 0) { drawEmpty(ctx, canvas); return; }
+
+  const maxVal = Math.max(...entries.map(e => e[1]));
+  const barW = Math.min(60, (canvas.width - 60) / entries.length - 10);
+  const chartH = canvas.height - 40;
+  const startX = 50;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  entries.forEach(([lang, rpm], i) => {
+    const x = startX + i * (barW + 12);
+    const h = maxVal > 0 ? (rpm / maxVal) * (chartH - 20) : 0;
+    const y = chartH - h;
+
+    const grad = ctx.createLinearGradient(x, y, x, chartH);
+    grad.addColorStop(0, COLORS[(i+2) % COLORS.length]);
+    grad.addColorStop(1, COLORS[(i+2) % COLORS.length] + '40');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.roundRect(x, y, barW, h, [4,4,0,0]);
+    ctx.fill();
+
+    ctx.fillStyle = '#9999bb';
+    ctx.font = '10px Segoe UI';
+    ctx.textAlign = 'center';
+    ctx.fillText((LANG_FLAGS[lang.toLowerCase()]||'') + ' ' + lang, x + barW/2, chartH + 14);
+
+    ctx.fillStyle = '#e8e8f0';
+    ctx.font = 'bold 10px Segoe UI';
+    ctx.fillText('$' + rpm.toFixed(2), x + barW/2, y - 6);
+  });
+}
+
+function renderTimelineChart() {
+  const canvas = document.getElementById('chartTimeline');
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.parentElement.clientWidth - 36;
+  canvas.height = 180;
+
+  const filter = document.getElementById('timelineFilter').value;
+  let data = [...analyticsData].filter(v => v.date);
+  if(filter !== 'all') data = data.filter(v => v.lang === filter);
+  data.sort((a,b) => a.date.localeCompare(b.date));
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if(data.length < 2) { drawEmpty(ctx, canvas); return; }
+
+  const padding = { left: 55, right: 20, top: 15, bottom: 30 };
+  const chartW = canvas.width - padding.left - padding.right;
+  const chartH = canvas.height - padding.top - padding.bottom;
+  const maxViews = Math.max(...data.map(v => v.views||0));
+
+  // Grid lines
+  ctx.strokeStyle = '#2a2a4a';
+  ctx.lineWidth = 1;
+  for(let i = 0; i <= 4; i++) {
+    const y = padding.top + (chartH / 4) * i;
+    ctx.beginPath(); ctx.moveTo(padding.left, y); ctx.lineTo(canvas.width - padding.right, y); ctx.stroke();
+    ctx.fillStyle = '#666688'; ctx.font = '9px Segoe UI'; ctx.textAlign = 'right';
+    ctx.fillText(fmtNum(maxViews - (maxViews/4)*i), padding.left - 8, y + 3);
+  }
+
+  // Line
+  ctx.beginPath();
+  ctx.strokeStyle = '#6c5ce7';
+  ctx.lineWidth = 2;
+  data.forEach((v, i) => {
+    const x = padding.left + (i / (data.length - 1)) * chartW;
+    const y = padding.top + chartH - ((v.views||0) / maxViews) * chartH;
+    if(i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+
+  // Fill under line
+  const lastX = padding.left + chartW;
+  const bottomY = padding.top + chartH;
+  ctx.lineTo(lastX, bottomY);
+  ctx.lineTo(padding.left, bottomY);
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(0, padding.top, 0, bottomY);
+  grad.addColorStop(0, 'rgba(108,92,231,0.2)');
+  grad.addColorStop(1, 'rgba(108,92,231,0)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Dots
+  data.forEach((v, i) => {
+    const x = padding.left + (i / (data.length - 1)) * chartW;
+    const y = padding.top + chartH - ((v.views||0) / maxViews) * chartH;
+    ctx.fillStyle = '#6c5ce7';
+    ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI*2); ctx.fill();
+  });
+
+  // Date labels
+  const step = Math.max(1, Math.floor(data.length / 6));
+  data.forEach((v, i) => {
+    if(i % step === 0 || i === data.length-1) {
+      const x = padding.left + (i / (data.length - 1)) * chartW;
+      ctx.fillStyle = '#666688'; ctx.font = '9px Segoe UI'; ctx.textAlign = 'center';
+      ctx.fillText(v.date.substring(5), x, canvas.height - 5);
+    }
+  });
+}
+
+function drawEmpty(ctx, canvas) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#666688'; ctx.font = '13px Segoe UI'; ctx.textAlign = 'center';
+  ctx.fillText('Adicione dados para visualizar', canvas.width/2, canvas.height/2);
+}
+
+// ---- TABELA ----
+function renderTable() {
+  const columns = [
+    { key: 'date', label: 'Data', w: '90px' },
+    { key: 'lang', label: 'Idioma', w: '60px' },
+    { key: 'title', label: 'Título', w: 'auto' },
+    { key: 'category', label: 'Categoria', w: '150px' },
+    { key: 'character', label: 'Personagem', w: '120px' },
+    { key: 'views', label: 'Views', w: '100px' },
+    { key: 'ctr', label: 'CTR %', w: '65px' },
+    { key: 'retention', label: 'Ret. %', w: '65px' },
+    { key: 'rpm', label: 'RPM $', w: '65px' },
+    { key: 'revenue', label: 'Receita $', w: '80px' },
+    { key: 'actions', label: '', w: '40px' }
+  ];
+
+  document.getElementById('tableHead').innerHTML = columns.map(c => {
+    const sorted = c.key === tableSortCol;
+    const arrow = sorted ? (tableSortAsc ? ' ▲' : ' ▼') : '';
+    return c.key === 'actions' ?
+      `<th style="width:${c.w}"></th>` :
+      `<th class="${sorted?'sorted':''}" style="width:${c.w}" onclick="sortTable('${c.key}')">${c.label}${arrow}</th>`;
+  }).join('');
+
+  let sorted = [...analyticsData];
+  sorted.sort((a,b) => {
+    let va = a[tableSortCol], vb = b[tableSortCol];
+    if(typeof va === 'string') { va = va||''; vb = vb||''; return tableSortAsc ? va.localeCompare(vb) : vb.localeCompare(va); }
+    va = va||0; vb = vb||0;
+    return tableSortAsc ? va-vb : vb-va;
+  });
+
+  const maxViews = Math.max(1, ...analyticsData.map(v => v.views||0));
+
+  document.getElementById('tableBody').innerHTML = sorted.map(v => {
+    const vPct = Math.round(((v.views||0)/maxViews)*100);
+    return `<tr>
+      <td>${v.date||'—'}</td>
+      <td><span class="lang-badge">${(LANG_FLAGS[v.lang]||'🌐')} ${(v.lang||'??').toUpperCase()}</span></td>
+      <td class="title-cell" title="${esc(v.title)}">${esc(v.title||'—')}</td>
+      <td style="font-size:11px">${esc((v.category||'—').substring(0,22))}</td>
+      <td style="font-size:11px">${esc(v.character||'—')}</td>
+      <td>${fmtNum(v.views||0)} <span class="views-bar-bg"><span class="views-bar-fill" style="width:${vPct}%"></span></span></td>
+      <td>${(v.ctr||0).toFixed(1)}</td>
+      <td>${(v.retention||0).toFixed(1)}</td>
+      <td>$${(v.rpm||0).toFixed(2)}</td>
+      <td>$${(v.revenue||0).toFixed(2)}</td>
+      <td><button class="edit-btn" onclick="openEditModal('${v.id}')">✏️</button></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('tableCount').textContent = `${analyticsData.length} vídeos`;
+}
+
+function sortTable(col) {
+  if(tableSortCol === col) tableSortAsc = !tableSortAsc;
+  else { tableSortCol = col; tableSortAsc = false; }
+  renderTable();
+}
+
+// ---- MODAL: ADD / EDIT ----
+function openAddDataModal() {
+  editingId = null;
+  document.getElementById('addModalIcon').textContent = '➕';
+  document.getElementById('addModalTitle').textContent = 'Adicionar Dados de Vídeo';
+  document.getElementById('addDeleteBtn').style.display = 'none';
+  document.getElementById('addSaveBtn').textContent = '💾 Adicionar';
+  clearForm();
+  populateCalImport();
+  document.getElementById('addModal').classList.add('active');
+}
+
+function openEditModal(id) {
+  const v = analyticsData.find(x => x.id === id);
+  if(!v) return;
+  editingId = id;
+  document.getElementById('addModalIcon').textContent = '✏️';
+  document.getElementById('addModalTitle').textContent = 'Editar Dados';
+  document.getElementById('addDeleteBtn').style.display = 'block';
+  document.getElementById('addSaveBtn').textContent = '💾 Salvar Alterações';
+
+  document.getElementById('addTitle').value = v.title||'';
+  document.getElementById('addViews').value = v.views||'';
+  document.getElementById('addCTR').value = v.ctr||'';
+  document.getElementById('addRetention').value = v.retention||'';
+  document.getElementById('addRPM').value = v.rpm||'';
+  document.getElementById('addRevenue').value = v.revenue||'';
+  document.getElementById('addWatchTime').value = v.watchtime||'';
+  document.getElementById('addLikes').value = v.likes||'';
+  document.getElementById('addComments').value = v.comments||'';
+  document.getElementById('addLang').value = v.lang||'en';
+  document.getElementById('addDate').value = v.date||'';
+  document.getElementById('addCategory').value = v.category||'';
+  document.getElementById('addCharacter').value = v.character||'';
+  document.getElementById('addDuration').value = v.duration||'';
+
+  document.getElementById('addModal').classList.add('active');
+}
+
+function closeAddModal() { document.getElementById('addModal').classList.remove('active'); editingId = null; }
+
+function clearForm() {
+  ['addTitle','addViews','addCTR','addRetention','addRPM','addRevenue','addWatchTime','addLikes','addComments','addDate','addDuration'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('addLang').value = 'en';
+  document.getElementById('addCategory').value = '';
+  document.getElementById('addCharacter').value = '';
+}
+
+function populateCalImport() {
+  const sel = document.getElementById('importFromCal');
+  sel.innerHTML = '<option value="">— Selecionar vídeo publicado —</option>';
+  const calVideos = JSON.parse(localStorage.getItem('sf_calendar_videos') || '[]');
+  calVideos.filter(v => v.status === 'published').forEach((v,i) => {
+    const o = document.createElement('option');
+    o.value = i;
+    o.textContent = `${(LANG_FLAGS[v.lang]||'')} ${v.code||''} ${(v.title||'').substring(0,50)}`;
+    o.dataset.json = JSON.stringify(v);
+    sel.appendChild(o);
+  });
+}
+
+function onCalImport() {
+  const sel = document.getElementById('importFromCal');
+  const opt = sel.selectedOptions[0];
+  if(!opt || !opt.dataset.json) return;
+  const v = JSON.parse(opt.dataset.json);
+  document.getElementById('addTitle').value = v.title||'';
+  document.getElementById('addLang').value = v.lang||'en';
+  document.getElementById('addDate').value = v.date||'';
+  document.getElementById('addCategory').value = v.category||'';
+  document.getElementById('addCharacter').value = v.character||'';
+}
+
+function saveVideoData() {
+  const data = {
+    title: document.getElementById('addTitle').value.trim(),
+    views: parseFloat(document.getElementById('addViews').value)||0,
+    ctr: parseFloat(document.getElementById('addCTR').value)||0,
+    retention: parseFloat(document.getElementById('addRetention').value)||0,
+    rpm: parseFloat(document.getElementById('addRPM').value)||0,
+    revenue: parseFloat(document.getElementById('addRevenue').value)||0,
+    watchtime: parseFloat(document.getElementById('addWatchTime').value)||0,
+    likes: parseInt(document.getElementById('addLikes').value)||0,
+    comments: parseInt(document.getElementById('addComments').value)||0,
+    lang: document.getElementById('addLang').value,
+    date: document.getElementById('addDate').value,
+    category: document.getElementById('addCategory').value,
+    character: document.getElementById('addCharacter').value,
+    duration: parseInt(document.getElementById('addDuration').value)||0
+  };
+
+  if(!data.title) { showToast('Título obrigatório!','⚠️'); return; }
+
+  if(editingId) {
+    const idx = analyticsData.findIndex(v => v.id === editingId);
+    if(idx >= 0) analyticsData[idx] = { ...analyticsData[idx], ...data };
+    showToast('Dados atualizados!','✏️');
+  } else {
+    data.id = 'a_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
+    analyticsData.push(data);
+    showToast('Vídeo adicionado!');
+  }
+
+  saveAll();
+  closeAddModal();
+  renderAll();
+}
+
+function deleteVideoData() {
+  if(!editingId || !confirm('Excluir este registro?')) return;
+  analyticsData = analyticsData.filter(v => v.id !== editingId);
+  saveAll();
+  closeAddModal();
+  renderAll();
+  showToast('Excluído!','🗑️');
+}
+
+// ---- CSV IMPORT ----
+function openImportModal() { document.getElementById('csvModal').classList.add('active'); document.getElementById('csvPreview').style.display='none'; }
+function closeCSVModal() { document.getElementById('csvModal').classList.remove('active'); pendingCSV = []; }
+
+function setupCSVDrop() {
+  const drop = document.getElementById('csvDrop');
+  drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('dragover'); });
+  drop.addEventListener('dragleave', () => drop.classList.remove('dragover'));
+  drop.addEventListener('drop', e => {
+    e.preventDefault(); drop.classList.remove('dragover');
+    if(e.dataTransfer.files.length) parseCSVFile(e.dataTransfer.files[0]);
+  });
+}
+
+function handleCSV(e) { if(e.target.files[0]) parseCSVFile(e.target.files[0]); e.target.value=''; }
+
+function parseCSVFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const lines = e.target.result.split('\n').filter(l => l.trim());
+    if(lines.length < 2) { showToast('CSV vazio ou inválido!','❌'); return; }
+
+    const header = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/"/g,''));
+    pendingCSV = [];
+
+    for(let i = 1; i < lines.length; i++) {
+      const vals = parseCSVLine(lines[i]);
+      const obj = {};
+      header.forEach((h, idx) => { obj[h] = (vals[idx]||'').trim().replace(/"/g,''); });
+
+      pendingCSV.push({
+        id: 'a_' + Date.now() + '_' + Math.random().toString(36).substr(2,5) + i,
+        title: obj.title || '',
+        views: parseFloat(obj.views)||0,
+        ctr: parseFloat(obj.ctr)||0,
+        retention: parseFloat(obj.retention)||0,
+        rpm: parseFloat(obj.rpm)||0,
+        revenue: parseFloat(obj.revenue)||0,
+        watchtime: parseFloat(obj.watchtime)||0,
+        likes: parseInt(obj.likes)||0,
+        comments: parseInt(obj.comments)||0,
+        lang: obj.lang || 'en',
+        date: obj.date || '',
+        category: obj.category || '',
+        character: obj.character || '',
+        duration: parseInt(obj.duration)||0
+      });
+    }
+
+    document.getElementById('csvPreviewInfo').textContent = `${pendingCSV.length} vídeos encontrados. Clique para importar.`;
+    document.getElementById('csvPreview').style.display = 'block';
+  };
+  reader.readAsText(file);
+}
+
+function parseCSVLine(line) {
+  const result = [];
+  let current = '';
+  let inQuotes = false;
+  for(let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if(c === '"') inQuotes = !inQuotes;
+    else if(c === ',' && !inQuotes) { result.push(current); current = ''; }
+    else current += c;
+  }
+  result.push(current);
+  return result;
+}
+
+function confirmCSVImport() {
+  analyticsData.push(...pendingCSV);
+  saveAll();
+  closeCSVModal();
+  renderAll();
+  showToast(`${pendingCSV.length} vídeos importados!`);
+  pendingCSV = [];
+}
+
+// ---- EXPORTAR CSV ----
+function exportCSV() {
+  if(!analyticsData.length) { showToast('Sem dados!','⚠️'); return; }
+  const h = 'title,views,ctr,retention,rpm,revenue,watchtime,likes,comments,lang,date,category,character,duration';
+  const rows = analyticsData.map(v => [
+    `"${(v.title||'').replace(/"/g,'""')}"`,v.views||0,v.ctr||0,v.retention||0,v.rpm||0,v.revenue||0,v.watchtime||0,v.likes||0,v.comments||0,v.lang||'en',v.date||'',`"${v.category||''}"`,`"${v.character||''}"`,v.duration||0
+  ].join(','));
+  downloadFile([h,...rows].join('\n'), 'storyforge_analytics.csv', 'text/csv');
+  showToast('CSV exportado!','📤');
+}
+
+// ---- BACKUP/RESTORE ----
+function backupAll() {
+  const data = { version: '4.0', module: 'analytics', date: new Date().toISOString(), data: analyticsData };
+  downloadFile(JSON.stringify(data,null,2), 'storyforge_analytics_backup.json', 'application/json');
+  showToast('Backup salvo!','💾');
+}
+
+function restoreAll(e) {
+  const file = e.target.files[0]; if(!file) return;
+  const r = new FileReader();
+  r.onload = ev => {
+    try {
+      const d = JSON.parse(ev.target.result);
+      if(d.data) {
+        const existing = new Set(analyticsData.map(v=>v.id));
+        d.data.forEach(v => { if(!existing.has(v.id)) analyticsData.push(v); });
+        saveAll(); renderAll();
+        showToast('Dados restaurados!','✅');
+      }
+    } catch(err) { showToast('Erro!','❌'); }
+  };
+  r.readAsText(file);
+  e.target.value='';
+}
+
+// ---- DADOS DE EXEMPLO ----
+function loadSampleData() {
+  if(analyticsData.length > 0 && !confirm('Isso adicionará dados de exemplo. Continuar?')) return;
+
+  const sampleTitles = [
+    { title: "They Seated Me In The Kitchen At My Brother's Wedding — Then The Groom Called My Name", cat: "Exclusão em Evento Familiar", char: "My Parents" },
+    { title: "They Burned My $9M Inheritance Check — Then The Lawyer Handed Me A Second Envelope", cat: "Herança Roubada ou Injusta", char: "My Sister" },
+    { title: "They Called Me Poor At Dinner — Then The Waiter Said Welcome Back Owner", cat: "Humilhação Pública", char: "My Mother-in-Law" },
+    { title: "My Parents Paid For My Sister's College — Then The Dean Thanked Me Publicly", cat: "Favoritismo Familiar", char: "My Parents" },
+    { title: "They Kicked Me Out On My Birthday — So I Froze Their Credit Cards", cat: "Conflito Familiar + Vingança", char: "My Family" },
+    { title: "My Boss Fired Me In Front Of Family — Then His CEO Called Me The Reason They Exist", cat: "Ascensão / Vingança Profissional", char: "My Boss" },
+    { title: "Mi Nuera Me Excluyó de la Cena — Pero Yo Era la Dueña del Restaurante", cat: "Humilhação em Refeição", char: "My Daughter-in-Law" },
+    { title: "Mi Hija Me Dejó En Un Asilo — Pero No Sabía Lo Que Yo Guardaba", cat: "Internação Forçada", char: "My Daughter" },
+    { title: "Meus Pais Deram Tudo Pra Minha Irmã — Então O Advogado Leu o Segundo Testamento", cat: "Herança Roubada ou Injusta", char: "My Parents" },
+    { title: "Mi Hija Escribió No Vengas a Mi Boda — Entonces El Novio Leyó Mi Carta", cat: "Exclusão em Evento Familiar", char: "My Daughter" },
+    { title: "Moja Córka Wyrzuciła Mnie z Domu — Ale Nie Wiedziała Co Miałam w Sejfie", cat: "Expulsão do Lar", char: "My Daughter" },
+    { title: "They Called Me A Waitress At The Gala — Then My Husband Took The Mic", cat: "Humilhação Pública", char: "My Husband" },
+    { title: "My Sister Stole My Fiancé — Then He Found Out I Was The CEO", cat: "Infidelidade + Reviravolta", char: "My Sister" },
+    { title: "They Left Me Out Of The Will — Then I Showed The Deed In My Name", cat: "Herança Roubada ou Injusta", char: "My Children" },
+    { title: "Me Excluyeron de la Boda — Me Llamaron Egoísta Por No Ir", cat: "Exclusão em Evento Familiar", char: "My Family" },
+  ];
+
+  const langs = ['en','en','en','en','en','en','es','es','pt','es','pl','en','en','en','es'];
+
+  sampleTitles.forEach((s, i) => {
+    const lang = langs[i];
+    const baseViews = lang==='en' ? 80000 : lang==='es' ? 45000 : lang==='pt' ? 25000 : 15000;
+    const views = Math.round(baseViews * (0.5 + Math.random() * 2));
+    const rpmBase = lang==='en' ? 3.5 : lang==='es' ? 1.8 : lang==='pt' ? 1.2 : 0.9;
+    const rpm = rpmBase * (0.7 + Math.random() * 0.6);
+    const d = new Date();
+    d.setDate(d.getDate() - Math.floor(Math.random() * 60));
+
+    analyticsData.push({
+      id: 'sample_' + Date.now() + '_' + i,
+      title: s.title,
+      views: views,
+      ctr: 4 + Math.random() * 6,
+      retention: 30 + Math.random() * 25,
+      rpm: rpm,
+      revenue: views / 1000 * rpm,
+      watchtime: Math.round(views * (30 + Math.random()*30) / 3600),
+      likes: Math.round(views * (0.02 + Math.random()*0.03)),
+      comments: Math.round(views * (0.005 + Math.random()*0.01)),
+      lang: lang,
+      date: d.toISOString().split('T')[0],
+      category: s.cat,
+      character: s.char,
+      duration: Math.round(25 + Math.random() * 45)
+    });
+  });
+
+  saveAll(); renderAll();
+  showToast('15 vídeos de exemplo adicionados!','🎲');
+}
+
+// ---- UTILS ----
+function saveAll() { localStorage.setItem('sf_analytics', JSON.stringify(analyticsData)); }
+function fmtNum(n) { if(n>=1000000) return (n/1000000).toFixed(1)+'M'; if(n>=1000) return (n/1000).toFixed(1)+'K'; return Math.round(n).toString(); }
+function esc(s) { return (s||'').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function downloadFile(c,f,t) { const b=new Blob([c],{type:t}); const u=URL.createObjectURL(b); const a=document.createElement('a'); a.href=u; a.download=f; a.click(); URL.revokeObjectURL(u); }
+function showToast(m,i='✅') { const t=document.getElementById('toast'); document.getElementById('toastMsg').textContent=m; document.getElementById('toastIcon').textContent=i; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
+
+// Polyfill roundRect
+if(!CanvasRenderingContext2D.prototype.roundRect) {
+  CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r) {
+    if(!Array.isArray(r)) r=[r,r,r,r];
+    this.moveTo(x+r[0],y); this.lineTo(x+w-r[1],y); this.quadraticCurveTo(x+w,y,x+w,y+r[1]);
+    this.lineTo(x+w,y+h-r[2]); this.quadraticCurveTo(x+w,y+h,x+w-r[2],y+h);
+    this.lineTo(x+r[3],y+h); this.quadraticCurveTo(x,y+h,x,y+h-r[3]);
+    this.lineTo(x,y+r[0]); this.quadraticCurveTo(x,y,x+r[0],y);
+  };
+}
+
+// Resize handler
+let resizeTimer;
+window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(renderCharts, 200); });
+
+init();
+</script>
+</body>
+</html>

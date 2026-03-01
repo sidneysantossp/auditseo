@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript e LLMs: Como Renderização Afeta Extração de Conteúdo Por IAs | AUDITSEO</title>
+    <meta name="description" content="Entenda como JavaScript afeta a capacidade de IAs extraírem seu conteúdo. Guia técnico sobre renderização, SSR, e boas práticas para sites JS-heavy.">
+    <meta name="keywords" content="javascript llm, renderizacao ia, ssr seo, client side rendering ia, javascript chatgpt, spa seo">
+    <link rel="canonical" href="https://www.auditseo.com.br/blog/javascript-llms/">
+    <meta property="og:title" content="JavaScript e LLMs: Como Renderização Afeta Extração de Conteúdo">
+    <meta property="og:description" content="Como JavaScript afeta extração de conteúdo por IAs.">
+    <meta property="og:url" content="https://www.auditseo.com.br/blog/javascript-llms/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-01-27">
+    <meta property="article:modified_time" content="2026-01-27">
+    <meta property="article:author" content="Sidney Santos">
+    <meta property="article:section" content="Technical AI SEO">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--accent-cream:#f4e8d8;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555;--green:#2ecc71;--yellow:#f1c40f;--red:#e74c3c;--blue:#3498db;--purple:#9b59b6}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.8}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);transition:all .3s;text-decoration:none}.nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .article-header{padding:8rem 3rem 4rem;position:relative;background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(212,165,116,.04) 100%)}
+        .article-header-content{max-width:900px;margin:0 auto}
+        .breadcrumbs{margin-bottom:2rem}.breadcrumbs a,.breadcrumbs span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:1px}.breadcrumbs a:hover{color:var(--accent-gold)}.breadcrumbs span{margin:0 .5rem}
+        .article-category{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:3px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block}
+        .article-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);line-height:1;letter-spacing:-1px;margin-bottom:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .article-excerpt{font-size:1.3rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.7}
+        .article-meta{display:flex;flex-wrap:wrap;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+        .meta-item{display:flex;align-items:center;gap:.75rem}
+        .meta-avatar{width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:2px solid var(--accent-gold);overflow:hidden}
+        .meta-avatar img{width:100%;height:100%;object-fit:cover}
+        .meta-info{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:1px}
+        .meta-info strong{display:block;color:var(--text-light);font-size:.75rem;margin-bottom:.25rem}
+        .article-layout{max-width:1400px;margin:0 auto;padding:4rem 3rem;display:grid;grid-template-columns:250px 1fr;gap:4rem}
+        .article-toc{position:sticky;top:100px;height:fit-content}
+        .toc-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:1px}
+        .toc-list{list-style:none}.toc-list li{margin-bottom:.75rem}
+        .toc-list a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:.5px;transition:color .3s;display:block;padding:.25rem 0;border-left:2px solid transparent;padding-left:1rem;margin-left:-1rem}
+        .toc-list a:hover,.toc-list a.active{color:var(--accent-gold);border-left-color:var(--accent-gold)}
+        .article-content{max-width:800px}
+        .article-content h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin:3rem 0 1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--text-light);margin:2.5rem 0 1rem;letter-spacing:1px}
+        .article-content p{font-size:1.15rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9}
+        .article-content p strong{color:var(--accent-cream)}
+        .article-content a{color:var(--accent-gold);text-decoration:underline;text-underline-offset:3px}
+        .article-content ul,.article-content ol{margin:1.5rem 0;padding-left:1.5rem}
+        .article-content li{font-size:1.1rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.7}
+        .article-content li strong{color:var(--text-light)}
+        .highlight-box{background:linear-gradient(135deg,rgba(230,57,70,.1) 0%,rgba(212,165,116,.05) 100%);border-left:4px solid var(--accent-red);padding:2rem;margin:2rem 0;border-radius:0 8px 8px 0}
+        .highlight-box p{margin-bottom:0;font-size:1.1rem}
+        .render-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:1.5rem 0;border-radius:12px;position:relative;overflow:hidden}
+        .render-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px}
+        .render-card.good::before{background:var(--green)}
+        .render-card.medium::before{background:var(--yellow)}
+        .render-card.bad::before{background:var(--red)}
+        .render-card .header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:1rem}
+        .render-card .header h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--text-light);margin:0}
+        .render-card .header .rating{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.3rem .6rem;border-radius:4px}
+        .render-card .header .rating.good{background:rgba(46,204,113,.2);color:var(--green)}
+        .render-card .header .rating.medium{background:rgba(241,196,15,.2);color:var(--yellow)}
+        .render-card .header .rating.bad{background:rgba(231,76,60,.2);color:var(--red)}
+        .render-card p{font-size:.95rem;margin-bottom:1rem}
+        .render-card .examples{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text-dim);padding:.75rem;background:rgba(255,255,255,.03);border-radius:6px}
+        .render-card .examples strong{color:var(--accent-gold)}
+        .comparison-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:12px}
+        .comparison-box h4{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--text-light);margin-bottom:1.5rem;text-align:center}
+        .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+        .comparison-col{padding:1.5rem;border-radius:8px}
+        .comparison-col.bad{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3)}
+        .comparison-col.good{background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.3)}
+        .comparison-col h5{font-family:'JetBrains Mono',monospace;font-size:.85rem;margin-bottom:1rem}
+        .comparison-col.bad h5{color:var(--red)}
+        .comparison-col.good h5{color:var(--green)}
+        .comparison-col pre{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--text-muted);white-space:pre-wrap;margin:0}
+        .solution-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.5rem;margin:1rem 0;border-radius:12px;display:flex;gap:1.5rem}
+        .solution-card .num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--accent-gold);width:50px;flex-shrink:0;text-align:center}
+        .solution-card .content h4{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--text-light);margin-bottom:.5rem}
+        .solution-card .content p{font-size:.95rem;color:var(--text-muted);margin:0}
+        .framework-table{width:100%;border-collapse:collapse;margin:2rem 0}
+        .framework-table th,.framework-table td{padding:1rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.1)}
+        .framework-table th{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;background:var(--bg-card);color:var(--text-light)}
+        .framework-table td{font-size:.9rem;color:var(--text-muted)}
+        .framework-table .status{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.2rem .5rem;border-radius:4px}
+        .framework-table .status.good{background:rgba(46,204,113,.2);color:var(--green)}
+        .framework-table .status.medium{background:rgba(241,196,15,.2);color:var(--yellow)}
+        .framework-table .status.bad{background:rgba(231,76,60,.2);color:var(--red)}
+        .tip-box{background:rgba(212,165,116,.1);border:1px solid rgba(212,165,116,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .tip-box h4{color:var(--accent-gold);margin-bottom:.5rem}
+        .tip-box h4::before{content:'💡 '}
+        .warning-box{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .warning-box h4{color:var(--red);margin-bottom:.5rem}
+        .warning-box h4::before{content:'⚠️ '}
+        .checklist-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:12px}
+        .checklist-box h4{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--accent-gold);margin-bottom:1.5rem}
+        .checklist-box ul{list-style:none;padding:0}
+        .checklist-box li{padding:.75rem 0;padding-left:2rem;position:relative;font-size:1rem;color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,.05)}
+        .checklist-box li:last-child{border-bottom:none}
+        .checklist-box li::before{content:'☐';position:absolute;left:0;font-size:1.1rem;color:var(--accent-gold)}
+        .cta-box{background:linear-gradient(135deg,rgba(230,57,70,.15) 0%,rgba(212,165,116,.08) 100%);border:1px solid rgba(230,57,70,.3);padding:3rem;margin:3rem 0;text-align:center;border-radius:12px}
+        .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:1rem}
+        .cta-box p{font-size:1.1rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .cta-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1rem 2.5rem;background:var(--gradient-fire);border:none;color:var(--bg-dark);cursor:pointer;transition:all .3s;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block;border-radius:4px}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(230,57,70,.4)}
+        .author-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin:4rem 0;display:flex;gap:2rem;align-items:center;border-radius:8px}
+        .author-avatar{width:100px;height:100px;border-radius:50%;background:var(--bg-dark);border:3px solid var(--accent-gold);overflow:hidden;flex-shrink:0}
+        .author-avatar img{width:100%;height:100%;object-fit:cover}
+        .author-info h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:.5rem}
+        .author-info p{font-size:1rem;color:var(--text-muted);margin-bottom:1rem}
+        .author-links{display:flex;gap:1rem}
+        .author-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-decoration:none}
+        .related-posts{margin:4rem 0}
+        .related-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:2rem}
+        .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .related-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);padding:1.5rem;transition:all .3s;border-radius:8px}
+        .related-card:hover{border-color:rgba(230,57,70,.3);transform:translateY(-3px)}
+        .related-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:.5rem}
+        .related-card h4 a{text-decoration:none;color:inherit}
+        .related-card p{font-size:.9rem;color:var(--text-dim)}
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card)}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}.footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
+        .footer-address{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);line-height:1.8}.footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1.5rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        @media(max-width:1100px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}.related-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr 1fr}.comparison-grid{grid-template-columns:1fr}}
+        @media(max-width:768px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.article-header{padding:6rem 1.5rem 3rem}.article-layout{padding:2rem 1.5rem}.article-meta{flex-direction:column;gap:1.5rem}.author-box{flex-direction:column;text-align:center}.footer-content{grid-template-columns:1fr}.solution-card{flex-direction:column}}
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JavaScript e LLMs: Como Renderização Afeta Extração de Conteúdo Por IAs","description":"Como JavaScript afeta extração de conteúdo por IAs.","author":{"@type":"Person","name":"Sidney Santos"},"publisher":{"@type":"Organization","name":"AUDITSEO"},"datePublished":"2026-01-27","dateModified":"2026-01-27"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Crawlers de IA executam JavaScript?","acceptedAnswer":{"@type":"Answer","text":"A maioria não executa ou executa de forma limitada. GPTBot, ClaudeBot e outros crawlers de treino geralmente não renderizam JavaScript. Isso significa que conteúdo dependente de JS pode não ser capturado."}},{"@type":"Question","name":"SPAs funcionam com LLM SEO?","acceptedAnswer":{"@type":"Answer","text":"SPAs puras com client-side rendering são problemáticas para IAs. A solução é implementar SSR (Server-Side Rendering) ou SSG (Static Site Generation) para garantir que conteúdo esteja no HTML inicial."}},{"@type":"Question","name":"Next.js é bom para AI SEO?","acceptedAnswer":{"@type":"Answer","text":"Sim, Next.js com SSR ou SSG é excelente para AI SEO. O conteúdo é renderizado no servidor e entregue como HTML estático, garantindo que crawlers de IA capturem tudo."}}]}</script>
+    <link rel="stylesheet" href="/assets/site-shell.css">
+    <script defer src="/assets/site-shell.js"></script>
+</head>
+<body>
+    <nav class="nav"><a href="/" class="logo">AUDITSEO</a><ul class="nav-links"><li><a href="/agencia-de-seo/">Agência de SEO</a></li><li><a href="/servicos/">Serviços</a></li><li><a href="/sobre/">Sobre</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://wa.me/5511996384376" class="nav-cta">Falar com Especialista</a></nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumbs"><a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span>JavaScript e LLMs</span></div>
+            <span class="article-category">Technical AI SEO</span>
+            <h1 class="article-title">JavaScript e LLMs: Como Renderização Afeta Extração de Conteúdo Por IAs</h1>
+            <p class="article-excerpt">Sites JavaScript-heavy podem ter problemas de extração por IAs. Entenda os diferentes tipos de renderização e como garantir que seu conteúdo seja capturado.</p>
+            <div class="article-meta">
+                <div class="meta-item"><div class="meta-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div><div class="meta-info"><strong>Sidney Santos</strong>Especialista em Search Intelligence AI</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Publicado</strong>27 de Janeiro, 2026</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Tempo de leitura</strong>12 minutos</div></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-layout">
+        <aside class="article-toc">
+            <h4 class="toc-title">ÍNDICE</h4>
+            <ul class="toc-list">
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#problema">O Problema</a></li>
+                <li><a href="#tipos">Tipos de Renderização</a></li>
+                <li><a href="#crawlers">Crawlers e JavaScript</a></li>
+                <li><a href="#solucoes">Soluções</a></li>
+                <li><a href="#frameworks">Frameworks</a></li>
+                <li><a href="#checklist">Checklist</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </aside>
+
+        <article class="article-content">
+            <section id="introducao">
+                <p>JavaScript revolucionou a web, permitindo experiências interativas e dinâmicas. Mas para IAs que precisam extrair conteúdo, JavaScript pode ser um obstáculo.</p>
+
+                <p>O problema: <strong>a maioria dos crawlers de IA não executa JavaScript</strong>. Se seu conteúdo depende de JS para renderizar, ele simplesmente não existe para essas IAs.</p>
+
+                <p>Neste guia técnico, vou explicar o problema, os diferentes tipos de renderização e como garantir que seu conteúdo seja capturado por LLMs.</p>
+            </section>
+
+            <section id="problema">
+                <h2>O Problema: IAs Não "Veem" JavaScript</h2>
+
+                <p>Quando você acessa uma página web, seu navegador:</p>
+                <ol>
+                    <li>Baixa o HTML inicial</li>
+                    <li>Baixa e executa JavaScript</li>
+                    <li>JavaScript modifica o DOM, adicionando conteúdo</li>
+                    <li>Você vê a página completa</li>
+                </ol>
+
+                <p>Quando um crawler de IA acessa a mesma página:</p>
+                <ol>
+                    <li>Baixa o HTML inicial</li>
+                    <li>Vê um HTML vazio ou com placeholder</li>
+                    <li><strong>Não executa JavaScript</strong></li>
+                    <li>Captura... nada útil</li>
+                </ol>
+
+                <div class="comparison-box">
+                    <h4>O Que o Crawler Vê vs O Que Você Vê</h4>
+                    <div class="comparison-grid">
+                        <div class="comparison-col bad">
+                            <h5>❌ HTML Inicial (sem JS)</h5>
+                            <pre>&lt;body&gt;
+  &lt;div id="root"&gt;&lt;/div&gt;
+  &lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+Conteúdo capturado: (vazio)</pre>
+                        </div>
+                        <div class="comparison-col good">
+                            <h5>✓ Após JS Executar</h5>
+                            <pre>&lt;body&gt;
+  &lt;div id="root"&gt;
+    &lt;h1&gt;Título do Artigo&lt;/h1&gt;
+    &lt;p&gt;Conteúdo completo...&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+
+Conteúdo capturado: Tudo!</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <h4>O Risco Real</h4>
+                    <p>Se seu site usa React, Vue, Angular ou similar com client-side rendering puro, crawlers de IA podem não capturar seu conteúdo. Isso significa: não aparecer em dados de treino, não ser citado em buscas.</p>
+                </div>
+            </section>
+
+            <section id="tipos">
+                <h2>Tipos de Renderização</h2>
+
+                <p>Existem diferentes formas de renderizar conteúdo web. Cada uma tem implicações diferentes para IAs:</p>
+
+                <div class="render-card good">
+                    <div class="header">
+                        <h3>SSG — Static Site Generation</h3>
+                        <span class="rating good">Excelente para IAs</span>
+                    </div>
+                    <p>Páginas são geradas como HTML estático no build. Conteúdo completo está no HTML desde o início. Não depende de JavaScript para conteúdo principal.</p>
+                    <div class="examples">
+                        <strong>Exemplos:</strong> Sites Hugo, Jekyll, Astro (estático), Next.js com getStaticProps
+                    </div>
+                </div>
+
+                <div class="render-card good">
+                    <div class="header">
+                        <h3>SSR — Server-Side Rendering</h3>
+                        <span class="rating good">Excelente para IAs</span>
+                    </div>
+                    <p>Páginas são renderizadas no servidor a cada requisição. HTML completo é enviado ao cliente. JavaScript hidrata a página para interatividade.</p>
+                    <div class="examples">
+                        <strong>Exemplos:</strong> Next.js com getServerSideProps, Nuxt.js, Remix, PHP tradicional
+                    </div>
+                </div>
+
+                <div class="render-card medium">
+                    <div class="header">
+                        <h3>ISR — Incremental Static Regeneration</h3>
+                        <span class="rating medium">Bom para IAs</span>
+                    </div>
+                    <p>Combina SSG com revalidação. Páginas estáticas são regeneradas periodicamente. Conteúdo está no HTML, com atualizações incrementais.</p>
+                    <div class="examples">
+                        <strong>Exemplos:</strong> Next.js com revalidate, algumas configs de Nuxt
+                    </div>
+                </div>
+
+                <div class="render-card bad">
+                    <div class="header">
+                        <h3>CSR — Client-Side Rendering</h3>
+                        <span class="rating bad">Ruim para IAs</span>
+                    </div>
+                    <p>Todo conteúdo é renderizado no navegador via JavaScript. HTML inicial é um shell vazio. Crawlers que não executam JS não veem conteúdo.</p>
+                    <div class="examples">
+                        <strong>Exemplos:</strong> Create React App puro, Vue CLI puro, SPAs tradicionais
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Regra simples:</strong> Se você pode ver o conteúdo fazendo "View Source" no navegador (sem executar JS), crawlers de IA também veem. Se precisa de JS para aparecer, é problema.</p>
+                </div>
+            </section>
+
+            <section id="crawlers">
+                <h2>Como Diferentes Crawlers Lidam com JavaScript</h2>
+
+                <table class="framework-table">
+                    <thead>
+                        <tr>
+                            <th>Crawler</th>
+                            <th>Executa JS?</th>
+                            <th>Observações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Googlebot</strong></td>
+                            <td><span class="status good">Sim</span></td>
+                            <td>Renderiza JS, mas com delay e recursos limitados</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GPTBot</strong></td>
+                            <td><span class="status bad">Não</span></td>
+                            <td>Captura apenas HTML inicial</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ClaudeBot</strong></td>
+                            <td><span class="status bad">Não</span></td>
+                            <td>Captura apenas HTML inicial</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PerplexityBot</strong></td>
+                            <td><span class="status medium">Limitado</span></td>
+                            <td>Pode ter alguma renderização básica</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CCBot</strong></td>
+                            <td><span class="status bad">Não</span></td>
+                            <td>Apenas HTML estático</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip-box">
+                    <h4>Googlebot vs Crawlers de IA</h4>
+                    <p>Googlebot renderiza JavaScript, então seu site pode rankear bem no Google mesmo com CSR. Mas isso não significa que IAs conseguem capturar seu conteúdo. São sistemas diferentes.</p>
+                </div>
+            </section>
+
+            <section id="solucoes">
+                <h2>Soluções Para Sites JavaScript</h2>
+
+                <div class="solution-card">
+                    <div class="num">01</div>
+                    <div class="content">
+                        <h4>Migrar Para SSR ou SSG</h4>
+                        <p>A solução mais robusta. Frameworks como Next.js, Nuxt.js e Remix facilitam a transição. Conteúdo é renderizado no servidor, garantindo captura por qualquer crawler.</p>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="num">02</div>
+                    <div class="content">
+                        <h4>Implementar Pré-Renderização</h4>
+                        <p>Serviços como Prerender.io ou Rendertron geram HTML estático para crawlers. Detectam user-agent de bots e servem versão pré-renderizada.</p>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="num">03</div>
+                    <div class="content">
+                        <h4>Conteúdo Crítico no HTML Inicial</h4>
+                        <p>Mesmo com CSR, inclua título, descrição e conteúdo principal no HTML inicial. Use JS apenas para interatividade, não para conteúdo essencial.</p>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="num">04</div>
+                    <div class="content">
+                        <h4>Hybrid Rendering</h4>
+                        <p>Combine SSG para páginas de conteúdo (blog, produtos) com CSR para áreas interativas (dashboard, app). Cada página usa o método mais adequado.</p>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="num">05</div>
+                    <div class="content">
+                        <h4>Web Components com Shadow DOM Aberto</h4>
+                        <p>Se usar Web Components, evite Shadow DOM fechado. Conteúdo em Shadow DOM pode não ser acessível a crawlers.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="frameworks">
+                <h2>Frameworks e AI SEO</h2>
+
+                <table class="framework-table">
+                    <thead>
+                        <tr>
+                            <th>Framework</th>
+                            <th>Renderização Padrão</th>
+                            <th>AI SEO</th>
+                            <th>Recomendação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Next.js</strong></td>
+                            <td>SSR/SSG/ISR</td>
+                            <td><span class="status good">Excelente</span></td>
+                            <td>Use getStaticProps ou getServerSideProps</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nuxt.js</strong></td>
+                            <td>SSR/SSG</td>
+                            <td><span class="status good">Excelente</span></td>
+                            <td>Configure modo universal ou static</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Remix</strong></td>
+                            <td>SSR</td>
+                            <td><span class="status good">Excelente</span></td>
+                            <td>SSR por padrão, ideal para SEO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Astro</strong></td>
+                            <td>SSG</td>
+                            <td><span class="status good">Excelente</span></td>
+                            <td>Zero JS por padrão, perfeito para conteúdo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Create React App</strong></td>
+                            <td>CSR</td>
+                            <td><span class="status bad">Ruim</span></td>
+                            <td>Migre para Next.js ou use prerender</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Vue CLI</strong></td>
+                            <td>CSR</td>
+                            <td><span class="status bad">Ruim</span></td>
+                            <td>Migre para Nuxt.js ou use prerender</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Angular</strong></td>
+                            <td>CSR</td>
+                            <td><span class="status medium">Médio</span></td>
+                            <td>Configure Angular Universal para SSR</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="checklist">
+                <h2>Checklist: JavaScript e IAs</h2>
+
+                <div class="checklist-box">
+                    <h4>Verificação</h4>
+                    <ul>
+                        <li>Conteúdo principal visível em "View Source"</li>
+                        <li>Teste com JavaScript desabilitado no navegador</li>
+                        <li>Use ferramenta de teste de renderização (Fetch as Google)</li>
+                        <li>Verifique HTML inicial que crawlers recebem</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-box">
+                    <h4>Implementação</h4>
+                    <ul>
+                        <li>SSR ou SSG para páginas de conteúdo</li>
+                        <li>Título e meta description no HTML inicial</li>
+                        <li>Conteúdo do artigo/produto renderizado no servidor</li>
+                        <li>Schema markup no HTML estático</li>
+                        <li>Links internos funcionando sem JS</li>
+                    </ul>
+                </div>
+
+                <div class="checklist-box">
+                    <h4>Monitoramento</h4>
+                    <ul>
+                        <li>Google Search Console: cobertura de indexação</li>
+                        <li>Testar com user-agent de crawlers de IA</li>
+                        <li>Monitorar logs de acesso de GPTBot, ClaudeBot</li>
+                        <li>Verificar se conteúdo aparece em respostas de IAs</li>
+                    </ul>
+                </div>
+            </section>
+
+            <div class="cta-box">
+                <h3>Quer Auditoria de Renderização?</h3>
+                <p>A AUDITSEO analisa como seu site <strong>JavaScript é visto por IAs</strong> e recomenda soluções técnicas.</p>
+                <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20auditoria%20de%20renderização%20JavaScript." class="cta-btn">Solicitar Auditoria</a>
+            </div>
+
+            <section id="faq">
+                <h2>Perguntas Frequentes</h2>
+
+                <h3>Crawlers de IA executam JavaScript?</h3>
+                <p>A maioria não executa ou executa de forma limitada. GPTBot, ClaudeBot e outros crawlers de treino geralmente não renderizam JavaScript. Isso significa que conteúdo dependente de JS pode não ser capturado.</p>
+
+                <h3>SPAs funcionam com LLM SEO?</h3>
+                <p>SPAs puras com client-side rendering são problemáticas para IAs. A solução é implementar SSR (Server-Side Rendering) ou SSG (Static Site Generation) para garantir que conteúdo esteja no HTML inicial.</p>
+
+                <h3>Next.js é bom para AI SEO?</h3>
+                <p>Sim, Next.js com SSR ou SSG é excelente para AI SEO. O conteúdo é renderizado no servidor e entregue como HTML estático, garantindo que crawlers de IA capturem tudo.</p>
+
+                <h3>Como testar se meu conteúdo é visível para IAs?</h3>
+                <p>Desabilite JavaScript no navegador e veja se o conteúdo aparece. Ou use "View Source" para ver o HTML bruto. Se o conteúdo não está lá, IAs não veem.</p>
+
+                <h3>Preciso reescrever meu site inteiro?</h3>
+                <p>Não necessariamente. Serviços de pré-renderização podem resolver sem reescrita. Ou você pode migrar gradualmente páginas críticas para SSR/SSG enquanto mantém outras em CSR.</p>
+            </section>
+
+            <section>
+                <h2>Conclusão</h2>
+
+                <p>JavaScript é poderoso mas pode criar barreiras para IAs:</p>
+
+                <ul>
+                    <li><strong>CSR puro:</strong> Problemático — crawlers não veem conteúdo</li>
+                    <li><strong>SSR/SSG:</strong> Ideal — conteúdo no HTML inicial</li>
+                    <li><strong>Pré-renderização:</strong> Solução intermediária viável</li>
+                    <li><strong>Teste sempre:</strong> Verifique o que crawlers realmente veem</li>
+                </ul>
+
+                <p>Se você quer visibilidade em IAs, garanta que seu conteúdo esteja acessível sem depender de JavaScript para renderizar.</p>
+
+                <p>Continue aprendendo: <a href="/blog/velocidade-pagina-ia/">velocidade de página</a>, <a href="/blog/estrutura-html-para-ia/">estrutura HTML</a> e <a href="/blog/auditoria-tecnica-ai-seo/">auditoria técnica</a>.</p>
+            </section>
+
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                <div class="author-info">
+                    <h4>Sidney Santos</h4>
+                    <p>Especialista em Search Intelligence AI com mais de 12 anos de experiência em SEO. Fundador da AUDITSEO.</p>
+                    <div class="author-links"><a href="https://www.linkedin.com/in/sidney-especialista-em-seo/">LinkedIn</a><a href="https://instagram.com/sidneyespecialistaseo">Instagram</a></div>
+                </div>
+            </div>
+
+            <div class="related-posts">
+                <h3 class="related-title">Artigos Relacionados</h3>
+                <div class="related-grid">
+                    <div class="related-card"><h4><a href="/blog/velocidade-pagina-ia/">Velocidade de Página e IAs</a></h4><p>Performance e visibilidade.</p></div>
+                    <div class="related-card"><h4><a href="/blog/estrutura-html-para-ia/">Estrutura HTML Para IAs</a></h4><p>HTML semântico otimizado.</p></div>
+                    <div class="related-card"><h4><a href="/blog/crawlers-ia/">Crawlers de IAs</a></h4><p>GPTBot, ClaudeBot e mais.</p></div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand"><div class="footer-logo">AUDITSEO</div><p class="footer-desc">Agência de SEO especializada em Search Intelligence AI.</p><div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil</div></div>
+            <div class="footer-col"><h4 class="footer-title">Serviços</h4><ul class="footer-links"><li><a href="/servicos/">Todos os Serviços</a></li><li><a href="/servicos/technical-ai-seo/">Technical AI SEO</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Empresa</h4><ul class="footer-links"><li><a href="/sobre/">Sobre Nós</a></li><li><a href="/blog/">Blog</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Contato</h4><ul class="footer-links"><li><a href="https://wa.me/5511996384376">WhatsApp</a></li><li><a href="tel:+5511996384376">(11) 99638-4376</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 AUDITSEO — Todos os direitos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>

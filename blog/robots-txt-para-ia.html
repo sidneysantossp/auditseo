@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robots.txt Para IAs: Guia Completo de Configuração Para LLMs | AUDITSEO</title>
+    <meta name="description" content="Aprenda a configurar robots.txt para crawlers de IA como GPTBot, ClaudeBot e Google-Extended. Exemplos práticos e templates prontos para usar.">
+    <meta name="keywords" content="robots.txt ia, robots.txt chatgpt, bloquear gptbot, robots.txt llm, configurar robots txt">
+    <link rel="canonical" href="https://www.auditseo.com.br/blog/robots-txt-para-ia/">
+    <meta property="og:title" content="Robots.txt Para IAs: Guia Completo de Configuração">
+    <meta property="og:description" content="Como configurar robots.txt para controlar acesso de crawlers de IA.">
+    <meta property="og:url" content="https://www.auditseo.com.br/blog/robots-txt-para-ia/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-01-27">
+    <meta property="article:modified_time" content="2026-01-27">
+    <meta property="article:author" content="Sidney Santos">
+    <meta property="article:section" content="Technical AI SEO">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--accent-cream:#f4e8d8;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555;--green:#2ecc71;--yellow:#f1c40f;--red:#e74c3c;--blue:#3498db;--purple:#9b59b6}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.8}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);transition:all .3s;text-decoration:none}.nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .article-header{padding:8rem 3rem 4rem;position:relative;background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(212,165,116,.04) 100%)}
+        .article-header-content{max-width:900px;margin:0 auto}
+        .breadcrumbs{margin-bottom:2rem}.breadcrumbs a,.breadcrumbs span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:1px}.breadcrumbs a:hover{color:var(--accent-gold)}.breadcrumbs span{margin:0 .5rem}
+        .article-category{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:3px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block}
+        .article-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);line-height:1;letter-spacing:-1px;margin-bottom:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .article-excerpt{font-size:1.3rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.7}
+        .article-meta{display:flex;flex-wrap:wrap;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+        .meta-item{display:flex;align-items:center;gap:.75rem}
+        .meta-avatar{width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:2px solid var(--accent-gold);overflow:hidden}
+        .meta-avatar img{width:100%;height:100%;object-fit:cover}
+        .meta-info{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:1px}
+        .meta-info strong{display:block;color:var(--text-light);font-size:.75rem;margin-bottom:.25rem}
+        .article-layout{max-width:1400px;margin:0 auto;padding:4rem 3rem;display:grid;grid-template-columns:250px 1fr;gap:4rem}
+        .article-toc{position:sticky;top:100px;height:fit-content}
+        .toc-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:1px}
+        .toc-list{list-style:none}.toc-list li{margin-bottom:.75rem}
+        .toc-list a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:.5px;transition:color .3s;display:block;padding:.25rem 0;border-left:2px solid transparent;padding-left:1rem;margin-left:-1rem}
+        .toc-list a:hover,.toc-list a.active{color:var(--accent-gold);border-left-color:var(--accent-gold)}
+        .article-content{max-width:800px}
+        .article-content h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin:3rem 0 1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--text-light);margin:2.5rem 0 1rem;letter-spacing:1px}
+        .article-content p{font-size:1.15rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9}
+        .article-content p strong{color:var(--accent-cream)}
+        .article-content a{color:var(--accent-gold);text-decoration:underline;text-underline-offset:3px}
+        .article-content ul,.article-content ol{margin:1.5rem 0;padding-left:1.5rem}
+        .article-content li{font-size:1.1rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.7}
+        .article-content li strong{color:var(--text-light)}
+        .highlight-box{background:linear-gradient(135deg,rgba(230,57,70,.1) 0%,rgba(212,165,116,.05) 100%);border-left:4px solid var(--accent-red);padding:2rem;margin:2rem 0;border-radius:0 8px 8px 0}
+        .highlight-box p{margin-bottom:0;font-size:1.1rem}
+        .code-block{background:#1a1a1a;border:1px solid rgba(255,255,255,.1);border-radius:8px;margin:1.5rem 0;overflow:hidden}
+        .code-block .header{background:rgba(255,255,255,.05);padding:.75rem 1rem;display:flex;justify-content:space-between;align-items:center}
+        .code-block .header span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .code-block .header .copy-btn{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.3rem .6rem;background:rgba(255,255,255,.1);border:none;color:var(--text-muted);cursor:pointer;border-radius:4px;transition:all .3s}
+        .code-block .header .copy-btn:hover{background:var(--accent-gold);color:var(--bg-dark)}
+        .code-block pre{padding:1.5rem;overflow-x:auto;margin:0}
+        .code-block code{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--accent-cream);line-height:1.6}
+        .code-block .comment{color:var(--text-dim)}
+        .code-block .directive{color:var(--accent-red)}
+        .code-block .value{color:var(--green)}
+        .template-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.5rem;margin:1.5rem 0;border-radius:12px}
+        .template-card .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+        .template-card .header h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin:0}
+        .template-card .header .tag{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.25rem .5rem;border-radius:4px}
+        .template-card .header .tag.recommended{background:rgba(46,204,113,.2);color:var(--green)}
+        .template-card .header .tag.strict{background:rgba(231,76,60,.2);color:var(--red)}
+        .template-card .header .tag.permissive{background:rgba(52,152,219,.2);color:var(--blue)}
+        .template-card p{font-size:.95rem;margin-bottom:1rem}
+        .tip-box{background:rgba(212,165,116,.1);border:1px solid rgba(212,165,116,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .tip-box h4{color:var(--accent-gold);margin-bottom:.5rem}
+        .tip-box h4::before{content:'💡 '}
+        .warning-box{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .warning-box h4{color:var(--red);margin-bottom:.5rem}
+        .warning-box h4::before{content:'⚠️ '}
+        .info-box{background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .info-box h4{color:var(--blue);margin-bottom:.5rem}
+        .info-box h4::before{content:'ℹ️ '}
+        .comparison-table{width:100%;border-collapse:collapse;margin:2rem 0}
+        .comparison-table th,.comparison-table td{padding:1rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.1)}
+        .comparison-table th{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;background:var(--bg-card);color:var(--text-light)}
+        .comparison-table td{font-size:.9rem;color:var(--text-muted)}
+        .comparison-table code{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent-gold)}
+        .cta-box{background:linear-gradient(135deg,rgba(230,57,70,.15) 0%,rgba(212,165,116,.08) 100%);border:1px solid rgba(230,57,70,.3);padding:3rem;margin:3rem 0;text-align:center;border-radius:12px}
+        .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:1rem}
+        .cta-box p{font-size:1.1rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .cta-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1rem 2.5rem;background:var(--gradient-fire);border:none;color:var(--bg-dark);cursor:pointer;transition:all .3s;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block;border-radius:4px}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(230,57,70,.4)}
+        .author-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin:4rem 0;display:flex;gap:2rem;align-items:center;border-radius:8px}
+        .author-avatar{width:100px;height:100px;border-radius:50%;background:var(--bg-dark);border:3px solid var(--accent-gold);overflow:hidden;flex-shrink:0}
+        .author-avatar img{width:100%;height:100%;object-fit:cover}
+        .author-info h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:.5rem}
+        .author-info p{font-size:1rem;color:var(--text-muted);margin-bottom:1rem}
+        .author-links{display:flex;gap:1rem}
+        .author-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-decoration:none}
+        .related-posts{margin:4rem 0}
+        .related-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:2rem}
+        .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .related-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);padding:1.5rem;transition:all .3s;border-radius:8px}
+        .related-card:hover{border-color:rgba(230,57,70,.3);transform:translateY(-3px)}
+        .related-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:.5rem}
+        .related-card h4 a{text-decoration:none;color:inherit}
+        .related-card p{font-size:.9rem;color:var(--text-dim)}
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card)}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}.footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
+        .footer-address{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);line-height:1.8}.footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1.5rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        @media(max-width:1100px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}.related-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr 1fr}}
+        @media(max-width:768px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.article-header{padding:6rem 1.5rem 3rem}.article-layout{padding:2rem 1.5rem}.article-meta{flex-direction:column;gap:1.5rem}.author-box{flex-direction:column;text-align:center}.footer-content{grid-template-columns:1fr}.code-block pre{padding:1rem}}
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Robots.txt Para IAs: Guia Completo de Configuração Para LLMs","description":"Como configurar robots.txt para crawlers de IA.","author":{"@type":"Person","name":"Sidney Santos"},"publisher":{"@type":"Organization","name":"AUDITSEO"},"datePublished":"2026-01-27","dateModified":"2026-01-27"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como bloquear GPTBot no robots.txt?","acceptedAnswer":{"@type":"Answer","text":"Adicione 'User-agent: GPTBot' seguido de 'Disallow: /' no seu arquivo robots.txt. Isso impede o crawler da OpenAI de acessar seu site para treinamento."}},{"@type":"Question","name":"Bloquear crawlers de IA afeta meu SEO?","acceptedAnswer":{"@type":"Answer","text":"Não diretamente. Crawlers de IA como GPTBot, ClaudeBot e Google-Extended são separados dos crawlers de indexação. Bloquear eles não afeta seus rankings no Google Search."}},{"@type":"Question","name":"Onde fica o arquivo robots.txt?","acceptedAnswer":{"@type":"Answer","text":"O robots.txt deve estar na raiz do seu domínio: seusite.com.br/robots.txt. É um arquivo de texto simples que os crawlers consultam antes de rastrear."}}]}</script>
+    <link rel="stylesheet" href="/assets/site-shell.css">
+    <script defer src="/assets/site-shell.js"></script>
+</head>
+<body>
+    <nav class="nav"><a href="/" class="logo">AUDITSEO</a><ul class="nav-links"><li><a href="/agencia-de-seo/">Agência de SEO</a></li><li><a href="/servicos/">Serviços</a></li><li><a href="/sobre/">Sobre</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://wa.me/5511996384376" class="nav-cta">Falar com Especialista</a></nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumbs"><a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span>Robots.txt Para IAs</span></div>
+            <span class="article-category">Technical AI SEO</span>
+            <h1 class="article-title">Robots.txt Para IAs: Guia Completo de Configuração Para LLMs</h1>
+            <p class="article-excerpt">Aprenda a configurar seu robots.txt para controlar como crawlers de IA acessam seu site. Templates prontos para copiar e usar.</p>
+            <div class="article-meta">
+                <div class="meta-item"><div class="meta-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div><div class="meta-info"><strong>Sidney Santos</strong>Especialista em Search Intelligence AI</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Publicado</strong>27 de Janeiro, 2026</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Tempo de leitura</strong>10 minutos</div></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-layout">
+        <aside class="article-toc">
+            <h4 class="toc-title">ÍNDICE</h4>
+            <ul class="toc-list">
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#basico">Básico de Robots.txt</a></li>
+                <li><a href="#crawlers">Crawlers de IA</a></li>
+                <li><a href="#templates">Templates Prontos</a></li>
+                <li><a href="#cenarios">Cenários Comuns</a></li>
+                <li><a href="#validacao">Validação</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </aside>
+
+        <article class="article-content">
+            <section id="introducao">
+                <p>O arquivo robots.txt é sua ferramenta principal para controlar quais crawlers podem acessar seu site. Com a proliferação de <a href="/blog/crawlers-ia/">crawlers de IA</a>, saber configurá-lo corretamente tornou-se essencial.</p>
+
+                <p>Neste guia, vou mostrar exatamente como configurar robots.txt para crawlers de IA, com <strong>templates prontos para copiar e usar</strong>.</p>
+            </section>
+
+            <section id="basico">
+                <h2>Básico de Robots.txt</h2>
+
+                <p>Robots.txt é um arquivo de texto na raiz do seu site que diz aos crawlers o que podem ou não acessar. A sintaxe é simples:</p>
+
+                <div class="code-block">
+                    <div class="header"><span>robots.txt • Sintaxe Básica</span></div>
+                    <pre><code><span class="comment"># Comentário (ignorado pelos crawlers)</span>
+
+<span class="directive">User-agent:</span> <span class="value">NomeDoCrawler</span>
+<span class="directive">Disallow:</span> <span class="value">/pasta-bloqueada/</span>
+<span class="directive">Allow:</span> <span class="value">/pasta-permitida/</span>
+
+<span class="directive">User-agent:</span> <span class="value">*</span>
+<span class="directive">Disallow:</span> <span class="value">/admin/</span></code></pre>
+                </div>
+
+                <h3>Diretivas Principais</h3>
+                <ul>
+                    <li><strong>User-agent:</strong> Especifica qual crawler. Use <code>*</code> para todos.</li>
+                    <li><strong>Disallow:</strong> Bloqueia acesso a um caminho. <code>/</code> bloqueia tudo.</li>
+                    <li><strong>Allow:</strong> Permite acesso (útil para exceções dentro de bloqueios).</li>
+                    <li><strong>Sitemap:</strong> Indica localização do sitemap XML.</li>
+                </ul>
+
+                <div class="info-box">
+                    <h4>Onde Colocar</h4>
+                    <p>O arquivo deve estar em <code>seusite.com.br/robots.txt</code> — exatamente na raiz do domínio. Crawlers sempre buscam neste local específico.</p>
+                </div>
+            </section>
+
+            <section id="crawlers">
+                <h2>User-Agents dos Crawlers de IA</h2>
+
+                <p>Aqui estão os user-agents que você precisa conhecer:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Crawler</th>
+                            <th>User-Agent</th>
+                            <th>Empresa</th>
+                            <th>Propósito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GPTBot</td>
+                            <td><code>GPTBot</code></td>
+                            <td>OpenAI</td>
+                            <td>Treino de modelos</td>
+                        </tr>
+                        <tr>
+                            <td>ChatGPT-User</td>
+                            <td><code>ChatGPT-User</code></td>
+                            <td>OpenAI</td>
+                            <td>Busca em tempo real</td>
+                        </tr>
+                        <tr>
+                            <td>ClaudeBot</td>
+                            <td><code>ClaudeBot</code></td>
+                            <td>Anthropic</td>
+                            <td>Treino de modelos</td>
+                        </tr>
+                        <tr>
+                            <td>Google-Extended</td>
+                            <td><code>Google-Extended</code></td>
+                            <td>Google</td>
+                            <td>Treino Gemini/Bard</td>
+                        </tr>
+                        <tr>
+                            <td>PerplexityBot</td>
+                            <td><code>PerplexityBot</code></td>
+                            <td>Perplexity</td>
+                            <td>Busca de IA</td>
+                        </tr>
+                        <tr>
+                            <td>Bytespider</td>
+                            <td><code>Bytespider</code></td>
+                            <td>ByteDance</td>
+                            <td>Treino de modelos</td>
+                        </tr>
+                        <tr>
+                            <td>CCBot</td>
+                            <td><code>CCBot</code></td>
+                            <td>Common Crawl</td>
+                            <td>Dataset público</td>
+                        </tr>
+                        <tr>
+                            <td>FacebookBot</td>
+                            <td><code>FacebookBot</code></td>
+                            <td>Meta</td>
+                            <td>Treino de modelos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="templates">
+                <h2>Templates Prontos Para Usar</h2>
+
+                <div class="template-card">
+                    <div class="header">
+                        <h4>Template 1: Permitir Tudo (Máxima Visibilidade)</h4>
+                        <span class="tag permissive">Permissivo</span>
+                    </div>
+                    <p>Para quem quer máxima visibilidade em IAs. Permite todos os crawlers.</p>
+                </div>
+
+                <div class="code-block">
+                    <div class="header"><span>robots.txt • Permitir Todos</span></div>
+                    <pre><code><span class="comment"># ===========================================</span>
+<span class="comment"># ROBOTS.TXT - MÁXIMA VISIBILIDADE EM IAs</span>
+<span class="comment"># ===========================================</span>
+
+<span class="comment"># Permitir todos os crawlers (padrão)</span>
+<span class="directive">User-agent:</span> <span class="value">*</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+
+<span class="comment"># Bloquear apenas áreas administrativas</span>
+<span class="directive">Disallow:</span> <span class="value">/admin/</span>
+<span class="directive">Disallow:</span> <span class="value">/wp-admin/</span>
+<span class="directive">Disallow:</span> <span class="value">/login/</span>
+
+<span class="comment"># Sitemap</span>
+<span class="directive">Sitemap:</span> <span class="value">https://www.seusite.com.br/sitemap.xml</span></code></pre>
+                </div>
+
+                <div class="template-card">
+                    <div class="header">
+                        <h4>Template 2: Bloquear Treino, Permitir Busca (Recomendado)</h4>
+                        <span class="tag recommended">Recomendado</span>
+                    </div>
+                    <p>Bloqueia uso para treinamento mas permite busca em tempo real. Melhor equilíbrio.</p>
+                </div>
+
+                <div class="code-block">
+                    <div class="header"><span>robots.txt • Balanceado</span></div>
+                    <pre><code><span class="comment"># ===========================================</span>
+<span class="comment"># ROBOTS.TXT - BLOQUEAR TREINO, PERMITIR BUSCA</span>
+<span class="comment"># ===========================================</span>
+
+<span class="comment"># Bloquear crawlers de TREINO de IA</span>
+<span class="directive">User-agent:</span> <span class="value">GPTBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">ClaudeBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Google-Extended</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">CCBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Bytespider</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">FacebookBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="comment"># Permitir crawlers de BUSCA em tempo real</span>
+<span class="directive">User-agent:</span> <span class="value">ChatGPT-User</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">PerplexityBot</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+
+<span class="comment"># Permitir buscadores tradicionais</span>
+<span class="directive">User-agent:</span> <span class="value">Googlebot</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Bingbot</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+
+<span class="comment"># Padrão para outros crawlers</span>
+<span class="directive">User-agent:</span> <span class="value">*</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+<span class="directive">Disallow:</span> <span class="value">/admin/</span>
+
+<span class="comment"># Sitemap</span>
+<span class="directive">Sitemap:</span> <span class="value">https://www.seusite.com.br/sitemap.xml</span></code></pre>
+                </div>
+
+                <div class="template-card">
+                    <div class="header">
+                        <h4>Template 3: Bloquear Todas as IAs</h4>
+                        <span class="tag strict">Restritivo</span>
+                    </div>
+                    <p>Para quem não quer que conteúdo seja usado por nenhuma IA.</p>
+                </div>
+
+                <div class="code-block">
+                    <div class="header"><span>robots.txt • Bloquear IAs</span></div>
+                    <pre><code><span class="comment"># ===========================================</span>
+<span class="comment"># ROBOTS.TXT - BLOQUEAR TODAS AS IAs</span>
+<span class="comment"># ===========================================</span>
+
+<span class="comment"># Bloquear TODOS os crawlers de IA</span>
+<span class="directive">User-agent:</span> <span class="value">GPTBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">ChatGPT-User</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">ClaudeBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Google-Extended</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">PerplexityBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">CCBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Bytespider</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">FacebookBot</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">anthropic-ai</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">cohere-ai</span>
+<span class="directive">Disallow:</span> <span class="value">/</span>
+
+<span class="comment"># Permitir buscadores tradicionais</span>
+<span class="directive">User-agent:</span> <span class="value">Googlebot</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">Bingbot</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+
+<span class="directive">User-agent:</span> <span class="value">*</span>
+<span class="directive">Allow:</span> <span class="value">/</span>
+<span class="directive">Disallow:</span> <span class="value">/admin/</span>
+
+<span class="comment"># Sitemap</span>
+<span class="directive">Sitemap:</span> <span class="value">https://www.seusite.com.br/sitemap.xml</span></code></pre>
+                </div>
+            </section>
+
+            <section id="cenarios">
+                <h2>Cenários Comuns</h2>
+
+                <h3>Bloquear Apenas Áreas Específicas</h3>
+                <p>Se você quer permitir IAs mas proteger certas seções:</p>
+
+                <div class="code-block">
+                    <div class="header"><span>robots.txt • Bloqueio Parcial</span></div>
+                    <pre><code><span class="comment"># Permitir GPTBot, mas bloquear áreas premium</span>
+<span class="directive">User-agent:</span> <span class="value">GPTBot</span>
+<span class="directive">Allow:</span> <span class="value">/blog/</span>
+<span class="directive">Allow:</span> <span class="value">/sobre/</span>
+<span class="directive">Disallow:</span> <span class="value">/premium/</span>
+<span class="directive">Disallow:</span> <span class="value">/cursos/</span>
+<span class="directive">Disallow:</span> <span class="value">/ebooks/</span></code></pre>
+                </div>
+
+                <h3>E-commerce: Proteger Páginas de Produto</h3>
+
+                <div class="code-block">
+                    <div class="header"><span>robots.txt • E-commerce</span></div>
+                    <pre><code><span class="comment"># E-commerce: permitir categorias, bloquear carrinho</span>
+<span class="directive">User-agent:</span> <span class="value">GPTBot</span>
+<span class="directive">Allow:</span> <span class="value">/categorias/</span>
+<span class="directive">Allow:</span> <span class="value">/blog/</span>
+<span class="directive">Disallow:</span> <span class="value">/carrinho/</span>
+<span class="directive">Disallow:</span> <span class="value">/checkout/</span>
+<span class="directive">Disallow:</span> <span class="value">/minha-conta/</span>
+<span class="directive">Disallow:</span> <span class="value">/busca</span></code></pre>
+                </div>
+
+                <div class="warning-box">
+                    <h4>Google-Extended ≠ Googlebot</h4>
+                    <p>Bloquear <code>Google-Extended</code> NÃO afeta seu SEO. São crawlers diferentes. <code>Google-Extended</code> é apenas para treino de IA, <code>Googlebot</code> é para indexação de busca.</p>
+                </div>
+            </section>
+
+            <section id="validacao">
+                <h2>Validando Seu Robots.txt</h2>
+
+                <p>Sempre valide seu robots.txt antes de publicar:</p>
+
+                <ol>
+                    <li><strong>Google Search Console:</strong> Use o Testador de robots.txt</li>
+                    <li><strong>Acesso direto:</strong> Verifique em <code>seusite.com.br/robots.txt</code></li>
+                    <li><strong>Sintaxe:</strong> Verifique se não há erros de digitação</li>
+                </ol>
+
+                <div class="tip-box">
+                    <h4>Teste Antes de Publicar</h4>
+                    <p>Erros no robots.txt podem bloquear acidentalmente crawlers importantes. Sempre teste a sintaxe e verifique se as regras estão corretas antes de subir para produção.</p>
+                </div>
+
+                <h3>Verificando nos Logs</h3>
+                <p>Após configurar, monitore seus logs de servidor para confirmar que crawlers estão respeitando as regras:</p>
+
+                <div class="code-block">
+                    <div class="header"><span>Bash • Verificar Logs</span></div>
+                    <pre><code><span class="comment"># Ver acessos de crawlers de IA</span>
+grep -E "GPTBot|ClaudeBot|PerplexityBot" /var/log/nginx/access.log
+
+<span class="comment"># Contar acessos por crawler</span>
+grep -oE "GPTBot|ClaudeBot|Google-Extended" access.log | sort | uniq -c</code></pre>
+                </div>
+            </section>
+
+            <div class="cta-box">
+                <h3>Quer Configuração Profissional?</h3>
+                <p>A AUDITSEO configura seu <strong>robots.txt</strong> de forma otimizada para sua estratégia de AI SEO.</p>
+                <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20configuração%20de%20robots.txt%20para%20IAs." class="cta-btn">Solicitar Configuração</a>
+            </div>
+
+            <section id="faq">
+                <h2>Perguntas Frequentes</h2>
+
+                <h3>Como bloquear GPTBot no robots.txt?</h3>
+                <p>Adicione <code>User-agent: GPTBot</code> seguido de <code>Disallow: /</code> no seu arquivo robots.txt. Isso impede o crawler da OpenAI de acessar seu site para treinamento.</p>
+
+                <h3>Bloquear crawlers de IA afeta meu SEO?</h3>
+                <p>Não diretamente. Crawlers de IA como GPTBot, ClaudeBot e Google-Extended são separados dos crawlers de indexação. Bloquear eles não afeta seus rankings no Google Search.</p>
+
+                <h3>Onde fica o arquivo robots.txt?</h3>
+                <p>O robots.txt deve estar na raiz do seu domínio: <code>seusite.com.br/robots.txt</code>. É um arquivo de texto simples que os crawlers consultam antes de rastrear.</p>
+
+                <h3>Crawlers de IA respeitam robots.txt?</h3>
+                <p>Os principais (GPTBot, ClaudeBot, Google-Extended) afirmam respeitar robots.txt. Não há garantia absoluta, mas empresas estabelecidas geralmente cumprem.</p>
+
+                <h3>Posso bloquear treino mas permitir busca?</h3>
+                <p>Sim. Bloqueie <code>GPTBot</code> (treino) mas permita <code>ChatGPT-User</code> (busca em tempo real). Da mesma forma com outros crawlers que têm versões separadas.</p>
+            </section>
+
+            <section>
+                <h2>Conclusão</h2>
+
+                <p>Configurar robots.txt para crawlers de IA é simples mas requer atenção:</p>
+
+                <ul>
+                    <li><strong>Permissivo:</strong> Permite visibilidade máxima em IAs</li>
+                    <li><strong>Balanceado:</strong> Bloqueia treino, permite busca (recomendado)</li>
+                    <li><strong>Restritivo:</strong> Bloqueia todas as IAs</li>
+                </ul>
+
+                <p>Escolha o template que se adequa à sua estratégia, personalize conforme necessário e sempre valide antes de publicar.</p>
+
+                <p>Continue aprendendo: <a href="/blog/crawlers-ia/">crawlers de IAs</a>, <a href="/blog/schema-markup-para-ias/">schema markup</a> e <a href="/blog/sitemap-para-ia/">sitemap otimizado</a>.</p>
+            </section>
+
+            <div class="author-box">
+                <div class="author-avatar"><img src="/assets/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                <div class="author-info">
+                    <h4>Sidney Santos</h4>
+                    <p>Especialista em Search Intelligence AI com mais de 12 anos de experiência em SEO. Fundador da AUDITSEO.</p>
+                    <div class="author-links"><a href="https://www.linkedin.com/in/sidney-especialista-em-seo/">LinkedIn</a><a href="https://instagram.com/sidneyespecialistaseo">Instagram</a></div>
+                </div>
+            </div>
+
+            <div class="related-posts">
+                <h3 class="related-title">Artigos Relacionados</h3>
+                <div class="related-grid">
+                    <div class="related-card"><h4><a href="/blog/crawlers-ia/">Crawlers de IAs</a></h4><p>GPTBot, ClaudeBot e mais.</p></div>
+                    <div class="related-card"><h4><a href="/blog/schema-markup-para-ias/">Schema Markup Para IAs</a></h4><p>Dados estruturados para LLMs.</p></div>
+                    <div class="related-card"><h4><a href="/blog/estrutura-html-para-ia/">Estrutura HTML Para IAs</a></h4><p>HTML semântico otimizado.</p></div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand"><div class="footer-logo">AUDITSEO</div><p class="footer-desc">Agência de SEO especializada em Search Intelligence AI.</p><div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil</div></div>
+            <div class="footer-col"><h4 class="footer-title">Serviços</h4><ul class="footer-links"><li><a href="/servicos/">Todos os Serviços</a></li><li><a href="/servicos/technical-ai-seo/">Technical AI SEO</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Empresa</h4><ul class="footer-links"><li><a href="/sobre/">Sobre Nós</a></li><li><a href="/blog/">Blog</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Contato</h4><ul class="footer-links"><li><a href="https://wa.me/5511996384376">WhatsApp</a></li><li><a href="tel:+5511996384376">(11) 99638-4376</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 AUDITSEO — Todos os direitos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>

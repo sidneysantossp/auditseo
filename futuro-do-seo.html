@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Futuro do SEO em 2026: IA, AI Overviews e Novas Tendências | AUDITSEO</title>
+    <meta name="description" content="Qual o futuro do SEO? Descubra como a IA está transformando a busca e o que fazer para se preparar. AI Overviews, LLMs, busca por voz e mais.">
+    <meta name="keywords" content="futuro do seo, seo 2026, tendencias seo, seo e inteligencia artificial, ia no seo">
+    <link rel="canonical" href="https://www.auditseo.com.br/futuro-do-seo/">
+    <meta property="og:title" content="O Futuro do SEO em 2026: IA, AI Overviews e Novas Tendências | AUDITSEO">
+    <meta property="og:description" content="Como a IA está transformando SEO e o que fazer para se preparar.">
+    <meta property="og:url" content="https://www.auditseo.com.br/futuro-do-seo/">
+    <meta property="og:type" content="article">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.7}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.98);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}
+        .nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}
+        .nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);text-decoration:none;transition:all .3s}
+        .nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .hero{min-height:80vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative}
+        .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(212,165,116,.15) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(230,57,70,.1) 0%,transparent 50%);pointer-events:none}
+        .hero-content{max-width:900px;margin:0 auto;position:relative;z-index:1;text-align:center}
+        .hero-badge{display:inline-flex;align-items:center;gap:.8rem;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:3px;color:var(--accent-gold);margin-bottom:2rem;padding:.5rem 1rem;border:1px solid rgba(212,165,116,.3);background:rgba(212,165,116,.05)}
+        .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,8vw,5rem);line-height:1;margin-bottom:1.5rem}
+        .hero-title .highlight{background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero-subtitle{font-size:1.3rem;color:var(--text-muted);max-width:700px;margin:0 auto 2rem}
+        .btn-primary{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1.2rem 2.5rem;background:var(--gradient-fire);border:none;color:var(--bg-dark);cursor:pointer;transition:all .3s;text-transform:uppercase;font-weight:600;text-decoration:none;display:inline-block}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(230,57,70,.4)}
+        .btn-secondary{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1.2rem 2.5rem;background:transparent;border:1px solid var(--text-dim);color:var(--text-light);cursor:pointer;transition:all .3s;text-transform:uppercase;text-decoration:none;display:inline-block}
+        .btn-secondary:hover{border-color:var(--accent-gold);color:var(--accent-gold)}
+        .section{padding:6rem 3rem}
+        .section-header{max-width:900px;margin:0 auto 4rem;text-align:center}
+        .section-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:4px;color:var(--accent-gold);margin-bottom:1rem;display:block}
+        .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);line-height:1.1;margin-bottom:1rem}
+        .section-title .highlight{background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .trends-section{background:var(--bg-card)}
+        .trends-grid{max-width:1000px;margin:0 auto;display:grid;gap:2rem}
+        .trend-item{display:grid;grid-template-columns:120px 1fr;gap:2rem;padding:2.5rem;background:var(--bg-dark);border:1px solid rgba(255,255,255,.05)}
+        .trend-item.hot{border-color:rgba(230,57,70,.5);background:linear-gradient(135deg,rgba(230,57,70,.05) 0%,var(--bg-dark) 100%)}
+        .trend-year{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--accent-gold)}
+        .trend-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:.5rem}
+        .trend-item.hot .trend-title{color:var(--accent-red)}
+        .trend-desc{color:var(--text-muted)}
+        .trend-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:.3rem .6rem;background:rgba(230,57,70,.2);color:var(--accent-red);margin-top:.5rem}
+        .evolution-section{background:var(--bg-dark)}
+        .evolution-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+        .evolution-card{padding:2rem;background:var(--bg-card);border:1px solid rgba(255,255,255,.05);text-align:center}
+        .evolution-era{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);margin-bottom:1rem}
+        .evolution-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:1rem}
+        .evolution-list{list-style:none;text-align:left}
+        .evolution-list li{padding:.4rem 0;color:var(--text-muted);font-size:.9rem}
+        .dead-section{background:var(--bg-card)}
+        .dead-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+        .dead-card{padding:2rem;background:var(--bg-dark);border:1px solid rgba(255,255,255,.05)}
+        .dead-card.dead{border-color:rgba(230,57,70,.3)}
+        .dead-card.alive{border-color:rgba(212,165,116,.3)}
+        .dead-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;margin-bottom:1rem}
+        .dead-card.dead .dead-title{color:var(--accent-red)}
+        .dead-card.alive .dead-title{color:var(--accent-gold)}
+        .dead-list{list-style:none}
+        .dead-list li{padding:.4rem 0;padding-left:1.5rem;position:relative;color:var(--text-muted);font-size:.9rem}
+        .dead-card.dead .dead-list li::before{content:'✗';position:absolute;left:0;color:var(--accent-red)}
+        .dead-card.alive .dead-list li::before{content:'✓';position:absolute;left:0;color:var(--accent-gold)}
+        .prepare-section{background:var(--bg-dark)}
+        .prepare-grid{max-width:1000px;margin:0 auto;display:grid;gap:1.5rem}
+        .prepare-item{display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:2rem;background:var(--bg-card);border:1px solid rgba(255,255,255,.05)}
+        .prepare-number{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+        .prepare-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--text-light);margin-bottom:.5rem}
+        .prepare-desc{color:var(--text-muted)}
+        .cta-section{padding:8rem 3rem;text-align:center;position:relative}
+        .cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(212,165,116,.1) 0%,transparent 70%);pointer-events:none}
+        .cta-content{position:relative;z-index:1;max-width:700px;margin:0 auto}
+        .cta-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4rem);line-height:1.1;margin-bottom:1rem}
+        .cta-subtitle{font-size:1.2rem;color:var(--text-muted);margin-bottom:2rem}
+        .cta-buttons{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+        .cta-note{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--text-dim);margin-top:2rem}
+        .faq-section{background:var(--bg-card)}
+        .faq-grid{max-width:800px;margin:0 auto}
+        .faq-item{border-bottom:1px solid rgba(255,255,255,.05)}
+        .faq-question{width:100%;padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;background:none;border:none;cursor:pointer;text-align:left}
+        .faq-question span:first-child{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light)}
+        .faq-question span:last-child{color:var(--accent-gold);font-size:1.5rem}
+        .faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease}
+        .faq-answer p{padding:0 0 1.5rem;color:var(--text-muted);line-height:1.7}
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card)}
+        .footer-content{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
+        .footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7}
+        .footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--text-light);margin-bottom:1rem}
+        .footer-links{list-style:none}
+        .footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;display:block;padding:.3rem 0;transition:color .3s}
+        .footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1200px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}
+        .footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}
+        .whatsapp-float:hover{transform:scale(1.1)}
+        .whatsapp-float svg{width:30px;height:30px;fill:white}
+        @media(max-width:1024px){.evolution-grid{grid-template-columns:1fr}.dead-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr 1fr}}
+        @media(max-width:768px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.hero,.section,.cta-section{padding-left:1.5rem;padding-right:1.5rem}.hero{min-height:auto;padding-top:6rem}.trend-item,.prepare-item{grid-template-columns:1fr}.cta-buttons{flex-direction:column;align-items:center}.footer-content{grid-template-columns:1fr}}
+    </style>
+    <link rel="stylesheet" href="/assets/site-shell.css">
+    <script defer src="/assets/site-shell.js"></script>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="logo">AUDITSEO</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/agencia-de-seo/">Agência de SEO</a></li>
+            <li><a href="/servicos/">Serviços</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/contato/">Contato</a></li>
+        </ul>
+        <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20me%20preparar%20para%20o%20futuro%20do%20SEO." class="nav-cta">Falar com Especialista</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="hero-badge">🔮 VISÃO 2026+</span>
+            <h1 class="hero-title">
+                O <span class="highlight">FUTURO DO SEO</span>
+            </h1>
+            <p class="hero-subtitle">
+                SEO não morreu — <strong>evoluiu</strong>. Com IA generativa, AI Overviews e LLMs, 
+                a busca mudou mais nos últimos 2 anos do que nos 20 anteriores. Entenda o que vem pela frente.
+            </p>
+            
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem">
+                <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20preparar%20minha%20empresa%20para%20o%20futuro%20do%20SEO." class="btn-primary">Quero Me Preparar</a>
+                <a href="#tendencias" class="btn-secondary">Ver Tendências</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section trends-section" id="tendencias">
+        <div class="section-header">
+            <span class="section-label">O QUE VEM PELA FRENTE</span>
+            <h2 class="section-title">Tendências que estão <span class="highlight">moldando SEO</span></h2>
+        </div>
+        
+        <div class="trends-grid">
+            <div class="trend-item hot">
+                <div class="trend-year">AGORA</div>
+                <div>
+                    <div class="trend-title">AI Overviews dominando</div>
+                    <div class="trend-desc">40% das buscas já têm respostas de IA no topo. O Google responde antes de mostrar resultados. Se você não é citado na resposta, perde visibilidade mesmo rankando bem.</div>
+                    <span class="trend-tag">IMPACTO CRÍTICO</span>
+                </div>
+            </div>
+            <div class="trend-item hot">
+                <div class="trend-year">AGORA</div>
+                <div>
+                    <div class="trend-title">LLMs como canal de busca</div>
+                    <div class="trend-desc">ChatGPT, Claude, Perplexity — milhões de pessoas buscam nesses assistentes de IA em vez do Google. Se sua marca não é citada, você não existe para esse público.</div>
+                    <span class="trend-tag">IMPACTO CRÍTICO</span>
+                </div>
+            </div>
+            <div class="trend-item">
+                <div class="trend-year">2026</div>
+                <div>
+                    <div class="trend-title">Busca conversacional</div>
+                    <div class="trend-desc">Usuários fazem perguntas completas em vez de digitar keywords. "Qual o melhor advogado trabalhista em SP para processo de demissão injusta?" em vez de "advogado trabalhista sp".</div>
+                </div>
+            </div>
+            <div class="trend-item">
+                <div class="trend-year">2026</div>
+                <div>
+                    <div class="trend-title">E-E-A-T cada vez mais importante</div>
+                    <div class="trend-desc">Experiência, Expertise, Autoridade, Confiança. Google e IAs priorizam fontes com credenciais verificáveis. Conteúdo genérico de IA perde cada vez mais espaço.</div>
+                </div>
+            </div>
+            <div class="trend-item">
+                <div class="trend-year">2026-27</div>
+                <div>
+                    <div class="trend-title">Busca multimodal</div>
+                    <div class="trend-desc">Busca por imagem, voz e texto combinados. "Encontre um sofá parecido com este" + foto. SEO precisará cobrir todos os formatos.</div>
+                </div>
+            </div>
+            <div class="trend-item">
+                <div class="trend-year">2027+</div>
+                <div>
+                    <div class="trend-title">Agentes de IA comprando</div>
+                    <div class="trend-desc">IAs fazendo compras e contratações em nome dos usuários. Seu site precisará ser "legível" por agentes, não só humanos.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section evolution-section">
+        <div class="section-header">
+            <span class="section-label">A EVOLUÇÃO</span>
+            <h2 class="section-title">De SEO para <span class="highlight">Search Intelligence</span></h2>
+        </div>
+        
+        <div class="evolution-grid">
+            <div class="evolution-card">
+                <div class="evolution-era">2000-2015</div>
+                <div class="evolution-title">SEO 1.0</div>
+                <ul class="evolution-list">
+                    <li>Keywords no título</li>
+                    <li>Meta tags</li>
+                    <li>Link building em massa</li>
+                    <li>Conteúdo para robôs</li>
+                </ul>
+            </div>
+            <div class="evolution-card">
+                <div class="evolution-era">2015-2024</div>
+                <div class="evolution-title">SEO 2.0</div>
+                <ul class="evolution-list">
+                    <li>Conteúdo de qualidade</li>
+                    <li>UX e Core Web Vitals</li>
+                    <li>E-E-A-T</li>
+                    <li>Featured Snippets</li>
+                </ul>
+            </div>
+            <div class="evolution-card" style="border-color:rgba(212,165,116,.5)">
+                <div class="evolution-era">2024+</div>
+                <div class="evolution-title" style="color:var(--accent-gold)">Search Intelligence</div>
+                <ul class="evolution-list">
+                    <li>AI Overview Optimization</li>
+                    <li>LLM Brand Presence</li>
+                    <li>Busca conversacional</li>
+                    <li>Multimodal + Agentes</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dead-section">
+        <div class="section-header">
+            <span class="section-label">REALIDADE</span>
+            <h2 class="section-title">O que morreu e o que <span class="highlight">sobrevive</span></h2>
+        </div>
+        
+        <div class="dead-grid">
+            <div class="dead-card dead">
+                <div class="dead-title">✗ O que não funciona mais</div>
+                <ul class="dead-list">
+                    <li>Keyword stuffing</li>
+                    <li>Compra de backlinks em massa</li>
+                    <li>Conteúdo genérico de IA sem edição</li>
+                    <li>Meta tags como fator principal</li>
+                    <li>SEO "set and forget"</li>
+                    <li>Ignorar experiência do usuário</li>
+                    <li>Focar só em rankings</li>
+                </ul>
+            </div>
+            <div class="dead-card alive">
+                <div class="dead-title">✓ O que continua essencial</div>
+                <ul class="dead-list">
+                    <li>Conteúdo de alta qualidade</li>
+                    <li>SEO técnico bem feito</li>
+                    <li>Link building estratégico</li>
+                    <li>E-E-A-T demonstrado</li>
+                    <li>UX e velocidade</li>
+                    <li>Pesquisa de intenção</li>
+                    <li>Mensuração de resultados</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section prepare-section">
+        <div class="section-header">
+            <span class="section-label">AÇÃO</span>
+            <h2 class="section-title">Como se preparar para o <span class="highlight">futuro</span></h2>
+        </div>
+        
+        <div class="prepare-grid">
+            <div class="prepare-item">
+                <div class="prepare-number">01</div>
+                <div>
+                    <div class="prepare-title">Otimize para AI Overviews agora</div>
+                    <div class="prepare-desc">Não espere. 40% das buscas já têm AI Overviews. Estruture conteúdo para ser citado: respostas diretas, dados factuais, formato pergunta-resposta.</div>
+                </div>
+            </div>
+            <div class="prepare-item">
+                <div class="prepare-number">02</div>
+                <div>
+                    <div class="prepare-title">Construa presença em LLMs</div>
+                    <div class="prepare-desc">ChatGPT, Claude, Perplexity citam marcas com forte presença digital. Brand mentions, conteúdo autoritativo e citações em fontes de referência ajudam.</div>
+                </div>
+            </div>
+            <div class="prepare-item">
+                <div class="prepare-number">03</div>
+                <div>
+                    <div class="prepare-title">Invista em E-E-A-T real</div>
+                    <div class="prepare-desc">Credenciais verificáveis, autores com expertise, fontes citadas, informações atualizadas. IAs priorizam quem demonstra autoridade genuína.</div>
+                </div>
+            </div>
+            <div class="prepare-item">
+                <div class="prepare-number">04</div>
+                <div>
+                    <div class="prepare-title">Mantenha SEO técnico impecável</div>
+                    <div class="prepare-desc">A base não muda: site rápido, mobile perfeito, sem erros de indexação. IAs também preferem sites tecnicamente bem construídos.</div>
+                </div>
+            </div>
+            <div class="prepare-item">
+                <div class="prepare-number">05</div>
+                <div>
+                    <div class="prepare-title">Monitore e adapte constantemente</div>
+                    <div class="prepare-desc">O cenário muda rápido. Acompanhe métricas de visibilidade em AI Overviews e LLMs, não só rankings tradicionais. Adapte estratégia continuamente.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq-section">
+        <div class="section-header">
+            <span class="section-label">DÚVIDAS</span>
+            <h2 class="section-title">Perguntas <span class="highlight">frequentes</span></h2>
+        </div>
+        
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>SEO vai acabar com a IA?</span>
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Não, mas vai mudar significativamente. SEO tradicional continua importante, mas agora você também precisa otimizar para AI Overviews e LLMs. É uma evolução, não uma morte. Quem se adaptar vai ter vantagem competitiva enorme.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Vale a pena investir em SEO ainda?</span>
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Mais do que nunca. Com menos empresas entendendo o novo cenário, quem se posicionar corretamente terá vantagem significativa. O segredo é evoluir junto com a tecnologia: SEO tradicional + AI Overviews + presença em LLMs.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    <span>Como saber se estou preparado para o futuro do SEO?</span>
+                    <span>+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Faça essas perguntas: Seu site aparece em AI Overviews? Sua marca é citada no ChatGPT? Seu conteúdo tem E-E-A-T demonstrado? Você monitora métricas além de rankings tradicionais? Se respondeu não a alguma, há trabalho a fazer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <span class="section-label">PRÓXIMO PASSO</span>
+            <h2 class="cta-title">Prepare-se para o <span class="highlight">futuro do SEO</span></h2>
+            <p class="cta-subtitle">
+                Avaliamos seu posicionamento atual e criamos uma estratégia para 
+                o novo cenário de Search Intelligence com IA.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20preparar%20minha%20empresa%20para%20o%20futuro%20do%20SEO%20com%20IA." class="btn-primary">Solicitar Avaliação</a>
+                <a href="tel:+5511996384376" class="btn-secondary">Ligar Agora</a>
+            </div>
+            <p class="cta-note">⚡ Análise de posicionamento • Estratégia personalizada • Sem compromisso</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">AUDITSEO</div>
+                <p class="footer-desc">Agência de SEO em São Paulo especializada em Search Intelligence AI.</p>
+            </div>
+            <div>
+                <div class="footer-title">Serviços</div>
+                <ul class="footer-links">
+                    <li><a href="/servicos/consultoria-seo/">Consultoria SEO</a></li>
+                    <li><a href="/servicos/seo-local/">SEO Local</a></li>
+                    <li><a href="/servicos/ai-overview-optimization/">AI Overview</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-title">Empresa</div>
+                <ul class="footer-links">
+                    <li><a href="/sobre/">Sobre</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/contato/">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-title">Contato</div>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/5511996384376">WhatsApp</a></li>
+                    <li><a href="tel:+5511996384376">(11) 99638-4376</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 AUDITSEO — Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376?text=Olá!%20Vim%20da%20página%20sobre%20o%20futuro%20do%20SEO." class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const icon = btn.querySelector('span:last-child');
+            const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+            document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = '0px');
+            document.querySelectorAll('.faq-question span:last-child').forEach(i => i.textContent = '+');
+            if (!isOpen) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.textContent = '−';
+            }
+        }
+    </script>
+</body>
+</html>

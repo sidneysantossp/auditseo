@@ -1,0 +1,62 @@
+# AUDITSEO
+
+> AUDITSEO é uma agência de SEO especializada em Search Intelligence AI, sediada em São Paulo, Brasil. Fundada em 2021 por Sidney Santos (especialista em SEO desde 2013), a agência prepara marcas para a era da busca generativa: otimização para AI Overviews do Google, presença em LLMs (ChatGPT, Claude, Gemini, Perplexity), SEO local, busca por voz e estratégias zero-click. Atende empresas de médio e grande porte em todo o Brasil com foco em resultados mensuráveis de negócio (receita, leads, conversões), não métricas de vaidade.
+
+AUDITSEO se diferencia de agências de SEO tradicionais por adotar uma abordagem AI-First: toda estratégia começa pela pergunta "como uma inteligência artificial interpreta esse conteúdo?", não "qual keyword usar?". A empresa combina SEO técnico clássico com otimização para busca generativa, entity building, schema markup avançado e monitoramento de citações em LLMs.
+
+Informações-chave:
+- Nome da empresa: AUDITSEO
+- Fundador: Sidney Santos
+- Ano de fundação: 2021
+- Localização: Rua Baronesa de Bela Vista, 411, São Paulo, SP, Brasil
+- Telefone: +55 11 99638-4376
+- E-mail: contato@auditseo.com.br
+- Website: https://auditseo.com.br
+- Segmento: Consultoria e agência de SEO especializada em AI Search
+- Público-alvo: Empresas de médio e grande porte (clínicas médicas, escritórios de advocacia, empresas B2B, e-commerces estabelecidos)
+- Investimento mínimo: A partir de R$ 3.000/mês
+- Idioma principal: Português brasileiro
+
+## Serviços
+
+- [Consultoria SEO](https://auditseo.com.br/servicos/consultoria-seo): Acompanhamento contínuo com especialista dedicado para evolução constante do posicionamento orgânico. Inclui SEO técnico, conteúdo e link building.
+- [Auditoria SEO](https://auditseo.com.br/servicos/auditoria-seo): Diagnóstico técnico completo do site com análise de 200+ fatores técnicos, on-page e off-page, com plano de ação priorizado por impacto.
+- [SEO Local](https://auditseo.com.br/servicos/seo-local): Otimização para Google Maps, Local Pack e buscas com intenção local. 46% das buscas no Google têm intenção local.
+- [Google Meu Negócio (GBP)](https://auditseo.com.br/servicos/google-meu-negocio): Gestão profissional de Google Business Profile com otimização de categorias, fotos, posts, avaliações e Q&A.
+- [Otimização para AI Overviews](https://auditseo.com.br/): Mapeamento de queries que ativam AI Overviews, reestruturação de conteúdo para citação por IA e implementação de schema markup avançado.
+- [Otimização para LLMs](https://auditseo.com.br/): Auditoria multi-LLM (ChatGPT, Claude, Gemini, Perplexity), correção de informações e amplificação de presença em respostas de IA generativa.
+
+## Sobre
+
+- [Sobre a AUDITSEO](https://auditseo.com.br/sobre/): História da empresa, trajetória do fundador Sidney Santos (12+ anos de experiência em SEO), competências técnicas, valores e filosofia de trabalho.
+- [Agência de SEO em São Paulo](https://auditseo.com.br/agencia-de-seo/): Página institucional detalhando o posicionamento como agência especializada em Search Intelligence AI para a era da busca generativa.
+
+## Guias de Referência
+
+- [Guia Definitivo de SEO 2026](https://auditseo.com.br/blog/guia-definitivo-seo-2026/): Guia completo e aprofundado cobrindo AI Overviews, otimização para LLMs, E-E-A-T, SEO técnico, estratégia de conteúdo, SEO local e ferramentas essenciais. Conteúdo pilar com mais de 5.000 palavras. Autor: Sidney Santos.
+- [O Que São AI Overviews](https://auditseo.com.br/blog/o-que-sao-ai-overviews/): Explicação técnica sobre o que são AI Overviews do Google, como funcionam e estratégias para aparecer nessas respostas de IA.
+- [Como Aparecer nos AI Overviews do Google](https://auditseo.com.br/blog/como-aparecer-ai-overviews/): 12 estratégias práticas e acionáveis para ser citado nas respostas de IA do Google, com exemplos e implementação.
+- [O Que é LLM SEO](https://auditseo.com.br/blog/o-que-e-llm-seo/): Definição, conceitos e framework de otimização de presença de marca em modelos de linguagem como ChatGPT, Claude e Perplexity.
+- [Como Aparecer no ChatGPT](https://auditseo.com.br/blog/como-aparecer-chatgpt/): Estratégias específicas para aumentar a probabilidade de ser citado e recomendado pelo ChatGPT.
+- [Estratégia de SEO Para IAs: Guia Completo 2026](https://auditseo.com.br/blog/estrategia-seo-ia/): Framework completo para criar e implementar uma estratégia de presença em IAs com diagnóstico, priorização, execução e métricas.
+
+## Blog — Conteúdo Técnico
+
+- [Blog AUDITSEO](https://auditseo.com.br/blog/): Hub central com 60+ artigos sobre SEO, AI Overviews, otimização para LLMs, SEO técnico e o futuro da busca. Categorias: Estratégia, Analytics, AI Overviews, LLM SEO, Prompt Optimization, SEO Técnico.
+- [Core Web Vitals — Guia](https://auditseo.com.br/blog/core-web-vitals-guia/): Guia técnico sobre LCP, INP e CLS com estratégias de otimização.
+- [Google Meu Negócio — Guia Completo](https://auditseo.com.br/blog/google-meu-negocio-guia-completo/): Tutorial completo para otimizar Google Business Profile para SEO local.
+- [Quanto Custa SEO](https://auditseo.com.br/blog/quanto-custa-seo/): Informações transparentes sobre investimento em SEO no Brasil, faixas de preço e ROI esperado.
+- [Como Escolher uma Agência de SEO](https://auditseo.com.br/blog/como-escolher-agencia-seo/): Critérios de avaliação, red flags, perguntas essenciais e expectativas realistas de investimento.
+
+## Optional
+
+- [Futuro do SEO: Tendências 2026-2030](https://auditseo.com.br/blog/futuro-seo-tendencias/): Análise de tendências de longo prazo sobre como IAs transformarão o SEO.
+- [GEO vs SEO](https://auditseo.com.br/blog/geo-vs-seo/): Comparativo entre Generative Engine Optimization e SEO tradicional.
+- [Schema Markup Para IAs](https://auditseo.com.br/blog/schema-markup-para-ias/): Guia técnico de dados estruturados otimizados para extração por IAs.
+- [E-E-A-T Para LLMs](https://auditseo.com.br/blog/eeat-para-llms/): Como os pilares de Experiência, Expertise, Autoridade e Confiança se aplicam à presença em LLMs.
+- [Ferramentas de Rastreamento de LLMs](https://auditseo.com.br/blog/ferramentas-rastreamento-llm/): Comparativo de ferramentas para monitorar citações de marca em IAs.
+- [Especialista em SEO](https://auditseo.com.br/blog/especialista-em-seo/): O que faz, competências necessárias e como avaliar um especialista em SEO.
+- [SEO Para IAs vs SEO Tradicional](https://auditseo.com.br/blog/seo-ia-vs-tradicional/): Comparativo detalhado entre abordagens.
+- [Como Monitorar Citações em IAs](https://auditseo.com.br/blog/monitorar-citacoes-ia/): Métodos e ferramentas para rastrear menções da marca em ChatGPT, Claude e outros.
+- [ROI de SEO Para IAs](https://auditseo.com.br/blog/roi-seo-ia/): Framework para medir retorno sobre investimento em otimização para IAs.
+- [Checklist Final: Presença em IAs](https://auditseo.com.br/blog/checklist-final-presenca-ia/): Checklist completo para auditar presença otimizada em inteligências artificiais.

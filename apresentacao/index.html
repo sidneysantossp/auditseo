@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Intelligence AI 2026 | Apresentação Comercial AUDITSEO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/theme/black.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111;
+            --accent-red: #e63946;
+            --accent-gold: #d4a574;
+            --accent-cream: #f4e8d8;
+            --gradient-fire: linear-gradient(135deg, #e63946 0%, #d4a574 100%);
+            --text-light: #f8f8f8;
+            --text-muted: #888;
+            --text-dim: #555;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg-dark); color: var(--text-light); line-height: 1.6; }
+
+        .reveal { font-family: 'Crimson Pro', Georgia, serif; color: var(--text-light); }
+        .reveal section { background: var(--bg-dark); display: flex !important; flex-direction: column; justify-content: center; padding: 2rem; }
+        .reveal h1, .reveal h2 { font-family: 'Bebas Neue', sans-serif; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+        .reveal h1 { font-size: clamp(2rem, 5vw, 4rem); }
+        .reveal h2 { font-size: clamp(1.2rem, 3vw, 2.5rem); }
+        .reveal h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1rem, 2.5vw, 1.8rem); color: var(--accent-cream); letter-spacing: 1px; }
+        .reveal p { font-size: 1rem; color: var(--text-muted); }
+        .reveal ul { list-style: none; margin-left: 0; font-size: 0.9rem; }
+        .reveal ul li { margin-bottom: 0.8rem; position: relative; padding-left: 1.5rem; font-size: 0.9rem; }
+        .reveal ul li::before { content: ''; position: absolute; left: 0; top: 0.6rem; width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; }
+        .reveal table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.8rem; }
+        .reveal th, .reveal td { border: 1px solid rgba(255,255,255,.05); padding: 0.8rem; text-align: left; font-size: 0.8rem; }
+        .reveal th { background: var(--bg-card); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); }
+
+        .section-label { font-family: 'JetBrains Mono', monospace; font-size: .6rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
+        .section-label::before { content: ''; width: 25px; height: 1px; background: var(--accent-gold); }
+
+        .reveal .btn-primary { font-family: 'JetBrains Mono', monospace; font-size: .7rem; padding: 0.8rem 1.5rem; background: var(--gradient-fire); border: none; color: var(--bg-dark); text-decoration: none; transition: all .3s; display: inline-block; margin-top: 1rem; font-weight: 500; letter-spacing: 1px; }
+        .reveal .btn-primary:hover { box-shadow: 0 10px 40px rgba(230,57,70,.4); }
+
+        /* Stat boxes */
+        .stats-row { display: flex; gap: 1rem; margin: 1.2rem 0; flex-wrap: wrap; }
+        .stat-box { flex: 1; min-width: 140px; background: var(--bg-card); border: 1px solid rgba(255,255,255,.05); padding: 1.2rem; text-align: center; }
+        .stat-box .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+        .stat-box .stat-label { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.3rem; line-height: 1.3; }
+        .stat-box .stat-source { font-family: 'JetBrains Mono', monospace; font-size: 0.5rem; color: var(--text-dim); margin-top: 0.4rem; }
+
+        /* Highlight quote */
+        .highlight-quote { border-left: 3px solid var(--accent-red); padding: 0.8rem 1.2rem; margin: 1rem 0; background: rgba(230,57,70,.04); font-style: italic; color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Comparison columns */
+        .compare-cols { display: flex; gap: 1.5rem; margin: 1rem 0; }
+        .compare-col { flex: 1; background: var(--bg-card); border: 1px solid rgba(255,255,255,.05); padding: 1.2rem; }
+        .compare-col h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 0.8rem; text-transform: uppercase; }
+
+        /* Steps / Pipeline */
+        .pipeline-row { display: flex; gap: 0.8rem; margin: 1rem 0; }
+        .pipeline-step { flex: 1; background: var(--bg-card); border: 1px solid rgba(255,255,255,.05); padding: 1rem; text-align: center; }
+        .pipeline-step .step-num { font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 0.3rem; }
+        .pipeline-step .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--text-light); margin-bottom: 0.3rem; }
+        .pipeline-step .step-desc { font-size: 0.65rem; color: var(--text-muted); line-height: 1.4; }
+
+        /* Contact block */
+        .contact-block { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; font-size: 0.8rem; color: var(--text-muted); }
+        .contact-block .contact-item { display: flex; align-items: center; gap: 0.5rem; }
+
+        /* Cost icons */
+        .cost-list { margin: 1rem 0; }
+        .cost-item { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 1rem; font-size: 0.85rem; }
+        .cost-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: rgba(230,57,70,.1); border: 1px solid rgba(230,57,70,.3); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--accent-red); font-weight: 500; }
+        .cost-text { color: var(--text-muted); line-height: 1.4; }
+        .cost-text strong { color: var(--text-light); }
+
+        @media (max-width: 768px) {
+            .reveal h1 { font-size: 2.5rem; }
+            .reveal h2 { font-size: 1.8rem; }
+            .reveal p { font-size: 0.9rem; }
+            .reveal ul li { font-size: 0.8rem; }
+            .reveal table { font-size: 0.7rem; }
+            .stats-row { flex-direction: column; }
+            .compare-cols { flex-direction: column; }
+            .pipeline-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 1 — CAPA -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">AUDITSEO · APRESENTAÇÃO COMERCIAL</span>
+                <h1>Search Intelligence AI</h1>
+                <h2>Como sua marca será encontrada, citada e recomendada nos próximos 5 anos</h2>
+                <p>Sidney Santos — Especialista em SEO &amp; IA · Fevereiro 2026</p>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 2 — A PERGUNTA -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">REFLEXÃO</span>
+                <h1>Quando foi a última vez que você pesquisou algo no Google e clicou num link?</h1>
+                <p>Pense nisso por um momento. Seu comportamento já mudou. O dos seus clientes também.</p>
+                <div class="highlight-quote">
+                    Se você mesmo já parou de clicar, por que espera que seus clientes continuem clicando?
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 3 — O FIM DO CLIQUE -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">O CENÁRIO ATUAL</span>
+                <h2>O fim do clique</h2>
+                <p>O Google responde antes do seu site. O tráfego orgânico está em queda livre.</p>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-number">58-62%</div>
+                        <div class="stat-label">das buscas terminam<br>sem nenhum clique</div>
+                        <div class="stat-source">SparkToro / Semrush, 2025-2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">−61%</div>
+                        <div class="stat-label">queda no CTR orgânico<br>com AI Overviews</div>
+                        <div class="stat-source">Search Engine Land, Nov 2025</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">−58%</div>
+                        <div class="stat-label">menos cliques na posição #1<br>quando AI Overview aparece</div>
+                        <div class="stat-source">Ahrefs, Fev 2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">93%</div>
+                        <div class="stat-label">das buscas em AI Mode<br>terminam sem clique</div>
+                        <div class="stat-source">Semrush, 2026</div>
+                    </div>
+                </div>
+                <div class="highlight-quote">
+                    Estar na posição #1 do Google já não significa o que significava. A IA responde — e o usuário não clica.
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 4 — PARA ONDE ESTÃO INDO -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">MIGRAÇÃO</span>
+                <h2>Para onde seus clientes estão indo</h2>
+                <p>Não estão saindo do Google. Estão indo <strong>além</strong> do Google.</p>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-number">800M+</div>
+                        <div class="stat-label">usuários semanais<br>ativos no ChatGPT</div>
+                        <div class="stat-source">OpenAI / CNBC, Fev 2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">2 BI</div>
+                        <div class="stat-label">usuários/mês alcançados<br>por AI Overviews do Google</div>
+                        <div class="stat-source">Google, 2025</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">45M</div>
+                        <div class="stat-label">usuários ativos<br>no Perplexity</div>
+                        <div class="stat-source">DemandSage, 2026</div>
+                    </div>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-number">37%</div>
+                        <div class="stat-label">dos consumidores já começam<br>buscas em IA, não no Google</div>
+                        <div class="stat-source">Eight Oh Two, Jan 2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">35%</div>
+                        <div class="stat-label">usam assistentes de IA para compras<br>— 2x mais que no ano anterior</div>
+                        <div class="stat-source">Adyen, Jan 2026</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 5 — A IA JÁ INFLUENCIA VENDAS -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">IMPACTO COMERCIAL</span>
+                <h2>A IA já influencia vendas</h2>
+                <p>Não é mais pesquisa. É o novo funil de aquisição.</p>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-number">47%</div>
+                        <div class="stat-label">dizem que a IA influencia<br>em quais marcas confiam</div>
+                        <div class="stat-source">Eight Oh Two, 2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">47%</div>
+                        <div class="stat-label">usaram IA para tomar<br>decisões de compra</div>
+                        <div class="stat-source">Eight Oh Two, 2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">54%</div>
+                        <div class="stat-label">usaram IA para comparar<br>produtos e serviços</div>
+                        <div class="stat-source">Eight Oh Two, 2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">70%</div>
+                        <div class="stat-label">dispostos a deixar agentes<br>de IA fazerem compras por eles</div>
+                        <div class="stat-source">PYMNTS, Fev 2026</div>
+                    </div>
+                </div>
+                <div class="highlight-quote">
+                    Quando alguém pergunta para o ChatGPT "qual a melhor clínica em SP?" — a IA cita marcas pelo nome. Se não citar a sua, cita o concorrente.
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 6 — PERGUNTAS QUE O PROSPECT VAI TER -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>O que você deve estar pensando agora</h2>
+                <ul>
+                    <li>"Mas meu público usa IA mesmo?" → 800M de usuários semanais no ChatGPT. 37% dos consumidores já começam buscas por IA. 35% usam IA pra comprar — o dobro do ano passado.</li>
+                    <li>"Meu segmento é diferente" → A IA é horizontal. Saúde, jurídico, tech, serviços, varejo — todos estão sendo impactados. 47% já usaram IA pra decidir compra.</li>
+                    <li>"Isso é moda, vai passar?" → 63% dos consumidores planejam usar mais IA em 2026. 59% acreditam que será a principal forma de buscar informação. A tendência só acelera.</li>
+                    <li>"Eu já faço SEO, não basta?" → SEO tradicional otimiza para links azuis que recebem cada vez menos cliques. Você precisa também ser citado pela IA — e isso exige técnicas diferentes.</li>
+                    <li>"E se eu esperar um pouco mais?" → Só 3% das empresas estão otimizando presença em LLMs. Quem entra agora domina. Quem espera compete com todos. A janela fecha rápido.</li>
+                </ul>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 7 — JANELA DE OPORTUNIDADE -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">OPORTUNIDADE</span>
+                <h2>A janela está aberta — por pouco tempo</h2>
+                <p>Quem se posicionar agora, domina. Quem esperar, compete pelo que sobrar.</p>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-number">~3%</div>
+                        <div class="stat-label">das empresas estão<br>otimizando presença em LLMs</div>
+                        <div class="stat-source">AUDITSEO, 2025</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">63%</div>
+                        <div class="stat-label">dos consumidores esperam<br>usar mais IA em 2026</div>
+                        <div class="stat-source">Eight Oh Two, 2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">59%</div>
+                        <div class="stat-label">acreditam que IA será<br>principal forma de buscar info</div>
+                        <div class="stat-source">Eight Oh Two, 2026</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">2028</div>
+                        <div class="stat-label">ano em que tráfego de AI Search<br>deve superar o orgânico</div>
+                        <div class="stat-source">Semrush, 2025</div>
+                    </div>
+                </div>
+                <div class="highlight-quote">
+                    É como não ter site em 2005, não estar no Google em 2010, ou não ter redes sociais em 2015. Quem demorou, pagou caro. A diferença? Agora a janela fecha mais rápido.
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 8 — OS 3 MUNDOS DA BUSCA -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">O NOVO CENÁRIO</span>
+                <h2>Os 3 mundos da busca em 2026</h2>
+                <p>SEO não morreu. Se multiplicou por 3. Cada mundo tem regras diferentes.</p>
+                <table>
+                    <tr>
+                        <th>Mundo</th>
+                        <th>O que é</th>
+                        <th>Escala</th>
+                        <th>Impacto</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Tradicional</strong></td>
+                        <td>Links azuis, SEO clássico</td>
+                        <td>Em declínio de CTR</td>
+                        <td>58-62% zero cliques</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI Overviews</strong></td>
+                        <td>Google responde com IA na SERP</td>
+                        <td>2 bi usuários/mês</td>
+                        <td>88% queries informacionais</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LLMs</strong></td>
+                        <td>ChatGPT, Claude, Perplexity, Gemini</td>
+                        <td>800M+ semanais (só ChatGPT)</td>
+                        <td>Recomenda marcas pelo nome</td>
+                    </tr>
+                </table>
+                <div class="highlight-quote">
+                    Sua empresa precisa estar otimizada para os 3 mundos simultaneamente. Não é opcional — é a nova realidade.
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 9 — COMO A IA DECIDE -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">COMO FUNCIONA</span>
+                <h2>Como a IA decide quem recomendar</h2>
+                <p>50% das citações do ChatGPT apontam para sites de empresas. O espaço existe — sua marca precisa conquistá-lo.</p>
+                <ul>
+                    <li><strong>Autoridade digital</strong> — Menções consistentes em fontes de alta qualidade (citações contextuais, não backlinks comprados)</li>
+                    <li><strong>Conteúdo estruturado</strong> — Informações claras, citáveis, verificáveis. Formato que a IA consegue referenciar</li>
+                    <li><strong>Entity recognition</strong> — Sua marca precisa existir como "entidade" para a IA com atributos claros e consistentes</li>
+                    <li><strong>Consistência de dados</strong> — Nome, endereço, telefone, informações idênticas em toda a web</li>
+                    <li><strong>Fontes de treinamento</strong> — Presença em Wikipedia, datasets públicos, diretórios que alimentam os LLMs</li>
+                </ul>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 10 — VALOR DO VISITANTE DE IA -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">QUALIDADE > VOLUME</span>
+                <h2>Tráfego de IA vale 4.4x mais</h2>
+                <p>Menos visitantes. Mas visitantes que compram.</p>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-number">4.4x</div>
+                        <div class="stat-label">mais valioso: visitante de AI<br>vs. orgânico tradicional</div>
+                        <div class="stat-source">Semrush, 2025</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">−27%</div>
+                        <div class="stat-label">menor bounce rate em<br>visitas vindas de IA</div>
+                        <div class="stat-source">Adobe, 2025</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">+38%</div>
+                        <div class="stat-label">mais tempo no site e<br>mais páginas visitadas</div>
+                        <div class="stat-source">Adobe, 2025</div>
+                    </div>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-number">+527%</div>
+                        <div class="stat-label">crescimento YoY do tráfego<br>vindo de AI Search</div>
+                        <div class="stat-source">Previsible / Search Engine Land, 2025</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">1.4</div>
+                        <div class="stat-label">links externos clicados por visita<br>no ChatGPT (vs. 0.6 no Google)</div>
+                        <div class="stat-source">Momentic, 2025</div>
+                    </div>
+                </div>
+                <div class="highlight-quote">
+                    A IA filtra a intenção. Quem chega ao seu site via citação de IA já foi "pré-qualificado" pela inteligência artificial. Resultado: mais conversão, menos desperdício.
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 11 — PERGUNTAS SOBRE O CENÁRIO -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Sobre o cenário e a oportunidade</h2>
+                <ul>
+                    <li>"Esses dados são confiáveis?" → Todas as fontes são públicas e verificáveis: Semrush, Ahrefs, Pew Research, Adobe, Google, OpenAI, Bain &amp; Company. Fontes citadas em cada dado.</li>
+                    <li>"Mas a IA comete erros, por que confiar?" → 80% dos consumidores já usam AI summaries em pelo menos 40% das buscas (Bain, 2025). Mesmo com imperfeições, a adoção é massiva.</li>
+                    <li>"Tráfego orgânico vai acabar?" → Não. Vai mudar de formato. Buscas transacionais continuam gerando cliques. O que muda é que agora você precisa aparecer nas respostas de IA também.</li>
+                    <li>"E o Google Ads? Não resolve?" → Ads traz resultado enquanto paga. SEO + AI Presence constrói presença duradoura. O ideal é combinar — mas IA é um canal que ads não alcança.</li>
+                    <li>"Isso funciona para empresa pequena/local?" → Especialmente. 46% das buscas são locais, e LLMs adoram recomendar negócios com dados consistentes e boas avaliações.</li>
+                </ul>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 12 — QUEM SOMOS -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">A SOLUÇÃO</span>
+                <h2>Search Intelligence AI para empresas que querem dominar</h2>
+                <p>Não somos uma agência de SEO tradicional. Somos uma consultoria de Search Intelligence para a era da IA.</p>
+                <div class="compare-cols">
+                    <div class="compare-col">
+                        <h4>Quem somos</h4>
+                        <ul>
+                            <li><strong>AUDITSEO</strong> — Fundada em 2021 por Sidney Santos, especialista em SEO desde 2013</li>
+                            <li>Em 2024, evoluímos para o paradigma <strong>AI-First</strong></li>
+                            <li>Sede em São Paulo, atendimento em todo o Brasil</li>
+                            <li>10+ anos de experiência, projetos nacionais e internacionais</li>
+                        </ul>
+                    </div>
+                    <div class="compare-col">
+                        <h4>Nosso diferencial</h4>
+                        <ul>
+                            <li><strong>AI-First Framework</strong> — Toda estratégia começa perguntando: "Como uma IA interpreta isso?"</li>
+                            <li><strong>Multi-plataforma</strong> — Google + AI Overviews + ChatGPT + Claude + Perplexity</li>
+                            <li><strong>Métricas de negócio</strong> — Revenue, leads, AI citations. Não métricas de vaidade</li>
+                            <li><strong>Proativo para 2027+</strong> — Preparamos para o que vem, não para o que já passou</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 13 — NOSSOS SERVIÇOS -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">SERVIÇOS</span>
+                <h2>O que entregamos</h2>
+                <p>6 serviços especializados que cobrem os 3 mundos da busca em 2026.</p>
+                <table>
+                    <tr>
+                        <th>Serviço</th>
+                        <th>O que faz</th>
+                        <th>Para qual mundo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Consultoria SEO</strong></td>
+                        <td>Estratégia completa de busca orgânica, on-page, conteúdo e monitoramento</td>
+                        <td>Google Tradicional</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI Overview Optimization</strong></td>
+                        <td>Aparecer nas respostas de IA do Google — reestruturação + schema avançado</td>
+                        <td>AI Overviews</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SEO Local &amp; Google Meu Negócio</strong></td>
+                        <td>Dominar Local Pack, Maps, buscas "perto de mim", citações e avaliações</td>
+                        <td>Google + AI Overviews</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LLM Brand Presence</strong></td>
+                        <td>Auditoria e otimização para ChatGPT, Claude, Perplexity e Gemini</td>
+                        <td>LLMs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Auditoria SEO Técnica</strong></td>
+                        <td>Velocidade, indexação, Core Web Vitals, schema, estrutura do site</td>
+                        <td>Todos os 3 mundos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Entity Building &amp; Knowledge Graph</strong></td>
+                        <td>Tornar sua marca uma entidade reconhecida pelo Google e pelos LLMs</td>
+                        <td>Todos os 3 mundos</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 14 — METODOLOGIA -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">METODOLOGIA</span>
+                <h2>Como trabalhamos</h2>
+                <p>4 fases — do diagnóstico à expansão contínua.</p>
+                <div class="pipeline-row">
+                    <div class="pipeline-step">
+                        <div class="step-num">FASE 01</div>
+                        <div class="step-title">Diagnóstico</div>
+                        <div class="step-desc">Semanas 1-2 · Audit completo: SEO técnico, conteúdo, concorrência. Testamos como ChatGPT, Claude e Perplexity respondem sobre sua marca.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">FASE 02</div>
+                        <div class="step-title">Estratégia</div>
+                        <div class="step-desc">Semanas 3-4 · Plano personalizado com prioridades, quick wins e metas de 90, 180 e 360 dias nos 3 mundos.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">FASE 03</div>
+                        <div class="step-title">Execução</div>
+                        <div class="step-desc">Meses 2-6 · Conteúdo, schema, entity building, citações em fontes autoritativas, otimização AI Overviews + LLMs.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">FASE 04</div>
+                        <div class="step-title">Monitoramento</div>
+                        <div class="step-desc">Contínuo · Tracking de citações em LLMs, AI visibility, relatórios mensais com KPIs de negócio, ajustes e expansão.</div>
+                    </div>
+                </div>
+                <div class="highlight-quote">
+                    Primeiros resultados em 8-12 semanas. Consolidação entre 3-6 meses. Relatórios mensais com métricas reais de negócio — não métricas de vaidade.
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 15 — COMPARATIVO -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">COMPARATIVO</span>
+                <h2>Por que não basta ter uma agência de SEO tradicional</h2>
+                <table>
+                    <tr>
+                        <th>Critério</th>
+                        <th>Agência Tradicional</th>
+                        <th>AUDITSEO</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Foco principal</strong></td>
+                        <td>Keywords e rankings</td>
+                        <td style="color:var(--accent-gold);">✓ Presença em AI + Search integrado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI Overviews</strong></td>
+                        <td>❌ Ignoram ou desconhecem</td>
+                        <td style="color:var(--accent-gold);">✓ Nossa especialidade principal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ChatGPT / Claude / Perplexity</strong></td>
+                        <td>❌ Não trabalham</td>
+                        <td style="color:var(--accent-gold);">✓ Otimização completa multi-LLM</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Voice Search</strong></td>
+                        <td>❌ Básico ou inexistente</td>
+                        <td style="color:var(--accent-gold);">✓ Arquitetura conversacional dedicada</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zero-Click Strategy</strong></td>
+                        <td>❌ Encaram como problema</td>
+                        <td style="color:var(--accent-gold);">✓ Transformamos em oportunidade</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Métricas</strong></td>
+                        <td>Rankings, DA, backlinks</td>
+                        <td style="color:var(--accent-gold);">✓ Revenue, leads, AI citations</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Visão temporal</strong></td>
+                        <td>Reativo a updates do Google</td>
+                        <td style="color:var(--accent-gold);">✓ Proativo para 2027+</td>
+                    </tr>
+                </table>
+                <p>Não é sobre substituir. É sobre adicionar a camada que está faltando.</p>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 16 — PERGUNTAS SOBRE A SOLUÇÃO -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Sobre nossos serviços</h2>
+                <ul>
+                    <li>"Já tenho uma agência de SEO, preciso trocar?" → Não necessariamente. Nosso trabalho pode complementar. Mas pergunte: sua agência já testou como o ChatGPT responde sobre sua marca?</li>
+                    <li>"Vocês garantem resultados?" → Nenhuma agência séria garante posições. Garantimos implementação das melhores práticas e medimos tudo com relatórios mensais de AI visibility.</li>
+                    <li>"Quanto tempo leva?" → Primeiros resultados em 8-12 semanas. Consolidação em 3-6 meses. Marcas já estabelecidas tendem a ver resultados mais rápidos.</li>
+                    <li>"Funciona para o meu nicho?" → Atendemos clínicas, escritórios de advocacia, empresas B2B, e-commerces e serviços. Cada nicho tem estratégia específica.</li>
+                    <li>"Como vocês medem o sucesso?" → Monitoramos citações em LLMs, AI Overviews, brand search, tráfego referral de IA via GA4, conversões e revenue.</li>
+                    <li>"Atende fora de SP?" → Sim. Sede em São Paulo, atendimento remoto em todo o Brasil com reuniões por videoconferência e relatórios mensais.</li>
+                </ul>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 17 — O CUSTO DE NÃO AGIR -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">URGÊNCIA</span>
+                <h2>O custo de não agir</h2>
+                <p>Cada mês que passa, a vantagem competitiva diminui.</p>
+                <div class="cost-list">
+                    <div class="cost-item">
+                        <div class="cost-icon">1</div>
+                        <div class="cost-text"><strong>A cada mês</strong> — mais consumidores migram para IA. 37% já começam lá. 63% planejam usar mais em 2026.</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-icon">2</div>
+                        <div class="cost-text"><strong>A cada mês</strong> — AI Overviews aparecem em mais queries do seu nicho. O CTR orgânico cai mais.</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-icon">3</div>
+                        <div class="cost-text"><strong>A cada mês</strong> — seus concorrentes que investem ganham mais autoridade e mais citações nas IAs.</div>
+                    </div>
+                    <div class="cost-item">
+                        <div class="cost-icon">4</div>
+                        <div class="cost-text"><strong>A cada mês</strong> — fica mais difícil e mais caro recuperar. A IA já "aprendeu" quem são as referências do seu setor.</div>
+                    </div>
+                </div>
+                <div class="highlight-quote">
+                    Previsão Semrush: tráfego de AI Search deve superar o orgânico até 2028. Quem não se posicionar nos próximos 12-24 meses ficará para trás — potencialmente de forma irreversível.
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 18 — INVESTIMENTO -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">INVESTIMENTO</span>
+                <h2>O que está em jogo</h2>
+                <p>Não é um custo. É o investimento que posiciona sua marca para a próxima década.</p>
+                <div class="compare-cols">
+                    <div class="compare-col" style="text-align:center;">
+                        <h4>Consultoria mensal a partir de</h4>
+                        <div style="font-family:'Bebas Neue',sans-serif;font-size:3.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin:0.5rem 0;">R$ 3.000</div>
+                        <p style="font-size:0.7rem;color:var(--text-dim);">/mês</p>
+                        <ul>
+                            <li>Diagnóstico completo AI + SEO</li>
+                            <li>Estratégia personalizada</li>
+                            <li>Implementação e otimização contínua</li>
+                            <li>Relatórios mensais com KPIs de negócio</li>
+                            <li>Suporte via WhatsApp + reuniões mensais</li>
+                        </ul>
+                    </div>
+                    <div class="compare-col">
+                        <h4>O retorno em perspectiva</h4>
+                        <ul>
+                            <li>Visitante de IA vale <strong>4.4x mais</strong> que o orgânico tradicional</li>
+                            <li>ROI médio de SEO: <strong>5x a 20x</strong> em 12 meses</li>
+                            <li>Um único cliente via citação de IA pode <strong>pagar meses de investimento</strong></li>
+                            <li>Tráfego de AI Search cresceu <strong>527% YoY</strong> — quem entra agora captura esse crescimento</li>
+                            <li>Resultados são <strong>cumulativos e permanentes</strong> — diferente de anúncios pagos</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-quote">
+                    A pergunta não é quanto custa. É quanto você está perdendo por não estar lá.
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 19 — PERGUNTAS SOBRE INVESTIMENTO -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">PERGUNTAS COMUNS</span>
+                <h2>Sobre investimento e ROI</h2>
+                <ul>
+                    <li>"É caro pra mim" → Considere: um cliente adquirido via citação de IA já paga o investimento. E diferente de ads, os resultados são cumulativos — cada mês o valor aumenta.</li>
+                    <li>"E se não funcionar?" → Monitoramos tudo com dados. Relatórios mensais mostram evolução clara. Se algo não funciona, ajustamos. Risco é muito menor que anúncio pago sem garantia.</li>
+                    <li>"Tem contrato mínimo?" → Recomendamos mínimo de 6 meses para consolidação. Mas já nos primeiros 60-90 dias você verá evidências claras de progresso nas citações de IA.</li>
+                    <li>"Como compara com investir em Google Ads?" → Ads para de funcionar quando para de pagar. SEO + AI Presence constrói ativo permanente. O ideal é combinar — mas IA é uma camada que ads não alcança.</li>
+                    <li>"Outras agências cobram menos" → Provavelmente fazem SEO de 2019. Pergunte: elas otimizam para AI Overviews? ChatGPT? Entity Building? Se não, estão vendendo metade do serviço.</li>
+                </ul>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 20 — PRÓXIMOS PASSOS -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">PRÓXIMOS PASSOS</span>
+                <h2>Diagnóstico gratuito em 48 horas</h2>
+                <p>Você sai desta reunião sabendo exatamente como as IAs falam sobre sua marca — sem compromisso.</p>
+                <div class="pipeline-row">
+                    <div class="pipeline-step">
+                        <div class="step-num">PASSO 1</div>
+                        <div class="step-title">Diagnóstico</div>
+                        <div class="step-desc">Em 48h, testamos como ChatGPT, Claude, Perplexity e Google AI respondem sobre sua marca e concorrentes. Gratuito.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">PASSO 2</div>
+                        <div class="step-title">Relatório</div>
+                        <div class="step-desc">Apresentamos o diagnóstico com oportunidades, gaps e recomendações prioritárias para seu nicho.</div>
+                    </div>
+                    <div class="pipeline-step">
+                        <div class="step-num">PASSO 3</div>
+                        <div class="step-title">Proposta</div>
+                        <div class="step-desc">Proposta personalizada baseada no diagnóstico real, com metas, cronograma e investimento sob medida.</div>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:1.5rem;">
+                    <h3>Sua marca existe para as IAs?</h3>
+                    <p>Descubra agora. Sem compromisso, sem letras miúdas.</p>
+                    <a href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Quero%20meu%20diagn%C3%B3stico%20gratuito%20de%20presen%C3%A7a%20em%20IA" class="btn-primary" target="_blank" rel="noopener">QUERO MEU DIAGNÓSTICO GRATUITO →</a>
+                </div>
+            </section>
+
+            <!-- ========================================================= -->
+            <!-- SLIDE 21 — CONTRACAPA -->
+            <!-- ========================================================= -->
+            <section>
+                <span class="section-label">AUDITSEO</span>
+                <h1>Search Intelligence AI</h1>
+                <h2>Para empresas que querem dominar.</h2>
+                <div class="contact-block">
+                    <div class="contact-item">🌐 www.auditseo.com.br</div>
+                    <div class="contact-item">📱 +55 11 99638-4376</div>
+                    <div class="contact-item">✉️ contato@auditseo.com.br</div>
+                    <div class="contact-item">📍 Rua Baronesa de Bela Vista, 411 — São Paulo/SP</div>
+                </div>
+                <p style="margin-top:2rem;font-size:0.7rem;color:var(--text-dim);">© 2024–2026 AUDITSEO. Todos os direitos reservados. Dados e fontes verificadas — Fevereiro 2026.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+            transition: 'slide',
+            slideNumber: 'c/t'
+        });
+    </script>
+</body>
+</html>

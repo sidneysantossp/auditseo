@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checklist Completo: Transição para SEO com IA (GEO)</title>
+    <meta name="description" content="Checklist prático para agências de marketing digital avaliarem e otimizarem sites de clientes para AI Overviews, ChatGPT e buscas generativas.">
+    <meta name="keywords" content="checklist seo ia, geo, ai overviews, otimização seo 2026">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111;
+            --accent-red: #e63946;
+            --accent-gold: #d4a574;
+            --accent-cream: #f4e8d8;
+            --gradient-fire: linear-gradient(135deg, #e63946 0%, #d4a574 100%);
+            --text-light: #f8f8f8;
+            --text-muted: #888;
+            --text-dim: #555;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Crimson Pro', Georgia, serif; background: var(--bg-dark); color: var(--text-light); line-height: 1.6; overflow-x: hidden; }
+        
+        /* Navigation */
+        .nav { position: fixed; top: 0; left: 0; right: 0; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: linear-gradient(to bottom, rgba(10,10,10,.95) 0%, transparent 100%); transition: all .3s; }
+        .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { font-family: 'JetBrains Mono', monospace; font-size: .75rem; letter-spacing: 2px; color: var(--text-muted); text-decoration: none; text-transform: uppercase; transition: color .3s; }
+        .nav-links a:hover { color: var(--accent-gold); }
+        .nav-cta { font-family: 'JetBrains Mono', monospace; font-size: .75rem; padding: .8rem 1.5rem; background: transparent; border: 1px solid var(--accent-red); color: var(--accent-red); cursor: pointer; transition: all .3s; text-decoration: none; }
+        .nav-cta:hover { background: var(--accent-red); color: var(--bg-dark); box-shadow: 0 0 30px rgba(230,57,70,.3); }
+        
+        /* Hamburger Menu */
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; z-index: 101; }
+        .hamburger span { width: 25px; height: 2px; background: var(--accent-gold); transition: all .3s; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        
+        /* Mobile Menu */
+        .mobile-menu { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,.98); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2rem; z-index: 99; opacity: 0; visibility: hidden; transition: all .3s; }
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--text-light); text-decoration: none; letter-spacing: 2px; transition: color .3s; }
+        .mobile-menu a:hover { color: var(--accent-gold); }
+        .mobile-menu .nav-cta { font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem; }
+        
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 3rem 4rem; position: relative; }
+        .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(230,57,70,.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(212,165,116,.1) 0%, transparent 50%); pointer-events: none; }
+        .hero-content { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+        .hero-badge { display: inline-flex; align-items: center; gap: .8rem; font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 2rem; }
+        .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; animation: pulse 2s ease infinite; }
+        .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 12vw, 10rem); line-height: .9; letter-spacing: -3px; margin-bottom: 2rem; }
+        .hero-title .line-1 { color: var(--text-dim); text-decoration: line-through; text-decoration-color: var(--accent-red); display: block; }
+        .hero-title .line-2 { background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
+        .hero-subtitle { font-size: 1.4rem; color: var(--text-muted); max-width: 700px; margin-bottom: 3rem; }
+        .hero-subtitle strong { color: var(--accent-cream); }
+        .hero-cta-group { display: flex; gap: 1.5rem; }
+        
+        /* Buttons */
+        .btn-primary { font-family: 'JetBrains Mono', monospace; font-size: .8rem; padding: 1.2rem 2.5rem; background: var(--gradient-fire); border: none; color: var(--bg-dark); cursor: pointer; transition: all .3s; text-transform: uppercase; font-weight: 500; text-decoration: none; display: inline-block; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(230,57,70,.4); }
+        .btn-secondary { font-family: 'JetBrains Mono', monospace; font-size: .8rem; padding: 1.2rem 2.5rem; background: transparent; border: 1px solid var(--text-dim); color: var(--text-light); cursor: pointer; transition: all .3s; text-transform: uppercase; text-decoration: none; display: inline-block; }
+        .btn-secondary:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+        
+        /* Manifesto */
+        .manifesto { padding: 8rem 3rem; background: var(--bg-card); }
+        .manifesto-content { max-width: 1000px; margin: 0 auto; }
+        .manifesto-label { font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: 4px; color: var(--accent-gold); margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; }
+        .manifesto-label::before { content: '//'; color: var(--accent-red); }
+        .manifesto-text { font-size: 2rem; line-height: 1.5; }
+        .manifesto-text .highlight { background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600; }
+        .manifesto-text .dim { color: var(--text-dim); }
+        
+        /* Section Headers */
+        .section-header { max-width: 1400px; margin: 0 auto 4rem; }
+        .section-label { font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: 4px; color: var(--accent-gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+        .section-label::before { content: ''; width: 30px; height: 1px; background: var(--accent-gold); }
+        .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Services Accordion for Checklist Steps */
+        .services { padding: 8rem 3rem; background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-card) 50%, var(--bg-dark) 100%); }
+        .services-grid { max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; gap: 1px; background: rgba(255,255,255,.05); }
+        .service-item { background: var(--bg-dark); cursor: pointer; transition: all .4s; overflow: hidden; }
+        .service-header { display: grid; grid-template-columns: 80px 1fr 2fr auto 40px; gap: 3rem; align-items: center; padding: 2rem 3rem; transition: all .4s; }
+        .service-item:hover .service-header { background: var(--bg-card); padding-left: 4rem; }
+        .service-number { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--text-dim); transition: all .3s; }
+        .service-item:hover .service-number, .service-item.active .service-number { background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .service-name { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .service-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
+        .service-tag { font-family: 'JetBrains Mono', monospace; font-size: .6rem; letter-spacing: 2px; padding: .5rem 1rem; background: rgba(230,57,70,.1); border: 1px solid rgba(230,57,70,.3); color: var(--accent-red); white-space: nowrap; }
+        .service-toggle { font-size: 1.5rem; color: var(--accent-gold); transition: transform .3s; }
+        .service-item.active .service-toggle { transform: rotate(45deg); }
+        .service-content { max-height: 0; overflow: hidden; transition: max-height .5s ease; background: var(--bg-card); }
+        .service-item.active .service-content { max-height: 600px; }
+        .service-content-inner { padding: 2rem 3rem; padding-left: calc(80px + 6rem); }
+        .service-content-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem; }
+        .service-feature { padding: 1.5rem; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.05); border-radius: 4px; }
+        .service-feature-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--accent-gold); margin-bottom: .5rem; }
+        .service-feature-text { font-size: .9rem; color: var(--text-muted); line-height: 1.5; }
+        .service-process { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+        .service-process-step { display: flex; align-items: center; gap: .5rem; font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--text-muted); }
+        .service-process-step span { width: 24px; height: 24px; background: var(--gradient-fire); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bg-dark); font-weight: bold; font-size: .7rem; }
+        .service-process-arrow { color: var(--text-dim); }
+        
+        /* Features Bento for Dicas Adicionais */
+        .features { padding: 8rem 3rem; }
+        .bento-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 250px; gap: 1.5rem; }
+        .bento-item { background: var(--bg-card); border: 1px solid rgba(255,255,255,.05); padding: 2rem; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; transition: all .4s; }
+        .bento-item:hover { border-color: rgba(212,165,116,.4); transform: translateY(-3px); }
+        .bento-item.large { grid-column: span 2; grid-row: span 2; }
+        .bento-item.wide { grid-column: span 2; }
+        .bento-item.tall { grid-row: span 2; }
+        .bento-icon { position: absolute; top: 2rem; right: 2rem; opacity: .3; transition: opacity .3s; color: var(--accent-gold); }
+        .bento-item:hover .bento-icon { opacity: .7; }
+        .bento-label { font-family: 'JetBrains Mono', monospace; font-size: .6rem; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: .5rem; text-transform: uppercase; }
+        .bento-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; margin-bottom: .5rem; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bento-item.large .bento-title { font-size: 2.5rem; }
+        .bento-desc { font-size: .95rem; color: var(--text-muted); line-height: 1.5; }
+        .bento-visual { position: absolute; top: 0; left: 0; right: 0; bottom: 40%; display: flex; align-items: center; justify-content: center; }
+        .visual-circle { width: 120px; height: 120px; border-radius: 50%; background: var(--gradient-fire); opacity: .1; animation: breathe 4s ease infinite; }
+        .bento-item.large .visual-circle { width: 200px; height: 200px; }
+        
+        /* CTA */
+        .cta { padding: 10rem 3rem; text-align: center; position: relative; overflow: hidden; }
+        .cta-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(230,57,70,.12) 0%, transparent 70%); pointer-events: none; }
+        .cta-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .cta-label { font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: 4px; color: var(--accent-gold); margin-bottom: 2rem; }
+        .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 8vw, 6rem); line-height: 1; margin-bottom: 1.5rem; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cta-subtitle { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 3rem; }
+        .cta-buttons { display: flex; justify-content: center; gap: 1.5rem; }
+        
+        /* Footer */
+        .footer { padding: 0; border-top: 1px solid rgba(255,255,255,.05); background: var(--bg-card); }
+        .footer-main { max-width: 1400px; margin: 0 auto; padding: 5rem 3rem 3rem; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; }
+        .footer-col { display: flex; flex-direction: column; }
+        .footer-about { padding-right: 2rem; }
+        .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 4px; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+        .footer-desc { font-size: .95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem; }
+        .footer-social { display: flex; gap: 1rem; }
+        .footer-social a { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); transition: all .3s; }
+        .footer-social a:hover { border-color: var(--accent-gold); color: var(--accent-gold); transform: translateY(-2px); }
+        .footer-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px; color: var(--text-light); margin-bottom: 1.5rem; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+        .footer-links a { font-size: .9rem; color: var(--text-muted); text-decoration: none; transition: color .3s; }
+        .footer-links a:hover { color: var(--accent-gold); }
+        .footer-cta { font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: 1px; padding: .8rem 1.2rem; background: var(--gradient-fire); color: var(--bg-dark); text-decoration: none; text-transform: uppercase; margin-top: 1.5rem; display: inline-block; text-align: center; transition: all .3s; }
+        .footer-cta:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(230,57,70,.3); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,.05); padding: 2rem 3rem; text-align: center; }
+        .footer-bottom p { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--text-dim); letter-spacing: 1px; }
+        
+        /* Animations */
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(1.2); } }
+        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: .1; } 50% { transform: scale(1.1); opacity: .15; } }
+        
+        /* Responsive - Tablet */
+        @media (max-width: 1100px) {
+            .service-header { grid-template-columns: 60px 1fr 40px; gap: 1.5rem; }
+            .service-desc, .service-tag { display: none; }
+            .service-content-inner { padding-left: calc(60px + 4.5rem); }
+            .service-content-grid { grid-template-columns: 1fr; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+            .bento-item.large, .bento-item.wide, .bento-item.tall { grid-column: span 1; grid-row: span 1; }
+            .footer-main { grid-template-columns: 1fr 1fr; gap: 3rem; }
+            .footer-about { grid-column: span 2; }
+        }
+        
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+            .nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .hero { padding: 6rem 1.5rem 3rem; }
+            .hero-stats { flex-direction: column; gap: 1.5rem; }
+            .hero-cta-group { flex-direction: column; }
+            .manifesto { padding: 4rem 1.5rem; }
+            .manifesto-text { font-size: 1.5rem; }
+            .services { padding: 4rem 1.5rem; }
+            .service-header { padding: 1.5rem; }
+            .service-item:hover .service-header { padding-left: 1.5rem; }
+            .service-content-inner { padding: 1.5rem; }
+            .service-process { flex-direction: column; align-items: flex-start; }
+            .features { padding: 4rem 1.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .footer-main { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem 1.5rem; }
+            .footer-about { grid-column: span 1; padding-right: 0; }
+            .footer-bottom { padding: 1.5rem; }
+            .footer-bottom p { font-size: .65rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="#" class="logo">CHECKLIST SEO IA</a>
+        <ul class="nav-links">
+            <li><a href="#intro">Início</a></li>
+            <li><a href="#steps">Passos</a></li>
+            <li><a href="#tips">Dicas</a></li>
+            <li><a href="#cta">Próximos</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="https://drive.google.com/file/d/15F1U3lQMmkqSb1uH1MW1PU3sCaOgWcnl/view?usp=sharing" class="nav-cta">Baixar PDF</a>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#intro" onclick="closeMobileMenu()">Início</a>
+        <a href="#steps" onclick="closeMobileMenu()">Passos</a>
+        <a href="#tips" onclick="closeMobileMenu()">Dicas</a>
+        <a href="#cta" onclick="closeMobileMenu()">Próximos</a>
+        <a href="https://drive.google.com/file/d/15F1U3lQMmkqSb1uH1MW1PU3sCaOgWcnl/view?usp=sharing" class="nav-cta" onclick="closeMobileMenu()">Baixar PDF</a>
+    </div>
+
+    <section class="hero" id="intro">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <span class="hero-badge">CHECKLIST COMPLETO</span>
+            <h1 class="hero-title">
+                <span class="line-1">SEO TRADICIONAL</span>
+                <span class="line-2">NÃO MORREU... SÓ EVOLUIU</span>
+            </h1>
+            <p class="hero-subtitle">Checklist prático para avaliar sites de clientes, implementar GEO e posicionar sua agência como especialista em buscas generativas. Inicie a transição hoje e entregue resultados reais amanhã.</p>
+            <div class="hero-cta-group">
+                <a href="javascript:window.print()" class="btn-primary">Imprimir Checklist</a>
+                <a href="#steps" class="btn-secondary">Ver Passos</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="manifesto">
+        <div class="manifesto-content">
+            <span class="manifesto-label">INTRODUÇÃO</span>
+            <p class="manifesto-text"><span class="dim">O SEO mudou.</span> Com AI Overviews e LLMs, o foco é ser citado pela IA. Este checklist entrega <span class="highlight">valor imediato</span>: avalie clientes, implemente ações e veja resultados em semanas. Use como ferramenta profissional para auditorias e propostas.</p>
+        </div>
+    </section>
+
+    <section class="services" id="steps">
+        <div class="section-header">
+            <span class="section-label">PASSO A PASSO</span>
+            <h2 class="section-title">CHECKLIST DE IMPLEMENTAÇÃO</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-item active">
+                <div class="service-header">
+                    <span class="service-number">01</span>
+                    <h3 class="service-name">Auditoria AI-First</h3>
+                    <p class="service-desc">Avalie visibilidade atual em AI Overviews e LLMs.</p>
+                    <span class="service-tag">IMEDIATO</span>
+                    <span class="service-toggle">+</span>
+                </div>
+                <div class="service-content" style="max-height: none;">
+                    <div class="service-content-inner">
+                        <div class="service-content-grid">
+                            <div class="service-feature"><div class="service-feature-title">Ferramentas</div><p class="service-feature-text">Semrush (AI Overview module), Ahrefs, Rankscale.ai, Profound.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Ações</div><p class="service-feature-text">Teste 10 queries chave no Google, ChatGPT, Perplexity. Registre citações (0-100%).</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Métricas</div><p class="service-feature-text">Citações totais, brand mentions, zero-click coverage.</p></div>
+                        </div>
+                        <div class="service-process">
+                            <div class="service-process-step"><span>1</span> Liste queries</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>2</span> Teste engines</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>3</span> Relatório inicial</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-header">
+                    <span class="service-number">02</span>
+                    <h3 class="service-name">Arquitetura do Site</h3>
+                    <p class="service-desc">Estrutura AI-friendly para facilitar leitura por IAs.</p>
+                    <span class="service-tag">FUNDAMENTAL</span>
+                    <span class="service-toggle">+</span>
+                </div>
+                <div class="service-content">
+                    <div class="service-content-inner">
+                        <div class="service-content-grid">
+                            <div class="service-feature"><div class="service-feature-title">Flat Hierarchy</div><p class="service-feature-text">Máx. 3 cliques da home. Avalie: use Screaming Frog.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Silos Tópicos</div><p class="service-feature-text">Agrupar por temas. Faça: mapeie clusters com Semrush.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Internal Linking</div><p class="service-feature-text">Links relevantes. Implemente: 5-10 por página chave.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Schema Markup</div><p class="service-feature-text">FAQ, HowTo, Product. Use: Rank Math ou Yoast.</p></div>
+                        </div>
+                        <div class="service-process">
+                            <div class="service-process-step"><span>1</span> Audit profundidade</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>2</span> Crie silos</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>3</span> Adicione links</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>4</span> Implemente schema</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>5</span> Teste no Google</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-header">
+                    <span class="service-number">03</span>
+                    <h3 class="service-name">Conteúdo AI-Friendly</h3>
+                    <p class="service-desc">Conteúdo que a IA escolhe citar e recomendar.</p>
+                    <span class="service-tag">ESSENCIAL</span>
+                    <span class="service-toggle">+</span>
+                </div>
+                <div class="service-content">
+                    <div class="service-content-inner">
+                        <div class="service-content-grid">
+                            <div class="service-feature"><div class="service-feature-title">Respostas Diretas</div><p class="service-feature-text">Primeiro parágrafo responde query. Avalie: 60-100 palavras.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Listas/Tabelas</div><p class="service-feature-text">Estruturas citáveis. Faça: adicione em 10 páginas chave.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Títulos como Perguntas</div><p class="service-feature-text">Ex: "O que é GEO?". Implemente: reformule H2/H3.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">E-E-A-T</div><p class="service-feature-text">Autoria real, fontes. Use: bio autor + citações.</p></div>
+                        </div>
+                        <div class="service-process">
+                            <div class="service-process-step"><span>1</span> Audit conteúdo</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>2</span> Otimize topo</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>3</span> Adicione estruturas</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>4</span> Reforce E-E-A-T</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>5</span> Teste em Perplexity</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-header">
+                    <span class="service-number">04</span>
+                    <h3 class="service-name">Ferramentas e Monitoramento</h3>
+                    <p class="service-desc">Ferramentas para escalar e medir resultados.</p>
+                    <span class="service-tag">OPERACIONAL</span>
+                    <span class="service-toggle">+</span>
+                </div>
+                <div class="service-content">
+                    <div class="service-content-inner">
+                        <div class="service-content-grid">
+                            <div class="service-feature"><div class="service-feature-title">Audit Inicial</div><p class="service-feature-text">Semrush/Ahrefs/SERanking para AI Overviews.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Otimização</div><p class="service-feature-text">Surfer/NeuronWriter para conteúdo.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Automação</div><p class="service-feature-text">Alli AI para edições em massa.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Tracking</div><p class="service-feature-text">Rankscale.ai para citações reais.</p></div>
+                        </div>
+                        <div class="service-process">
+                            <div class="service-process-step"><span>1</span> Configure dashboard</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>2</span> Teste queries</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>3</span> Relatório semanal</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>4</span> Ajuste quarterly</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>5</span> Prove ROI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-header">
+                    <span class="service-number">05</span>
+                    <h3 class="service-name">Treinamento e Processo na Agência</h3>
+                    <p class="service-desc">Integre GEO ao fluxo da agência.</p>
+                    <span class="service-tag">EQUIPE</span>
+                    <span class="service-toggle">+</span>
+                </div>
+                <div class="service-content">
+                    <div class="service-content-inner">
+                        <div class="service-content-grid">
+                            <div class="service-feature"><div class="service-feature-title">Workshop</div><p class="service-feature-text">2h sobre prompt engineering e GEO.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Template</div><p class="service-feature-text">Para conteúdo: outline IA + edição humana.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Piloto</div><p class="service-feature-text">Aplique em 1 cliente para validar.</p></div>
+                            <div class="service-feature"><div class="service-feature-title">Cobrança</div><p class="service-feature-text">Novo pacote: 30% do valor do Projeto/mês pelo GEO.</p></div>
+                        </div>
+                        <div class="service-process">
+                            <div class="service-process-step"><span>1</span> Treine time</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>2</span> Crie template</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>3</span> Teste piloto</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>4</span> Integre fluxo</div>
+                            <span class="service-process-arrow">→</span>
+                            <div class="service-process-step"><span>5</span> Monitore ROI</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="tips">
+        <div class="section-header">
+            <span class="section-label">DICAS ADICIONAIS</span>
+            <h2 class="section-title">VALOR EXTRA PARA CLIENTES</h2>
+        </div>
+        <div class="bento-grid">
+            <div class="bento-item large"><div class="bento-visual"><div class="visual-circle"></div></div><span class="bento-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 0 1 7 7"/><circle cx="12" cy="12" r="3"/><path d="M12 9v-4M12 15v4M9 12H5M15 12h4"/></svg></span><span class="bento-label">Métricas</span><h3 class="bento-title">Novas KPIs</h3><p class="bento-desc">Meça citações em IA, brand search growth, conversões indiretas. Use para relatórios mensais.</p></div>
+            <div class="bento-item"><span class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span class="bento-label">Tempo</span><h3 class="bento-title">Cronograma</h3><p class="bento-desc">Semana 1: Audit. Mês 1: Arquitetura. Mês 2: Conteúdo.</p></div>
+            <div class="bento-item"><span class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span><span class="bento-label">Foco</span><h3 class="bento-title">Prioridades</h3><p class="bento-desc">Comece por páginas de alta tráfego. Foque E-E-A-T.</p></div>
+            <div class="bento-item wide"><span class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="bento-label">Riscos</span><h3 class="bento-title">Evite Erros</h3><p class="bento-desc">Não ignore zero-click: converta visibilidade em autoridade. Teste mudanças em staging.</p></div>
+            <div class="bento-item"><span class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><span class="bento-label">Escala</span><h3 class="bento-title">Para Agência</h3><p class="bento-desc">Treine time: 1 especialista por cliente. Integre a propostas.</p></div>
+            <div class="bento-item"><span class="bento-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></span><span class="bento-label">Monitor</span><h3 class="bento-title">Tracking</h3><p class="bento-desc">Dashboard semanal: citações, brand queries. Ajuste baseado em dados.</p></div>
+        </div>
+    </section>
+
+    <section class="cta" id="cta">
+        <div class="cta-bg"></div>
+        <div class="cta-content">
+            <span class="cta-label">PRÓXIMO PASSO</span>
+            <h2 class="cta-title">Implemente Agora</h2>
+            <p class="cta-subtitle">Aplique este checklist em um cliente piloto. Veja resultados em 30 dias e escale para toda a carteira.</p>
+            <div class="cta-buttons">
+                <a href="javascript:window.print()" class="btn-primary">Imprimir Checklist</a>
+                <a href="https://wa.me/5511996384376?text=Olá%20Sidney,%20usei%20o%20checklist%20e%20tenho%20dúvidas." class="btn-secondary">Falar com Sidney</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-col footer-about">
+                <div class="footer-logo">SIDNEY SEO</div>
+                <p class="footer-desc">Checklist criado por Sidney, especialista em SEO e IA. Para mais palestras ou consultorias, entre em contato.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 10v7m0-4c0-2 1.5-3 3-3s3 1 3 3v4"/></svg></a>
+                    <a href="#" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/><circle cx="18" cy="9" r="2"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Recursos</h4>
+                <ul class="footer-links">
+                    <li><a href="#steps">Passos do Checklist</a></li>
+                    <li><a href="#tips">Dicas Adicionais</a></li>
+                    <li><a href="#">Palestra Completa</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="tel:+5511996384376">+55 (11) 99638-4376</a></li>
+                    <li><a href="mailto:sid.websp@gmail.com">sid.websp@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Sidney - Todos os direitos reservados. Use este checklist para transformar sua agência.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            document.querySelector('.hamburger').classList.toggle('active');
+            document.getElementById('mobileMenu').classList.toggle('active');
+            document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('active') ? 'hidden' : '';
+        }
+        
+        function closeMobileMenu() {
+            document.querySelector('.hamburger').classList.remove('active');
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Accordion functionality for steps
+        document.querySelectorAll('.service-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

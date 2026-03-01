@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Relatório AI Visibility — AUDITSEO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #161616;
+            --border-color: #222222;
+            --border-subtle: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #c8ff00;
+            --accent-dim: rgba(200, 255, 0, 0.15);
+            --accent-glow: rgba(200, 255, 0, 0.08);
+            --red: #ff4444;
+            --red-dim: rgba(255, 68, 68, 0.15);
+            --orange: #ff9500;
+            --orange-dim: rgba(255, 149, 0, 0.15);
+            --green: #00d68f;
+            --green-dim: rgba(0, 214, 143, 0.15);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ========== GENERATOR INTERFACE ========== */
+        .generator-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .gen-header {
+            text-align: center;
+            padding: 40px 0 32px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        .gen-logo {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .gen-logo span { color: var(--accent); }
+
+        .gen-header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .gen-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* TABS */
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 32px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab:hover { color: var(--text-secondary); }
+
+        .tab.active {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* FORM ELEMENTS */
+        .form-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .form-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .form-group label .required {
+            color: var(--red);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        .form-group select option {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .form-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* AI RESPONSE CARD */
+        .ai-input-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .ai-input-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .ai-input-card-header h4 {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .status-select-mini {
+            padding: 6px 12px !important;
+            font-size: 12px !important;
+            min-width: 160px;
+        }
+
+        /* COMPETITORS INPUT */
+        .competitors-input-area {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .competitors-input-area input {
+            flex: 1;
+        }
+
+        .btn-add-competitor {
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+            background: var(--accent);
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .btn-add-competitor:hover {
+            box-shadow: 0 4px 15px rgba(200, 255, 0, 0.3);
+        }
+
+        .competitors-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .competitor-tag-input {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            background: var(--accent-dim);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .competitor-tag-input button {
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            opacity: 0.7;
+        }
+
+        .competitor-tag-input button:hover { opacity: 1; }
+
+        /* ACTIONS */
+        .actions-bar {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 32px;
+            font-size: 15px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            color: #000;
+            background: var(--accent);
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 30px rgba(200, 255, 0, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 16px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* PREVIEW */
+        .preview-frame {
+            width: 100%;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--bg-primary);
+        }
+
+        .preview-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .preview-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .preview-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+        }
+
+        .preview-dots span:first-child { background: var(--red); }
+        .preview-dots span:nth-child(2) { background: var(--orange); }
+        .preview-dots span:nth-child(3) { background: var(--green); }
+
+        .preview-toolbar-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-toolbar {
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary);
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-toolbar:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .preview-iframe {
+            width: 100%;
+            height: 700px;
+            border: none;
+        }
+
+        /* NOTIFICATION */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            background: var(--accent);
+            color: #000;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 8px 30px rgba(200, 255, 0, 0.3);
+            transform: translateX(120%);
+            transition: transform 0.3s;
+            z-index: 9999;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .generator-container { padding: 16px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .tabs { flex-direction: column; }
+            .form-section { padding: 20px; }
+            .actions-bar { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="generator-container" id="generatorView">
+
+    <!-- HEADER -->
+    <div class="gen-header">
+        <div class="gen-logo">AUDIT<span>SEO</span></div>
+        <h1>Gerador de Relatório AI Visibility</h1>
+        <p>Preencha os dados do lead e gere o relatório personalizado com um clique</p>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('dados')">1. Dados do Lead</button>
+        <button class="tab" onclick="switchTab('ia')">2. Respostas das IAs</button>
+        <button class="tab" onclick="switchTab('concorrentes')">3. Concorrentes</button>
+        <button class="tab" onclick="switchTab('preview')">4. Preview & Exportar</button>
+    </div>
+
+    <!-- TAB 1: DADOS DO LEAD -->
+    <div class="tab-panel active" id="tab-dados">
+        <div class="form-section">
+            <div class="form-section-title">Informações da Empresa</div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Nome Fantasia <span class="required">*</span></label>
+                    <input type="text" id="nomeFantasia" placeholder="Ex: Vineria 9">
+                </div>
+                <div class="form-group">
+                    <label>Domínio <span class="required">*</span></label>
+                    <input type="text" id="dominio" placeholder="Ex: vineria9.com.br">
+                </div>
+                <div class="form-group">
+                    <label>Nome do Titular/Sócio</label>
+                    <input type="text" id="nomeTitular" placeholder="Ex: João Carlos">
+                </div>
+                <div class="form-group">
+                    <label>Nicho</label>
+                    <select id="nicho">
+                        <option value="vinhos">Vinhos & Destilados</option>
+                        <option value="suplementos">Suplementos & Nutracêuticos</option>
+                        <option value="cosmeticos">Cosméticos & Skincare</option>
+                        <option value="cafe">Café Especial</option>
+                        <option value="moveis">Móveis & Decoração</option>
+                        <option value="pet">Pet Premium</option>
+                        <option value="otica">Ótica & Óculos</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-section-title">Posição no Google</div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Posição no Google <span class="required">*</span></label>
+                    <input type="number" id="posicaoGoogle" placeholder="Ex: 47" min="1" max="200">
+                    <p class="form-hint">Posição exata ou aproximada na SERP</p>
+                </div>
+                <div class="form-group">
+                    <label>Keyword de Origem <span class="required">*</span></label>
+                    <input type="text" id="keywordOrigem" placeholder="Ex: comprar vinho online">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-section-title">Score de AI Visibility</div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>AI Visibility Score (0-100) <span class="required">*</span></label>
+                    <input type="number" id="aiScore" placeholder="0" min="0" max="100" value="0">
+                    <p class="form-hint">0 = não aparece em nenhuma IA / 100 = aparece em todas com destaque</p>
+                </div>
+                <div class="form-group">
+                    <label>Data da Auditoria</label>
+                    <input type="date" id="dataAuditoria">
+                </div>
+            </div>
+        </div>
+
+        <div class="actions-bar">
+            <button class="btn-primary" onclick="switchTab('ia')">PRÓXIMO: RESPOSTAS DAS IAS →</button>
+        </div>
+    </div>
+
+    <!-- TAB 2: RESPOSTAS DAS IAS -->
+    <div class="tab-panel" id="tab-ia">
+        <div class="form-section">
+            <div class="form-section-title">Pergunta Feita às IAs</div>
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label>Pergunta utilizada <span class="required">*</span></label>
+                    <input type="text" id="perguntaIA" placeholder="Ex: Qual o melhor e-commerce de vinhos no Brasil?" value="Qual o melhor e-commerce de vinhos no Brasil?">
+                </div>
+            </div>
+        </div>
+
+        <!-- ChatGPT -->
+        <div class="form-section">
+            <div class="ai-input-card">
+                <div class="ai-input-card-header">
+                    <h4>🤖 ChatGPT (GPT-4o)</h4>
+                    <select id="statusChatGPT" class="status-select-mini">
+                        <option value="absent">❌ Não Mencionada</option>
+                        <option value="partial">⚠️ Menção Parcial</option>
+                        <option value="present">✅ Mencionada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Resposta do ChatGPT</label>
+                    <textarea id="respostaChatGPT" placeholder="Cole aqui a resposta do ChatGPT..."></textarea>
+                    <p class="form-hint">Cole a resposta completa. Os nomes dos concorrentes serão destacados automaticamente.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Claude -->
+        <div class="form-section">
+            <div class="ai-input-card">
+                <div class="ai-input-card-header">
+                    <h4>🟣 Claude (Anthropic)</h4>
+                    <select id="statusClaude" class="status-select-mini">
+                        <option value="absent">❌ Não Mencionada</option>
+                        <option value="partial">⚠️ Menção Parcial</option>
+                        <option value="present">✅ Mencionada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Resposta do Claude</label>
+                    <textarea id="respostaClaude" placeholder="Cole aqui a resposta do Claude..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perplexity -->
+        <div class="form-section">
+            <div class="ai-input-card">
+                <div class="ai-input-card-header">
+                    <h4>🔍 Perplexity AI</h4>
+                    <select id="statusPerplexity" class="status-select-mini">
+                        <option value="absent">❌ Não Mencionada</option>
+                        <option value="partial">⚠️ Menção Parcial</option>
+                        <option value="present">✅ Mencionada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Resposta do Perplexity</label>
+                    <textarea id="respostaPerplexity" placeholder="Cole aqui a resposta do Perplexity..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions-bar">
+            <button class="btn-secondary" onclick="switchTab('dados')">← VOLTAR</button>
+            <button class="btn-primary" onclick="switchTab('concorrentes')">PRÓXIMO: CONCORRENTES →</button>
+        </div>
+    </div>
+
+    <!-- TAB 3: CONCORRENTES -->
+    <div class="tab-panel" id="tab-concorrentes">
+        <div class="form-section">
+            <div class="form-section-title">Concorrentes Citados pelas IAs</div>
+            <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+                Adicione os nomes das marcas/e-commerces que aparecem nas respostas das IAs. 
+                Esses nomes também serão destacados automaticamente nas respostas.
+            </p>
+
+            <div class="competitors-input-area">
+                <input type="text" id="competitorInput" placeholder="Ex: Wine.com.br" onkeypress="if(event.key==='Enter')addCompetitor()">
+                <button class="btn-add-competitor" onclick="addCompetitor()">+ ADICIONAR</button>
+            </div>
+
+            <div class="competitors-tags" id="competitorsTags">
+                <!-- Tags serão adicionadas aqui via JS -->
+            </div>
+
+            <p class="form-hint" style="margin-top: 16px;">Dica: adicione os mais comuns do nicho de vinhos (Wine, Evino, Grand Cru, Mistral, Vivino, etc.)</p>
+
+            <!-- Quick add buttons -->
+            <div style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px;">
+                <span style="font-size: 12px; color: var(--text-muted); line-height: 32px;">Adicionar rápido:</span>
+                <button onclick="quickAddCompetitor('Wine.com.br')" style="padding: 6px 12px; font-size: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: 6px; cursor: pointer; font-family: Inter, sans-serif;">Wine.com.br</button>
+                <button onclick="quickAddCompetitor('Evino')" style="padding: 6px 12px; font-size: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: 6px; cursor: pointer; font-family: Inter, sans-serif;">Evino</button>
+                <button onclick="quickAddCompetitor('Grand Cru')" style="padding: 6px 12px; font-size: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: 6px; cursor: pointer; font-family: Inter, sans-serif;">Grand Cru</button>
+                <button onclick="quickAddCompetitor('Mistral')" style="padding: 6px 12px; font-size: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: 6px; cursor: pointer; font-family: Inter, sans-serif;">Mistral</button>
+                <button onclick="quickAddCompetitor('Vivino')" style="padding: 6px 12px; font-size: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: 6px; cursor: pointer; font-family: Inter, sans-serif;">Vivino</button>
+                <button onclick="quickAddCompetitor('Wine Trader')" style="padding: 6px 12px; font-size: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: 6px; cursor: pointer; font-family: Inter, sans-serif;">Wine Trader</button>
+                <button onclick="quickAddCompetitor('Divvino')" style="padding: 6px 12px; font-size: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: 6px; cursor: pointer; font-family: Inter, sans-serif;">Divvino</button>
+            </div>
+        </div>
+
+        <div class="actions-bar">
+            <button class="btn-secondary" onclick="switchTab('ia')">← VOLTAR</button>
+            <button class="btn-primary" onclick="generateReport()">GERAR RELATÓRIO →</button>
+        </div>
+    </div>
+
+    <!-- TAB 4: PREVIEW -->
+    <div class="tab-panel" id="tab-preview">
+        <div class="preview-frame">
+            <div class="preview-toolbar">
+                <div class="preview-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="preview-toolbar-actions">
+                    <button class="btn-toolbar" onclick="downloadHTML()">⬇ Baixar HTML</button>
+                    <button class="btn-toolbar" onclick="openNewTab()">↗ Abrir em Nova Aba</button>
+                    <button class="btn-toolbar" onclick="copyHTML()">📋 Copiar HTML</button>
+                </div>
+            </div>
+            <iframe id="previewIframe" class="preview-iframe"></iframe>
+        </div>
+
+        <div class="actions-bar" style="margin-top: 24px;">
+            <button class="btn-secondary" onclick="switchTab('concorrentes')">← VOLTAR E EDITAR</button>
+            <button class="btn-primary" onclick="downloadHTML()">⬇ BAIXAR RELATÓRIO HTML</button>
+            <button class="btn-secondary" onclick="printReport()">🖨 IMPRIMIR / SALVAR PDF</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- NOTIFICATION -->
+<div class="notification" id="notification"></div>
+
+<script>
+// ========== STATE ==========
+let competitors = [];
+let generatedHTML = '';
+
+// ========== TABS ==========
+function switchTab(tabName) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + tabName).classList.add('active');
+    const tabs = ['dados', 'ia', 'concorrentes', 'preview'];
+    const idx = tabs.indexOf(tabName);
+    document.querySelectorAll('.tab')[idx].classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ========== COMPETITORS ==========
+function addCompetitor() {
+    const input = document.getElementById('competitorInput');
+    const name = input.value.trim();
+    if (name && !competitors.includes(name)) {
+        competitors.push(name);
+        renderCompetitors();
+        input.value = '';
+    }
+    input.focus();
+}
+
+function quickAddCompetitor(name) {
+    if (!competitors.includes(name)) {
+        competitors.push(name);
+        renderCompetitors();
+    }
+}
+
+function removeCompetitor(index) {
+    competitors.splice(index, 1);
+    renderCompetitors();
+}
+
+function renderCompetitors() {
+    const container = document.getElementById('competitorsTags');
+    container.innerHTML = competitors.map((c, i) => 
+        `<span class="competitor-tag-input">${c} <button onclick="removeCompetitor(${i})">&times;</button></span>`
+    ).join('');
+}
+
+// ========== HIGHLIGHT RESPONSES ==========
+function highlightResponse(text, nomeFantasia) {
+    if (!text) return '<em style="color: #666;">Resposta não informada</em>';
+    
+    let html = text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/\n/g, '<br>');
+    
+    // Highlight competitors
+    competitors.forEach(comp => {
+        const regex = new RegExp('(' + comp.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+        html = html.replace(regex, '<span style="color: #c8ff00; font-weight: 600;">$1</span>');
+    });
+    
+    // Check if nome fantasia is NOT in text and add note
+    const nomeRegex = new RegExp(nomeFantasia.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+    if (!nomeRegex.test(text)) {
+        html += '<br><br><span style="color: #ff4444; font-weight: 600;">\u274C ' + nomeFantasia + ' n\u00E3o foi mencionada.</span>';
+    } else {
+        html = html.replace(nomeRegex, '<span style="color: #00d68f; font-weight: 600; text-decoration: underline;">$&</span>');
+    }
+    
+    return html;
+}
+
+// ========== STATUS HELPERS ==========
+function getStatusLabel(status) {
+    const map = { absent: 'N\u00C3O MENCIONADA', partial: 'MEN\u00C7\u00C3O PARCIAL', present: 'MENCIONADA' };
+    return map[status] || 'N\u00C3O MENCIONADA';
+}
+
+function getStatusClass(status) {
+    const map = { absent: 'status-absent', partial: 'status-partial', present: 'status-present' };
+    return map[status] || 'status-absent';
+}
+
+function getScoreClass(score) {
+    if (score <= 30) return 'score-baixo';
+    if (score <= 60) return 'score-medio';
+    return 'score-alto';
+}
+
+function getScoreStatus(score) {
+    if (score <= 10) return 'Invis\u00EDvel para as IAs';
+    if (score <= 30) return 'Visibilidade Cr\u00EDtica';
+    if (score <= 50) return 'Visibilidade Baixa';
+    if (score <= 70) return 'Visibilidade Moderada';
+    if (score <= 85) return 'Boa Visibilidade';
+    return 'Excelente Visibilidade';
+}
+
+function getScoreDescription(score, nomeFantasia) {
+    if (score <= 10) return 'Nenhuma das principais IAs (ChatGPT, Claude, Perplexity) mencionou a ' + nomeFantasia + ' quando questionadas sobre os melhores do segmento. Sua marca \u00E9 completamente invis\u00EDvel para quem busca via intelig\u00EAncia artificial.';
+    if (score <= 30) return 'A ' + nomeFantasia + ' tem presen\u00E7a m\u00EDnima nas respostas das IAs. Concorrentes dominam as cita\u00E7\u00F5es e capturam a aten\u00E7\u00E3o dos consumidores.';
+    if (score <= 50) return 'A ' + nomeFantasia + ' aparece ocasionalmente, mas sem destaque. H\u00E1 espa\u00E7o significativo para melhorar.';
+    if (score <= 70) return 'A ' + nomeFantasia + ' tem presen\u00E7a moderada. J\u00E1 \u00E9 citada, mas pode conquistar posi\u00E7\u00F5es de maior destaque.';
+    if (score <= 85) return 'A ' + nomeFantasia + ' tem boa visibilidade nas IAs. Alguns ajustes podem consolid\u00E1-la como refer\u00EAncia.';
+    return 'A ' + nomeFantasia + ' \u00E9 amplamente reconhecida pelas IAs como refer\u00EAncia no segmento. Parab\u00E9ns!';
+}
+
+function getScoreColor(score) {
+    if (score <= 30) return '#ff4444';
+    if (score <= 60) return '#ff9500';
+    return '#00d68f';
+}
+
+function getScoreBorderShadow(score) {
+    if (score <= 30) return 'border: 4px solid #ff4444; box-shadow: 0 0 40px rgba(255,68,68,0.2);';
+    if (score <= 60) return 'border: 4px solid #ff9500; box-shadow: 0 0 40px rgba(255,149,0,0.2);';
+    return 'border: 4px solid #00d68f; box-shadow: 0 0 40px rgba(0,214,143,0.2);';
+}
+
+// ========== FORMAT DATE ==========
+function formatDate(dateStr) {
+    if (!dateStr) {
+        const d = new Date();
+        const months = ['Janeiro','Fevereiro','Mar\u00E7o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+        return d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear();
+    }
+    const d = new Date(dateStr + 'T12:00:00');
+    const months = ['Janeiro','Fevereiro','Mar\u00E7o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+    return d.getDate() + ' de ' + months[d.getMonth()] + ' de ' + d.getFullYear();
+}
+
+// ========== GENERATE REPORT ==========
+function generateReport() {
+    const nomeFantasia = document.getElementById('nomeFantasia').value.trim();
+    const dominio = document.getElementById('dominio').value.trim();
+    const posicaoGoogle = parseInt(document.getElementById('posicaoGoogle').value) || 0;
+    const keywordOrigem = document.getElementById('keywordOrigem').value.trim();
+    const aiScore = parseInt(document.getElementById('aiScore').value) || 0;
+    const dataAuditoria = formatDate(document.getElementById('dataAuditoria').value);
+    const perguntaIA = document.getElementById('perguntaIA').value.trim();
+    const nomeTitular = document.getElementById('nomeTitular').value.trim();
+
+    // Validate
+    if (!nomeFantasia || !dominio || !posicaoGoogle || !keywordOrigem) {
+        showNotification('\u26A0\uFE0F Preencha os campos obrigat\u00F3rios na aba "Dados do Lead"');
+        switchTab('dados');
+        return;
+    }
+
+    const paginaGoogle = Math.ceil(posicaoGoogle / 10);
+    const scoreColor = getScoreColor(aiScore);
+    const scoreBorderShadow = getScoreBorderShadow(aiScore);
+    const scoreStatus = getScoreStatus(aiScore);
+    const scoreDescricao = getScoreDescription(aiScore, nomeFantasia);
+
+    const statusChatGPT = document.getElementById('statusChatGPT').value;
+    const statusClaude = document.getElementById('statusClaude').value;
+    const statusPerplexity = document.getElementById('statusPerplexity').value;
+
+    const respostaChatGPT = highlightResponse(document.getElementById('respostaChatGPT').value, nomeFantasia);
+    const respostaClaude = highlightResponse(document.getElementById('respostaClaude').value, nomeFantasia);
+    const respostaPerplexity = highlightResponse(document.getElementById('respostaPerplexity').value, nomeFantasia);
+
+    // Count IAs where present
+    const iaPresent = [statusChatGPT, statusClaude, statusPerplexity].filter(s => s === 'present').length;
+    const iaTotal = 3;
+
+    // Competitor tags HTML
+    const competitorTagsHTML = competitors.map(c => 
+        '<span style="display:inline-block;font-size:13px;font-weight:500;color:#c8ff00;background:rgba(200,255,0,0.15);padding:6px 14px;border-radius:20px;margin:4px;">' + c + '</span>'
+    ).join('') + '<span style="display:inline-block;font-size:13px;font-weight:500;color:#ff4444;background:rgba(255,68,68,0.15);padding:6px 14px;border-radius:20px;margin:4px;">\u274C ' + nomeFantasia + '</span>';
+
+    const nomeEncoded = encodeURIComponent(nomeFantasia);
+
+    // Build status badges for each platform
+    function buildStatusBadge(status) {
+        const colors = {
+            absent: { color: '#ff4444', bg: 'rgba(255,68,68,0.15)', label: 'N\u00C3O MENCIONADA' },
+            partial: { color: '#ff9500', bg: 'rgba(255,149,0,0.15)', label: 'MEN\u00C7\u00C3O PARCIAL' },
+            present: { color: '#00d68f', bg: 'rgba(0,214,143,0.15)', label: 'MENCIONADA' }
+        };
+        const s = colors[status] || colors.absent;
+        return '<span style="font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;color:' + s.color + ';background:' + s.bg + ';">' + s.label + '</span>';
+    }
+
+    generatedHTML = `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relat\u00F3rio AI Visibility \u2014 ${nomeFantasia} | AUDITSEO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#0a0a0a;color:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+        .container{max-width:800px;margin:0 auto;padding:40px 24px}
+        .header{text-align:center;padding:60px 0 40px;border-bottom:1px solid #222;margin-bottom:48px}
+        .header-badge{display:inline-block;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c8ff00;background:rgba(200,255,0,0.15);padding:6px 16px;border-radius:20px;margin-bottom:24px}
+        .header h1{font-size:32px;font-weight:800;line-height:1.2;margin-bottom:8px}
+        .header h1 span{color:#c8ff00}
+        .header-subtitle{font-size:18px;color:#a0a0a0;font-weight:400;margin-bottom:16px}
+        .header-meta{font-size:13px;color:#666}
+        .header-meta a{color:#a0a0a0;text-decoration:none}
+        .logo{font-size:14px;font-weight:700;letter-spacing:3px;color:#fff;margin-bottom:32px}
+        .logo span{color:#c8ff00}
+        .section{margin-bottom:48px}
+        .section-label{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#c8ff00;margin-bottom:12px}
+        .section h2{font-size:24px;font-weight:700;margin-bottom:16px;line-height:1.3}
+        .section p{color:#a0a0a0;font-size:15px;line-height:1.7;margin-bottom:12px}
+        .score-hero{background:#161616;border:1px solid #222;border-radius:16px;padding:48px;text-align:center;margin-bottom:48px;position:relative;overflow:hidden}
+        .score-hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at center,rgba(200,255,0,0.08) 0%,transparent 50%);pointer-events:none}
+        .score-circle{width:160px;height:160px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 24px;position:relative}
+        .score-number{font-size:56px;font-weight:900;line-height:1}
+        .score-max{font-size:16px;color:#666;font-weight:400}
+        .score-label{font-size:20px;font-weight:700;margin-bottom:8px}
+        .score-description{font-size:15px;color:#a0a0a0;max-width:500px;margin:0 auto}
+        .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+        .stat-card{background:#161616;border:1px solid #222;border-radius:12px;padding:24px}
+        .stat-value{font-size:32px;font-weight:800;margin-bottom:4px}
+        .stat-label{font-size:13px;color:#a0a0a0;line-height:1.4}
+        .ai-result{background:#161616;border:1px solid #222;border-radius:12px;padding:24px;margin-bottom:16px}
+        .ai-result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+        .ai-result-platform{font-size:15px;font-weight:600}
+        .ai-result-query{font-size:13px;color:#666;margin-bottom:12px;font-style:italic}
+        .ai-result-body{font-size:14px;color:#a0a0a0;line-height:1.7;background:#0a0a0a;border-radius:8px;padding:16px;border-left:3px solid #222}
+        .divider{height:1px;background:#222;margin:48px 0}
+        .impact-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid #1a1a1a}
+        .impact-item:last-child{border-bottom:none}
+        .impact-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+        .impact-content h4{font-size:15px;font-weight:600;margin-bottom:4px}
+        .impact-content p{font-size:14px;color:#a0a0a0;line-height:1.6}
+        .cta-section{background:#161616;border:1px solid #c8ff00;border-radius:16px;padding:48px;text-align:center;margin-top:48px;position:relative;overflow:hidden}
+        .cta-section::before{content:'';position:absolute;top:-100px;left:-100px;width:300px;height:300px;background:radial-gradient(circle,rgba(200,255,0,0.08) 0%,transparent 70%);pointer-events:none}
+        .cta-section h2{font-size:24px;font-weight:700;margin-bottom:12px}
+        .cta-section p{color:#a0a0a0;font-size:15px;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+        .cta-button{display:inline-block;background:#c8ff00;color:#000;font-size:15px;font-weight:700;padding:16px 40px;border-radius:8px;text-decoration:none;transition:all 0.3s;letter-spacing:0.3px}
+        .cta-button:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,255,0,0.3)}
+        .cta-sub{font-size:13px;color:#666;margin-top:16px}
+        .footer{text-align:center;padding:48px 0 24px;border-top:1px solid #222;margin-top:48px}
+        .footer-logo{font-size:13px;font-weight:700;letter-spacing:3px;color:#666;margin-bottom:8px}
+        .footer p{font-size:12px;color:#666}
+        .footer a{color:#c8ff00;text-decoration:none}
+        @media(max-width:600px){.container{padding:24px 16px}.header{padding:40px 0 32px}.header h1{font-size:24px}.score-hero{padding:32px 20px}.score-circle{width:120px;height:120px}.score-number{font-size:42px}.stats-grid{grid-template-columns:1fr}.cta-section{padding:32px 20px}}
+        @media print{body{background:#fff;color:#000}.container{max-width:100%}.score-hero,.ai-result,.stat-card,.cta-section{border-color:#ddd;background:#f9f9f9}.cta-button{background:#333;color:#fff}}
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <header class="header">
+        <div class="logo">AUDIT<span>SEO</span></div>
+        <div class="header-badge">Relat\u00F3rio de AI Visibility</div>
+        <h1>Relat\u00F3rio de Presen\u00E7a em IA<br><span>${nomeFantasia}</span></h1>
+        <p class="header-subtitle">Como as intelig\u00EAncias artificiais respondem sobre sua marca hoje</p>
+        <p class="header-meta">Preparado por <strong>Sidney Santos</strong> \u00B7 AUDITSEO \u00B7 ${dataAuditoria} \u00B7 <a href="https://auditseo.com.br">auditseo.com.br</a></p>
+    </header>
+
+    <section class="section">
+        <div class="score-hero">
+            <p class="section-label">AI Visibility Score</p>
+            <div class="score-circle" style="${scoreBorderShadow}">
+                <span class="score-number" style="color:${scoreColor};">${aiScore}</span>
+                <span class="score-max">/ 100</span>
+            </div>
+            <p class="score-label">${scoreStatus}</p>
+            <p class="score-description">${scoreDescricao}</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <p class="section-label">Cen\u00E1rio</p>
+        <h2>Onde a ${nomeFantasia} est\u00E1 hoje</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value" style="color:#c8ff00;">P\u00E1gina ${paginaGoogle}</div>
+                <div class="stat-label">Posi\u00E7\u00E3o no Google para<br>\u201C${keywordOrigem}\u201D</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:#ff4444;">&lt;1%</div>
+                <div class="stat-label">dos usu\u00E1rios chegam<br>at\u00E9 a p\u00E1gina ${paginaGoogle} do Google</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:#ff4444;">${iaPresent}/${iaTotal}</div>
+                <div class="stat-label">IAs que mencionam<br>a ${nomeFantasia}</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" style="color:#ff9500;">${competitors.length}</div>
+                <div class="stat-label">concorrentes que aparecem<br>nas respostas das IAs</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+        <p class="section-label">Teste em 3 plataformas</p>
+        <h2>O que as IAs dizem quando perguntamos:<br>\u201C${perguntaIA}\u201D</h2>
+
+        <div class="ai-result">
+            <div class="ai-result-header">
+                <span class="ai-result-platform">\uD83E\uDD16 ChatGPT (GPT-4o)</span>
+                ${buildStatusBadge(statusChatGPT)}
+            </div>
+            <p class="ai-result-query">Pergunta: \u201C${perguntaIA}\u201D</p>
+            <div class="ai-result-body">${respostaChatGPT}</div>
+        </div>
+
+        <div class="ai-result">
+            <div class="ai-result-header">
+                <span class="ai-result-platform">\uD83D\uDFE3 Claude (Anthropic)</span>
+                ${buildStatusBadge(statusClaude)}
+            </div>
+            <p class="ai-result-query">Pergunta: \u201C${perguntaIA}\u201D</p>
+            <div class="ai-result-body">${respostaClaude}</div>
+        </div>
+
+        <div class="ai-result">
+            <div class="ai-result-header">
+                <span class="ai-result-platform">\uD83D\uDD0D Perplexity AI</span>
+                ${buildStatusBadge(statusPerplexity)}
+            </div>
+            <p class="ai-result-query">Pergunta: \u201C${perguntaIA}\u201D</p>
+            <div class="ai-result-body">${respostaPerplexity}</div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+        <p class="section-label">Quem aparece no seu lugar</p>
+        <h2>Marcas que as IAs recomendam em vez da ${nomeFantasia}</h2>
+        <p>Quando um consumidor pergunta \u00E0 IA sobre o segmento, estas s\u00E3o as marcas citadas \u2014 e que est\u00E3o capturando a aten\u00E7\u00E3o (e as vendas) que poderiam ser suas:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+            ${competitorTagsHTML}
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+        <p class="section-label">Impacto no neg\u00F3cio</p>
+        <h2>Por que isso importa para a ${nomeFantasia}</h2>
+
+        <div class="impact-item">
+            <div class="impact-icon" style="background:rgba(255,68,68,0.15);">\uD83D\uDCC9</div>
+            <div class="impact-content">
+                <h4>58-62% das buscas no Google terminam sem clique</h4>
+                <p>A IA responde diretamente na p\u00E1gina de resultados. Se a ${nomeFantasia} n\u00E3o \u00E9 citada na resposta, o consumidor nunca chega ao seu site. (Fonte: SparkToro/Semrush, 2025-2026)</p>
+            </div>
+        </div>
+
+        <div class="impact-item">
+            <div class="impact-icon" style="background:rgba(255,68,68,0.15);">\uD83E\uDD16</div>
+            <div class="impact-content">
+                <h4>800 milh\u00F5es de pessoas usam ChatGPT toda semana</h4>
+                <p>37% dos consumidores j\u00E1 iniciam buscas por IA, n\u00E3o pelo Google. Quando perguntam sobre o segmento, a IA recomenda seus concorrentes \u2014 n\u00E3o voc\u00EA. (Fonte: OpenAI/Eight Oh Two, 2026)</p>
+            </div>
+        </div>
+
+        <div class="impact-item">
+            <div class="impact-icon" style="background:rgba(255,149,0,0.15);">\uD83D\uDCB0</div>
+            <div class="impact-content">
+                <h4>Visitante vindo de IA vale 4.4x mais</h4>
+                <p>Quem chega ao seu site via cita\u00E7\u00E3o de IA j\u00E1 foi \u201Cpr\u00E9-qualificado\u201D \u2014 tem menor bounce rate (-27%), passa mais tempo no site (+38%) e converte mais. (Fonte: Semrush/Adobe, 2025)</p>
+            </div>
+        </div>
+
+        <div class="impact-item">
+            <div class="impact-icon" style="background:rgba(255,149,0,0.15);">\u23F3</div>
+            <div class="impact-content">
+                <h4>Apenas ~3% das empresas est\u00E3o otimizando presen\u00E7a em IAs</h4>
+                <p>A janela de oportunidade est\u00E1 aberta. Quem se posicionar agora domina. A previs\u00E3o \u00E9 que o tr\u00E1fego de AI Search supere o org\u00E2nico at\u00E9 2028. (Fonte: AUDITSEO/Semrush, 2025)</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+        <p class="section-label">Solu\u00E7\u00E3o</p>
+        <h2>O que pode ser feito</h2>
+        <p>Existem estrat\u00E9gias espec\u00EDficas para fazer a ${nomeFantasia} aparecer nas respostas das IAs. O processo envolve otimiza\u00E7\u00E3o de conte\u00FAdo estruturado, entity building, presen\u00E7a em fontes autoritativas e t\u00E9cnicas de AI SEO que v\u00E3o al\u00E9m do SEO tradicional.</p>
+        <p>Na AUDITSEO, somos especializados em <strong>Search Intelligence AI</strong> \u2014 a ci\u00EAncia de tornar marcas encontr\u00E1veis, cit\u00E1veis e recomend\u00E1veis por humanos e m\u00E1quinas.</p>
+        <p>Se fizer sentido, posso preparar um <strong>diagn\u00F3stico completo gratuito em 48 horas</strong> mostrando o plano de a\u00E7\u00E3o detalhado para a ${nomeFantasia}.</p>
+    </section>
+
+    <div class="cta-section">
+        <p class="section-label">Pr\u00F3ximo passo</p>
+        <h2>Quer tornar a ${nomeFantasia}<br>vis\u00EDvel para as IAs?</h2>
+        <p>Agende uma conversa de 15 minutos. Sem compromisso. Vou mostrar exatamente o que fazer para sua marca ser citada pelo ChatGPT, Claude e Google AI.</p>
+        <a href="https://wa.me/5511996384376?text=Ol%C3%A1%20Sidney!%20Vi%20o%20relat%C3%B3rio%20de%20AI%20Visibility%20da%20${nomeEncoded}%20e%20gostaria%20de%20saber%20mais." class="cta-button">QUERO O DIAGN\u00D3STICO COMPLETO \u2192</a>
+        <p class="cta-sub">Diagn\u00F3stico gratuito \u00B7 Resposta em at\u00E9 24h \u00B7 Sem compromisso</p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-logo">AUDITSEO</div>
+        <p>Search Intelligence AI \u00B7 <a href="https://auditseo.com.br">auditseo.com.br</a></p>
+        <p style="margin-top:8px;">Sidney Santos \u00B7 <a href="https://wa.me/5511996384376">+55 11 99638-4376</a></p>
+        <p style="margin-top:8px;">S\u00E3o Paulo, SP \u00B7 \u00A9 2024\u20132026 AUDITSEO</p>
+        <p style="margin-top:16px;font-size:11px;">Este relat\u00F3rio foi preparado exclusivamente para ${nomeFantasia} (${dominio}). Dados coletados em ${dataAuditoria}.</p>
+    </footer>
+
+</div>
+</body>
+</html>`;
+
+    // Show preview
+    switchTab('preview');
+    const iframe = document.getElementById('previewIframe');
+    iframe.srcdoc = generatedHTML;
+    
+    showNotification('\u2705 Relat\u00F3rio gerado com sucesso!');
+}
+
+// ========== EXPORT FUNCTIONS ==========
+function downloadHTML() {
+    if (!generatedHTML) { showNotification('\u26A0\uFE0F Gere o relat\u00F3rio primeiro'); return; }
+    const nomeFantasia = document.getElementById('nomeFantasia').value.trim();
+    const dominio = document.getElementById('dominio').value.trim();
+    const filename = 'relatorio-ai-visibility-' + dominio.replace(/\./g, '-') + '.html';
+    
+    const blob = new Blob([generatedHTML], { type: 'text/html;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+    showNotification('\u2B07\uFE0F Download iniciado: ' + filename);
+}
+
+function openNewTab() {
+    if (!generatedHTML) { showNotification('\u26A0\uFE0F Gere o relat\u00F3rio primeiro'); return; }
+    const win = window.open('', '_blank');
+    win.document.write(generatedHTML);
+    win.document.close();
+}
+
+function copyHTML() {
+    if (!generatedHTML) { showNotification('\u26A0\uFE0F Gere o relat\u00F3rio primeiro'); return; }
+    navigator.clipboard.writeText(generatedHTML).then(() => {
+        showNotification('\uD83D\uDCCB HTML copiado para a \u00E1rea de transfer\u00EAncia!');
+    });
+}
+
+function printReport() {
+    if (!generatedHTML) { showNotification('\u26A0\uFE0F Gere o relat\u00F3rio primeiro'); return; }
+    const win = window.open('', '_blank');
+    win.document.write(generatedHTML);
+    win.document.close();
+    win.onload = function() { win.print(); };
+}
+
+// ========== NOTIFICATION ==========
+function showNotification(msg) {
+    const el = document.getElementById('notification');
+    el.textContent = msg;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ========== INIT ==========
+document.addEventListener('DOMContentLoaded', () => {
+    // Set default date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('dataAuditoria').value = today;
+});
+</script>
+
+</body>
+</html>

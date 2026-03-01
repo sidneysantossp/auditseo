@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Relatório AI Visibility — AUDITSEO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg-primary:#0a0a0a;--bg-secondary:#111;--bg-card:#161616;
+            --border-color:#222;--text-primary:#fff;--text-secondary:#a0a0a0;
+            --text-muted:#666;--accent:#c8ff00;--accent-dim:rgba(200,255,0,0.15);
+            --red:#ff4444;--red-dim:rgba(255,68,68,0.15);--orange:#ff9500;
+            --green:#00d68f;--green-dim:rgba(0,214,143,0.15);
+            --radius:12px;--radius-sm:8px;--radius-lg:16px;
+        }
+        body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6;-webkit-font-smoothing:antialiased}
+        .container{max-width:900px;margin:0 auto;padding:40px 24px}
+        .gen-header{text-align:center;padding:40px 0 32px;border-bottom:1px solid var(--border-color);margin-bottom:40px}
+        .gen-logo{font-size:14px;font-weight:700;letter-spacing:3px;margin-bottom:16px}
+        .gen-logo span{color:var(--accent)}
+        .gen-header h1{font-size:28px;font-weight:800;margin-bottom:8px}
+        .gen-header p{color:var(--text-secondary);font-size:15px}
+
+        /* MODE TOGGLE */
+        .mode-toggle{display:flex;gap:4px;margin-bottom:32px;background:var(--bg-card);border-radius:var(--radius);padding:4px;border:1px solid var(--border-color)}
+        .mode-btn{flex:1;padding:14px;text-align:center;font-size:14px;font-weight:600;color:var(--text-muted);background:transparent;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:all .2s;font-family:Inter,sans-serif}
+        .mode-btn:hover{color:var(--text-secondary)}
+        .mode-btn.active{background:var(--accent);color:#000}
+        .mode-panel{display:none}
+        .mode-panel.active{display:block}
+
+        /* FORM */
+        .form-section{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:32px;margin-bottom:24px}
+        .form-section-title{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+        .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+        .form-group{margin-bottom:0}
+        .form-group.full-width{grid-column:1/-1}
+        .form-group label{display:block;font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:6px}
+        .form-group label .req{color:var(--red)}
+        .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 16px;font-size:14px;font-family:Inter,sans-serif;color:var(--text-primary);background:var(--bg-primary);border:1px solid var(--border-color);border-radius:var(--radius-sm);outline:none;transition:border-color .2s}
+        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+        .form-group textarea{min-height:100px;resize:vertical;line-height:1.6}
+        .form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted)}
+        .form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+        .form-group select option{background:var(--bg-primary);color:var(--text-primary)}
+        .form-hint{font-size:12px;color:var(--text-muted);margin-top:4px}
+
+        /* BUTTONS */
+        .btn-primary{padding:16px 32px;font-size:15px;font-weight:700;font-family:Inter,sans-serif;color:#000;background:var(--accent);border:none;border-radius:var(--radius-sm);cursor:pointer;transition:all .2s;letter-spacing:.3px;width:100%}
+        .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(200,255,0,0.3)}
+        .btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+        .btn-secondary{padding:16px 24px;font-size:14px;font-weight:600;font-family:Inter,sans-serif;color:var(--text-secondary);background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-sm);cursor:pointer;transition:all .2s}
+        .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+
+        /* PROGRESS */
+        .progress-container{display:none;margin-top:24px}
+        .progress-container.active{display:block}
+        .progress-bar-bg{background:var(--bg-primary);border-radius:8px;height:8px;overflow:hidden;margin-bottom:16px;border:1px solid var(--border-color)}
+        .progress-bar{height:100%;background:var(--accent);border-radius:8px;transition:width .5s ease;width:0}
+        .progress-steps{list-style:none}
+        .progress-step{display:flex;align-items:center;gap:12px;padding:10px 0;font-size:14px;color:var(--text-muted);border-bottom:1px solid var(--border-color)}
+        .progress-step:last-child{border-bottom:none}
+        .progress-step .icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--bg-primary);border:1px solid var(--border-color)}
+        .progress-step.active{color:var(--text-primary)}
+        .progress-step.active .icon{background:var(--accent-dim);border-color:var(--accent);color:var(--accent)}
+        .progress-step.done{color:var(--green)}
+        .progress-step.done .icon{background:var(--green-dim);border-color:var(--green);color:var(--green)}
+        .progress-step.error{color:var(--red)}
+        .progress-step.error .icon{background:var(--red-dim);border-color:var(--red);color:var(--red)}
+
+        /* RESULT */
+        .result-container{display:none;margin-top:32px}
+        .result-container.active{display:block}
+        .result-card{background:var(--bg-card);border:1px solid var(--accent);border-radius:var(--radius-lg);padding:32px;text-align:center}
+        .result-card h3{font-size:20px;font-weight:700;margin-bottom:8px}
+        .result-card p{color:var(--text-secondary);font-size:14px;margin-bottom:24px}
+        .result-url{display:block;background:var(--bg-primary);border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:16px;font-size:14px;color:var(--accent);word-break:break-all;margin-bottom:16px;text-decoration:none;transition:border-color .2s}
+        .result-url:hover{border-color:var(--accent)}
+        .result-actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+        .result-actions button{padding:10px 20px;font-size:13px;font-weight:600;font-family:Inter,sans-serif;border-radius:var(--radius-sm);cursor:pointer;transition:all .2s;border:1px solid var(--border-color);background:var(--bg-primary);color:var(--text-secondary)}
+        .result-actions button:hover{border-color:var(--accent);color:var(--accent)}
+        .result-score{display:flex;gap:16px;justify-content:center;margin-bottom:24px;flex-wrap:wrap}
+        .result-score-item{background:var(--bg-primary);border:1px solid var(--border-color);border-radius:var(--radius);padding:16px 24px;text-align:center;min-width:120px}
+        .result-score-item .value{font-size:28px;font-weight:800;margin-bottom:2px}
+        .result-score-item .label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+
+        /* REPORTS LIST */
+        .reports-list{margin-top:32px}
+        .reports-list h3{font-size:16px;font-weight:600;margin-bottom:16px;color:var(--text-secondary)}
+        .report-item{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-sm);margin-bottom:8px;transition:border-color .2s}
+        .report-item:hover{border-color:var(--accent)}
+        .report-item-name{font-size:14px;font-weight:500;color:var(--text-primary)}
+        .report-item-date{font-size:12px;color:var(--text-muted)}
+        .report-item-actions{display:flex;gap:8px}
+        .report-item-actions a{font-size:12px;color:var(--accent);text-decoration:none;padding:4px 10px;border:1px solid var(--accent-dim);border-radius:4px}
+        .report-item-actions a:hover{background:var(--accent-dim)}
+
+        /* PREVIEW */
+        .preview-frame{width:100%;border:1px solid var(--border-color);border-radius:var(--radius-lg);overflow:hidden;background:var(--bg-primary);margin-top:24px}
+        .preview-toolbar{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:var(--bg-card);border-bottom:1px solid var(--border-color)}
+        .preview-dots{display:flex;gap:6px}
+        .preview-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-color)}
+        .preview-dots span:first-child{background:var(--red)}
+        .preview-dots span:nth-child(2){background:var(--orange)}
+        .preview-dots span:nth-child(3){background:var(--green)}
+        .preview-iframe{width:100%;height:700px;border:none}
+
+        /* NOTIFICATION */
+        .notification{position:fixed;top:20px;right:20px;padding:16px 24px;background:var(--accent);color:#000;font-size:14px;font-weight:600;border-radius:var(--radius-sm);box-shadow:0 8px 30px rgba(200,255,0,0.3);transform:translateX(120%);transition:transform .3s;z-index:9999}
+        .notification.show{transform:translateX(0)}
+
+        @media(max-width:600px){.container{padding:16px}.form-grid{grid-template-columns:1fr}.mode-toggle{flex-direction:column}}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="gen-header">
+        <div class="gen-logo">AUDIT<span>SEO</span></div>
+        <h1>Gerador de Relatório AI Visibility</h1>
+        <p>Preencha os dados mínimos e as IAs geram o relatório automaticamente</p>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-section">
+        <div class="form-section-title">Dados do Lead</div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Nome Fantasia <span class="req">*</span></label>
+                <input type="text" id="nomeFantasia" placeholder="Ex: Vineria 9">
+            </div>
+            <div class="form-group">
+                <label>Domínio <span class="req">*</span></label>
+                <input type="text" id="dominio" placeholder="Ex: vineria9.com.br">
+            </div>
+            <div class="form-group">
+                <label>Nicho</label>
+                <select id="nicho">
+                    <option value="vinhos">Vinhos & Destilados</option>
+                    <option value="suplementos">Suplementos & Nutracêuticos</option>
+                    <option value="cosmeticos">Cosméticos & Skincare</option>
+                    <option value="cafe">Café Especial</option>
+                    <option value="moveis">Móveis & Decoração</option>
+                    <option value="pet">Pet Premium</option>
+                    <option value="otica">Ótica & Óculos</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Keyword de Origem</label>
+                <input type="text" id="keywordOrigem" placeholder="Ex: comprar vinho online">
+                <p class="form-hint">Usada para buscar posição no Google (via SerpAPI)</p>
+            </div>
+            <div class="form-group">
+                <label>Posição no Google (manual, opcional)</label>
+                <input type="number" id="posicaoManual" placeholder="Deixe vazio para buscar automaticamente" min="1" max="200">
+                <p class="form-hint">Se informar, pula a consulta ao Google</p>
+            </div>
+            <div class="form-group">
+                <label>Pergunta Custom (opcional)</label>
+                <input type="text" id="perguntaCustom" placeholder="Deixe vazio para usar a pergunta padrão do nicho">
+            </div>
+        </div>
+    </div>
+
+    <!-- GENERATE BUTTON -->
+    <button class="btn-primary" id="btnGerar" onclick="gerarRelatorio()">
+        ⚡ GERAR RELATÓRIO AUTOMÁTICO
+    </button>
+    <p class="form-hint" style="text-align:center;margin-top:8px;">Consulta ChatGPT + Claude + Perplexity + Google automaticamente (~15-30 segundos)</p>
+
+    <!-- PROGRESS -->
+    <div class="progress-container" id="progressContainer">
+        <div class="form-section">
+            <div class="form-section-title">Gerando Relatório...</div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <ul class="progress-steps">
+                <li class="progress-step" id="step-chatgpt"><span class="icon">🤖</span> Consultando ChatGPT...</li>
+                <li class="progress-step" id="step-claude"><span class="icon">🟣</span> Consultando Claude...</li>
+                <li class="progress-step" id="step-perplexity"><span class="icon">🔍</span> Consultando Perplexity...</li>
+                <li class="progress-step" id="step-google"><span class="icon">🌐</span> Verificando posição no Google...</li>
+                <li class="progress-step" id="step-analyze"><span class="icon">🧠</span> Analisando respostas...</li>
+                <li class="progress-step" id="step-generate"><span class="icon">📄</span> Gerando relatório HTML...</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-container" id="resultContainer">
+        <div class="result-card">
+            <h3>✅ Relatório Gerado com Sucesso!</h3>
+            <p id="resultSubtitle"></p>
+
+            <div class="result-score" id="resultScore"></div>
+
+            <a href="#" class="result-url" id="resultUrl" target="_blank"></a>
+
+            <div class="result-actions">
+                <button onclick="copyUrl()">📋 Copiar URL</button>
+                <button onclick="openReport()">↗ Abrir Relatório</button>
+                <button onclick="openPreview()">👁 Preview Inline</button>
+                <button onclick="gerarNovo()">+ Gerar Novo</button>
+            </div>
+        </div>
+
+        <!-- Preview inline -->
+        <div class="preview-frame" id="previewFrame" style="display:none;">
+            <div class="preview-toolbar">
+                <div class="preview-dots"><span></span><span></span><span></span></div>
+            </div>
+            <iframe id="previewIframe" class="preview-iframe"></iframe>
+        </div>
+    </div>
+
+    <!-- REPORTS LIST -->
+    <div class="reports-list" id="reportsList"></div>
+
+</div>
+
+<div class="notification" id="notification"></div>
+
+<script>
+const API_BASE = window.location.origin;
+let lastReportUrl = '';
+
+async function gerarRelatorio() {
+    const nomeFantasia = document.getElementById('nomeFantasia').value.trim();
+    const dominio = document.getElementById('dominio').value.trim();
+    const nicho = document.getElementById('nicho').value;
+    const keywordOrigem = document.getElementById('keywordOrigem').value.trim();
+    const posicaoManual = document.getElementById('posicaoManual').value ? parseInt(document.getElementById('posicaoManual').value) : null;
+    const perguntaCustom = document.getElementById('perguntaCustom').value.trim();
+
+    if (!nomeFantasia || !dominio) {
+        showNotification('⚠️ Preencha Nome Fantasia e Domínio');
+        return;
+    }
+
+    // UI: show progress
+    document.getElementById('btnGerar').disabled = true;
+    document.getElementById('btnGerar').textContent = '⏳ Gerando...';
+    document.getElementById('progressContainer').classList.add('active');
+    document.getElementById('resultContainer').classList.remove('active');
+
+    // Animate steps
+    const steps = ['chatgpt','claude','perplexity','google','analyze','generate'];
+    let currentStep = 0;
+
+    function animateSteps() {
+        if (currentStep >= steps.length) return;
+        const stepEl = document.getElementById('step-' + steps[currentStep]);
+        stepEl.classList.add('active');
+        document.getElementById('progressBar').style.width = ((currentStep + 1) / steps.length * 100) + '%';
+
+        // Mark previous as done
+        if (currentStep > 0) {
+            document.getElementById('step-' + steps[currentStep - 1]).classList.remove('active');
+            document.getElementById('step-' + steps[currentStep - 1]).classList.add('done');
+        }
+        currentStep++;
+    }
+
+    // Start animation
+    const animInterval = setInterval(animateSteps, 3000);
+    animateSteps(); // primeiro imediatamente
+
+    try {
+        const response = await fetch(API_BASE + '/api/gerar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                nomeFantasia,
+                dominio,
+                nicho,
+                keywordOrigem: keywordOrigem || undefined,
+                posicaoManual: posicaoManual || undefined,
+                perguntaCustom: perguntaCustom || undefined
+            })
+        });
+
+        const data = await response.json();
+        clearInterval(animInterval);
+
+        if (data.success) {
+            // Mark all as done
+            steps.forEach(s => {
+                const el = document.getElementById('step-' + s);
+                el.classList.remove('active');
+                el.classList.add('done');
+            });
+            document.getElementById('progressBar').style.width = '100%';
+
+            // Show result after short delay
+            setTimeout(() => {
+                document.getElementById('progressContainer').classList.remove('active');
+                document.getElementById('resultContainer').classList.add('active');
+
+                const r = data.report;
+                lastReportUrl = r.publicUrl;
+
+                document.getElementById('resultSubtitle').textContent =
+                    `${nomeFantasia} · Score: ${r.score}/100 · ${r.scoreStatus}`;
+
+                document.getElementById('resultUrl').textContent = r.publicUrl;
+                document.getElementById('resultUrl').href = r.localUrl;
+
+                // Score cards
+                const scoreColor = r.score <= 30 ? '#ff4444' : r.score <= 60 ? '#ff9500' : '#00d68f';
+                document.getElementById('resultScore').innerHTML = `
+                    <div class="result-score-item">
+                        <div class="value" style="color:${scoreColor}">${r.score}</div>
+                        <div class="label">AI Score</div>
+                    </div>
+                    <div class="result-score-item">
+                        <div class="value" style="color:#c8ff00">Pág ${r.paginaGoogle}</div>
+                        <div class="label">Google</div>
+                    </div>
+                    <div class="result-score-item">
+                        <div class="value" style="color:${r.chatgptMentioned ? '#00d68f' : '#ff4444'}">${r.chatgptMentioned ? '✅' : '❌'}</div>
+                        <div class="label">ChatGPT</div>
+                    </div>
+                    <div class="result-score-item">
+                        <div class="value" style="color:${r.claudeMentioned ? '#00d68f' : '#ff4444'}">${r.claudeMentioned ? '✅' : '❌'}</div>
+                        <div class="label">Claude</div>
+                    </div>
+                    <div class="result-score-item">
+                        <div class="value" style="color:${r.perplexityMentioned ? '#00d68f' : '#ff4444'}">${r.perplexityMentioned ? '✅' : '❌'}</div>
+                        <div class="label">Perplexity</div>
+                    </div>
+                `;
+
+                showNotification('✅ Relatório gerado!');
+                loadReportsList();
+            }, 1000);
+        } else {
+            throw new Error(data.error || 'Erro desconhecido');
+        }
+    } catch (e) {
+        clearInterval(animInterval);
+        steps.forEach(s => {
+            const el = document.getElementById('step-' + s);
+            if (!el.classList.contains('done')) {
+                el.classList.remove('active');
+                el.classList.add('error');
+            }
+        });
+        showNotification('❌ Erro: ' + e.message);
+    }
+
+    document.getElementById('btnGerar').disabled = false;
+    document.getElementById('btnGerar').textContent = '⚡ GERAR RELATÓRIO AUTOMÁTICO';
+}
+
+function copyUrl() {
+    navigator.clipboard.writeText(lastReportUrl).then(() => showNotification('📋 URL copiada!'));
+}
+
+function openReport() {
+    const url = document.getElementById('resultUrl').href;
+    window.open(url, '_blank');
+}
+
+function openPreview() {
+    const frame = document.getElementById('previewFrame');
+    const iframe = document.getElementById('previewIframe');
+    if (frame.style.display === 'none') {
+        frame.style.display = 'block';
+        iframe.src = document.getElementById('resultUrl').href;
+    } else {
+        frame.style.display = 'none';
+    }
+}
+
+function gerarNovo() {
+    document.getElementById('resultContainer').classList.remove('active');
+    document.getElementById('previewFrame').style.display = 'none';
+    document.getElementById('nomeFantasia').value = '';
+    document.getElementById('dominio').value = '';
+    document.getElementById('posicaoManual').value = '';
+    document.getElementById('perguntaCustom').value = '';
+    // Reset progress steps
+    ['chatgpt','claude','perplexity','google','analyze','generate'].forEach(s => {
+        const el = document.getElementById('step-' + s);
+        el.classList.remove('active','done','error');
+    });
+    document.getElementById('progressBar').style.width = '0%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+async function loadReportsList() {
+    try {
+        const res = await fetch(API_BASE + '/api/relatorios');
+        const data = await res.json();
+        if (data.reports && data.reports.length > 0) {
+            const html = data.reports.map(r => `
+                <div class="report-item">
+                    <div>
+                        <div class="report-item-name">${r.filename}</div>
+                        <div class="report-item-date">${new Date(r.created).toLocaleString('pt-BR')}</div>
+                    </div>
+                    <div class="report-item-actions">
+                        <a href="${r.localUrl}" target="_blank">Abrir</a>
+                        <a href="#" onclick="navigator.clipboard.writeText('${r.url}');showNotification('📋 Copiado!');return false;">Copiar URL</a>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('reportsList').innerHTML = `<h3>📁 Relatórios Gerados</h3>${html}`;
+        }
+    } catch (e) { /* ignore */ }
+}
+
+function showNotification(msg) {
+    const el = document.getElementById('notification');
+    el.textContent = msg;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// Load existing reports on startup
+loadReportsList();
+</script>
+
+</body>
+</html>

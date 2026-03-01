@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT, Claude ou Perplexity: Onde Sua Marca Precisa Estar? | AUDITSEO</title>
+    <meta name="description" content="Comparativo entre ChatGPT, Claude, Gemini e Perplexity para visibilidade de marca. Entenda as diferenças e onde focar seus esforços de LLM SEO.">
+    <meta name="keywords" content="chatgpt vs claude, chatgpt vs perplexity, comparativo llms, qual ia usar marketing, llm brand presence">
+    <link rel="canonical" href="https://www.auditseo.com.br/blog/chatgpt-claude-perplexity/">
+    <meta property="og:title" content="ChatGPT, Claude ou Perplexity: Onde Sua Marca Precisa Estar?">
+    <meta property="og:description" content="Comparativo completo dos principais LLMs para visibilidade de marca.">
+    <meta property="og:url" content="https://www.auditseo.com.br/blog/chatgpt-claude-perplexity/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-01-27">
+    <meta property="article:modified_time" content="2026-01-27">
+    <meta property="article:author" content="Sidney Santos">
+    <meta property="article:section" content="Search Intelligence AI">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--accent-cream:#f4e8d8;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555;--green:#2ecc71;--yellow:#f1c40f;--red:#e74c3c;--blue:#3498db;--purple:#9b59b6;--chatgpt:#10a37f;--claude:#d97706;--perplexity:#20b2aa;--gemini:#4285f4}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.8}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);transition:all .3s;text-decoration:none}.nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .article-header{padding:8rem 3rem 4rem;position:relative;background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(212,165,116,.04) 100%)}
+        .article-header-content{max-width:900px;margin:0 auto}
+        .breadcrumbs{margin-bottom:2rem}.breadcrumbs a,.breadcrumbs span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:1px}.breadcrumbs a:hover{color:var(--accent-gold)}.breadcrumbs span{margin:0 .5rem}
+        .article-category{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:3px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block}
+        .article-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;letter-spacing:-1px;margin-bottom:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .article-excerpt{font-size:1.3rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.7}
+        .article-meta{display:flex;flex-wrap:wrap;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+        .meta-item{display:flex;align-items:center;gap:.75rem}
+        .meta-avatar{width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:2px solid var(--accent-gold);overflow:hidden}
+        .meta-avatar img{width:100%;height:100%;object-fit:cover}
+        .meta-info{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:1px}
+        .meta-info strong{display:block;color:var(--text-light);font-size:.75rem;margin-bottom:.25rem}
+        .article-layout{max-width:1400px;margin:0 auto;padding:4rem 3rem;display:grid;grid-template-columns:250px 1fr;gap:4rem}
+        .article-toc{position:sticky;top:100px;height:fit-content}
+        .toc-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:1px}
+        .toc-list{list-style:none}.toc-list li{margin-bottom:.75rem}
+        .toc-list a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:.5px;transition:color .3s;display:block;padding:.25rem 0;border-left:2px solid transparent;padding-left:1rem;margin-left:-1rem}
+        .toc-list a:hover,.toc-list a.active{color:var(--accent-gold);border-left-color:var(--accent-gold)}
+        .article-content{max-width:800px}
+        .article-content h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin:3rem 0 1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--text-light);margin:2.5rem 0 1rem;letter-spacing:1px}
+        .article-content h4{font-size:1.2rem;color:var(--accent-cream);margin:2rem 0 1rem;font-weight:600}
+        .article-content p{font-size:1.15rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9}
+        .article-content p strong{color:var(--accent-cream)}
+        .article-content a{color:var(--accent-gold);text-decoration:underline;text-underline-offset:3px}
+        .article-content ul,.article-content ol{margin:1.5rem 0;padding-left:1.5rem}
+        .article-content li{font-size:1.1rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.7}
+        .article-content li strong{color:var(--text-light)}
+        .highlight-box{background:linear-gradient(135deg,rgba(230,57,70,.1) 0%,rgba(212,165,116,.05) 100%);border-left:4px solid var(--accent-red);padding:2rem;margin:2rem 0;border-radius:0 8px 8px 0}
+        .highlight-box p{margin-bottom:0;font-size:1.1rem}
+        .llm-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:12px;position:relative;overflow:hidden}
+        .llm-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+        .llm-card.chatgpt::before{background:var(--chatgpt)}
+        .llm-card.claude::before{background:var(--claude)}
+        .llm-card.perplexity::before{background:var(--perplexity)}
+        .llm-card.gemini::before{background:var(--gemini)}
+        .llm-card .header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+        .llm-card .icon{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+        .llm-card.chatgpt .icon{background:rgba(16,163,127,.2)}
+        .llm-card.claude .icon{background:rgba(217,119,6,.2)}
+        .llm-card.perplexity .icon{background:rgba(32,178,170,.2)}
+        .llm-card.gemini .icon{background:rgba(66,133,244,.2)}
+        .llm-card .title h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;margin:0}
+        .llm-card.chatgpt .title h3{color:var(--chatgpt)}
+        .llm-card.claude .title h3{color:var(--claude)}
+        .llm-card.perplexity .title h3{color:var(--perplexity)}
+        .llm-card.gemini .title h3{color:var(--gemini)}
+        .llm-card .title p{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--text-dim);margin:0}
+        .llm-card .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0;padding:1rem;background:rgba(255,255,255,.03);border-radius:8px}
+        .llm-card .stat{text-align:center}
+        .llm-card .stat .value{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light)}
+        .llm-card .stat .label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text-dim);text-transform:uppercase}
+        .llm-card .features{margin-top:1.5rem}
+        .llm-card .features h4{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--accent-gold);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px}
+        .llm-card .features ul{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+        .llm-card .features li{font-size:.9rem;padding:.4rem 0;padding-left:1.25rem;position:relative;color:var(--text-muted)}
+        .llm-card .features li::before{content:'✓';position:absolute;left:0;color:var(--green)}
+        .llm-card .features li.no::before{content:'✗';color:var(--red)}
+        .comparison-table{width:100%;border-collapse:collapse;margin:2rem 0}
+        .comparison-table th,.comparison-table td{padding:1rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.1)}
+        .comparison-table th{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;background:var(--bg-card)}
+        .comparison-table th:first-child{color:var(--text-light)}
+        .comparison-table th.chatgpt{color:var(--chatgpt)}
+        .comparison-table th.claude{color:var(--claude)}
+        .comparison-table th.perplexity{color:var(--perplexity)}
+        .comparison-table th.gemini{color:var(--gemini)}
+        .comparison-table td{font-size:.9rem;color:var(--text-muted)}
+        .comparison-table .check{color:var(--green)}
+        .comparison-table .cross{color:var(--red)}
+        .comparison-table .partial{color:var(--yellow)}
+        .audience-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.5rem;margin:1rem 0;border-radius:8px}
+        .audience-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+        .audience-card h4 .emoji{font-size:1.5rem}
+        .audience-card p{font-size:.95rem;margin-bottom:1rem}
+        .audience-card .recommendation{background:rgba(212,165,116,.1);padding:1rem;border-radius:8px;border-left:3px solid var(--accent-gold)}
+        .audience-card .recommendation h5{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);margin-bottom:.5rem;text-transform:uppercase}
+        .audience-card .recommendation p{font-size:.9rem;margin:0}
+        .strategy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin:2rem 0}
+        .strategy-item{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.5rem;border-radius:8px}
+        .strategy-item h4{font-family:'JetBrains Mono',monospace;font-size:.8rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+        .strategy-item h4 .platform{padding:.25rem .5rem;border-radius:4px;font-size:.65rem}
+        .strategy-item h4 .platform.chatgpt{background:rgba(16,163,127,.2);color:var(--chatgpt)}
+        .strategy-item h4 .platform.claude{background:rgba(217,119,6,.2);color:var(--claude)}
+        .strategy-item h4 .platform.perplexity{background:rgba(32,178,170,.2);color:var(--perplexity)}
+        .strategy-item h4 .platform.gemini{background:rgba(66,133,244,.2);color:var(--gemini)}
+        .strategy-item p{font-size:.9rem;color:var(--text-muted);margin:0}
+        .priority-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:12px}
+        .priority-box h4{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--text-light);margin-bottom:1.5rem;text-align:center}
+        .priority-list{display:flex;flex-direction:column;gap:1rem}
+        .priority-item{display:flex;align-items:center;gap:1rem;padding:1rem;background:rgba(255,255,255,.02);border-radius:8px}
+        .priority-item .rank{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;width:40px;text-align:center}
+        .priority-item:nth-child(1) .rank{color:var(--accent-gold)}
+        .priority-item:nth-child(2) .rank{color:var(--text-light)}
+        .priority-item:nth-child(3) .rank{color:var(--text-dim)}
+        .priority-item .content h5{font-size:1rem;color:var(--text-light);margin-bottom:.25rem}
+        .priority-item .content p{font-size:.85rem;color:var(--text-dim);margin:0}
+        .tip-box{background:rgba(212,165,116,.1);border:1px solid rgba(212,165,116,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .tip-box h4{color:var(--accent-gold);margin-bottom:.5rem}
+        .tip-box h4::before{content:'💡 '}
+        .cta-box{background:linear-gradient(135deg,rgba(230,57,70,.15) 0%,rgba(212,165,116,.08) 100%);border:1px solid rgba(230,57,70,.3);padding:3rem;margin:3rem 0;text-align:center;border-radius:12px}
+        .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:1rem}
+        .cta-box p{font-size:1.1rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .cta-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1rem 2.5rem;background:var(--gradient-fire);border:none;color:var(--bg-dark);cursor:pointer;transition:all .3s;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block;border-radius:4px}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(230,57,70,.4)}
+        .author-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin:4rem 0;display:flex;gap:2rem;align-items:center;border-radius:8px}
+        .author-avatar{width:100px;height:100px;border-radius:50%;background:var(--bg-dark);border:3px solid var(--accent-gold);overflow:hidden;flex-shrink:0}
+        .author-avatar img{width:100%;height:100%;object-fit:cover}
+        .author-info h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:.5rem}
+        .author-info p{font-size:1rem;color:var(--text-muted);margin-bottom:1rem}
+        .author-links{display:flex;gap:1rem}
+        .author-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-decoration:none}
+        .related-posts{margin:4rem 0}
+        .related-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:2rem}
+        .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .related-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);padding:1.5rem;transition:all .3s;border-radius:8px}
+        .related-card:hover{border-color:rgba(230,57,70,.3);transform:translateY(-3px)}
+        .related-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:.5rem}
+        .related-card h4 a{text-decoration:none;color:inherit}
+        .related-card p{font-size:.9rem;color:var(--text-dim)}
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card)}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}.footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
+        .footer-address{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);line-height:1.8}.footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1.5rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        @media(max-width:1100px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}.related-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr 1fr}.strategy-grid{grid-template-columns:1fr}.llm-card .features ul{grid-template-columns:1fr}.llm-card .stats{grid-template-columns:1fr}}
+        @media(max-width:768px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.article-header{padding:6rem 1.5rem 3rem}.article-layout{padding:2rem 1.5rem}.article-meta{flex-direction:column;gap:1.5rem}.author-box{flex-direction:column;text-align:center}.footer-content{grid-template-columns:1fr}.comparison-table{font-size:.75rem}.comparison-table th,.comparison-table td{padding:.5rem}}
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ChatGPT, Claude ou Perplexity: Onde Sua Marca Precisa Estar?","description":"Comparativo entre ChatGPT, Claude, Gemini e Perplexity para visibilidade de marca em LLMs.","author":{"@type":"Person","name":"Sidney Santos"},"publisher":{"@type":"Organization","name":"AUDITSEO"},"datePublished":"2026-01-27","dateModified":"2026-01-27"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.auditseo.com.br/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.auditseo.com.br/blog/"},{"@type":"ListItem","position":3,"name":"ChatGPT Claude Perplexity","item":"https://www.auditseo.com.br/blog/chatgpt-claude-perplexity/"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Qual LLM é mais importante para minha marca?","acceptedAnswer":{"@type":"Answer","text":"Depende do seu público. ChatGPT tem a maior base de usuários gerais. Claude é forte em B2B e contextos profissionais. Perplexity é usado por quem busca informação atual com fontes. Gemini está integrado ao Google. Para a maioria, priorize ChatGPT + Perplexity."}},{"@type":"Question","name":"Devo otimizar para todos os LLMs ou focar em um?","acceptedAnswer":{"@type":"Answer","text":"Comece com estratégia agnóstica de plataforma (autoridade genuína, conteúdo citável, presença em fontes de qualidade) que funciona para todos. Depois, adicione táticas específicas para os LLMs mais relevantes para seu público."}},{"@type":"Question","name":"Perplexity é diferente dos outros LLMs?","acceptedAnswer":{"@type":"Answer","text":"Sim. Perplexity usa busca em tempo real, então SEO tradicional importa muito. É a ponte entre SEO e LLM SEO. Melhorias que você faz hoje podem aparecer em citações amanhã, diferente do ChatGPT que depende de retreinamento."}}]}</script>
+    <link rel="stylesheet" href="/assets/site-shell.css">
+    <script defer src="/assets/site-shell.js"></script>
+</head>
+<body>
+    <nav class="nav"><a href="/" class="logo">AUDITSEO</a><ul class="nav-links"><li><a href="/agencia-de-seo/">Agência de SEO</a></li><li><a href="/servicos/">Serviços</a></li><li><a href="/sobre/">Sobre</a></li><li><a href="/blog/">Blog</a></li></ul><a href="https://wa.me/5511996384376" class="nav-cta">Falar com Especialista</a></nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumbs"><a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span>ChatGPT Claude Perplexity</span></div>
+            <span class="article-category">Search Intelligence AI</span>
+            <h1 class="article-title">ChatGPT, Claude ou Perplexity: Onde Sua Marca Precisa Estar?</h1>
+            <p class="article-excerpt">Cada LLM tem características únicas que afetam como você deve otimizar. Entenda as diferenças entre ChatGPT, Claude, Gemini e Perplexity para criar uma estratégia efetiva.</p>
+            <div class="article-meta">
+                <div class="meta-item"><div class="meta-avatar"><img src="/images/sidney-santos.jpg" alt="Sidney Santos"></div><div class="meta-info"><strong>Sidney Santos</strong>Especialista em Search Intelligence AI</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Publicado</strong>27 de Janeiro, 2026</div></div>
+                <div class="meta-item"><div class="meta-info"><strong>Tempo de leitura</strong>14 minutos</div></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-layout">
+        <aside class="article-toc">
+            <h4 class="toc-title">ÍNDICE</h4>
+            <ul class="toc-list">
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#chatgpt">ChatGPT (OpenAI)</a></li>
+                <li><a href="#claude">Claude (Anthropic)</a></li>
+                <li><a href="#perplexity">Perplexity</a></li>
+                <li><a href="#gemini">Gemini (Google)</a></li>
+                <li><a href="#comparativo">Comparativo</a></li>
+                <li><a href="#por-publico">Por Tipo de Público</a></li>
+                <li><a href="#estrategia">Estratégia Recomendada</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </aside>
+
+        <article class="article-content">
+            <section id="introducao">
+                <p>Quando falamos de <a href="/blog/o-que-e-llm-seo/">LLM SEO</a>, muitas vezes tratamos todos os modelos de linguagem como iguais. Mas a verdade é que <strong>cada LLM tem características próprias</strong> que afetam como sua marca pode aparecer.</p>
+
+                <p>ChatGPT, Claude, Perplexity e Gemini têm públicos diferentes, fontes de dados diferentes e comportamentos diferentes. Entender essas diferenças é crucial para otimizar sua estratégia.</p>
+
+                <p>Neste guia, vou analisar cada um dos principais LLMs e ajudá-lo a decidir onde focar seus esforços.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Spoiler:</strong> Para a maioria das marcas, a melhor estratégia é agnóstica de plataforma — construir autoridade genuína que funciona para todos. Mas há nuances importantes que podem direcionar prioridades.</p>
+                </div>
+            </section>
+
+            <section id="chatgpt">
+                <h2>ChatGPT (OpenAI)</h2>
+
+                <div class="llm-card chatgpt">
+                    <div class="header">
+                        <div class="icon">💬</div>
+                        <div class="title">
+                            <h3>ChatGPT</h3>
+                            <p>OpenAI • GPT-4o / GPT-4</p>
+                        </div>
+                    </div>
+                    
+                    <p>O mais popular dos LLMs, com a maior base de usuários. ChatGPT é usado para tudo: desde perguntas simples até tarefas complexas de trabalho.</p>
+                    
+                    <div class="stats">
+                        <div class="stat"><div class="value">300M+</div><div class="label">Usuários/mês</div></div>
+                        <div class="stat"><div class="value">2024</div><div class="label">Corte de dados</div></div>
+                        <div class="stat"><div class="value">Opcional</div><div class="label">Busca web</div></div>
+                    </div>
+
+                    <div class="features">
+                        <h4>Características para LLM SEO</h4>
+                        <ul>
+                            <li>Maior alcance de usuários</li>
+                            <li>Dados de treino até 2024</li>
+                            <li>Busca web opcional (Plus)</li>
+                            <li>Forte em conversação geral</li>
+                            <li class="no">Não cita fontes por padrão</li>
+                            <li class="no">Retreinamento infrequente</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Por Que ChatGPT Importa</h3>
+                <p>Simplesmente pelo volume. Com centenas de milhões de usuários, ser citado pelo ChatGPT significa exposição massiva. É o LLM que a maioria das pessoas usa quando pensa em "perguntar para a IA".</p>
+
+                <h3>Como Otimizar para ChatGPT</h3>
+                <ul>
+                    <li><strong>Foco em dados de treino:</strong> O que estava na web até 2024 é o que ChatGPT "sabe"</li>
+                    <li><strong>Wikipedia é crucial:</strong> Fonte de alta confiança para o modelo</li>
+                    <li><strong>Autoridade histórica:</strong> Marcas com presença consolidada têm vantagem</li>
+                    <li><strong>Com busca ativada:</strong> SEO tradicional passa a importar</li>
+                </ul>
+            </section>
+
+            <section id="claude">
+                <h2>Claude (Anthropic)</h2>
+
+                <div class="llm-card claude">
+                    <div class="header">
+                        <div class="icon">🔮</div>
+                        <div class="title">
+                            <h3>Claude</h3>
+                            <p>Anthropic • Claude 3.5 Sonnet</p>
+                        </div>
+                    </div>
+                    
+                    <p>Conhecido por respostas mais longas, nuançadas e "humanas". Claude é forte em análise de documentos e tarefas que requerem contexto extenso. Cresce rapidamente em adoção B2B.</p>
+                    
+                    <div class="stats">
+                        <div class="stat"><div class="value">~50M</div><div class="label">Usuários/mês</div></div>
+                        <div class="stat"><div class="value">2024</div><div class="label">Corte de dados</div></div>
+                        <div class="stat"><div class="value">Não</div><div class="label">Busca web</div></div>
+                    </div>
+
+                    <div class="features">
+                        <h4>Características para LLM SEO</h4>
+                        <ul>
+                            <li>Forte adoção B2B</li>
+                            <li>Contexto longo (200k tokens)</li>
+                            <li>Respostas detalhadas</li>
+                            <li>Análise de documentos</li>
+                            <li class="no">Base menor que ChatGPT</li>
+                            <li class="no">Sem busca em tempo real</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Por Que Claude Importa</h3>
+                <p>Se seu público é B2B ou profissional, Claude é particularmente relevante. Muitas empresas usam Claude para tarefas de trabalho: análise de contratos, pesquisa, redação profissional.</p>
+
+                <h3>Como Otimizar para Claude</h3>
+                <ul>
+                    <li><strong>Conteúdo profissional:</strong> Claude é usado em contextos de trabalho</li>
+                    <li><strong>Documentação técnica:</strong> Forte em análise de documentos</li>
+                    <li><strong>E-E-A-T rigoroso:</strong> Parece valorizar autoridade demonstrável</li>
+                    <li><strong>Publicações B2B:</strong> Presença em fontes profissionais</li>
+                </ul>
+            </section>
+
+            <section id="perplexity">
+                <h2>Perplexity</h2>
+
+                <div class="llm-card perplexity">
+                    <div class="header">
+                        <div class="icon">🔍</div>
+                        <div class="title">
+                            <h3>Perplexity</h3>
+                            <p>Perplexity AI • Search + LLM</p>
+                        </div>
+                    </div>
+                    
+                    <p>Perplexity não é apenas um LLM — é um motor de busca com IA. Sempre busca em tempo real e mostra fontes. É a ponte entre Google e ChatGPT.</p>
+                    
+                    <div class="stats">
+                        <div class="stat"><div class="value">~15M</div><div class="label">Usuários/mês</div></div>
+                        <div class="stat"><div class="value">Tempo Real</div><div class="label">Dados</div></div>
+                        <div class="stat"><div class="value">Sempre</div><div class="label">Cita fontes</div></div>
+                    </div>
+
+                    <div class="features">
+                        <h4>Características para LLM SEO</h4>
+                        <ul>
+                            <li>Busca em tempo real</li>
+                            <li>Sempre cita fontes</li>
+                            <li>SEO tradicional importa</li>
+                            <li>Feedback rápido</li>
+                            <li class="no">Base menor</li>
+                            <li class="no">Menos conversacional</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Por Que Perplexity é Especial</h3>
+                <p>Perplexity é único porque <strong>usa busca em tempo real</strong>. Diferente do ChatGPT (dados de treino fixos), Perplexity busca na web agora. Isso significa:</p>
+                <ul>
+                    <li>SEO tradicional impacta diretamente suas citações</li>
+                    <li>Melhorias de hoje podem aparecer em citações amanhã</li>
+                    <li>É o melhor "teste" para sua estratégia de LLM SEO</li>
+                </ul>
+
+                <h3>Como Otimizar para Perplexity</h3>
+                <ul>
+                    <li><strong>SEO tradicional forte:</strong> Você precisa ranquear para ser encontrado</li>
+                    <li><strong>Conteúdo citável:</strong> Respostas diretas que podem ser extraídas</li>
+                    <li><strong>Estrutura clara:</strong> Headers que respondem perguntas</li>
+                    <li><strong>Dados atualizados:</strong> Informação recente tem vantagem</li>
+                </ul>
+
+                <div class="tip-box">
+                    <h4>Perplexity como Campo de Teste</h4>
+                    <p>Use Perplexity para testar sua estratégia. Se você consegue ser citado lá, provavelmente está no caminho certo para outros LLMs também — e verá resultados mais rápido.</p>
+                </div>
+            </section>
+
+            <section id="gemini">
+                <h2>Gemini (Google)</h2>
+
+                <div class="llm-card gemini">
+                    <div class="header">
+                        <div class="icon">✨</div>
+                        <div class="title">
+                            <h3>Gemini</h3>
+                            <p>Google • Gemini 2.0</p>
+                        </div>
+                    </div>
+                    
+                    <p>O LLM do Google, integrado ao ecossistema Google. Gemini alimenta AI Overviews e AI Mode no Google Search. Tem acesso direto ao índice do Google.</p>
+                    
+                    <div class="stats">
+                        <div class="stat"><div class="value">~100M</div><div class="label">Usuários/mês</div></div>
+                        <div class="stat"><div class="value">Tempo Real</div><div class="label">Via Google</div></div>
+                        <div class="stat"><div class="value">Sim</div><div class="label">Integrado Search</div></div>
+                    </div>
+
+                    <div class="features">
+                        <h4>Características para LLM SEO</h4>
+                        <ul>
+                            <li>Integrado ao Google Search</li>
+                            <li>Alimenta AI Overviews</li>
+                            <li>Acesso ao índice do Google</li>
+                            <li>Ecossistema Google</li>
+                            <li class="no">Difícil separar de SEO</li>
+                            <li class="no">Menos "standalone"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Por Que Gemini Importa</h3>
+                <p>Gemini é importante não tanto como chatbot standalone, mas porque <strong>alimenta AI Overviews</strong> — as respostas de IA que aparecem no Google Search. Se você quer aparecer em AI Overviews, está otimizando para Gemini.</p>
+
+                <h3>Como Otimizar para Gemini</h3>
+                <ul>
+                    <li><strong>SEO tradicional é essencial:</strong> Gemini usa o índice do Google</li>
+                    <li><strong>Otimização para AI Overviews:</strong> <a href="/blog/como-aparecer-ai-overviews/">Veja nosso guia</a></li>
+                    <li><strong>E-E-A-T do Google:</strong> Os mesmos fatores de qualidade</li>
+                    <li><strong>Schema Markup:</strong> Ajuda Gemini a entender seu conteúdo</li>
+                </ul>
+            </section>
+
+            <section id="comparativo">
+                <h2>Comparativo Completo</h2>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspecto</th>
+                            <th class="chatgpt">ChatGPT</th>
+                            <th class="claude">Claude</th>
+                            <th class="perplexity">Perplexity</th>
+                            <th class="gemini">Gemini</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Base de Usuários</strong></td>
+                            <td>Maior (300M+)</td>
+                            <td>Média (~50M)</td>
+                            <td>Menor (~15M)</td>
+                            <td>Grande (~100M)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dados</strong></td>
+                            <td>Treino fixo</td>
+                            <td>Treino fixo</td>
+                            <td>Tempo real</td>
+                            <td>Índice Google</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cita Fontes</strong></td>
+                            <td class="partial">Com busca</td>
+                            <td class="cross">Não</td>
+                            <td class="check">Sempre</td>
+                            <td class="check">Em AIO</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SEO Importa</strong></td>
+                            <td class="partial">Se busca ativa</td>
+                            <td class="cross">Pouco</td>
+                            <td class="check">Muito</td>
+                            <td class="check">Essencial</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Velocidade de Resultado</strong></td>
+                            <td>Meses (retreino)</td>
+                            <td>Meses (retreino)</td>
+                            <td>Dias/semanas</td>
+                            <td>Dias/semanas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Público Principal</strong></td>
+                            <td>Geral</td>
+                            <td>B2B/Profissional</td>
+                            <td>Pesquisadores</td>
+                            <td>Usuários Google</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prioridade GEO</strong></td>
+                            <td>Alta</td>
+                            <td>Média-Alta</td>
+                            <td>Alta</td>
+                            <td>Alta (via AIO)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="por-publico">
+                <h2>Recomendação Por Tipo de Público</h2>
+
+                <div class="audience-card">
+                    <h4><span class="emoji">🏢</span> B2B / Serviços Profissionais</h4>
+                    <p>Seu público usa IAs para pesquisa profissional, análise de fornecedores, comparação de soluções. Decisões de compra envolvem múltiplas pessoas pesquisando.</p>
+                    <div class="recommendation">
+                        <h5>Priorize</h5>
+                        <p><strong>ChatGPT + Claude.</strong> Ambos são usados em contextos profissionais. Claude especialmente para análises detalhadas. Perplexity para quem busca informação atual.</p>
+                    </div>
+                </div>
+
+                <div class="audience-card">
+                    <h4><span class="emoji">🛒</span> E-commerce / Varejo</h4>
+                    <p>Consumidores buscando produtos, comparando opções, pesquisando antes de comprar. Jornada de compra ainda passa muito pelo Google.</p>
+                    <div class="recommendation">
+                        <h5>Priorize</h5>
+                        <p><strong>Gemini (AI Overviews) + Perplexity.</strong> Buscas de produto ainda vão ao Google. AI Overviews aparecem para muitas queries de compra. Perplexity para pesquisa de produto.</p>
+                    </div>
+                </div>
+
+                <div class="audience-card">
+                    <h4><span class="emoji">📚</span> Conteúdo / Educação</h4>
+                    <p>Pessoas buscando aprender, entender conceitos, responder perguntas. Alto volume de queries informacionais.</p>
+                    <div class="recommendation">
+                        <h5>Priorize</h5>
+                        <p><strong>Todos, mas especialmente ChatGPT + Perplexity.</strong> Queries informacionais migram para IAs. Você precisa ser citável em todas as plataformas.</p>
+                    </div>
+                </div>
+
+                <div class="audience-card">
+                    <h4><span class="emoji">👤</span> Marca Pessoal / Thought Leadership</h4>
+                    <p>Você quer ser reconhecido como autoridade no seu setor. Ser citado como expert tem valor enorme.</p>
+                    <div class="recommendation">
+                        <h5>Priorize</h5>
+                        <p><strong>ChatGPT + Claude.</strong> Maior alcance e credibilidade quando uma IA cita você como referência. Foque em construir autoridade pessoal que os modelos reconheçam.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="estrategia">
+                <h2>Estratégia Recomendada</h2>
+
+                <p>Para a maioria das marcas, recomendo uma abordagem em camadas:</p>
+
+                <div class="priority-box">
+                    <h4>Ordem de Prioridade</h4>
+                    <div class="priority-list">
+                        <div class="priority-item">
+                            <div class="rank">1º</div>
+                            <div class="content">
+                                <h5>Base Agnóstica de Plataforma</h5>
+                                <p>Construa autoridade genuína que funciona para todos: conteúdo citável, E-E-A-T, presença em fontes de qualidade, dados originais.</p>
+                            </div>
+                        </div>
+                        <div class="priority-item">
+                            <div class="rank">2º</div>
+                            <div class="content">
+                                <h5>Perplexity + AI Overviews (Feedback Rápido)</h5>
+                                <p>Otimize para plataformas com busca em tempo real. Você verá resultados mais rápido e pode iterar.</p>
+                            </div>
+                        </div>
+                        <div class="priority-item">
+                            <div class="rank">3º</div>
+                            <div class="content">
+                                <h5>ChatGPT + Claude (Longo Prazo)</h5>
+                                <p>Continue construindo presença para quando modelos forem retreinados. É investimento de longo prazo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Táticas Específicas por Plataforma</h3>
+
+                <div class="strategy-grid">
+                    <div class="strategy-item">
+                        <h4><span class="platform chatgpt">ChatGPT</span> Foco em Fontes de Treino</h4>
+                        <p>Wikipedia, Reddit, publicações de autoridade. O que estava online até 2024 é o que importa.</p>
+                    </div>
+                    <div class="strategy-item">
+                        <h4><span class="platform claude">Claude</span> Conteúdo Profissional</h4>
+                        <p>Documentação técnica, whitepapers, análises aprofundadas. Claude valoriza profundidade.</p>
+                    </div>
+                    <div class="strategy-item">
+                        <h4><span class="platform perplexity">Perplexity</span> SEO + Citabilidade</h4>
+                        <p>Ranquear bem no Google + ter conteúdo estruturado para extração fácil.</p>
+                    </div>
+                    <div class="strategy-item">
+                        <h4><span class="platform gemini">Gemini</span> Otimização para AI Overviews</h4>
+                        <p>Estrutura clara, respostas diretas, Schema Markup. <a href="/blog/como-aparecer-ai-overviews/">Guia completo aqui</a>.</p>
+                    </div>
+                </div>
+
+                <h3>O Que NÃO Fazer</h3>
+                <ul>
+                    <li><strong>Não otimize para apenas um LLM:</strong> Todos têm relevância e o cenário muda rapidamente</li>
+                    <li><strong>Não ignore SEO tradicional:</strong> Perplexity e Gemini dependem dele</li>
+                    <li><strong>Não espere resultados imediatos em ChatGPT/Claude:</strong> Dados de treino são fixos</li>
+                    <li><strong>Não tente "hackear" o sistema:</strong> Autoridade genuína é o único caminho sustentável</li>
+                </ul>
+            </section>
+
+            <div class="cta-box">
+                <h3>Precisa de Estratégia Multi-Plataforma?</h3>
+                <p>A AUDITSEO cria estratégias de <strong>LLM Brand Presence</strong> que funcionam em ChatGPT, Claude, Perplexity e AI Overviews simultaneamente.</p>
+                <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20estratégia%20para%20múltiplos%20LLMs." class="cta-btn">Solicitar Consultoria</a>
+            </div>
+
+            <section id="faq">
+                <h2>Perguntas Frequentes</h2>
+
+                <h3>Qual LLM é mais importante para minha marca?</h3>
+                <p>Depende do seu público. ChatGPT tem a maior base de usuários gerais. Claude é forte em B2B e contextos profissionais. Perplexity é usado por quem busca informação atual com fontes. Gemini está integrado ao Google. Para a maioria, priorize construir base que funcione para todos, depois foque em ChatGPT + Perplexity.</p>
+
+                <h3>Devo otimizar para todos os LLMs ou focar em um?</h3>
+                <p>Comece com estratégia agnóstica de plataforma (autoridade genuína, conteúdo citável, presença em fontes de qualidade) que funciona para todos. Depois, adicione táticas específicas para os LLMs mais relevantes para seu público.</p>
+
+                <h3>Perplexity é diferente dos outros LLMs?</h3>
+                <p>Sim, significativamente. Perplexity usa busca em tempo real, então SEO tradicional importa muito. É a ponte entre SEO e LLM SEO. Melhorias que você faz hoje podem aparecer em citações amanhã, diferente do ChatGPT que depende de retreinamento.</p>
+
+                <h3>Como AI Overviews se encaixa nisso?</h3>
+                <p>AI Overviews são alimentados por Gemini e usam o índice do Google. Otimizar para AI Overviews é essencialmente otimizar para Gemini. É onde SEO tradicional e LLM SEO mais se sobrepõem.</p>
+
+                <h3>Preciso monitorar todos os LLMs?</h3>
+                <p>Idealmente sim, mas priorize. No mínimo, monitore ChatGPT (maior alcance) e Perplexity (feedback rápido). Se recursos permitirem, adicione Claude e verifique AI Overviews para suas queries principais.</p>
+            </section>
+
+            <section>
+                <h2>Conclusão</h2>
+
+                <p>ChatGPT, Claude, Perplexity e Gemini têm diferenças importantes, mas compartilham algo fundamental: todos valorizam <strong>autoridade genuína e conteúdo de qualidade</strong>.</p>
+
+                <p>A melhor estratégia começa com uma base que funciona para todos — E-E-A-T, conteúdo citável, presença em fontes de qualidade. Depois, adicione táticas específicas:</p>
+
+                <ul>
+                    <li><strong>Perplexity:</strong> SEO forte + estrutura citável (resultados rápidos)</li>
+                    <li><strong>Gemini/AI Overviews:</strong> SEO + otimização específica para AIO</li>
+                    <li><strong>ChatGPT:</strong> Presença em fontes de treino (longo prazo)</li>
+                    <li><strong>Claude:</strong> Conteúdo profissional e técnico</li>
+                </ul>
+
+                <p>Para aprofundar, leia sobre <a href="/blog/como-aparecer-chatgpt/">como aparecer no ChatGPT</a>, <a href="/blog/fontes-dados-llm/">fontes de dados dos LLMs</a> e <a href="/blog/o-que-sao-ai-overviews/">AI Overviews</a>.</p>
+            </section>
+
+            <div class="author-box">
+                <div class="author-avatar"><img src="/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                <div class="author-info">
+                    <h4>Sidney Santos</h4>
+                    <p>Especialista em Search Intelligence AI com mais de 12 anos de experiência em SEO. Fundador da AUDITSEO.</p>
+                    <div class="author-links"><a href="https://www.linkedin.com/in/sidney-especialista-em-seo/">LinkedIn</a><a href="https://instagram.com/sidneyespecialistaseo">Instagram</a></div>
+                </div>
+            </div>
+
+            <div class="related-posts">
+                <h3 class="related-title">Artigos Relacionados</h3>
+                <div class="related-grid">
+                    <div class="related-card"><h4><a href="/blog/como-aparecer-chatgpt/">Como Aparecer no ChatGPT</a></h4><p>10 estratégias práticas.</p></div>
+                    <div class="related-card"><h4><a href="/blog/fontes-dados-llm/">Fontes de Dados dos LLMs</a></h4><p>Wikipedia, Reddit e mais.</p></div>
+                    <div class="related-card"><h4><a href="/blog/o-que-sao-ai-overviews/">O Que São AI Overviews</a></h4><p>Guia completo sobre AI Overviews.</p></div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand"><div class="footer-logo">AUDITSEO</div><p class="footer-desc">Agência de SEO especializada em Search Intelligence AI.</p><div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil</div></div>
+            <div class="footer-col"><h4 class="footer-title">Serviços</h4><ul class="footer-links"><li><a href="/servicos/">Todos os Serviços</a></li><li><a href="/servicos/llm-brand-presence/">LLM Brand Presence</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Empresa</h4><ul class="footer-links"><li><a href="/sobre/">Sobre Nós</a></li><li><a href="/blog/">Blog</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-title">Contato</h4><ul class="footer-links"><li><a href="https://wa.me/5511996384376">WhatsApp</a></li><li><a href="tel:+5511996384376">(11) 99638-4376</a></li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 AUDITSEO — Todos os direitos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>
