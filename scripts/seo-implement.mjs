@@ -3,6 +3,9 @@ import path from 'node:path';
 
 const root = process.cwd();
 const DOMAIN = 'https://www.auditseo.com.br';
+const SHELL_VERSION = '20260302b';
+const SHELL_CSS_URL = `/assets/site-shell.css?v=${SHELL_VERSION}`;
+const SHELL_JS_URL = `/assets/site-shell.js?v=${SHELL_VERSION}`;
 const INCLUDE_DIRS = ['servicos', 'nichos', 'saude', 'b2b', 'blog', 'agencia-de-seo', 'sobre'];
 const TOP_LEVEL_FILES = [
   'index.html',
@@ -215,15 +218,22 @@ function injectClusterLinks(html, file) {
 }
 
 function ensureSiteShell(html, file) {
-  if (!file.startsWith('blog/') || file === 'blog/index.html' || /blog\/blog-pagina-\d+\.html$/i.test(file)) return html;
+  if (!file.startsWith('blog/') || file === 'blog/index.html') return html;
 
-  const cssTag = '<link rel="stylesheet" href="/assets/site-shell.css">';
-  const jsTag = '<script defer src="/assets/site-shell.js"></script>';
+  const cssTag = `<link rel="stylesheet" href="${SHELL_CSS_URL}">`;
+  const jsTag = `<script defer src="${SHELL_JS_URL}"></script>`;
+  const cssRegex = /<link[^>]+href=["']\/assets\/site-shell\.css(?:\?[^"']*)?["'][^>]*>/i;
+  const jsRegex = /<script[^>]+src=["']\/assets\/site-shell\.js(?:\?[^"']*)?["'][^>]*><\/script>/i;
 
-  if (!/href=["']\/assets\/site-shell\.css["']/i.test(html)) {
+  if (cssRegex.test(html)) {
+    html = html.replace(cssRegex, cssTag);
+  } else {
     html = html.replace(/<\/head>/i, `    ${cssTag}\n</head>`);
   }
-  if (!/src=["']\/assets\/site-shell\.js["']/i.test(html)) {
+
+  if (jsRegex.test(html)) {
+    html = html.replace(jsRegex, jsTag);
+  } else {
     html = html.replace(/<\/head>/i, `    ${jsTag}\n</head>`);
   }
   return html;
@@ -238,7 +248,7 @@ function createFullPage(file, url) {
   const mainCta = isBlog ? '/servicos/consultoria-seo/' : '/servicos/seo-para-ia/';
 
   const shellAssets = isBlog
-    ? '    <link rel="stylesheet" href="/assets/site-shell.css">\n    <script defer src="/assets/site-shell.js"></script>\n'
+    ? `    <link rel="stylesheet" href="${SHELL_CSS_URL}">\n    <script defer src="${SHELL_JS_URL}"></script>\n`
     : '';
 
   return `<!DOCTYPE html>
