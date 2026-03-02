@@ -257,6 +257,23 @@ function clusterForArticle(file) {
   return 'Commercial and SEO General';
 }
 
+function isServiceRelatedFile(file) {
+  return (
+    file.startsWith('servicos/') ||
+    file.startsWith('nichos/') ||
+    file.startsWith('saude/') ||
+    file.startsWith('b2b/')
+  );
+}
+
+function labelFromPath(target) {
+  const slug = target.replace(/^\/|\/$/g, '').split('/').pop() || '';
+  return slug
+    .split('-')
+    .map((part) => (part ? part[0].toUpperCase() + part.slice(1) : part))
+    .join(' ');
+}
+
 function targetsForCluster(cluster) {
   const map = {
     'AI Overviews': ['/servicos/ai-overview-optimization/', '/servicos/aparecer-no-google-ai-overviews/', '/servicos/geo-generative-engine-optimization/'],
@@ -281,20 +298,87 @@ function injectClusterLinks(html, file) {
   const cluster = clusterForArticle(file);
   const serviceTargets = targetsForCluster(cluster);
   const nicheTarget = pickNicheTarget(file);
-  const labelFromTarget = (target) => {
-    const slug = target.replace(/^\/|\/$/g, '').split('/').pop() || '';
-    return slug
-      .split('-')
-      .map((part) => (part ? part[0].toUpperCase() + part.slice(1) : part))
-      .join(' ');
-  };
-  const block = `\n<!-- SEO_CLUSTER_LINKS_START -->\n<section class="seo-cluster-links" aria-label="Links internos estratégicos">\n  <h2>Serviços relacionados a este conteúdo</h2>\n  <p>Se você quer aplicar esta estratégia no seu negócio, comece por estes serviços da AUDITSEO:</p>\n  <ul>\n    ${serviceTargets.map((target) => `<li><a href="${target}">${labelFromTarget(target)}</a></li>`).join('\n    ')}\n  </ul>\n  <p>Para aplicação setorial, veja também: <a href="${nicheTarget}">${labelFromTarget(nicheTarget)}</a></p>\n</section>\n<!-- SEO_CLUSTER_LINKS_END -->\n`;
+  const block = `<!-- SEO_CLUSTER_LINKS_START -->\n<section class="seo-cluster-links" aria-label="Links internos estratégicos">\n  <h2>Serviços relacionados a este conteúdo</h2>\n  <p>Se você quer aplicar esta estratégia no seu negócio, comece por estes serviços da AUDITSEO:</p>\n  <ul>\n    ${serviceTargets.map((target) => `<li><a href="${target}">${labelFromPath(target)}</a></li>`).join('\n    ')}\n  </ul>\n  <p>Para aplicação setorial, veja também: <a href="${nicheTarget}">${labelFromPath(nicheTarget)}</a></p>\n</section>\n<!-- SEO_CLUSTER_LINKS_END -->`;
 
-  html = html.replace(/\n?<!-- SEO_CLUSTER_LINKS_START -->[\s\S]*?<!-- SEO_CLUSTER_LINKS_END -->\n?/g, '\n');
+  html = html.replace(/\s*<!-- SEO_CLUSTER_LINKS_START -->[\s\S]*?<!-- SEO_CLUSTER_LINKS_END -->\s*/g, '\n');
 
-  if (/<footer\b/i.test(html)) return html.replace(/<footer\b/i, `${block}<footer`);
-  if (/<\/body>/i.test(html)) return html.replace(/<\/body>/i, `${block}</body>`);
-  return `${html}\n${block}`;
+  if (/<footer\b/i.test(html)) return html.replace(/<footer\b/i, `\n${block}\n<footer`);
+  if (/<\/body>/i.test(html)) return html.replace(/<\/body>/i, `\n${block}\n</body>`);
+  return `${html}\n${block}\n`;
+}
+
+function serviceLinkTargets(file) {
+  const slug = file.toLowerCase();
+  const isSegment = slug.startsWith('nichos/') || slug.startsWith('saude/') || slug.startsWith('b2b/');
+  const isAI = ['ai-overview', 'llm', 'chatgpt', 'claude', 'gemini', 'perplexity', 'seo-para-ia', 'geo-generative']
+    .some((k) => slug.includes(k));
+
+  if (isSegment) {
+    return ['/servicos/seo-local/', '/servicos/google-meu-negocio/', '/servicos/consultoria-seo/', '/servicos/seo-para-ia/'];
+  }
+
+  if (isAI) {
+    return ['/servicos/seo-para-ia/', '/servicos/ai-overview-optimization/', '/servicos/llm-brand-presence/', '/servicos/geo-generative-engine-optimization/'];
+  }
+
+  if (slug.includes('auditoria')) {
+    return ['/servicos/consultoria-seo/', '/servicos/seo-para-ia/', '/servicos/ai-overview-optimization/'];
+  }
+
+  if (slug.includes('consultoria')) {
+    return ['/servicos/auditoria-seo/', '/servicos/seo-local/', '/servicos/seo-para-ia/'];
+  }
+
+  if (slug.includes('seo-local') || slug.includes('google-meu-negocio')) {
+    return ['/servicos/consultoria-seo/', '/servicos/auditoria-seo/', '/servicos/seo-para-ia/'];
+  }
+
+  return ['/servicos/consultoria-seo/', '/servicos/auditoria-seo/', '/servicos/seo-para-ia/'];
+}
+
+function serviceBlogTargets(file) {
+  const slug = file.toLowerCase();
+  const isSegment = slug.startsWith('nichos/') || slug.startsWith('saude/') || slug.startsWith('b2b/');
+  const isAI = ['ai-overview', 'llm', 'chatgpt', 'claude', 'gemini', 'perplexity', 'seo-para-ia', 'geo-generative']
+    .some((k) => slug.includes(k));
+
+  if (isSegment) {
+    return ['/blog/google-meu-negocio-guia-completo/', '/blog/como-escolher-agencia-seo/', '/blog/guia-definitivo-seo-2026/'];
+  }
+
+  if (isAI) {
+    return ['/blog/o-que-sao-ai-overviews/', '/blog/como-aparecer-ai-overviews/', '/blog/o-que-e-llm-seo/'];
+  }
+
+  if (slug.includes('auditoria')) {
+    return ['/blog/auditoria-tecnica-ai-seo/', '/blog/core-web-vitals-guia/', '/blog/schema-markup-ai-overviews/'];
+  }
+
+  if (slug.includes('consultoria')) {
+    return ['/blog/estrategia-seo-ia/', '/blog/roadmap-seo-ia/', '/blog/seo-ia-vs-tradicional/'];
+  }
+
+  return ['/blog/guia-definitivo-seo-2026/', '/blog/estrategia-seo-ia/', '/blog/seo-ia-vs-tradicional/'];
+}
+
+function ensureServiceInternalLinks(html, file) {
+  if (!isServiceRelatedFile(file)) return html;
+
+  // Páginas já estruturadas com sessão própria de relacionados não precisam de bloco extra.
+  if (/class=["'][^"']*\brelated-section\b[^"']*["']/i.test(html)) return html;
+
+  const current = expectedPath(file);
+  const serviceTargets = serviceLinkTargets(file).filter((target) => target !== current).slice(0, 3);
+  const blogTargets = serviceBlogTargets(file).slice(0, 3);
+
+  const block = `<!-- SERVICE_CLUSTER_LINKS_START -->\n<section class="service-cluster-links" aria-label="Links internos estratégicos de serviços" style="margin:48px auto 0;max-width:980px;padding:28px;border:1px solid rgba(127,127,127,.25);border-radius:14px;background:rgba(127,127,127,.08)">\n  <h2 style="margin:0 0 10px;">Páginas relacionadas para avançar nesta estratégia</h2>\n  <p style="margin:0 0 12px;">Serviços complementares:</p>\n  <ul>\n    ${serviceTargets.map((target) => `<li><a href="${target}">${labelFromPath(target)}</a></li>`).join('\n    ')}\n  </ul>\n  <p style="margin:14px 0 12px;">Artigos recomendados do blog:</p>\n  <ul>\n    ${blogTargets.map((target) => `<li><a href="${target}">${labelFromPath(target)}</a></li>`).join('\n    ')}\n  </ul>\n</section>\n<!-- SERVICE_CLUSTER_LINKS_END -->`;
+
+  html = html.replace(/\s*<!-- SERVICE_CLUSTER_LINKS_START -->[\s\S]*?<!-- SERVICE_CLUSTER_LINKS_END -->\s*/g, '\n');
+
+  if (/<footer\b/i.test(html)) return html.replace(/<footer\b/i, `\n${block}\n<footer`);
+  if (/<\/main>/i.test(html)) return html.replace(/<\/main>/i, `\n${block}\n</main>`);
+  if (/<\/body>/i.test(html)) return html.replace(/<\/body>/i, `\n${block}\n</body>`);
+  return `${html}\n${block}\n`;
 }
 
 function ensureSiteShell(html, file) {
@@ -407,6 +491,7 @@ function applyForFile(file) {
   html = ensureSiteShell(html, file);
   html = ensureVisualBreadcrumb(html, file, titleMeta);
   html = injectClusterLinks(html, file);
+  html = ensureServiceInternalLinks(html, file);
 
   fs.writeFileSync(absolute, html, 'utf8');
   return { file, created: false };
