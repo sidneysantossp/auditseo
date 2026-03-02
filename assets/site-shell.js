@@ -119,7 +119,7 @@
         '<div class="as-header-inner">' +
           '<a class="as-logo" href="' + BASE_URL + '/" aria-label="AUDITSEO"><span>AUDITSEO</span></a>' +
           '<nav class="as-nav" aria-label="Navegação principal">' + navDesktop + '</nav>' +
-          '<a class="as-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Falar com Especialista</a>' +
+          '<a class="as-cta" href="' + BASE_URL + '/?diagnostico=1" data-as-open-diagnostic="true">Diagnóstico Grátis</a>' +
           '<button class="as-burger" type="button" aria-label="Abrir menu" aria-expanded="false">' +
             '<span></span><span></span><span></span>' +
           '</button>' +
@@ -127,7 +127,7 @@
       '</header>' +
       '<div class="as-mobile" id="asMobile" role="dialog" aria-label="Menu mobile">' +
         '<nav class="as-mobile-nav" aria-label="Navegação mobile">' + navMobile + '</nav>' +
-        '<a class="as-cta as-mobile-cta-btn" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Falar com Especialista</a>' +
+        '<a class="as-cta as-mobile-cta-btn" href="' + BASE_URL + '/?diagnostico=1" data-as-open-diagnostic="true">Diagnóstico Grátis</a>' +
       '</div>';
 
     var skipLink = document.querySelector('body > .skip-link');
@@ -144,6 +144,7 @@
 
     var burger = root.querySelector('.as-burger');
     var mobile = root.querySelector('.as-mobile');
+    var diagnosticButtons = root.querySelectorAll('[data-as-open-diagnostic]');
 
     function closeMenu() {
       document.body.classList.remove('as-mobile-open');
@@ -155,12 +156,36 @@
       burger.setAttribute('aria-expanded', 'true');
     }
 
+    function openDiagnosticModal() {
+      if (typeof window.openModal === 'function') {
+        window.openModal();
+        return;
+      }
+
+      var inlineModal = document.getElementById('formModal');
+      if (inlineModal) {
+        inlineModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        return;
+      }
+
+      window.location.href = BASE_URL + '/?diagnostico=1';
+    }
+
     burger.addEventListener('click', function () {
       if (document.body.classList.contains('as-mobile-open')) {
         closeMenu();
       } else {
         openMenu();
       }
+    });
+
+    diagnosticButtons.forEach(function (button) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        closeMenu();
+        openDiagnosticModal();
+      });
     });
 
     mobile.querySelectorAll('.as-mobile-link, .as-mobile-cta-btn').forEach(function (link) {

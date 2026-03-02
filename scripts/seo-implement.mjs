@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const DOMAIN = 'https://www.auditseo.com.br';
-const SHELL_VERSION = '20260302c';
+const SHELL_VERSION = '20260302d';
 const SHELL_CSS_URL = `/assets/site-shell.css?v=${SHELL_VERSION}`;
 const SHELL_JS_URL = `/assets/site-shell.js?v=${SHELL_VERSION}`;
 const INCLUDE_DIRS = ['servicos', 'nichos', 'saude', 'b2b', 'blog', 'agencia-de-seo', 'sobre'];

@@ -739,7 +739,7 @@
             <span></span>
             <span></span>
         </div>
-        <a href="https://wa.me/5511996384376" class="nav-cta" target="_blank" rel="noopener">Falar com Especialista</a>
+        <a href="javascript:void(0)" class="nav-cta" onclick="openModal()">Diagnóstico Grátis</a>
     </nav>
     
     <!-- Mobile Menu -->
@@ -749,7 +749,7 @@
         <a href="https://www.auditseo.com.br/servicos/" onclick="closeMobileMenu()">Serviços</a>
         <a href="https://www.auditseo.com.br/sobre/" onclick="closeMobileMenu()">Sobre</a>
         <a href="https://www.auditseo.com.br/blog/" onclick="closeMobileMenu()">Blog</a>
-        <a href="https://wa.me/5511996384376" class="nav-cta" onclick="closeMobileMenu()" target="_blank" rel="noopener">Falar com Especialista</a>
+        <a href="javascript:void(0)" class="nav-cta" onclick="closeMobileMenu(); openModal(); return false;">Diagnóstico Grátis</a>
     </div>
 
     <!-- ================================================================
@@ -1516,6 +1516,20 @@
         document.getElementById('formModal').addEventListener('click', function(e) {
             if (e.target === e.currentTarget) closeModal();
         });
+
+        (function openModalFromQuery() {
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('diagnostico') !== '1') return;
+
+            openModal();
+            params.delete('diagnostico');
+
+            if (window.history && window.history.replaceState) {
+                var nextQuery = params.toString();
+                var cleanUrl = window.location.pathname + (nextQuery ? '?' + nextQuery : '') + window.location.hash;
+                window.history.replaceState({}, document.title, cleanUrl);
+            }
+        })();
         
         // ===== Form Step Navigation =====
         var currentStep = 1;
