@@ -194,8 +194,8 @@ body.as-shell-enabled {
 
 .as-footer-grid {
   display: grid;
-  grid-template-columns: 1.35fr 1fr 1fr 1fr;
-  gap: 28px;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 4rem;
 }
 
 .as-footer-col {
@@ -203,38 +203,47 @@ body.as-shell-enabled {
 }
 
 .as-footer-about {
-  max-width: 420px;
+  max-width: 400px;
 }
 
 .as-footer-brand {
   font-family: 'Bebas Neue', 'Oswald', sans-serif;
-  font-size: 3rem;
-  letter-spacing: 2px;
-  color: var(--as-shell-text);
+  font-size: 2rem;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, var(--as-shell-accent-1), var(--as-shell-accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 10px;
 }
 
 .as-footer-title {
   font-family: 'Bebas Neue', 'Oswald', sans-serif;
-  font-size: 1.9rem;
-  letter-spacing: 1.2px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
   color: var(--as-shell-text);
-  margin-bottom: 10px;
+  margin-bottom: 1.5rem;
 }
 
-.as-footer-text,
+.as-footer-desc {
+  font-size: 0.95rem;
+  color: var(--as-shell-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
 .as-footer-link,
+.as-footer-address,
 .as-footer-copy {
-  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.72rem;
-  line-height: 1.75;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 0.9rem;
+  line-height: 1.7;
   color: var(--as-shell-muted);
 }
 
 .as-footer-list {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .as-footer-link {
@@ -242,51 +251,82 @@ body.as-shell-enabled {
 }
 
 .as-footer-link:hover {
-  color: var(--as-shell-text);
+  color: var(--as-shell-accent-2);
+}
+
+.as-footer-list li {
+  margin-bottom: 0.8rem;
 }
 
 .as-footer-social {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 12px;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.as-footer-social a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--as-shell-muted);
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.as-footer-social a:hover {
+  border-color: var(--as-shell-accent-2);
+  color: var(--as-shell-accent-2);
+  transform: translateY(-2px);
+}
+
+.as-footer-social svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .as-footer-address {
-  margin-top: 12px;
+  margin-top: 1rem;
   font-style: normal;
-  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.72rem;
-  line-height: 1.7;
-  color: var(--as-shell-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
 .as-footer-cta {
-  display: inline-block;
-  margin-top: 14px;
-  text-decoration: none;
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  padding: 0.8rem 1.2rem;
+  background: linear-gradient(135deg, var(--as-shell-accent-1), var(--as-shell-accent-2));
+  color: #0a0a0a;
+  display: inline-block;
+  margin-top: 1.5rem;
+  text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 10px 14px;
-  border: 1px solid rgba(212, 165, 116, 0.6);
-  color: #f4e8d8;
-  border-radius: 8px;
-  background: rgba(212, 165, 116, 0.1);
+  text-align: center;
+  transition: all 0.3s;
 }
 
 .as-footer-cta:hover {
-  background: rgba(212, 165, 116, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(230, 57, 70, 0.3);
 }
 
 .as-footer-bottom {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin-top: 24px;
-  padding-top: 12px;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.as-footer-copy {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.7rem;
+  color: #555;
 }
 
 .seo-cluster-links {
@@ -334,7 +374,7 @@ body.as-shell-enabled {
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .as-nav,
   .as-header .as-cta {
     display: none;
@@ -365,11 +405,17 @@ body.as-shell-enabled {
 
   .as-footer-grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 0;
+  }
+
+  .as-footer-inner {
+    padding: 3rem 1.5rem;
   }
 
   .as-footer-bottom {
-    flex-direction: column;
-    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
   }
 
   .seo-cluster-links {

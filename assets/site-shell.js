@@ -43,21 +43,22 @@
     if (!document.body || document.getElementById('as-shell-root')) return;
 
     var current = normalize(window.location.pathname);
+    var BASE_URL = 'https://www.auditseo.com.br';
 
     var navLinks = [
-      { href: '/', label: 'Home' },
-      { href: '/agencia-de-seo/', label: 'Agência de SEO' },
-      { href: '/servicos/', label: 'Serviços' },
-      { href: '/sobre/', label: 'Sobre' },
-      { href: '/blog/', label: 'Blog' }
+      { href: BASE_URL + '/', path: '/', label: 'Home' },
+      { href: BASE_URL + '/agencia-de-seo/', path: '/agencia-de-seo/', label: 'Agência de SEO' },
+      { href: BASE_URL + '/servicos/', path: '/servicos/', label: 'Serviços' },
+      { href: BASE_URL + '/sobre/', path: '/sobre/', label: 'Sobre' },
+      { href: BASE_URL + '/blog/', path: '/blog/', label: 'Blog' }
     ];
 
     var navDesktop = navLinks.map(function (item) {
-      return '<a class="as-nav-link' + activeClass(current, item.href) + '" href="' + item.href + '">' + item.label + '</a>';
+      return '<a class="as-nav-link' + activeClass(current, item.path) + '" href="' + item.href + '">' + item.label + '</a>';
     }).join('');
 
     var navMobile = navLinks.map(function (item) {
-      return '<a class="as-mobile-link' + activeClass(current, item.href) + '" href="' + item.href + '">' + item.label + '</a>';
+      return '<a class="as-mobile-link' + activeClass(current, item.path) + '" href="' + item.href + '">' + item.label + '</a>';
     }).join('');
 
     var footerHTML = '' +
@@ -66,45 +67,47 @@
           '<div class="as-footer-grid">' +
             '<section class="as-footer-col as-footer-about">' +
               '<h3 class="as-footer-brand">AUDITSEO</h3>' +
-              '<p class="as-footer-text">Agência de SEO em São Paulo especializada em Search Intelligence AI. Fundada em 2024 por Sidney Santos. Preparamos marcas para AI Overviews, LLMs e buscas generativas.</p>' +
+              '<p class="as-footer-desc">Agência de SEO em São Paulo especializada em Search Intelligence AI. Fundada em 2024 por Sidney Santos. Preparamos marcas para a nova era das buscas: AI Overviews, LLMs, assistentes de voz e buscas generativas.</p>' +
               '<div class="as-footer-social">' +
-                '<a class="as-footer-link" href="https://instagram.com/auditseo" target="_blank" rel="noopener">Instagram</a>' +
-                '<a class="as-footer-link" href="https://linkedin.com/company/auditseo" target="_blank" rel="noopener">LinkedIn</a>' +
-                '<a class="as-footer-link" href="https://facebook.com/auditseo" target="_blank" rel="noopener">Facebook</a>' +
-                '<a class="as-footer-link" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO." target="_blank" rel="noopener">WhatsApp</a>' +
+                '<a href="https://instagram.com/auditseo" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none"></circle></svg></a>' +
+                '<a href="https://linkedin.com/company/auditseo" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"></rect><path d="M7 10v7M7 7v.01M11 10v7m0-4c0-2 1.5-3 3-3s3 1 3 3v4"></path></svg></a>' +
+                '<a href="https://facebook.com/auditseo" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M15 3v4h-2c-1 0-1 1-1 2v2h3l-1 4h-2v6M10 21v-6H7v-4h3"></path></svg></a>' +
+                '<a href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21l1.5-4.5A9 9 0 1 1 7.5 19.5L3 21"></path><path d="M9 10c.5-1 1.5-1 2 0 .5 1 1.5 1 2 0m-5 3c1.5 2 4 2 5.5 0"></path></svg></a>' +
               '</div>' +
             '</section>' +
             '<nav class="as-footer-col">' +
               '<h4 class="as-footer-title">Serviços</h4>' +
-              '<div class="as-footer-list">' +
-                '<a class="as-footer-link" href="/servicos/consultoria-seo/">Consultoria SEO</a>' +
-                '<a class="as-footer-link" href="/servicos/auditoria-seo/">Auditoria SEO</a>' +
-                '<a class="as-footer-link" href="/servicos/seo-local/">SEO Local</a>' +
-                '<a class="as-footer-link" href="/servicos/google-meu-negocio/">Google Meu Negócio</a>' +
-                '<a class="as-footer-link" href="/servicos/ai-overview-optimization/">AI Overview Optimization</a>' +
-                '<a class="as-footer-link" href="/servicos/llm-brand-presence/">LLM Brand Presence</a>' +
-              '</div>' +
+              '<ul class="as-footer-list">' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/servicos/consultoria-seo/">Consultoria SEO</a></li>' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/servicos/auditoria-seo/">Auditoria SEO</a></li>' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/servicos/seo-local/">SEO Local</a></li>' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/servicos/google-meu-negocio/">Google Meu Negócio</a></li>' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/servicos/ai-overview-optimization/">AI Overview Optimization</a></li>' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/servicos/llm-brand-presence/">LLM Brand Presence</a></li>' +
+              '</ul>' +
             '</nav>' +
             '<nav class="as-footer-col">' +
               '<h4 class="as-footer-title">Institucional</h4>' +
-              '<div class="as-footer-list">' +
-                '<a class="as-footer-link" href="/sobre/">Sobre Nós</a>' +
-                '<a class="as-footer-link" href="/agencia-de-seo/">Agência de SEO</a>' +
-                '<a class="as-footer-link" href="/blog/">Blog</a>' +
-              '</div>' +
+              '<ul class="as-footer-list">' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/sobre/">Sobre Nós</a></li>' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/agencia-de-seo/">Agência de SEO</a></li>' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/blog/">Blog</a></li>' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/politica-de-privacidade/">Política de Privacidade</a></li>' +
+                '<li><a class="as-footer-link" href="' + BASE_URL + '/termos-de-uso/">Termos de Uso</a></li>' +
+              '</ul>' +
             '</nav>' +
             '<section class="as-footer-col">' +
               '<h4 class="as-footer-title">Contato</h4>' +
-              '<div class="as-footer-list">' +
-                '<a class="as-footer-link" href="https://wa.me/5511996384376" target="_blank" rel="noopener">+55 (11) 99638-4376</a>' +
-                '<a class="as-footer-link" href="mailto:contato@auditseo.com.br">contato@auditseo.com.br</a>' +
-              '</div>' +
+              '<ul class="as-footer-list">' +
+                '<li><a class="as-footer-link" href="https://wa.me/5511996384376" target="_blank" rel="noopener">+55 (11) 99638-4376</a></li>' +
+                '<li><a class="as-footer-link" href="mailto:contato@auditseo.com.br">contato@auditseo.com.br</a></li>' +
+              '</ul>' +
               '<address class="as-footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP - 01520-000<br>Brasil</address>' +
               '<a class="as-footer-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Diagnóstico Grátis</a>' +
             '</section>' +
           '</div>' +
           '<div class="as-footer-bottom">' +
-            '<p class="as-footer-copy">© 2024–2026 AUDITSEO — Todos os direitos reservados. Search Intelligence Consultancy.</p>' +
+            '<p class="as-footer-copy">&copy; 2024–2026 AUDITSEO — Todos os direitos reservados. Search Intelligence Consultancy. CNPJ: XX.XXX.XXX/0001-XX</p>' +
           '</div>' +
         '</div>' +
       '</footer>';
@@ -114,7 +117,7 @@
     root.innerHTML = '' +
       '<header class="as-header" role="banner">' +
         '<div class="as-header-inner">' +
-          '<a class="as-logo" href="/" aria-label="AUDITSEO"><span>AUDITSEO</span></a>' +
+          '<a class="as-logo" href="' + BASE_URL + '/" aria-label="AUDITSEO"><span>AUDITSEO</span></a>' +
           '<nav class="as-nav" aria-label="Navegação principal">' + navDesktop + '</nav>' +
           '<a class="as-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Falar com Especialista</a>' +
           '<button class="as-burger" type="button" aria-label="Abrir menu" aria-expanded="false">' +
