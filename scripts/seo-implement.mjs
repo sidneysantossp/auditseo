@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const DOMAIN = 'https://www.auditseo.com.br';
-const SHELL_VERSION = '20260302b';
+const SHELL_VERSION = '20260302c';
 const SHELL_CSS_URL = `/assets/site-shell.css?v=${SHELL_VERSION}`;
 const SHELL_JS_URL = `/assets/site-shell.js?v=${SHELL_VERSION}`;
 const INCLUDE_DIRS = ['servicos', 'nichos', 'saude', 'b2b', 'blog', 'agencia-de-seo', 'sobre'];
@@ -166,6 +166,86 @@ function ensureSchema(html, file, title, url) {
   return html.replace(/<\/head>/i, `    ${schemaBlock(file, title, url)}\n</head>`);
 }
 
+function escapeHtml(text) {
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function escapeJson(text) {
+  return String(text).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
+
+function isBlogArticle(file) {
+  return file.startsWith('blog/') && file !== 'blog/index.html' && !/blog\/blog-pagina-\d+\.html$/i.test(file);
+}
+
+function extractFirstH1(html) {
+  const m = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  if (!m) return '';
+  return m[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function breadcrumbCurrentTitle(file, html, titleMeta) {
+  const h1 = extractFirstH1(html);
+  if (h1) return h1;
+  if (titleMeta) return titleMeta.replace(/\s*\|\s*AUDITSEO.*$/i, '').trim();
+  const slug = file.split('/').pop().replace(/\.html$/i, '');
+  return slug
+    .split('-')
+    .map((part) => (part ? part[0].toUpperCase() + part.slice(1) : part))
+    .join(' ');
+}
+
+function breadcrumbVisualBlock(currentTitle) {
+  return `<nav class="auditseo-breadcrumb" aria-label="Breadcrumb">
+  <a href="${DOMAIN}/">Home</a>
+  <span aria-hidden="true">›</span>
+  <a href="${DOMAIN}/blog/">Blog</a>
+  <span aria-hidden="true">›</span>
+  <span class="current">${escapeHtml(currentTitle)}</span>
+</nav>`;
+}
+
+function breadcrumbSchemaBlock(currentTitle, url) {
+  return `<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"${DOMAIN}/"},{"@type":"ListItem","position":2,"name":"Blog","item":"${DOMAIN}/blog/"},{"@type":"ListItem","position":3,"name":"${escapeJson(currentTitle)}","item":"${url}"}]}</script>`;
+}
+
+function ensureBreadcrumbSchema(html, file, titleMeta, url) {
+  if (!isBlogArticle(file)) return html;
+  if (/"@type"\s*:\s*"BreadcrumbList"/i.test(html)) return html;
+
+  const currentTitle = breadcrumbCurrentTitle(file, html, titleMeta);
+  return html.replace(/<\/head>/i, `    ${breadcrumbSchemaBlock(currentTitle, url)}\n</head>`);
+}
+
+function ensureVisualBreadcrumb(html, file, titleMeta) {
+  if (!isBlogArticle(file)) return html;
+  if (/<nav[^>]+aria-label=["']Breadcrumb["'][^>]*>/i.test(html)) return html;
+  if (/class=["'][^"']*\bauditseo-breadcrumb\b[^"']*["']/i.test(html)) return html;
+  if (/class=["'][^"']*\bbreadcrumbs\b[^"']*["']/i.test(html)) return html;
+
+  const currentTitle = breadcrumbCurrentTitle(file, html, titleMeta);
+  const block = breadcrumbVisualBlock(currentTitle);
+
+  if (/<div[^>]+class=["'][^"']*article-header-content[^"']*["'][^>]*>/i.test(html)) {
+    return html.replace(/(<div[^>]+class=["'][^"']*article-header-content[^"']*["'][^>]*>)/i, `$1\n${block}\n`);
+  }
+  if (/<header[^>]+class=["'][^"']*article-header[^"']*["'][^>]*>/i.test(html)) {
+    return html.replace(/(<header[^>]+class=["'][^"']*article-header[^"']*["'][^>]*>)/i, `$1\n${block}\n`);
+  }
+  if (/<main[^>]*>/i.test(html)) {
+    return html.replace(/(<main[^>]*>)/i, `$1\n${block}\n`);
+  }
+  if (/<body[^>]*>/i.test(html)) {
+    return html.replace(/(<body[^>]*>)/i, `$1\n${block}\n`);
+  }
+  return `${block}\n${html}`;
+}
+
 function clusterForArticle(file) {
   const slug = file.toLowerCase();
   const inAny = (arr) => arr.some((k) => slug.includes(k));
@@ -196,7 +276,7 @@ function pickNicheTarget(file) {
 }
 
 function injectClusterLinks(html, file) {
-  if (!file.startsWith('blog/') || file === 'blog/index.html' || /blog\/blog-pagina-\d+\.html$/i.test(file)) return html;
+  if (!isBlogArticle(file)) return html;
 
   const cluster = clusterForArticle(file);
   const serviceTargets = targetsForCluster(cluster);
@@ -218,7 +298,7 @@ function injectClusterLinks(html, file) {
 }
 
 function ensureSiteShell(html, file) {
-  if (!file.startsWith('blog/') || file === 'blog/index.html') return html;
+  if (!isBlogArticle(file) && !/blog\/blog-pagina-\d+\.html$/i.test(file)) return html;
 
   const cssTag = `<link rel="stylesheet" href="${SHELL_CSS_URL}">`;
   const jsTag = `<script defer src="${SHELL_JS_URL}"></script>`;
@@ -246,6 +326,9 @@ function createFullPage(file, url) {
   const description = meta?.description || `Conteúdo de ${h1} na AUDITSEO.`;
   const isBlog = file.startsWith('blog/');
   const mainCta = isBlog ? '/servicos/consultoria-seo/' : '/servicos/seo-para-ia/';
+  const breadcrumbTitle = isBlog ? breadcrumbCurrentTitle(file, '', title) : '';
+  const breadcrumbNav = isBlog ? `      ${breadcrumbVisualBlock(breadcrumbTitle)}\n` : '';
+  const breadcrumbSchema = isBlog ? `    ${breadcrumbSchemaBlock(breadcrumbTitle, url)}\n` : '';
 
   const shellAssets = isBlog
     ? `    <link rel="stylesheet" href="${SHELL_CSS_URL}">\n    <script defer src="${SHELL_JS_URL}"></script>\n`
@@ -268,6 +351,7 @@ function createFullPage(file, url) {
     <meta property="og:url" content="${url}">
     <meta property="og:site_name" content="AUDITSEO">
     ${schemaBlock(file, title, url)}
+${breadcrumbSchema}
 ${shellAssets}    
     <style>
       body{font-family:Arial,sans-serif;max-width:980px;margin:0 auto;padding:32px 18px;line-height:1.7;color:${isBlog ? '#f2f2f2' : '#1d1d1d'};background:${isBlog ? '#0a0a0a' : '#fff'}}
@@ -278,6 +362,7 @@ ${shellAssets}
 </head>
 <body>
     <main>
+${breadcrumbNav}
       <h1>${h1}</h1>
       <p>${description}</p>
       <div class="box">
@@ -318,7 +403,9 @@ function applyForFile(file) {
   html = ensureHreflang(html, url);
   html = ensureMetaTag(html, /<meta[^>]+property=["']og:url["'][^>]*>/i, `<meta property="og:url" content="${url}">`);
   html = ensureSchema(html, file, titleMeta, url);
+  html = ensureBreadcrumbSchema(html, file, titleMeta, url);
   html = ensureSiteShell(html, file);
+  html = ensureVisualBreadcrumb(html, file, titleMeta);
   html = injectClusterLinks(html, file);
 
   fs.writeFileSync(absolute, html, 'utf8');
