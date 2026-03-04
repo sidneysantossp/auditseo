@@ -44,6 +44,13 @@
 
     var current = normalize(window.location.pathname);
     var BASE_URL = 'https://www.auditseo.com.br';
+    var isServiceRoute =
+      current === '/servicos/' ||
+      current.startsWith('/servicos/') ||
+      current.startsWith('/nichos/') ||
+      current.startsWith('/saude/') ||
+      current.startsWith('/b2b/');
+    var isServicesIndexRoute = current === '/servicos/';
 
     var navLinks = [
       { href: BASE_URL + '/', path: '/', label: 'Home' },
@@ -138,6 +145,12 @@
     }
 
     document.body.classList.add('as-shell-enabled');
+    if (isServiceRoute) {
+      document.body.classList.add('as-route-service');
+    }
+    if (isServicesIndexRoute) {
+      document.body.classList.add('as-route-services-index');
+    }
 
     removeLegacyLayout();
     document.body.insertAdjacentHTML('beforeend', footerHTML);
