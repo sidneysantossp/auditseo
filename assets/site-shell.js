@@ -103,7 +103,7 @@
                 '<li><a class="as-footer-link" href="mailto:contato@auditseo.com.br">contato@auditseo.com.br</a></li>' +
               '</ul>' +
               '<address class="as-footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP - 01520-000<br>Brasil</address>' +
-              '<a class="as-footer-cta" href="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO%20e%20quero%20um%20diagn%C3%B3stico." target="_blank" rel="noopener">Diagnóstico Grátis</a>' +
+              '<a class="as-footer-cta" href="' + BASE_URL + '/?diagnostico=1" data-as-open-diagnostic="true">Diagnóstico Grátis</a>' +
             '</section>' +
           '</div>' +
           '<div class="as-footer-bottom">' +

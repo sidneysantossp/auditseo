@@ -181,15 +181,16 @@ body.as-shell-enabled {
 }
 
 .as-footer {
-  background: linear-gradient(180deg, #0b0b0b 0%, var(--as-shell-footer-bg) 100%);
-  border-top: 1px solid var(--as-shell-border);
-  margin-top: 72px;
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: #111;
+  margin-top: 0;
 }
 
 .as-footer-inner {
-  width: min(1240px, calc(100% - 32px));
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 42px 0 16px;
+  padding: 5rem 3rem 3rem;
 }
 
 .as-footer-grid {
@@ -200,10 +201,13 @@ body.as-shell-enabled {
 
 .as-footer-col {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .as-footer-about {
-  max-width: 400px;
+  max-width: none;
+  padding-right: 2rem;
 }
 
 .as-footer-brand {
@@ -232,8 +236,7 @@ body.as-shell-enabled {
 }
 
 .as-footer-link,
-.as-footer-address,
-.as-footer-copy {
+.as-footer-address {
   font-family: 'Crimson Pro', Georgia, serif;
   font-size: 0.9rem;
   line-height: 1.7;
@@ -261,7 +264,6 @@ body.as-shell-enabled {
 .as-footer-social {
   display: flex;
   gap: 1rem;
-  margin-top: 1.5rem;
 }
 
 .as-footer-social a {
@@ -317,9 +319,9 @@ body.as-shell-enabled {
 }
 
 .as-footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin-top: 3rem;
-  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 2rem;
+  padding-top: 2rem;
   text-align: center;
 }
 
@@ -327,6 +329,7 @@ body.as-shell-enabled {
   font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.7rem;
   color: #555;
+  letter-spacing: 1px;
 }
 
 .seo-cluster-links {
@@ -399,6 +402,10 @@ body.as-shell-enabled {
   .as-footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+
+  .as-footer-about {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 768px) {
@@ -426,14 +433,14 @@ body.as-shell-enabled {
     letter-spacing: 3px;
   }
 
-  .as-footer-inner {
-    width: min(1240px, calc(100% - 24px));
-  }
-
   .as-footer-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    padding: 0;
+  }
+
+  .as-footer-about {
+    grid-column: span 1;
+    padding-right: 0;
   }
 
   .as-footer-inner {
@@ -441,8 +448,8 @@ body.as-shell-enabled {
   }
 
   .as-footer-bottom {
-    margin-top: 2rem;
-    padding-top: 1.25rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
   }
 
   .seo-cluster-links {

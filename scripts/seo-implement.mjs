@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const DOMAIN = 'https://www.auditseo.com.br';
-const SHELL_VERSION = '20260302d';
+const SHELL_VERSION = '20260303a';
 const SHELL_CSS_URL = `/assets/site-shell.css?v=${SHELL_VERSION}`;
 const SHELL_JS_URL = `/assets/site-shell.js?v=${SHELL_VERSION}`;
 const INCLUDE_DIRS = ['servicos', 'nichos', 'saude', 'b2b', 'blog', 'agencia-de-seo', 'sobre'];
@@ -382,7 +382,7 @@ function ensureServiceInternalLinks(html, file) {
 }
 
 function ensureSiteShell(html, file) {
-  if (!isBlogArticle(file) && !/blog\/blog-pagina-\d+\.html$/i.test(file)) return html;
+  if (file === 'index.html') return html;
 
   const cssTag = `<link rel="stylesheet" href="${SHELL_CSS_URL}">`;
   const jsTag = `<script defer src="${SHELL_JS_URL}"></script>`;
@@ -414,7 +414,7 @@ function createFullPage(file, url) {
   const breadcrumbNav = isBlog ? `      ${breadcrumbVisualBlock(breadcrumbTitle)}\n` : '';
   const breadcrumbSchema = isBlog ? `    ${breadcrumbSchemaBlock(breadcrumbTitle, url)}\n` : '';
 
-  const shellAssets = isBlog
+  const shellAssets = file !== 'index.html'
     ? `    <link rel="stylesheet" href="${SHELL_CSS_URL}">\n    <script defer src="${SHELL_JS_URL}"></script>\n`
     : '';
 
