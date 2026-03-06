@@ -1,0 +1,116 @@
+---
+import { siteMetadata } from '../data/site';
+---
+<script is:inline define:vars={{ newsletterEndpoint: siteMetadata.forms.diagnosticEndpoint }}>
+  (() => {
+    window.toggleFaq = (button) => {
+      const item = button?.parentElement;
+      const answer = item?.querySelector('.faq-answer');
+      const icon = button?.querySelector('.faq-question-icon');
+      const isOpen = Boolean(answer?.style.maxHeight && answer.style.maxHeight !== '0px');
+
+      document.querySelectorAll('.faq-answer').forEach((node) => {
+        node.style.maxHeight = '0px';
+      });
+      document.querySelectorAll('.faq-question-icon').forEach((node) => {
+        node.style.transform = 'rotate(0deg)';
+        node.textContent = '+';
+      });
+      document.querySelectorAll('.faq-question').forEach((node) => {
+        node.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!answer || !icon || isOpen) return;
+      answer.style.maxHeight = `${answer.scrollHeight}px`;
+      icon.style.transform = 'rotate(45deg)';
+      button.setAttribute('aria-expanded', 'true');
+    };
+
+    window.submitNewsletter = async (event) => {
+      event.preventDefault();
+
+      const emailField = document.getElementById('newsletterEmail');
+      const button = document.getElementById('newsletterBtn');
+      const buttonText = button?.querySelector('.btn-text');
+      const buttonLoading = button?.querySelector('.btn-loading');
+      const form = document.getElementById('newsletterForm');
+      const success = document.getElementById('newsletterSuccess');
+
+      if (!(emailField instanceof HTMLInputElement) || !emailField.value || !button || !buttonText || !buttonLoading || !form || !success) {
+        return;
+      }
+
+      buttonText.style.display = 'none';
+      buttonLoading.style.display = 'inline';
+      button.setAttribute('disabled', 'disabled');
+
+      try {
+        const response = await fetch(newsletterEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            email: emailField.value,
+            _subject: 'Nova inscricao Newsletter - AUDITSEO'
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Falha ao enviar newsletter');
+        }
+
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } catch (error) {
+        console.error(error);
+        window.alert('Erro ao inscrever. Tente novamente.');
+        buttonText.style.display = 'inline';
+        buttonLoading.style.display = 'none';
+        button.removeAttribute('disabled');
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach((element) => {
+      observer.observe(element);
+    });
+
+    document.querySelectorAll('.service-header').forEach((header) => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        const isActive = item?.classList.contains('active');
+
+        document.querySelectorAll('.service-item').forEach((node) => {
+          node.classList.remove('active');
+        });
+
+        if (!isActive) {
+          item?.classList.add('active');
+        }
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (event) => {
+        const href = anchor.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  })();
+</script>

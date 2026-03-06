@@ -1,0 +1,25 @@
+{
+  "name": "@auditseo/site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro preview --host",
+    "check": "astro check",
+    "audit:blog": "node --import tsx/esm scripts/audit-blog.ts",
+    "audit:blog:output": "node --import tsx/esm scripts/audit-blog-output.ts",
+    "qa:blog": "npm run build && npm run check && npm run audit:blog && npm run audit:blog:output",
+    "audit:resources": "node --import tsx/esm scripts/audit-resource-pages.ts",
+    "audit:links": "node --import tsx/esm scripts/audit-internal-links.ts",
+    "qa:site": "npm run build && npm run check && npm run audit:blog && npm run audit:blog:output && npm run audit:resources && npm run audit:links"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@types/node": "^25.3.5",
+    "astro": "^5.4.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.8.2"
+  }
+}

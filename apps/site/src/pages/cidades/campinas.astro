@@ -1,0 +1,154 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import CityLayout from '../../layouts/CityLayout.astro';
+
+const focusAreas = [
+  {
+    title: 'Autoridade regional',
+    copy:
+      'Campinas exige leitura regional clara, especialmente para empresas que competem entre busca local, reputacao e descoberta organica.'
+  },
+  {
+    title: 'Pagina comercial enxuta',
+    copy:
+      'A conversao tende a responder melhor quando a pagina local explica servico, area de cobertura e prova sem inflar a narrativa.'
+  },
+  {
+    title: 'Escala com criterio',
+    copy:
+      'Campinas funciona bem como cidade de expansao para validar estruturas locais antes de abrir combinacoes mais granulares.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Campinas precisa de uma abordagem diferente de Sao Paulo?',
+    answer:
+      'Sim. A densidade competitiva, a leitura regional e a combinacao entre descoberta local e autoridade setorial costumam exigir calibragem propria.'
+  },
+  {
+    question: 'Que servicos costumam aderir melhor em Campinas?',
+    answer:
+      'SEO Local, Google Meu Negocio e consultoria SEO costumam ser os pontos de partida mais consistentes.'
+  },
+  {
+    question: 'Uma landing local em Campinas faz sentido?',
+    answer:
+      'Sim, desde que exista servico principal, nicho valido e intencao comercial real sustentando a combinacao.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<CityLayout
+  title="AUDITSEO em Campinas | SEO Local, IA e Estrutura Comercial"
+  description="Pagina local da AUDITSEO para Campinas: SEO local, descoberta regional, estrutura comercial e conexao entre servicos, cidade e nicho."
+  canonicalPath="/cidades/campinas/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Cidades', path: '/cidades/' },
+    { label: 'Campinas', path: '/cidades/campinas/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/cidades/">Cidades</a>
+      <span>›</span>
+      <span class="current">Campinas</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Cobertura em Campinas</span>
+        <h1 class="ee-page-title">
+          SEO E IA EM <span class="accent">CAMPINAS</span> COM ESCALA E LEITURA REGIONAL
+        </h1>
+        <p class="ee-page-subtitle">
+          Para empresas de Campinas, a pagina local precisa equilibrar
+          <strong> descoberta regional</strong>, <strong>autoridade</strong> e
+          <strong> conversao objetiva</strong>, sem importar o discurso de Sao Paulo de forma
+          mecanica.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">Busca Regional</span>
+          <span class="ee-page-highlight">SEO Local</span>
+          <span class="ee-page-highlight">Escala com Criterio</span>
+          <span class="ee-page-highlight">Mensagem Enxuta</span>
+        </div>
+      </div>
+
+      <aside class="ee-page-hero-card">
+        <h2>Entradas mais aderentes</h2>
+        <p>
+          Em Campinas, a combinacao mais consistente costuma passar por SEO Local, GBP e paginas
+          comerciais com recorte regional bem resolvido.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/seo-local/">Ver SEO Local</a>
+          <a href="/servicos/google-meu-negocio/">Ver Google Meu Negocio</a>
+          <a href="/contato/">Solicitar diagnostico</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Prioridades</span>
+        <h2 class="ee-page-section-title">O QUE COSTUMA PESAR MAIS EM CAMPINAS</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {focusAreas.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-cta">
+      <div class="ee-page-cta-box">
+        <span class="ee-page-section-badge">Proximo passo</span>
+        <h2 class="ee-page-section-title">QUER TESTAR UMA ESTRUTURA LOCAL EM CAMPINAS?</h2>
+        <p class="ee-page-cta-copy">
+          Se o negocio depende de descoberta regional e pagina comercial forte, a melhor entrada e
+          um diagnostico que ligue SEO local, arquitetura e potencial de landing page.
+        </p>
+        <div class="ee-page-cta-actions">
+          <button class="ee-page-primary" type="button" data-open-cta-modal>Solicitar diagnostico</button>
+          <a class="ee-page-secondary" href="/servicos/seo-local/">Ver SEO Local</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ee-page-section ee-page-faq">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE A FRENTE EM CAMPINAS</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</CityLayout>

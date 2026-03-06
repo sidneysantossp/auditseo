@@ -1,0 +1,21 @@
+---
+import '../../styles/seo-local-parity.css';
+import SeoLocalLegacyContent from '../../components/SeoLocalLegacyContent.astro';
+import LegacyContentEnhancements from '../../components/LegacyContentEnhancements.astro';
+import ServiceDetailLayout from '../../layouts/ServiceDetailLayout.astro';
+---
+<ServiceDetailLayout
+  title="SEO Local"
+  description="Consultoria especializada em SEO Local para ampliar presenca no Google Maps, Local Pack e buscas com intencao geografica, com foco em entidade, NAP e conversao regional."
+  canonicalPath="/servicos/seo-local/"
+  imagePath="/images/google-meu-negocio.jpeg"
+  pageType="Service"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Servicos', path: '/servicos/' },
+    { label: 'SEO Local', path: '/servicos/seo-local/' }
+  ]}
+>
+  <SeoLocalLegacyContent />
+  <LegacyContentEnhancements />
+</ServiceDetailLayout>

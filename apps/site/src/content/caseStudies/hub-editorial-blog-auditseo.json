@@ -1,0 +1,129 @@
+{
+  "slug": "hub-editorial-blog-auditseo",
+  "title": "Reorganizacao do Blog AUDITSEO em Hubs de Cluster",
+  "seoTitle": "Reorganizacao do Blog AUDITSEO em Hubs de Cluster | Case AUDITSEO",
+  "description": "Case interno sobre a reestruturacao do blog AUDITSEO em categorias reais, schemas coerentes, ligacao com servicos e auditoria do HTML final.",
+  "badge": "Case Editorial Publico",
+  "statusLabel": "Publico e auditavel",
+  "heroSubtitle": "O blog deixou de ser um conjunto de artigos soltos e passou a operar como base editorial real: categorias nativas, ligacao com servicos, taxonomia explicita e QA estrutural do output.",
+  "typeLabel": "Arquitetura editorial",
+  "durationLabel": "Reorganizacao em ciclos",
+  "scopeLabel": "Blog e artigos canonicos",
+  "evidenceNote": "A prova pode ser validada nas rotas do blog, nas categorias publicadas, nos schemas gerados e na navegacao interna do cluster.",
+  "summaryPoints": [
+    "Consolidar o acervo em categorias editoriais reais.",
+    "Eliminar duplicidade de slug, title, description e canonical.",
+    "Fortalecer a relacao entre artigo, categoria, servico, nicho e cidade.",
+    "Criar uma esteira que audita o HTML gerado, nao apenas o codigo-fonte."
+  ],
+  "metrics": [
+    {
+      "value": "6",
+      "label": "Categorias reais",
+      "copy": "AI Overviews, LLM SEO, SEO Tecnico, Prompt Optimization, Analytics e Estrategia."
+    },
+    {
+      "value": "59",
+      "label": "Artigos canonicos",
+      "copy": "O acervo foi consolidado em artigos realmente canonicos, com aliases tratados separadamente."
+    },
+    {
+      "value": "2",
+      "label": "Camadas de QA",
+      "copy": "Uma auditoria editorial da taxonomia e outra auditoria do HTML final gerado."
+    },
+    {
+      "value": "1",
+      "label": "Feed editorial",
+      "copy": "O blog passou a expor feed proprio e camada llms alinhada ao restante da arquitetura."
+    }
+  ],
+  "overviewCards": [
+    {
+      "title": "Sintoma",
+      "copy": "O acervo tinha valor tematico, mas a arquitetura nao deixava isso claro para buscadores, leitores ou sistemas de IA."
+    },
+    {
+      "title": "Risco",
+      "copy": "Sem categoria forte, canibalizacao e linkagem frouxa, o blog tende a perder forca como ativo de autoridade e descoberta."
+    },
+    {
+      "title": "Intervencao",
+      "copy": "A reorganizacao foi feita por taxonomia explicita, hubs por categoria, schema proprio do blog e linkagem orientada a cluster."
+    }
+  ],
+  "challengePoints": [
+    "Artigos sem organizacao estrutural suficiente para funcionar como hub editorial.",
+    "Paginas de categoria sem papel claro no grafo do site.",
+    "Necessidade de tratar o blog como fonte de referencia para servicos e IA, nao como apendice do site."
+  ],
+  "interventionSteps": [
+    "Mapeamento do acervo e definicao da taxonomia editorial.",
+    "Criacao de hubs de categoria com intro editorial, pilares, FAQ e links para servicos.",
+    "Normalizacao de slugs duplicados, aliases canonicos e metadata.",
+    "Reforco de Blog, CollectionPage, ItemList, DefinedTerm, BlogPosting, Person e FAQPage.",
+    "Criacao de auditoria automatica da saida HTML para garantir canonical, schema e links internos."
+  ],
+  "outcomes": [
+    {
+      "title": "Hub editorial legivel",
+      "copy": "O blog ganhou navegacao por categoria, relacao com servicos e pagina principal mais coerente para humanos e mecanismos."
+    },
+    {
+      "title": "Menos ambiguidade semantica",
+      "copy": "Cada artigo passou a carregar contexto do cluster e a categoria ganhou papel semantico real no schema do site."
+    },
+    {
+      "title": "Base para outreach e distribuicao",
+      "copy": "Com o acervo organizado, o blog ficou pronto para ser distribuido como recurso de referencia sem parecer repositiorio improvisado."
+    }
+  ],
+  "lessons": [
+    "Blog forte nao e volume; e taxonomia, canonicalizacao, cluster e contexto comercial bem resolvidos.",
+    "Schema bom nao compensa arquitetura ruim, mas amplifica uma arquitetura editorial coerente.",
+    "Auditar o HTML final evita confiar demais em boas intencoes do codigo-fonte."
+  ],
+  "serviceLinks": [
+    {
+      "label": "Consultoria SEO",
+      "path": "/servicos/consultoria-seo/"
+    },
+    {
+      "label": "LLM Brand Presence",
+      "path": "/servicos/llm-brand-presence/"
+    },
+    {
+      "label": "AI Overview Optimization",
+      "path": "/servicos/ai-overview-optimization/"
+    }
+  ],
+  "articleLinks": [
+    {
+      "label": "Blog AUDITSEO",
+      "path": "/blog/"
+    },
+    {
+      "label": "Categoria SEO Tecnico",
+      "path": "/blog/categoria/seo-tecnico/"
+    },
+    {
+      "label": "Estrategia SEO para IA",
+      "path": "/blog/estrategia-seo-ia/"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Por que tratar o blog como hub e nao como lista de artigos?",
+      "answer": "Porque a autoridade editorial depende de estrutura, cluster e contexto. Sem isso, o acervo fica disperso e perde capacidade de reforcar servicos e entidades."
+    },
+    {
+      "question": "O schema do blog foi feito so para rich result?",
+      "answer": "Nao. Ele foi pensado para organizar entidades, categorias, autoria, breadcrumb e relacao entre hubs e artigos."
+    },
+    {
+      "question": "A reorganizacao reduz o risco de canibalizacao?",
+      "answer": "Sim. A taxonomia explicita e os hubs por categoria ajudam a separar intencoes, consolidar pilares e evitar repeticao sem contexto."
+    }
+  ],
+  "order": 2
+}

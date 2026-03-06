@@ -1,0 +1,62 @@
+---
+import { siteMetadata } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+  imagePath?: string;
+  robotsContent?: string;
+  ogType?: 'website' | 'article';
+  authorName?: string;
+}
+
+const {
+  title,
+  description = siteMetadata.defaultDescription,
+  canonicalPath = '/',
+  noindex = false,
+  imagePath = siteMetadata.defaultOgImagePath,
+  robotsContent,
+  ogType = 'website',
+  authorName = siteMetadata.brandName
+} = Astro.props as Props;
+
+const canonicalUrl = new URL(canonicalPath, siteMetadata.siteUrl).toString();
+const imageUrl = new URL(imagePath, siteMetadata.siteUrl).toString();
+const pageTitle = title
+  ? title.includes(siteMetadata.brandName)
+    ? title
+    : `${title} | ${siteMetadata.brandName}`
+  : siteMetadata.defaultTitle;
+const robots = robotsContent ?? (noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large');
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={robots} />
+<meta name="author" content={authorName} />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="alternate" hreflang="pt-BR" href={canonicalUrl} />
+<link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta property="og:type" content={ogType} />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content={siteMetadata.brandName} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={imageUrl} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/>

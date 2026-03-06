@@ -1,0 +1,21 @@
+---
+import '../../styles/google-meu-negocio-parity.css';
+import GoogleMeuNegocioLegacyContent from '../../components/GoogleMeuNegocioLegacyContent.astro';
+import LegacyContentEnhancements from '../../components/LegacyContentEnhancements.astro';
+import ServiceDetailLayout from '../../layouts/ServiceDetailLayout.astro';
+---
+<ServiceDetailLayout
+  title="Google Meu Negocio"
+  description="Gestao profissional de Google Meu Negocio para transformar seu perfil no Maps e na Busca em um canal consistente de descoberta, prova social e conversao local."
+  canonicalPath="/servicos/google-meu-negocio/"
+  imagePath="/images/google-meu-negocio.jpeg"
+  pageType="Service"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Servicos', path: '/servicos/' },
+    { label: 'Google Meu Negocio', path: '/servicos/google-meu-negocio/' }
+  ]}
+>
+  <GoogleMeuNegocioLegacyContent />
+  <LegacyContentEnhancements />
+</ServiceDetailLayout>

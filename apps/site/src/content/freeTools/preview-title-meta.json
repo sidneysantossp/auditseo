@@ -1,0 +1,98 @@
+{
+  "slug": "preview-title-meta",
+  "title": "Preview de Title e Meta Description",
+  "seoTitle": "Preview de Title e Meta Description | Ferramenta Gratuita AUDITSEO",
+  "description": "Ferramenta gratuita da AUDITSEO para testar title tag, meta description e URL antes de publicar paginas, artigos e clusters.",
+  "badge": "Ferramenta Gratuita",
+  "statusLabel": "Ativa",
+  "heroSubtitle": "Use este simulador para testar title, meta description e URL antes de publicar. A ferramenta acelera revisao editorial e reduz erro de snippet em paginas comerciais e artigos.",
+  "kind": "snippet-preview",
+  "categoryLabel": "Snippet e SERP",
+  "outputLabel": "Preview visual",
+  "summaryPoints": [
+    "Visualizar rapidamente como title, URL e description podem aparecer na SERP.",
+    "Calibrar promessa editorial, palavra-chave principal e clareza da pagina.",
+    "Evitar revisao tardia depois que a URL ja esta publicada e indexada."
+  ],
+  "metrics": [
+    {
+      "value": "60",
+      "label": "Caracteres de title",
+      "copy": "Faixa pratica para manter boa legibilidade no snippet."
+    },
+    {
+      "value": "155",
+      "label": "Caracteres de description",
+      "copy": "Referencia comum para leitura equilibrada em desktop e mobile."
+    },
+    {
+      "value": "0",
+      "label": "Dependencia de backend",
+      "copy": "O preview funciona no navegador e nao precisa de processamento externo."
+    },
+    {
+      "value": "1",
+      "label": "Objetivo",
+      "copy": "Reduzir atrito entre redacao, SEO e aprovacao antes da publicacao."
+    }
+  ],
+  "overviewCards": [
+    {
+      "title": "Quando usar",
+      "copy": "Antes de publicar paginas de servico, artigos, cidades, nichos ou landings."
+    },
+    {
+      "title": "Quem usa",
+      "copy": "SEO, conteudo, growth e desenvolvimento podem usar a mesma referencia para aprovar snippet."
+    },
+    {
+      "title": "Limite",
+      "copy": "O Google pode reescrever snippets, mas um draft bem calibrado reduz erro editorial na origem."
+    }
+  ],
+  "useCases": [
+    "Revisar titles de paginas comerciais antes do deploy.",
+    "Testar metas de artigos do blog e hubs de categoria.",
+    "Comparar variantes de copy antes de fechar o canonical title."
+  ],
+  "howItWorks": [
+    "Preencha title, description e URL.",
+    "Veja a leitura aproximada do snippet organico.",
+    "Ajuste tamanho, promessa e contexto ate encontrar uma versao mais clara."
+  ],
+  "serviceLinks": [
+    {
+      "label": "Auditoria SEO",
+      "path": "/servicos/auditoria-seo/"
+    },
+    {
+      "label": "Consultoria SEO",
+      "path": "/servicos/consultoria-seo/"
+    }
+  ],
+  "articleLinks": [
+    {
+      "label": "Guia definitivo de SEO 2026",
+      "path": "/blog/guia-definitivo-seo-2026/"
+    },
+    {
+      "label": "Prompt Optimization",
+      "path": "/blog/o-que-e-prompt-optimization/"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "A ferramenta mostra exatamente o snippet que o Google vai exibir?",
+      "answer": "Nao. Ela entrega uma aproximacao util para revisar copy e tamanho. O Google ainda pode reescrever elementos conforme a consulta."
+    },
+    {
+      "question": "Esse preview serve so para blog?",
+      "answer": "Nao. Ele serve para paginas comerciais, clusters locais, artigos e qualquer URL que precise de title e description bem calibrados."
+    },
+    {
+      "question": "Os dados inseridos sao enviados para algum servidor?",
+      "answer": "Nao. O simulador roda no navegador e nao depende de persistencia para gerar o preview."
+    }
+  ],
+  "order": 1
+}

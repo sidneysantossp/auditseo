@@ -1,0 +1,299 @@
+---
+import { getBlogCategoryNavigation } from '../data/blog-taxonomy';
+import type { BlogArchivePage, LegacyBlogArticle } from '../lib/legacy-blog';
+
+interface BreadcrumbItem {
+  label: string;
+  path?: string;
+}
+
+interface LinkItem {
+  label: string;
+  path: string;
+}
+
+interface IntroCard {
+  title: string;
+  copy: string;
+}
+
+interface ClusterCard {
+  title: string;
+  copy: string;
+  path: string;
+  statLabel?: string;
+}
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  breadcrumbs: BreadcrumbItem[];
+  badge: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  activeCategorySlug?: string | null;
+  featuredArticle?: LegacyBlogArticle | null;
+  posts: LegacyBlogArticle[];
+  articleCountLabel: string;
+  pageLabel: string;
+  sectionTitle: string;
+  introCards?: IntroCard[];
+  clusterCards?: ClusterCard[];
+  pillarArticles?: LegacyBlogArticle[];
+  resourceLinks?: LinkItem[];
+  faqs?: FaqItem[];
+  pagination?: BlogArchivePage | null;
+  includeNewsletter?: boolean;
+}
+
+const {
+  breadcrumbs,
+  badge,
+  heroTitle,
+  heroSubtitle,
+  activeCategorySlug = null,
+  featuredArticle = null,
+  posts,
+  articleCountLabel,
+  pageLabel,
+  sectionTitle,
+  introCards = [],
+  clusterCards = [],
+  pillarArticles = [],
+  resourceLinks = [],
+  faqs = [],
+  pagination = null,
+  includeNewsletter = true
+} = Astro.props as Props;
+
+const categories = getBlogCategoryNavigation();
+---
+<div class="breadcrumbs">
+  {breadcrumbs.map((item, index) => (
+    <Fragment>
+      {item.path && index < breadcrumbs.length - 1 ? <a href={item.path}>{item.label}</a> : <span class:list={{ current: index === breadcrumbs.length - 1 }}>{item.label}</span>}
+      {index < breadcrumbs.length - 1 && <span>›</span>}
+    </Fragment>
+  ))}
+</div>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-badge">{badge}</span>
+    <h1 class="hero-title" set:html={heroTitle}></h1>
+    <p class="hero-subtitle">{heroSubtitle}</p>
+  </div>
+</section>
+
+<nav class="categories-bar" aria-label="Categorias do blog">
+  <div class="categories-content">
+    <a href="/blog/" class:list={['category-tag', { active: !activeCategorySlug }]}>Todos</a>
+    {categories.map((category) => (
+      <a
+        href={category.path}
+        class:list={['category-tag', { active: activeCategorySlug === category.slug }]}
+        aria-current={activeCategorySlug === category.slug ? 'page' : undefined}
+      >
+        {category.title}
+      </a>
+    ))}
+  </div>
+</nav>
+
+{introCards.length > 0 && (
+  <section class="section blog-intro-section">
+    <div class="blog-intro-grid">
+      {introCards.map((card) => (
+        <article class="blog-intro-card">
+          <h2>{card.title}</h2>
+          <p>{card.copy}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+{clusterCards.length > 0 && (
+  <section class="section blog-cluster-section">
+    <div class="section-header">
+      <div>
+        <span class="section-label">Arquitetura por categoria</span>
+        <h2 class="section-title">HUBS EDITORIAIS DO BLOG</h2>
+      </div>
+    </div>
+
+    <div class="blog-cluster-grid">
+      {clusterCards.map((card) => (
+        <a class="blog-cluster-card" href={card.path}>
+          <span class="blog-cluster-stat">{card.statLabel ?? 'Categoria editorial'}</span>
+          <strong>{card.title}</strong>
+          <p>{card.copy}</p>
+          <span>Abrir hub →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
+
+{resourceLinks.length > 0 && (
+  <section class="section blog-resource-section">
+    <div class="section-header">
+      <div>
+        <span class="section-label">Conexoes do cluster</span>
+        <h2 class="section-title">SERVICOS E PAGINAS RELACIONADAS</h2>
+      </div>
+    </div>
+
+    <div class="blog-resource-grid">
+      {resourceLinks.map((link) => (
+        <a class="blog-resource-card" href={link.path}>
+          <strong>{link.label}</strong>
+          <span>Abrir rota relacionada</span>
+        </a>
+      ))}
+    </div>
+  </section>
+)}
+
+{pillarArticles.length > 0 && (
+  <section class="section blog-pillar-section">
+    <div class="section-header">
+      <div>
+        <span class="section-label">Leituras essenciais</span>
+        <h2 class="section-title">ROTAS PILARES DO CLUSTER</h2>
+      </div>
+    </div>
+
+    <div class="blog-pillar-grid">
+      {pillarArticles.map((article) => (
+        <article class="blog-pillar-card">
+          <span>{article.category.shortTitle}</span>
+          <h3><a href={article.canonicalPath}>{article.title}</a></h3>
+          <p>{article.excerpt}</p>
+          <div class="blog-pillar-meta">
+            <span>{article.readingTime} min</span>
+            <span>{article.publishedLabel}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+{featuredArticle && (
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <span class="section-label">Destaque</span>
+        <h2 class="section-title">ARTIGO EM DESTAQUE</h2>
+      </div>
+    </div>
+
+    <article class="featured-post">
+      <div class="featured-image">
+        <div class="featured-badge">Guia Completo</div>
+        <img src={featuredArticle.imagePath} alt={featuredArticle.title} loading="lazy" />
+      </div>
+      <div class="featured-content">
+        <span class="featured-category">{featuredArticle.category.title}</span>
+        <h3 class="featured-title"><a href={featuredArticle.canonicalPath}>{featuredArticle.title}</a></h3>
+        <p class="featured-excerpt">{featuredArticle.excerpt}</p>
+        <div class="featured-meta">
+          <span>{featuredArticle.readingTime} min de leitura</span>
+          <span>{featuredArticle.publishedLabel}</span>
+        </div>
+        <div class="featured-cta">
+          <a href={featuredArticle.canonicalPath}>Ler artigo completo →</a>
+        </div>
+      </div>
+    </article>
+  </section>
+)}
+
+<section class="section" style="padding-top:0">
+  <div class="section-header">
+    <div>
+      <span class="section-label">{articleCountLabel}</span>
+      <h2 class="section-title">{sectionTitle}</h2>
+    </div>
+    <span class="section-link">{pageLabel}</span>
+  </div>
+
+  <div class="posts-grid">
+    {posts.map((article) => (
+      <article class="post-card">
+        <a class="post-image" href={article.canonicalPath} aria-label={`Abrir ${article.title}`}>
+          <img src={article.imagePath} alt={article.title} loading="lazy" />
+          <span class="post-category">{article.category.shortTitle}</span>
+        </a>
+        <div class="post-content">
+          <h3 class="post-title"><a href={article.canonicalPath}>{article.title}</a></h3>
+          <p class="post-excerpt">{article.excerpt}</p>
+          <div class="post-meta"><span>{article.readingTime} min</span><span>{article.publishedLabel}</span></div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  {pagination && pagination.totalPages > 1 && (
+    <div class="pagination">
+      {pagination.hasPreviousPage && pagination.previousPagePath ? (
+        <a href={pagination.previousPagePath}>← Anterior</a>
+      ) : (
+        <span class="disabled">← Anterior</span>
+      )}
+
+      {pagination.pageLinks.map((link) =>
+        link.isCurrent ? (
+          <span class="current">{link.label}</span>
+        ) : (
+          <a href={link.path}>{link.label}</a>
+        )
+      )}
+
+      {pagination.hasNextPage && pagination.nextPagePath ? (
+        <a href={pagination.nextPagePath}>Proxima →</a>
+      ) : (
+        <span class="disabled">Proxima →</span>
+      )}
+    </div>
+  )}
+</section>
+
+{includeNewsletter && (
+  <section class="newsletter">
+    <div class="newsletter-content">
+      <h2 class="newsletter-title">FIQUE ATUALIZADO</h2>
+      <p class="newsletter-desc">Receba os melhores insights sobre SEO e AI diretamente no seu e-mail. Sem spam, apenas conteudo util.</p>
+      <form class="newsletter-form" id="newsletterForm" action="#" method="POST">
+        <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Seu melhor e-mail" required />
+        <button type="submit" class="newsletter-btn" id="newsletterBtn"><span class="btn-text">Inscrever</span><span class="btn-loading" style="display:none">Enviando...</span></button>
+      </form>
+      <div id="newsletterSuccess" style="display:none;margin-top:1.25rem;font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:1px;color:var(--accent-gold);text-transform:uppercase;">Inscricao recebida. Vamos avisar voce sobre os proximos conteudos.</div>
+    </div>
+  </section>
+)}
+
+{faqs.length > 0 && (
+  <section class="section blog-faq-section">
+    <div class="section-header">
+      <div>
+        <span class="section-label">FAQ Editorial</span>
+        <h2 class="section-title">PERGUNTAS FREQUENTES</h2>
+      </div>
+    </div>
+
+    <div class="blog-faq-list">
+      {faqs.map((item) => (
+        <article class="blog-faq-card">
+          <h3>{item.question}</h3>
+          <p>{item.answer}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+)}

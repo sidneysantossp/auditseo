@@ -1,0 +1,198 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import InstitutionalLayout from '../../layouts/InstitutionalLayout.astro';
+
+const focusBlocks = [
+  {
+    title: 'Marketing juridico informativo',
+    copy:
+      'O conteudo precisa ser util e preciso, sem tom promocional inadequado nem promessas que criem risco regulatorio.'
+  },
+  {
+    title: 'Autoridade topical por area',
+    copy:
+      'Escritorios ganham mais quando organizam areas de atuacao, perguntas recorrentes e paginas com contexto juridico claro.'
+  },
+  {
+    title: 'Busca qualificada e contato',
+    copy:
+      'A jornada comercial precisa ligar tema, area do direito, cidade e formulario de contato com baixa friccao.'
+  }
+];
+
+const checklist = [
+  'Arquitetura por area de atuacao e intencao de busca',
+  'Conteudo informativo dentro das regras da OAB',
+  'Paginas comerciais para contato e captacao passiva',
+  'Reforco de autoridade editorial e sinalizacao institucional'
+];
+
+const faqs = [
+  {
+    question: 'SEO para advogados e compativel com as regras da OAB?',
+    answer:
+      'Sim, quando a estrategia privilegia informacao, descoberta organica e clareza de servico, sem promessas indevidas ou captacao agressiva.'
+  },
+  {
+    question: 'O escritorio precisa ter uma pagina para cada area do direito?',
+    answer:
+      'Nem sempre. O desenho depende da profundidade da atuacao e da existencia de demanda real. O importante e evitar paginas vazias ou repetidas.'
+  },
+  {
+    question: 'Quais servicos da AUDITSEO se conectam a esse nicho?',
+    answer:
+      'Principalmente consultoria SEO, auditoria SEO e pagina institucional/comercial orientada para areas de atuacao e descoberta local.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<InstitutionalLayout
+  title="SEO para Escritorios de Advocacia | AUDITSEO"
+  description="Pagina setorial da AUDITSEO para escritorios de advocacia: SEO informativo, estrutura comercial, descoberta local e autoridade editorial dentro das regras do marketing juridico."
+  canonicalPath="/nichos/escritorios-advocacia/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Nichos', path: '/nichos/' },
+    { label: 'Escritorios de Advocacia', path: '/nichos/escritorios-advocacia/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/nichos/">Nichos</a>
+      <span>›</span>
+      <span class="current">Escritorios de Advocacia</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Marketing Juridico Estruturado</span>
+        <h1 class="ee-page-title">
+          SEO PARA <span class="accent">ESCRITORIOS DE ADVOCACIA</span> COM CONTEXTO E CRITERIO
+        </h1>
+        <p class="ee-page-subtitle">
+          Escritorios nao precisam de excesso de volume. Precisam de
+          <strong> autoridade editorial</strong>, <strong>paginas por area</strong>,
+          <strong> descoberta qualificada</strong> e uma camada institucional que transmita
+          criterio tecnico e juridico com sobriedade.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">Marketing Juridico</span>
+          <span class="ee-page-highlight">Areas de Atuacao</span>
+          <span class="ee-page-highlight">SEO Informativo</span>
+          <span class="ee-page-highlight">Contato Qualificado</span>
+        </div>
+      </div>
+
+      <aside class="ee-page-hero-card">
+        <h2>Onde esse nicho costuma travar</h2>
+        <p>
+          Geralmente em paginas genericas, falta de organizacao por area do direito e textos que
+          nao ajudam o usuario a entender quando deve falar com o escritorio.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/consultoria-seo/">Ver consultoria SEO</a>
+          <a href="/servicos/auditoria-seo/">Ver auditoria SEO</a>
+          <a href="/contato/">Solicitar diagnostico</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo da pagina setorial de advocacia">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Tom correto</div>
+        <p class="ee-page-stat-copy">Informativo, claro e comercial sem ultrapassar o limite.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">3</div>
+        <div class="ee-page-stat-label">Bases da estrutura</div>
+        <p class="ee-page-stat-copy">Area, contexto, confianca institucional.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">0</div>
+        <div class="ee-page-stat-label">Espaco para exagero</div>
+        <p class="ee-page-stat-copy">Promessa indevida enfraquece marca e risco regulatorio.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">100%</div>
+        <div class="ee-page-stat-label">Dependencia de clareza</div>
+        <p class="ee-page-stat-copy">No juridico, a mensagem certa vale mais que volume disperso.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Pontos criticos</span>
+        <h2 class="ee-page-section-title">O QUE A AUDITSEO PRIORIZA NESSE SEGMENTO</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {focusBlocks.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Escopo</span>
+        <h2 class="ee-page-section-title">ENTREGAS MAIS COMUNS PARA ESCRITORIOS</h2>
+      </div>
+      <div class="ee-page-grid two">
+        <article class="ee-page-card">
+          <h3>Frentes de trabalho</h3>
+          <ul class="ee-page-checklist">
+            {checklist.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-card">
+          <h3>Encaminhamento comercial</h3>
+          <p>
+            Quando o escritorio ja tem demanda, mas nao consegue transformar busca em contato
+            qualificado, a prioridade costuma ser ajustar arquitetura comercial, hierarquia e
+            confianca institucional.
+          </p>
+          <div class="ee-page-links">
+            <a href="/agencia-de-seo/">Entender a agencia</a>
+            <a href="/sobre/">Conhecer a AUDITSEO</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section ee-page-faq">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS DE ESCRITORIOS DE ADVOCACIA</h2>
+      </div>
+      <div class="ee-page-faq-list">
+        {faqs.map((item) => (
+          <article class="ee-page-faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</InstitutionalLayout>

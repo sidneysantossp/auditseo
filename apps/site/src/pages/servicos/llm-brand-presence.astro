@@ -1,0 +1,21 @@
+---
+import '../../styles/llm-brand-presence-parity.css';
+import LlmBrandPresenceLegacyContent from '../../components/LlmBrandPresenceLegacyContent.astro';
+import LegacyContentEnhancements from '../../components/LegacyContentEnhancements.astro';
+import ServiceDetailLayout from '../../layouts/ServiceDetailLayout.astro';
+---
+<ServiceDetailLayout
+  title="LLM Brand Presence"
+  description="Garanta que sua marca seja citada e recomendada por ChatGPT, Claude, Perplexity e Gemini com uma estrategia de LLM Brand Presence orientada a estrutura, entidade e autoridade."
+  canonicalPath="/servicos/llm-brand-presence/"
+  imagePath="/images/chatgpt.jpeg"
+  pageType="Service"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Servicos', path: '/servicos/' },
+    { label: 'LLM Brand Presence', path: '/servicos/llm-brand-presence/' }
+  ]}
+>
+  <LlmBrandPresenceLegacyContent />
+  <LegacyContentEnhancements />
+</ServiceDetailLayout>

@@ -1,0 +1,21 @@
+---
+import '../../styles/ai-overview-parity.css';
+import AiOverviewLegacyContent from '../../components/AiOverviewLegacyContent.astro';
+import LegacyContentEnhancements from '../../components/LegacyContentEnhancements.astro';
+import ServiceDetailLayout from '../../layouts/ServiceDetailLayout.astro';
+---
+<ServiceDetailLayout
+  title="AI Overview Optimization"
+  description="Servico de AI Overview Optimization para aumentar a chance da sua marca ser citada nas respostas de IA do Google com conteudo estruturado, E-E-A-T e monitoramento continuo."
+  canonicalPath="/servicos/ai-overview-optimization/"
+  imagePath="/images/ai-overviews.jpg"
+  pageType="Service"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Servicos', path: '/servicos/' },
+    { label: 'AI Overview Optimization', path: '/servicos/ai-overview-optimization/' }
+  ]}
+>
+  <AiOverviewLegacyContent />
+  <LegacyContentEnhancements />
+</ServiceDetailLayout>

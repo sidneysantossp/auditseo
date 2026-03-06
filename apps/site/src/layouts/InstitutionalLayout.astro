@@ -1,0 +1,9 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const props = Astro.props;
+---
+<BaseLayout {...props}>
+  <slot name="head" slot="head" />
+  <slot />
+</BaseLayout>

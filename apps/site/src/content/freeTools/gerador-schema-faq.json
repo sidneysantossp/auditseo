@@ -1,0 +1,98 @@
+{
+  "slug": "gerador-schema-faq",
+  "title": "Gerador de FAQ Schema em JSON-LD",
+  "seoTitle": "Gerador de FAQ Schema em JSON-LD | Ferramenta Gratuita AUDITSEO",
+  "description": "Ferramenta gratuita da AUDITSEO para montar FAQ schema em JSON-LD com perguntas e respostas limpas, prontas para validacao e publicacao.",
+  "badge": "Ferramenta Gratuita",
+  "statusLabel": "Ativa",
+  "heroSubtitle": "Monte blocos de FAQ em JSON-LD sem depender de ferramenta externa. A proposta aqui e gerar markup limpo, coerente com o conteudo visivel e facil de revisar antes do deploy.",
+  "kind": "faq-schema-generator",
+  "categoryLabel": "Schema e markup",
+  "outputLabel": "JSON-LD pronto",
+  "summaryPoints": [
+    "Gerar FAQ schema em JSON-LD a partir de perguntas e respostas reais.",
+    "Reduzir erro de aspas, virgulas e estrutura invalida no markup.",
+    "Aproximar conteudo editorial e implementacao tecnica em uma unica tela."
+  ],
+  "metrics": [
+    {
+      "value": "1",
+      "label": "Formato de saida",
+      "copy": "A ferramenta gera JSON-LD pronto para insercao no head ou no template."
+    },
+    {
+      "value": "0",
+      "label": "Dependencia externa",
+      "copy": "O processamento acontece localmente no navegador."
+    },
+    {
+      "value": "3+",
+      "label": "Pares recomendados",
+      "copy": "A ferramenta funciona com quantos pares voce quiser, mantendo a estrutura valida."
+    },
+    {
+      "value": "1",
+      "label": "Regra central",
+      "copy": "O FAQ schema precisa refletir exatamente o conteudo visivel da pagina."
+    }
+  ],
+  "overviewCards": [
+    {
+      "title": "Quando usar",
+      "copy": "Ao publicar FAQs em paginas de servico, hubs editoriais e artigos com bloco de pergunta-resposta."
+    },
+    {
+      "title": "O que ela evita",
+      "copy": "Markup quebrado, FAQ escondido no codigo e divergencia entre schema e texto visivel."
+    },
+    {
+      "title": "Como validar",
+      "copy": "Depois de gerar o JSON-LD, revise o texto e valide no fluxo tecnico da pagina."
+    }
+  ],
+  "useCases": [
+    "Criar FAQ schema para paginas de servico com objecoes comerciais.",
+    "Montar schema de hubs editoriais por categoria.",
+    "Padronizar entrega entre redacao e desenvolvimento."
+  ],
+  "howItWorks": [
+    "Adicione perguntas e respostas em blocos separados.",
+    "Veja o JSON-LD sendo montado em tempo real.",
+    "Copie o resultado e use no template da pagina, sempre espelhando o FAQ visivel."
+  ],
+  "serviceLinks": [
+    {
+      "label": "AI Overview Optimization",
+      "path": "/servicos/ai-overview-optimization/"
+    },
+    {
+      "label": "Auditoria SEO",
+      "path": "/servicos/auditoria-seo/"
+    }
+  ],
+  "articleLinks": [
+    {
+      "label": "Schema Markup para AI Overviews",
+      "path": "/blog/schema-markup-ai-overviews/"
+    },
+    {
+      "label": "FAQs otimizadas para IA",
+      "path": "/blog/faqs-otimizadas-ia/"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Posso gerar FAQ schema sem mostrar o FAQ na pagina?",
+      "answer": "Nao e a pratica correta. O schema deve refletir conteudo realmente visivel e util para o usuario na pagina."
+    },
+    {
+      "question": "A ferramenta valida automaticamente o rich result?",
+      "answer": "Ela gera o JSON-LD limpo. A validacao final deve entrar no fluxo tecnico de publicacao e checagem do markup."
+    },
+    {
+      "question": "Serve para blog e paginas comerciais?",
+      "answer": "Sim. O criterio principal e o FAQ fazer sentido editorial e estar coerente com a intencao da URL."
+    }
+  ],
+  "order": 2
+}

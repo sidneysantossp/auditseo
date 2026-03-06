@@ -1,0 +1,79 @@
+---
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/legacy-visual-parity.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import MobileMenu from '../components/MobileMenu.astro';
+import CtaModal from '../components/CtaModal.astro';
+import SeoHead from '../components/SeoHead.astro';
+import SchemaGraph from '../components/SchemaGraph.astro';
+import SiteShellScripts from '../components/SiteShellScripts.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  path: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  imagePath?: string;
+  pageType?: string;
+  noindex?: boolean;
+  robotsContent?: string;
+  ogType?: 'website' | 'article';
+  authorName?: string;
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  imagePath,
+  pageType = 'WebPage',
+  noindex = false,
+  robotsContent,
+  ogType,
+  authorName,
+  breadcrumbs = []
+} = Astro.props as Props;
+
+const currentPath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="pt-BR" dir="ltr">
+  <head>
+    <SeoHead
+      title={title}
+      description={description}
+      canonicalPath={canonicalPath}
+      imagePath={imagePath}
+      noindex={noindex}
+      robotsContent={robotsContent}
+      ogType={ogType}
+      authorName={authorName}
+    />
+    <SchemaGraph
+      title={title}
+      description={description}
+      canonicalPath={canonicalPath}
+      pageType={pageType}
+      breadcrumbs={breadcrumbs}
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Pular para o conteudo principal</a>
+    <Header currentPath={currentPath} />
+    <MobileMenu currentPath={currentPath} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <CtaModal />
+    <SiteShellScripts />
+  </body>
+</html>

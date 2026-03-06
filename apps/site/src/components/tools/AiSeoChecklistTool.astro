@@ -1,0 +1,144 @@
+<div class="ee-checklist-shell">
+  <div class="ee-checklist-groups" id="ai-seo-checklist-groups"></div>
+  <aside class="ee-tool-panel ee-checklist-summary-panel">
+    <div class="ee-tool-head">
+      <h3>Resumo da revisao</h3>
+      <span class="ee-tool-hint">Leitura operacional da pagina</span>
+    </div>
+    <div class="ee-checklist-score" id="ai-seo-checklist-score">0%</div>
+    <p id="ai-seo-checklist-status" class="ee-tool-notes">Marque os itens cumpridos para montar o resumo de cobertura.</p>
+    <div class="ee-tool-actions">
+      <button id="ai-seo-checklist-copy-button" type="button" class="ee-page-primary">Copiar resumo</button>
+      <button id="ai-seo-checklist-reset" type="button" class="ee-page-secondary">Limpar selecao</button>
+    </div>
+    <div class="ee-tool-output">
+      <pre id="ai-seo-checklist-output"></pre>
+    </div>
+    <div id="ai-seo-checklist-feedback" class="ee-tool-copy-feedback" aria-live="polite"></div>
+  </aside>
+</div>
+
+<script is:inline>
+  (() => {
+    const groupsRoot = document.getElementById('ai-seo-checklist-groups');
+    const scoreNode = document.getElementById('ai-seo-checklist-score');
+    const statusNode = document.getElementById('ai-seo-checklist-status');
+    const outputNode = document.getElementById('ai-seo-checklist-output');
+    const feedbackNode = document.getElementById('ai-seo-checklist-feedback');
+    const resetButton = document.getElementById('ai-seo-checklist-reset');
+    const copyButton = document.getElementById('ai-seo-checklist-copy-button');
+
+    if (!(groupsRoot instanceof HTMLElement) || !(scoreNode instanceof HTMLElement) || !(outputNode instanceof HTMLElement)) return;
+
+    const groups = [
+      {
+        title: 'Rastreabilidade',
+        items: [
+          'A URL tem canonical correto.',
+          'A pagina esta acessivel em HTML util sem depender de renderizacao critica.',
+          'Existe ligacao interna para a URL a partir de hubs relevantes.'
+        ]
+      },
+      {
+        title: 'Estrutura e semantica',
+        items: [
+          'A pagina tem H1 claro e blocos de resposta bem separados.',
+          'FAQ, listas ou definicoes aparecem de forma visivel quando fazem sentido.',
+          'As headings seguem uma hierarquia coerente para leitura humana e tecnica.'
+        ]
+      },
+      {
+        title: 'Confianca e entidade',
+        items: [
+          'A autoria ou a entidade responsavel esta clara na pagina.',
+          'Servicos, nichos ou cidade relacionados reforcam o mesmo contexto.',
+          'O schema da pagina reflete o conteudo que aparece para o usuario.'
+        ]
+      },
+      {
+        title: 'Reforco do cluster',
+        items: [
+          'A pagina aponta para rotas comerciais ou editoriais do mesmo cluster.',
+          'O CTA conversa com a intencao principal da URL.',
+          'Title e description estao coerentes com o conteudo principal da pagina.'
+        ]
+      }
+    ];
+
+    const render = () => {
+      groupsRoot.innerHTML = groups.map((group, groupIndex) => `
+        <section class="ee-tool-panel ee-checklist-group">
+          <div class="ee-tool-head">
+            <h3>${group.title}</h3>
+            <span class="ee-tool-hint">${group.items.length} itens</span>
+          </div>
+          <div class="ee-checklist-items">
+            ${group.items.map((item, itemIndex) => `
+              <label class="ee-checklist-item">
+                <input type="checkbox" data-group="${groupIndex}" data-item="${itemIndex}" />
+                <span>${item}</span>
+              </label>
+            `).join('')}
+          </div>
+        </section>
+      `).join('');
+
+      groupsRoot.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => checkbox.addEventListener('change', update));
+    };
+
+    const update = () => {
+      const checkboxes = Array.from(groupsRoot.querySelectorAll('input[type="checkbox"]'));
+      const checked = checkboxes.filter((checkbox) => checkbox.checked).length;
+      const total = checkboxes.length || 1;
+      const percentage = Math.round((checked / total) * 100);
+      scoreNode.textContent = `${percentage}%`;
+
+      const missing = [];
+      groups.forEach((group, groupIndex) => {
+        group.items.forEach((item, itemIndex) => {
+          const checkbox = groupsRoot.querySelector(`input[data-group="${groupIndex}"][data-item="${itemIndex}"]`);
+          if (!(checkbox instanceof HTMLInputElement) || checkbox.checked) return;
+          missing.push(`${group.title}: ${item}`);
+        });
+      });
+
+      const summary = [
+        `Cobertura geral: ${percentage}%`,
+        `Itens cumpridos: ${checked}/${total}`,
+        '',
+        missing.length > 0 ? 'Pendencias:' : 'Nenhuma pendencia identificada.',
+        ...missing.map((item) => `- ${item}`)
+      ].join('\n');
+
+      outputNode.textContent = summary;
+      if (statusNode instanceof HTMLElement) {
+        statusNode.textContent = percentage >= 80
+          ? 'Cobertura alta. Falta pouco para levar a URL a um estado mais seguro de publicacao.'
+          : percentage >= 50
+            ? 'Cobertura intermediaria. A pagina ja tem base, mas ainda existem pendencias relevantes.'
+            : 'Cobertura baixa. Vale revisar a fundacao tecnica e editorial antes de publicar ou escalar.';
+      }
+
+      if (feedbackNode instanceof HTMLElement) feedbackNode.textContent = '';
+    };
+
+    resetButton?.addEventListener('click', () => {
+      groupsRoot.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+      update();
+    });
+
+    copyButton?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(outputNode.textContent ?? '');
+        if (feedbackNode instanceof HTMLElement) feedbackNode.textContent = 'Resumo copiado para a area de transferencia.';
+      } catch {
+        if (feedbackNode instanceof HTMLElement) feedbackNode.textContent = 'Nao foi possivel copiar automaticamente. Copie o bloco manualmente.';
+      }
+    });
+
+    render();
+    update();
+  })();
+</script>

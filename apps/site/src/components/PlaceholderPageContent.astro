@@ -1,0 +1,58 @@
+---
+import Breadcrumb from './Breadcrumb.astro';
+import HeroBlock from './HeroBlock.astro';
+import SectionHeading from './SectionHeading.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  path?: string;
+}
+
+interface Props {
+  badge: string;
+  title: string;
+  subtitle: string;
+  breadcrumbs: BreadcrumbItem[];
+  checkpoints: string[];
+  nextSteps: string[];
+}
+
+const { badge, title, subtitle, breadcrumbs, checkpoints, nextSteps } = Astro.props as Props;
+---
+<div class="page-shell">
+  <div class="container-shell breadcrumb-shell">
+    <Breadcrumb items={breadcrumbs} />
+  </div>
+
+  <HeroBlock badge={badge} title={title} subtitle={subtitle} secondaryLabel="Voltar para a base" secondaryHref="/" />
+
+  <section class="section-shell">
+    <div class="container-shell">
+      <SectionHeading
+        eyebrow="STATUS"
+        title="Rota pronta para migracao de conteudo"
+        intro="A fundacao desta pagina ja usa o shell unico, metadata centralizada e o modal global da nova arquitetura."
+      />
+
+      <div class="foundation-grid foundation-grid-2">
+        <article class="foundation-card placeholder-panel">
+          <h3 class="foundation-card-title">O que ja existe nesta rota</h3>
+          <ul class="check-list">
+            {checkpoints.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+
+        <article class="foundation-card placeholder-panel">
+          <h3 class="foundation-card-title">Proximos passos da migracao</h3>
+          <ul class="check-list">
+            {nextSteps.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>

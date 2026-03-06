@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'Crimson Pro', Georgia, serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-top: 96px;
+}
+
+body.as-mobile-open {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+main {
+  display: block;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 10000;
+  background: var(--accent-red);
+  color: var(--bg-dark);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.container-shell {
+  width: min(100%, var(--shell-max-width));
+  margin: 0 auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 82px;
+  }
+
+  .container-shell {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}

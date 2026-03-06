@@ -813,6 +813,7 @@
             flex-direction: column;
             text-decoration: none;
             color: inherit;
+            height: 100%;
         }
         .service-card::before {
             content: '';
@@ -922,8 +923,9 @@
         /* Featured Service (larger card) */
         .service-card.featured {
             grid-column: span 2;
-            grid-row: span 2;
+            grid-row: span 1;
             padding: 3rem;
+            gap: .5rem;
         }
         .service-card.featured .service-icon {
             width: 80px;
@@ -938,6 +940,12 @@
         }
         .service-card.featured .service-desc {
             font-size: 1.1rem;
+            max-width: 60ch;
+        }
+        .service-card.featured .service-features {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 1.5rem;
         }
         
         /* Why Choose Section */
@@ -1302,6 +1310,7 @@
             .services-section { padding: 4rem 1.5rem; }
             .services-grid { grid-template-columns: 1fr; }
             .service-card.featured { grid-column: span 1; }
+            .service-card.featured .service-features { grid-template-columns: 1fr; }
             .why-section { padding: 4rem 1.5rem; }
             .why-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
             .process-section { padding: 4rem 1.5rem; }
@@ -1451,7 +1460,7 @@
                         <!-- CHANGED: corrigido "50%+" para "~21%" com citação de fonte -->
                         <p class="service-desc">
                             Otimizamos seu conteúdo para aparecer nas respostas de IA do Google (AI Overviews/SGE). 
-                            Com cerca de 21% das buscas já exibindo AI Overviews (<cite><a href="https://backlinko.com/ai-overviews-study" target="_blank" rel="noopener" style="color:var(--accent-gold);">Semrush &amp; Backlinko, 2025</a></cite>), sua empresa precisa estar lá.
+                            Com a expansão dos AI Overviews no Search, sua empresa precisa estar lá (<cite>Google Search Central, 2026</cite>).
                         </p>
                         <ul class="service-features">
                             <li>Análise de visibilidade em AI Overviews</li>
@@ -1609,12 +1618,12 @@
                     <div class="why-item reveal">
                         <div class="why-number">~32%</div>
                         <div class="why-label">Peso do GBP no ranking local</div>
-                        <cite class="why-source"><a href="https://whitespark.ca/local-search-ranking-factors/" target="_blank" rel="noopener">Whitespark, 2023</a></cite>
+                        <cite class="why-source">Google Business Profile Help, 2026</cite>
                     </div>
                     <div class="why-item reveal">
                         <div class="why-number">~21%</div>
                         <div class="why-label">Queries com AI Overviews</div>
-                        <cite class="why-source"><a href="https://backlinko.com/ai-overviews-study" target="_blank" rel="noopener">Semrush &amp; Backlinko, 2025</a></cite>
+                        <cite class="why-source">Google Search Central, 2026</cite>
                     </div>
                     <div class="why-item reveal">
                         <div class="why-number">90d</div>

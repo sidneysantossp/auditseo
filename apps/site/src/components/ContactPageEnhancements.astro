@@ -1,0 +1,55 @@
+---
+import { siteMetadata } from '../data/site';
+---
+<script is:inline define:vars={{ contactEndpoint: siteMetadata.forms.diagnosticEndpoint }}>
+  (() => {
+    const form = document.getElementById('contact-page-form');
+    const success = document.getElementById('contact-form-success');
+    const submitButton = document.getElementById('contact-form-submit');
+    const submitText = submitButton?.querySelector('[data-submit-text]');
+    const submitLoading = submitButton?.querySelector('[data-submit-loading]');
+
+    if (!(form instanceof HTMLFormElement) || !success || !(submitButton instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      submitButton.disabled = true;
+      if (submitText instanceof HTMLElement) submitText.hidden = true;
+      if (submitLoading instanceof HTMLElement) submitLoading.hidden = false;
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+      payload._subject = 'Novo contato pelo site - AUDITSEO';
+      payload._captcha = 'false';
+
+      try {
+        const response = await fetch(contactEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error('Falha ao enviar o formulario de contato.');
+        }
+
+        form.reset();
+        form.hidden = true;
+        success.hidden = false;
+      } catch (error) {
+        console.error(error);
+        window.alert('Nao foi possivel enviar agora. Tente novamente em instantes.');
+        submitButton.disabled = false;
+        if (submitText instanceof HTMLElement) submitText.hidden = false;
+        if (submitLoading instanceof HTMLElement) submitLoading.hidden = true;
+      }
+    });
+  })();
+</script>

@@ -1,0 +1,10 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+const props = Astro.props;
+---
+<BaseLayout {...props}>
+  <link rel="alternate" type="application/rss+xml" title="Feed do Blog AUDITSEO" href="/blog/feed.xml" slot="head" />
+  <slot name="head" slot="head" />
+  <slot />
+</BaseLayout>

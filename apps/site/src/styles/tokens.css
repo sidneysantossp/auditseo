@@ -1,0 +1,15 @@
+:root {
+  --bg-dark: #0a0a0a;
+  --bg-card: #111111;
+  --bg-panel: rgba(255, 255, 255, 0.03);
+  --accent-red: #e63946;
+  --accent-gold: #d4a574;
+  --accent-cream: #f4e8d8;
+  --gradient-fire: linear-gradient(135deg, #e63946 0%, #d4a574 100%);
+  --text-light: #f8f8f8;
+  --text-muted: #a9a9a9;
+  --text-dim: #666666;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --shadow-glow: 0 10px 30px rgba(230, 57, 70, 0.18);
+  --shell-max-width: 1400px;
+}

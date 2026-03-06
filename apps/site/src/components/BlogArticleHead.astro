@@ -1,0 +1,116 @@
+---
+import type { LegacyBlogArticle } from '../lib/legacy-blog';
+import { siteMetadata } from '../data/site';
+import { blogEntityId, buildBlogCategoryEntity, buildBlogEntity, getBlogCategoryEntityId, getBlogCategoryPath } from '../lib/blog-schema';
+
+interface Props {
+  article: LegacyBlogArticle;
+}
+
+const { article } = Astro.props as Props;
+const canonicalUrl = new URL(article.canonicalPath, siteMetadata.siteUrl).toString();
+const imageUrl = new URL(article.imagePath, siteMetadata.siteUrl).toString();
+const personId = `${article.author.url}#person`;
+const categoryEntityId = getBlogCategoryEntityId(article.category.slug);
+const categoryUrl = new URL(getBlogCategoryPath(article.category.slug), siteMetadata.siteUrl).toString();
+const organizationLogo = new URL(siteMetadata.logoPath, siteMetadata.siteUrl).toString();
+
+const graph: Record<string, unknown>[] = [
+  buildBlogEntity(),
+  buildBlogCategoryEntity(article.category),
+  {
+    '@type': 'Person',
+    '@id': personId,
+    name: article.author.name,
+    url: article.author.url,
+    image: new URL(article.author.imagePath, siteMetadata.siteUrl).toString(),
+    jobTitle: article.author.role,
+    description: article.author.bio,
+    sameAs: article.author.sameAs,
+    worksFor: {
+      '@id': `${siteMetadata.siteUrl}/#organization`
+    }
+  },
+  {
+    '@type': 'BlogPosting',
+    '@id': `${canonicalUrl}#blogposting`,
+    url: canonicalUrl,
+    headline: article.title,
+    alternativeHeadline: article.seoTitle,
+    description: article.description,
+    image: [imageUrl],
+    thumbnailUrl: imageUrl,
+    datePublished: article.publishedTime,
+    dateModified: article.modifiedTime,
+    author: {
+      '@id': personId
+    },
+    publisher: {
+      '@id': `${siteMetadata.siteUrl}/#organization`,
+      logo: {
+        '@type': 'ImageObject',
+        url: organizationLogo
+      }
+    },
+    mainEntityOfPage: {
+      '@id': `${canonicalUrl}#webpage`
+    },
+    isAccessibleForFree: true,
+    articleSection: article.category.title,
+    genre: article.category.title,
+    keywords: article.keywords,
+    wordCount: article.wordCount,
+    inLanguage: siteMetadata.locale,
+    isPartOf: {
+      '@id': blogEntityId
+    },
+    about: [
+      {
+        '@id': categoryEntityId
+      },
+      {
+        '@id': `${siteMetadata.siteUrl}/#organization`
+      }
+    ],
+    mentions: [
+      {
+        '@type': 'WebPage',
+        url: categoryUrl,
+        name: article.category.title
+      },
+      ...article.category.serviceLinks.map((link) => ({
+        '@type': 'WebPage',
+        url: new URL(link.path, siteMetadata.siteUrl).toString(),
+        name: link.label
+      }))
+    ]
+  }
+];
+
+if (article.faqItems.length > 0) {
+  graph.push({
+    '@type': 'FAQPage',
+    '@id': `${canonicalUrl}#faq`,
+    mainEntity: article.faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
+      }
+    }))
+  });
+}
+
+const schemaJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': graph
+});
+---
+<meta property="article:published_time" content={article.publishedTime} />
+<meta property="article:modified_time" content={article.modifiedTime} />
+<meta property="article:section" content={article.category.title} />
+<meta property="article:author" content={article.author.name} />
+<meta name="keywords" content={article.keywords.join(', ')} />
+{article.keywords.map((keyword) => <meta property="article:tag" content={keyword} />)}
+<script is:inline type="application/ld+json" set:html={schemaJson}></script>

@@ -1,0 +1,31 @@
+---
+import { mainNavigation } from '../data/navigation';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props as Props;
+
+function isActive(path: string, match: 'exact' | 'prefix' = 'prefix') {
+  if (path === '/') return currentPath === '/';
+  return match === 'exact' ? currentPath === path : currentPath.startsWith(path);
+}
+---
+<div class="as-mobile" id="site-mobile-nav" aria-label="Menu mobile">
+  <nav class="as-mobile-nav" aria-label="Navegacao mobile">
+    {mainNavigation.map((item) => (
+      <a
+        href={item.path}
+        class:list={['as-mobile-link', { 'as-active': isActive(item.path, item.match) }]}
+        data-close-mobile-menu
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+
+  <button class="as-cta as-mobile-cta-btn" type="button" data-open-cta-modal>
+    Diagnostico Gratis
+  </button>
+</div>

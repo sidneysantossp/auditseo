@@ -1,0 +1,21 @@
+---
+import '../styles/agencia-seo-parity.css';
+import AgencySeoLegacyContent from '../components/AgencySeoLegacyContent.astro';
+import AgencySeoSchemas from '../components/AgencySeoSchemas.astro';
+import LegacyContentEnhancements from '../components/LegacyContentEnhancements.astro';
+import InstitutionalLayout from '../layouts/InstitutionalLayout.astro';
+---
+<InstitutionalLayout
+  title="Agencia de SEO em Sao Paulo"
+  description="Procurando uma agencia de SEO em Sao Paulo? A AUDITSEO oferece consultoria SEO especializada em SEO tecnico, AI Overviews, SEO Local e busca generativa."
+  canonicalPath="/agencia-de-seo/"
+  imagePath="/images/agencia-de-seo.png"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Agencia de SEO', path: '/agencia-de-seo/' }
+  ]}
+>
+  <AgencySeoLegacyContent />
+  <AgencySeoSchemas />
+  <LegacyContentEnhancements />
+</InstitutionalLayout>

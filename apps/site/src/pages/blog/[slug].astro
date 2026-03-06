@@ -1,0 +1,55 @@
+---
+import '../../styles/blog-article-parity.css';
+import BlogArticleHead from '../../components/BlogArticleHead.astro';
+import BlogArticleRelatedSection from '../../components/BlogArticleRelatedSection.astro';
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import LegacyArticleEnhancements from '../../components/LegacyArticleEnhancements.astro';
+import { legacyBlogSlugRedirects } from '../../data/legacy-aliases';
+import BlogArticleLayout from '../../layouts/BlogArticleLayout.astro';
+import { getLegacyArticleBySlug, getLegacyArticleSlugs, getRelatedBlogArticles } from '../../lib/legacy-blog';
+
+export function getStaticPaths() {
+  return getLegacyArticleSlugs().map((slug: string) => ({
+    params: { slug }
+  }));
+}
+
+const slug = Astro.params.slug ?? '';
+const article = getLegacyArticleBySlug(slug);
+const legacyRedirect = legacyBlogSlugRedirects[slug];
+
+if (!article && legacyRedirect) {
+  return Astro.redirect(legacyRedirect, 301);
+}
+
+if (!article) {
+  throw new Error(`Artigo legado nao encontrado: ${slug}`);
+}
+
+const relatedArticles = getRelatedBlogArticles(article.slug, 3);
+const resourceLinks = [...article.category.serviceLinks, ...article.category.nicheLinks].slice(0, 3);
+---
+<BlogArticleLayout
+  title={article.seoTitle}
+  description={article.description}
+  canonicalPath={article.canonicalPath}
+  imagePath={article.imagePath}
+  pageType="WebPage"
+  ogType="article"
+  authorName={article.author.name}
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Blog', path: '/blog/' },
+    { label: article.category.title, path: `/blog/categoria/${article.category.slug}/` },
+    { label: article.title, path: article.canonicalPath }
+  ]}
+>
+  <Fragment slot="head">
+    <BlogArticleHead article={article} />
+  </Fragment>
+
+  <Fragment set:html={article.contentHtml} />
+  <BlogArticleRelatedSection article={article} relatedArticles={relatedArticles} resourceLinks={resourceLinks} />
+  <FloatingWhatsApp url="https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20por%20um%20artigo%20do%20blog%20da%20AUDITSEO%20e%20gostaria%20de%20mais%20informacoes." />
+  <LegacyArticleEnhancements />
+</BlogArticleLayout>

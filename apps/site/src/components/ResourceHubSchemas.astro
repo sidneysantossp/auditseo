@@ -1,0 +1,67 @@
+---
+import { siteMetadata } from '../data/site';
+
+interface ResourceItem {
+  title: string;
+  path: string;
+  description: string;
+}
+
+interface Props {
+  canonicalPath: string;
+  title: string;
+  description: string;
+  items: ResourceItem[];
+  itemType?: string;
+}
+
+const { canonicalPath, title, description, items, itemType = 'CreativeWork' } = Astro.props as Props;
+const canonicalUrl = new URL(canonicalPath, siteMetadata.siteUrl).toString();
+
+const itemList = {
+  '@type': 'ItemList',
+  '@id': `${canonicalUrl}#itemlist`,
+  numberOfItems: items.length,
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: new URL(item.path, siteMetadata.siteUrl).toString(),
+    name: item.title,
+    description: item.description
+  }))
+};
+
+const collectionPage = {
+  '@type': 'CollectionPage',
+  '@id': `${canonicalUrl}#collection`,
+  url: canonicalUrl,
+  name: title,
+  headline: title,
+  description,
+  inLanguage: siteMetadata.locale,
+  isPartOf: {
+    '@id': `${siteMetadata.siteUrl}/#website`
+  },
+  mainEntityOfPage: {
+    '@id': `${canonicalUrl}#webpage`
+  },
+  mainEntity: {
+    '@id': `${canonicalUrl}#itemlist`
+  },
+  hasPart: items.map((item) => ({
+    '@type': itemType,
+    url: new URL(item.path, siteMetadata.siteUrl).toString(),
+    name: item.title,
+    description: item.description
+  })),
+  publisher: {
+    '@id': `${siteMetadata.siteUrl}/#organization`
+  }
+};
+
+const schemaJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [itemList, collectionPage]
+});
+---
+<script is:inline type="application/ld+json" set:html={schemaJson}></script>

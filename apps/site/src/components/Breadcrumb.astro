@@ -1,0 +1,21 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  path?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props as Props;
+---
+<nav class="as-breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    {items.map((item, index) => (
+      <li>
+        {item.path && index < items.length - 1 ? <a href={item.path}>{item.label}</a> : <span>{item.label}</span>}
+      </li>
+    ))}
+  </ol>
+</nav>

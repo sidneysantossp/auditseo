@@ -1,0 +1,21 @@
+---
+import '../../styles/auditoria-seo-parity.css';
+import AuditoriaSeoLegacyContent from '../../components/AuditoriaSeoLegacyContent.astro';
+import LegacyContentEnhancements from '../../components/LegacyContentEnhancements.astro';
+import ServiceDetailLayout from '../../layouts/ServiceDetailLayout.astro';
+---
+<ServiceDetailLayout
+  title="Auditoria SEO"
+  description="Auditoria SEO profissional com analise tecnica, on-page e estrutural para identificar os problemas que travam indexacao, performance, relevancia e crescimento organico."
+  canonicalPath="/servicos/auditoria-seo/"
+  imagePath="/images/coreweb-vitals.jpeg"
+  pageType="Service"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Servicos', path: '/servicos/' },
+    { label: 'Auditoria SEO', path: '/servicos/auditoria-seo/' }
+  ]}
+>
+  <AuditoriaSeoLegacyContent />
+  <LegacyContentEnhancements />
+</ServiceDetailLayout>

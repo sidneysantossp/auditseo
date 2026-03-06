@@ -1,0 +1,274 @@
+---
+import '../styles/institutional-trust-pages.css';
+import InstitutionalLayout from '../layouts/InstitutionalLayout.astro';
+
+const pillars = [
+  {
+    title: 'Autoria identificada',
+    copy:
+      'Cada conteudo importante precisa deixar claro quem escreve, quem responde tecnicamente e qual experiencia sustenta a publicacao.'
+  },
+  {
+    title: 'Precisao acima de volume',
+    copy:
+      'Nao publicamos por calendario apenas. O conteudo precisa resolver uma pergunta real e ter base suficiente para sustentar o que afirma.'
+  },
+  {
+    title: 'Atualizacao quando o cenario muda',
+    copy:
+      'Quando Google, SERP, IA ou documentacao oficial mudam, o conteudo relevante precisa ser reavaliado.'
+  },
+  {
+    title: 'Transparencia editorial',
+    copy:
+      'Erros, limites de escopo, uso de fontes e diferenca entre opiniao e fato precisam estar claros.'
+  }
+];
+
+const workflow = [
+  {
+    title: 'Pauta',
+    copy: 'Selecionamos temas com intencao clara, relevancia comercial ou valor educacional real.'
+  },
+  {
+    title: 'Pesquisa',
+    copy:
+      'A pauta so avanca quando existe documentacao oficial, observacao de mercado ou teste suficiente para sustentacao.'
+  },
+  {
+    title: 'Redacao',
+    copy:
+      'O texto e estruturado com semantica, clareza, entity framing, ligacao interna e foco em utilidade.'
+  },
+  {
+    title: 'Revisao tecnica',
+    copy:
+      'Claims, links, exemplos, canonicals, heading structure e consistencia com a metodologia sao revisados.'
+  },
+  {
+    title: 'Publicacao',
+    copy:
+      'A publicacao entra com metadata, dados estruturados, links relacionados e contexto correto dentro do cluster.'
+  },
+  {
+    title: 'Atualizacao',
+    copy:
+      'O conteudo e reavaliado quando o tema perde precisao, quando a SERP muda ou quando o site evolui.'
+  }
+];
+
+const policyPanels = [
+  {
+    title: 'Como tratamos uso de IA',
+    items: [
+      'IA pode apoiar rascunho, estrutura e consolidacao de notas',
+      'A versao publicada passa por revisao humana e responsabilidade editorial',
+      'Nao terceirizamos opiniao tecnica para resposta generativa',
+      'Conteudo precisa refletir experiencia, teste e posicionamento proprio'
+    ]
+  },
+  {
+    title: 'Como tratamos correcoes e links',
+    items: [
+      'Quando houver erro material, o conteudo deve ser corrigido',
+      'Links externos entram para apoiar fonte ou contexto, nao para inflar autoridade alheia',
+      'Nao usamos promessa enganosa, clickbait ou numerologia solta',
+      'Conteudo patrocinado ou conflito relevante deve ser sinalizado'
+    ]
+  }
+];
+
+const faqs = [
+  {
+    question: 'Quem revisa o conteudo da AUDITSEO?',
+    answer:
+      'O conteudo passa por revisao humana com responsabilidade tecnica. O objetivo e garantir consistencia com metodologia, fontes e posicionamento editorial do site.'
+  },
+  {
+    question: 'A AUDITSEO usa IA para escrever artigos?',
+    answer:
+      'IA pode apoiar etapas operacionais, mas a responsabilidade editorial e a validacao tecnica continuam humanas. Publicar sem revisao seria incompatível com a proposta do site.'
+  },
+  {
+    question: 'Quando um artigo e atualizado?',
+    answer:
+      'Quando a documentacao oficial muda, quando o ecossistema muda de forma relevante ou quando o proprio site ganha contexto melhor para responder ao tema.'
+  },
+  {
+    question: 'Vocês publicam qualquer tema de SEO?',
+    answer:
+      'Nao. A prioridade e publicar temas que tenham valor pratico para estrategia, operacao e arquitetura do crescimento organico.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<InstitutionalLayout
+  title="Politica Editorial da AUDITSEO"
+  description="Veja como a AUDITSEO define autoria, revisao, atualizacao, uso de IA, fontes e padrao de publicacao para artigos e paginas do site."
+  canonicalPath="/politica-editorial/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Politica Editorial', path: '/politica-editorial/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span class="current">Politica Editorial</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Governanca de Conteudo</span>
+        <h1 class="ee-page-title">
+          POLITICA <span class="accent">EDITORIAL</span> PARA SEO QUE QUER SER REFERENCIA
+        </h1>
+        <p class="ee-page-subtitle">
+          Esta pagina explica como a AUDITSEO trata <strong>autoria</strong>,
+          <strong>revisao tecnica</strong>, <strong>atualizacao</strong>, <strong>uso de IA</strong>
+          e <strong>fontes</strong> antes de publicar artigos, paginas comerciais e conteudos de
+          apoio. O objetivo e garantir clareza editorial para usuarios, equipes tecnicas e bots que
+          interpretam o site.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">Autoria Clara</span>
+          <span class="ee-page-highlight">Revisao Humana</span>
+          <span class="ee-page-highlight">Atualizacao Continua</span>
+          <span class="ee-page-highlight">Sem Clickbait</span>
+        </div>
+      </div>
+      <aside class="ee-page-hero-card">
+        <h2>O que esta politica protege</h2>
+        <p>Protege reputacao, coerencia tecnica e a confianca necessaria para o site escalar.</p>
+        <p>
+          Sem governanca editorial, o crescimento de conteudo tende a gerar contradicao, canibalizacao
+          e perda de credibilidade.
+        </p>
+        <div class="ee-page-links">
+          <a href="/fontes-e-metodos/">Fontes e metodos</a>
+          <a href="/sobre/">Sobre</a>
+          <a href="/blog/">Blog</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo da politica editorial">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Responsabilidade editorial</div>
+        <p class="ee-page-stat-copy">Toda publicacao precisa ter dono claro.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">6</div>
+        <div class="ee-page-stat-label">Etapas de workflow</div>
+        <p class="ee-page-stat-copy">Da pauta a atualizacao do conteudo.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">100%</div>
+        <div class="ee-page-stat-label">Revisao antes de publicar</div>
+        <p class="ee-page-stat-copy">Links, claims e contexto passam por validacao.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">0</div>
+        <div class="ee-page-stat-label">Espaco para volume vazio</div>
+        <p class="ee-page-stat-copy">Publicar muito nao compensa publicar mal.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Pilares</span>
+        <h2 class="ee-page-section-title">AS REGRAS QUE GUIAM O CONTEUDO</h2>
+      </div>
+      <div class="ee-page-grid four">
+        {pillars.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Workflow</span>
+        <h2 class="ee-page-section-title">COMO UM CONTEUDO E PUBLICADO</h2>
+      </div>
+      <div class="ee-page-process">
+        {workflow.map((step, index) => (
+          <article class="ee-page-step">
+            <div class="ee-page-step-number">{String(index + 1).padStart(2, '0')}</div>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Politicas</span>
+        <h2 class="ee-page-section-title">IA, CORRECOES E PADRAO DE LINKAGEM</h2>
+      </div>
+      <div class="ee-page-panels">
+        {policyPanels.map((panel) => (
+          <article class="ee-page-panel">
+            <h3>{panel.title}</h3>
+            <ul class="ee-page-list">
+              {panel.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS SOBRE AUTORIA E REVISAO</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-cta">
+      <div class="ee-page-cta-box">
+        <span class="ee-page-section-badge">Governanca</span>
+        <h2 class="ee-page-section-title">PRECISA ORGANIZAR O PADRAO EDITORIAL DO SEU SITE?</h2>
+        <p class="ee-page-cta-copy">
+          Conteudo sem criterio tecnico compromete SEO, confianca e conversao. O correto e construir
+          uma politica editorial conectada a metodo, fontes e arquitetura.
+        </p>
+        <div class="ee-page-cta-actions">
+          <button type="button" class="ee-page-primary" data-open-cta-modal>
+            Solicitar Diagnostico
+          </button>
+          <a href="/fontes-e-metodos/" class="ee-page-secondary">Ver fontes e metodos</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</InstitutionalLayout>

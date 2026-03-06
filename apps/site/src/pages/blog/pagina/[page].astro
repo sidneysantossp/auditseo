@@ -1,0 +1,62 @@
+---
+import '../../../styles/blog-index-parity.css';
+import BlogArchiveContent from '../../../components/BlogArchiveContent.astro';
+import BlogArchiveSchemas from '../../../components/BlogArchiveSchemas.astro';
+import BlogNewsletterEnhancements from '../../../components/BlogNewsletterEnhancements.astro';
+import BlogIndexLayout from '../../../layouts/BlogIndexLayout.astro';
+import { blogPageSize } from '../../../data/blog-taxonomy';
+import { getAllBlogArticles, getBlogArchivePage } from '../../../lib/legacy-blog';
+
+export function getStaticPaths() {
+  const allArticles = getAllBlogArticles();
+  const totalPages = Math.max(1, Math.ceil(allArticles.length / blogPageSize));
+  return Array.from({ length: Math.max(totalPages - 1, 0) }, (_, index) => ({
+    params: { page: String(index + 2) }
+  }));
+}
+
+const allArticles = getAllBlogArticles();
+const page = Number.parseInt(Astro.params.page ?? '2', 10);
+const archivePage = getBlogArchivePage(page);
+---
+<BlogIndexLayout
+  title={`Blog AUDITSEO | Pagina ${archivePage.currentPage}`}
+  description={`Pagina ${archivePage.currentPage} do arquivo editorial do blog AUDITSEO, com artigos sobre SEO, IA, arquitetura, analytics e crescimento organico.`}
+  canonicalPath={`/blog/pagina/${archivePage.currentPage}/`}
+  imagePath="/images/ai-overviews.jpg"
+  pageType="WebPage"
+  noindex={true}
+  robotsContent="noindex, follow"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Blog', path: '/blog/' },
+    { label: `Pagina ${archivePage.currentPage}`, path: `/blog/pagina/${archivePage.currentPage}/` }
+  ]}
+>
+  <Fragment slot="head">
+    <BlogArchiveSchemas
+      canonicalPath={`/blog/pagina/${archivePage.currentPage}/`}
+      title={`Pagina ${archivePage.currentPage} do Blog AUDITSEO`}
+      description={`Arquivo paginado do blog AUDITSEO na pagina ${archivePage.currentPage}.`}
+      articles={archivePage.items}
+    />
+  </Fragment>
+
+  <BlogArchiveContent
+    breadcrumbs={[
+      { label: 'Home', path: '/' },
+      { label: 'Blog', path: '/blog/' },
+      { label: `Pagina ${archivePage.currentPage}` }
+    ]}
+    badge="Arquivo Editorial"
+    heroTitle="ARQUIVO DE <span class='highlight'>PUBLICACOES</span>"
+    heroSubtitle="Paginacao editorial da base publica da AUDITSEO. Estas rotas mantem a descoberta de artigos consistente sem competir com a pagina principal do blog."
+    posts={archivePage.items}
+    articleCountLabel={`${allArticles.length} Artigos no total`}
+    pageLabel={`Pagina ${archivePage.currentPage} de ${archivePage.totalPages}`}
+    sectionTitle="ARTIGOS DESTA PAGINA"
+    pagination={archivePage}
+    includeNewsletter={true}
+  />
+  <BlogNewsletterEnhancements />
+</BlogIndexLayout>

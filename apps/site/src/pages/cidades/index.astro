@@ -1,0 +1,157 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import CityLayout from '../../layouts/CityLayout.astro';
+
+const cityCards = [
+  {
+    title: 'Sao Paulo',
+    copy:
+      'Pagina local focada em empresas que disputam descoberta organica, AI Overviews, SEO local e arquitetura comercial em um mercado altamente competitivo.',
+    href: '/cidades/sao-paulo/'
+  },
+  {
+    title: 'Campinas',
+    copy:
+      'Pagina local orientada para negocios que precisam combinar autoridade regional, descoberta local e paginas comerciais com intencao clara.',
+    href: '/cidades/campinas/'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Qual a diferenca entre pagina de cidade e pagina de nicho?',
+    answer:
+      'A pagina de cidade organiza o contexto geografico e local. A pagina de nicho organiza o contexto setorial. A landing page combina os dois quando ha demanda real.'
+  },
+  {
+    question: 'Toda cidade merece uma pagina propria?',
+    answer:
+      'Nao. A AUDITSEO so materializa cidade quando existe cobertura comercial, intencao local e possibilidade de prova ou adaptacao de mensagem.'
+  },
+  {
+    question: 'Paginas locais servem so para SEO local?',
+    answer:
+      'Nao. Elas tambem ajudam em descoberta organica, reforco de autoridade regional e conexao com landings mais especificas.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<CityLayout
+  title="Cidades Atendidas pela AUDITSEO"
+  description="Paginas locais da AUDITSEO para organizar descoberta regional, mensagem comercial e conexao entre servicos, nichos e landing pages."
+  canonicalPath="/cidades/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Cidades', path: '/cidades/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span class="current">Cidades</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Cobertura Local</span>
+        <h1 class="ee-page-title">
+          CIDADES COM <span class="accent">CONTEXTO</span>, SERVICO E INTENCAO REAL
+        </h1>
+        <p class="ee-page-subtitle">
+          As paginas locais da AUDITSEO existem para traduzir a estrategia em um contexto
+          geografico especifico, sem cair em paginas vazias. Cada cidade precisa sustentar
+          <strong> demanda</strong>, <strong>mensagem local</strong> e
+          <strong> conexao comercial clara</strong>.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">SEO Local</span>
+          <span class="ee-page-highlight">Descoberta Regional</span>
+          <span class="ee-page-highlight">Clusters Comerciais</span>
+          <span class="ee-page-highlight">Sem Pagina Inflada</span>
+        </div>
+      </div>
+
+      <aside class="ee-page-hero-card">
+        <h2>Como essa camada se encaixa</h2>
+        <p>
+          Cidade conecta o bloco institucional aos servicos, aos nichos e as landings de alta
+          conversao quando existe combinacao comercial valida.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/">Ver servicos</a>
+          <a href="/nichos/">Ver nichos</a>
+          <a href="/contato/">Solicitar diagnostico</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Cobertura atual</span>
+        <h2 class="ee-page-section-title">CIDADES JA ATIVAS NA NOVA ARQUITETURA</h2>
+      </div>
+      <div class="ee-page-panels">
+        {cityCards.map((item) => (
+          <article class="ee-page-panel">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+            <div class="ee-page-links">
+              <a href={item.href}>Abrir pagina</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Regra editorial</span>
+        <h2 class="ee-page-section-title">QUANDO UMA NOVA CIDADE ENTRA</h2>
+      </div>
+      <div class="ee-page-grid three">
+        <article class="ee-page-card">
+          <h3>Demanda comercial</h3>
+          <p>Sem busca, lead ou proposta real, a cidade nao entra na estrutura publica.</p>
+        </article>
+        <article class="ee-page-card">
+          <h3>Diferenciacao local</h3>
+          <p>Precisa existir algo de linguagem, prova ou contexto que nao caiba em uma pagina generica.</p>
+        </article>
+        <article class="ee-page-card">
+          <h3>Conexao com servico</h3>
+          <p>A cidade precisa reforcar servicos e landings, nao competir com a Home ou com o blog.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section ee-page-faq">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE PAGINAS LOCAIS</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</CityLayout>

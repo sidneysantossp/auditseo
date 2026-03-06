@@ -1,0 +1,283 @@
+---
+import '../styles/institutional-trust-pages.css';
+import ContactPageEnhancements from '../components/ContactPageEnhancements.astro';
+import InstitutionalLayout from '../layouts/InstitutionalLayout.astro';
+import { siteMetadata } from '../data/site';
+
+const contactCards = [
+  {
+    title: 'WhatsApp',
+    copy: 'Canal mais rapido para briefing inicial, duvidas objetivas e alinhamento comercial.',
+    href: siteMetadata.contact.whatsappUrl,
+    label: 'Abrir WhatsApp'
+  },
+  {
+    title: 'E-mail',
+    copy: 'Melhor canal para escopo, contexto do projeto, materiais e propostas mais detalhadas.',
+    href: `mailto:${siteMetadata.contact.email}`,
+    label: siteMetadata.contact.email
+  },
+  {
+    title: 'Telefone',
+    copy: 'Se precisar falar com mais urgencia, este e o telefone oficial da AUDITSEO.',
+    href: 'tel:+5511996384376',
+    label: siteMetadata.contact.phone
+  },
+  {
+    title: 'Endereco',
+    copy: 'Base operacional da AUDITSEO em Sao Paulo, usada como referencia institucional e comercial.',
+    href: '/sobre/',
+    label: 'Ver dados institucionais'
+  }
+];
+
+const preparationItems = [
+  'URL principal do site ou da area que precisa de diagnostico',
+  'Principais servicos, produtos ou linhas de receita',
+  'Nicho, localizacao e contexto competitivo do negocio',
+  'Objetivo prioritario: leads, vendas, visibilidade, IA ou autoridade',
+  'Equipe disponivel para implementacao tecnica e editorial'
+];
+
+const expectationItems = [
+  'Projetos com diagnostico serio precisam de contexto, nao apenas de uma keyword',
+  'Se o seu caso envolver SEO local, IA ou migracao estrutural, vale sinalizar isso no primeiro contato',
+  'A pagina serve para concentrar o canal oficial da marca, nao para abrir tickets paralelos dispersos',
+  'Se preferir o fluxo guiado, o botao de diagnostico abre o modal padrao do site'
+];
+
+const faqs = [
+  {
+    question: 'Qual canal e melhor para um primeiro contato?',
+    answer:
+      'Se a prioridade for velocidade, WhatsApp. Se for contexto e escopo, e-mail ou formulario. O importante e centralizar a conversa no canal oficial.'
+  },
+  {
+    question: 'Preciso ter um briefing completo para entrar em contato?',
+    answer:
+      'Nao. Mas quanto mais claro estiver o problema, mais rapido fica o diagnostico inicial. Site, servico principal e objetivo ja ajudam muito.'
+  },
+  {
+    question: 'A AUDITSEO atende apenas Sao Paulo?',
+    answer:
+      'Nao. A base institucional esta em Sao Paulo, mas o atendimento pode cobrir empresas de outras cidades e operacoes nacionais.'
+  },
+  {
+    question: 'O formulario desta pagina substitui o modal de diagnostico?',
+    answer:
+      'Nao necessariamente. A pagina de contato concentra o canal oficial da marca. O modal continua disponivel para quem prefere o fluxo guiado.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<InstitutionalLayout
+  title="Contato AUDITSEO"
+  description="Fale com a AUDITSEO pelo canal oficial da marca. Centralize briefing, diagnostico e contato comercial com WhatsApp, e-mail, telefone e formulario."
+  canonicalPath="/contato/"
+  pageType="ContactPage"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Contato', path: '/contato/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span class="current">Contato</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Canal Oficial</span>
+        <h1 class="ee-page-title">
+          FALE COM A <span class="accent">AUDITSEO</span> PELO CANAL CERTO
+        </h1>
+        <p class="ee-page-subtitle">
+          Esta pagina concentra os <strong>dados oficiais de contato</strong>, o
+          <strong>formulario institucional</strong> e a rota mais clara para iniciar um
+          diagnostico. Se o seu objetivo envolve SEO tecnico, arquitetura de conteudo, AI Overviews,
+          LLMs ou crescimento organico com previsibilidade, este e o ponto de entrada certo.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">WhatsApp</span>
+          <span class="ee-page-highlight">Formulario Oficial</span>
+          <span class="ee-page-highlight">Sao Paulo</span>
+          <span class="ee-page-highlight">Diagnostico AI-First</span>
+        </div>
+      </div>
+      <aside class="ee-page-hero-card">
+        <h2>Dados principais</h2>
+        <p><strong>E-mail:</strong> <a class="ee-page-inline-link" href={`mailto:${siteMetadata.contact.email}`}>{siteMetadata.contact.email}</a></p>
+        <p><strong>Telefone:</strong> <a class="ee-page-inline-link" href="tel:+5511996384376">{siteMetadata.contact.phone}</a></p>
+        <p><strong>Endereco:</strong> {siteMetadata.address.street}, {siteMetadata.address.city} - {siteMetadata.address.state}</p>
+        <div class="ee-page-links">
+          <a href={siteMetadata.contact.whatsappUrl} target="_blank" rel="noopener">Abrir WhatsApp</a>
+          <button type="button" class="ee-page-secondary" data-open-cta-modal>Abrir modal</button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo de contato">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">3</div>
+        <div class="ee-page-stat-label">Canais principais</div>
+        <p class="ee-page-stat-copy">WhatsApp, e-mail e telefone concentrados na mesma base.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">48h</div>
+        <div class="ee-page-stat-label">Referencia de retorno</div>
+        <p class="ee-page-stat-copy">O mesmo compromisso assumido pelo modal global do site.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Canal oficial</div>
+        <p class="ee-page-stat-copy">A pagina reduz dispersao e centraliza o contato comercial.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">SP</div>
+        <div class="ee-page-stat-label">Base institucional</div>
+        <p class="ee-page-stat-copy">Sao Paulo como referencia comercial e operacional da marca.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Canais</span>
+        <h2 class="ee-page-section-title">ESCOLHA O MELHOR CAMINHO PARA O SEU CONTEXTO</h2>
+      </div>
+      <div class="ee-page-grid four">
+        {contactCards.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+            <div class="ee-page-links">
+              <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener' : undefined}>{item.label}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Preparacao</span>
+        <h2 class="ee-page-section-title">O QUE AJUDA A ACELERAR O DIAGNOSTICO</h2>
+      </div>
+      <div class="ee-page-panels">
+        <article class="ee-page-panel">
+          <h3>O que vale enviar logo no primeiro contato</h3>
+          <ul class="ee-page-list">
+            {preparationItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-panel">
+          <h3>Como esta pagina deve ser usada</h3>
+          <ul class="ee-page-list">
+            {expectationItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Formulario</span>
+        <h2 class="ee-page-section-title">ENVIE SEU CONTEXTO PELO FORMULARIO OFICIAL</h2>
+        <p class="ee-page-section-subtitle">
+          Use este formulario se quiser deixar um briefing objetivo e centralizar o contato no site.
+        </p>
+      </div>
+      <div class="ee-page-contact-layout">
+        <article class="ee-page-panel">
+          <form id="contact-page-form" class="ee-contact-form">
+            <div class="ee-contact-grid two">
+              <label class="ee-contact-field">
+                <span>Nome</span>
+                <input name="Nome" type="text" required placeholder="Seu nome completo" />
+              </label>
+              <label class="ee-contact-field">
+                <span>E-mail</span>
+                <input name="Email" type="email" required placeholder="voce@empresa.com.br" />
+              </label>
+            </div>
+            <div class="ee-contact-grid two">
+              <label class="ee-contact-field">
+                <span>Empresa</span>
+                <input name="Empresa" type="text" placeholder="Nome da empresa" />
+              </label>
+              <label class="ee-contact-field">
+                <span>Site</span>
+                <input name="Site" type="url" placeholder="https://suaempresa.com.br" />
+              </label>
+            </div>
+            <label class="ee-contact-field">
+              <span>Mensagem</span>
+              <textarea name="Mensagem" rows="6" required placeholder="Explique o contexto, o problema atual e o objetivo principal do contato."></textarea>
+            </label>
+            <button id="contact-form-submit" class="ee-page-primary ee-contact-submit" type="submit">
+              <span data-submit-text>Enviar contato</span>
+              <span data-submit-loading hidden>Enviando...</span>
+            </button>
+          </form>
+
+          <div id="contact-form-success" class="ee-contact-success" hidden>
+            <h3>Contato enviado com sucesso</h3>
+            <p>
+              Recebemos sua mensagem. A AUDITSEO vai analisar o contexto enviado e responder pelo
+              canal informado.
+            </p>
+          </div>
+        </article>
+
+        <article class="ee-page-panel">
+          <h3>Atalhos internos para seu proximo passo</h3>
+          <ul class="ee-page-list">
+            <li><a class="ee-page-inline-link" href="/servicos/">Ver servicos principais</a></li>
+            <li><a class="ee-page-inline-link" href="/agencia-de-seo/">Conhecer a agencia</a></li>
+            <li><a class="ee-page-inline-link" href="/metodologia/">Entender a metodologia</a></li>
+            <li><a class="ee-page-inline-link" href="/fontes-e-metodos/">Ver fontes e metodos</a></li>
+            <li><a class="ee-page-inline-link" href="/sobre/">Conhecer a historia da marca</a></li>
+          </ul>
+          <div class="ee-page-links">
+            <a href={siteMetadata.contact.whatsappUrl} target="_blank" rel="noopener">WhatsApp direto</a>
+            <a href={`mailto:${siteMetadata.contact.email}`}>Enviar e-mail</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE O CONTATO</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+  <ContactPageEnhancements />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</InstitutionalLayout>

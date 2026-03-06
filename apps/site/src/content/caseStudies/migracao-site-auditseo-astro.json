@@ -1,0 +1,131 @@
+{
+  "slug": "migracao-site-auditseo-astro",
+  "title": "Migracao Estrutural do Site AUDITSEO para Astro",
+  "seoTitle": "Migracao Estrutural do Site AUDITSEO para Astro | Case AUDITSEO",
+  "description": "Case interno da migracao do site AUDITSEO para uma arquitetura Astro orientada a componentes, SEO tecnico, IA e preservacao total do layout aprovado.",
+  "badge": "Case Interno Publico",
+  "statusLabel": "Publico e auditavel",
+  "heroSubtitle": "Este case documenta a troca da fundacao do site sem redesign: shell global unico, conteudo clusterizado, sitemap segmentado, camada para LLMs e blog reestruturado com QA automatico.",
+  "typeLabel": "Arquitetura interna",
+  "durationLabel": "Ciclos incrementais",
+  "scopeLabel": "Site publico completo",
+  "evidenceNote": "A prova aqui e auditavel no proprio dominio da AUDITSEO, porque a intervencao foi aplicada no site real e pode ser validada por qualquer leitor.",
+  "summaryPoints": [
+    "Preservar o layout aprovado enquanto a fundacao mudava por baixo.",
+    "Remover fragmentacao de header, footer, mobile menu e metadata.",
+    "Criar uma base escalavel para servicos, blog, nichos, cidades e landings.",
+    "Fechar sitemap, llms.txt e rotas canonicas sem depender de HTML manual."
+  ],
+  "metrics": [
+    {
+      "value": "131",
+      "label": "Rotas publicadas",
+      "copy": "A nova app passou a gerar o site com cobertura estatica e rotas consistentes."
+    },
+    {
+      "value": "1",
+      "label": "Shell global",
+      "copy": "Header, footer, mobile menu e modal deixaram de ser montados por mecanismos diferentes."
+    },
+    {
+      "value": "59",
+      "label": "Artigos canonicos",
+      "copy": "O blog foi consolidado em um acervo editorial com categorias reais e taxonomia central."
+    },
+    {
+      "value": "0",
+      "label": "Redesigns",
+      "copy": "A migracao foi feita sem redesenhar a interface aprovada pelo negocio."
+    }
+  ],
+  "overviewCards": [
+    {
+      "title": "Problema inicial",
+      "copy": "O site havia crescido sobre HTML manual, trechos repetidos e comportamentos de layout diferentes entre Home, servicos e blog."
+    },
+    {
+      "title": "Risco central",
+      "copy": "Qualquer ajuste de SEO tecnico ou navegacao podia quebrar o design, gerar divergencia visual ou criar regressao em paginas ja aprovadas."
+    },
+    {
+      "title": "Decisao estrutural",
+      "copy": "A mudanca foi para uma arquitetura static-first com Astro, componentes reaproveitaveis, metadata centralizada e rotas geradas por tipo de conteudo."
+    }
+  ],
+  "challengePoints": [
+    "Header e footer apareciam por mecanismos diferentes dependendo do tipo de pagina.",
+    "Blog e servicos tinham caminhos canonicos, slugs e links internos inconsistentes.",
+    "A camada publica misturava recursos do site com superficies internas do projeto.",
+    "Nao havia base unica para sitemap, llms, schemas ou QA recorrente."
+  ],
+  "interventionSteps": [
+    "Criacao de uma app Astro isolada para o site publico.",
+    "Extracao de shell global com header, footer, menu mobile e modal compartilhados.",
+    "Migracao incremental de Home, institucionais, servicos, blog, artigos, nichos, cidades e LPs.",
+    "Centralizacao de canonical, OG, breadcrumbs, Organization, WebSite e WebPage.",
+    "Reforco editorial do blog com categorias reais, schema por cluster e auditoria do HTML final.",
+    "Publicacao de sitemap segmentado e camada dedicada para LLMs com llms.txt e llms-full.txt."
+  ],
+  "outcomes": [
+    {
+      "title": "Base pronta para escala",
+      "copy": "O site passou a ter fundacao suficiente para crescer em servicos, nichos, cidades, landings e ferramentas sem depender de copiar HTML manual."
+    },
+    {
+      "title": "SEO tecnico controlavel",
+      "copy": "Canonical, breadcrumbs, sitemap, feed, llms e schema passaram a sair da propria arquitetura, nao de ajustes manuais por pagina."
+    },
+    {
+      "title": "Designer preservado",
+      "copy": "O layout foi mantido e a troca estrutural aconteceu por baixo, respeitando o visual aprovado como camada congelada de apresentacao."
+    }
+  ],
+  "lessons": [
+    "Migracao profissional nao exige redesign quando a camada visual e tratada como contrato.",
+    "SEO tecnico e governanca editorial precisam nascer da arquitetura, nao de manutencao manual.",
+    "Blog, servicos, clusters e pagina institucional precisam compartilhar o mesmo shell para evitar regressao."
+  ],
+  "serviceLinks": [
+    {
+      "label": "Consultoria SEO",
+      "path": "/servicos/consultoria-seo/"
+    },
+    {
+      "label": "Auditoria SEO",
+      "path": "/servicos/auditoria-seo/"
+    },
+    {
+      "label": "AI Overview Optimization",
+      "path": "/servicos/ai-overview-optimization/"
+    }
+  ],
+  "articleLinks": [
+    {
+      "label": "Metodologia",
+      "path": "/metodologia/"
+    },
+    {
+      "label": "Arquitetura editorial do blog",
+      "path": "/blog/estrategia-seo-ia/"
+    },
+    {
+      "label": "Sitemap para IA",
+      "path": "/blog/sitemap-para-ia/"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Esse case representa um cliente ou o proprio site da AUDITSEO?",
+      "answer": "Representa o proprio site da AUDITSEO. O objetivo e usar a operacao publica como laboratorio auditavel de arquitetura, SEO tecnico e governanca editorial."
+    },
+    {
+      "question": "A migracao trocou o layout aprovado?",
+      "answer": "Nao. A migracao preservou o designer e refez a fundacao por baixo com shell global, rotas canonicas e componentes compartilhados."
+    },
+    {
+      "question": "Qual foi o principal ganho desse case?",
+      "answer": "O principal ganho foi transformar um site dificil de manter em uma base escalavel para SEO, AI search e expansao editorial sem regressao visual."
+    }
+  ],
+  "order": 1
+}

@@ -1,0 +1,21 @@
+---
+import '../../styles/consultoria-seo-parity.css';
+import ConsultoriaSeoLegacyContent from '../../components/ConsultoriaSeoLegacyContent.astro';
+import LegacyContentEnhancements from '../../components/LegacyContentEnhancements.astro';
+import ServiceDetailLayout from '../../layouts/ServiceDetailLayout.astro';
+---
+<ServiceDetailLayout
+  title="Consultoria SEO"
+  description="Consultoria SEO especializada com estrategia personalizada, acompanhamento continuo e orientacao pratica para crescimento organico, arquitetura e governanca de execucao."
+  canonicalPath="/servicos/consultoria-seo/"
+  imagePath="/images/seo.jpeg"
+  pageType="Service"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Servicos', path: '/servicos/' },
+    { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' }
+  ]}
+>
+  <ConsultoriaSeoLegacyContent />
+  <LegacyContentEnhancements />
+</ServiceDetailLayout>

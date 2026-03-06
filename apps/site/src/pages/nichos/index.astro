@@ -1,0 +1,169 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import InstitutionalLayout from '../../layouts/InstitutionalLayout.astro';
+
+const nicheCards = [
+  {
+    title: 'Clinicas Medicas',
+    copy:
+      'Estrutura comercial e editorial para captar demanda qualificada em especialidades, convenios, tratamentos e descoberta local.',
+    href: '/nichos/clinicas-medicas/'
+  },
+  {
+    title: 'Dermatologistas',
+    copy:
+      'Pagina setorial para dermatologia com foco em descoberta local, confianca medica, tratamentos e clareza de servico.',
+    href: '/nichos/dermatologistas/'
+  },
+  {
+    title: 'Energia Solar',
+    copy:
+      'Arquitetura comercial e editorial para demanda B2B em integradores, projetos, usinas e captacao de leads qualificados.',
+    href: '/nichos/energia-solar/'
+  },
+  {
+    title: 'Escritorios de Advocacia',
+    copy:
+      'Pagina setorial pensada para marketing juridico informativo, autoridade topical e jornada de contato dentro das regras da OAB.',
+    href: '/nichos/escritorios-advocacia/'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Qual o papel de uma pagina de nicho na arquitetura da AUDITSEO?',
+    answer:
+      'A pagina de nicho traduz a metodologia e os servicos da AUDITSEO para um contexto setorial especifico, com linguagem, provas e objeções do segmento.'
+  },
+  {
+    question: 'Toda pagina de nicho precisa de um servico proprio?',
+    answer:
+      'Nao. O ideal e conectar o nicho aos servicos principais da casa, evitando canibalizacao e mantendo uma arquitetura comercial coerente.'
+  },
+  {
+    question: 'Essas paginas sao diferentes de landing pages locais?',
+    answer:
+      'Sim. Nicho organiza contexto vertical. Landing local combina nicho, intencao comercial e geografia quando ha sinal real para isso.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<InstitutionalLayout
+  title="Nichos Atendidos pela AUDITSEO"
+  description="Veja como a AUDITSEO adapta SEO, IA e arquitetura de paginas para nichos especificos, com foco comercial, rastreabilidade e E-E-A-T."
+  canonicalPath="/nichos/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Nichos', path: '/nichos/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span class="current">Nichos</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Clusters Setoriais</span>
+        <h1 class="ee-page-title">
+          NICHOS COM <span class="accent">MENSAGEM</span>, PROVA E INTENCAO COMERCIAL
+        </h1>
+        <p class="ee-page-subtitle">
+          As paginas de nicho da AUDITSEO nao existem para inflar URL. Elas existem para traduzir a
+          mesma estrutura de servico para mercados com regras, linguagem, objeções e sinais de
+          autoridade proprios.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">SEO Setorial</span>
+          <span class="ee-page-highlight">Mensagem por Segmento</span>
+          <span class="ee-page-highlight">Linkagem Comercial</span>
+          <span class="ee-page-highlight">Sem Doorway Pages</span>
+        </div>
+      </div>
+
+      <aside class="ee-page-hero-card">
+        <h2>Como os nichos se conectam ao site</h2>
+        <p>
+          Cada pagina setorial se ancora nos servicos principais, no bloco institucional e no blog,
+          sem criar estruturas paralelas nem competir por intencao com a Home.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/">Ver servicos</a>
+          <a href="/metodologia/">Ver metodologia</a>
+          <a href="/blog/">Ver blog</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Paginas disponiveis</span>
+        <h2 class="ee-page-section-title">NICHOS JA MATERIALIZADOS NA NOVA ARQUITETURA</h2>
+      </div>
+      <div class="ee-page-grid two">
+        {nicheCards.map((item) => (
+          <article class="ee-page-card">
+            <span class="ee-page-card-eyebrow">Nicho</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+            <div class="ee-page-links">
+              <a href={item.href}>Abrir pagina</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Criterio</span>
+        <h2 class="ee-page-section-title">QUANDO UM NOVO NICHO MERECE EXISTIR</h2>
+      </div>
+      <div class="ee-page-grid three">
+        <article class="ee-page-card">
+          <h3>Demanda real</h3>
+          <p>Tem que existir busca, conversa comercial e necessidade de linguagem propria.</p>
+        </article>
+        <article class="ee-page-card">
+          <h3>Adaptacao de prova</h3>
+          <p>O nicho precisa de argumentos, FAQs e exemplos que nao cabem em uma pagina generica.</p>
+        </article>
+        <article class="ee-page-card">
+          <h3>Conexao com servico</h3>
+          <p>Sem ponte clara para um servico principal, a URL vira ruido. Aqui isso nao entra.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section ee-page-faq">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE PAGINAS DE NICHO</h2>
+      </div>
+      <div class="ee-page-faq-list">
+        {faqs.map((item) => (
+          <article class="ee-page-faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</InstitutionalLayout>

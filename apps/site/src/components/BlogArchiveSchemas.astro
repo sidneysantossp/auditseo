@@ -1,0 +1,96 @@
+---
+import { siteMetadata } from '../data/site';
+import type { BlogCategoryDefinition, BlogCategoryFaq } from '../data/blog-taxonomy';
+import type { LegacyBlogArticle } from '../lib/legacy-blog';
+import { blogEntityId, buildBlogCategoryEntity, buildBlogEntity, getBlogCategoryEntityId } from '../lib/blog-schema';
+
+interface Props {
+  canonicalPath: string;
+  title: string;
+  description: string;
+  articles: LegacyBlogArticle[];
+  category?: BlogCategoryDefinition | null;
+  faqs?: BlogCategoryFaq[];
+}
+
+const { canonicalPath, title, description, articles, category = null, faqs = [] } = Astro.props as Props;
+const canonicalUrl = new URL(canonicalPath, siteMetadata.siteUrl).toString();
+const categoryEntityId = category ? getBlogCategoryEntityId(category.slug) : null;
+
+const itemList = {
+  '@type': 'ItemList',
+  '@id': `${canonicalUrl}#itemlist`,
+  numberOfItems: articles.length,
+  itemListElement: articles.map((article, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: new URL(article.canonicalPath, siteMetadata.siteUrl).toString(),
+    name: article.title
+  }))
+};
+
+const graph: Record<string, unknown>[] = [
+  buildBlogEntity(),
+  itemList,
+  {
+    '@type': 'CollectionPage',
+    '@id': `${canonicalUrl}#archive`,
+    name: title,
+    headline: title,
+    description,
+    url: canonicalUrl,
+    inLanguage: siteMetadata.locale,
+    mainEntityOfPage: {
+      '@id': `${canonicalUrl}#webpage`
+    },
+    isPartOf: {
+      '@id': blogEntityId
+    },
+    about: category
+      ? {
+          '@id': categoryEntityId
+        }
+      : {
+          '@id': `${siteMetadata.siteUrl}/#organization`
+        },
+    keywords: category?.categoryKeywords ?? undefined,
+    mainEntity: {
+      '@id': `${canonicalUrl}#itemlist`
+    },
+    hasPart: articles.map((article) => ({
+      '@type': 'BlogPosting',
+      url: new URL(article.canonicalPath, siteMetadata.siteUrl).toString(),
+      headline: article.title
+    })),
+    isAccessibleForFree: true,
+    publisher: {
+      '@id': `${siteMetadata.siteUrl}/#organization`
+    }
+  }
+];
+
+if (category) {
+  graph.unshift(buildBlogCategoryEntity(category));
+}
+
+if (faqs.length > 0) {
+  graph.push({
+    '@type': 'FAQPage',
+    '@id': `${canonicalUrl}#faq`,
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
+      }
+    }))
+  });
+}
+
+const schemaJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': graph
+});
+---
+<script is:inline type="application/ld+json" set:html={schemaJson}></script>

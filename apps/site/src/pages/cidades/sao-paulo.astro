@@ -1,0 +1,197 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import CityLayout from '../../layouts/CityLayout.astro';
+
+const serviceBlocks = [
+  {
+    title: 'AI Overview Optimization',
+    copy:
+      'Para empresas que disputam atencao nas respostas de IA do Google e precisam de paginas mais citaveis e mais claras.'
+  },
+  {
+    title: 'SEO Local e GBP',
+    copy:
+      'Essencial para negocios com ponto fisico, area de cobertura ou decisao comercial fortemente ancorada em localizacao.'
+  },
+  {
+    title: 'Consultoria e Auditoria SEO',
+    copy:
+      'Entrada mais segura quando o problema e estrutura, canibalizacao, performance ou desalinhamento entre conteudo e negocio.'
+  }
+];
+
+const localSignals = [
+  'Mensagem comercial calibrada para um mercado mais competitivo',
+  'Conexao entre pagina local, servico principal e contato',
+  'Reforco de descoberta organica e local sem duplicar discurso da Home',
+  'Espaco para landings validas por nicho quando houver intencao real'
+];
+
+const faqs = [
+  {
+    question: 'Por que Sao Paulo merece uma pagina local propria?',
+    answer:
+      'Porque o volume, a concorrencia e a diversidade de intencoes fazem a mensagem local exigir mais clareza do que uma pagina nacional comporta.'
+  },
+  {
+    question: 'Essa pagina substitui landing pages por nicho em Sao Paulo?',
+    answer:
+      'Nao. Ela organiza o contexto local. As landings entram quando ha combinacao valida entre servico, nicho e cidade.'
+  },
+  {
+    question: 'Qual a melhor entrada comercial para Sao Paulo hoje?',
+    answer:
+      'Depende do objetivo, mas AI Overview Optimization, SEO Local e Consultoria SEO costumam ser os blocos iniciais mais fortes.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<CityLayout
+  title="AUDITSEO em Sao Paulo | SEO, IA e Estrutura Comercial"
+  description="Pagina local da AUDITSEO para Sao Paulo: SEO, IA, descoberta regional, AI Overviews e estrutura comercial para empresas em um mercado altamente competitivo."
+  canonicalPath="/cidades/sao-paulo/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Cidades', path: '/cidades/' },
+    { label: 'Sao Paulo', path: '/cidades/sao-paulo/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/cidades/">Cidades</a>
+      <span>›</span>
+      <span class="current">Sao Paulo</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Cobertura em Sao Paulo</span>
+        <h1 class="ee-page-title">
+          SEO E IA EM <span class="accent">SAO PAULO</span> COM FOCO EM ESTRUTURA E CONVERSAO
+        </h1>
+        <p class="ee-page-subtitle">
+          Em Sao Paulo, a disputa nao e so por ranking. E por
+          <strong> clareza comercial</strong>, <strong>autoridade</strong>,
+          <strong> rastreabilidade</strong> e <strong>descoberta consistente</strong> em um mercado
+          com mais oferta, mais ruido e mais competicao.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">Mercado Competitivo</span>
+          <span class="ee-page-highlight">SEO + IA</span>
+          <span class="ee-page-highlight">Descoberta Local</span>
+          <span class="ee-page-highlight">Paginas Comerciais</span>
+        </div>
+      </div>
+
+      <aside class="ee-page-hero-card">
+        <h2>Entrada recomendada em Sao Paulo</h2>
+        <p>
+          Quando a empresa precisa disputar visibilidade em um mercado mais denso, a prioridade
+          costuma ser alinhar servico principal, pagina local e diagnostico comercial.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/consultoria-seo/">Ver consultoria SEO</a>
+          <a href="/servicos/ai-overview-optimization/">Ver AI Overview Optimization</a>
+          <a href="/lp/ai-overview-optimization-clinicas-medicas-sao-paulo/">Ver landing exemplo</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo local de Sao Paulo">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Mercado prioritario</div>
+        <p class="ee-page-stat-copy">Cidade chave para validar combinacoes de pagina, nicho e servico.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">3</div>
+        <div class="ee-page-stat-label">Entradas mais fortes</div>
+        <p class="ee-page-stat-copy">Consultoria, AI Overview Optimization e SEO Local.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">0</div>
+        <div class="ee-page-stat-label">Espaco para pagina generica</div>
+        <p class="ee-page-stat-copy">Aqui a mensagem precisa ser cirurgica, nao ampla demais.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Objetivo</div>
+        <p class="ee-page-stat-copy">Conectar descoberta qualificada a diagnostico e contato.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Servicos mais aderentes</span>
+        <h2 class="ee-page-section-title">O QUE COSTUMA FAZER MAIS SENTIDO EM SAO PAULO</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {serviceBlocks.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Leitura local</span>
+        <h2 class="ee-page-section-title">SINAIS QUE JUSTIFICAM UMA PAGINA LOCAL EM SAO PAULO</h2>
+      </div>
+      <div class="ee-page-panels">
+        <article class="ee-page-panel">
+          <h3>O que a pagina local organiza</h3>
+          <ul class="ee-page-list">
+            {localSignals.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-panel">
+          <h3>Proximo passo comercial</h3>
+          <p>
+            Se sua empresa opera em Sao Paulo e precisa validar combinacao entre IA, servico e
+            descoberta local, a proxima camada natural e uma landing especifica por nicho e cidade.
+          </p>
+          <div class="ee-page-links">
+            <a href="/lp/ai-overview-optimization-clinicas-medicas-sao-paulo/">Abrir landing exemplo</a>
+            <a href="/contato/">Solicitar diagnostico</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section ee-page-faq">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE A FRENTE EM SAO PAULO</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</CityLayout>

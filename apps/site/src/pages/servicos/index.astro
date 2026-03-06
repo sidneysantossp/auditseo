@@ -1,0 +1,19 @@
+---
+import '../../styles/services-hub-parity.css';
+import LegacyContentEnhancements from '../../components/LegacyContentEnhancements.astro';
+import ServicesHubLegacyContent from '../../components/ServicesHubLegacyContent.astro';
+import ServiceHubLayout from '../../layouts/ServiceHubLayout.astro';
+---
+<ServiceHubLayout
+  title="Servicos de SEO AI-First"
+  description="Servicos especializados em Search Intelligence AI: otimizacao para AI Overviews, presenca em ChatGPT e SEO Local."
+  canonicalPath="/servicos/"
+  imagePath="/images/agencia-de-seo.png"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Servicos', path: '/servicos/' }
+  ]}
+>
+  <ServicesHubLegacyContent />
+  <LegacyContentEnhancements />
+</ServiceHubLayout>

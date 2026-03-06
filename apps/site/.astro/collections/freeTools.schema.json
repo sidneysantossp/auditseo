@@ -1,0 +1,180 @@
+{
+  "$ref": "#/definitions/freeTools",
+  "definitions": {
+    "freeTools": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "type": "integer",
+          "exclusiveMinimum": 0
+        },
+        "slug": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "seoTitle": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "badge": {
+          "type": "string"
+        },
+        "statusLabel": {
+          "type": "string"
+        },
+        "heroSubtitle": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "snippet-preview",
+            "faq-schema-generator",
+            "ai-seo-checklist"
+          ]
+        },
+        "categoryLabel": {
+          "type": "string"
+        },
+        "outputLabel": {
+          "type": "string"
+        },
+        "summaryPoints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "copy": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "value",
+              "label",
+              "copy"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "overviewCards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "copy": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "copy"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "useCases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "howItWorks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "serviceLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string",
+                "pattern": "^\\/"
+              }
+            },
+            "required": [
+              "label",
+              "path"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "articleLinks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/freeTools/properties/serviceLinks/items"
+          }
+        },
+        "faqs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answer": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "question",
+              "answer"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "order",
+        "slug",
+        "title",
+        "seoTitle",
+        "description",
+        "badge",
+        "statusLabel",
+        "heroSubtitle",
+        "kind",
+        "categoryLabel",
+        "outputLabel",
+        "summaryPoints",
+        "metrics",
+        "overviewCards",
+        "useCases",
+        "howItWorks",
+        "serviceLinks",
+        "articleLinks",
+        "faqs"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

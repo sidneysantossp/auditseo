@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google AI Mode: O Que É, Como Funciona e Impacto no SEO 2026 | AUDITSEO</title>
+    <meta name="description" content="Entenda o Google AI Mode, a nova interface conversacional do Google Search. Saiba como funciona, diferenças para AI Overviews e como otimizar para essa nova era da busca.">
+    <meta name="keywords" content="google ai mode, ai mode google, busca conversacional google, gemini search, futuro do google search">
+    <link rel="canonical" href="https://www.auditseo.com.br/blog/google-ai-mode/">
+    <meta property="og:title" content="Google AI Mode: O Que É, Como Funciona e Impacto no SEO 2026">
+    <meta property="og:description" content="Guia completo sobre o Google AI Mode, a interface conversacional que está transformando a busca.">
+    <meta property="og:url" content="https://www.auditseo.com.br/blog/google-ai-mode/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-01-25">
+    <meta property="article:modified_time" content="2026-01-25">
+    <meta property="article:author" content="Sidney Santos">
+    <meta property="article:section" content="Search Intelligence AI">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--accent-cream:#f4e8d8;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555;--green:#2ecc71;--yellow:#f1c40f;--red:#e74c3c;--blue:#3498db;--purple:#9b59b6}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.8}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);transition:all .3s;text-decoration:none}.nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .article-header{padding:8rem 3rem 4rem;position:relative;background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(212,165,116,.04) 100%)}
+        .article-header-content{max-width:900px;margin:0 auto}
+        .breadcrumbs{margin-bottom:2rem}.breadcrumbs a,.breadcrumbs span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:1px}.breadcrumbs a:hover{color:var(--accent-gold)}.breadcrumbs span{margin:0 .5rem}
+        .article-category{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:3px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block}
+        .article-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;letter-spacing:-1px;margin-bottom:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .article-excerpt{font-size:1.3rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.7}
+        .article-meta{display:flex;flex-wrap:wrap;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+        .meta-item{display:flex;align-items:center;gap:.75rem}
+        .meta-avatar{width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:2px solid var(--accent-gold);overflow:hidden}
+        .meta-avatar img{width:100%;height:100%;object-fit:cover}
+        .meta-info{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:1px}
+        .meta-info strong{display:block;color:var(--text-light);font-size:.75rem;margin-bottom:.25rem}
+        .article-layout{max-width:1400px;margin:0 auto;padding:4rem 3rem;display:grid;grid-template-columns:250px 1fr;gap:4rem}
+        .article-toc{position:sticky;top:100px;height:fit-content}
+        .toc-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:1px}
+        .toc-list{list-style:none}.toc-list li{margin-bottom:.75rem}
+        .toc-list a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:.5px;transition:color .3s;display:block;padding:.25rem 0;border-left:2px solid transparent;padding-left:1rem;margin-left:-1rem}
+        .toc-list a:hover,.toc-list a.active{color:var(--accent-gold);border-left-color:var(--accent-gold)}
+        .article-content{max-width:800px}
+        .article-content h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin:3rem 0 1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--text-light);margin:2.5rem 0 1rem;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h4{font-size:1.2rem;color:var(--accent-cream);margin:2rem 0 1rem;font-weight:600}
+        .article-content p{font-size:1.15rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9}
+        .article-content p strong{color:var(--accent-cream)}
+        .article-content a{color:var(--accent-gold);text-decoration:underline;text-underline-offset:3px}
+        .article-content ul,.article-content ol{margin:1.5rem 0;padding-left:1.5rem}
+        .article-content li{font-size:1.1rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.7}
+        .article-content li strong{color:var(--text-light)}
+        .highlight-box{background:linear-gradient(135deg,rgba(230,57,70,.1) 0%,rgba(212,165,116,.05) 100%);border-left:4px solid var(--accent-red);padding:2rem;margin:2rem 0;border-radius:0 8px 8px 0}
+        .highlight-box p{margin-bottom:0;font-size:1.1rem}
+        .highlight-box strong{color:var(--accent-gold)}
+        .info-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0;border-radius:8px}
+        .info-box-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--accent-gold);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+        .info-box p,.info-box li{font-size:1rem}
+        .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin:2rem 0}
+        .feature-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.5rem;border-radius:8px}
+        .feature-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--accent-gold);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+        .feature-card p{font-size:.95rem;color:var(--text-muted);margin:0}
+        .comparison-box{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:2rem 0;border:1px solid rgba(255,255,255,.1);border-radius:8px;overflow:hidden}
+        .comparison-side{padding:2rem}
+        .comparison-side.left{background:rgba(155,89,182,.1);border-right:1px solid rgba(255,255,255,.1)}
+        .comparison-side.right{background:rgba(46,204,113,.1)}
+        .comparison-side h4{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;margin-bottom:1rem}
+        .comparison-side.left h4{color:var(--purple)}
+        .comparison-side.right h4{color:var(--green)}
+        .comparison-side ul{list-style:none;padding:0;margin:0}
+        .comparison-side li{font-size:.95rem;color:var(--text-muted);padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+        .comparison-side li:last-child{border-bottom:none}
+        .timeline{margin:2rem 0;padding-left:2rem;border-left:2px solid var(--accent-gold)}
+        .timeline-item{margin-bottom:2rem;position:relative}
+        .timeline-item::before{content:'';position:absolute;left:-2.35rem;top:.5rem;width:12px;height:12px;background:var(--accent-gold);border-radius:50%}
+        .timeline-item h4{color:var(--accent-cream);margin-bottom:.5rem;font-size:1.1rem}
+        .timeline-item .date{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--text-dim);margin-bottom:.5rem}
+        .timeline-item p{margin:0;font-size:1rem}
+        .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin:2rem 0}
+        .stat-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:1.5rem;text-align:center;border-radius:8px}
+        .stat-card .number{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+        .stat-card .label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);margin-top:.5rem;text-transform:uppercase;letter-spacing:1px}
+        .comparison-table{width:100%;border-collapse:collapse;margin:2rem 0}
+        .comparison-table th,.comparison-table td{padding:1rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem}
+        .comparison-table th{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:1px;color:var(--accent-gold);text-transform:uppercase;background:var(--bg-card)}
+        .comparison-table td{color:var(--text-muted)}
+        .comparison-table tr:hover td{background:rgba(255,255,255,.02)}
+        .tip-box{background:rgba(212,165,116,.1);border:1px solid rgba(212,165,116,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .tip-box h4{color:var(--accent-gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+        .tip-box h4::before{content:'💡'}
+        .warning-box{background:rgba(231,76,60,.1);border:1px solid rgba(231,76,60,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .warning-box h4{color:var(--red);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+        .warning-box h4::before{content:'⚠️'}
+        .future-box{background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.3);padding:1.5rem;margin:2rem 0;border-radius:8px}
+        .future-box h4{color:var(--blue);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+        .future-box h4::before{content:'🔮'}
+        .screenshot-placeholder{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:3rem;margin:2rem 0;text-align:center;border-radius:8px}
+        .screenshot-placeholder .icon{font-size:3rem;margin-bottom:1rem}
+        .screenshot-placeholder p{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text-dim);margin:0}
+        .cta-box{background:linear-gradient(135deg,rgba(230,57,70,.15) 0%,rgba(212,165,116,.08) 100%);border:1px solid rgba(230,57,70,.3);padding:3rem;margin:3rem 0;text-align:center;border-radius:8px}
+        .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:1rem}
+        .cta-box p{font-size:1.1rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .cta-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1rem 2.5rem;background:var(--gradient-fire);border:none;color:var(--bg-dark);cursor:pointer;transition:all .3s;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block;border-radius:4px}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(230,57,70,.4)}
+        .author-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin:4rem 0;display:flex;gap:2rem;align-items:center;border-radius:8px}
+        .author-avatar{width:100px;height:100px;border-radius:50%;background:var(--bg-dark);border:3px solid var(--accent-gold);overflow:hidden;flex-shrink:0}
+        .author-avatar img{width:100%;height:100%;object-fit:cover}
+        .author-info h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:.5rem}
+        .author-info p{font-size:1rem;color:var(--text-muted);margin-bottom:1rem}
+        .author-links{display:flex;gap:1rem}
+        .author-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-decoration:none}
+        .related-posts{margin:4rem 0}
+        .related-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:2rem}
+        .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .related-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);padding:1.5rem;transition:all .3s;border-radius:8px}
+        .related-card:hover{border-color:rgba(230,57,70,.3);transform:translateY(-3px)}
+        .related-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:.5rem}
+        .related-card h4 a{text-decoration:none;color:inherit}
+        .related-card p{font-size:.9rem;color:var(--text-dim)}
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card)}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}.footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
+        .footer-address{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);line-height:1.8}.footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1.5rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        .external-link::after{content:' ↗';font-size:.8em;opacity:.7}
+        @media(max-width:1100px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}.related-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr 1fr}.feature-grid{grid-template-columns:1fr}.comparison-box{grid-template-columns:1fr}.comparison-side.left{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}.stat-grid{grid-template-columns:1fr}}
+        @media(max-width:768px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.article-header{padding:6rem 1.5rem 3rem}.article-layout{padding:2rem 1.5rem}.article-meta{flex-direction:column;gap:1.5rem}.author-box{flex-direction:column;text-align:center}.footer-content{grid-template-columns:1fr}}
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Google AI Mode: O Que É, Como Funciona e Impacto no SEO 2026","description":"Guia completo sobre o Google AI Mode, a nova interface conversacional do Google Search.","author":{"@type":"Person","name":"Sidney Santos","url":"https://www.auditseo.com.br/sobre/"},"publisher":{"@type":"Organization","name":"AUDITSEO","logo":{"@type":"ImageObject","url":"https://www.auditseo.com.br/images/logo.png"}},"datePublished":"2026-01-25","dateModified":"2026-01-25","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.auditseo.com.br/blog/google-ai-mode/"},"image":"https://www.auditseo.com.br/images/blog/google-ai-mode.jpg"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.auditseo.com.br/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.auditseo.com.br/blog/"},{"@type":"ListItem","position":3,"name":"Google AI Mode","item":"https://www.auditseo.com.br/blog/google-ai-mode/"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"O que é Google AI Mode?","acceptedAnswer":{"@type":"Answer","text":"Google AI Mode é uma nova interface conversacional do Google Search que permite interações em múltiplos turnos com a IA Gemini, indo além dos AI Overviews tradicionais para oferecer uma experiência similar ao ChatGPT, mas integrada à busca."}},{"@type":"Question","name":"Qual a diferença entre AI Mode e AI Overviews?","acceptedAnswer":{"@type":"Answer","text":"AI Overviews aparecem automaticamente em algumas buscas e são respostas únicas. AI Mode é uma interface conversacional opt-in onde você pode fazer perguntas de follow-up e ter uma conversa contínua com a IA."}},{"@type":"Question","name":"AI Mode está disponível no Brasil?","acceptedAnswer":{"@type":"Answer","text":"O AI Mode está sendo expandido globalmente. Inicialmente lançado nos EUA em março 2025, está gradualmente chegando a outros países. Verifique nas configurações do Google Search se já está disponível para você."}}]}</script>
+    <link rel="stylesheet" href="/assets/site-shell.css?v=20260303b">
+    <script defer src="/assets/site-shell.js?v=20260303b"></script>
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="alternate" hreflang="pt-BR" href="https://www.auditseo.com.br/blog/google-ai-mode/">
+    <link rel="alternate" hreflang="x-default" href="https://www.auditseo.com.br/blog/google-ai-mode/">
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="logo">AUDITSEO</a>
+        <ul class="nav-links">
+            <li><a href="/agencia-de-seo/">Agência de SEO</a></li>
+            <li><a href="/servicos/">Serviços</a></li>
+            <li><a href="/sobre/">Sobre</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <a href="https://wa.me/5511996384376" class="nav-cta">Falar com Especialista</a>
+    </nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span>Google AI Mode</span>
+            </div>
+            <span class="article-category">Search Intelligence AI</span>
+            <h1 class="article-title">Google AI Mode: O Que É, Como Funciona e Impacto no SEO</h1>
+            <p class="article-excerpt">O Google está transformando a busca com uma experiência totalmente conversacional. Entenda o AI Mode, como ele difere dos AI Overviews, e o que isso significa para sua estratégia de SEO.</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <div class="meta-avatar"><img src="/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                    <div class="meta-info"><strong>Sidney Santos</strong>Especialista em Search Intelligence AI</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-info"><strong>Publicado</strong>25 de Janeiro, 2026</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-info"><strong>Atualizado</strong>Janeiro 2026</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-info"><strong>Tempo de leitura</strong>14 minutos</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-layout">
+        <aside class="article-toc">
+            <h4 class="toc-title">ÍNDICE</h4>
+            <ul class="toc-list">
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="#o-que-e">O Que é AI Mode</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#diferenca-ai-overviews">Diferença Para AI Overviews</a></li>
+                <li><a href="#recursos">Recursos e Capacidades</a></li>
+                <li><a href="#como-acessar">Como Acessar</a></li>
+                <li><a href="#impacto-seo">Impacto no SEO</a></li>
+                <li><a href="#como-otimizar">Como Otimizar</a></li>
+                <li><a href="#futuro">O Futuro da Busca</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </aside>
+
+        <article class="article-content">
+            <section id="introducao">
+                <p>O Google está dando um passo além dos AI Overviews. Com o <strong>AI Mode</strong>, a empresa está introduzindo uma experiência de busca totalmente conversacional — essencialmente um ChatGPT integrado ao Google Search.</p>
+
+                <p>Se os AI Overviews já mudaram a forma como pensamos sobre SEO, o AI Mode representa uma transformação ainda mais profunda. Neste artigo, vou explicar exatamente o que é o AI Mode, como ele funciona, e o que você precisa fazer para se preparar.</p>
+
+                <p>Se você ainda não está familiarizado com AI Overviews, recomendo ler primeiro nosso <a href="/blog/o-que-sao-ai-overviews/">guia completo sobre AI Overviews</a>.</p>
+            </section>
+
+            <section id="o-que-e">
+                <h2>O Que é Google AI Mode</h2>
+
+                <p>Google AI Mode é uma nova interface de busca conversacional que permite interações em múltiplos turnos com a IA Gemini, diretamente no Google Search. Em vez de apenas receber uma resposta, você pode <strong>conversar</strong> com o Google sobre um tema.</p>
+
+                <h3>A Definição Simples</h3>
+
+                <p>Pense no AI Mode como o ChatGPT, mas dentro do Google Search. Você pode fazer perguntas, receber respostas, fazer perguntas de follow-up, pedir esclarecimentos, e continuar a conversa — tudo sem sair da interface de busca.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Em uma frase:</strong> AI Mode transforma o Google de um "respondedor de perguntas" para um "assistente de pesquisa conversacional" alimentado por Gemini.</p>
+                </div>
+
+                <h3>A Evolução</h3>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="date">Maio 2024</div>
+                        <h4>Lançamento dos AI Overviews</h4>
+                        <p>Google introduz respostas geradas por IA no topo de algumas buscas.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">Dezembro 2024</div>
+                        <h4>Gemini 2.0 e Expansão Global</h4>
+                        <p>AI Overviews chegam a 200+ países com Gemini 2.0.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">Março 2025</div>
+                        <h4>Lançamento do AI Mode</h4>
+                        <p>Google anuncia AI Mode no Search Labs para usuários nos EUA.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">2025-2026</div>
+                        <h4>Expansão Global</h4>
+                        <p>AI Mode sendo gradualmente disponibilizado em mais países.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="como-funciona">
+                <h2>Como o AI Mode Funciona</h2>
+
+                <p>O AI Mode opera de forma diferente da busca tradicional. Aqui está o fluxo básico:</p>
+
+                <h3>1. Ativação</h3>
+
+                <p>O AI Mode não está ativo por padrão. Você precisa ativá-lo explicitamente — seja clicando em um botão "AI Mode" na interface de busca ou acessando através do Search Labs.</p>
+
+                <h3>2. Conversa Multi-Turno</h3>
+
+                <p>Diferente de uma busca normal onde você digita → recebe resultado → fim, no AI Mode você:</p>
+
+                <ol>
+                    <li>Faz uma pergunta inicial</li>
+                    <li>Recebe uma resposta detalhada da IA</li>
+                    <li>Pode fazer perguntas de follow-up</li>
+                    <li>A IA lembra o contexto da conversa</li>
+                    <li>Continua até você ter a informação que precisa</li>
+                </ol>
+
+                <h3>3. Integração com Web</h3>
+
+                <p>O AI Mode não é um chatbot isolado — ele está integrado ao índice de busca do Google. As respostas incluem:</p>
+
+                <ul>
+                    <li><strong>Citações de fontes:</strong> Links para sites que fundamentam a resposta</li>
+                    <li><strong>Dados em tempo real:</strong> Informações atualizadas da web</li>
+                    <li><strong>Resultados complementares:</strong> Links para explorar mais</li>
+                </ul>
+
+                <div class="screenshot-placeholder">
+                    <div class="icon">🖥️</div>
+                    <p>Interface do AI Mode: Campo de conversa + Citações + Links relacionados</p>
+                </div>
+
+                <h3>4. Powered by Gemini</h3>
+
+                <p>O AI Mode é alimentado pelo <strong>Gemini 2.0</strong>, o modelo de IA mais avançado do Google. Isso significa capacidades de:</p>
+
+                <ul>
+                    <li>Raciocínio complexo e multi-etapas</li>
+                    <li>Compreensão de contexto longo</li>
+                    <li>Síntese de múltiplas fontes</li>
+                    <li>Geração de respostas detalhadas e nuançadas</li>
+                </ul>
+            </section>
+
+            <section id="diferenca-ai-overviews">
+                <h2>Diferença Entre AI Mode e AI Overviews</h2>
+
+                <p>Muita gente confunde AI Mode com AI Overviews. São relacionados, mas fundamentalmente diferentes:</p>
+
+                <div class="comparison-box">
+                    <div class="comparison-side left">
+                        <h4>AI Overviews</h4>
+                        <ul>
+                            <li>Aparecem automaticamente em algumas buscas</li>
+                            <li>Resposta única, não interativa</li>
+                            <li>Você não pode fazer follow-up</li>
+                            <li>Formato: resumo no topo da SERP</li>
+                            <li>Disponível para todos por padrão</li>
+                            <li>Foco em responder a query específica</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-side right">
+                        <h4>AI Mode</h4>
+                        <ul>
+                            <li>Precisa ser ativado pelo usuário</li>
+                            <li>Conversa contínua, multi-turno</li>
+                            <li>Perguntas de follow-up permitidas</li>
+                            <li>Formato: interface de chat</li>
+                            <li>Opt-in (Search Labs ou botão)</li>
+                            <li>Foco em exploração profunda de temas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Tabela Comparativa Completa</h3>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>AI Overviews</th>
+                            <th>AI Mode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ativação</td>
+                            <td>Automático</td>
+                            <td>Manual (opt-in)</td>
+                        </tr>
+                        <tr>
+                            <td>Interatividade</td>
+                            <td>Nenhuma</td>
+                            <td>Conversacional</td>
+                        </tr>
+                        <tr>
+                            <td>Memória de contexto</td>
+                            <td>Não</td>
+                            <td>Sim (durante sessão)</td>
+                        </tr>
+                        <tr>
+                            <td>Comprimento da resposta</td>
+                            <td>150-300 palavras típico</td>
+                            <td>Sem limite definido</td>
+                        </tr>
+                        <tr>
+                            <td>Citações</td>
+                            <td>3-6 fontes</td>
+                            <td>Múltiplas, dinâmicas</td>
+                        </tr>
+                        <tr>
+                            <td>Melhor para</td>
+                            <td>Respostas rápidas</td>
+                            <td>Pesquisa aprofundada</td>
+                        </tr>
+                        <tr>
+                            <td>Impacto no CTR</td>
+                            <td>Redução significativa</td>
+                            <td>Potencialmente maior (?)v</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip-box">
+                    <h4>Pensando Estrategicamente</h4>
+                    <p>AI Overviews são para buscas rápidas ("o que é X"). AI Mode é para exploração ("me ajude a entender X profundamente e como se relaciona com Y e Z").</p>
+                </div>
+            </section>
+
+            <section id="recursos">
+                <h2>Recursos e Capacidades do AI Mode</h2>
+
+                <p>O AI Mode vem com funcionalidades que vão além de um simples chatbot:</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔄 Conversas Multi-Turno</h4>
+                        <p>Faça perguntas de follow-up sem perder o contexto. A IA lembra o que você discutiu.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔗 Citações Integradas</h4>
+                        <p>Cada afirmação pode ser verificada com links para as fontes originais.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌐 Dados em Tempo Real</h4>
+                        <p>Acesso ao índice do Google para informações atualizadas, não apenas dados de treino.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Raciocínio Complexo</h4>
+                        <p>Pode fazer comparações, análises e sínteses de múltiplas fontes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎯 Queries Complexas</h4>
+                        <p>Lida bem com perguntas longas, condicionais e multi-parte.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 Tarefas de Criação</h4>
+                        <p>Pode ajudar a redigir, resumir, comparar e organizar informações.</p>
+                    </div>
+                </div>
+
+                <h3>Tipos de Queries Que Funcionam Bem</h3>
+
+                <p>O AI Mode brilha em certos tipos de busca:</p>
+
+                <ul>
+                    <li><strong>Pesquisa exploratória:</strong> "Quero entender investimentos em renda fixa"</li>
+                    <li><strong>Comparações complexas:</strong> "Compare as vantagens de morar em SP vs Rio para trabalho remoto"</li>
+                    <li><strong>Planejamento:</strong> "Me ajude a planejar uma viagem de 10 dias para Portugal"</li>
+                    <li><strong>Aprendizado:</strong> "Explique machine learning como se eu fosse iniciante, depois vamos aprofundando"</li>
+                    <li><strong>Decisões:</strong> "Qual notebook devo comprar para edição de vídeo com orçamento de R$5000?"</li>
+                </ul>
+            </section>
+
+            <section id="como-acessar">
+                <h2>Como Acessar o AI Mode</h2>
+
+                <p>O acesso ao AI Mode varia dependendo da sua região e configurações:</p>
+
+                <h3>Método 1: Search Labs</h3>
+
+                <ol>
+                    <li>Acesse <a href="https://labs.google.com/search" target="_blank" rel="noopener" class="external-link">labs.google.com/search</a></li>
+                    <li>Faça login com sua conta Google</li>
+                    <li>Procure por "AI Mode" nos experimentos disponíveis</li>
+                    <li>Ative o experimento</li>
+                    <li>Use o Google Search normalmente — verá a opção AI Mode</li>
+                </ol>
+
+                <h3>Método 2: Botão na Interface</h3>
+
+                <p>Em algumas regiões, um botão "AI Mode" aparece diretamente na interface de busca do Google. Basta clicar para ativar.</p>
+
+                <h3>Método 3: URL Direta</h3>
+
+                <p>Em alguns casos, você pode acessar diretamente via URL específica (varia por região e disponibilidade).</p>
+
+                <div class="warning-box">
+                    <h4>Disponibilidade</h4>
+                    <p>O AI Mode foi lançado inicialmente nos EUA e está sendo expandido gradualmente. Se não estiver disponível na sua região, continue verificando — a expansão global está em andamento.</p>
+                </div>
+            </section>
+
+            <section id="impacto-seo">
+                <h2>Impacto do AI Mode no SEO</h2>
+
+                <p>Se você achou que AI Overviews mudaram o jogo, prepare-se: AI Mode tem potencial para transformações ainda maiores.</p>
+
+                <h3>Impactos Potenciais</h3>
+
+                <h4>1. Mudança no Comportamento de Busca</h4>
+
+                <p>Usuários que adotam o AI Mode tendem a fazer menos buscas individuais e mais conversas longas. Isso pode significar:</p>
+
+                <ul>
+                    <li>Menos pageviews por sessão de pesquisa</li>
+                    <li>Queries mais complexas e específicas</li>
+                    <li>Maior expectativa de respostas completas</li>
+                </ul>
+
+                <h4>2. Importância das Citações</h4>
+
+                <p>No AI Mode, as citações são ainda mais proeminentes. Ser citado pela IA durante uma conversa pode gerar:</p>
+
+                <ul>
+                    <li>Exposição de marca repetida</li>
+                    <li>Tráfego mais qualificado (usuário já engajou com o tema)</li>
+                    <li>Autoridade percebida ("a IA do Google recomenda este site")</li>
+                </ul>
+
+                <h4>3. Queries de Cauda Longa Dominam</h4>
+
+                <p>O formato conversacional favorece queries longas e específicas — exatamente o tipo que sites de nicho podem capturar.</p>
+
+                <h4>4. Conteúdo Profundo se Torna Essencial</h4>
+
+                <p>Conteúdo superficial que antes "ranqueava" pode perder relevância. A IA prefere fontes que cobrem tópicos com profundidade.</p>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="number">8+</div>
+                        <div class="label">Palavras por query (média AI Mode)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">3-5</div>
+                        <div class="label">Turnos por sessão</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">?</div>
+                        <div class="label">CTR (dados ainda emergindo)</div>
+                    </div>
+                </div>
+
+                <h3>O Que Ainda Não Sabemos</h3>
+
+                <p>O AI Mode é relativamente novo, e alguns impactos ainda são incertos:</p>
+
+                <ul>
+                    <li><strong>CTR:</strong> Será maior ou menor que AI Overviews?</li>
+                    <li><strong>Adoção:</strong> Quantos usuários realmente usarão o modo conversacional?</li>
+                    <li><strong>Monetização:</strong> Como o Google vai inserir anúncios?</li>
+                    <li><strong>Atribuição:</strong> Como trackear tráfego vindo de conversas?</li>
+                </ul>
+            </section>
+
+            <section id="como-otimizar">
+                <h2>Como Otimizar Para AI Mode</h2>
+
+                <p>As boas notícias: muito do que funciona para AI Overviews também funciona para AI Mode. As mesmas fundações de SEO se aplicam.</p>
+
+                <h3>Estratégias Específicas</h3>
+
+                <h4>1. Crie Conteúdo Conversacional</h4>
+
+                <p>Pense em como as pessoas conversam sobre seu tema, não apenas como pesquisam. Antecipe:</p>
+
+                <ul>
+                    <li>Perguntas de follow-up naturais</li>
+                    <li>Pedidos de esclarecimento comuns</li>
+                    <li>Comparações que usuários fazem</li>
+                    <li>Objeções e preocupações</li>
+                </ul>
+
+                <h4>2. Cubra Tópicos em Profundidade</h4>
+
+                <p>Conteúdo que cobre um tópico completamente tem mais chances de ser citado em múltiplos pontos de uma conversa.</p>
+
+                <h4>3. Estruture Para Extração</h4>
+
+                <p>Continue aplicando as boas práticas de <a href="/blog/estruturar-conteudo-ai-overviews/">estruturação para AI Overviews</a>:</p>
+
+                <ul>
+                    <li>Headings claros como perguntas</li>
+                    <li>Parágrafos curtos e focados</li>
+                    <li>Respostas diretas no início de seções</li>
+                    <li>Listas para processos e características</li>
+                </ul>
+
+                <h4>4. Fortaleça E-E-A-T</h4>
+
+                <p>Em conversas, a IA precisa decidir quais fontes são confiáveis. Invista em:</p>
+
+                <ul>
+                    <li>Autoria clara e qualificada</li>
+                    <li>Dados e estatísticas com fontes</li>
+                    <li>Atualizações regulares</li>
+                    <li>Links de sites autoritativos</li>
+                </ul>
+
+                <h4>5. Otimize Para Long-Tail</h4>
+
+                <p>Queries conversacionais são naturalmente mais longas. Crie conteúdo que responda queries específicas de 6-10+ palavras.</p>
+
+                <div class="info-box">
+                    <div class="info-box-title">📋 Checklist de Otimização Para AI Mode</div>
+                    <ul>
+                        <li>Conteúdo cobre o tópico completamente</li>
+                        <li>Antecipa perguntas de follow-up</li>
+                        <li>Estrutura clara para extração</li>
+                        <li>Autoria e E-E-A-T demonstrados</li>
+                        <li>Atualizado regularmente</li>
+                        <li>Otimizado para queries long-tail</li>
+                        <li>Schema Markup implementado</li>
+                        <li>Rankeia no top 10 orgânico</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="futuro">
+                <h2>O Futuro da Busca: Para Onde Estamos Indo</h2>
+
+                <p>AI Mode é parte de uma transformação maior na busca. Aqui está o que projetamos:</p>
+
+                <h3>Curto Prazo (2026)</h3>
+
+                <ul>
+                    <li>AI Mode disponível globalmente</li>
+                    <li>Integração mais profunda com outros produtos Google</li>
+                    <li>Anúncios começam a aparecer no AI Mode</li>
+                    <li>Ferramentas de analytics para AI Mode surgem</li>
+                </ul>
+
+                <h3>Médio Prazo (2027)</h3>
+
+                <ul>
+                    <li>AI Mode se torna opção padrão para alguns usuários</li>
+                    <li>Busca tradicional e AI Mode coexistem como "modos"</li>
+                    <li>Personalização baseada em histórico de conversas</li>
+                    <li>Integração com ações (compras, reservas, etc.)</li>
+                </ul>
+
+                <h3>Longo Prazo (2028+)</h3>
+
+                <div class="future-box">
+                    <h4>Previsões Especulativas</h4>
+                    <p>A linha entre "busca" e "assistente" se dissolve. O Google se torna um agente que não apenas responde, mas executa tarefas. A busca tradicional de 10 links azuis pode se tornar um modo "legacy" para usuários que preferem o estilo antigo.</p>
+                </div>
+
+                <h3>O Que Não Vai Mudar</h3>
+
+                <p>Mesmo com todas essas mudanças, alguns fundamentos permanecem:</p>
+
+                <ul>
+                    <li><strong>Conteúdo de qualidade</strong> continua sendo a base</li>
+                    <li><strong>Autoridade e confiança</strong> continuam importando</li>
+                    <li><strong>Experiência do usuário</strong> continua sendo prioridade</li>
+                    <li><strong>SEO técnico</strong> continua necessário</li>
+                </ul>
+
+                <p>A mecânica muda, os fundamentos permanecem.</p>
+            </section>
+
+            <div class="cta-box">
+                <h3>Prepare-se Para o Futuro da Busca</h3>
+                <p>A AUDITSEO oferece consultoria em <strong>Search Intelligence AI</strong> para ajudar sua empresa a se adaptar às mudanças do Google, incluindo AI Mode e AI Overviews.</p>
+                <a href="https://wa.me/5511996384376?text=Olá!%20Quero%20me%20preparar%20para%20o%20AI%20Mode%20e%20o%20futuro%20da%20busca." class="cta-btn">Falar com Especialista</a>
+            </div>
+
+            <section id="faq">
+                <h2>Perguntas Frequentes</h2>
+
+                <h3>O que é Google AI Mode?</h3>
+                <p>Google AI Mode é uma nova interface conversacional do Google Search que permite interações em múltiplos turnos com a IA Gemini, indo além dos AI Overviews tradicionais para oferecer uma experiência similar ao ChatGPT, mas integrada à busca e com acesso a dados em tempo real.</p>
+
+                <h3>Qual a diferença entre AI Mode e AI Overviews?</h3>
+                <p>AI Overviews aparecem automaticamente em algumas buscas e são respostas únicas, não interativas. AI Mode é uma interface conversacional opt-in onde você pode fazer perguntas de follow-up, pedir esclarecimentos e ter uma conversa contínua com a IA, mantendo contexto entre turnos.</p>
+
+                <h3>AI Mode está disponível no Brasil?</h3>
+                <p>O AI Mode está sendo expandido globalmente de forma gradual. Inicialmente lançado nos EUA em março 2025, está chegando a outros países progressivamente. Verifique no Search Labs ou nas configurações do Google Search se já está disponível para você.</p>
+
+                <h3>AI Mode vai substituir a busca tradicional?</h3>
+                <p>No curto prazo, não. AI Mode coexiste com a busca tradicional como uma opção adicional. No longo prazo, é possível que se torne o modo padrão para muitos usuários, mas a busca "clássica" provavelmente continuará disponível.</p>
+
+                <h3>Como aparecer nas citações do AI Mode?</h3>
+                <p>As mesmas estratégias que funcionam para AI Overviews se aplicam: ranquear no top 10 orgânico, criar conteúdo de qualidade com estrutura clara, demonstrar E-E-A-T, usar Schema Markup e cobrir tópicos em profundidade.</p>
+
+                <h3>AI Mode afeta o SEO?</h3>
+                <p>Sim. AI Mode representa mais uma evolução na forma como as pessoas buscam informação. Sites que se adaptarem às buscas conversacionais e criarem conteúdo profundo terão vantagem. O impacto exato no CTR e tráfego ainda está sendo medido.</p>
+            </section>
+
+            <section>
+                <h2>Conclusão</h2>
+
+                <p>O Google AI Mode representa a próxima fronteira da busca. Enquanto AI Overviews foram o primeiro passo para integrar IA à busca, o AI Mode é um salto para uma experiência totalmente conversacional.</p>
+
+                <p>Para profissionais de SEO e marketing, isso significa:</p>
+
+                <ol>
+                    <li><strong>Adapte-se ao conversacional:</strong> Pense em como as pessoas conversam, não apenas pesquisam</li>
+                    <li><strong>Profundidade importa mais:</strong> Conteúdo superficial perde relevância</li>
+                    <li><strong>Citações são ouro:</strong> Ser citado em conversas gera autoridade e tráfego</li>
+                    <li><strong>Long-tail domina:</strong> Queries conversacionais são naturalmente mais longas</li>
+                    <li><strong>Fundamentos permanecem:</strong> SEO técnico, conteúdo de qualidade e autoridade continuam essenciais</li>
+                </ol>
+
+                <p>O jogo está mudando, mas quem entende as regras pode continuar vencendo. E nós, na <a href="/agencia-de-seo/">AUDITSEO</a>, estamos aqui para ajudar você a navegar essa transformação.</p>
+
+                <p>Continue aprendendo com nossos artigos sobre <a href="/blog/o-que-sao-ai-overviews/">AI Overviews</a> e <a href="/blog/como-aparecer-ai-overviews/">como aparecer nas respostas de IA do Google</a>.</p>
+            </section>
+
+            <div class="author-box">
+                <div class="author-avatar"><img src="/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                <div class="author-info">
+                    <h4>Sidney Santos</h4>
+                    <p>Especialista em Search Intelligence AI com mais de 12 anos de experiência em SEO. Fundador da AUDITSEO, acompanha de perto as transformações da busca com IA.</p>
+                    <div class="author-links">
+                        <a href="https://www.linkedin.com/in/sidney-especialista-em-seo/">LinkedIn</a>
+                        <a href="https://instagram.com/sidneyespecialistaseo">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="related-posts">
+                <h3 class="related-title">Artigos Relacionados</h3>
+                <div class="related-grid">
+                    <div class="related-card">
+                        <h4><a href="/blog/o-que-sao-ai-overviews/">O Que São AI Overviews</a></h4>
+                        <p>Guia completo sobre AI Overviews do Google.</p>
+                    </div>
+                    <div class="related-card">
+                        <h4><a href="/blog/como-aparecer-ai-overviews/">Como Aparecer nos AI Overviews</a></h4>
+                        <p>12 estratégias comprovadas para ser citado.</p>
+                    </div>
+                    <div class="related-card">
+                        <h4><a href="/blog/ai-overviews-impacto-trafego-organico/">Impacto no Tráfego Orgânico</a></h4>
+                        <p>Dados e análise sobre CTR e tráfego.</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+<!-- SEO_CLUSTER_LINKS_START -->
+<section class="seo-cluster-links" aria-label="Links internos estratégicos">
+  <h2>Serviços relacionados a este conteúdo</h2>
+  <p>Se você quer aplicar esta estratégia no seu negócio, comece por estes serviços da AUDITSEO:</p>
+  <ul>
+    <li><a href="/servicos/ai-overview-optimization/">Ai Overview Optimization</a></li>
+    <li><a href="/servicos/aparecer-no-google-ai-overviews/">Aparecer No Google Ai Overviews</a></li>
+    <li><a href="/servicos/geo-generative-engine-optimization/">Geo Generative Engine Optimization</a></li>
+  </ul>
+  <p>Para aplicação setorial, veja também: <a href="/nichos/clinicas-medicas/">Clinicas Medicas</a></p>
+</section>
+<!-- SEO_CLUSTER_LINKS_END -->
+<footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">AUDITSEO</div>
+                <p class="footer-desc">Agência de SEO especializada em Search Intelligence AI. Preparamos sua marca para o futuro da busca.</p>
+                <div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil</div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Serviços</h4>
+                <ul class="footer-links">
+                    <li><a href="/servicos/">Todos os Serviços</a></li>
+                    <li><a href="/servicos/ai-overview-optimization/">AI Overview Optimization</a></li>
+                    <li><a href="/servicos/llm-brand-presence/">LLM Brand Presence</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Empresa</h4>
+                <ul class="footer-links">
+                    <li><a href="/sobre/">Sobre Nós</a></li>
+                    <li><a href="/agencia-de-seo/">Agência de SEO</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/5511996384376">WhatsApp</a></li>
+                    <li><a href="tel:+5511996384376">(11) 99638-4376</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2026 AUDITSEO — Todos os direitos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+    <script>
+        document.querySelectorAll('.toc-list a').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})})});
+        const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.toc-list a').forEach(a=>a.classList.remove('active'));document.querySelector(`.toc-list a[href="#${e.target.id}"]`)?.classList.add('active')}})},{threshold:0.3,rootMargin:'-100px'});
+        document.querySelectorAll('section[id]').forEach(s=>observer.observe(s));
+    </script>
+</body>
+</html>

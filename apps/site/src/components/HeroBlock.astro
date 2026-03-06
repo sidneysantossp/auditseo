@@ -1,0 +1,33 @@
+---
+interface Props {
+  badge: string;
+  title: string;
+  subtitle: string;
+  primaryLabel?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  badge,
+  title,
+  subtitle,
+  primaryLabel = 'Abrir diagnostico',
+  secondaryLabel,
+  secondaryHref
+} = Astro.props as Props;
+---
+<section class="foundation-hero">
+  <div class="foundation-hero-bg"></div>
+  <div class="container-shell foundation-hero-content">
+    <span class="hero-badge">{badge}</span>
+    <h1 class="display-title">{title}</h1>
+    <p class="lede">{subtitle}</p>
+    <div class="hero-actions">
+      <button class="btn-primary" type="button" data-open-cta-modal>{primaryLabel}</button>
+      {secondaryLabel && secondaryHref ? (
+        <a class="btn-secondary" href={secondaryHref}>{secondaryLabel}</a>
+      ) : null}
+    </div>
+  </div>
+</section>

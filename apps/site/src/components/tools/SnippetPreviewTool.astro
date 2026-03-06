@@ -1,0 +1,51 @@
+<div class="ee-tool-shell">
+  <article class="ee-tool-panel">
+    <div class="ee-tool-head">
+      <h3>Entradas</h3>
+      <button id="snippet-reset" type="button" class="ee-page-secondary ee-tool-reset">Restaurar exemplo</button>
+    </div>
+    <div class="ee-tool-fields">
+      <label class="ee-tool-field">
+        <span>Title tag</span>
+        <input id="snippet-title" type="text" maxlength="90" />
+        <small>Recomendacao pratica: ate 60 caracteres.</small>
+      </label>
+      <label class="ee-tool-field">
+        <span>Meta description</span>
+        <textarea id="snippet-description" rows="5" maxlength="220"></textarea>
+        <small>Faixa comum: ate 155 caracteres para manter boa legibilidade.</small>
+      </label>
+      <label class="ee-tool-field">
+        <span>URL</span>
+        <input id="snippet-url" type="url" />
+        <small>Use uma URL curta, clara e coerente com o cluster.</small>
+      </label>
+    </div>
+    <div class="ee-tool-counters">
+      <div class="ee-tool-counter-card">
+        <span class="label">Title</span>
+        <strong id="snippet-title-counter">0/60</strong>
+      </div>
+      <div class="ee-tool-counter-card">
+        <span class="label">Description</span>
+        <strong id="snippet-description-counter">0/155</strong>
+      </div>
+    </div>
+  </article>
+
+  <article class="ee-tool-panel">
+    <div class="ee-tool-head">
+      <h3>Preview</h3>
+      <span class="ee-tool-hint">Leitura aproximada do snippet organico</span>
+    </div>
+    <div class="ee-tool-preview">
+      <div class="ee-tool-preview-url" id="snippet-preview-url"></div>
+      <div class="ee-tool-preview-title" id="snippet-preview-title"></div>
+      <div class="ee-tool-preview-description" id="snippet-preview-description"></div>
+    </div>
+    <div class="ee-tool-notes">
+      <p>Use o preview para alinhar promessa, palavra-chave principal e intencao da pagina.</p>
+      <p>O snippet real pode variar por consulta, dispositivo e reescrita do Google. Ainda assim, um preview bem calibrado reduz erro editorial logo na origem.</p>
+    </div>
+  </article>
+</div>

@@ -1,0 +1,287 @@
+---
+import '../styles/institutional-trust-pages.css';
+import InstitutionalLayout from '../layouts/InstitutionalLayout.astro';
+
+const principles = [
+  {
+    title: 'Diagnostico antes de opiniao',
+    copy:
+      'Toda recomendacao nasce de auditoria tecnica, analise de SERP, leitura de entidade, arquitetura e sinais reais do negocio. Sem isso, qualquer plano vira achismo.'
+  },
+  {
+    title: 'Prioridade por impacto',
+    copy:
+      'Nao executamos listas infinitas. Priorizamos o que muda indexacao, cobertura, citabilidade, conversao e distribuicao de autoridade.'
+  },
+  {
+    title: 'SEO para Google e IA',
+    copy:
+      'A metodologia considera busca tradicional, AI Overviews, LLMs e superfícies de descoberta. O objetivo e deixar a marca encontravel, compreensivel e citavel.'
+  },
+  {
+    title: 'Medicao ligada a negocio',
+    copy:
+      'Ranking isolado nao basta. A leitura inclui visibilidade, cobertura topica, leads, pipeline comercial e ganhos de eficiencia no conteudo.'
+  }
+];
+
+const processSteps = [
+  {
+    title: 'Diagnostico',
+    copy:
+      'Mapeamento de arquitetura, rastreabilidade, indexacao, SERP, concorrencia, demanda e sinais de confianca.'
+  },
+  {
+    title: 'Arquitetura',
+    copy:
+      'Desenho de hubs, clusters, taxonomia, templates, dados estruturados e fluxos de linkagem interna.'
+  },
+  {
+    title: 'Prioridade',
+    copy:
+      'Roadmap por impacto, dependencia tecnica, custo de execucao e oportunidade de ganho organico.'
+  },
+  {
+    title: 'Implementacao',
+    copy:
+      'Ajustes tecnicos, otimizacao on-page, melhoria de UX, estrutura semantica e integracao com analytics.'
+  },
+  {
+    title: 'Conteudo',
+    copy:
+      'Briefings, producao orientada a entidade, EEAT, FAQ, links internos e reforco de paginas comerciais.'
+  },
+  {
+    title: 'Iteracao',
+    copy:
+      'Monitoramento, revisao de resultados, novos experimentos e atualizacao do plano conforme o mercado muda.'
+  }
+];
+
+const operatingPanels = [
+  {
+    title: 'O que entra no plano operacional',
+    items: [
+      'Hipoteses e oportunidades priorizadas',
+      'Backlog tecnico com dependencia e impacto',
+      'Plano de conteudo e clusterizacao',
+      'Estrutura de medicao e eventos criticos',
+      'Rotina de revisao com aprendizado documentado'
+    ]
+  },
+  {
+    title: 'Como a metodologia conecta o site',
+    items: [
+      'Artigos suportam paginas de servico e paginas de nicho',
+      'Paginas institucionais reforcam sinais de confianca',
+      'Templates comerciais herdam a mesma semantica',
+      'Dados estruturados e canonicals saem da mesma base',
+      'Cada URL entra com papel claro no cluster'
+    ]
+  }
+];
+
+const faqs = [
+  {
+    question: 'A metodologia serve so para SEO tradicional?',
+    answer:
+      'Nao. Ela foi desenhada para SEO tradicional, AI Overviews, busca generativa e citacoes em LLMs. O framework precisa responder ao ecossistema atual, nao ao Google de anos atras.'
+  },
+  {
+    question: 'Vocês executam ou apenas recomendam?',
+    answer:
+      'A metodologia suporta os dois modelos. Em alguns projetos a AUDITSEO define estrategia e backlog; em outros participa da implementacao tecnica, editorial e de medicao.'
+  },
+  {
+    question: 'Como a prioridade e definida?',
+    answer:
+      'Por impacto no negocio, risco tecnico, dependencia entre tarefas, janela de oportunidade e potencial de ganho organico. O critico vem antes do cosmetico.'
+  },
+  {
+    question: 'Qual o papel do conteudo dentro da metodologia?',
+    answer:
+      'Conteudo nao entra isolado. Ele e conectado a arquitetura, entidades, links internos, pagina comercial e criterios de citacao para IA.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<InstitutionalLayout
+  title="Metodologia de SEO e IA da AUDITSEO"
+  description="Entenda a metodologia da AUDITSEO para diagnostico, arquitetura, execucao e medicao de SEO, AI Overviews, LLMs e busca generativa."
+  canonicalPath="/metodologia/"
+  imagePath="/og-default.svg"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Metodologia', path: '/metodologia/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span class="current">Metodologia</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Framework Operacional</span>
+        <h1 class="ee-page-title">
+          METODOLOGIA <span class="accent">SEO + IA</span> PARA CRESCER COM ESTRUTURA
+        </h1>
+        <p class="ee-page-subtitle">
+          A metodologia da AUDITSEO combina <strong>diagnostico tecnico</strong>,
+          <strong>arquitetura de conteudo</strong>, <strong>priorizacao por impacto</strong> e
+          <strong>medicao continua</strong>. O objetivo nao e produzir mais tarefas. E construir
+          um sistema capaz de aumentar cobertura organica, fortalecer paginas comerciais e elevar a
+          chance da marca aparecer em buscas classicas e superfícies de IA.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">SEO Tecnico</span>
+          <span class="ee-page-highlight">Clusters e Entidades</span>
+          <span class="ee-page-highlight">AI Overviews</span>
+          <span class="ee-page-highlight">Medicao e Iteracao</span>
+        </div>
+      </div>
+      <aside class="ee-page-hero-card">
+        <h2>O que guia o framework</h2>
+        <p>Sem diagnostico, o projeto vira lista de tarefas. Sem prioridade, o backlog trava.</p>
+        <p>
+          A metodologia organiza cada entrega para que a Home, os servicos, o blog e as paginas de
+          nicho operem como um sistema unico de crescimento.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/">Ver servicos</a>
+          <a href="/blog/">Ver blog</a>
+          <a href="/fontes-e-metodos/">Fontes e metodos</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo da metodologia">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">6</div>
+        <div class="ee-page-stat-label">Etapas centrais</div>
+        <p class="ee-page-stat-copy">Do diagnostico inicial a iteracao baseada em dados.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">3</div>
+        <div class="ee-page-stat-label">Frentes integradas</div>
+        <p class="ee-page-stat-copy">Tecnico, conteudo e distribuicao de autoridade.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Backlog unificado</div>
+        <p class="ee-page-stat-copy">Priorizacao clara para time interno, parceiro ou squad misto.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">0</div>
+        <div class="ee-page-stat-label">Espaco para vaidade</div>
+        <p class="ee-page-stat-copy">Toda recomendacao precisa justificar impacto real.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Principios</span>
+        <h2 class="ee-page-section-title">COMO A AUDITSEO PENSA CADA PROJETO</h2>
+        <p class="ee-page-section-subtitle">
+          O framework foi desenhado para reduzir improviso, dar previsibilidade e transformar SEO em
+          uma operacao com criterio tecnico.
+        </p>
+      </div>
+      <div class="ee-page-grid four">
+        {principles.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Execucao</span>
+        <h2 class="ee-page-section-title">AS 6 ETAPAS DO FRAMEWORK</h2>
+        <p class="ee-page-section-subtitle">
+          A ordem importa. Quando a base e quebrada, conteudo e campanhas so ampliam o problema.
+        </p>
+      </div>
+      <div class="ee-page-process">
+        {processSteps.map((step, index) => (
+          <article class="ee-page-step">
+            <div class="ee-page-step-number">{String(index + 1).padStart(2, '0')}</div>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Operacao</span>
+        <h2 class="ee-page-section-title">O QUE A METODOLOGIA ENTREGA NA PRATICA</h2>
+      </div>
+      <div class="ee-page-panels">
+        {operatingPanels.map((panel) => (
+          <article class="ee-page-panel">
+            <h3>{panel.title}</h3>
+            <ul class="ee-page-list">
+              {panel.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE O FRAMEWORK</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-cta">
+      <div class="ee-page-cta-box">
+        <span class="ee-page-section-badge">Proximo Passo</span>
+        <h2 class="ee-page-section-title">QUER APLICAR ESSA METODOLOGIA NO SEU SITE?</h2>
+        <p class="ee-page-cta-copy">
+          Se a estrutura atual do seu projeto nao sustenta crescimento organico, o caminho certo e
+          organizar diagnostico, arquitetura, conteudo e medicao sob o mesmo plano.
+        </p>
+        <div class="ee-page-cta-actions">
+          <button type="button" class="ee-page-primary" data-open-cta-modal>
+            Solicitar Diagnostico
+          </button>
+          <a href="/servicos/ai-overview-optimization/" class="ee-page-secondary">
+            Ver servico de AI Overview
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</InstitutionalLayout>

@@ -1,0 +1,61 @@
+---
+import type { FreeTool } from '../lib/content-collections';
+import { siteMetadata } from '../data/site';
+
+interface Props {
+  tool: FreeTool;
+}
+
+const { tool } = Astro.props as Props;
+const canonicalUrl = new URL(`/ferramentas/${tool.slug}/`, siteMetadata.siteUrl).toString();
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'SoftwareApplication',
+    '@id': `${canonicalUrl}#software`,
+    name: tool.title,
+    url: canonicalUrl,
+    description: tool.description,
+    applicationCategory: 'BusinessApplication',
+    applicationSubCategory: tool.categoryLabel,
+    operatingSystem: 'Web',
+    browserRequirements: 'Navegador moderno com JavaScript habilitado',
+    inLanguage: siteMetadata.locale,
+    isAccessibleForFree: true,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'BRL'
+    },
+    featureList: tool.summaryPoints,
+    producer: {
+      '@id': `${siteMetadata.siteUrl}/#organization`
+    },
+    publisher: {
+      '@id': `${siteMetadata.siteUrl}/#organization`
+    }
+  }
+];
+
+if (tool.faqs.length > 0) {
+  graph.push({
+    '@type': 'FAQPage',
+    '@id': `${canonicalUrl}#faq`,
+    mainEntity: tool.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  });
+}
+
+const schemaJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': graph
+});
+---
+<meta name="keywords" content={[tool.categoryLabel, tool.outputLabel, tool.title].join(', ')} />
+<script is:inline type="application/ld+json" set:html={schemaJson}></script>

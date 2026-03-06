@@ -1,0 +1,22 @@
+---
+import '../styles/sobre-parity.css';
+import AboutLegacyContent from '../components/AboutLegacyContent.astro';
+import AboutSchemas from '../components/AboutSchemas.astro';
+import InstitutionalLayout from '../layouts/InstitutionalLayout.astro';
+import LegacyContentEnhancements from '../components/LegacyContentEnhancements.astro';
+---
+<InstitutionalLayout
+  title="Sobre a AUDITSEO e Sidney Santos"
+  description="Conheca a AUDITSEO e Sidney Santos, especialista em SEO desde 2013. Mais de 12 anos de experiencia em SEO tecnico, estrategico, AI Overviews, LLMs e busca generativa."
+  canonicalPath="/sobre/"
+  imagePath="/eu2.jpg"
+  pageType="AboutPage"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Sobre', path: '/sobre/' }
+  ]}
+>
+  <AboutLegacyContent />
+  <AboutSchemas />
+  <LegacyContentEnhancements />
+</InstitutionalLayout>

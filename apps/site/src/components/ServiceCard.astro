@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  href: string;
+  highlights: string[];
+}
+
+const { title, summary, href, highlights } = Astro.props as Props;
+---
+<article class="foundation-card service-card">
+  <div class="service-card-label">Servico estruturado</div>
+  <h3 class="foundation-card-title">{title}</h3>
+  <p class="foundation-card-copy">{summary}</p>
+  <ul class="pill-list">
+    {highlights.map((item) => (
+      <li>{item}</li>
+    ))}
+  </ul>
+  <a class="service-card-link" href={href}>Abrir rota placeholder</a>
+</article>

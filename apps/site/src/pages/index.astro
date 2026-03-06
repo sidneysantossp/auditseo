@@ -1,0 +1,15 @@
+---
+import HomeEnhancements from '../components/HomeEnhancements.astro';
+import HomeLegacyContent from '../components/HomeLegacyContent.astro';
+import HomeLayout from '../layouts/HomeLayout.astro';
+---
+<HomeLayout
+  title="Agencia de SEO em Sao Paulo Especializada em AI Overviews"
+  description="AUDITSEO e a agencia de SEO em Sao Paulo especializada em AI Overviews, otimizacao para LLMs e busca generativa."
+  canonicalPath="/"
+  imagePath="/images/agencia-de-seo.png"
+  breadcrumbs={[{ label: 'Home', path: '/' }]}
+>
+  <HomeLegacyContent />
+  <HomeEnhancements />
+</HomeLayout>

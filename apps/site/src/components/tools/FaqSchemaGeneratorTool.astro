@@ -1,0 +1,128 @@
+<div class="ee-tool-shell">
+  <article class="ee-tool-panel">
+    <div class="ee-tool-head">
+      <h3>Perguntas e respostas</h3>
+      <button id="faq-add-item" type="button" class="ee-page-secondary ee-tool-reset">Adicionar item</button>
+    </div>
+    <div id="faq-builder-list" class="ee-faq-builder-list"></div>
+    <div class="ee-tool-actions">
+      <button id="faq-fill-example" type="button" class="ee-page-secondary">Usar exemplo</button>
+      <button id="faq-copy-json" type="button" class="ee-page-primary">Copiar JSON-LD</button>
+    </div>
+    <div id="faq-copy-feedback" class="ee-tool-copy-feedback" aria-live="polite"></div>
+  </article>
+
+  <article class="ee-tool-panel">
+    <div class="ee-tool-head">
+      <h3>Saida JSON-LD</h3>
+      <span class="ee-tool-hint">Pronta para revisar e inserir no template</span>
+    </div>
+    <div class="ee-tool-output">
+      <pre id="faq-json-output"></pre>
+    </div>
+    <div class="ee-tool-notes">
+      <p>Revise sempre se as perguntas e respostas tambem aparecem de forma visivel na pagina.</p>
+      <p>O objetivo da ferramenta e reduzir erro de sintaxe e aproximar conteudo editorial de implementacao.</p>
+    </div>
+  </article>
+</div>
+
+<script is:inline>
+  (() => {
+    const list = document.getElementById('faq-builder-list');
+    const addButton = document.getElementById('faq-add-item');
+    const fillExampleButton = document.getElementById('faq-fill-example');
+    const copyButton = document.getElementById('faq-copy-json');
+    const output = document.getElementById('faq-json-output');
+    const feedback = document.getElementById('faq-copy-feedback');
+
+    if (!(list instanceof HTMLElement) || !(output instanceof HTMLElement)) return;
+
+    const exampleItems = [
+      {
+        question: 'O que e AI Overview Optimization?',
+        answer: 'E o trabalho de estruturar paginas e entidades para aumentar a chance de citacao em respostas generativas do Google.'
+      },
+      {
+        question: 'FAQ schema substitui FAQ visivel?',
+        answer: 'Nao. O FAQ schema deve refletir perguntas e respostas que aparecem de forma clara no conteudo da pagina.'
+      },
+      {
+        question: 'Quando vale usar FAQ schema?',
+        answer: 'Quando a pagina tem objecoes, perguntas frequentes ou blocos de resposta realmente uteis para o usuario.'
+      }
+    ];
+
+    const createRow = (question = '', answer = '') => {
+      const row = document.createElement('div');
+      row.className = 'ee-faq-builder-row';
+      row.innerHTML = `
+        <label class="ee-tool-field">
+          <span>Pergunta</span>
+          <input type="text" class="faq-question-input" maxlength="180" value="${question.replace(/"/g, '&quot;')}" />
+        </label>
+        <label class="ee-tool-field">
+          <span>Resposta</span>
+          <textarea rows="4" class="faq-answer-input">${answer}</textarea>
+        </label>
+        <button type="button" class="ee-page-secondary faq-remove-button">Remover</button>
+      `;
+      row.querySelectorAll('input, textarea').forEach((field) => field.addEventListener('input', updateOutput));
+      row.querySelector('.faq-remove-button')?.addEventListener('click', () => {
+        row.remove();
+        updateOutput();
+      });
+      return row;
+    };
+
+    const serialize = () => {
+      const items = Array.from(list.querySelectorAll('.ee-faq-builder-row')).map((row) => {
+        const question = row.querySelector('.faq-question-input')?.value?.trim() ?? '';
+        const answer = row.querySelector('.faq-answer-input')?.value?.trim() ?? '';
+        return { question, answer };
+      }).filter((item) => item.question && item.answer);
+
+      return {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: items.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer
+          }
+        }))
+      };
+    };
+
+    const updateOutput = () => {
+      output.textContent = JSON.stringify(serialize(), null, 2);
+      if (feedback instanceof HTMLElement) feedback.textContent = '';
+    };
+
+    const fillExample = () => {
+      list.innerHTML = '';
+      exampleItems.forEach((item) => list.appendChild(createRow(item.question, item.answer)));
+      updateOutput();
+    };
+
+    addButton?.addEventListener('click', () => {
+      list.appendChild(createRow());
+      updateOutput();
+    });
+
+    fillExampleButton?.addEventListener('click', fillExample);
+
+    copyButton?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(output.textContent ?? '');
+        if (feedback instanceof HTMLElement) feedback.textContent = 'JSON-LD copiado para a area de transferencia.';
+      } catch {
+        if (feedback instanceof HTMLElement) feedback.textContent = 'Nao foi possivel copiar automaticamente. Copie o bloco manualmente.';
+      }
+    });
+
+    fillExample();
+  })();
+</script>

@@ -1,0 +1,52 @@
+<script is:inline>
+  (() => {
+    const body = document.body;
+    const header = document.querySelector('.as-header');
+    const mobileMenu = document.getElementById('site-mobile-nav');
+    const burger = document.querySelector('[data-mobile-toggle]');
+
+    const closeMobile = () => {
+      body.classList.remove('as-mobile-open');
+      mobileMenu?.classList.remove('is-open');
+      burger?.setAttribute('aria-expanded', 'false');
+    };
+
+    const openMobile = () => {
+      body.classList.add('as-mobile-open');
+      mobileMenu?.classList.add('is-open');
+      burger?.setAttribute('aria-expanded', 'true');
+    };
+
+    burger?.addEventListener('click', () => {
+      if (mobileMenu?.classList.contains('is-open')) {
+        closeMobile();
+      } else {
+        openMobile();
+      }
+    });
+
+    document.querySelectorAll('[data-close-mobile-menu]').forEach((link) => {
+      link.addEventListener('click', closeMobile);
+    });
+
+    document.querySelectorAll('[data-open-cta-modal]').forEach((button) => {
+      button.addEventListener('click', () => {
+        closeMobile();
+        document.dispatchEvent(new CustomEvent('auditseo:open-cta-modal'));
+      });
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobileMenu?.classList.contains('is-open')) {
+        closeMobile();
+      }
+    });
+
+    const syncHeaderState = () => {
+      header?.classList.toggle('as-scrolled', window.scrollY > 16);
+    };
+
+    document.addEventListener('scroll', syncHeaderState, { passive: true });
+    syncHeaderState();
+  })();
+</script>

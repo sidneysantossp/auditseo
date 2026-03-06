@@ -1,0 +1,67 @@
+---
+import type { CaseStudy } from '../lib/content-collections';
+import { siteMetadata } from '../data/site';
+
+interface Props {
+  caseStudy: CaseStudy;
+}
+
+const { caseStudy } = Astro.props as Props;
+const canonicalUrl = new URL(`/cases/${caseStudy.slug}/`, siteMetadata.siteUrl).toString();
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'Article',
+    '@id': `${canonicalUrl}#article`,
+    url: canonicalUrl,
+    headline: caseStudy.title,
+    alternativeHeadline: caseStudy.seoTitle,
+    description: caseStudy.description,
+    author: {
+      '@id': `${siteMetadata.siteUrl}/#organization`
+    },
+    publisher: {
+      '@id': `${siteMetadata.siteUrl}/#organization`
+    },
+    mainEntityOfPage: {
+      '@id': `${canonicalUrl}#webpage`
+    },
+    inLanguage: siteMetadata.locale,
+    genre: 'Case Study',
+    keywords: [caseStudy.typeLabel, caseStudy.scopeLabel, ...caseStudy.summaryPoints].slice(0, 6),
+    about: [
+      {
+        '@type': 'Thing',
+        name: caseStudy.typeLabel
+      },
+      ...caseStudy.serviceLinks.map((link) => ({
+        '@type': 'WebPage',
+        url: new URL(link.path, siteMetadata.siteUrl).toString(),
+        name: link.label
+      }))
+    ]
+  }
+];
+
+if (caseStudy.faqs.length > 0) {
+  graph.push({
+    '@type': 'FAQPage',
+    '@id': `${canonicalUrl}#faq`,
+    mainEntity: caseStudy.faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  });
+}
+
+const schemaJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': graph
+});
+---
+<meta name="keywords" content={[caseStudy.typeLabel, caseStudy.scopeLabel, caseStudy.statusLabel].join(', ')} />
+<script is:inline type="application/ld+json" set:html={schemaJson}></script>

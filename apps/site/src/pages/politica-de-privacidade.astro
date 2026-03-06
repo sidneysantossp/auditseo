@@ -1,0 +1,276 @@
+---
+import '../styles/institutional-trust-pages.css';
+import LegalLayout from '../layouts/LegalLayout.astro';
+import { siteMetadata } from '../data/site';
+
+const collectionPoints = [
+  {
+    title: 'Formularios e modal de diagnostico',
+    copy:
+      'Quando voce preenche o modal de diagnostico, o formulario de contato ou a inscricao do blog, a AUDITSEO pode receber dados como nome, e-mail, WhatsApp, site e contexto do negocio.'
+  },
+  {
+    title: 'Atendimento por canais oficiais',
+    copy:
+      'Quando voce entra em contato por e-mail, telefone ou WhatsApp, os dados compartilhados passam a integrar o historico de atendimento necessario para responder, organizar briefing e acompanhar o relacionamento.'
+  },
+  {
+    title: 'Infraestrutura e logs tecnicos',
+    copy:
+      'A hospedagem e a camada de entrega podem registrar informacoes tecnicas como IP, user agent, horario de acesso e eventos operacionais para seguranca, estabilidade, diagnostico e prevencao de abuso.'
+  },
+  {
+    title: 'Navegacao e preferencia de sessao',
+    copy:
+      'Elementos de interface podem usar recursos tecnicos minimos para abrir modal, navegar etapas de formulario e manter a experiencia funcional no navegador.'
+  }
+];
+
+const purposePanels = [
+  {
+    title: 'Finalidades de uso',
+    items: [
+      'Responder contatos comerciais e tecnicos',
+      'Entender o contexto do negocio antes de propor um diagnostico',
+      'Enviar retorno sobre briefing, reuniao ou demanda solicitada',
+      'Manter historico operacional do atendimento',
+      'Melhorar estabilidade, seguranca e usabilidade do site'
+    ]
+  },
+  {
+    title: 'Bases operacionais da coleta',
+    items: [
+      'Execucao de solicitacao iniciada pelo proprio usuario',
+      'Interesse legitimo para atendimento, prevencao de abuso e melhoria do site',
+      'Cumprimento de obrigacoes legais ou regulatorias quando aplicavel',
+      'Gestao de relacionamento comercial iniciada pelo contato do usuario'
+    ]
+  }
+];
+
+const sharingPanels = [
+  {
+    title: 'Com quem os dados podem ser processados',
+    items: [
+      'Infraestrutura de hospedagem e entrega da aplicacao',
+      'Servico de envio de formularios usado no site: formsubmit.co',
+      'Ferramentas de comunicacao usadas para responder ao contato, como e-mail e WhatsApp',
+      'Prestadores estritamente necessarios para operacao, seguranca ou suporte'
+    ]
+  },
+  {
+    title: 'O que a AUDITSEO nao faz',
+    items: [
+      'Nao vende listas de contato',
+      'Nao compartilha dados pessoais com finalidade publicitaria de terceiros',
+      'Nao usa os dados enviados pelo formulario fora do escopo do atendimento solicitado',
+      'Nao mantem informacoes pessoais alem do necessario sem motivo operacional ou legal'
+    ]
+  }
+];
+
+const rightsFaqs = [
+  {
+    question: 'Como pedir acesso, correcao ou exclusao de dados?',
+    answer:
+      'Voce pode solicitar acesso, atualizacao ou exclusao escrevendo para o canal oficial da AUDITSEO em contato@auditseo.com.br. A solicitacao sera analisada conforme a natureza do dado e a necessidade operacional ou legal de retencao.'
+  },
+  {
+    question: 'A AUDITSEO usa cookies de publicidade?',
+    answer:
+      'Esta base publica nao foi desenhada para operar com stack de publicidade comportamental. Ainda assim, componentes tecnicos do navegador e da infraestrutura podem ser usados para manter a experiencia funcional e segura.'
+  },
+  {
+    question: 'Por quanto tempo os dados podem ser mantidos?',
+    answer:
+      'O prazo depende da finalidade. Dados enviados para contato podem ser mantidos pelo tempo necessario para atendimento, relacionamento comercial, registro historico do projeto ou obrigacao legal.'
+  },
+  {
+    question: 'Os dados podem trafegar por terceiros fora do site?',
+    answer:
+      'Sim. Formularios, hospedagem e canais de atendimento podem envolver operadores de infraestrutura ou comunicacao. A AUDITSEO busca limitar esse uso ao minimo necessario para operar o site e responder ao usuario.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: rightsFaqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<LegalLayout
+  title="Politica de Privacidade da AUDITSEO"
+  description="Entenda como a AUDITSEO coleta, usa, compartilha e protege dados enviados pelo site, formularios, contato, newsletter e canais oficiais."
+  canonicalPath="/politica-de-privacidade/"
+  noindex={true}
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Politica de Privacidade', path: '/politica-de-privacidade/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span class="current">Politica de Privacidade</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Privacidade e Dados</span>
+        <h1 class="ee-page-title">
+          POLITICA DE <span class="accent">PRIVACIDADE</span> DA AUDITSEO
+        </h1>
+        <p class="ee-page-subtitle">
+          Esta pagina explica como a AUDITSEO trata dados enviados pelo
+          <strong> modal de diagnostico</strong>, <strong>formulario de contato</strong>,
+          <strong>newsletter</strong> e <strong>canais oficiais</strong>. O objetivo e deixar
+          claro o que e coletado, por que isso acontece, com quem pode ser processado e como voce
+          pode solicitar atualizacao ou exclusao.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">Contato e Diagnostico</span>
+          <span class="ee-page-highlight">Hospedagem e Logs</span>
+          <span class="ee-page-highlight">FormSubmit</span>
+          <span class="ee-page-highlight">Canais Oficiais</span>
+        </div>
+      </div>
+      <aside class="ee-page-hero-card">
+        <h2>Escopo desta politica</h2>
+        <p>Ela cobre a operacao atual do site, dos formularios e dos canais oficiais da marca.</p>
+        <p>
+          Se a estrutura tecnica, os fornecedores ou a forma de coleta mudarem, esta pagina precisa
+          ser revisada para continuar fiel ao funcionamento real do projeto.
+        </p>
+        <div class="ee-page-links">
+          <a href="/contato/">Contato</a>
+          <a href="/termos-de-uso/">Termos de uso</a>
+          <a href="/politica-editorial/">Politica editorial</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo da politica de privacidade">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">4</div>
+        <div class="ee-page-stat-label">Pontos de coleta</div>
+        <p class="ee-page-stat-copy">Formularios, contato, navegacao tecnica e canais oficiais.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Servico de envio</div>
+        <p class="ee-page-stat-copy">Os formularios da base atual usam o endpoint do FormSubmit.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">0</div>
+        <div class="ee-page-stat-label">Venda de listas</div>
+        <p class="ee-page-stat-copy">Dados de contato nao sao vendidos nem compartilhados para publicidade.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Canal para direitos</div>
+        <p class="ee-page-stat-copy">Solicitacoes podem ser enviadas para {siteMetadata.contact.email}.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Coleta</span>
+        <h2 class="ee-page-section-title">QUAIS DADOS PODEM SER RECEBIDOS</h2>
+        <p class="ee-page-section-subtitle">
+          A coleta depende do que o usuario faz no site. Nao existe a mesma profundidade de dado
+          para uma simples visita e para um briefing de diagnostico.
+        </p>
+      </div>
+      <div class="ee-page-grid four">
+        {collectionPoints.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Uso</span>
+        <h2 class="ee-page-section-title">POR QUE ESSES DADOS SAO USADOS</h2>
+      </div>
+      <div class="ee-page-panels">
+        {purposePanels.map((panel) => (
+          <article class="ee-page-panel">
+            <h3>{panel.title}</h3>
+            <ul class="ee-page-list">
+              {panel.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Compartilhamento</span>
+        <h2 class="ee-page-section-title">OPERADORES, CANAIS E LIMITES DE USO</h2>
+      </div>
+      <div class="ee-page-panels">
+        {sharingPanels.map((panel) => (
+          <article class="ee-page-panel">
+            <h3>{panel.title}</h3>
+            <ul class="ee-page-list">
+              {panel.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Direitos</span>
+        <h2 class="ee-page-section-title">ACESSO, CORRECAO, RETENCAO E EXCLUSAO</h2>
+        <p class="ee-page-section-subtitle">
+          Pedidos relacionados a dados pessoais devem ser enviados pelo canal oficial da marca para
+          analise do contexto, da base de coleta e da obrigacao operacional ou legal existente.
+        </p>
+      </div>
+      <div class="ee-page-faqs">
+        {rightsFaqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-cta">
+      <div class="ee-page-cta-box">
+        <span class="ee-page-section-badge">Canal oficial</span>
+        <h2 class="ee-page-section-title">PRECISA TRATAR ALGUM DADO OU AJUSTAR UM CADASTRO?</h2>
+        <p class="ee-page-cta-copy">
+          Use o e-mail oficial da AUDITSEO para pedidos relacionados a privacidade, atualizacao de
+          dados, exclusao de historico ou esclarecimento sobre a forma de coleta do site.
+        </p>
+        <div class="ee-page-cta-actions">
+          <a class="ee-page-primary" href={`mailto:${siteMetadata.contact.email}`}>Enviar e-mail</a>
+          <a class="ee-page-secondary" href="/contato/">Ir para contato</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</LegalLayout>

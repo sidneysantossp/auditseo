@@ -1,0 +1,108 @@
+---
+import '../../styles/blog-index-parity.css';
+import BlogArchiveContent from '../../components/BlogArchiveContent.astro';
+import BlogArchiveSchemas from '../../components/BlogArchiveSchemas.astro';
+import BlogNewsletterEnhancements from '../../components/BlogNewsletterEnhancements.astro';
+import BlogIndexLayout from '../../layouts/BlogIndexLayout.astro';
+import { blogCategories } from '../../data/blog-taxonomy';
+import { getAllBlogArticles, getFeaturedBlogArticle, getBlogArchivePage, getBlogCategoryStats } from '../../lib/legacy-blog';
+
+const allArticles = getAllBlogArticles();
+const featuredArticle = getFeaturedBlogArticle();
+const archivePage = getBlogArchivePage(1);
+const posts = allArticles.filter((article) => article.slug !== featuredArticle?.slug).slice(0, 24);
+const clusterCards = blogCategories.map((category) => {
+  const stats = getBlogCategoryStats(category.slug);
+  return {
+    title: category.title,
+    copy: category.heroSubtitle,
+    path: `/blog/categoria/${category.slug}/`,
+    statLabel: `${stats.articleCount} artigos`
+  };
+});
+
+const introCards = [
+  {
+    title: 'Arquitetura editorial',
+    copy:
+      'O blog agora opera como hub editorial real: categorias nativas, breadcrumbs consistentes, schema coerente e ligacao entre artigos, servicos, nichos e cidades.'
+  },
+  {
+    title: 'Onpage orientado a cluster',
+    copy:
+      'Cada categoria foi desenhada para concentrar tema, reforcar semantica, reduzir canibalizacao e empurrar o leitor para paginas de servico ou recursos relacionados.'
+  },
+  {
+    title: 'Base para reputacao externa',
+    copy:
+      'O blog vira a principal base de referencia da marca para artigos, citacoes, distribuicao externa, PR digital, outreach e colaboracoes com profissionais do setor.'
+  }
+];
+
+const resourceLinks = [
+  { label: 'Servicos principais', path: '/servicos/' },
+  { label: 'Ferramentas gratuitas', path: '/ferramentas/' },
+  { label: 'Fontes e metodos', path: '/fontes-e-metodos/' }
+];
+
+const blogFaqs = [
+  {
+    question: 'Como o blog da AUDITSEO esta organizado?',
+    answer:
+      'O blog foi organizado em categorias editoriais reais, com pagina principal, hubs tematicos, artigos conectados a servicos e estrutura semantica pensada para SEO e AI search.'
+  },
+  {
+    question: 'Os artigos do blog sao independentes das paginas comerciais?',
+    answer:
+      'Nao. O blog funciona como base de recursos e reforca paginas de servico, nichos, cidades, metodologia e casos sem misturar intencoes de busca diferentes na mesma URL.'
+  },
+  {
+    question: 'O hub do blog foi pensado para pessoas e bots?',
+    answer:
+      'Sim. A arquitetura editorial busca ser clara para leitores, mecanismos de busca e sistemas de IA, com metadata, breadcrumbs, schema, categorias e ligacao interna consistentes.'
+  }
+];
+---
+<BlogIndexLayout
+  title="Blog AUDITSEO | SEO, AI Overviews e LLM SEO"
+  description="Blog da AUDITSEO com artigos, guias e recursos sobre SEO, AI Overviews, LLM SEO, SEO tecnico, analytics e estrategia de crescimento organico."
+  canonicalPath="/blog/"
+  imagePath="/images/ai-overviews.jpg"
+  pageType="WebPage"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Blog', path: '/blog/' }
+  ]}
+>
+  <Fragment slot="head">
+    <meta name="keywords" content="blog seo, ai overviews, llm seo, seo tecnico, prompt optimization, analytics seo" />
+    <BlogArchiveSchemas
+      canonicalPath="/blog/"
+      title="Blog AUDITSEO"
+      description="Hub editorial da AUDITSEO com artigos sobre SEO, AI Overviews, LLM SEO, SEO tecnico, analytics e estrategia."
+      articles={allArticles.slice(0, 24)}
+      faqs={blogFaqs}
+    />
+  </Fragment>
+
+  <BlogArchiveContent
+    breadcrumbs={[
+      { label: 'Home', path: '/' },
+      { label: 'Blog' }
+    ]}
+    badge="Blog AUDITSEO"
+    heroTitle="INSIGHTS SOBRE <span class='highlight'>SEO &amp; AI</span>"
+    heroSubtitle="Artigos, guias completos e novidades sobre SEO, AI Overviews, otimizacao para LLMs e o futuro da busca. Conteudo para quem leva resultados a serio."
+    featuredArticle={featuredArticle}
+    posts={posts}
+    articleCountLabel={`${allArticles.length} Artigos`}
+    pageLabel={`Pagina ${archivePage.currentPage} de ${archivePage.totalPages}`}
+    sectionTitle="PUBLICACOES RECENTES"
+    introCards={introCards}
+    clusterCards={clusterCards}
+    resourceLinks={resourceLinks}
+    faqs={blogFaqs}
+    pagination={archivePage}
+  />
+  <BlogNewsletterEnhancements />
+</BlogIndexLayout>

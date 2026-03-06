@@ -1,0 +1,279 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "auditseo.com.br"
+        }
+      ],
+      "destination": "https://www.auditseo.com.br/$1",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/ai-overview-optimization.html",
+      "destination": "/servicos/ai-overview-optimization/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/auditoria-seo.html",
+      "destination": "/servicos/auditoria-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/consultoria-seo.html",
+      "destination": "/servicos/consultoria-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/google-meu-negocio.html",
+      "destination": "/servicos/google-meu-negocio/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/seo-tecnico/:match*",
+      "destination": "/servicos/auditoria-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/llm-brand-presence.html",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/seo-local.html",
+      "destination": "/servicos/seo-local/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/llm-brand-presence-ias/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/aparecer-no-chatgpt/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/aparecer-no-claude/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/aparecer-no-gemini/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/aparecer-no-perplexity/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/ai-seo/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/aparecer-chatgpt-claude-perplexity/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/aparecer-no-google-ai-overviews/:match*",
+      "destination": "/servicos/ai-overview-optimization/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/geo-generative-engine-optimization/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/monitoramento-ia/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/prompt-optimization/:match*",
+      "destination": "/servicos/consultoria-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/seo-para-ia/:match*",
+      "destination": "/servicos/llm-brand-presence/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/technical-ai-seo/:match*",
+      "destination": "/servicos/auditoria-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/nichos/clinicas-medicas.html",
+      "destination": "/nichos/clinicas-medicas/",
+      "permanent": true
+    },
+    {
+      "source": "/saude/dermatologistas/:match*",
+      "destination": "/nichos/dermatologistas/",
+      "permanent": true
+    },
+    {
+      "source": "/b2b/energia-solar/:match*",
+      "destination": "/nichos/energia-solar/",
+      "permanent": true
+    },
+    {
+      "source": "/nichos/escritorios-advocacia.html",
+      "destination": "/nichos/escritorios-advocacia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-overviews-ecommerce/:match*",
+      "destination": "/blog/como-aparecer-ai-overviews/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-overviews-impacto-trafego-organico/:match*",
+      "destination": "/blog/queries-ai-overviews/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ai-overviews-negocios-locais/:match*",
+      "destination": "/blog/google-meu-negocio-guia-completo/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/analytics-trafego-ia/:match*",
+      "destination": "/blog/dashboard-seo-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/brand-mentions-vs-backlinks/:match*",
+      "destination": "/blog/brand-mentions-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/checklist-ai-overviews/:match*",
+      "destination": "/blog/checklist-final-presenca-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-aparecer-chatgpt-claude/:match*",
+      "destination": "/blog/seo-chatgpt-claude/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/contexto-completude-ia/:match*",
+      "destination": "/blog/definicoes-claras-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/e-e-a-t-guia-completo/:match*",
+      "destination": "/fontes-e-metodos/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/eeat-para-llms/:match*",
+      "destination": "/fontes-e-metodos/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/faqs-otimizadas-ia/:match*",
+      "destination": "/blog/schema-markup-ai-overviews/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ferramentas-tracking-llm/:match*",
+      "destination": "/blog/ferramentas-rastreamento-llm/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fontes-dados-llm/:match*",
+      "destination": "/blog/fontes-dados-ll/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/formatacao-citacao-ia/:match*",
+      "destination": "/blog/paragrafos-citaveis/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/formatacao-conteudo-ia/:match*",
+      "destination": "/blog/listas-tabelas-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/futuro-ai-overviews/:match*",
+      "destination": "/blog/google-ai-mode/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/impacto-ai-overviews-trafego/:match*",
+      "destination": "/blog/queries-ai-overviews/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/metricas-seo-ia/:match*",
+      "destination": "/blog/metricas-presenca-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/otimizar-conteudo-ai-overviews/:match*",
+      "destination": "/blog/estruturar-conteudo-ai-overviews/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/palavras-chave-ai-overviews/:match*",
+      "destination": "/blog/linguagem-natural-keywords/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/schema-markup-para-ias/:match*",
+      "destination": "/blog/schema-markup-ai-overviews/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seo-tecnico-para-ia/:match*",
+      "destination": "/blog/auditoria-tecnica-ai-seo/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=600, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
+}

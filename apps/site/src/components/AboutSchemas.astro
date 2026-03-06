@@ -1,0 +1,42 @@
+---
+import { siteMetadata } from '../data/site';
+
+const canonicalPath = '/sobre/';
+const canonicalUrl = new URL(canonicalPath, siteMetadata.siteUrl).toString();
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${canonicalUrl}#person`,
+      name: 'Sidney Santos',
+      jobTitle: 'Fundador e Especialista em SEO',
+      description:
+        'Especialista em SEO desde 2013, com foco em SEO tecnico, AI Overviews, SEO local e otimizacao para busca generativa.',
+      image: new URL('/eu2.jpg', siteMetadata.siteUrl).toString(),
+      email: siteMetadata.contact.email,
+      telephone: siteMetadata.contact.phone,
+      url: canonicalUrl,
+      worksFor: {
+        '@id': `${siteMetadata.siteUrl}/#organization`
+      },
+      sameAs: [
+        'https://www.linkedin.com/in/sidney-especialista-em-seo/',
+        'https://www.instagram.com/sidneyespecialistaseo',
+        'https://www.facebook.com/auditseoagenciaespecializadaemseo'
+      ],
+      knowsAbout: [
+        'SEO',
+        'SEO tecnico',
+        'SEO estrategico',
+        'SEO local',
+        'AI Overviews',
+        'Busca generativa',
+        'LLM optimization'
+      ]
+    }
+  ]
+};
+---
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)}></script>

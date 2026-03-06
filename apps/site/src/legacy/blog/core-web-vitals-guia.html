@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Web Vitals: O Guia Definitivo 2026 | Como Otimizar LCP, INP e CLS | AUDITSEO</title>
+    <meta name="description" content="Guia completo sobre Core Web Vitals: LCP, INP e CLS. Aprenda a medir, diagnosticar e otimizar cada métrica para melhorar seu ranking no Google e experiência do usuário.">
+    <meta name="keywords" content="core web vitals, lcp, inp, cls, web vitals, page experience, velocidade do site, seo técnico">
+    <link rel="canonical" href="https://www.auditseo.com.br/blog/core-web-vitals-guia/">
+    <meta property="og:title" content="Core Web Vitals: O Guia Definitivo 2026">
+    <meta property="og:description" content="Aprenda a otimizar LCP, INP e CLS para melhorar rankings e experiência do usuário.">
+    <meta property="og:url" content="https://www.auditseo.com.br/blog/core-web-vitals-guia/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-01-10">
+    <meta property="article:author" content="Sidney Santos">
+    <meta property="article:section" content="SEO Técnico">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg-dark:#0a0a0a;--bg-card:#111;--accent-red:#e63946;--accent-gold:#d4a574;--accent-cream:#f4e8d8;--gradient-fire:linear-gradient(135deg,#e63946 0%,#d4a574 100%);--text-light:#f8f8f8;--text-muted:#888;--text-dim:#555;--green:#2ecc71;--yellow:#f1c40f;--red:#e74c3c}
+        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Crimson Pro',Georgia,serif;background:var(--bg-dark);color:var(--text-light);line-height:1.8}
+        .nav{position:fixed;top:0;left:0;right:0;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;z-index:100;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.05)}
+        .logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+        .nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{font-family:'JetBrains Mono',monospace;font-size:.75rem;letter-spacing:2px;color:var(--text-muted);text-decoration:none;text-transform:uppercase;transition:color .3s}.nav-links a:hover{color:var(--accent-gold)}
+        .nav-cta{font-family:'JetBrains Mono',monospace;font-size:.75rem;padding:.8rem 1.5rem;background:transparent;border:1px solid var(--accent-red);color:var(--accent-red);transition:all .3s;text-decoration:none}.nav-cta:hover{background:var(--accent-red);color:var(--bg-dark)}
+        .article-header{padding:8rem 3rem 4rem;position:relative;background:linear-gradient(135deg,rgba(230,57,70,.08) 0%,rgba(212,165,116,.04) 100%)}
+        .article-header-content{max-width:900px;margin:0 auto}
+        .breadcrumbs{margin-bottom:2rem}.breadcrumbs a,.breadcrumbs span{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:1px}.breadcrumbs a:hover{color:var(--accent-gold)}.breadcrumbs span{margin:0 .5rem}
+        .article-category{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:3px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:1rem;display:inline-block}
+        .article-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,4.5rem);line-height:1;letter-spacing:-1px;margin-bottom:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .article-excerpt{font-size:1.3rem;color:var(--text-muted);margin-bottom:2rem;line-height:1.7}
+        .article-meta{display:flex;flex-wrap:wrap;gap:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)}
+        .meta-item{display:flex;align-items:center;gap:.75rem}
+        .meta-avatar{width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:2px solid var(--accent-gold);overflow:hidden}
+        .meta-avatar img{width:100%;height:100%;object-fit:cover}
+        .meta-info{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);letter-spacing:1px}
+        .meta-info strong{display:block;color:var(--text-light);font-size:.75rem;margin-bottom:.25rem}
+        .article-layout{max-width:1400px;margin:0 auto;padding:4rem 3rem;display:grid;grid-template-columns:250px 1fr;gap:4rem}
+        .article-toc{position:sticky;top:100px;height:fit-content}
+        .toc-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:1.5rem;letter-spacing:1px}
+        .toc-list{list-style:none}.toc-list li{margin-bottom:.75rem}
+        .toc-list a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);text-decoration:none;letter-spacing:.5px;transition:color .3s;display:block;padding:.25rem 0;border-left:2px solid transparent;padding-left:1rem;margin-left:-1rem}
+        .toc-list a:hover,.toc-list a.active{color:var(--accent-gold);border-left-color:var(--accent-gold)}
+        .article-content{max-width:800px}
+        .article-content h2{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;margin:3rem 0 1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--text-light);margin:2.5rem 0 1rem;letter-spacing:1px;scroll-margin-top:100px}
+        .article-content h4{font-size:1.2rem;color:var(--accent-cream);margin:2rem 0 1rem;font-weight:600}
+        .article-content p{font-size:1.15rem;color:var(--text-muted);margin-bottom:1.5rem;line-height:1.9}
+        .article-content p strong{color:var(--accent-cream)}
+        .article-content a{color:var(--accent-gold);text-decoration:underline;text-underline-offset:3px}
+        .article-content ul,.article-content ol{margin:1.5rem 0;padding-left:1.5rem}
+        .article-content li{font-size:1.1rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.7}
+        .article-content li strong{color:var(--text-light)}
+        .highlight-box{background:linear-gradient(135deg,rgba(230,57,70,.1) 0%,rgba(212,165,116,.05) 100%);border-left:4px solid var(--accent-red);padding:2rem;margin:2rem 0}
+        .highlight-box p{margin-bottom:0;font-size:1.1rem}
+        .highlight-box strong{color:var(--accent-gold)}
+        .info-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0}
+        .info-box-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--accent-gold);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+        .info-box p,.info-box li{font-size:1rem}
+        
+        .metric-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.1);padding:2rem;margin:2rem 0}
+        .metric-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+        .metric-icon{width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--bg-dark)}
+        .metric-icon.lcp{background:linear-gradient(135deg,#3498db,#2980b9)}
+        .metric-icon.inp{background:linear-gradient(135deg,#9b59b6,#8e44ad)}
+        .metric-icon.cls{background:linear-gradient(135deg,#1abc9c,#16a085)}
+        .metric-title{flex:1}
+        .metric-title h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--text-light);margin:0 0 .25rem 0}
+        .metric-title p{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--text-dim);margin:0}
+        .metric-thresholds{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0}
+        .threshold{padding:1rem;text-align:center;border-radius:8px}
+        .threshold.good{background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3)}
+        .threshold.needs{background:rgba(241,196,15,.15);border:1px solid rgba(241,196,15,.3)}
+        .threshold.poor{background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.3)}
+        .threshold-value{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;line-height:1}
+        .threshold.good .threshold-value{color:var(--green)}
+        .threshold.needs .threshold-value{color:var(--yellow)}
+        .threshold.poor .threshold-value{color:var(--red)}
+        .threshold-label{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text-dim);margin-top:.5rem;text-transform:uppercase;letter-spacing:1px}
+        
+        .code-block{background:#1a1a1a;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:1.5rem;margin:1.5rem 0;overflow-x:auto}
+        .code-block code{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:#e6e6e6;line-height:1.6}
+        .code-block .comment{color:#6a9955}
+        .code-block .tag{color:#569cd6}
+        .code-block .attr{color:#9cdcfe}
+        .code-block .string{color:#ce9178}
+        
+        .tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin:2rem 0}
+        .tool-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);padding:1.5rem}
+        .tool-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--text-light);margin-bottom:.5rem}
+        .tool-card p{font-size:.95rem;color:var(--text-muted);margin:0}
+        .tool-card .tool-type{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--accent-gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
+        
+        .optimization-list{list-style:none;padding:0;margin:2rem 0}
+        .optimization-list li{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;background:var(--bg-card);border:1px solid rgba(255,255,255,.05);margin-bottom:.75rem}
+        .optimization-list li .number{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;flex-shrink:0;width:30px}
+        .optimization-list li div{flex:1}
+        .optimization-list li strong{display:block;color:var(--text-light);font-size:1.05rem;margin-bottom:.25rem}
+        .optimization-list li p{margin:0;font-size:.95rem;color:var(--text-muted)}
+        
+        .impact-bar{display:flex;align-items:center;gap:.75rem;margin-top:.5rem}
+        .impact-bar span{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text-dim)}
+        .impact-bar .bar{flex:1;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+        .impact-bar .bar-fill{height:100%;border-radius:3px}
+        .impact-bar .bar-fill.high{background:var(--green);width:90%}
+        .impact-bar .bar-fill.medium{background:var(--yellow);width:60%}
+        .impact-bar .bar-fill.low{background:var(--accent-gold);width:30%}
+        
+        .comparison-table{width:100%;border-collapse:collapse;margin:2rem 0}
+        .comparison-table th,.comparison-table td{padding:1rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem}
+        .comparison-table th{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:1px;color:var(--accent-gold);text-transform:uppercase;background:var(--bg-card)}
+        .comparison-table td{color:var(--text-muted)}
+        
+        .cta-box{background:linear-gradient(135deg,rgba(230,57,70,.15) 0%,rgba(212,165,116,.08) 100%);border:1px solid rgba(230,57,70,.3);padding:3rem;margin:3rem 0;text-align:center}
+        .cta-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:1rem}
+        .cta-box p{font-size:1.1rem;color:var(--text-muted);margin-bottom:1.5rem}
+        .cta-btn{font-family:'JetBrains Mono',monospace;font-size:.8rem;padding:1rem 2.5rem;background:var(--gradient-fire);border:none;color:var(--bg-dark);cursor:pointer;transition:all .3s;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-block}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(230,57,70,.4)}
+        
+        .author-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin:4rem 0;display:flex;gap:2rem;align-items:center}
+        .author-avatar{width:100px;height:100px;border-radius:50%;background:var(--bg-dark);border:3px solid var(--accent-gold);overflow:hidden;flex-shrink:0}
+        .author-avatar img{width:100%;height:100%;object-fit:cover}
+        .author-info h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--text-light);margin-bottom:.5rem}
+        .author-info p{font-size:1rem;color:var(--text-muted);margin-bottom:1rem}
+        .author-links{display:flex;gap:1rem}
+        .author-links a{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--accent-gold);text-decoration:none}
+        
+        .related-posts{margin:4rem 0}
+        .related-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--text-light);margin-bottom:2rem}
+        .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+        .related-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.05);padding:1.5rem;transition:all .3s}
+        .related-card:hover{border-color:rgba(230,57,70,.3);transform:translateY(-3px)}
+        .related-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--text-light);margin-bottom:.5rem}
+        .related-card h4 a{text-decoration:none;color:inherit}
+        .related-card p{font-size:.9rem;color:var(--text-dim)}
+        
+        .footer{padding:4rem 3rem 2rem;border-top:1px solid rgba(255,255,255,.05);background:var(--bg-card)}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+        .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;background:var(--gradient-fire);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}.footer-desc{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem}
+        .footer-address{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim);line-height:1.8}.footer-title{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;color:var(--text-light);margin-bottom:1.5rem}
+        .footer-links{list-style:none}.footer-links li{margin-bottom:.8rem}.footer-links a{font-size:.9rem;color:var(--text-muted);text-decoration:none;transition:color .3s}.footer-links a:hover{color:var(--accent-gold)}
+        .footer-bottom{max-width:1400px;margin:3rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}.footer-bottom p{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text-dim)}
+        .whatsapp-float{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:999;transition:all .3s;text-decoration:none}.whatsapp-float:hover{transform:scale(1.1)}.whatsapp-float svg{width:30px;height:30px;fill:white}
+        
+        @media(max-width:1100px){.article-layout{grid-template-columns:1fr}.article-toc{display:none}.tool-grid{grid-template-columns:1fr}.metric-thresholds{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}.footer-content{grid-template-columns:1fr 1fr}}
+        @media(max-width:768px){.nav{padding:1rem 1.5rem}.nav-links{display:none}.article-header{padding:6rem 1.5rem 3rem}.article-layout{padding:2rem 1.5rem}.article-meta{flex-direction:column;gap:1.5rem}.metric-header{flex-direction:column;text-align:center}.author-box{flex-direction:column;text-align:center}.footer-content{grid-template-columns:1fr}}
+    </style>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Core Web Vitals: O Guia Definitivo 2026","description":"Guia completo sobre Core Web Vitals: LCP, INP e CLS. Aprenda a medir, diagnosticar e otimizar cada métrica.","author":{"@type":"Person","name":"Sidney Santos","url":"https://www.auditseo.com.br/sobre/"},"publisher":{"@type":"Organization","name":"AUDITSEO"},"datePublished":"2026-01-10","dateModified":"2026-01-10","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.auditseo.com.br/blog/core-web-vitals-guia/"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.auditseo.com.br/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.auditseo.com.br/blog/"},{"@type":"ListItem","position":3,"name":"Core Web Vitals Guia","item":"https://www.auditseo.com.br/blog/core-web-vitals-guia/"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"O que são Core Web Vitals?","acceptedAnswer":{"@type":"Answer","text":"Core Web Vitals são um conjunto de métricas do Google que medem a experiência do usuário em termos de carregamento (LCP), interatividade (INP) e estabilidade visual (CLS). São fatores de ranking desde 2021."}},{"@type":"Question","name":"Quais são as 3 métricas dos Core Web Vitals?","acceptedAnswer":{"@type":"Answer","text":"As 3 métricas são: LCP (Largest Contentful Paint) que mede velocidade de carregamento, INP (Interaction to Next Paint) que mede responsividade, e CLS (Cumulative Layout Shift) que mede estabilidade visual."}},{"@type":"Question","name":"Core Web Vitals afetam o ranking no Google?","acceptedAnswer":{"@type":"Answer","text":"Sim. Core Web Vitals são um fator de ranking oficial do Google desde junho de 2021. Sites com boas métricas têm vantagem, especialmente em buscas mobile e quando competem com sites de conteúdo similar."}},{"@type":"Question","name":"Como medir Core Web Vitals?","acceptedAnswer":{"@type":"Answer","text":"Use o Google PageSpeed Insights, Google Search Console (relatório Core Web Vitals), Lighthouse, ou a extensão Web Vitals do Chrome. O Search Console mostra dados reais de usuários."}}]}</script>
+    <link rel="stylesheet" href="/assets/site-shell.css?v=20260303b">
+    <script defer src="/assets/site-shell.js?v=20260303b"></script>
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="alternate" hreflang="pt-BR" href="https://www.auditseo.com.br/blog/core-web-vitals-guia/">
+    <link rel="alternate" hreflang="x-default" href="https://www.auditseo.com.br/blog/core-web-vitals-guia/">
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="logo">AUDITSEO</a>
+        <ul class="nav-links">
+            <li><a href="/agencia-de-seo/">Agência de SEO</a></li>
+            <li><a href="/servicos/">Serviços</a></li>
+            <li><a href="/sobre/">Sobre</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <a href="https://wa.me/5511996384376" class="nav-cta">Falar com Especialista</a>
+    </nav>
+
+    <header class="article-header">
+        <div class="article-header-content">
+            <div class="breadcrumbs">
+                <a href="/">Home</a><span>›</span><a href="/blog/">Blog</a><span>›</span><span>Core Web Vitals</span>
+            </div>
+            <span class="article-category">SEO Técnico</span>
+            <h1 class="article-title">Core Web Vitals: O Guia Definitivo</h1>
+            <p class="article-excerpt">Tudo sobre LCP, INP e CLS: o que são, como medir, por que importam para SEO e como otimizar cada métrica. Um guia técnico completo e atualizado para 2026.</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <div class="meta-avatar"><img src="/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                    <div class="meta-info"><strong>Sidney Santos</strong>Especialista em SEO Técnico</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-info"><strong>Publicado</strong>Janeiro 2026</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-info"><strong>Tempo de leitura</strong>15 minutos</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="article-layout">
+        <aside class="article-toc">
+            <h4 class="toc-title">ÍNDICE</h4>
+            <ul class="toc-list">
+                <li><a href="#o-que-sao">O Que São Core Web Vitals</a></li>
+                <li><a href="#por-que-importam">Por Que Importam para SEO</a></li>
+                <li><a href="#lcp">LCP: Largest Contentful Paint</a></li>
+                <li><a href="#inp">INP: Interaction to Next Paint</a></li>
+                <li><a href="#cls">CLS: Cumulative Layout Shift</a></li>
+                <li><a href="#como-medir">Como Medir</a></li>
+                <li><a href="#ferramentas">Ferramentas Essenciais</a></li>
+                <li><a href="#otimizacao">Otimização Passo a Passo</a></li>
+                <li><a href="#erros">Erros Comuns</a></li>
+                <li><a href="#faq">Perguntas Frequentes</a></li>
+            </ul>
+        </aside>
+
+        <article class="article-content">
+            <section id="o-que-sao">
+                <p>Se o seu site demora para carregar, trava quando o usuário clica, ou os elementos ficam "pulando" na tela, você está perdendo visitantes — e posições no Google.</p>
+                
+                <p><strong>Core Web Vitals</strong> são as métricas que o Google usa para medir exatamente isso: a qualidade da experiência do usuário no seu site. E sim, elas afetam diretamente seu ranking.</p>
+
+                <p>Neste guia, vou explicar cada métrica em detalhes, como medi-las corretamente, e — mais importante — <strong>como otimizá-las de forma prática</strong>.</p>
+
+                <h2>O Que São Core Web Vitals?</h2>
+                <p><strong>Core Web Vitals</strong> são um conjunto de três métricas específicas que o Google considera essenciais para uma boa experiência de página:</p>
+
+                <ul>
+                    <li><strong>LCP (Largest Contentful Paint)</strong> — Velocidade de carregamento</li>
+                    <li><strong>INP (Interaction to Next Paint)</strong> — Responsividade/Interatividade</li>
+                    <li><strong>CLS (Cumulative Layout Shift)</strong> — Estabilidade visual</li>
+                </ul>
+
+                <p>Essas métricas fazem parte do "Page Experience" do Google, que é um fator de ranking oficial desde junho de 2021.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Atualização 2024:</strong> O INP (Interaction to Next Paint) substituiu oficialmente o FID (First Input Delay) em março de 2024. Se você ainda está otimizando para FID, está desatualizado.</p>
+                </div>
+            </section>
+
+            <section id="por-que-importam">
+                <h2>Por Que Core Web Vitals Importam para SEO</h2>
+                
+                <h3>1. Fator de Ranking Oficial</h3>
+                <p>Core Web Vitals são um dos sinais de ranking do Google. Não é o mais importante (conteúdo e relevância ainda dominam), mas pode ser o desempate entre sites com conteúdo similar.</p>
+
+                <h3>2. Experiência do Usuário</h3>
+                <p>Sites rápidos e estáveis têm:</p>
+                <ul>
+                    <li>Menor taxa de rejeição</li>
+                    <li>Maior tempo na página</li>
+                    <li>Melhor taxa de conversão</li>
+                    <li>Mais páginas por sessão</li>
+                </ul>
+
+                <h3>3. Mobile-First</h3>
+                <p>O Google indexa e ranqueia principalmente a versão mobile. Core Web Vitals são especialmente críticos em dispositivos móveis, onde conexões são mais lentas e processadores menos potentes.</p>
+
+                <h3>4. Indicador de Qualidade Técnica</h3>
+                <p>Bons Core Web Vitals geralmente indicam um site bem construído. Problemas nessas métricas frequentemente revelam problemas técnicos mais profundos.</p>
+
+                <div class="info-box">
+                    <div class="info-box-title">📊 Dados do Mercado</div>
+                    <p>Segundo estudos do Google, sites que atingem os limites recomendados de Core Web Vitals têm <strong>24% menos abandono</strong> de página. Para e-commerces, cada segundo de melhora no LCP pode aumentar conversões em até 8%.</p>
+                </div>
+            </section>
+
+            <section id="lcp">
+                <h2>LCP: Largest Contentful Paint</h2>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <div class="metric-icon lcp">LCP</div>
+                        <div class="metric-title">
+                            <h3>Largest Contentful Paint</h3>
+                            <p>Mede o tempo de carregamento do maior elemento visível</p>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-thresholds">
+                        <div class="threshold good">
+                            <div class="threshold-value">≤ 2.5s</div>
+                            <div class="threshold-label">Bom</div>
+                        </div>
+                        <div class="threshold needs">
+                            <div class="threshold-value">≤ 4.0s</div>
+                            <div class="threshold-label">Precisa Melhorar</div>
+                        </div>
+                        <div class="threshold poor">
+                            <div class="threshold-value">> 4.0s</div>
+                            <div class="threshold-label">Ruim</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>O Que o LCP Mede</h3>
+                <p>LCP mede quanto tempo leva para o <strong>maior elemento de conteúdo</strong> aparecer na viewport (área visível da tela). Geralmente é:</p>
+                <ul>
+                    <li>Uma imagem hero grande</li>
+                    <li>Um bloco de texto principal</li>
+                    <li>Um vídeo de capa</li>
+                    <li>Uma imagem de background</li>
+                </ul>
+
+                <h3>Causas Comuns de LCP Ruim</h3>
+                <ul>
+                    <li><strong>Servidor lento</strong> — tempo de resposta do servidor (TTFB) alto</li>
+                    <li><strong>CSS/JS bloqueando renderização</strong> — recursos que atrasam o carregamento</li>
+                    <li><strong>Imagens não otimizadas</strong> — arquivos muito pesados</li>
+                    <li><strong>Carregamento de fontes</strong> — web fonts atrasando texto</li>
+                    <li><strong>Renderização client-side</strong> — SPAs que dependem de JS para mostrar conteúdo</li>
+                </ul>
+
+                <h3>Como Otimizar o LCP</h3>
+                <ol class="optimization-list">
+                    <li>
+                        <span class="number">1</span>
+                        <div>
+                            <strong>Otimize o Tempo de Resposta do Servidor</strong>
+                            <p>Use CDN, cache de servidor, otimize queries de banco de dados. Ideal: TTFB < 200ms.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill high"></div></div><span>Alto</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">2</span>
+                        <div>
+                            <strong>Otimize e Comprima Imagens</strong>
+                            <p>Use formatos modernos (WebP, AVIF), dimensões corretas, compressão adequada. Lazy load para imagens abaixo da dobra.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill high"></div></div><span>Alto</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">3</span>
+                        <div>
+                            <strong>Preload de Recursos Críticos</strong>
+                            <p>Use &lt;link rel="preload"&gt; para imagens hero, fontes e CSS crítico.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill high"></div></div><span>Alto</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">4</span>
+                        <div>
+                            <strong>Elimine CSS/JS que Bloqueiam Renderização</strong>
+                            <p>Inline CSS crítico, defer/async para scripts não essenciais.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill medium"></div></div><span>Médio</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">5</span>
+                        <div>
+                            <strong>Otimize Web Fonts</strong>
+                            <p>Use font-display: swap, preload fonts, considere system fonts para body.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill medium"></div></div><span>Médio</span></div>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="code-block">
+                    <code><span class="comment">&lt;!-- Preload da imagem hero para melhorar LCP --&gt;</span>
+&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="string">"preload"</span> <span class="attr">as</span>=<span class="string">"image"</span> <span class="attr">href</span>=<span class="string">"/images/hero.webp"</span>&gt;
+
+<span class="comment">&lt;!-- Preload de fonte crítica --&gt;</span>
+&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="string">"preload"</span> <span class="attr">as</span>=<span class="string">"font"</span> <span class="attr">type</span>=<span class="string">"font/woff2"</span> 
+      <span class="attr">href</span>=<span class="string">"/fonts/main.woff2"</span> <span class="attr">crossorigin</span>&gt;</code>
+                </div>
+            </section>
+
+            <section id="inp">
+                <h2>INP: Interaction to Next Paint</h2>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <div class="metric-icon inp">INP</div>
+                        <div class="metric-title">
+                            <h3>Interaction to Next Paint</h3>
+                            <p>Mede a responsividade às interações do usuário</p>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-thresholds">
+                        <div class="threshold good">
+                            <div class="threshold-value">≤ 200ms</div>
+                            <div class="threshold-label">Bom</div>
+                        </div>
+                        <div class="threshold needs">
+                            <div class="threshold-value">≤ 500ms</div>
+                            <div class="threshold-label">Precisa Melhorar</div>
+                        </div>
+                        <div class="threshold poor">
+                            <div class="threshold-value">> 500ms</div>
+                            <div class="threshold-label">Ruim</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>O Que o INP Mede</h3>
+                <p>INP mede o tempo entre uma interação do usuário (clique, toque, tecla) e a próxima atualização visual da página. Diferente do antigo FID que media apenas a primeira interação, o <strong>INP considera todas as interações</strong> durante a visita.</p>
+
+                <h3>Por Que INP Substituiu o FID</h3>
+                <p>O FID só media a primeira interação — ignorava se o site travava em interações subsequentes. INP é mais abrangente e representa melhor a experiência real do usuário.</p>
+
+                <h3>Causas Comuns de INP Ruim</h3>
+                <ul>
+                    <li><strong>JavaScript pesado</strong> — scripts que bloqueiam a main thread</li>
+                    <li><strong>Long Tasks</strong> — tarefas JS que demoram mais de 50ms</li>
+                    <li><strong>Event handlers lentos</strong> — funções de clique/scroll mal otimizadas</li>
+                    <li><strong>Muitos third-party scripts</strong> — analytics, pixels, widgets</li>
+                    <li><strong>Hydration lenta</strong> — em frameworks como React/Vue</li>
+                </ul>
+
+                <h3>Como Otimizar o INP</h3>
+                <ol class="optimization-list">
+                    <li>
+                        <span class="number">1</span>
+                        <div>
+                            <strong>Quebre Long Tasks</strong>
+                            <p>Use yield to main thread, setTimeout, ou requestIdleCallback para dividir tarefas longas.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill high"></div></div><span>Alto</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">2</span>
+                        <div>
+                            <strong>Reduza JavaScript Desnecessário</strong>
+                            <p>Code splitting, tree shaking, carregue apenas o JS necessário para cada página.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill high"></div></div><span>Alto</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">3</span>
+                        <div>
+                            <strong>Otimize Event Handlers</strong>
+                            <p>Use debounce/throttle, evite cálculos pesados em handlers, use passive listeners.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill medium"></div></div><span>Médio</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">4</span>
+                        <div>
+                            <strong>Minimize Third-Party Scripts</strong>
+                            <p>Carregue scripts de terceiros de forma assíncrona ou adie para depois da interação.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill medium"></div></div><span>Médio</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">5</span>
+                        <div>
+                            <strong>Use Web Workers</strong>
+                            <p>Mova processamento pesado para web workers, liberando a main thread.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill medium"></div></div><span>Médio</span></div>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="code-block">
+                    <code><span class="comment">// Quebrando long task com scheduler.yield()</span>
+async function processData(items) {
+  for (const item of items) {
+    process(item);
+    <span class="comment">// Libera a main thread periodicamente</span>
+    if (navigator.scheduling?.isInputPending()) {
+      await scheduler.yield();
+    }
+  }
+}</code>
+                </div>
+            </section>
+
+            <section id="cls">
+                <h2>CLS: Cumulative Layout Shift</h2>
+                
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <div class="metric-icon cls">CLS</div>
+                        <div class="metric-title">
+                            <h3>Cumulative Layout Shift</h3>
+                            <p>Mede a estabilidade visual da página</p>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-thresholds">
+                        <div class="threshold good">
+                            <div class="threshold-value">≤ 0.1</div>
+                            <div class="threshold-label">Bom</div>
+                        </div>
+                        <div class="threshold needs">
+                            <div class="threshold-value">≤ 0.25</div>
+                            <div class="threshold-label">Precisa Melhorar</div>
+                        </div>
+                        <div class="threshold poor">
+                            <div class="threshold-value">> 0.25</div>
+                            <div class="threshold-label">Ruim</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>O Que o CLS Mede</h3>
+                <p>CLS mede quanto os elementos da página "pulam" ou mudam de posição inesperadamente durante o carregamento. Sabe quando você vai clicar em um botão e ele move, fazendo você clicar em outro lugar? Isso é um layout shift.</p>
+
+                <p>O valor é calculado pela porcentagem da viewport afetada multiplicada pela distância do movimento. <strong>Quanto menor, melhor</strong>.</p>
+
+                <h3>Causas Comuns de CLS Alto</h3>
+                <ul>
+                    <li><strong>Imagens sem dimensões</strong> — sem width/height definidos</li>
+                    <li><strong>Anúncios e embeds</strong> — conteúdo dinâmico que empurra outros elementos</li>
+                    <li><strong>Web fonts</strong> — FOUT (Flash of Unstyled Text) causando reflow</li>
+                    <li><strong>Conteúdo injetado dinamicamente</strong> — banners, modais, notificações</li>
+                    <li><strong>Iframes sem dimensões</strong> — vídeos do YouTube, mapas, etc.</li>
+                </ul>
+
+                <h3>Como Otimizar o CLS</h3>
+                <ol class="optimization-list">
+                    <li>
+                        <span class="number">1</span>
+                        <div>
+                            <strong>Sempre Defina Dimensões de Imagens</strong>
+                            <p>Use width e height em &lt;img&gt; ou aspect-ratio em CSS. O navegador reserva o espaço antes de carregar.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill high"></div></div><span>Alto</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">2</span>
+                        <div>
+                            <strong>Reserve Espaço para Anúncios</strong>
+                            <p>Use min-height ou containers com dimensões fixas para slots de anúncio.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill high"></div></div><span>Alto</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">3</span>
+                        <div>
+                            <strong>Otimize Web Fonts</strong>
+                            <p>Use font-display: optional ou swap, preload fonts, considere font-size-adjust.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill medium"></div></div><span>Médio</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">4</span>
+                        <div>
+                            <strong>Evite Inserir Conteúdo Acima do Existente</strong>
+                            <p>Banners e notificações devem aparecer em posições que não empurrem conteúdo.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill medium"></div></div><span>Médio</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="number">5</span>
+                        <div>
+                            <strong>Use transform para Animações</strong>
+                            <p>Animações com transform não causam layout shift; top/left causam.</p>
+                            <div class="impact-bar"><span>Impacto:</span><div class="bar"><div class="bar-fill low"></div></div><span>Baixo</span></div>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="code-block">
+                    <code><span class="comment">&lt;!-- SEMPRE defina dimensões em imagens --&gt;</span>
+&lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="string">"foto.jpg"</span> 
+     <span class="attr">width</span>=<span class="string">"800"</span> 
+     <span class="attr">height</span>=<span class="string">"600"</span> 
+     <span class="attr">alt</span>=<span class="string">"Descrição"</span>&gt;
+
+<span class="comment">&lt;!-- Ou use aspect-ratio em CSS --&gt;</span>
+&lt;<span class="tag">style</span>&gt;
+  .img-container {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+&lt;/<span class="tag">style</span>&gt;</code>
+                </div>
+            </section>
+
+            <section id="como-medir">
+                <h2>Como Medir Core Web Vitals Corretamente</h2>
+                
+                <p>Existem dois tipos de dados de Core Web Vitals:</p>
+
+                <h3>Dados de Campo (Field Data)</h3>
+                <p>Dados reais coletados de usuários reais visitando seu site. São os dados que o Google usa para ranking.</p>
+                <ul>
+                    <li>Coletados via Chrome User Experience Report (CrUX)</li>
+                    <li>Refletem a experiência real dos usuários</li>
+                    <li>Incluem variações de dispositivos, conexões, localizações</li>
+                    <li>Disponíveis no Search Console e PageSpeed Insights</li>
+                </ul>
+
+                <h3>Dados de Laboratório (Lab Data)</h3>
+                <p>Dados gerados em ambiente controlado (simulação). Úteis para debug e testes.</p>
+                <ul>
+                    <li>Gerados por ferramentas como Lighthouse</li>
+                    <li>Ambiente padronizado (mesmo dispositivo, mesma conexão)</li>
+                    <li>Reproduzíveis e controláveis</li>
+                    <li>Não usados diretamente para ranking</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>Importante:</strong> O Google usa <strong>dados de campo (CrUX)</strong> para ranking, não dados de laboratório. Seu Lighthouse pode estar verde, mas se os dados reais de usuários estiverem ruins, isso afetará seu SEO.</p>
+                </div>
+            </section>
+
+            <section id="ferramentas">
+                <h2>Ferramentas Essenciais</h2>
+
+                <div class="tool-grid">
+                    <div class="tool-card">
+                        <div class="tool-type">Dados de Campo + Lab</div>
+                        <h4>PageSpeed Insights</h4>
+                        <p>Ferramenta oficial do Google. Mostra dados CrUX (campo) e Lighthouse (lab) juntos. Ponto de partida essencial.</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-type">Dados de Campo</div>
+                        <h4>Google Search Console</h4>
+                        <p>Relatório "Core Web Vitals" mostra performance real de todas as URLs do seu site. Dados agregados por padrão de URL.</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-type">Dados de Lab</div>
+                        <h4>Lighthouse (Chrome DevTools)</h4>
+                        <p>Auditoria detalhada com diagnósticos específicos. Excelente para identificar problemas e testar correções.</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-type">Monitoramento</div>
+                        <h4>Web Vitals Extension</h4>
+                        <p>Extensão do Chrome que mostra Core Web Vitals em tempo real enquanto você navega. Ótima para testes rápidos.</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-type">Diagnóstico</div>
+                        <h4>Chrome DevTools Performance</h4>
+                        <p>Para diagnóstico profundo de problemas de INP e Long Tasks. Mostra exatamente o que está bloqueando a main thread.</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-type">Monitoramento Contínuo</div>
+                        <h4>CrUX Dashboard</h4>
+                        <p>Dashboard gratuito no Data Studio/Looker Studio com histórico de Core Web Vitals do seu domínio.</p>
+                    </div>
+                </div>
+
+                <h3>Workflow Recomendado</h3>
+                <ol>
+                    <li><strong>Search Console</strong> — identifique páginas com problemas</li>
+                    <li><strong>PageSpeed Insights</strong> — diagnóstico inicial detalhado</li>
+                    <li><strong>Chrome DevTools</strong> — investigação profunda</li>
+                    <li><strong>Web Vitals Extension</strong> — teste correções em tempo real</li>
+                    <li><strong>Aguarde CrUX</strong> — dados de campo atualizam em ~28 dias</li>
+                </ol>
+            </section>
+
+            <section id="otimizacao">
+                <h2>Checklist de Otimização</h2>
+
+                <h3>Para LCP (Carregamento)</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Ação</th>
+                            <th>Impacto</th>
+                            <th>Dificuldade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Usar CDN</td>
+                            <td>🟢 Alto</td>
+                            <td>Fácil</td>
+                        </tr>
+                        <tr>
+                            <td>Comprimir imagens (WebP/AVIF)</td>
+                            <td>🟢 Alto</td>
+                            <td>Fácil</td>
+                        </tr>
+                        <tr>
+                            <td>Preload recursos críticos</td>
+                            <td>🟢 Alto</td>
+                            <td>Fácil</td>
+                        </tr>
+                        <tr>
+                            <td>Inline Critical CSS</td>
+                            <td>🟡 Médio</td>
+                            <td>Médio</td>
+                        </tr>
+                        <tr>
+                            <td>Defer JS não crítico</td>
+                            <td>🟡 Médio</td>
+                            <td>Médio</td>
+                        </tr>
+                        <tr>
+                            <td>Otimizar servidor/TTFB</td>
+                            <td>🟢 Alto</td>
+                            <td>Difícil</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Para INP (Interatividade)</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Ação</th>
+                            <th>Impacto</th>
+                            <th>Dificuldade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Quebrar Long Tasks</td>
+                            <td>🟢 Alto</td>
+                            <td>Médio</td>
+                        </tr>
+                        <tr>
+                            <td>Code splitting</td>
+                            <td>🟢 Alto</td>
+                            <td>Médio</td>
+                        </tr>
+                        <tr>
+                            <td>Adiar third-party scripts</td>
+                            <td>🟡 Médio</td>
+                            <td>Fácil</td>
+                        </tr>
+                        <tr>
+                            <td>Otimizar event handlers</td>
+                            <td>🟡 Médio</td>
+                            <td>Médio</td>
+                        </tr>
+                        <tr>
+                            <td>Usar Web Workers</td>
+                            <td>🟡 Médio</td>
+                            <td>Difícil</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Para CLS (Estabilidade)</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Ação</th>
+                            <th>Impacto</th>
+                            <th>Dificuldade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Definir width/height em imagens</td>
+                            <td>🟢 Alto</td>
+                            <td>Fácil</td>
+                        </tr>
+                        <tr>
+                            <td>Reservar espaço para ads</td>
+                            <td>🟢 Alto</td>
+                            <td>Fácil</td>
+                        </tr>
+                        <tr>
+                            <td>Usar font-display: swap</td>
+                            <td>🟡 Médio</td>
+                            <td>Fácil</td>
+                        </tr>
+                        <tr>
+                            <td>Definir dimensões de iframes</td>
+                            <td>🟡 Médio</td>
+                            <td>Fácil</td>
+                        </tr>
+                        <tr>
+                            <td>Evitar inserção dinâmica no topo</td>
+                            <td>🟡 Médio</td>
+                            <td>Médio</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="erros">
+                <h2>Erros Comuns a Evitar</h2>
+
+                <ol>
+                    <li><strong>Otimizar apenas dados de lab:</strong> Lighthouse verde não significa dados de campo bons</li>
+                    <li><strong>Ignorar mobile:</strong> Core Web Vitals são avaliados separadamente para mobile e desktop</li>
+                    <li><strong>Lazy load da imagem LCP:</strong> A imagem hero NUNCA deve ter lazy load</li>
+                    <li><strong>Preload excessivo:</strong> Preload de muitos recursos compete por banda</li>
+                    <li><strong>Esquecer de testar em conexões lentas:</strong> Seus usuários reais podem ter 3G</li>
+                    <li><strong>Não monitorar após mudanças:</strong> Dados CrUX levam ~28 dias para refletir mudanças</li>
+                    <li><strong>Carregar tudo async:</strong> Alguns recursos precisam ser síncronos para performance</li>
+                    <li><strong>Ignorar third-party scripts:</strong> Widgets, analytics e pixels frequentemente causam problemas</li>
+                </ol>
+            </section>
+
+            <section id="faq">
+                <h2>Perguntas Frequentes</h2>
+
+                <h3>O que são Core Web Vitals?</h3>
+                <p>Core Web Vitals são um conjunto de métricas do Google que medem a experiência do usuário em termos de carregamento (LCP), interatividade (INP) e estabilidade visual (CLS). São fatores de ranking desde 2021.</p>
+
+                <h3>Quais são as 3 métricas dos Core Web Vitals?</h3>
+                <p>As 3 métricas são: LCP (Largest Contentful Paint) que mede velocidade de carregamento, INP (Interaction to Next Paint) que mede responsividade, e CLS (Cumulative Layout Shift) que mede estabilidade visual.</p>
+
+                <h3>Core Web Vitals afetam o ranking no Google?</h3>
+                <p>Sim. Core Web Vitals são um fator de ranking oficial do Google desde junho de 2021. Sites com boas métricas têm vantagem, especialmente em buscas mobile e quando competem com sites de conteúdo similar.</p>
+
+                <h3>Como medir Core Web Vitals?</h3>
+                <p>Use o Google PageSpeed Insights, Google Search Console (relatório Core Web Vitals), Lighthouse, ou a extensão Web Vitals do Chrome. O Search Console mostra dados reais de usuários.</p>
+
+                <h3>O que substituiu o FID?</h3>
+                <p>O INP (Interaction to Next Paint) substituiu oficialmente o FID (First Input Delay) em março de 2024. O INP é mais abrangente porque mede todas as interações, não apenas a primeira.</p>
+
+                <h3>Quanto tempo leva para ver melhorias nos dados CrUX?</h3>
+                <p>Os dados do Chrome User Experience Report (CrUX) são atualizados aproximadamente a cada 28 dias. Após fazer otimizações, aguarde esse período para ver os resultados refletidos nos dados de campo.</p>
+            </section>
+
+            <section>
+                <h2>Em Resumo</h2>
+                <p>Core Web Vitals não são apenas métricas técnicas — são <strong>indicadores de qualidade</strong> que afetam diretamente a experiência dos seus usuários e seu posicionamento no Google.</p>
+
+                <p>A boa notícia é que a maioria dos problemas tem soluções conhecidas. Com as otimizações certas, é possível atingir as metas do Google para todas as três métricas.</p>
+
+                <p>Comece pelo básico: otimize imagens, defina dimensões, reduza JavaScript desnecessário. Depois, vá refinando com base nos dados reais do Search Console.</p>
+
+                <div class="cta-box">
+                    <h3>Precisa de Ajuda com Core Web Vitals?</h3>
+                    <p>A AUDITSEO oferece auditorias técnicas completas e implementação de otimizações de performance. Vamos analisar seu site.</p>
+                    <a href="https://wa.me/5511996384376?text=Olá!%20Preciso%20de%20ajuda%20para%20otimizar%20os%20Core%20Web%20Vitals%20do%20meu%20site." class="cta-btn">Solicitar Auditoria</a>
+                </div>
+            </section>
+
+            <div class="author-box">
+                <div class="author-avatar"><img src="/images/sidney-santos.jpg" alt="Sidney Santos"></div>
+                <div class="author-info">
+                    <h4>Sidney Santos</h4>
+                    <p>Especialista em SEO Técnico com mais de 12 anos de experiência. Ajudo empresas a otimizarem performance e Core Web Vitals para melhorar rankings e conversões.</p>
+                    <div class="author-links">
+                        <a href="https://www.linkedin.com/in/sidney-especialista-em-seo/">LinkedIn</a>
+                        <a href="https://instagram.com/sidneyespecialistaseo">Instagram</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="related-posts">
+                <h3 class="related-title">Artigos Relacionados</h3>
+                <div class="related-grid">
+                    <div class="related-card">
+                        <h4><a href="/blog/guia-definitivo-seo-2026/">Guia Definitivo de SEO 2026</a></h4>
+                        <p>25 min de leitura</p>
+                    </div>
+                    <div class="related-card">
+                        <h4><a href="/blog/o-que-sao-ai-overviews/">O Que São AI Overviews</a></h4>
+                        <p>8 min de leitura</p>
+                    </div>
+                    <div class="related-card">
+                        <h4><a href="/servicos/seo-tecnico/">Serviço de SEO Técnico</a></h4>
+                        <p>Conheça nosso serviço</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+<!-- SEO_CLUSTER_LINKS_START -->
+<section class="seo-cluster-links" aria-label="Links internos estratégicos">
+  <h2>Serviços relacionados a este conteúdo</h2>
+  <p>Se você quer aplicar esta estratégia no seu negócio, comece por estes serviços da AUDITSEO:</p>
+  <ul>
+    <li><a href="/servicos/auditoria-seo/">Auditoria Seo</a></li>
+    <li><a href="/servicos/seo-para-ia/">Seo Para Ia</a></li>
+    <li><a href="/servicos/geo-generative-engine-optimization/">Geo Generative Engine Optimization</a></li>
+  </ul>
+  <p>Para aplicação setorial, veja também: <a href="/b2b/energia-solar/">Energia Solar</a></p>
+</section>
+<!-- SEO_CLUSTER_LINKS_END -->
+<footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">AUDITSEO</div>
+                <p class="footer-desc">Agência de SEO em São Paulo especializada em Search Intelligence AI.</p>
+                <div class="footer-address">Rua Baronesa de Bela Vista, 411<br>São Paulo, SP — Brasil</div>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Serviços</h4>
+                <ul class="footer-links">
+                    <li><a href="/servicos/consultoria-seo.html">Consultoria SEO</a></li>
+                    <li><a href="/servicos/seo-tecnico.html">SEO Técnico</a></li>
+                    <li><a href="/servicos/seo-local.html">SEO Local</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Empresa</h4>
+                <ul class="footer-links">
+                    <li><a href="/sobre/">Sobre</a></li>
+                    <li><a href="/agencia-de-seo/">Agência de SEO</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 class="footer-title">Contato</h4>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/5511996384376">WhatsApp</a></li>
+                    <li><a href="tel:+5511996384376">(11) 99638-4376</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>© 2024 AUDITSEO — Todos os direitos reservados.</p></div>
+    </footer>
+
+    <a href="https://wa.me/5511996384376" class="whatsapp-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+
+    <script>
+        document.querySelectorAll('.toc-list a').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'})})});
+        const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.toc-list a').forEach(a=>a.classList.remove('active'));document.querySelector(`.toc-list a[href="#${e.target.id}"]`)?.classList.add('active')}})},{threshold:0.3,rootMargin:'-100px'});
+        document.querySelectorAll('section[id]').forEach(s=>observer.observe(s));
+    </script>
+</body>
+</html>

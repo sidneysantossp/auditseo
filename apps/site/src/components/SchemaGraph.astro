@@ -1,0 +1,93 @@
+---
+import { siteMetadata } from '../data/site';
+
+interface BreadcrumbItem {
+  label: string;
+  path: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  pageType?: string;
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const {
+  title = siteMetadata.defaultTitle,
+  description = siteMetadata.defaultDescription,
+  canonicalPath = '/',
+  pageType = 'WebPage',
+  breadcrumbs = []
+} = Astro.props as Props;
+
+const canonicalUrl = new URL(canonicalPath, siteMetadata.siteUrl).toString();
+const logoUrl = new URL(siteMetadata.logoPath, siteMetadata.siteUrl).toString();
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'Organization',
+    '@id': `${siteMetadata.siteUrl}/#organization`,
+    name: siteMetadata.legalName,
+    url: siteMetadata.siteUrl,
+    email: siteMetadata.contact.email,
+    telephone: siteMetadata.contact.phone,
+    logo: {
+      '@type': 'ImageObject',
+      url: logoUrl
+    },
+    sameAs: Object.values(siteMetadata.social),
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: siteMetadata.address.street,
+      addressLocality: siteMetadata.address.city,
+      addressRegion: siteMetadata.address.state,
+      postalCode: siteMetadata.address.zip,
+      addressCountry: 'BR'
+    }
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${siteMetadata.siteUrl}/#website`,
+    url: `${siteMetadata.siteUrl}/`,
+    name: siteMetadata.brandName,
+    inLanguage: siteMetadata.locale,
+    publisher: {
+      '@id': `${siteMetadata.siteUrl}/#organization`
+    }
+  },
+  {
+    '@type': pageType,
+    '@id': `${canonicalUrl}#webpage`,
+    url: canonicalUrl,
+    name: title,
+    description,
+    inLanguage: siteMetadata.locale,
+    isPartOf: {
+      '@id': `${siteMetadata.siteUrl}/#website`
+    },
+    about: {
+      '@id': `${siteMetadata.siteUrl}/#organization`
+    }
+  }
+];
+
+if (breadcrumbs.length > 0) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    '@id': `${canonicalUrl}#breadcrumbs`,
+    itemListElement: breadcrumbs.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.label,
+      item: new URL(item.path, siteMetadata.siteUrl).toString()
+    }))
+  });
+}
+
+const schemaJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': graph
+});
+---
+<script is:inline type="application/ld+json" set:html={schemaJson}></script>

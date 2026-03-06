@@ -1,0 +1,128 @@
+{
+  "slug": "playbook-local-clinicas-medicas",
+  "title": "Playbook Local para Clinicas Medicas em Sao Paulo",
+  "seoTitle": "Playbook Local para Clinicas Medicas em Sao Paulo | Case AUDITSEO",
+  "description": "Case-modelo anonimizado que mostra como a AUDITSEO organiza GBP, pagina local, conteudo setorial e servico para clinicas medicas que precisam gerar demanda organica local.",
+  "badge": "Case Anonimizado",
+  "statusLabel": "Modelo baseado em padrao recorrente",
+  "heroSubtitle": "Este case-modelo resume um tipo de diagnostico recorrente: negocio local com boa reputacao offline, mas baixa consistencia entre Google Business Profile, pagina local, servico e conteudo setorial.",
+  "typeLabel": "SEO local + nicho",
+  "durationLabel": "Janela de 90 dias",
+  "scopeLabel": "GBP, pagina local e cluster setorial",
+  "evidenceNote": "Como se trata de um case anonimizado, a pagina privilegia o metodo, a ordem de intervencao e os sinais observados, sem expor cliente ou analytics proprietario.",
+  "summaryPoints": [
+    "Alinhar perfil GBP, pagina local e pagina comercial em uma mesma narrativa.",
+    "Corrigir sinais contraditorios entre informacao institucional, especialidade e cidade.",
+    "Criar um caminho claro entre descoberta local, prova tecnica e conversao.",
+    "Reduzir dependencia de contato frio ou reputacao offline isolada."
+  ],
+  "metrics": [
+    {
+      "value": "3",
+      "label": "Camadas alinhadas",
+      "copy": "Perfil GBP, pagina local e pagina setorial passaram a operar com a mesma semantica."
+    },
+    {
+      "value": "1",
+      "label": "Cluster principal",
+      "copy": "A estrutura foi organizada em servico, nicho clinico e cidade para reduzir dispersao."
+    },
+    {
+      "value": "90",
+      "label": "Dias de leitura",
+      "copy": "Janela usada para validar consistencia dos sinais e qualidade da demanda gerada."
+    },
+    {
+      "value": "0",
+      "label": "Dependencia de truque",
+      "copy": "O trabalho foi centrado em coerencia de entidade, pagina e prova local, nao em atalho tatico."
+    }
+  ],
+  "overviewCards": [
+    {
+      "title": "Cenario recorrente",
+      "copy": "Clinicas com autoridade offline e boa experiencia pratica, mas pouca consistencia digital para aparecer nas buscas locais e nas consultas informacionais da cidade."
+    },
+    {
+      "title": "Bloqueio principal",
+      "copy": "O negocio costuma depender de marca, indicacao e perfil GBP, sem pagina local forte, sem cluster setorial e sem narrativa comercial unificada."
+    },
+    {
+      "title": "Direcao do playbook",
+      "copy": "Unificar sinais locais, prova medica, pagina de servico e conteudo de apoio para transformar descoberta em demanda qualificada."
+    }
+  ],
+  "challengePoints": [
+    "Especialidade e localidade apareciam de forma dispersa no site e no perfil GBP.",
+    "Nao existia uma pagina local forte conectando cidade, servico e autoridade setorial.",
+    "Conteudo informativo e pagina comercial competiam em vez de cooperar."
+  ],
+  "interventionSteps": [
+    "Revisao de categorias, servicos, especialidade e elementos de credibilidade no GBP.",
+    "Criacao ou reforco de pagina local e pagina de nicho para clinicas medicas.",
+    "Conexao direta entre pagina comercial, cidade, artigos de apoio e CTA de diagnostico.",
+    "Ajuste de copy para entidade, localidade, servico e prova ficarem consistentes na mesma leitura."
+  ],
+  "outcomes": [
+    {
+      "title": "Leitura local mais coerente",
+      "copy": "O negocio deixa de depender de presenca fragmentada e passa a ser lido como entidade local com servico claro e contexto setorial."
+    },
+    {
+      "title": "Funil local menos disperso",
+      "copy": "Busca por cidade, especialidade e necessidade comercial passam a empurrar o usuario para rotas diferentes do mesmo cluster, nao para paginas desconectadas."
+    },
+    {
+      "title": "Base pronta para escalar",
+      "copy": "Depois que cidade, nicho e servico entram na mesma arquitetura, fica mais simples expandir para novas localidades ou especialidades sem repetir erros."
+    }
+  ],
+  "lessons": [
+    "SEO local forte depende de coerencia entre GBP, pagina local, servico e prova setorial.",
+    "Negocio local sem pagina local boa entrega sinal incompleto para busca e para IA.",
+    "Crescimento local sustentavel nasce de arquitetura, nao de cadastro isolado."
+  ],
+  "serviceLinks": [
+    {
+      "label": "SEO Local",
+      "path": "/servicos/seo-local/"
+    },
+    {
+      "label": "Google Meu Negocio",
+      "path": "/servicos/google-meu-negocio/"
+    },
+    {
+      "label": "Consultoria SEO",
+      "path": "/servicos/consultoria-seo/"
+    }
+  ],
+  "articleLinks": [
+    {
+      "label": "Clinicas medicas",
+      "path": "/nichos/clinicas-medicas/"
+    },
+    {
+      "label": "Sao Paulo",
+      "path": "/cidades/sao-paulo/"
+    },
+    {
+      "label": "Google Meu Negocio: guia completo",
+      "path": "/blog/google-meu-negocio-guia-completo/"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Por que este case esta como anonimizado?",
+      "answer": "Porque ele resume um padrao de problema recorrente sem expor cliente, dados proprietarios ou contexto sensivel de negocio."
+    },
+    {
+      "question": "O foco aqui e GBP ou pagina local?",
+      "answer": "Os dois. O perfil GBP sozinho nao sustenta leitura comercial completa; a pagina local e o cluster setorial precisam reforcar o mesmo sinal."
+    },
+    {
+      "question": "Esse playbook serve so para clinicas medicas?",
+      "answer": "Nao. O raciocinio pode ser adaptado para outros negocios locais, mas foi descrito aqui no contexto clinico para manter o caso concreto."
+    }
+  ],
+  "order": 3
+}

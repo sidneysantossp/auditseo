@@ -1,0 +1,49 @@
+---
+import { mainNavigation } from '../data/navigation';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props as Props;
+
+function isActive(path: string, match: 'exact' | 'prefix' = 'prefix') {
+  if (path === '/') return currentPath === '/';
+  return match === 'exact' ? currentPath === path : currentPath.startsWith(path);
+}
+---
+<header class="as-header">
+  <div class="as-header-inner container-shell">
+    <a class="as-logo" href="/" aria-label="AUDITSEO - Ir para a pagina inicial">
+      AUDITSEO
+    </a>
+
+    <nav class="as-nav" aria-label="Navegacao principal">
+      {mainNavigation.map((item) => (
+        <a
+          href={item.path}
+          class:list={['as-nav-link', { 'as-active': isActive(item.path, item.match) }]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <button class="as-cta" type="button" data-open-cta-modal>
+      Diagnostico Gratis
+    </button>
+
+    <button
+      class="as-burger"
+      type="button"
+      data-mobile-toggle
+      aria-expanded="false"
+      aria-controls="site-mobile-nav"
+      aria-label="Abrir menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

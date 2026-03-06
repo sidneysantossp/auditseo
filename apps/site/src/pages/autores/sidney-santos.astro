@@ -1,0 +1,300 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import InstitutionalLayout from '../../layouts/InstitutionalLayout.astro';
+import { getLegacyArticleBySlug, type LegacyBlogArticle } from '../../lib/legacy-blog';
+
+const focusAreas = [
+  {
+    title: 'SEO tecnico',
+    copy:
+      'Arquitetura, indexacao, rastreabilidade, performance e capacidade de escalar sites sem comprometer a base.'
+  },
+  {
+    title: 'SEO estrategico',
+    copy:
+      'Planejamento de clusters, pagina comercial, priorizacao de backlog e integracao com o negocio.'
+  },
+  {
+    title: 'AI Overviews e busca generativa',
+    copy:
+      'Estrutura de conteudo, sinais de citabilidade, entity framing e leitura do novo ambiente de busca.'
+  },
+  {
+    title: 'SEO local e presenca de marca',
+    copy:
+      'Google Business Profile, consistencia de sinais locais e reforco de confianca da marca no ecossistema.'
+  }
+];
+
+const workingModes = [
+  {
+    title: 'Diagnostico de raiz',
+    copy:
+      'Leitura tecnica e estrategica para separar causa estrutural de efeito superficial.'
+  },
+  {
+    title: 'Prioridade com criterio',
+    copy:
+      'Escolha do que precisa entrar no roadmap antes de ampliar producao ou campanhas.'
+  },
+  {
+    title: 'Integracao com execucao',
+    copy:
+      'Conexao entre dev, conteudo, analytics e paginas comerciais sob o mesmo plano de crescimento.'
+  }
+];
+
+const featuredArticles = [
+  'o-que-sao-ai-overviews',
+  'como-aparecer-ai-overviews',
+  'o-que-e-llm-seo',
+  'estrategia-seo-ia'
+]
+  .map((slug) => getLegacyArticleBySlug(slug))
+  .filter((article): article is LegacyBlogArticle => Boolean(article));
+
+const faqItems = [
+  {
+    question: 'Quem e Sidney Santos dentro da AUDITSEO?',
+    answer:
+      'Fundador da AUDITSEO e principal referencia tecnica do projeto, com atuacao em SEO desde 2013 e foco crescente em AI SEO, arquitetura e estrategia de busca.'
+  },
+  {
+    question: 'Essa pagina substitui a pagina Sobre?',
+    answer:
+      'Nao. A pagina Sobre explica a historia da marca. Esta pagina organiza autoria, experiencia e conexao direta com conteudo e metodologia.'
+  },
+  {
+    question: 'O autor esta ligado aos artigos do blog?',
+    answer:
+      'Sim. A pagina de autor existe justamente para reforcar contexto, credencial e relacao entre experiencia pratica e conteudo publicado.'
+  },
+  {
+    question: 'Quais temas concentram mais a atuacao do autor?',
+    answer:
+      'SEO tecnico, estrategia organica, AI Overviews, LLMs, arquitetura de informacao, SEO local e medicao aplicada ao negocio.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://www.auditseo.com.br/autores/sidney-santos/#person',
+      name: 'Sidney Santos',
+      jobTitle: 'Fundador e Especialista em SEO',
+      description:
+        'Especialista em SEO desde 2013, fundador da AUDITSEO e responsavel por estrategia, arquitetura e conteudo tecnico do projeto.',
+      image: 'https://www.auditseo.com.br/eu2.jpg',
+      url: 'https://www.auditseo.com.br/autores/sidney-santos/',
+      worksFor: {
+        '@id': 'https://www.auditseo.com.br/#organization'
+      },
+      sameAs: [
+        'https://www.linkedin.com/in/sidney-especialista-em-seo/',
+        'https://www.instagram.com/sidneyespecialistaseo',
+        'https://www.facebook.com/auditseoagenciaespecializadaemseo'
+      ],
+      knowsAbout: [
+        'SEO tecnico',
+        'SEO estrategico',
+        'AI Overviews',
+        'LLM SEO',
+        'SEO local',
+        'Busca generativa'
+      ]
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer
+        }
+      }))
+    }
+  ]
+};
+---
+<InstitutionalLayout
+  title="Sidney Santos"
+  description="Conheca a pagina de autor de Sidney Santos, fundador da AUDITSEO e especialista em SEO desde 2013, com foco em arquitetura, AI Overviews e busca generativa."
+  canonicalPath="/autores/sidney-santos/"
+  imagePath="/eu2.jpg"
+  pageType="ProfilePage"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Sidney Santos', path: '/autores/sidney-santos/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span class="current">Sidney Santos</span>
+    </nav>
+
+    <section class="ee-page-hero ee-author-hero">
+      <div>
+        <span class="ee-page-badge">Autor Principal</span>
+        <h1 class="ee-page-title">
+          SIDNEY <span class="accent">SANTOS</span>
+        </h1>
+        <p class="ee-page-subtitle">
+          Fundador da AUDITSEO e profissional de SEO desde <strong>2013</strong>. Atua em
+          diagnostico tecnico, arquitetura de crescimento organico, paginas comerciais, AI
+          Overviews, LLMs e governanca de conteudo para a nova busca.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">Desde 2013</span>
+          <span class="ee-page-highlight">SEO Tecnico</span>
+          <span class="ee-page-highlight">AI Overviews</span>
+          <span class="ee-page-highlight">Arquitetura de Conteudo</span>
+        </div>
+        <div class="ee-page-links">
+          <a href="/sobre/">Ver pagina Sobre</a>
+          <a href="/metodologia/">Ver metodologia</a>
+          <a href="/blog/">Ver blog</a>
+        </div>
+      </div>
+      <aside class="ee-page-hero-card ee-author-profile-card">
+        <img class="ee-author-photo" src="/eu2.jpg" alt="Sidney Santos, fundador da AUDITSEO" width="540" height="675" loading="lazy" />
+        <div class="ee-author-profile-copy">
+          <h2>Base de autoridade</h2>
+          <ul class="ee-page-list">
+            <li><strong>Fundacao da AUDITSEO:</strong> 2021</li>
+            <li><strong>Base institucional:</strong> Sao Paulo</li>
+            <li><strong>Atuacao principal:</strong> SEO, AI SEO, conteudo e arquitetura</li>
+            <li><strong>Foco atual:</strong> preparar marcas para busca tradicional e generativa</li>
+          </ul>
+          <div class="ee-author-social">
+            <a href="https://www.linkedin.com/in/sidney-especialista-em-seo/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.instagram.com/sidneyespecialistaseo" target="_blank" rel="noopener">Instagram</a>
+            <button type="button" class="ee-page-secondary" data-open-cta-modal>Diagnostico</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo do autor">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">2013</div>
+        <div class="ee-page-stat-label">Inicio da atuacao</div>
+        <p class="ee-page-stat-copy">Mais de uma decada trabalhando com SEO e crescimento organico.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">12+</div>
+        <div class="ee-page-stat-label">Anos de experiencia</div>
+        <p class="ee-page-stat-copy">Vivencia em SEO tecnico, estrategico e de conteudo.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">2021</div>
+        <div class="ee-page-stat-label">AUDITSEO fundada</div>
+        <p class="ee-page-stat-copy">Marca focada em SEO, IA e estruturacao organica para negocios.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Linha editorial</div>
+        <p class="ee-page-stat-copy">Metodo, prova, arquitetura e conteudo com contexto tecnico.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Especialidade</span>
+        <h2 class="ee-page-section-title">AREAS EM QUE O AUTOR MAIS ATUA</h2>
+      </div>
+      <div class="ee-page-grid four">
+        {focusAreas.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Modo de trabalho</span>
+        <h2 class="ee-page-section-title">COMO SIDNEY SANTOS ENTRA NOS PROJETOS</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {workingModes.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Conteudo</span>
+        <h2 class="ee-page-section-title">ARTIGOS RELACIONADOS AO AUTOR</h2>
+      </div>
+      <div class="ee-author-article-grid">
+        {featuredArticles.map((article) => (
+          <article class="ee-author-article-card">
+            <a href={article.canonicalPath} class="ee-author-article-media">
+              <img src={article.imagePath} alt={article.title} loading="lazy" />
+            </a>
+            <div class="ee-author-article-body">
+              <p class="ee-author-article-kicker">Blog AUDITSEO</p>
+              <h3><a href={article.canonicalPath}>{article.title}</a></h3>
+              <p>{article.description}</p>
+              <a class="ee-page-inline-link" href={article.canonicalPath}>Ler artigo</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Conexao</span>
+        <h2 class="ee-page-section-title">PAGINAS QUE SUSTENTAM A AUTORIA</h2>
+      </div>
+      <div class="ee-page-panels">
+        <article class="ee-page-panel">
+          <h3>Fundamentos institucionais</h3>
+          <ul class="ee-page-list">
+            <li><a class="ee-page-inline-link" href="/sobre/">Historia da AUDITSEO</a></li>
+            <li><a class="ee-page-inline-link" href="/metodologia/">Metodologia operacional</a></li>
+            <li><a class="ee-page-inline-link" href="/fontes-e-metodos/">Fontes e criterios de validacao</a></li>
+            <li><a class="ee-page-inline-link" href="/politica-editorial/">Governanca editorial</a></li>
+          </ul>
+        </article>
+        <article class="ee-page-panel">
+          <h3>Rotas comerciais conectadas</h3>
+          <ul class="ee-page-list">
+            <li><a class="ee-page-inline-link" href="/servicos/ai-overview-optimization/">AI Overview Optimization</a></li>
+            <li><a class="ee-page-inline-link" href="/servicos/consultoria-seo/">Consultoria SEO</a></li>
+            <li><a class="ee-page-inline-link" href="/servicos/auditoria-seo/">Auditoria SEO</a></li>
+            <li><a class="ee-page-inline-link" href="/contato/">Contato oficial</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS SOBRE AUTORIA E EXPERIENCIA</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqItems.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</InstitutionalLayout>

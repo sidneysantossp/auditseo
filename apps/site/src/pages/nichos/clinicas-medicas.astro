@@ -1,0 +1,198 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import InstitutionalLayout from '../../layouts/InstitutionalLayout.astro';
+
+const focusBlocks = [
+  {
+    title: 'Especialidades e tratamentos',
+    copy:
+      'A pagina precisa organizar servicos, sintomas, tratamentos, convenios e perguntas que o paciente realmente faz.'
+  },
+  {
+    title: 'SEO local e descoberta',
+    copy:
+      'Clinicas dependem de descoberta geografica, reputacao, consistencia de endereco e paginas que reforcem o perfil no Google.'
+  },
+  {
+    title: 'Confianca e criterio',
+    copy:
+      'Saude exige linguagem precisa, contexto, autoria clara e estrutura de prova compatível com E-E-A-T.'
+  }
+];
+
+const journeyCards = [
+  'Mapeamento de especialidades, sintomas e tratamentos',
+  'Arquitetura local para consultas, unidades e contato',
+  'Conteudo citavel para AI Overviews e respostas assistidas',
+  'Padrao de pagina comercial sem perder clareza clinica'
+];
+
+const faqs = [
+  {
+    question: 'SEO para clinicas medicas depende so de blog?',
+    answer:
+      'Nao. O principal ganho costuma vir da combinacao entre pagina comercial, estrutura local, FAQs, reputacao e paginas de especialidade.'
+  },
+  {
+    question: 'A pagina setorial substitui uma estrategia local?',
+    answer:
+      'Nao. Ela orienta a mensagem do nicho. A estrategia local continua relevante para consultas por bairro, cidade, unidade e especialidade.'
+  },
+  {
+    question: 'Essa pagina leva para quais servicos da AUDITSEO?',
+    answer:
+      'Ela se conecta principalmente a SEO Local, Google Meu Negocio e AI Overview Optimization, dependendo do objetivo da clinica.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<InstitutionalLayout
+  title="SEO para Clinicas Medicas | AUDITSEO"
+  description="Pagina setorial da AUDITSEO para clinicas medicas: SEO local, pagina comercial, confianca editorial e estrutura pronta para descoberta no Google e em buscadores com IA."
+  canonicalPath="/nichos/clinicas-medicas/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Nichos', path: '/nichos/' },
+    { label: 'Clinicas Medicas', path: '/nichos/clinicas-medicas/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/nichos/">Nichos</a>
+      <span>›</span>
+      <span class="current">Clinicas Medicas</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Saude e Descoberta Local</span>
+        <h1 class="ee-page-title">
+          SEO PARA <span class="accent">CLINICAS MEDICAS</span> COM FOCO EM BUSCA, IA E CONTATO
+        </h1>
+        <p class="ee-page-subtitle">
+          Clinicas precisam de uma arquitetura que una <strong>autoridade medica</strong>,
+          <strong> descoberta local</strong>, <strong>conteudo confiavel</strong> e
+          <strong> conversao clara</strong>. A AUDITSEO trata esse nicho como um problema de
+          estrutura, nao so de publicacao de blog.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">SEO Local</span>
+          <span class="ee-page-highlight">Google Maps</span>
+          <span class="ee-page-highlight">Paginas de Especialidade</span>
+          <span class="ee-page-highlight">E-E-A-T em Saude</span>
+        </div>
+      </div>
+
+      <aside class="ee-page-hero-card">
+        <h2>Onde a pagina setorial ajuda</h2>
+        <p>
+          Ela alinha mensagem, provas, FAQs e caminho comercial para clinicas que precisam captar
+          demanda organica com responsabilidade.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/seo-local/">Ver SEO Local</a>
+          <a href="/servicos/google-meu-negocio/">Ver Google Meu Negocio</a>
+          <a href="/servicos/ai-overview-optimization/">Ver AI Overview Optimization</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo da pagina setorial de clinicas medicas">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">3</div>
+        <div class="ee-page-stat-label">Pilares centrais</div>
+        <p class="ee-page-stat-copy">Confianca, descoberta local e pagina comercial clara.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Objetivo</div>
+        <p class="ee-page-stat-copy">Fazer a clinica ser encontrada e entendida com mais rapidez.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">0</div>
+        <div class="ee-page-stat-label">Espaco para ruído</div>
+        <p class="ee-page-stat-copy">Texto vago e pagina generica costumam derrubar a conversao.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">100%</div>
+        <div class="ee-page-stat-label">Dependencia de contexto</div>
+        <p class="ee-page-stat-copy">Em saude, contexto e credibilidade pesam mais que volume puro.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Prioridades</span>
+        <h2 class="ee-page-section-title">O QUE MUDA QUANDO O NICHO E CLINICA MEDICA</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {focusBlocks.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Escopo</span>
+        <h2 class="ee-page-section-title">ENTREGAS MAIS RELEVANTES PARA ESSE SEGMENTO</h2>
+      </div>
+      <div class="ee-page-grid two">
+        <article class="ee-page-card">
+          <h3>Frentes de trabalho</h3>
+          <ul class="ee-page-checklist">
+            {journeyCards.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-card">
+          <h3>Proximo passo comercial</h3>
+          <p>
+            Se a clinica depende de descoberta por especialidade, busca local e sinais de
+            confianca, a entrada mais segura costuma ser pelo diagnostico com foco em arquitetura
+            comercial e rastreabilidade.
+          </p>
+          <div class="ee-page-links">
+            <a href="/contato/">Solicitar diagnostico</a>
+            <a href="/agencia-de-seo/">Entender a agencia</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section ee-page-faq">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS DE CLINICAS MEDICAS</h2>
+      </div>
+      <div class="ee-page-faq-list">
+        {faqs.map((item) => (
+          <article class="ee-page-faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</InstitutionalLayout>

@@ -1,0 +1,80 @@
+---
+import '../../../styles/blog-index-parity.css';
+import BlogArchiveContent from '../../../components/BlogArchiveContent.astro';
+import BlogArchiveSchemas from '../../../components/BlogArchiveSchemas.astro';
+import BlogNewsletterEnhancements from '../../../components/BlogNewsletterEnhancements.astro';
+import BlogIndexLayout from '../../../layouts/BlogIndexLayout.astro';
+import { blogCategories, getBlogCategoryBySlug } from '../../../data/blog-taxonomy';
+import { getBlogCategoryArticles, getBlogCategoryStats, getLegacyArticleBySlug } from '../../../lib/legacy-blog';
+
+export function getStaticPaths() {
+  return blogCategories.map((category) => ({
+    params: { slug: category.slug }
+  }));
+}
+
+const slug = Astro.params.slug ?? '';
+const category = getBlogCategoryBySlug(slug);
+
+if (!category) {
+  throw new Error(`Categoria do blog nao encontrada: ${slug}`);
+}
+
+const categoryArticles = getBlogCategoryArticles(category.slug);
+const featuredArticle = getLegacyArticleBySlug(category.featuredSlug) ?? categoryArticles[0] ?? null;
+const pillarArticles = category.pillarSlugs
+  .map((articleSlug) => getLegacyArticleBySlug(articleSlug))
+  .filter((article) => article !== null)
+  .filter((article) => article.slug !== featuredArticle?.slug);
+const excludedSlugs = new Set([featuredArticle?.slug, ...pillarArticles.map((article) => article.slug)].filter(Boolean));
+const posts = categoryArticles.filter((article) => !excludedSlugs.has(article.slug));
+const categoryStats = getBlogCategoryStats(category.slug);
+const resourceLinks = [...category.serviceLinks, ...category.nicheLinks];
+---
+<BlogIndexLayout
+  title={category.seoTitle}
+  description={category.seoDescription}
+  canonicalPath={`/blog/categoria/${category.slug}/`}
+  imagePath={featuredArticle?.imagePath ?? '/images/ai-overviews.jpg'}
+  pageType="WebPage"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Blog', path: '/blog/' },
+    { label: category.title, path: `/blog/categoria/${category.slug}/` }
+  ]}
+>
+  <Fragment slot="head">
+    <meta name="keywords" content={category.categoryKeywords.join(', ')} />
+    <BlogArchiveSchemas
+      canonicalPath={`/blog/categoria/${category.slug}/`}
+      title={category.seoTitle}
+      description={category.seoDescription}
+      articles={categoryArticles}
+      category={category}
+      faqs={category.faqs}
+    />
+  </Fragment>
+
+  <BlogArchiveContent
+    breadcrumbs={[
+      { label: 'Home', path: '/' },
+      { label: 'Blog', path: '/blog/' },
+      { label: category.title }
+    ]}
+    badge={category.badge}
+    heroTitle={category.heroTitle}
+    heroSubtitle={category.heroSubtitle}
+    activeCategorySlug={category.slug}
+    featuredArticle={featuredArticle}
+    posts={posts}
+    articleCountLabel={`${categoryStats.articleCount} Artigos`}
+    pageLabel={`Leitura media: ${categoryStats.averageReadingTime} min`}
+    sectionTitle="ARTIGOS DA CATEGORIA"
+    introCards={category.introCards}
+    pillarArticles={pillarArticles}
+    resourceLinks={resourceLinks}
+    faqs={category.faqs}
+    includeNewsletter={true}
+  />
+  <BlogNewsletterEnhancements />
+</BlogIndexLayout>

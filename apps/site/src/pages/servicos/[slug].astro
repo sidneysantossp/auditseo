@@ -1,0 +1,18 @@
+---
+import { legacyServiceSlugRedirects } from '../../data/legacy-aliases';
+
+export function getStaticPaths() {
+  return Object.keys(legacyServiceSlugRedirects).map((slug) => ({
+    params: { slug }
+  }));
+}
+
+const slug = Astro.params.slug ?? '';
+const destination = legacyServiceSlugRedirects[slug];
+
+if (!destination) {
+  throw new Error(`Alias de servico nao encontrado: ${slug}`);
+}
+
+return Astro.redirect(destination, 301);
+---

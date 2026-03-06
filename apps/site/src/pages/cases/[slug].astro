@@ -1,0 +1,179 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import CaseStudyHead from '../../components/CaseStudyHead.astro';
+import InstitutionalLayout from '../../layouts/InstitutionalLayout.astro';
+import { getCaseStudies, getCaseStudyBySlug } from '../../lib/content-collections';
+
+export async function getStaticPaths() {
+  const caseStudies = await getCaseStudies();
+  return caseStudies.map((caseStudy) => ({ params: { slug: caseStudy.slug } }));
+}
+
+const slug = Astro.params.slug ?? '';
+const caseStudy = await getCaseStudyBySlug(slug);
+
+if (!caseStudy) {
+  throw new Error(`Case nao encontrado: ${slug}`);
+}
+---
+<InstitutionalLayout
+  title={caseStudy.seoTitle}
+  description={caseStudy.description}
+  canonicalPath={`/cases/${caseStudy.slug}/`}
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Cases', path: '/cases/' },
+    { label: caseStudy.title, path: `/cases/${caseStudy.slug}/` }
+  ]}
+>
+  <Fragment slot="head">
+    <CaseStudyHead caseStudy={caseStudy} />
+  </Fragment>
+
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/cases/">Cases</a>
+      <span>›</span>
+      <span class="current">{caseStudy.title}</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">{caseStudy.badge}</span>
+        <h1 class="ee-page-title">{caseStudy.title}</h1>
+        <p class="ee-page-subtitle">{caseStudy.heroSubtitle}</p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">{caseStudy.statusLabel}</span>
+          <span class="ee-page-highlight">{caseStudy.typeLabel}</span>
+          <span class="ee-page-highlight">{caseStudy.scopeLabel}</span>
+          <span class="ee-page-highlight">{caseStudy.durationLabel}</span>
+        </div>
+      </div>
+      <aside class="ee-page-hero-card">
+        <h2>Leitura executiva</h2>
+        <p>{caseStudy.evidenceNote}</p>
+        <ul class="ee-page-list">
+          {caseStudy.summaryPoints.map((point) => (
+            <li>{point}</li>
+          ))}
+        </ul>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label={`Resumo do case ${caseStudy.title}`}>
+      {caseStudy.metrics.map((metric) => (
+        <article class="ee-page-stat">
+          <div class="ee-page-stat-value">{metric.value}</div>
+          <div class="ee-page-stat-label">{metric.label}</div>
+          <p class="ee-page-stat-copy">{metric.copy}</p>
+        </article>
+      ))}
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Contexto</span>
+        <h2 class="ee-page-section-title">COMO O CASO FOI DELIMITADO</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {caseStudy.overviewCards.map((card) => (
+          <article class="ee-page-card">
+            <h3>{card.title}</h3>
+            <p>{card.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-panels">
+        <article class="ee-page-panel">
+          <h3>Gargalos encontrados</h3>
+          <ul class="ee-page-list">
+            {caseStudy.challengePoints.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-panel">
+          <h3>Intervencoes executadas</h3>
+          <ul class="ee-page-list">
+            {caseStudy.interventionSteps.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Impacto</span>
+        <h2 class="ee-page-section-title">O QUE ESTE CASE PASSOU A PROVAR</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {caseStudy.outcomes.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-panels">
+        <article class="ee-page-panel">
+          <h3>Licoes do caso</h3>
+          <ul class="ee-page-list">
+            {caseStudy.lessons.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-panel">
+          <h3>Rotas relacionadas</h3>
+          <ul class="ee-page-list">
+            {caseStudy.serviceLinks.map((item) => (
+              <li><a class="ee-page-inline-link" href={item.path}>{item.label}</a></li>
+            ))}
+            {caseStudy.articleLinks.map((item) => (
+              <li><a class="ee-page-inline-link" href={item.path}>{item.label}</a></li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE ESTE CASE</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {caseStudy.faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-cta">
+      <div class="ee-page-cta-box">
+        <span class="ee-page-section-badge">Aplicacao</span>
+        <h2 class="ee-page-section-title">QUER LEVAR ESTE RACIOCINIO PARA O SEU SITE?</h2>
+        <p class="ee-page-cta-copy">
+          A AUDITSEO usa esse mesmo tipo de leitura para transformar problema tecnico, editorial e comercial em backlog claro e pagina mais competitiva.
+        </p>
+        <div class="ee-page-cta-actions">
+          <button type="button" class="ee-page-primary" data-open-cta-modal>Solicitar diagnostico</button>
+          <a href="/servicos/consultoria-seo/" class="ee-page-secondary">Ver consultoria SEO</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</InstitutionalLayout>

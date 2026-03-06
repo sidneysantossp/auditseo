@@ -1,0 +1,98 @@
+{
+  "slug": "checklist-ai-seo",
+  "title": "Checklist Operacional de AI SEO",
+  "seoTitle": "Checklist Operacional de AI SEO | Ferramenta Gratuita AUDITSEO",
+  "description": "Ferramenta gratuita da AUDITSEO para revisar pontos basicos de rastreabilidade, semantica, schema, links internos e citabilidade em paginas orientadas a AI search.",
+  "badge": "Ferramenta Gratuita",
+  "statusLabel": "Ativa",
+  "heroSubtitle": "Use este checklist para revisar os fundamentos de AI SEO antes de publicar ou revisar uma pagina. A ferramenta organiza a leitura em camadas: rastreabilidade, estrutura, entidade e reforco interno.",
+  "kind": "ai-seo-checklist",
+  "categoryLabel": "Diagnostico rapido",
+  "outputLabel": "Resumo de maturidade",
+  "summaryPoints": [
+    "Consolidar verificacoes basicas em uma rotina curta de pre-publicacao.",
+    "Ajudar o time a transformar teoria de AI SEO em criterio operacional.",
+    "Gerar um resumo copiavel para backlog, QA ou handoff entre areas."
+  ],
+  "metrics": [
+    {
+      "value": "4",
+      "label": "Blocos de revisao",
+      "copy": "Rastreabilidade, estrutura, confianca e reforco interno."
+    },
+    {
+      "value": "12",
+      "label": "Itens objetivos",
+      "copy": "Checklist curto o suficiente para ser usado de verdade no fluxo."
+    },
+    {
+      "value": "1",
+      "label": "Resumo final",
+      "copy": "A ferramenta monta uma leitura sintetica com pontos faltantes."
+    },
+    {
+      "value": "0",
+      "label": "Dependencia externa",
+      "copy": "A avaliacao acontece localmente, sem coleta de dados do usuario."
+    }
+  ],
+  "overviewCards": [
+    {
+      "title": "Quando usar",
+      "copy": "Antes de publicar paginas de servico, revisar hubs ou validar o output de um template novo."
+    },
+    {
+      "title": "Quem usa",
+      "copy": "SEO, conteudo e dev podem usar a mesma lista como base de QA operacional."
+    },
+    {
+      "title": "O que nao faz",
+      "copy": "Nao substitui auditoria completa, mas ajuda a evitar erros obvios antes do deploy."
+    }
+  ],
+  "useCases": [
+    "Checklist de pre-publicacao para paginas comerciais.",
+    "QA rapido de landing pages por nicho e cidade.",
+    "Handoff entre redacao, SEO e desenvolvimento."
+  ],
+  "howItWorks": [
+    "Marque os itens que a pagina ja cumpre.",
+    "A ferramenta calcula a cobertura por bloco.",
+    "Copie o resumo para abrir backlog ou registrar a revisao."
+  ],
+  "serviceLinks": [
+    {
+      "label": "Auditoria SEO",
+      "path": "/servicos/auditoria-seo/"
+    },
+    {
+      "label": "LLM Brand Presence",
+      "path": "/servicos/llm-brand-presence/"
+    }
+  ],
+  "articleLinks": [
+    {
+      "label": "Auditoria tecnica para AI SEO",
+      "path": "/blog/auditoria-tecnica-ai-seo/"
+    },
+    {
+      "label": "Estrutura HTML para IA",
+      "path": "/blog/estrutura-html-para-ia/"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Esse checklist substitui uma auditoria completa?",
+      "answer": "Nao. Ele serve para validacao rapida e para evitar erro basico antes da publicacao ou da revisao mais profunda."
+    },
+    {
+      "question": "Posso usar em artigo e pagina comercial?",
+      "answer": "Sim. O checklist foi pensado para qualquer URL que precise estar rastreavel, semanticamente clara e ligada ao cluster correto."
+    },
+    {
+      "question": "O resultado e salvo?",
+      "answer": "Nao. A ferramenta gera um resumo local que pode ser copiado e levado para o backlog ou para uma nota de QA."
+    }
+  ],
+  "order": 3
+}

@@ -1,0 +1,269 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import ResourceHubSchemas from '../../components/ResourceHubSchemas.astro';
+import InstitutionalLayout from '../../layouts/InstitutionalLayout.astro';
+import { getCaseStudies } from '../../lib/content-collections';
+
+const caseStudies = await getCaseStudies();
+
+const evidenceBlocks = [
+  {
+    title: 'Arquitetura e rastreabilidade',
+    copy:
+      'Os cases mostram como shell, templates, links internos, canonicals e sitemaps passam a operar como sistema, nao como remendo.'
+  },
+  {
+    title: 'Conteudo e clusters',
+    copy:
+      'Cada case explica como paginas editoriais, comerciais, locais e setoriais deixam de competir e passam a reforcar a mesma entidade.'
+  },
+  {
+    title: 'Prova sem vaidade',
+    copy:
+      'A AUDITSEO trata case como documento de criterio: problema, intervencao, impacto observavel e aprendizado reaproveitavel.'
+  },
+  {
+    title: 'Transferencia de metodo',
+    copy:
+      'Um bom case nao acaba no resultado; ele vira regra de execucao para o backlog, o blog e as paginas do cluster.'
+  }
+];
+
+const documentationSteps = [
+  {
+    title: 'Problema',
+    copy: 'O case parte do gargalo real do projeto, nao da lista de entregas.'
+  },
+  {
+    title: 'Contexto',
+    copy: 'Antes de agir, o caso mostra a base tecnica, editorial e comercial da URL.'
+  },
+  {
+    title: 'Intervencao',
+    copy: 'A pagina registra o que foi alterado em arquitetura, copy, schema e ligacao interna.'
+  },
+  {
+    title: 'Prova',
+    copy: 'O impacto precisa aparecer em sinais observaveis, nao em narrativa vaga.'
+  },
+  {
+    title: 'Limite',
+    copy: 'Toda prova seria deixa claro o que o case cobre e o que ele nao cobre.'
+  },
+  {
+    title: 'Aprendizado',
+    copy: 'O fechamento do case precisa gerar criterio reutilizavel para outros projetos.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Todos os cases da AUDITSEO mostram analytics completos?',
+    answer:
+      'Nao. Alguns sao publicos e auditaveis, outros sao anonimizados. Em ambos os casos, a prioridade e explicar o metodo com honestidade.'
+  },
+  {
+    question: 'A AUDITSEO usa o proprio site como case?',
+    answer:
+      'Sim. O proprio site funciona como laboratorio auditavel para arquitetura, blog, sitemap, llms e expansao de clusters.'
+  },
+  {
+    question: 'Case aqui significa apenas aumento de trafego?',
+    answer:
+      'Nao. Um case pode provar arquitetura, descoberta local, citabilidade, governanca editorial, qualificacao comercial ou reducao de retrabalho.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<InstitutionalLayout
+  title="Cases e Resultados da AUDITSEO"
+  description="Hub de cases da AUDITSEO com provas de arquitetura, SEO tecnico, blog, SEO local e organizacao de clusters sem depender de vanity metrics."
+  canonicalPath="/cases/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Cases', path: '/cases/' }
+  ]}
+>
+  <Fragment slot="head">
+    <ResourceHubSchemas
+      canonicalPath="/cases/"
+      title="Cases AUDITSEO"
+      description="Hub de cases da AUDITSEO com paginas publicas e anonimizada sobre arquitetura, SEO tecnico, blog e SEO local."
+      items={caseStudies.map((caseStudy) => ({
+        title: caseStudy.title,
+        path: `/cases/${caseStudy.slug}/`,
+        description: caseStudy.description
+      }))}
+      itemType="Article"
+    />
+  </Fragment>
+
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <span class="current">Cases</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Prova e aprendizado</span>
+        <h1 class="ee-page-title">
+          CASES QUE <span class="accent">EXPLICAM</span> O METODO
+        </h1>
+        <p class="ee-page-subtitle">
+          Este hub organiza os cases da AUDITSEO como documentos de prova: <strong>contexto</strong>,
+          <strong>intervencao</strong>, <strong>impacto</strong> e <strong>aprendizado</strong>.
+          O objetivo nao e publicar vaidade. E mostrar criterio reutilizavel para arquitetura,
+          SEO, IA, descoberta local e governanca editorial.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">Cases internos</span>
+          <span class="ee-page-highlight">Casos anonimizados</span>
+          <span class="ee-page-highlight">Metodo reaproveitavel</span>
+          <span class="ee-page-highlight">Sem vanity metrics</span>
+        </div>
+      </div>
+      <aside class="ee-page-hero-card">
+        <h2>Como ler este hub</h2>
+        <p>
+          Cada case foi escrito para explicar porque a intervencao aconteceu, quais sinais foram
+          atacados e que tipo de aprendizado essa prova gera para outros projetos.
+        </p>
+        <p>
+          Quando o contexto e interno, a prova e auditavel no proprio dominio. Quando o contexto e
+          anonimizado, a pagina privilegia metodo e ordem de execucao.
+        </p>
+        <div class="ee-page-links">
+          <a href="/metodologia/">Metodologia</a>
+          <a href="/servicos/">Servicos</a>
+          <a href="/blog/">Blog</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo do hub de cases">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">{caseStudies.length}</div>
+        <div class="ee-page-stat-label">Cases ativos</div>
+        <p class="ee-page-stat-copy">Paginas reais organizadas por slug e conectadas ao resto da arquitetura.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">2</div>
+        <div class="ee-page-stat-label">Modelos de prova</div>
+        <p class="ee-page-stat-copy">Publico auditavel e anonimizado orientado a metodo.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">6</div>
+        <div class="ee-page-stat-label">Etapas de leitura</div>
+        <p class="ee-page-stat-copy">Da origem do problema ao aprendizado reutilizavel.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Objetivo central</div>
+        <p class="ee-page-stat-copy">Transformar resultado em criterio de execucao reaproveitavel.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Cases publicados</span>
+        <h2 class="ee-page-section-title">ROTAS REAIS DE PROVA E APRENDIZADO</h2>
+      </div>
+      <div class="ee-resource-grid three">
+        {caseStudies.map((caseStudy) => (
+          <article class="ee-resource-card">
+            <div class="ee-resource-card-head">
+              <span class="ee-page-section-badge">{caseStudy.badge}</span>
+              <span class="ee-resource-status">{caseStudy.statusLabel}</span>
+            </div>
+            <h3>{caseStudy.title}</h3>
+            <p>{caseStudy.description}</p>
+            <div class="ee-resource-card-meta">
+              <span>{caseStudy.typeLabel}</span>
+              <span>{caseStudy.scopeLabel}</span>
+            </div>
+            <div class="ee-page-links">
+              <a href={`/cases/${caseStudy.slug}/`}>Abrir case</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Leitura</span>
+        <h2 class="ee-page-section-title">QUE TIPO DE PROVA A AUDITSEO CONSIDERA VALIDA</h2>
+      </div>
+      <div class="ee-page-grid four">
+        {evidenceBlocks.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Processo</span>
+        <h2 class="ee-page-section-title">AS 6 ETAPAS PARA PUBLICAR UM CASE COM CREDIBILIDADE</h2>
+      </div>
+      <div class="ee-page-process">
+        {documentationSteps.map((step, index) => (
+          <article class="ee-page-step">
+            <div class="ee-page-step-number">{String(index + 1).padStart(2, '0')}</div>
+            <h3>{step.title}</h3>
+            <p>{step.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS SOBRE PUBLICACAO E CONFIABILIDADE</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-cta">
+      <div class="ee-page-cta-box">
+        <span class="ee-page-section-badge">Prova comercial</span>
+        <h2 class="ee-page-section-title">QUER ESTRUTURAR UM CASE OU UM DIAGNOSTICO PUBLICAVEL?</h2>
+        <p class="ee-page-cta-copy">
+          Se voce precisa transformar resultado tecnico em narrativa comercial sem perder rigor, a
+          AUDITSEO pode organizar o framework de prova, leitura de impacto e documentacao.
+        </p>
+        <div class="ee-page-cta-actions">
+          <button type="button" class="ee-page-primary" data-open-cta-modal>Solicitar diagnostico</button>
+          <a href="/contato/" class="ee-page-secondary">Falar com a AUDITSEO</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</InstitutionalLayout>

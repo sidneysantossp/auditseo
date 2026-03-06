@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "npm --prefix apps/site install && npm --prefix apps/site run build",
+  "outputDirectory": "apps/site/dist",
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
@@ -17,14 +17,53 @@
       "permanent": true
     },
     {
-      "source": "/sitemap.php",
-      "destination": "/sitemap.xml",
+      "source": "/blog/checklist-tecnico-ai-seo/:match*",
+      "destination": "/blog/auditoria-tecnica-ai-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seo-tecnico-para-ia/:match*",
+      "destination": "/blog/auditoria-tecnica-ai-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ferramentas-rastreamento-llm/:match*",
+      "destination": "/blog/monitorar-citacoes-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ferramentas-tracking-llm/:match*",
+      "destination": "/blog/monitorar-citacoes-ia/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/seo-tecnico/:match*",
+      "destination": "/servicos/auditoria-seo/",
+      "permanent": true
+    },
+    {
+      "source": "/saude/dermatologistas/:match*",
+      "destination": "/nichos/dermatologistas/",
+      "permanent": true
+    },
+    {
+      "source": "/b2b/energia-solar/:match*",
+      "destination": "/nichos/energia-solar/",
       "permanent": true
     }
   ],
   "headers": [
     {
-      "source": "/assets/(.*)",
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
       "headers": [
         {
           "key": "Cache-Control",

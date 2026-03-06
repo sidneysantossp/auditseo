@@ -1,0 +1,54 @@
+---
+import { siteMetadata } from '../data/site';
+---
+<script is:inline define:vars={{ newsletterEndpoint: siteMetadata.forms.diagnosticEndpoint }}>
+  (() => {
+    const form = document.getElementById('newsletterForm');
+    const input = document.getElementById('newsletterEmail');
+    const button = document.getElementById('newsletterBtn');
+    const success = document.getElementById('newsletterSuccess');
+    const buttonText = button?.querySelector('.btn-text');
+    const buttonLoading = button?.querySelector('.btn-loading');
+
+    if (!(form instanceof HTMLFormElement) || !(input instanceof HTMLInputElement) || !button || !success || !buttonText || !buttonLoading) {
+      return;
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!input.value) return;
+
+      buttonText.style.display = 'none';
+      buttonLoading.style.display = 'inline';
+      button.setAttribute('disabled', 'disabled');
+
+      try {
+        const response = await fetch(newsletterEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          },
+          body: JSON.stringify({
+            email: input.value,
+            origem: 'blog-index',
+            _subject: 'Nova inscricao Blog AUDITSEO'
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Falha ao enviar inscricao');
+        }
+
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } catch (error) {
+        console.error(error);
+        window.alert('Erro ao enviar inscricao. Tente novamente.');
+        buttonText.style.display = 'inline';
+        buttonLoading.style.display = 'none';
+        button.removeAttribute('disabled');
+      }
+    });
+  })();
+</script>

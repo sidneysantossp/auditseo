@@ -1,0 +1,57 @@
+---
+import type { LegacyBlogArticle } from '../lib/legacy-blog';
+
+interface LinkItem {
+  label: string;
+  path: string;
+}
+
+interface Props {
+  article: LegacyBlogArticle;
+  relatedArticles: LegacyBlogArticle[];
+  resourceLinks: LinkItem[];
+}
+
+const { article, relatedArticles, resourceLinks } = Astro.props as Props;
+---
+<section class="blog-article-related">
+  <div class="blog-article-related-inner">
+    <div class="blog-article-related-head">
+      <span class="related-label">Continuar no cluster</span>
+      <h2 class="related-title">RECURSOS RELACIONADOS A {article.category.title.toUpperCase()}</h2>
+      <p class="related-copy">
+        Esta pagina faz parte do cluster <strong>{article.category.title}</strong>. Use os links abaixo para aprofundar a leitura, conectar o artigo a servicos e navegar para o hub editorial da categoria.
+      </p>
+    </div>
+
+    <div class="blog-article-related-grid">
+      <article class="blog-article-panel">
+        <h3>Hub da categoria</h3>
+        <p>Veja todos os artigos organizados por tema, com filtros reais, copy editorial e ligacao com paginas de servico.</p>
+        <a href={`/blog/categoria/${article.category.slug}/`}>Abrir categoria</a>
+      </article>
+
+      {resourceLinks.map((link) => (
+        <article class="blog-article-panel">
+          <h3>{link.label}</h3>
+          <p>Pagina relacionada para aprofundar a estrategia e conectar a leitura editorial a uma rota comercial ou institucional.</p>
+          <a href={link.path}>Abrir pagina</a>
+        </article>
+      ))}
+    </div>
+
+    {relatedArticles.length > 0 && (
+      <div class="related-posts">
+        <h3 class="related-title">LEITURAS RELACIONADAS</h3>
+        <div class="related-grid">
+          {relatedArticles.map((related) => (
+            <article class="related-card">
+              <h4><a href={related.canonicalPath}>{related.title}</a></h4>
+              <p>{related.excerpt}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>

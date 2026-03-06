@@ -1,0 +1,197 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import InstitutionalLayout from '../../layouts/InstitutionalLayout.astro';
+
+const focusBlocks = [
+  {
+    title: 'Demanda B2B e contexto tecnico',
+    copy:
+      'Energia solar exige pagina que explique projeto, economia, payback, homologacao e escopo tecnico sem simplificar demais.'
+  },
+  {
+    title: 'Arquitetura comercial por intencao',
+    copy:
+      'A busca costuma se dividir entre residencial, comercial, industrial e termos de comparacao. A arquitetura precisa refletir isso.'
+  },
+  {
+    title: 'Confianca e prova operacional',
+    copy:
+      'Sem sinais de capacidade tecnica, provas de implantacao e clareza de processo, a pagina tende a perder para concorrentes melhor estruturados.'
+  }
+];
+
+const checklist = [
+  'Arquitetura por tipo de projeto, dor e etapa do funil',
+  'Paginas comerciais com prova, simulacao e FAQ tecnico',
+  'Conteudo de apoio para comparacao, decisao e citabilidade',
+  'Ligacao entre demanda organica, pagina comercial e contato'
+];
+
+const faqs = [
+  {
+    question: 'Energia solar merece pagina de nicho separada?',
+    answer:
+      'Sim, quando existe linguagem tecnica propria, objecoes comerciais especificas e necessidade de conectar descoberta organica a um ciclo de venda mais consultivo.'
+  },
+  {
+    question: 'Essa pagina substitui uma landing page por cidade?',
+    answer:
+      'Nao. A pagina de nicho trata o segmento. A landing local entra quando cidade, servico e setor precisam aparecer juntos com intencao comercial alta.'
+  },
+  {
+    question: 'Quais servicos da AUDITSEO fazem mais sentido aqui?',
+    answer:
+      'Principalmente consultoria SEO, auditoria SEO e AI Overview Optimization, dependendo da maturidade do site e do objetivo comercial.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<InstitutionalLayout
+  title="SEO para Energia Solar | AUDITSEO"
+  description="Pagina setorial da AUDITSEO para empresas de energia solar: demanda B2B, arquitetura comercial, prova tecnica e SEO preparado para busca tradicional e AI search."
+  canonicalPath="/nichos/energia-solar/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Nichos', path: '/nichos/' },
+    { label: 'Energia Solar', path: '/nichos/energia-solar/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/nichos/">Nichos</a>
+      <span>›</span>
+      <span class="current">Energia Solar</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">B2B, Prova Tecnica e Demanda Consultiva</span>
+        <h1 class="ee-page-title">
+          SEO PARA <span class="accent">ENERGIA SOLAR</span> COM ARQUITETURA COMERCIAL
+        </h1>
+        <p class="ee-page-subtitle">
+          Empresas de energia solar precisam unir <strong>conteudo tecnico</strong>,
+          <strong> pagina comercial</strong>, <strong>prova operacional</strong> e
+          <strong> descoberta organica qualificada</strong>. A AUDITSEO trata esse nicho como
+          contexto de venda, nao como lista generica de palavras-chave.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">B2B</span>
+          <span class="ee-page-highlight">Arquitetura Comercial</span>
+          <span class="ee-page-highlight">Prova Tecnica</span>
+          <span class="ee-page-highlight">Lead Qualificado</span>
+        </div>
+      </div>
+
+      <aside class="ee-page-hero-card">
+        <h2>Onde o setor costuma perder performance</h2>
+        <p>
+          Em sites que nao conectam linguagem tecnica, provas de projeto, termos de decisao e um
+          caminho comercial claro para o lead.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/consultoria-seo/">Ver consultoria SEO</a>
+          <a href="/servicos/auditoria-seo/">Ver auditoria SEO</a>
+          <a href="/servicos/ai-overview-optimization/">Ver AI Overview Optimization</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-stats" aria-label="Resumo da pagina setorial de energia solar">
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">3</div>
+        <div class="ee-page-stat-label">Camadas criticas</div>
+        <p class="ee-page-stat-copy">Tecnica, comercial e comparativa.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">1</div>
+        <div class="ee-page-stat-label">Objetivo central</div>
+        <p class="ee-page-stat-copy">Gerar demanda organica com maior aderencia comercial.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">0</div>
+        <div class="ee-page-stat-label">Espaco para pagina rasa</div>
+        <p class="ee-page-stat-copy">Sem prova e contexto, a pagina nao sustenta decisao complexa.</p>
+      </article>
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">100%</div>
+        <div class="ee-page-stat-label">Dependencia de prova</div>
+        <p class="ee-page-stat-copy">No setor, clareza de processo e capacidade instalada pesam muito.</p>
+      </article>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Prioridades</span>
+        <h2 class="ee-page-section-title">O QUE A AUDITSEO PRIORIZA PARA ENERGIA SOLAR</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {focusBlocks.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Escopo</span>
+        <h2 class="ee-page-section-title">ENTREGAS MAIS COMUNS PARA EMPRESAS DE ENERGIA SOLAR</h2>
+      </div>
+      <div class="ee-page-grid two">
+        <article class="ee-page-card">
+          <h3>Frentes de trabalho</h3>
+          <ul class="ee-page-checklist">
+            {checklist.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-card">
+          <h3>Proximo passo comercial</h3>
+          <p>
+            Quando a empresa tem busca, mas nao transforma esse interesse em oportunidade
+            qualificada, a prioridade costuma ser reorganizar arquitetura, prova e mensagem.
+          </p>
+          <div class="ee-page-links">
+            <a href="/contato/">Solicitar diagnostico</a>
+            <a href="/metodologia/">Ver metodologia</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="ee-page-section ee-page-faq">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS DE EMPRESAS DE ENERGIA SOLAR</h2>
+      </div>
+      <div class="ee-page-faq-list">
+        {faqs.map((item) => (
+          <article class="ee-page-faq-item">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</InstitutionalLayout>
