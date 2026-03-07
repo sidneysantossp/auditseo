@@ -1364,5 +1364,177 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
       'Se Belo Horizonte já influencia a maior parte da demanda da clínica, o próximo passo é analisar a página comercial local específica dessa praça.',
     ctaPath: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/',
     ctaLabel: 'Ver a página local de Belo Horizonte'
+  },
+  {
+    slug: 'seo-local-para-clinicas-medicas-em-curitiba-vale-a-pena',
+    title: 'SEO Local para Clínicas Médicas em Curitiba Vale a Pena?',
+    seoTitle: 'SEO Local para Clínicas Médicas em Curitiba Vale a Pena? | AUDITSEO',
+    description:
+      'Saiba quando SEO local faz sentido para clínicas médicas em Curitiba e por que a cidade pede uma camada comercial própria.',
+    excerpt:
+      'Em Curitiba, a descoberta local costuma pesar cedo quando a clínica depende de cidade, proximidade e especialidade. Nesses casos, SEO local vira infraestrutura comercial.',
+    categorySlug: 'estrategia',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    publishedTime: '2026-03-07T18:10:00-03:00',
+    modifiedTime: '2026-03-07T18:10:00-03:00',
+    readingTime: 7,
+    keywords: ['seo local para clinicas medicas em curitiba vale a pena', 'seo local clinicas curitiba', 'clinicas medicas curitiba seo', 'google maps clinicas curitiba'],
+    badge: 'Curitiba e Decisão Local',
+    subtitle:
+      'Em Curitiba, a clínica tende a disputar descoberta por cidade, conveniência e confiança. Isso faz a página local pesar mais cedo do que muitos sites tratam.',
+    sections: [
+      {
+        title: 'Quando SEO local ganha prioridade em Curitiba',
+        paragraphs: [
+          'Ganha prioridade quando a clínica depende de cidade, mapa e proximidade para gerar boa parte dos contatos.',
+          'Em Curitiba, a página local costuma fazer diferença quando a estrutura atual ainda está concentrada em uma home genérica.'
+        ]
+      },
+      {
+        title: 'O que faz a estratégia funcionar',
+        paragraphs: [
+          'Não é só mencionar Curitiba no texto. A força vem da combinação entre página local, contexto médico e coerência com Google Maps.',
+          'Quando essas camadas operam juntas, a clínica ganha uma presença mais clara e mais confiável.'
+        ],
+        bullets: [
+          'Página local com mensagem própria',
+          'Especialidade e cidade conectadas',
+          'Perfil local coerente com o site',
+          'FAQ comercial orientado à decisão'
+        ]
+      },
+      {
+        title: 'Quando a estratégia não entrega o esperado',
+        paragraphs: [
+          'Normalmente quando a clínica tenta resolver a cidade com uma página nacional, um perfil local isolado ou uma arquitetura rasa de especialidades.',
+          'Nessa situação, a presença aparece, mas a descoberta não se converte em demanda com boa qualidade.'
+        ]
+      },
+      {
+        title: 'Como saber se faz sentido priorizar agora',
+        paragraphs: [
+          'Se a cidade já pesa na demanda, a clínica quer reduzir dependência de mídia paga e o mapa influencia contatos, a prioridade tende a ser real.',
+          'O melhor caminho é estruturar a camada local antes de aumentar volume de conteúdo sem função comercial clara.'
+        ]
+      }
+    ],
+    faqItems: [
+      {
+        question: 'SEO local vale a pena para qualquer clínica em Curitiba?',
+        answer: 'Na maior parte dos casos, sim. Principalmente quando geografia, mapa e proximidade participam da decisão do paciente.'
+      },
+      {
+        question: 'Curitiba precisa de uma página local própria?',
+        answer: 'Sim, quando a cidade já influencia a demanda e a clínica quer traduzir a oferta para uma intenção mais localizada.'
+      },
+      {
+        question: 'Google Meu Negócio entra junto nessa estratégia?',
+        answer: 'Na maioria dos casos, sim. Para clínicas, perfil local e página da cidade tendem a funcionar melhor quando são tratados juntos.'
+      },
+      {
+        question: 'Vale começar por SEO local mesmo sem blog forte?',
+        answer: 'Sim. Em muitos casos, a camada local e comercial é mais urgente do que escalar o blog sem base de conversão.'
+      },
+      {
+        question: 'Como validar se a clínica está pronta para isso?',
+        answer: 'Verifique se a cidade já pesa na geração de demanda, se o mapa participa da descoberta e se a clínica depende de presença local para crescer.'
+      }
+    ],
+    resourceLinks: [
+      { label: 'SEO Local para Clínicas Médicas em Curitiba', path: '/servicos/seo-local-para-clinicas-medicas-em-curitiba/' },
+      { label: 'Google Meu Negócio para Clínicas Médicas em Curitiba', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/' },
+      { label: 'Curitiba', path: '/cidades/curitiba/' }
+    ],
+    ctaTitle: 'QUER VALIDAR SE CURITIBA JÁ EXIGE UMA ESTRUTURA LOCAL MAIS FORTE?',
+    ctaCopy:
+      'Se Curitiba já influencia a maior parte da demanda da clínica, o próximo passo é analisar a página comercial local específica dessa praça.',
+    ctaPath: '/servicos/seo-local-para-clinicas-medicas-em-curitiba/',
+    ctaLabel: 'Ver a página local de Curitiba'
+  },
+  {
+    slug: 'seo-local-para-clinicas-medicas-em-brasilia-vale-a-pena',
+    title: 'SEO Local para Clínicas Médicas em Brasília Vale a Pena?',
+    seoTitle: 'SEO Local para Clínicas Médicas em Brasília Vale a Pena? | AUDITSEO',
+    description:
+      'Saiba quando SEO local faz sentido para clínicas médicas em Brasília e por que a cidade pede uma camada comercial própria.',
+    excerpt:
+      'Em Brasília, a descoberta local costuma pesar cedo quando a clínica depende de cidade, proximidade e especialidade. Nesses casos, SEO local vira infraestrutura comercial.',
+    categorySlug: 'estrategia',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    publishedTime: '2026-03-07T18:20:00-03:00',
+    modifiedTime: '2026-03-07T18:20:00-03:00',
+    readingTime: 7,
+    keywords: ['seo local para clinicas medicas em brasilia vale a pena', 'seo local clinicas brasilia', 'clinicas medicas brasilia seo', 'google maps clinicas brasilia'],
+    badge: 'Brasília e Decisão Local',
+    subtitle:
+      'Em Brasília, a clínica tende a disputar descoberta por cidade, conveniência e confiança. Isso faz a página local pesar mais cedo do que muitos sites tratam.',
+    sections: [
+      {
+        title: 'Quando SEO local ganha prioridade em Brasília',
+        paragraphs: [
+          'Ganha prioridade quando a clínica depende de cidade, mapa e proximidade para gerar boa parte dos contatos.',
+          'Em Brasília, a página local costuma fazer diferença quando a estrutura atual ainda está concentrada em uma home genérica.'
+        ]
+      },
+      {
+        title: 'O que faz a estratégia funcionar',
+        paragraphs: [
+          'Não é só mencionar Brasília no texto. A força vem da combinação entre página local, contexto médico e coerência com Google Maps.',
+          'Quando essas camadas operam juntas, a clínica ganha uma presença mais clara e mais confiável.'
+        ],
+        bullets: [
+          'Página local com mensagem própria',
+          'Especialidade e cidade conectadas',
+          'Perfil local coerente com o site',
+          'FAQ comercial orientado à decisão'
+        ]
+      },
+      {
+        title: 'Quando a estratégia não entrega o esperado',
+        paragraphs: [
+          'Normalmente quando a clínica tenta resolver a cidade com uma página nacional, um perfil local isolado ou uma arquitetura rasa de especialidades.',
+          'Nessa situação, a presença aparece, mas a descoberta não se converte em demanda com boa qualidade.'
+        ]
+      },
+      {
+        title: 'Como saber se faz sentido priorizar agora',
+        paragraphs: [
+          'Se a cidade já pesa na demanda, a clínica quer reduzir dependência de mídia paga e o mapa influencia contatos, a prioridade tende a ser real.',
+          'O melhor caminho é estruturar a camada local antes de aumentar volume de conteúdo sem função comercial clara.'
+        ]
+      }
+    ],
+    faqItems: [
+      {
+        question: 'SEO local vale a pena para qualquer clínica em Brasília?',
+        answer: 'Na maior parte dos casos, sim. Principalmente quando geografia, mapa e proximidade participam da decisão do paciente.'
+      },
+      {
+        question: 'Brasília precisa de uma página local própria?',
+        answer: 'Sim, quando a cidade já influencia a demanda e a clínica quer traduzir a oferta para uma intenção mais localizada.'
+      },
+      {
+        question: 'Google Meu Negócio entra junto nessa estratégia?',
+        answer: 'Na maioria dos casos, sim. Para clínicas, perfil local e página da cidade tendem a funcionar melhor quando são tratados juntos.'
+      },
+      {
+        question: 'Vale começar por SEO local mesmo sem blog forte?',
+        answer: 'Sim. Em muitos casos, a camada local e comercial é mais urgente do que escalar o blog sem base de conversão.'
+      },
+      {
+        question: 'Como validar se a clínica está pronta para isso?',
+        answer: 'Verifique se a cidade já pesa na geração de demanda, se o mapa participa da descoberta e se a clínica depende de presença local para crescer.'
+      }
+    ],
+    resourceLinks: [
+      { label: 'SEO Local para Clínicas Médicas em Brasília', path: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/' },
+      { label: 'Google Meu Negócio para Clínicas Médicas em Brasília', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/' },
+      { label: 'Brasília', path: '/cidades/brasilia/' }
+    ],
+    ctaTitle: 'QUER VALIDAR SE BRASÍLIA JÁ EXIGE UMA ESTRUTURA LOCAL MAIS FORTE?',
+    ctaCopy:
+      'Se Brasília já influencia a maior parte da demanda da clínica, o próximo passo é analisar a página comercial local específica dessa praça.',
+    ctaPath: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/',
+    ctaLabel: 'Ver a página local de Brasília'
   }
 ];

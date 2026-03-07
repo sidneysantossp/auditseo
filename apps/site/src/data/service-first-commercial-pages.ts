@@ -3237,6 +3237,636 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
     ctaSecondaryLabel: 'Falar com a AUDITSEO',
     areaServedName: 'Belo Horizonte',
     brief: requireBrief('/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/')
+  },
+  {
+    slug: '/servicos/seo-local-para-clinicas-medicas-em-curitiba/',
+    seoTitle: 'SEO Local para Clínicas Médicas em Curitiba | AUDITSEO',
+    description:
+      'SEO local para clínicas médicas em Curitiba com foco em descoberta por geografia, Google Maps e páginas comerciais orientadas a busca local.',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    displayTitle: 'SEO Local para Clínicas Médicas em Curitiba',
+    badge: 'Saúde Privada, Curitiba e Busca Local',
+    heroTitlePrefix: 'SEO LOCAL PARA CLÍNICAS MÉDICAS ',
+    heroTitleAccent: 'EM CURITIBA',
+    heroSubtitle:
+      'Em Curitiba, a clínica precisa organizar bem cidade, especialidade e descoberta local para não depender só de indicação ou mídia paga. Quando a página comercial local é clara, o Google consegue conectar melhor intenção e oferta.',
+    highlights: ['Curitiba', 'SEO Local', 'Google Maps', 'Páginas Comerciais'],
+    heroCard: {
+      title: 'Quando essa página faz sentido',
+      copy:
+        'Quando a clínica atende Curitiba, quer fortalecer a descoberta na cidade e ainda não articulou especialidade, mapa e página comercial numa mesma estrutura.',
+      links: [
+        { label: 'Ver SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
+        { label: 'Ver SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
+        { label: 'Ver Curitiba', path: '/cidades/curitiba/', reason: 'Contexto geográfico principal.' }
+      ]
+    },
+    stats: [
+      { value: '1', label: 'Capital prioritária', copy: 'Curitiba é uma das primeiras praças do Sul na expansão nacional.' },
+      { value: '3', label: 'Camadas críticas', copy: 'Especialidade, cidade e mapa precisam conversar.' },
+      { value: '0', label: 'Espaço para ruído', copy: 'Página local vaga não sustenta descoberta médica.' },
+      { value: '100%', label: 'Dependência de clareza', copy: 'Mensagem, geografia e próximo passo precisam estar alinhados.' }
+    ],
+    marketCards: [
+      {
+        title: 'Cidade e especialidade',
+        copy:
+          'Em Curitiba, a clínica disputa intenção local por especialidade, contexto e percepção de confiança. Sem uma página clara, essa intenção se dispersa.'
+      },
+      {
+        title: 'Descoberta mais consistente',
+        copy:
+          'Quando cidade, perfil local e páginas comerciais operam juntos, a clínica reduz ruído e melhora a chance de contato qualificado.'
+      },
+      {
+        title: 'Captação menos volátil',
+        copy:
+          'A combinação entre SEO local e estrutura comercial ajuda a reduzir dependência exclusiva de mídia paga e ações esporádicas.'
+      }
+    ],
+    coreOffer:
+      'SEO local para clínicas médicas em Curitiba, conectando especialidades, contexto urbano, Google Maps e páginas comerciais.',
+    painPoints: [
+      'Baixa visibilidade em buscas geográficas da cidade.',
+      'Páginas comerciais sem intenção local suficiente.',
+      'Perfil local e site operando de forma desalinhada.',
+      'Dependência excessiva de indicação ou mídia paga.'
+    ],
+    deliveryItems: [
+      'Arquitetura local para cidade, especialidade e página comercial.',
+      'Integração entre SEO local, GBP e descoberta qualificada.',
+      'FAQ comercial para dúvidas reais de decisão.',
+      'Interlinking entre cidade, serviço e ativos BOFU.',
+      'Base para expansão controlada da praça.'
+    ],
+    methodSteps: [
+      {
+        title: 'Diagnóstico local',
+        copy: 'Mapeamos como a clínica aparece hoje em Curitiba e onde a arquitetura atual perde intenção comercial local.'
+      },
+      {
+        title: 'Página da cidade',
+        copy: 'Definimos o papel da página local dentro da vertical médica, sem duplicar a função da página setorial nacional.'
+      },
+      {
+        title: 'Integração com Maps',
+        copy: 'Alinhamos sinais de Google Maps, cidade e especialidade para reforçar descoberta coerente.'
+      },
+      {
+        title: 'Conversão',
+        copy: 'Ajustamos copy e blocos comerciais para transformar busca em contato com menos atrito.'
+      },
+      {
+        title: 'Evolução',
+        copy: 'Usamos desempenho real para decidir se a praça pede novas páginas derivadas ou apoio editorial adicional.'
+      }
+    ],
+    differentiators: [
+      'Leitura local específica para Curitiba.',
+      'Foco em contato qualificado, não só em visibilidade.',
+      'Integração entre mapa, cidade e página comercial.',
+      'Base para crescer a praça sem inflar a arquitetura.'
+    ],
+    proofPoints: [
+      'Serviço canônico de SEO Local já publicado.',
+      'Página de clínicas médicas já ativa como vertical-mãe.',
+      'Artigos BOFU de clínicas e GBP já integrados ao blog.',
+      'Página local de Curitiba já publicada como apoio geográfico.'
+    ],
+    relatedLinks: [
+      { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
+      { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
+      { label: 'Curitiba', path: '/cidades/curitiba/', reason: 'Contexto geográfico principal.' },
+      {
+        label: 'SEO local para clínicas médicas em Curitiba vale a pena?',
+        path: '/blog/seo-local-para-clinicas-medicas-em-curitiba-vale-a-pena/',
+        reason: 'Apoio BOFU local para decisão.'
+      },
+      { label: 'Google Meu Negócio para Clínicas Médicas em Curitiba', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/', reason: 'Complemento local de Maps.' }
+    ],
+    faqItems: [
+      {
+        question: 'SEO local funciona para clínicas médicas em Curitiba?',
+        answer:
+          'Funciona quando a clínica organiza corretamente especialidades, geografia, Google Maps e páginas comerciais. O erro comum é depender só de uma página institucional genérica.'
+      },
+      {
+        question: 'O que muda entre a página de Curitiba e uma página nacional?',
+        answer:
+          'A página de Curitiba traduz a oferta para a intenção local da cidade, sem competir com a página setorial nacional.'
+      },
+      {
+        question: 'Google Meu Negócio entra junto nessa estratégia?',
+        answer:
+          'Na maioria dos casos, sim. Em clínicas médicas, perfil local e página comercial costumam se reforçar mutuamente.'
+      },
+      {
+        question: 'Vale abrir páginas por bairro?',
+        answer:
+          'Só quando houver demanda observável, contexto próprio e função comercial clara. Antes disso, a página da cidade tende a ser a camada mais segura.'
+      },
+      {
+        question: 'Quanto tempo leva para gerar resultado?',
+        answer:
+          'Depende da base atual, da concorrência e da velocidade de execução. O foco correto é medir descoberta e contatos qualificados.'
+      },
+      {
+        question: 'Essa página compete com a página de clínicas médicas?',
+        answer:
+          'Não deve competir. A página setorial sustenta a vertical; a página local traduz a oferta para a cidade.'
+      },
+      {
+        question: 'A clínica precisa ter várias especialidades para isso funcionar?',
+        answer:
+          'Não. Mesmo operações mais enxutas podem depender fortemente da cidade e da descoberta local para gerar novos contatos.'
+      },
+      {
+        question: 'Quando contratar SEO local em Curitiba faz mais sentido?',
+        answer:
+          'Quando a clínica quer fortalecer a presença orgânica na cidade, integrar melhor mapa e site e reduzir dependência exclusiva de mídia paga.'
+      }
+    ],
+    ctaTitle: 'QUER FAZER SUA CLÍNICA GANHAR MAIS DESCOBERTA ORGÂNICA EM CURITIBA?',
+    ctaCopy:
+      'Se Curitiba já faz parte da sua geração de demanda, mas o Google ainda não está sustentando essa descoberta com a clareza necessária, o melhor início é um diagnóstico local orientado a página, especialidade e mapa.',
+    ctaPrimaryLabel: 'Solicitar diagnóstico local em Curitiba',
+    ctaSecondaryPath: '/contato/',
+    ctaSecondaryLabel: 'Falar com a AUDITSEO',
+    areaServedName: 'Curitiba',
+    brief: requireBrief('/servicos/seo-local-para-clinicas-medicas-em-curitiba/')
+  },
+  {
+    slug: '/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/',
+    seoTitle: 'Google Meu Negócio para Clínicas Médicas em Curitiba | AUDITSEO',
+    description:
+      'Google Meu Negócio para clínicas médicas em Curitiba com foco em mapa, relevância local, rotas e integração com páginas comerciais.',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    displayTitle: 'Google Meu Negócio para Clínicas Médicas em Curitiba',
+    badge: 'Maps, Curitiba e Descoberta Imediata',
+    heroTitlePrefix: 'GOOGLE MEU NEGÓCIO PARA CLÍNICAS MÉDICAS ',
+    heroTitleAccent: 'EM CURITIBA',
+    heroSubtitle:
+      'Em Curitiba, o perfil local ajuda a filtrar descoberta, comparação e rota. Quando o Google Business Profile está alinhado à página comercial certa, a clínica tende a ganhar mais relevância local e mais clareza de oferta.',
+    highlights: ['Google Maps', 'Curitiba', 'GBP', 'Busca por Proximidade'],
+    heroCard: {
+      title: 'Quando essa página faz sentido',
+      copy:
+        'Quando a clínica já depende de mapa e comparação local em Curitiba, mas ainda não integrou perfil, especialidade e página comercial em uma mesma lógica operacional.',
+      links: [
+        { label: 'Ver Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
+        { label: 'Ver clínicas em Curitiba', path: '/servicos/seo-local-para-clinicas-medicas-em-curitiba/', reason: 'Página local complementar.' },
+        { label: 'Ver Curitiba', path: '/cidades/curitiba/', reason: 'Contexto geográfico principal.' }
+      ]
+    },
+    stats: [
+      { value: '1', label: 'Canal crítico', copy: 'Maps pesa cedo na jornada local de saúde.' },
+      { value: '3', label: 'Sinais decisivos', copy: 'Consistência, geografia e contexto comercial.' },
+      { value: '0', label: 'Espaço para improviso', copy: 'Cadastro solto não sustenta descoberta local.' },
+      { value: '100%', label: 'Dependência de coerência', copy: 'Perfil, cidade e página precisam reforçar a mesma intenção.' }
+    ],
+    marketCards: [
+      {
+        title: 'Busca por proximidade',
+        copy:
+          'Em Curitiba, parte relevante da decisão local passa por proximidade, percepção de confiança e facilidade de contato. O perfil precisa sustentar isso.'
+      },
+      {
+        title: 'Perfil e página local',
+        copy:
+          'Quando o perfil local está desalinhado com a página comercial, a descoberta perde força e a clínica converte pior.'
+      },
+      {
+        title: 'Especialidade e clareza',
+        copy:
+          'A integração entre perfil, cidade e especialidade ajuda o Google e o usuário a entender melhor quando aquela clínica faz sentido.'
+      }
+    ],
+    coreOffer:
+      'Gestão e estrutura de Google Meu Negócio para clínicas médicas em Curitiba, conectando mapa, perfil local e páginas comerciais.',
+    painPoints: [
+      'Perfil local sem sinais claros de relevância e conversão.',
+      'Baixa consistência entre perfil, site e especialidades.',
+      'Perda de contatos locais em pesquisas por proximidade.',
+      'Pouca geração de rotas e ligações qualificadas.'
+    ],
+    deliveryItems: [
+      'Integração entre GBP, página local e vertical médica.',
+      'Revisão da coerência entre perfil, cidade e especialidade.',
+      'FAQ comercial para dúvidas de decisão local.',
+      'Blocos de apoio para reforçar prova e contato.',
+      'Base para evoluir descoberta local com mais consistência.'
+    ],
+    methodSteps: [
+      {
+        title: 'Leitura do perfil',
+        copy: 'Mapeamos como o perfil participa hoje da descoberta local em Curitiba e onde ele perde relevância frente à concorrência.'
+      },
+      {
+        title: 'Integração com o site',
+        copy: 'Ajustamos a relação entre perfil local, página comercial da cidade e página setorial da clínica.'
+      },
+      {
+        title: 'Sinais de relevância',
+        copy: 'Organizamos os sinais visíveis da clínica para reforçar geografia, contexto e especialidade.'
+      },
+      {
+        title: 'Conversão local',
+        copy: 'Melhoramos a lógica de contato para que mapa e site empurrem o usuário para o mesmo próximo passo.'
+      },
+      {
+        title: 'Acompanhamento',
+        copy: 'Usamos performance real para decidir próximos ajustes de descoberta local e evolução da malha comercial.'
+      }
+    ],
+    differentiators: [
+      'Integração real entre Maps e página comercial.',
+      'Leitura orientada a clínica médica e não a negócio local genérico.',
+      'Foco em contato qualificado e não só em visualização do perfil.',
+      'Base para crescer a praça com disciplina.'
+    ],
+    proofPoints: [
+      'Serviço canônico de Google Meu Negócio já publicado.',
+      'Página local para clínicas médicas em Curitiba já ativa.',
+      'Artigo BOFU de GBP para clínicas já publicado.',
+      'Base metodológica da AUDITSEO já pública.'
+    ],
+    relatedLinks: [
+      { label: 'Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
+      { label: 'SEO Local para Clínicas Médicas em Curitiba', path: '/servicos/seo-local-para-clinicas-medicas-em-curitiba/', reason: 'Página local complementar.' },
+      { label: 'Google Meu Negócio para clínicas médicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'Apoio BOFU direto.' },
+      {
+        label: 'SEO local para clínicas médicas em Curitiba vale a pena?',
+        path: '/blog/seo-local-para-clinicas-medicas-em-curitiba-vale-a-pena/',
+        reason: 'Apoio BOFU local de decisão.'
+      },
+      { label: 'Curitiba', path: '/cidades/curitiba/', reason: 'Contexto geográfico principal.' },
+      { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Vertical-mãe da operação.' }
+    ],
+    faqItems: [
+      {
+        question: 'Google Meu Negócio sozinho resolve a descoberta local em Curitiba?',
+        answer:
+          'Não. O perfil ajuda muito, mas precisa estar alinhado a uma página local forte e à vertical médica da clínica.'
+      },
+      {
+        question: 'Qual a diferença entre GBP e SEO local em Curitiba?',
+        answer:
+          'GBP é parte da estratégia. SEO local inclui também página da cidade, estrutura do site e contexto comercial da clínica.'
+      },
+      {
+        question: 'A página do site realmente interfere no mapa?',
+        answer:
+          'Sim. Quando cidade, especialidade e página comercial se reforçam, a descoberta local tende a ganhar mais coerência.'
+      },
+      {
+        question: 'Quando essa frente merece prioridade?',
+        answer:
+          'Quando a clínica já depende de mapa para descoberta e quer aumentar a qualidade dos contatos vindos do Google.'
+      },
+      {
+        question: 'Isso vale para clínica com uma única unidade?',
+        answer:
+          'Sim. Mesmo uma única unidade pode depender bastante de proximidade e perfil local para ser encontrada.'
+      },
+      {
+        question: 'Perfil desatualizado realmente prejudica?',
+        answer:
+          'Prejudica porque reduz confiança, quebra coerência e deixa a clínica mais frágil na comparação local.'
+      },
+      {
+        question: 'Essa página compete com a página canônica de GBP?',
+        answer:
+          'Não. A página canônica apresenta o serviço amplo; esta página traduz a oferta para a cidade e o contexto médico local.'
+      },
+      {
+        question: 'Quando contratar essa frente em Curitiba faz mais sentido?',
+        answer:
+          'Quando a clínica quer reforçar descoberta local, integrar melhor mapa e site e melhorar a qualidade do contato vindo do Google.'
+      }
+    ],
+    ctaTitle: 'QUER FAZER O MAPA AJUDAR MAIS SUA CLÍNICA EM CURITIBA?',
+    ctaCopy:
+      'Se o perfil local ainda não sustenta a descoberta e o contato como deveria, o melhor início é um diagnóstico orientado a Google Maps, página comercial e contexto médico local.',
+    ctaPrimaryLabel: 'Solicitar diagnóstico de GBP em Curitiba',
+    ctaSecondaryPath: '/contato/',
+    ctaSecondaryLabel: 'Falar com a AUDITSEO',
+    areaServedName: 'Curitiba',
+    brief: requireBrief('/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/')
+  },
+  {
+    slug: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/',
+    seoTitle: 'SEO Local para Clínicas Médicas em Brasília | AUDITSEO',
+    description:
+      'SEO local para clínicas médicas em Brasília com foco em descoberta por geografia, Google Maps e páginas comerciais orientadas a busca local.',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    displayTitle: 'SEO Local para Clínicas Médicas em Brasília',
+    badge: 'Saúde Privada, Brasília e Busca Local',
+    heroTitlePrefix: 'SEO LOCAL PARA CLÍNICAS MÉDICAS ',
+    heroTitleAccent: 'EM BRASÍLIA',
+    heroSubtitle:
+      'Em Brasília, a clínica precisa organizar bem cidade, especialidade e descoberta local para não depender só de indicação ou mídia paga. Quando a página comercial local é clara, o Google consegue conectar melhor intenção e oferta.',
+    highlights: ['Brasília', 'SEO Local', 'Google Maps', 'Páginas Comerciais'],
+    heroCard: {
+      title: 'Quando essa página faz sentido',
+      copy:
+        'Quando a clínica atende Brasília, quer fortalecer a descoberta na cidade e ainda não articulou especialidade, mapa e página comercial numa mesma estrutura.',
+      links: [
+        { label: 'Ver SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
+        { label: 'Ver SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
+        { label: 'Ver Brasília', path: '/cidades/brasilia/', reason: 'Contexto geográfico principal.' }
+      ]
+    },
+    stats: [
+      { value: '1', label: 'Capital prioritária', copy: 'Brasília é uma das primeiras praças do Centro-Oeste na expansão nacional.' },
+      { value: '3', label: 'Camadas críticas', copy: 'Especialidade, cidade e mapa precisam conversar.' },
+      { value: '0', label: 'Espaço para ruído', copy: 'Página local vaga não sustenta descoberta médica.' },
+      { value: '100%', label: 'Dependência de clareza', copy: 'Mensagem, geografia e próximo passo precisam estar alinhados.' }
+    ],
+    marketCards: [
+      {
+        title: 'Cidade e especialidade',
+        copy:
+          'Em Brasília, a clínica disputa intenção local por especialidade, contexto e percepção de confiança. Sem uma página clara, essa intenção se dispersa.'
+      },
+      {
+        title: 'Descoberta mais consistente',
+        copy:
+          'Quando cidade, perfil local e páginas comerciais operam juntos, a clínica reduz ruído e melhora a chance de contato qualificado.'
+      },
+      {
+        title: 'Captação menos volátil',
+        copy:
+          'A combinação entre SEO local e estrutura comercial ajuda a reduzir dependência exclusiva de mídia paga e ações esporádicas.'
+      }
+    ],
+    coreOffer:
+      'SEO local para clínicas médicas em Brasília, conectando especialidades, contexto urbano, Google Maps e páginas comerciais.',
+    painPoints: [
+      'Baixa visibilidade em buscas geográficas da cidade.',
+      'Páginas comerciais sem intenção local suficiente.',
+      'Perfil local e site operando de forma desalinhada.',
+      'Dependência excessiva de indicação ou mídia paga.'
+    ],
+    deliveryItems: [
+      'Arquitetura local para cidade, especialidade e página comercial.',
+      'Integração entre SEO local, GBP e descoberta qualificada.',
+      'FAQ comercial para dúvidas reais de decisão.',
+      'Interlinking entre cidade, serviço e ativos BOFU.',
+      'Base para expansão controlada da praça.'
+    ],
+    methodSteps: [
+      {
+        title: 'Diagnóstico local',
+        copy: 'Mapeamos como a clínica aparece hoje em Brasília e onde a arquitetura atual perde intenção comercial local.'
+      },
+      {
+        title: 'Página da cidade',
+        copy: 'Definimos o papel da página local dentro da vertical médica, sem duplicar a função da página setorial nacional.'
+      },
+      {
+        title: 'Integração com Maps',
+        copy: 'Alinhamos sinais de Google Maps, cidade e especialidade para reforçar descoberta coerente.'
+      },
+      {
+        title: 'Conversão',
+        copy: 'Ajustamos copy e blocos comerciais para transformar busca em contato com menos atrito.'
+      },
+      {
+        title: 'Evolução',
+        copy: 'Usamos desempenho real para decidir se a praça pede novas páginas derivadas ou apoio editorial adicional.'
+      }
+    ],
+    differentiators: [
+      'Leitura local específica para Brasília.',
+      'Foco em contato qualificado, não só em visibilidade.',
+      'Integração entre mapa, cidade e página comercial.',
+      'Base para crescer a praça sem inflar a arquitetura.'
+    ],
+    proofPoints: [
+      'Serviço canônico de SEO Local já publicado.',
+      'Página de clínicas médicas já ativa como vertical-mãe.',
+      'Artigos BOFU de clínicas e GBP já integrados ao blog.',
+      'Página local de Brasília já publicada como apoio geográfico.'
+    ],
+    relatedLinks: [
+      { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
+      { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
+      { label: 'Brasília', path: '/cidades/brasilia/', reason: 'Contexto geográfico principal.' },
+      {
+        label: 'SEO local para clínicas médicas em Brasília vale a pena?',
+        path: '/blog/seo-local-para-clinicas-medicas-em-brasilia-vale-a-pena/',
+        reason: 'Apoio BOFU local para decisão.'
+      },
+      { label: 'Google Meu Negócio para Clínicas Médicas em Brasília', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/', reason: 'Complemento local de Maps.' }
+    ],
+    faqItems: [
+      {
+        question: 'SEO local funciona para clínicas médicas em Brasília?',
+        answer:
+          'Funciona quando a clínica organiza corretamente especialidades, geografia, Google Maps e páginas comerciais. O erro comum é depender só de uma página institucional genérica.'
+      },
+      {
+        question: 'O que muda entre a página de Brasília e uma página nacional?',
+        answer:
+          'A página de Brasília traduz a oferta para a intenção local da cidade, sem competir com a página setorial nacional.'
+      },
+      {
+        question: 'Google Meu Negócio entra junto nessa estratégia?',
+        answer:
+          'Na maioria dos casos, sim. Em clínicas médicas, perfil local e página comercial costumam se reforçar mutuamente.'
+      },
+      {
+        question: 'Vale abrir páginas mais granulares dentro da cidade?',
+        answer:
+          'Só quando houver demanda observável, contexto próprio e função comercial clara. Antes disso, a página da cidade tende a ser a camada mais segura.'
+      },
+      {
+        question: 'Quanto tempo leva para gerar resultado?',
+        answer:
+          'Depende da base atual, da concorrência e da velocidade de execução. O foco correto é medir descoberta e contatos qualificados.'
+      },
+      {
+        question: 'Essa página compete com a página de clínicas médicas?',
+        answer:
+          'Não deve competir. A página setorial sustenta a vertical; a página local traduz a oferta para a cidade.'
+      },
+      {
+        question: 'A clínica precisa ter várias especialidades para isso funcionar?',
+        answer:
+          'Não. Mesmo operações mais enxutas podem depender fortemente da cidade e da descoberta local para gerar novos contatos.'
+      },
+      {
+        question: 'Quando contratar SEO local em Brasília faz mais sentido?',
+        answer:
+          'Quando a clínica quer fortalecer a presença orgânica na cidade, integrar melhor mapa e site e reduzir dependência exclusiva de mídia paga.'
+      }
+    ],
+    ctaTitle: 'QUER FAZER SUA CLÍNICA GANHAR MAIS DESCOBERTA ORGÂNICA EM BRASÍLIA?',
+    ctaCopy:
+      'Se Brasília já faz parte da sua geração de demanda, mas o Google ainda não está sustentando essa descoberta com a clareza necessária, o melhor início é um diagnóstico local orientado a página, especialidade e mapa.',
+    ctaPrimaryLabel: 'Solicitar diagnóstico local em Brasília',
+    ctaSecondaryPath: '/contato/',
+    ctaSecondaryLabel: 'Falar com a AUDITSEO',
+    areaServedName: 'Brasília',
+    brief: requireBrief('/servicos/seo-local-para-clinicas-medicas-em-brasilia/')
+  },
+  {
+    slug: '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/',
+    seoTitle: 'Google Meu Negócio para Clínicas Médicas em Brasília | AUDITSEO',
+    description:
+      'Google Meu Negócio para clínicas médicas em Brasília com foco em mapa, relevância local, rotas e integração com páginas comerciais.',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    displayTitle: 'Google Meu Negócio para Clínicas Médicas em Brasília',
+    badge: 'Maps, Brasília e Descoberta Imediata',
+    heroTitlePrefix: 'GOOGLE MEU NEGÓCIO PARA CLÍNICAS MÉDICAS ',
+    heroTitleAccent: 'EM BRASÍLIA',
+    heroSubtitle:
+      'Em Brasília, o perfil local ajuda a filtrar descoberta, comparação e rota. Quando o Google Business Profile está alinhado à página comercial certa, a clínica tende a ganhar mais relevância local e mais clareza de oferta.',
+    highlights: ['Google Maps', 'Brasília', 'GBP', 'Busca por Proximidade'],
+    heroCard: {
+      title: 'Quando essa página faz sentido',
+      copy:
+        'Quando a clínica já depende de mapa e comparação local em Brasília, mas ainda não integrou perfil, especialidade e página comercial em uma mesma lógica operacional.',
+      links: [
+        { label: 'Ver Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
+        { label: 'Ver clínicas em Brasília', path: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/', reason: 'Página local complementar.' },
+        { label: 'Ver Brasília', path: '/cidades/brasilia/', reason: 'Contexto geográfico principal.' }
+      ]
+    },
+    stats: [
+      { value: '1', label: 'Canal crítico', copy: 'Maps pesa cedo na jornada local de saúde.' },
+      { value: '3', label: 'Sinais decisivos', copy: 'Consistência, geografia e contexto comercial.' },
+      { value: '0', label: 'Espaço para improviso', copy: 'Cadastro solto não sustenta descoberta local.' },
+      { value: '100%', label: 'Dependência de coerência', copy: 'Perfil, cidade e página precisam reforçar a mesma intenção.' }
+    ],
+    marketCards: [
+      {
+        title: 'Busca por proximidade',
+        copy:
+          'Em Brasília, parte relevante da decisão local passa por proximidade, percepção de confiança e facilidade de contato. O perfil precisa sustentar isso.'
+      },
+      {
+        title: 'Perfil e página local',
+        copy:
+          'Quando o perfil local está desalinhado com a página comercial, a descoberta perde força e a clínica converte pior.'
+      },
+      {
+        title: 'Especialidade e clareza',
+        copy:
+          'A integração entre perfil, cidade e especialidade ajuda o Google e o usuário a entender melhor quando aquela clínica faz sentido.'
+      }
+    ],
+    coreOffer:
+      'Gestão e estrutura de Google Meu Negócio para clínicas médicas em Brasília, conectando mapa, perfil local e páginas comerciais.',
+    painPoints: [
+      'Perfil local sem sinais claros de relevância e conversão.',
+      'Baixa consistência entre perfil, site e especialidades.',
+      'Perda de contatos locais em pesquisas por proximidade.',
+      'Pouca geração de rotas e ligações qualificadas.'
+    ],
+    deliveryItems: [
+      'Integração entre GBP, página local e vertical médica.',
+      'Revisão da coerência entre perfil, cidade e especialidade.',
+      'FAQ comercial para dúvidas de decisão local.',
+      'Blocos de apoio para reforçar prova e contato.',
+      'Base para evoluir descoberta local com mais consistência.'
+    ],
+    methodSteps: [
+      {
+        title: 'Leitura do perfil',
+        copy: 'Mapeamos como o perfil participa hoje da descoberta local em Brasília e onde ele perde relevância frente à concorrência.'
+      },
+      {
+        title: 'Integração com o site',
+        copy: 'Ajustamos a relação entre perfil local, página comercial da cidade e página setorial da clínica.'
+      },
+      {
+        title: 'Sinais de relevância',
+        copy: 'Organizamos os sinais visíveis da clínica para reforçar geografia, contexto e especialidade.'
+      },
+      {
+        title: 'Conversão local',
+        copy: 'Melhoramos a lógica de contato para que mapa e site empurrem o usuário para o mesmo próximo passo.'
+      },
+      {
+        title: 'Acompanhamento',
+        copy: 'Usamos performance real para decidir próximos ajustes de descoberta local e evolução da malha comercial.'
+      }
+    ],
+    differentiators: [
+      'Integração real entre Maps e página comercial.',
+      'Leitura orientada a clínica médica e não a negócio local genérico.',
+      'Foco em contato qualificado e não só em visualização do perfil.',
+      'Base para crescer a praça com disciplina.'
+    ],
+    proofPoints: [
+      'Serviço canônico de Google Meu Negócio já publicado.',
+      'Página local para clínicas médicas em Brasília já ativa.',
+      'Artigo BOFU de GBP para clínicas já publicado.',
+      'Base metodológica da AUDITSEO já pública.'
+    ],
+    relatedLinks: [
+      { label: 'Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
+      { label: 'SEO Local para Clínicas Médicas em Brasília', path: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/', reason: 'Página local complementar.' },
+      { label: 'Google Meu Negócio para clínicas médicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'Apoio BOFU direto.' },
+      {
+        label: 'SEO local para clínicas médicas em Brasília vale a pena?',
+        path: '/blog/seo-local-para-clinicas-medicas-em-brasilia-vale-a-pena/',
+        reason: 'Apoio BOFU local de decisão.'
+      },
+      { label: 'Brasília', path: '/cidades/brasilia/', reason: 'Contexto geográfico principal.' },
+      { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Vertical-mãe da operação.' }
+    ],
+    faqItems: [
+      {
+        question: 'Google Meu Negócio sozinho resolve a descoberta local em Brasília?',
+        answer:
+          'Não. O perfil ajuda muito, mas precisa estar alinhado a uma página local forte e à vertical médica da clínica.'
+      },
+      {
+        question: 'Qual a diferença entre GBP e SEO local em Brasília?',
+        answer:
+          'GBP é parte da estratégia. SEO local inclui também página da cidade, estrutura do site e contexto comercial da clínica.'
+      },
+      {
+        question: 'A página do site realmente interfere no mapa?',
+        answer:
+          'Sim. Quando cidade, especialidade e página comercial se reforçam, a descoberta local tende a ganhar mais coerência.'
+      },
+      {
+        question: 'Quando essa frente merece prioridade?',
+        answer:
+          'Quando a clínica já depende de mapa para descoberta e quer aumentar a qualidade dos contatos vindos do Google.'
+      },
+      {
+        question: 'Isso vale para clínica com uma única unidade?',
+        answer:
+          'Sim. Mesmo uma única unidade pode depender bastante de proximidade e perfil local para ser encontrada.'
+      },
+      {
+        question: 'Perfil desatualizado realmente prejudica?',
+        answer:
+          'Prejudica porque reduz confiança, quebra coerência e deixa a clínica mais frágil na comparação local.'
+      },
+      {
+        question: 'Essa página compete com a página canônica de GBP?',
+        answer:
+          'Não. A página canônica apresenta o serviço amplo; esta página traduz a oferta para a cidade e o contexto médico local.'
+      },
+      {
+        question: 'Quando contratar essa frente em Brasília faz mais sentido?',
+        answer:
+          'Quando a clínica quer reforçar descoberta local, integrar melhor mapa e site e melhorar a qualidade do contato vindo do Google.'
+      }
+    ],
+    ctaTitle: 'QUER FAZER O MAPA AJUDAR MAIS SUA CLÍNICA EM BRASÍLIA?',
+    ctaCopy:
+      'Se o perfil local ainda não sustenta a descoberta e o contato como deveria, o melhor início é um diagnóstico orientado a Google Maps, página comercial e contexto médico local.',
+    ctaPrimaryLabel: 'Solicitar diagnóstico de GBP em Brasília',
+    ctaSecondaryPath: '/contato/',
+    ctaSecondaryLabel: 'Falar com a AUDITSEO',
+    areaServedName: 'Brasília',
+    brief: requireBrief('/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/')
   }
 ];
 

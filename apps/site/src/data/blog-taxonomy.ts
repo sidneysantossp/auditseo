@@ -461,7 +461,9 @@ export const blogCategories: BlogCategoryDefinition[] = [
       'seo-para-software-b2b-como-funciona',
       'quando-criar-pagina-regional-no-interior-de-sao-paulo',
       'seo-local-para-clinicas-medicas-no-rio-de-janeiro-vale-a-pena',
-      'seo-local-para-clinicas-medicas-em-belo-horizonte-vale-a-pena'
+      'seo-local-para-clinicas-medicas-em-belo-horizonte-vale-a-pena',
+      'seo-local-para-clinicas-medicas-em-curitiba-vale-a-pena',
+      'seo-local-para-clinicas-medicas-em-brasilia-vale-a-pena'
     ]
   }
 ];

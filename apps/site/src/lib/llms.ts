@@ -208,6 +208,26 @@ const serviceResources: LlmsResource[] = [
     title: 'Google Meu Negocio para Clinicas Medicas em Belo Horizonte',
     path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/',
     description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas em Belo Horizonte.'
+  },
+  {
+    title: 'SEO Local para Clinicas Medicas em Curitiba',
+    path: '/servicos/seo-local-para-clinicas-medicas-em-curitiba/',
+    description: 'Pagina comercial local para clinicas medicas em Curitiba, com foco em descoberta por geografia, especialidades e Google Maps.'
+  },
+  {
+    title: 'Google Meu Negocio para Clinicas Medicas em Curitiba',
+    path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/',
+    description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas em Curitiba.'
+  },
+  {
+    title: 'SEO Local para Clinicas Medicas em Brasilia',
+    path: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/',
+    description: 'Pagina comercial local para clinicas medicas em Brasilia, com foco em descoberta por geografia, especialidades e Google Maps.'
+  },
+  {
+    title: 'Google Meu Negocio para Clinicas Medicas em Brasilia',
+    path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/',
+    description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas em Brasilia.'
   }
 ];
 
@@ -261,6 +281,16 @@ const clusterResources: LlmsResource[] = [
     title: 'Belo Horizonte',
     path: '/cidades/belo-horizonte/',
     description: 'Pagina local para demanda comercial e organica na cidade de Belo Horizonte.'
+  },
+  {
+    title: 'Curitiba',
+    path: '/cidades/curitiba/',
+    description: 'Pagina local para demanda comercial e organica na cidade de Curitiba.'
+  },
+  {
+    title: 'Brasilia',
+    path: '/cidades/brasilia/',
+    description: 'Pagina local para demanda comercial e organica na cidade de Brasilia.'
   },
   {
     title: 'Landing Page AI Overview Optimization para Clinicas Medicas em Sao Paulo',

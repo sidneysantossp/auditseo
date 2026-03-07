@@ -733,6 +733,146 @@ export const southeastExpansionWaveOneCommercialBriefs: CommercialPageBrief[] = 
     ctaSecondary: 'Entender a estrategia de Maps em BH',
     schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
     avoidOverlapWith: ['/servicos/google-meu-negocio/', '/blog/google-meu-negocio-para-clinicas-medicas/']
+  },
+  {
+    slug: '/servicos/seo-local-para-clinicas-medicas-em-curitiba/',
+    pageTitle: 'SEO Local para Clinicas Medicas em Curitiba',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/seo-local/',
+    targetAudience: 'Clinicas medicas com atuacao em Curitiba e foco em novos pacientes por geografia.',
+    primaryKeyword: 'seo local para clinicas medicas em curitiba',
+    secondaryKeywords: ['seo para clinicas medicas em curitiba', 'agencia seo local para clinicas em curitiba', 'marketing no google para clinicas em curitiba'],
+    dominantIntent: 'local',
+    heroAngle: 'Captar mais pacientes em Curitiba com uma estrutura local orientada a descoberta, mapa e paginas comerciais.',
+    coreOffer: 'Operacao de SEO local para clinicas medicas com foco em visibilidade organica, local pack e paginas comerciais em Curitiba.',
+    painPoints: [
+      'Baixa presenca em buscas geograficas dentro de Curitiba.',
+      'Especialidades e pagina local sem integracao clara.',
+      'Dependencia alta de indicacao ou midia paga.',
+      'Site sem paginas com intencao local suficiente.'
+    ],
+    proofAssets: ['Pagina de Curitiba', 'Pagina de clinicas medicas', 'Artigos de SEO local para clinicas', 'Pagina de metodologia'],
+    faqAngles: [
+      'SEO local funciona para clinicas em Curitiba',
+      'O que muda entre Curitiba e Sao Paulo na estrategia local',
+      'Google Meu Negocio entra junto',
+      'Que tipo de pagina uma clinica em Curitiba precisa'
+    ],
+    internalLinks: [
+      { label: 'SEO para clinicas medicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Pagina setorial mae.' },
+      { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Servico canonico principal.' },
+      { label: 'Curitiba', path: '/cidades/curitiba/', reason: 'Contexto geografico principal.' },
+      { label: 'SEO local vale a pena para clinicas medicas', path: '/blog/seo-local-vale-a-pena-para-clinicas-medicas/', reason: 'Apoio BOFU de decisao.' }
+    ],
+    ctaPrimary: 'Solicitar diagnostico local em Curitiba',
+    ctaSecondary: 'Falar com a AUDITSEO sobre clinicas em Curitiba',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/servicos/seo-para-clinicas-medicas/', '/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/']
+  },
+  {
+    slug: '/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/',
+    pageTitle: 'Google Meu Negocio para Clinicas Medicas em Curitiba',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/google-meu-negocio/',
+    targetAudience: 'Clinicas medicas de Curitiba que dependem de descoberta local, rota e comparacao rapida.',
+    primaryKeyword: 'google meu negocio para clinicas medicas em curitiba',
+    secondaryKeywords: ['google business profile para clinicas em curitiba', 'gbp para clinicas medicas em curitiba', 'maps para clinicas em curitiba'],
+    dominantIntent: 'local',
+    heroAngle: 'Fortalecer a descoberta de clinicas medicas em Curitiba por meio de Google Maps e Google Business Profile.',
+    coreOffer: 'Estrutura, gestao e integracao de Google Meu Negocio com as paginas comerciais da clinica em Curitiba.',
+    painPoints: [
+      'Perfil local sem sinais suficientes de relevancia e conversao.',
+      'Baixa consistencia entre perfil, site e especialidades.',
+      'Perda de contatos locais em pesquisas de proximidade.',
+      'Pouca geracao de ligacoes e rotas qualificadas.'
+    ],
+    proofAssets: ['Pagina de Google Meu Negocio', 'Pagina local de clinicas medicas em Curitiba', 'Artigo BOFU de GBP', 'Pagina institucional'],
+    faqAngles: [
+      'GBP sozinho resolve a descoberta local',
+      'Qual a diferenca entre GBP e SEO local em Curitiba',
+      'Quanto tempo leva para melhorar o perfil',
+      'A pagina do site interfere no mapa'
+    ],
+    internalLinks: [
+      { label: 'Google Meu Negocio', path: '/servicos/google-meu-negocio/', reason: 'Servico canonico principal.' },
+      { label: 'SEO local para clinicas medicas em Curitiba', path: '/servicos/seo-local-para-clinicas-medicas-em-curitiba/', reason: 'Pagina complementar local.' },
+      { label: 'Google Meu Negocio para clinicas medicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'BOFU direto.' },
+      { label: 'Curitiba', path: '/cidades/curitiba/', reason: 'Contexto geografico principal.' }
+    ],
+    ctaPrimary: 'Solicitar diagnostico de GBP em Curitiba',
+    ctaSecondary: 'Entender a estrategia de Maps em Curitiba',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/servicos/google-meu-negocio/', '/blog/google-meu-negocio-para-clinicas-medicas/']
+  },
+  {
+    slug: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/',
+    pageTitle: 'SEO Local para Clinicas Medicas em Brasilia',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/seo-local/',
+    targetAudience: 'Clinicas medicas com atuacao em Brasilia e foco em novos pacientes por geografia.',
+    primaryKeyword: 'seo local para clinicas medicas em brasilia',
+    secondaryKeywords: ['seo para clinicas medicas em brasilia', 'agencia seo local para clinicas em brasilia', 'marketing no google para clinicas em brasilia'],
+    dominantIntent: 'local',
+    heroAngle: 'Captar mais pacientes em Brasilia com uma estrutura local orientada a descoberta, mapa e paginas comerciais.',
+    coreOffer: 'Operacao de SEO local para clinicas medicas com foco em visibilidade organica, local pack e paginas comerciais em Brasilia.',
+    painPoints: [
+      'Baixa presenca em buscas geograficas dentro de Brasilia.',
+      'Especialidades e pagina local sem integracao clara.',
+      'Dependencia alta de indicacao ou midia paga.',
+      'Site sem paginas com intencao local suficiente.'
+    ],
+    proofAssets: ['Pagina de Brasilia', 'Pagina de clinicas medicas', 'Artigos de SEO local para clinicas', 'Pagina de metodologia'],
+    faqAngles: [
+      'SEO local funciona para clinicas em Brasilia',
+      'O que muda entre Brasilia e Sao Paulo na estrategia local',
+      'Google Meu Negocio entra junto',
+      'Que tipo de pagina uma clinica em Brasilia precisa'
+    ],
+    internalLinks: [
+      { label: 'SEO para clinicas medicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Pagina setorial mae.' },
+      { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Servico canonico principal.' },
+      { label: 'Brasilia', path: '/cidades/brasilia/', reason: 'Contexto geografico principal.' },
+      { label: 'SEO local vale a pena para clinicas medicas', path: '/blog/seo-local-vale-a-pena-para-clinicas-medicas/', reason: 'Apoio BOFU de decisao.' }
+    ],
+    ctaPrimary: 'Solicitar diagnostico local em Brasilia',
+    ctaSecondary: 'Falar com a AUDITSEO sobre clinicas em Brasilia',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/servicos/seo-para-clinicas-medicas/', '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/']
+  },
+  {
+    slug: '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/',
+    pageTitle: 'Google Meu Negocio para Clinicas Medicas em Brasilia',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/google-meu-negocio/',
+    targetAudience: 'Clinicas medicas de Brasilia que dependem de descoberta local, rota e comparacao rapida.',
+    primaryKeyword: 'google meu negocio para clinicas medicas em brasilia',
+    secondaryKeywords: ['google business profile para clinicas em brasilia', 'gbp para clinicas medicas em brasilia', 'maps para clinicas em brasilia'],
+    dominantIntent: 'local',
+    heroAngle: 'Fortalecer a descoberta de clinicas medicas em Brasilia por meio de Google Maps e Google Business Profile.',
+    coreOffer: 'Estrutura, gestao e integracao de Google Meu Negocio com as paginas comerciais da clinica em Brasilia.',
+    painPoints: [
+      'Perfil local sem sinais suficientes de relevancia e conversao.',
+      'Baixa consistencia entre perfil, site e especialidades.',
+      'Perda de contatos locais em pesquisas de proximidade.',
+      'Pouca geracao de ligacoes e rotas qualificadas.'
+    ],
+    proofAssets: ['Pagina de Google Meu Negocio', 'Pagina local de clinicas medicas em Brasilia', 'Artigo BOFU de GBP', 'Pagina institucional'],
+    faqAngles: [
+      'GBP sozinho resolve a descoberta local',
+      'Qual a diferenca entre GBP e SEO local em Brasilia',
+      'Quanto tempo leva para melhorar o perfil',
+      'A pagina do site interfere no mapa'
+    ],
+    internalLinks: [
+      { label: 'Google Meu Negocio', path: '/servicos/google-meu-negocio/', reason: 'Servico canonico principal.' },
+      { label: 'SEO local para clinicas medicas em Brasilia', path: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/', reason: 'Pagina complementar local.' },
+      { label: 'Google Meu Negocio para clinicas medicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'BOFU direto.' },
+      { label: 'Brasilia', path: '/cidades/brasilia/', reason: 'Contexto geografico principal.' }
+    ],
+    ctaPrimary: 'Solicitar diagnostico de GBP em Brasilia',
+    ctaSecondary: 'Entender a estrategia de Maps em Brasilia',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/servicos/google-meu-negocio/', '/blog/google-meu-negocio-para-clinicas-medicas/']
   }
 ];
 
