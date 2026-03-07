@@ -449,3 +449,148 @@ export const saoPauloWaveOneCommercialBriefs: CommercialPageBrief[] = [
     avoidOverlapWith: ['/servicos/seo-local-para-clinicas-medicas-na-grande-sao-paulo/', '/servicos/seo-local-para-clinicas-medicas-em-campinas/']
   }
 ];
+
+export const saoPauloWaveTwoCommercialBriefs: CommercialPageBrief[] = [
+  {
+    slug: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/',
+    pageTitle: 'SEO para Escritórios de Advocacia em São Paulo',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/consultoria-seo/',
+    targetAudience: 'Sócios, gestores e times de marketing de escritórios de advocacia em São Paulo.',
+    primaryKeyword: 'seo para escritorios de advocacia em sao paulo',
+    secondaryKeywords: ['consultoria seo juridico em sao paulo', 'agencia seo para advogados em sao paulo', 'seo para escritorio de advocacia'],
+    dominantIntent: 'local',
+    heroAngle: 'Fortalecer a descoberta orgânica de escritórios de advocacia em uma das praças jurídicas mais competitivas do país.',
+    coreOffer: 'Consultoria de SEO para escritórios de advocacia com foco em áreas de atuação, autoridade, busca local e captação qualificada em São Paulo.',
+    painPoints: [
+      'Baixa visibilidade orgânica para áreas de atuação relevantes.',
+      'Dependência de indicação e networking para gerar novas oportunidades.',
+      'Site institucional sem páginas comerciais claras por serviço jurídico.',
+      'Mercado altamente competitivo na capital.'
+    ],
+    proofAssets: ['Página de consultoria SEO', 'Página de escritórios de advocacia', 'Página de São Paulo', 'Página de metodologia'],
+    faqAngles: [
+      'SEO funciona para escritórios de advocacia em São Paulo',
+      'Como estruturar áreas de atuação sem canibalização',
+      'Diferença entre página institucional e página comercial jurídica',
+      'Quando contratar consultoria SEO para o jurídico'
+    ],
+    internalLinks: [
+      { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'Escritórios de advocacia', path: '/nichos/escritorios-advocacia/', reason: 'Hub setorial de apoio já existente.' },
+      { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Contexto geográfico principal.' },
+      { label: 'Como escolher agência SEO', path: '/blog/como-escolher-agencia-seo/', reason: 'Apoio BOFU de decisão.' }
+    ],
+    ctaPrimary: 'Solicitar diagnóstico para escritório em São Paulo',
+    ctaSecondary: 'Falar com a AUDITSEO sobre o setor jurídico',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/nichos/escritorios-advocacia/', '/servicos/consultoria-seo/']
+  },
+  {
+    slug: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/',
+    pageTitle: 'Consultoria SEO para Energia Solar em São Paulo',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/consultoria-seo/',
+    targetAudience: 'Empresas de energia solar e integradores fotovoltaicos com atuação comercial em São Paulo.',
+    primaryKeyword: 'consultoria seo para energia solar em sao paulo',
+    secondaryKeywords: ['seo para energia solar em sao paulo', 'agencia seo para energia solar', 'consultoria seo b2b energia solar'],
+    dominantIntent: 'local',
+    heroAngle: 'Captar demanda qualificada para energia solar em São Paulo com páginas comerciais e estrutura orientada a jornada B2B.',
+    coreOffer: 'Consultoria SEO para energia solar com foco em demanda regional, páginas de solução, intenção consultiva e autoridade comercial.',
+    painPoints: [
+      'Leads orgânicos escassos ou pouco qualificados.',
+      'Dependência alta de mídia paga e geração fria.',
+      'Site sem páginas fortes para solução, segmento e intenção comercial.',
+      'Jornada de decisão longa sem conteúdo de apoio adequado.'
+    ],
+    proofAssets: ['Página de consultoria SEO', 'Página de energia solar', 'Página de São Paulo', 'Página de metodologia'],
+    faqAngles: [
+      'SEO funciona para energia solar em São Paulo',
+      'Como SEO ajuda em vendas consultivas',
+      'Que tipo de página uma empresa de energia solar precisa',
+      'Quanto tempo leva para gerar demanda orgânica'
+    ],
+    internalLinks: [
+      { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'Energia solar', path: '/nichos/energia-solar/', reason: 'Hub setorial de apoio já publicado.' },
+      { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Contexto geográfico principal.' },
+      { label: 'Quanto custa SEO', path: '/blog/quanto-custa-seo/', reason: 'Apoio de decisão comercial.' }
+    ],
+    ctaPrimary: 'Solicitar diagnóstico para energia solar em São Paulo',
+    ctaSecondary: 'Entender a estratégia comercial para energia solar',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/nichos/energia-solar/', '/servicos/consultoria-seo/']
+  },
+  {
+    slug: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/',
+    pageTitle: 'Consultoria SEO para Software B2B em São Paulo',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/consultoria-seo/',
+    targetAudience: 'Empresas de software B2B, SaaS e tecnologia com operação comercial em São Paulo.',
+    primaryKeyword: 'consultoria seo para software b2b em sao paulo',
+    secondaryKeywords: ['seo para software b2b em sao paulo', 'consultoria seo saas', 'agencia seo para software b2b'],
+    dominantIntent: 'local',
+    heroAngle: 'Ajudar empresas de software B2B em São Paulo a ganhar visibilidade para buscas comparativas, técnicas e comerciais de alta complexidade.',
+    coreOffer: 'Consultoria SEO para software B2B com foco em categoria, solução, comparação, marca e jornada consultiva.',
+    painPoints: [
+      'Ciclo comercial longo e com muitas etapas de comparação.',
+      'Baixa visibilidade para termos de categoria, problema e solução.',
+      'Site com copy técnica, mas sem estrutura comercial clara.',
+      'Dependência excessiva de outbound e mídia paga.'
+    ],
+    proofAssets: ['Página de consultoria SEO', 'Página de LLM Brand Presence', 'Página de São Paulo', 'Página de metodologia'],
+    faqAngles: [
+      'SEO funciona para software B2B em São Paulo',
+      'Como lidar com ciclo longo de decisão',
+      'Quais páginas um SaaS B2B precisa publicar',
+      'SEO e LLM Brand Presence se complementam'
+    ],
+    internalLinks: [
+      { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'LLM Brand Presence', path: '/servicos/llm-brand-presence/', reason: 'Complemento estratégico para descoberta assistida por IA.' },
+      { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Contexto geográfico principal.' },
+      { label: 'O que é LLM SEO', path: '/blog/o-que-e-llm-seo/', reason: 'Apoio editorial de contexto técnico.' }
+    ],
+    ctaPrimary: 'Solicitar diagnóstico para software B2B em São Paulo',
+    ctaSecondary: 'Falar sobre captação orgânica para SaaS',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/servicos/consultoria-seo/', '/servicos/llm-brand-presence/']
+  },
+  {
+    slug: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/',
+    pageTitle: 'Consultoria SEO para Empresas no Interior de São Paulo',
+    pageType: 'regional-bridge',
+    canonicalService: '/servicos/consultoria-seo/',
+    targetAudience: 'Empresas de serviços e B2B com atuação em polos econômicos do interior de São Paulo.',
+    primaryKeyword: 'consultoria seo para empresas no interior de sao paulo',
+    secondaryKeywords: ['seo para empresas no interior de sao paulo', 'consultoria seo regional no interior paulista', 'agencia seo para empresas no interior'],
+    dominantIntent: 'local',
+    heroAngle: 'Organizar a expansão comercial em polos do interior paulista sem depender só da capital ou de páginas genéricas.',
+    coreOffer: 'Consultoria SEO para empresas do interior de São Paulo com foco em polos econômicos, páginas comerciais e cobertura regional planejada.',
+    painPoints: [
+      'Presença orgânica fraca fora da capital.',
+      'Estrutura comercial concentrada em uma página genérica.',
+      'Falta de prioridade clara entre polos do interior.',
+      'Dependência de canais pagos para gerar demanda regional.'
+    ],
+    proofAssets: ['Página de consultoria SEO', 'Página de Campinas', 'Página de metodologia', 'Páginas comerciais da Onda 1 em polos do interior'],
+    faqAngles: [
+      'Vale criar página para interior de São Paulo',
+      'Como decidir quais cidades do interior priorizar',
+      'Quando uma empresa precisa de página regional',
+      'Diferença entre página regional e página por cidade'
+    ],
+    internalLinks: [
+      { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'Campinas', path: '/cidades/campinas/', reason: 'Polo econômico já publicado.' },
+      { label: 'SEO local para clínicas médicas em Campinas', path: '/servicos/seo-local-para-clinicas-medicas-em-campinas/', reason: 'Exemplo real de expansão para o interior.' },
+      { label: 'Como escolher agência SEO', path: '/blog/como-escolher-agencia-seo/', reason: 'Apoio BOFU de decisão.' }
+    ],
+    ctaPrimary: 'Solicitar diagnóstico para o interior de São Paulo',
+    ctaSecondary: 'Falar sobre expansão regional',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/cidades/campinas/', '/servicos/consultoria-seo/']
+  }
+];
+
+export const allCommercialBriefs = [...saoPauloWaveOneCommercialBriefs, ...saoPauloWaveTwoCommercialBriefs];

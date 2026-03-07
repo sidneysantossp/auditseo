@@ -77,7 +77,11 @@ const serviceEntries: SitemapUrlEntry[] = [
   { path: '/servicos/google-meu-negocio-para-odontologia-em-sao-paulo/' },
   { path: '/servicos/seo-local-para-clinicas-medicas-na-grande-sao-paulo/' },
   { path: '/servicos/seo-local-para-clinicas-medicas-em-campinas/' },
-  { path: '/servicos/seo-local-para-clinicas-medicas-em-sao-jose-dos-campos/' }
+  { path: '/servicos/seo-local-para-clinicas-medicas-em-sao-jose-dos-campos/' },
+  { path: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/' },
+  { path: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/' },
+  { path: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/' },
+  { path: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/' }
 ];
 
 const clusterEntries: SitemapUrlEntry[] = [

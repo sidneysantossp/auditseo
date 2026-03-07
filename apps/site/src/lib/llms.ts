@@ -168,6 +168,26 @@ const serviceResources: LlmsResource[] = [
     title: 'SEO Local para Clinicas Medicas em Sao Jose dos Campos',
     path: '/servicos/seo-local-para-clinicas-medicas-em-sao-jose-dos-campos/',
     description: 'Pagina comercial local para clinicas medicas em Sao Jose dos Campos e no Vale do Paraiba.'
+  },
+  {
+    title: 'SEO para Escritorios de Advocacia em Sao Paulo',
+    path: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/',
+    description: 'Pagina comercial juridica para Sao Paulo, com foco em areas de atuacao, autoridade e descoberta qualificada.'
+  },
+  {
+    title: 'Consultoria SEO para Energia Solar em Sao Paulo',
+    path: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/',
+    description: 'Pagina comercial B2B para energia solar em Sao Paulo, com foco em demanda qualificada e paginas de solucao.'
+  },
+  {
+    title: 'Consultoria SEO para Software B2B em Sao Paulo',
+    path: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/',
+    description: 'Pagina comercial para software B2B em Sao Paulo, com foco em categoria, comparacao e descoberta organica.'
+  },
+  {
+    title: 'Consultoria SEO para Empresas no Interior de Sao Paulo',
+    path: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/',
+    description: 'Pagina regional para empresas do interior paulista, com foco em expansao comercial e cobertura por polos economicos.'
   }
 ];
 
