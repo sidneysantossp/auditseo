@@ -181,11 +181,15 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         path: '/nichos/clinicas-medicas/',
         reason: 'Leitura setorial de apoio, sem competir com a URL comercial.'
       },
-      { label: 'Quanto custa SEO', path: '/blog/quanto-custa-seo/', reason: 'Artigo vivo de decisão comercial.' },
       {
-        label: 'Guia de Google Meu Negócio',
-        path: '/blog/google-meu-negocio-guia-completo/',
-        reason: 'Apoio sobre descoberta local e GBP.'
+        label: 'Em quanto tempo SEO local gera resultado para clínicas médicas?',
+        path: '/blog/em-quanto-tempo-seo-local-gera-resultado-para-clinicas-medicas/',
+        reason: 'Objeção de prazo diretamente ligada à vertical.'
+      },
+      {
+        label: 'SEO local ou Google Meu Negócio para clínicas médicas?',
+        path: '/blog/seo-local-ou-google-meu-negocio-para-clinicas-medicas/',
+        reason: 'Comparação BOFU mais aderente do que recursos genéricos.'
       }
     ],
     faqItems: [
@@ -342,11 +346,15 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
       },
       { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Principal cidade da expansão inicial.' },
       {
-        label: 'Guia de Google Meu Negócio',
-        path: '/blog/google-meu-negocio-guia-completo/',
-        reason: 'Leitura útil para descoberta local.'
+        label: 'SEO para dermatologistas vale a pena?',
+        path: '/blog/seo-para-dermatologistas-vale-a-pena/',
+        reason: 'Artigo BOFU central da vertical.'
       },
-      { label: 'Como escolher agência SEO', path: '/blog/como-escolher-agencia-seo/', reason: 'Apoio de decisão comercial.' }
+      {
+        label: 'SEO local ou Google Meu Negócio para dermatologistas?',
+        path: '/blog/seo-local-ou-google-meu-negocio-para-dermatologistas/',
+        reason: 'Comparação mais próxima da decisão local da especialidade.'
+      }
     ],
     faqItems: [
       {
@@ -496,11 +504,15 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         reason: 'Maps e descoberta local fazem parte da jornada.'
       },
       { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Cidade prioritária da Onda 1.' },
-      { label: 'Quanto custa SEO', path: '/blog/quanto-custa-seo/', reason: 'Apoio de decisão comercial.' },
       {
-        label: 'Guia de Google Meu Negócio',
-        path: '/blog/google-meu-negocio-guia-completo/',
-        reason: 'Leitura sobre GBP e local pack.'
+        label: 'SEO para odontologia: como funciona',
+        path: '/blog/seo-para-odontologia-como-funciona/',
+        reason: 'Artigo BOFU central da vertical.'
+      },
+      {
+        label: 'SEO local ou Google Meu Negócio para odontologia?',
+        path: '/blog/seo-local-ou-google-meu-negocio-para-odontologia/',
+        reason: 'Comparação direta entre os dois motores de descoberta.'
       }
     ],
     faqItems: [
@@ -2073,7 +2085,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         path: '/blog/seo-para-escritorios-de-advocacia-funciona/',
         reason: 'Apoio BOFU setorial para decisão.'
       },
-      { label: 'Como escolher agência SEO', path: '/blog/como-escolher-agencia-seo/', reason: 'Apoio BOFU complementar.' }
+      {
+        label: 'Quanto custa SEO para escritórios de advocacia?',
+        path: '/blog/quanto-custa-seo-para-escritorios-de-advocacia/',
+        reason: 'Objeção de orçamento diretamente ligada ao setor jurídico.'
+      }
     ],
     faqItems: [
       {
@@ -2231,7 +2247,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         path: '/blog/seo-para-energia-solar-como-gerar-demanda-qualificada/',
         reason: 'Apoio BOFU setorial para decisão.'
       },
-      { label: 'Quanto custa SEO', path: '/blog/quanto-custa-seo/', reason: 'Apoio de decisão comercial.' }
+      {
+        label: 'Consultoria SEO para energia solar vale a pena?',
+        path: '/blog/consultoria-seo-para-energia-solar-vale-a-pena/',
+        reason: 'Artigo BOFU de ROI ligado à vertical.'
+      }
     ],
     faqItems: [
       {
@@ -2389,7 +2409,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         path: '/blog/seo-para-software-b2b-como-funciona/',
         reason: 'Apoio BOFU setorial para decisão.'
       },
-      { label: 'O que é LLM SEO', path: '/blog/o-que-e-llm-seo/', reason: 'Apoio técnico sobre descoberta em IA.' }
+      {
+        label: 'Consultoria SEO para software B2B vale a pena?',
+        path: '/blog/consultoria-seo-para-software-b2b-vale-a-pena/',
+        reason: 'Artigo de ROI e maturidade comercial da vertical.'
+      }
     ],
     faqItems: [
       {

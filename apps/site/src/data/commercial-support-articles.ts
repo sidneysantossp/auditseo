@@ -1,4 +1,5 @@
 import { commercialSupportArticlesCuritibaBrasilia } from './commercial-support-articles-curitiba-brasilia';
+import { commercialSupportArticlesBofuTransversal } from './commercial-support-articles-bofu-transversal';
 import { commercialSupportArticlesPortoAlegre } from './commercial-support-articles-porto-alegre';
 import { commercialSupportArticlesRioBh } from './commercial-support-articles-rio-bh';
 
@@ -1541,6 +1542,7 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
     ctaPath: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/',
     ctaLabel: 'Ver a página local de Brasília'
   },
+  ...commercialSupportArticlesBofuTransversal,
   ...commercialSupportArticlesCuritibaBrasilia,
   ...commercialSupportArticlesRioBh,
   ...commercialSupportArticlesPortoAlegre

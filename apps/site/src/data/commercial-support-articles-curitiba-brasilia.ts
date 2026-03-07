@@ -396,7 +396,8 @@ export const commercialSupportArticlesCuritibaBrasilia: CommercialSupportArticle
     slug: 'seo-para-software-b2b-em-brasilia-como-funciona',
     title: 'SEO para Software B2B em Brasília: Como Funciona',
     seoTitle: 'SEO para Software B2B em Brasília: Como Funciona | AUDITSEO',
-    description: 'Veja como SEO para software B2B em Brasília funciona e quando a praça merece uma página comercial dedicada.',
+    description:
+      'Entenda como SEO para software B2B em Brasília funciona na prática, quando a praça pede uma página comercial própria e quais sinais mostram maturidade para essa frente.',
     excerpt: 'Em Brasília, software B2B precisa combinar categoria, solução e contexto comercial da praça para ganhar busca mais qualificada.',
     subtitle: 'A cidade só entra quando a operação precisa traduzir melhor categoria, solução e contexto comercial na aquisição orgânica.',
     badge: 'Software B2B',
