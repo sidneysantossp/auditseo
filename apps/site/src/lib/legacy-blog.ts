@@ -3,6 +3,12 @@ import path from 'node:path';
 import { sidneySantos } from '../data/authors';
 import { blogEditorialOverrides, canonicalBlogArticleRedirects } from '../data/blog-editorial';
 import {
+  commercialSupportArticles,
+  getCommercialSupportArticleToc,
+  renderCommercialSupportArticleHtml,
+  type CommercialSupportArticleSource
+} from '../data/commercial-support-articles';
+import {
   blogCategories,
   blogFeaturedArticleSlug,
   blogPageSize,
@@ -68,6 +74,7 @@ const slugCache = Array.from(
   )
 ).sort();
 const canonicalSlugCache = slugCache.filter((slug) => !canonicalBlogArticleRedirects[slug]);
+const commercialSupportSlugCache = commercialSupportArticles.map((article) => article.slug).sort();
 
 let articleCache: LegacyBlogArticle[] | null = null;
 
@@ -243,10 +250,41 @@ function applyEditorialOverride(article: LegacyBlogArticle) {
   };
 }
 
-function getArticles() {
-  if (articleCache) return articleCache;
+function buildCommercialSupportArticle(source: CommercialSupportArticleSource): LegacyBlogArticle {
+  const category = getBlogCategoryBySlug(source.categorySlug) ?? normalizeCategory(source.slug);
+  const contentHtml = renderCommercialSupportArticleHtml(source, {
+    categoryTitle: category.title,
+    authorImagePath: sidneySantos.imagePath
+  });
 
-  articleCache = canonicalSlugCache
+  return applyEditorialOverride({
+    slug: source.slug,
+    title: source.title,
+    seoTitle: source.seoTitle,
+    description: source.description,
+    excerpt: source.excerpt,
+    canonicalPath: `/blog/${source.slug}/`,
+    contentHtml,
+    imagePath: normalizeImagePath(source.imagePath),
+    publishedTime: source.publishedTime,
+    modifiedTime: source.modifiedTime,
+    publishedLabel: formatPublishedLabel(source.publishedTime, 'Março 2026'),
+    readingTime: source.readingTime,
+    readingTimeLabel: `${source.readingTime} minutos`,
+    legacySection: source.badge,
+    category,
+    keywords: source.keywords,
+    tableOfContents: getCommercialSupportArticleToc(source),
+    faqItems: source.faqItems,
+    wordCount: stripTags(contentHtml)
+      .split(/\s+/)
+      .filter(Boolean).length,
+    author: sidneySantos
+  } satisfies LegacyBlogArticle);
+}
+
+function getLegacyFileArticles() {
+  return canonicalSlugCache
     .map((slug) => {
       const filepath = path.join(blogDir, `${slug}.html`);
       const html = fs.readFileSync(filepath, 'utf8');
@@ -334,7 +372,16 @@ function getArticles() {
         wordCount,
         author: sidneySantos
       } satisfies LegacyBlogArticle);
-    })
+    });
+}
+
+function getArticles() {
+  if (articleCache) return articleCache;
+
+  articleCache = uniqueArticles([
+    ...commercialSupportArticles.map((article) => buildCommercialSupportArticle(article)),
+    ...getLegacyFileArticles()
+  ])
     .sort((left, right) => {
       const leftTime = new Date(left.publishedTime).getTime();
       const rightTime = new Date(right.publishedTime).getTime();
@@ -346,7 +393,9 @@ function getArticles() {
 }
 
 export function getLegacyArticleSlugs() {
-  return Array.from(new Set([...canonicalSlugCache, ...Object.keys(legacyBlogSlugRedirects)])).sort();
+  return Array.from(
+    new Set([...canonicalSlugCache, ...commercialSupportSlugCache, ...Object.keys(legacyBlogSlugRedirects)])
+  ).sort();
 }
 
 export function getLegacyArticleBySlug(slug: string): LegacyBlogArticle | null {

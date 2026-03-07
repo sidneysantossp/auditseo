@@ -447,7 +447,15 @@ export const blogCategories: BlogCategoryDefinition[] = [
       'especialista-em-seo',
       'quanto-custa-seo',
       'geo-vs-seo',
-      'google-meu-negocio-guia-completo'
+      'google-meu-negocio-guia-completo',
+      'quanto-custa-seo-para-clinicas-medicas',
+      'google-meu-negocio-para-clinicas-medicas',
+      'seo-local-vale-a-pena-para-clinicas-medicas',
+      'agencia-seo-para-clinicas-medicas-como-escolher',
+      'seo-para-dermatologistas-vale-a-pena',
+      'google-meu-negocio-para-dermatologistas',
+      'seo-para-odontologia-como-funciona',
+      'google-meu-negocio-para-odontologia'
     ]
   }
 ];
