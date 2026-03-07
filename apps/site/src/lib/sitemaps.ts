@@ -81,7 +81,11 @@ const serviceEntries: SitemapUrlEntry[] = [
   { path: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/' },
   { path: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/' },
   { path: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/' },
-  { path: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/' }
+  { path: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/' },
+  { path: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/' },
+  { path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/' },
+  { path: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/' },
+  { path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/' }
 ];
 
 const clusterEntries: SitemapUrlEntry[] = [
@@ -93,6 +97,8 @@ const clusterEntries: SitemapUrlEntry[] = [
   { path: '/cidades/' },
   { path: '/cidades/sao-paulo/' },
   { path: '/cidades/campinas/' },
+  { path: '/cidades/rio-de-janeiro/' },
+  { path: '/cidades/belo-horizonte/' },
   { path: '/lp/ai-overview-optimization-clinicas-medicas-sao-paulo/' }
 ];
 

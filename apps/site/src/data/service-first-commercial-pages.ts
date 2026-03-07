@@ -2607,6 +2607,618 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
     ctaSecondaryLabel: 'Falar com a AUDITSEO',
     areaServedName: 'Interior de São Paulo',
     brief: requireBrief('/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/')
+  },
+  {
+    slug: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/',
+    seoTitle: 'SEO Local para Clínicas Médicas no Rio de Janeiro | AUDITSEO',
+    description:
+      'SEO local para clínicas médicas no Rio de Janeiro com foco em descoberta por geografia, Google Maps, especialidades e páginas comerciais de alta intenção.',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    displayTitle: 'SEO Local para Clínicas Médicas no Rio de Janeiro',
+    badge: 'Saúde Privada, Rio e Busca Local',
+    heroTitlePrefix: 'SEO LOCAL PARA CLÍNICAS MÉDICAS ',
+    heroTitleAccent: 'NO RIO DE JANEIRO',
+    heroSubtitle:
+      'No Rio de Janeiro, a clínica precisa ser encontrada com clareza por especialidade, geografia e contexto de atendimento. Sem uma estrutura local forte, o Google até mostra sinais da marca, mas não sustenta descoberta comercial consistente.',
+    highlights: ['Rio de Janeiro', 'SEO Local', 'Google Maps', 'Busca com Intenção'],
+    heroCard: {
+      title: 'Quando essa página faz sentido',
+      copy:
+        'Quando a clínica atende a cidade do Rio, depende de descoberta local para gerar consultas e ainda não conectou especialidades, página comercial e mapa em uma mesma lógica.',
+      links: [
+        { label: 'Ver SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
+        { label: 'Ver SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
+        { label: 'Ver Rio de Janeiro', path: '/cidades/rio-de-janeiro/', reason: 'Contexto geográfico principal.' }
+      ]
+    },
+    stats: [
+      { value: '1', label: 'Praça prioritária', copy: 'Rio de Janeiro é uma das cidades mais fortes da expansão fora de São Paulo.' },
+      { value: '3', label: 'Eixos centrais', copy: 'Especialidade, geografia e mapa precisam operar juntos.' },
+      { value: '0', label: 'Espaço para texto genérico', copy: 'Página local de saúde precisa ser específica para converter.' },
+      { value: '100%', label: 'Dependência de contexto', copy: 'Mensagem, bairro, confiança e facilidade de contato importam.' }
+    ],
+    marketCards: [
+      {
+        title: 'Descoberta por geografia',
+        copy:
+          'Pacientes no Rio tendem a cruzar especialidade, bairro, proximidade e percepção de confiança antes do contato. A página precisa responder a isso com clareza.'
+      },
+      {
+        title: 'Mapa e página comercial',
+        copy:
+          'Quando site e Google Maps não conversam, a clínica perde força local e deixa a decisão mais frágil justamente no momento mais quente da busca.'
+      },
+      {
+        title: 'Especialidade com leitura urbana',
+        copy:
+          'A clínica não disputa só pelo nome da marca. Disputa também por especialidade, região e contexto de atendimento dentro da cidade.'
+      }
+    ],
+    coreOffer:
+      'SEO local para clínicas médicas no Rio de Janeiro, conectando especialidades, Google Maps, páginas comerciais e geração de contatos qualificados.',
+    painPoints: [
+      'Baixa presença para buscas geográficas dentro da cidade.',
+      'Especialidades sem página comercial forte.',
+      'Desalinhamento entre perfil local, site e intenção de busca.',
+      'Dependência excessiva de mídia paga ou indicação.'
+    ],
+    deliveryItems: [
+      'Arquitetura local para cidade, especialidade e página comercial.',
+      'Integração entre SEO local, Google Maps e sinais de confiança.',
+      'FAQ comercial para objeções de decisão e comparação.',
+      'Interlinking entre cidade, vertical médica e ativos BOFU.',
+      'Base para futuras derivações locais por especialidade ou bairro, quando fizer sentido.'
+    ],
+    methodSteps: [
+      {
+        title: 'Diagnóstico local',
+        copy: 'Mapeamos como a clínica é encontrada hoje no Rio, quais especialidades já têm tração e onde a arquitetura atual desperdiça intenção local.'
+      },
+      {
+        title: 'Arquitetura comercial',
+        copy: 'Definimos o papel da página local, da página setorial e das páginas derivadas sem inflar a malha com duplicação de mensagem.'
+      },
+      {
+        title: 'Integração com Maps',
+        copy: 'Alinhamos sinais de perfil local, página comercial e contexto de cidade para reduzir ruído na descoberta.'
+      },
+      {
+        title: 'Conversão',
+        copy: 'Ajustamos copy, FAQs e blocos comerciais para transformar busca em contato mais qualificado.'
+      },
+      {
+        title: 'Expansão controlada',
+        copy: 'Usamos desempenho real para decidir se a praça precisa de novas páginas locais ou apoio editorial adicional.'
+      }
+    ],
+    differentiators: [
+      'Leitura local específica para o Rio de Janeiro.',
+      'Integração entre especialidade, geografia e página comercial.',
+      'Foco em contato qualificado e não só em tráfego.',
+      'Base para escalar a cidade sem doorway pages.'
+    ],
+    proofPoints: [
+      'Serviço canônico de SEO Local já publicado.',
+      'Página de clínicas médicas já ativa como vertical-mãe.',
+      'Artigos BOFU de clínicas já integrados ao blog.',
+      'Página local do Rio já publicada como apoio geográfico.'
+    ],
+    relatedLinks: [
+      { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
+      { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
+      { label: 'Rio de Janeiro', path: '/cidades/rio-de-janeiro/', reason: 'Contexto geográfico principal.' },
+      { label: 'SEO local vale a pena para clínicas médicas', path: '/blog/seo-local-vale-a-pena-para-clinicas-medicas/', reason: 'Apoio BOFU de decisão.' },
+      { label: 'Google Meu Negócio para Clínicas Médicas no Rio de Janeiro', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/', reason: 'Complemento local de Maps.' }
+    ],
+    faqItems: [
+      {
+        question: 'SEO local funciona para clínicas médicas no Rio de Janeiro?',
+        answer:
+          'Funciona quando a clínica organiza corretamente especialidades, geografia, Google Maps e páginas comerciais. O erro comum é depender só de uma página institucional genérica.'
+      },
+      {
+        question: 'O que muda entre a página do Rio e uma página nacional?',
+        answer:
+          'A página do Rio traduz a oferta para a intenção local, o contexto urbano e a lógica de descoberta da cidade, sem competir com a página setorial nacional.'
+      },
+      {
+        question: 'Google Meu Negócio entra junto nessa estratégia?',
+        answer:
+          'Na maioria dos casos, sim. Em clínicas médicas, perfil local e página comercial costumam se reforçar mutuamente.'
+      },
+      {
+        question: 'Vale abrir páginas por bairro?',
+        answer:
+          'Só quando houver demanda observável, contexto próprio e função comercial clara. Antes disso, a página da cidade tende a ser a camada mais segura.'
+      },
+      {
+        question: 'Quanto tempo leva para gerar resultado?',
+        answer:
+          'Depende da base atual, da concorrência e da velocidade de execução. O foco correto é medir descoberta e contatos qualificados.'
+      },
+      {
+        question: 'Essa página compete com a página de clínicas médicas?',
+        answer:
+          'Não deve competir. A página setorial sustenta a vertical; a página local traduz a oferta para a cidade.'
+      },
+      {
+        question: 'A clínica precisa ter várias especialidades para isso funcionar?',
+        answer:
+          'Não. Mesmo operações mais enxutas podem depender fortemente da cidade e da descoberta local para gerar novos contatos.'
+      },
+      {
+        question: 'Quando contratar SEO local no Rio faz mais sentido?',
+        answer:
+          'Quando a clínica quer fortalecer a presença orgânica na cidade, integrar melhor mapa e site e reduzir dependência exclusiva de mídia paga.'
+      }
+    ],
+    ctaTitle: 'QUER FAZER SUA CLÍNICA GANHAR MAIS DESCOBERTA ORGÂNICA NO RIO DE JANEIRO?',
+    ctaCopy:
+      'Se a cidade já faz parte da sua geração de demanda, mas o Google ainda não está sustentando essa descoberta com clareza suficiente, o melhor início é um diagnóstico local orientado a página, especialidade e mapa.',
+    ctaPrimaryLabel: 'Solicitar diagnóstico local no Rio de Janeiro',
+    ctaSecondaryPath: '/contato/',
+    ctaSecondaryLabel: 'Falar com a AUDITSEO',
+    areaServedName: 'Rio de Janeiro',
+    brief: requireBrief('/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/')
+  },
+  {
+    slug: '/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/',
+    seoTitle: 'Google Meu Negócio para Clínicas Médicas no Rio de Janeiro | AUDITSEO',
+    description:
+      'Google Meu Negócio para clínicas médicas no Rio de Janeiro com foco em mapa, relevância local, rotas e integração com páginas comerciais.',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    displayTitle: 'Google Meu Negócio para Clínicas Médicas no Rio de Janeiro',
+    badge: 'Maps, Rio e Descoberta Imediata',
+    heroTitlePrefix: 'GOOGLE MEU NEGÓCIO PARA CLÍNICAS MÉDICAS ',
+    heroTitleAccent: 'NO RIO DE JANEIRO',
+    heroSubtitle:
+      'No Rio de Janeiro, o perfil local influencia cedo a decisão. Quando o Google Business Profile conversa com a página comercial certa, a clínica ganha mais clareza, mais comparação favorável e mais chance de contato qualificado.',
+    highlights: ['Google Maps', 'Rio de Janeiro', 'GBP', 'Busca por Proximidade'],
+    heroCard: {
+      title: 'Quando essa página faz sentido',
+      copy:
+        'Quando a clínica já depende de mapa, rota e descoberta local no Rio, mas ainda não integrou perfil, especialidade e página comercial em uma mesma operação.',
+      links: [
+        { label: 'Ver Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
+        { label: 'Ver clínicas no Rio', path: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/', reason: 'Página local complementar.' },
+        { label: 'Ver Rio de Janeiro', path: '/cidades/rio-de-janeiro/', reason: 'Contexto geográfico principal.' }
+      ]
+    },
+    stats: [
+      { value: '1', label: 'Ponto de contato crítico', copy: 'Maps participa cedo da jornada local em saúde.' },
+      { value: '3', label: 'Sinais decisivos', copy: 'Relevância, consistência e contexto comercial.' },
+      { value: '0', label: 'Espaço para cadastro solto', copy: 'Perfil sem integração com o site desperdiça intenção.' },
+      { value: '100%', label: 'Dependência de coerência', copy: 'Perfil, cidade e página precisam contar a mesma história.' }
+    ],
+    marketCards: [
+      {
+        title: 'Decisão por proximidade',
+        copy:
+          'No Rio, parte da demanda médica entra por conveniência, bairro, rota e sensação de confiança imediata. O perfil precisa responder a essa camada.'
+      },
+      {
+        title: 'Perfil e site coerentes',
+        copy:
+          'Quando o perfil local sugere uma leitura e o site entrega outra, a descoberta perde força e a comparação fica mais frágil.'
+      },
+      {
+        title: 'Especialidade e contexto',
+        copy:
+          'GBP performa melhor quando a clínica tem uma página comercial que sustenta a mesma intenção, a mesma cidade e a mesma mensagem.'
+      }
+    ],
+    coreOffer:
+      'Gestão e estrutura de Google Meu Negócio para clínicas médicas no Rio de Janeiro, conectando mapa, perfil local e páginas comerciais.',
+    painPoints: [
+      'Perfil desatualizado ou sem critério de conversão.',
+      'Baixa relevância local em pesquisas de mapa.',
+      'Pouca consistência entre perfil, site e especialidades.',
+      'Perda de contatos, ligações e rotas qualificadas.'
+    ],
+    deliveryItems: [
+      'Integração entre GBP, página local e vertical médica.',
+      'Revisão da coerência entre perfil, cidade e especialidade.',
+      'FAQ comercial para dúvidas frequentes de decisão local.',
+      'Blocos de apoio para reforçar prova e contato.',
+      'Base para evoluir descoberta local com mais consistência.'
+    ],
+    methodSteps: [
+      {
+        title: 'Leitura do perfil',
+        copy: 'Mapeamos como o perfil participa hoje da descoberta local e onde ele perde força frente à concorrência.'
+      },
+      {
+        title: 'Integração com o site',
+        copy: 'Ajustamos a relação entre perfil local, página comercial da cidade e página setorial da clínica.'
+      },
+      {
+        title: 'Sinais de relevância',
+        copy: 'Organizamos os sinais visíveis da clínica para reforçar contexto, geografia e especialidade.'
+      },
+      {
+        title: 'Conversão local',
+        copy: 'Melhoramos a lógica de contato para que perfil e página empurrem o usuário para o mesmo próximo passo.'
+      },
+      {
+        title: 'Acompanhamento',
+        copy: 'Usamos performance real para decidir os próximos ajustes de descoberta local e conteúdo comercial.'
+      }
+    ],
+    differentiators: [
+      'Integração real entre perfil local e site.',
+      'Leitura orientada a clínica médica, não a negócio local genérico.',
+      'Foco em contato qualificado e não só em visualização de mapa.',
+      'Base para escalar descoberta sem duplicar mensagem.'
+    ],
+    proofPoints: [
+      'Serviço canônico de Google Meu Negócio já publicado.',
+      'Página local para clínicas médicas no Rio já ativa.',
+      'Artigo BOFU de GBP para clínicas já publicado.',
+      'Base metodológica da AUDITSEO já pública.'
+    ],
+    relatedLinks: [
+      { label: 'Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
+      { label: 'SEO Local para Clínicas Médicas no Rio de Janeiro', path: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/', reason: 'Página local complementar.' },
+      { label: 'Google Meu Negócio para clínicas médicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'Apoio BOFU direto.' },
+      { label: 'Rio de Janeiro', path: '/cidades/rio-de-janeiro/', reason: 'Contexto geográfico principal.' },
+      { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Vertical-mãe da operação.' }
+    ],
+    faqItems: [
+      {
+        question: 'Google Meu Negócio sozinho resolve a descoberta local no Rio?',
+        answer:
+          'Não. O perfil ajuda muito, mas performa melhor quando está alinhado a uma página local forte e à vertical médica da clínica.'
+      },
+      {
+        question: 'Qual a diferença entre GBP e SEO local?',
+        answer:
+          'GBP é parte da estratégia. SEO local inclui também página da cidade, estrutura do site e contexto comercial da clínica.'
+      },
+      {
+        question: 'A página do site realmente interfere no mapa?',
+        answer:
+          'Sim. Quando a página reforça a mesma intenção, cidade e especialidade, a descoberta local tende a ganhar mais coerência.'
+      },
+      {
+        question: 'Quando essa frente merece prioridade?',
+        answer:
+          'Quando a clínica já depende de mapa para descoberta e quer aumentar a qualidade de contatos e comparações favoráveis.'
+      },
+      {
+        question: 'Isso vale para clínica com uma única unidade?',
+        answer:
+          'Sim. Mesmo uma única unidade pode depender fortemente de proximidade e perfil local para gerar novos pacientes.'
+      },
+      {
+        question: 'Perfil desatualizado realmente prejudica?',
+        answer:
+          'Prejudica porque quebra coerência, reduz confiança e enfraquece a comparação local justamente nos momentos de maior intenção.'
+      },
+      {
+        question: 'Essa página compete com a página canônica de GBP?',
+        answer:
+          'Não. A página canônica apresenta o serviço amplo; esta página traduz a oferta para a cidade e o contexto médico local.'
+      },
+      {
+        question: 'Quando contratar essa frente no Rio faz mais sentido?',
+        answer:
+          'Quando a clínica quer reforçar descoberta local, integrar melhor mapa e site e melhorar a qualidade do contato vindo do Google.'
+      }
+    ],
+    ctaTitle: 'QUER FAZER O MAPA AJUDAR MAIS SUA CLÍNICA NO RIO DE JANEIRO?',
+    ctaCopy:
+      'Se o perfil local ainda não sustenta a descoberta e o contato como deveria, o melhor início é um diagnóstico orientado a Google Maps, página comercial e contexto médico local.',
+    ctaPrimaryLabel: 'Solicitar diagnóstico de GBP no Rio de Janeiro',
+    ctaSecondaryPath: '/contato/',
+    ctaSecondaryLabel: 'Falar com a AUDITSEO',
+    areaServedName: 'Rio de Janeiro',
+    brief: requireBrief('/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/')
+  },
+  {
+    slug: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/',
+    seoTitle: 'SEO Local para Clínicas Médicas em Belo Horizonte | AUDITSEO',
+    description:
+      'SEO local para clínicas médicas em Belo Horizonte com foco em descoberta por geografia, Google Maps e páginas comerciais orientadas a busca local.',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    displayTitle: 'SEO Local para Clínicas Médicas em Belo Horizonte',
+    badge: 'Saúde Privada, BH e Busca Local',
+    heroTitlePrefix: 'SEO LOCAL PARA CLÍNICAS MÉDICAS ',
+    heroTitleAccent: 'EM BELO HORIZONTE',
+    heroSubtitle:
+      'Em Belo Horizonte, a clínica precisa organizar bem cidade, especialidade e descoberta local para não depender só de indicação ou mídia paga. Quando a página comercial local é clara, o Google consegue conectar melhor intenção e oferta.',
+    highlights: ['Belo Horizonte', 'SEO Local', 'Google Maps', 'Páginas Comerciais'],
+    heroCard: {
+      title: 'Quando essa página faz sentido',
+      copy:
+        'Quando a clínica atende Belo Horizonte, quer fortalecer a descoberta na cidade e ainda não articulou especialidade, mapa e página comercial numa mesma estrutura.',
+      links: [
+        { label: 'Ver SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
+        { label: 'Ver SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
+        { label: 'Ver Belo Horizonte', path: '/cidades/belo-horizonte/', reason: 'Contexto geográfico principal.' }
+      ]
+    },
+    stats: [
+      { value: '1', label: 'Capital prioritária', copy: 'BH é uma das primeiras praças econômicas da expansão nacional.' },
+      { value: '3', label: 'Camadas críticas', copy: 'Especialidade, cidade e mapa precisam conversar.' },
+      { value: '0', label: 'Espaço para ruído', copy: 'Página local vaga não sustenta descoberta médica.' },
+      { value: '100%', label: 'Dependência de clareza', copy: 'Mensagem, geografia e próximo passo precisam estar alinhados.' }
+    ],
+    marketCards: [
+      {
+        title: 'Cidade e especialidade',
+        copy:
+          'Em BH, a clínica disputa intenção local por especialidade, contexto e percepção de confiança. Sem uma página clara, essa intenção se dispersa.'
+      },
+      {
+        title: 'Descoberta mais consistente',
+        copy:
+          'Quando cidade, perfil local e páginas comerciais operam juntos, a clínica reduz ruído e melhora a chance de contato qualificado.'
+      },
+      {
+        title: 'Captação menos volátil',
+        copy:
+          'A combinação entre SEO local e estrutura comercial ajuda a reduzir dependência exclusiva de mídia paga e ações esporádicas.'
+      }
+    ],
+    coreOffer:
+      'SEO local para clínicas médicas em Belo Horizonte, conectando especialidades, contexto urbano, Google Maps e páginas comerciais.',
+    painPoints: [
+      'Baixa visibilidade em buscas geográficas da cidade.',
+      'Páginas comerciais sem intenção local suficiente.',
+      'Perfil local e site operando de forma desalinhada.',
+      'Dependência excessiva de indicação ou mídia paga.'
+    ],
+    deliveryItems: [
+      'Arquitetura local para cidade, especialidade e página comercial.',
+      'Integração entre SEO local, GBP e descoberta qualificada.',
+      'FAQ comercial para dúvidas reais de decisão.',
+      'Interlinking entre cidade, serviço e ativos BOFU.',
+      'Base para expansão controlada da praça.'
+    ],
+    methodSteps: [
+      {
+        title: 'Diagnóstico local',
+        copy: 'Mapeamos como a clínica aparece hoje em Belo Horizonte e onde a arquitetura atual perde intenção comercial local.'
+      },
+      {
+        title: 'Página da cidade',
+        copy: 'Definimos o papel da página local dentro da vertical médica, sem duplicar a função da página setorial nacional.'
+      },
+      {
+        title: 'Integração com Maps',
+        copy: 'Alinhamos sinais de Google Maps, cidade e especialidade para reforçar descoberta coerente.'
+      },
+      {
+        title: 'Conversão',
+        copy: 'Ajustamos copy e blocos comerciais para transformar busca em contato com menos atrito.'
+      },
+      {
+        title: 'Evolução',
+        copy: 'Usamos desempenho real para decidir se a praça pede novas páginas derivadas ou apoio editorial adicional.'
+      }
+    ],
+    differentiators: [
+      'Leitura local específica para Belo Horizonte.',
+      'Foco em contato qualificado, não só em visibilidade.',
+      'Integração entre mapa, cidade e página comercial.',
+      'Base para crescer a praça sem inflar a arquitetura.'
+    ],
+    proofPoints: [
+      'Serviço canônico de SEO Local já publicado.',
+      'Página de clínicas médicas já ativa como vertical-mãe.',
+      'Artigos BOFU de clínicas e GBP já integrados ao blog.',
+      'Página local de Belo Horizonte já publicada como apoio geográfico.'
+    ],
+    relatedLinks: [
+      { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
+      { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
+      { label: 'Belo Horizonte', path: '/cidades/belo-horizonte/', reason: 'Contexto geográfico principal.' },
+      { label: 'SEO local vale a pena para clínicas médicas', path: '/blog/seo-local-vale-a-pena-para-clinicas-medicas/', reason: 'Apoio BOFU de decisão.' },
+      { label: 'Google Meu Negócio para Clínicas Médicas em Belo Horizonte', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/', reason: 'Complemento local de Maps.' }
+    ],
+    faqItems: [
+      {
+        question: 'SEO local funciona para clínicas médicas em Belo Horizonte?',
+        answer:
+          'Funciona quando a clínica organiza bem cidade, especialidade, mapa e página comercial. O erro comum é tratar BH como detalhe de uma página nacional.'
+      },
+      {
+        question: 'O que muda entre essa página e a vertical nacional?',
+        answer:
+          'A vertical nacional sustenta a proposta setorial. Esta página traduz a oferta para a realidade local de Belo Horizonte.'
+      },
+      {
+        question: 'Google Meu Negócio entra junto nessa estratégia?',
+        answer:
+          'Na maioria dos casos, sim. A descoberta local em saúde costuma depender bastante da integração entre mapa e site.'
+      },
+      {
+        question: 'Vale abrir páginas mais granulares dentro da cidade?',
+        answer:
+          'Só quando houver demanda observável e diferenciação suficiente. Antes disso, a página da cidade tende a ser a camada correta.'
+      },
+      {
+        question: 'Quanto tempo leva para gerar resultado?',
+        answer:
+          'Depende da base atual e da velocidade de execução, mas o foco correto é medir descoberta e contatos mais qualificados.'
+      },
+      {
+        question: 'Essa página compete com a página de clínicas médicas?',
+        answer:
+          'Não deve competir. A página de clínicas médicas organiza a vertical; a página de BH organiza a intenção local.'
+      },
+      {
+        question: 'Operações pequenas também se beneficiam disso?',
+        answer:
+          'Sim. Mesmo clínicas menores podem depender bastante de descoberta geográfica para gerar novos pacientes.'
+      },
+      {
+        question: 'Quando contratar SEO local em BH faz mais sentido?',
+        answer:
+          'Quando a clínica quer fortalecer a presença orgânica na cidade, integrar melhor mapa e site e construir uma base menos volátil de captação.'
+      }
+    ],
+    ctaTitle: 'QUER FAZER SUA CLÍNICA GANHAR MAIS DESCOBERTA ORGÂNICA EM BELO HORIZONTE?',
+    ctaCopy:
+      'Se Belo Horizonte já faz parte da sua geração de demanda, mas o Google ainda não está sustentando essa descoberta com a clareza necessária, o melhor início é um diagnóstico local orientado a página, especialidade e mapa.',
+    ctaPrimaryLabel: 'Solicitar diagnóstico local em Belo Horizonte',
+    ctaSecondaryPath: '/contato/',
+    ctaSecondaryLabel: 'Falar com a AUDITSEO',
+    areaServedName: 'Belo Horizonte',
+    brief: requireBrief('/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/')
+  },
+  {
+    slug: '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/',
+    seoTitle: 'Google Meu Negócio para Clínicas Médicas em Belo Horizonte | AUDITSEO',
+    description:
+      'Google Meu Negócio para clínicas médicas em Belo Horizonte com foco em mapa, relevância local, rotas e integração com páginas comerciais.',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    displayTitle: 'Google Meu Negócio para Clínicas Médicas em Belo Horizonte',
+    badge: 'Maps, BH e Descoberta Imediata',
+    heroTitlePrefix: 'GOOGLE MEU NEGÓCIO PARA CLÍNICAS MÉDICAS ',
+    heroTitleAccent: 'EM BELO HORIZONTE',
+    heroSubtitle:
+      'Em Belo Horizonte, o perfil local ajuda a filtrar descoberta, comparação e rota. Quando o Google Business Profile está alinhado à página comercial certa, a clínica tende a ganhar mais relevância local e mais clareza de oferta.',
+    highlights: ['Google Maps', 'Belo Horizonte', 'GBP', 'Busca por Proximidade'],
+    heroCard: {
+      title: 'Quando essa página faz sentido',
+      copy:
+        'Quando a clínica já depende de mapa e comparação local em BH, mas ainda não integrou perfil, especialidade e página comercial em uma mesma lógica operacional.',
+      links: [
+        { label: 'Ver Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
+        { label: 'Ver clínicas em BH', path: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/', reason: 'Página local complementar.' },
+        { label: 'Ver Belo Horizonte', path: '/cidades/belo-horizonte/', reason: 'Contexto geográfico principal.' }
+      ]
+    },
+    stats: [
+      { value: '1', label: 'Canal crítico', copy: 'Maps pesa cedo na jornada local de saúde.' },
+      { value: '3', label: 'Sinais decisivos', copy: 'Consistência, geografia e contexto comercial.' },
+      { value: '0', label: 'Espaço para improviso', copy: 'Cadastro solto não sustenta descoberta local.' },
+      { value: '100%', label: 'Dependência de coerência', copy: 'Perfil, cidade e página precisam reforçar a mesma intenção.' }
+    ],
+    marketCards: [
+      {
+        title: 'Busca por proximidade',
+        copy:
+          'Em BH, parte relevante da decisão local passa por proximidade, percepção de confiança e facilidade de contato. O perfil precisa sustentar isso.'
+      },
+      {
+        title: 'Perfil e página local',
+        copy:
+          'Quando o perfil local está desalinhado com a página comercial, a descoberta perde força e a clínica converte pior.'
+      },
+      {
+        title: 'Especialidade e clareza',
+        copy:
+          'A integração entre perfil, cidade e especialidade ajuda o Google e o usuário a entender melhor quando aquela clínica faz sentido.'
+      }
+    ],
+    coreOffer:
+      'Gestão e estrutura de Google Meu Negócio para clínicas médicas em Belo Horizonte, conectando mapa, perfil local e páginas comerciais.',
+    painPoints: [
+      'Perfil local sem sinais claros de relevância e conversão.',
+      'Baixa consistência entre perfil, site e especialidades.',
+      'Perda de contatos locais em pesquisas por proximidade.',
+      'Pouca geração de rotas e ligações qualificadas.'
+    ],
+    deliveryItems: [
+      'Integração entre GBP, página local e vertical médica.',
+      'Revisão da coerência entre perfil, cidade e especialidade.',
+      'FAQ comercial para dúvidas de decisão local.',
+      'Blocos de apoio para reforçar prova e contato.',
+      'Base para evoluir descoberta local com mais consistência.'
+    ],
+    methodSteps: [
+      {
+        title: 'Leitura do perfil',
+        copy: 'Mapeamos como o perfil participa hoje da descoberta local em BH e onde ele perde relevância frente à concorrência.'
+      },
+      {
+        title: 'Integração com o site',
+        copy: 'Ajustamos a relação entre perfil local, página comercial da cidade e página setorial da clínica.'
+      },
+      {
+        title: 'Sinais de relevância',
+        copy: 'Organizamos os sinais visíveis da clínica para reforçar geografia, contexto e especialidade.'
+      },
+      {
+        title: 'Conversão local',
+        copy: 'Melhoramos a lógica de contato para que mapa e site empurrem o usuário para o mesmo próximo passo.'
+      },
+      {
+        title: 'Acompanhamento',
+        copy: 'Usamos performance real para decidir próximos ajustes de descoberta local e evolução da malha comercial.'
+      }
+    ],
+    differentiators: [
+      'Integração real entre Maps e página comercial.',
+      'Leitura orientada a clínica médica e não a negócio local genérico.',
+      'Foco em contato qualificado e não só em visualização do perfil.',
+      'Base para crescer a praça com disciplina.'
+    ],
+    proofPoints: [
+      'Serviço canônico de Google Meu Negócio já publicado.',
+      'Página local para clínicas médicas em BH já ativa.',
+      'Artigo BOFU de GBP para clínicas já publicado.',
+      'Base metodológica da AUDITSEO já pública.'
+    ],
+    relatedLinks: [
+      { label: 'Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
+      { label: 'SEO Local para Clínicas Médicas em Belo Horizonte', path: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/', reason: 'Página local complementar.' },
+      { label: 'Google Meu Negócio para clínicas médicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'Apoio BOFU direto.' },
+      { label: 'Belo Horizonte', path: '/cidades/belo-horizonte/', reason: 'Contexto geográfico principal.' },
+      { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Vertical-mãe da operação.' }
+    ],
+    faqItems: [
+      {
+        question: 'Google Meu Negócio sozinho resolve a descoberta local em Belo Horizonte?',
+        answer:
+          'Não. O perfil ajuda muito, mas precisa estar alinhado a uma página local forte e à vertical médica da clínica.'
+      },
+      {
+        question: 'Qual a diferença entre GBP e SEO local em BH?',
+        answer:
+          'GBP é parte da estratégia. SEO local inclui também página da cidade, estrutura do site e contexto comercial da clínica.'
+      },
+      {
+        question: 'A página do site realmente interfere no mapa?',
+        answer:
+          'Sim. Quando cidade, especialidade e página comercial se reforçam, a descoberta local tende a ganhar mais coerência.'
+      },
+      {
+        question: 'Quando essa frente merece prioridade?',
+        answer:
+          'Quando a clínica já depende de mapa para descoberta e quer aumentar a qualidade dos contatos vindos do Google.'
+      },
+      {
+        question: 'Isso vale para clínica com uma única unidade?',
+        answer:
+          'Sim. Mesmo uma única unidade pode depender bastante de proximidade e perfil local para ser encontrada.'
+      },
+      {
+        question: 'Perfil desatualizado realmente prejudica?',
+        answer:
+          'Prejudica porque reduz confiança, quebra coerência e deixa a clínica mais frágil na comparação local.'
+      },
+      {
+        question: 'Essa página compete com a página canônica de GBP?',
+        answer:
+          'Não. A página canônica apresenta o serviço amplo; esta página traduz a oferta para a cidade e o contexto médico local.'
+      },
+      {
+        question: 'Quando contratar essa frente em BH faz mais sentido?',
+        answer:
+          'Quando a clínica quer reforçar descoberta local, integrar melhor mapa e site e melhorar a qualidade do contato vindo do Google.'
+      }
+    ],
+    ctaTitle: 'QUER FAZER O MAPA AJUDAR MAIS SUA CLÍNICA EM BELO HORIZONTE?',
+    ctaCopy:
+      'Se o perfil local ainda não sustenta a descoberta e o contato como deveria, o melhor início é um diagnóstico orientado a Google Maps, página comercial e contexto médico local.',
+    ctaPrimaryLabel: 'Solicitar diagnóstico de GBP em Belo Horizonte',
+    ctaSecondaryPath: '/contato/',
+    ctaSecondaryLabel: 'Falar com a AUDITSEO',
+    areaServedName: 'Belo Horizonte',
+    brief: requireBrief('/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/')
   }
 ];
 

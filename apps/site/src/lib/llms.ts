@@ -188,6 +188,26 @@ const serviceResources: LlmsResource[] = [
     title: 'Consultoria SEO para Empresas no Interior de Sao Paulo',
     path: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/',
     description: 'Pagina regional para empresas do interior paulista, com foco em expansao comercial e cobertura por polos economicos.'
+  },
+  {
+    title: 'SEO Local para Clinicas Medicas no Rio de Janeiro',
+    path: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/',
+    description: 'Pagina comercial local para clinicas medicas no Rio, com foco em descoberta por geografia, especialidades e Google Maps.'
+  },
+  {
+    title: 'Google Meu Negocio para Clinicas Medicas no Rio de Janeiro',
+    path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/',
+    description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas no Rio.'
+  },
+  {
+    title: 'SEO Local para Clinicas Medicas em Belo Horizonte',
+    path: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/',
+    description: 'Pagina comercial local para clinicas medicas em Belo Horizonte, com foco em descoberta por geografia, especialidades e Google Maps.'
+  },
+  {
+    title: 'Google Meu Negocio para Clinicas Medicas em Belo Horizonte',
+    path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/',
+    description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas em Belo Horizonte.'
   }
 ];
 
@@ -231,6 +251,16 @@ const clusterResources: LlmsResource[] = [
     title: 'Campinas',
     path: '/cidades/campinas/',
     description: 'Pagina local para demanda comercial e organica na cidade de Campinas.'
+  },
+  {
+    title: 'Rio de Janeiro',
+    path: '/cidades/rio-de-janeiro/',
+    description: 'Pagina local para demanda comercial e organica na cidade do Rio de Janeiro.'
+  },
+  {
+    title: 'Belo Horizonte',
+    path: '/cidades/belo-horizonte/',
+    description: 'Pagina local para demanda comercial e organica na cidade de Belo Horizonte.'
   },
   {
     title: 'Landing Page AI Overview Optimization para Clinicas Medicas em Sao Paulo',

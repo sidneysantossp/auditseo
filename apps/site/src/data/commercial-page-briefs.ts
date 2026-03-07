@@ -593,4 +593,151 @@ export const saoPauloWaveTwoCommercialBriefs: CommercialPageBrief[] = [
   }
 ];
 
-export const allCommercialBriefs = [...saoPauloWaveOneCommercialBriefs, ...saoPauloWaveTwoCommercialBriefs];
+export const southeastExpansionWaveOneCommercialBriefs: CommercialPageBrief[] = [
+  {
+    slug: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/',
+    pageTitle: 'SEO Local para Clinicas Medicas no Rio de Janeiro',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/seo-local/',
+    targetAudience: 'Clinicas medicas com atuacao na cidade do Rio de Janeiro e foco em novos pacientes por geografia.',
+    primaryKeyword: 'seo local para clinicas medicas no rio de janeiro',
+    secondaryKeywords: ['seo para clinicas medicas no rio de janeiro', 'agencia seo local para clinicas no rio', 'marketing no google para clinicas no rio'],
+    dominantIntent: 'local',
+    heroAngle: 'Captar mais pacientes no Rio de Janeiro com uma estrutura local orientada a busca, mapa e paginas comerciais.',
+    coreOffer: 'Operacao de SEO local para clinicas medicas com foco em visibilidade, local pack e paginas de alta intencao no Rio.',
+    painPoints: [
+      'Baixa presenca em buscas geograficas e de bairro na cidade.',
+      'Falta de integracao entre GBP, paginas do site e especialidades.',
+      'Concorrencia local forte em regioes de maior densidade comercial.',
+      'Baixa conversao do trafego organico atual.'
+    ],
+    proofAssets: ['Pagina do Rio de Janeiro', 'Pagina de clinicas medicas', 'Artigos de GBP para clinicas', 'Pagina de metodologia'],
+    faqAngles: [
+      'SEO local funciona para clinicas no Rio de Janeiro',
+      'O que muda entre pagina local do Rio e pagina nacional',
+      'Google Meu Negocio entra junto',
+      'Quando uma clinica deve priorizar a cidade'
+    ],
+    internalLinks: [
+      { label: 'SEO para clinicas medicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Pagina setorial mae.' },
+      { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Servico canonico principal.' },
+      { label: 'Rio de Janeiro', path: '/cidades/rio-de-janeiro/', reason: 'Contexto geografico principal.' },
+      { label: 'SEO local vale a pena para clinicas medicas', path: '/blog/seo-local-vale-a-pena-para-clinicas-medicas/', reason: 'Apoio BOFU de decisao.' }
+    ],
+    ctaPrimary: 'Solicitar diagnostico local no Rio de Janeiro',
+    ctaSecondary: 'Falar com a AUDITSEO sobre clinicas no Rio',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/servicos/seo-para-clinicas-medicas/', '/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/']
+  },
+  {
+    slug: '/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/',
+    pageTitle: 'Google Meu Negocio para Clinicas Medicas no Rio de Janeiro',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/google-meu-negocio/',
+    targetAudience: 'Clinicas medicas do Rio de Janeiro que dependem de descoberta local, rota e comparacao rapida.',
+    primaryKeyword: 'google meu negocio para clinicas medicas no rio de janeiro',
+    secondaryKeywords: ['google business profile para clinicas no rio', 'gbp para clinicas medicas no rio', 'maps para clinicas no rio de janeiro'],
+    dominantIntent: 'local',
+    heroAngle: 'Fortalecer a descoberta local de clinicas medicas no Rio por meio de Google Maps e Google Business Profile.',
+    coreOffer: 'Estrutura, gestao e integracao de Google Meu Negocio com as paginas comerciais da clinica no Rio de Janeiro.',
+    painPoints: [
+      'Perfil local desatualizado ou sem estrategia de conversao.',
+      'Baixa relevancia por regiao e proximidade.',
+      'Inconsistencia entre perfil, site e especialidades.',
+      'Pouca geracao de rotas e contatos qualificados.'
+    ],
+    proofAssets: ['Pagina de Google Meu Negocio', 'Pagina local de clinicas medicas no Rio', 'Artigo BOFU de GBP', 'Pagina institucional'],
+    faqAngles: [
+      'GBP sozinho resolve a descoberta local',
+      'Qual a diferenca entre GBP e SEO local',
+      'Quanto tempo leva para melhorar o perfil',
+      'A pagina do site interfere no mapa'
+    ],
+    internalLinks: [
+      { label: 'Google Meu Negocio', path: '/servicos/google-meu-negocio/', reason: 'Servico canonico principal.' },
+      { label: 'SEO local para clinicas medicas no Rio de Janeiro', path: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/', reason: 'Pagina complementar local.' },
+      { label: 'Google Meu Negocio para clinicas medicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'BOFU direto.' },
+      { label: 'Rio de Janeiro', path: '/cidades/rio-de-janeiro/', reason: 'Contexto geografico principal.' }
+    ],
+    ctaPrimary: 'Solicitar diagnostico de GBP no Rio de Janeiro',
+    ctaSecondary: 'Entender a estrategia de Maps no Rio',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/servicos/google-meu-negocio/', '/blog/google-meu-negocio-para-clinicas-medicas/']
+  },
+  {
+    slug: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/',
+    pageTitle: 'SEO Local para Clinicas Medicas em Belo Horizonte',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/seo-local/',
+    targetAudience: 'Clinicas medicas com atuacao em Belo Horizonte e foco em novos pacientes por geografia.',
+    primaryKeyword: 'seo local para clinicas medicas em belo horizonte',
+    secondaryKeywords: ['seo para clinicas medicas em belo horizonte', 'agencia seo local para clinicas em bh', 'marketing no google para clinicas em bh'],
+    dominantIntent: 'local',
+    heroAngle: 'Captar mais pacientes em Belo Horizonte com uma estrutura local orientada a descoberta, mapa e paginas comerciais.',
+    coreOffer: 'Operacao de SEO local para clinicas medicas com foco em visibilidade organica, local pack e paginas comerciais em BH.',
+    painPoints: [
+      'Baixa presenca em buscas geograficas dentro de Belo Horizonte.',
+      'Especialidades e pagina local sem integracao clara.',
+      'Dependencia alta de indicacao ou midia paga.',
+      'Site sem paginas com intencao local suficiente.'
+    ],
+    proofAssets: ['Pagina de Belo Horizonte', 'Pagina de clinicas medicas', 'Artigos de SEO local para clinicas', 'Pagina de metodologia'],
+    faqAngles: [
+      'SEO local funciona para clinicas em Belo Horizonte',
+      'O que muda entre BH e Sao Paulo na estrategia local',
+      'Google Meu Negocio entra junto',
+      'Que tipo de pagina uma clinica em BH precisa'
+    ],
+    internalLinks: [
+      { label: 'SEO para clinicas medicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Pagina setorial mae.' },
+      { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Servico canonico principal.' },
+      { label: 'Belo Horizonte', path: '/cidades/belo-horizonte/', reason: 'Contexto geografico principal.' },
+      { label: 'SEO local vale a pena para clinicas medicas', path: '/blog/seo-local-vale-a-pena-para-clinicas-medicas/', reason: 'Apoio BOFU de decisao.' }
+    ],
+    ctaPrimary: 'Solicitar diagnostico local em Belo Horizonte',
+    ctaSecondary: 'Falar com a AUDITSEO sobre clinicas em BH',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/servicos/seo-para-clinicas-medicas/', '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/']
+  },
+  {
+    slug: '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/',
+    pageTitle: 'Google Meu Negocio para Clinicas Medicas em Belo Horizonte',
+    pageType: 'local-commercial',
+    canonicalService: '/servicos/google-meu-negocio/',
+    targetAudience: 'Clinicas medicas de Belo Horizonte que dependem de descoberta local, rota e comparacao rapida.',
+    primaryKeyword: 'google meu negocio para clinicas medicas em belo horizonte',
+    secondaryKeywords: ['google business profile para clinicas em bh', 'gbp para clinicas medicas em bh', 'maps para clinicas em belo horizonte'],
+    dominantIntent: 'local',
+    heroAngle: 'Fortalecer a descoberta de clinicas medicas em Belo Horizonte por meio de Google Maps e Google Business Profile.',
+    coreOffer: 'Estrutura, gestao e integracao de Google Meu Negocio com as paginas comerciais da clinica em Belo Horizonte.',
+    painPoints: [
+      'Perfil local sem sinais suficientes de relevancia e conversao.',
+      'Baixa consistencia entre perfil, site e especialidades.',
+      'Perda de contatos locais em pesquisas de proximidade.',
+      'Pouca geracao de ligacoes e rotas qualificadas.'
+    ],
+    proofAssets: ['Pagina de Google Meu Negocio', 'Pagina local de clinicas medicas em BH', 'Artigo BOFU de GBP', 'Pagina institucional'],
+    faqAngles: [
+      'GBP sozinho resolve a descoberta local',
+      'Qual a diferenca entre GBP e SEO local em BH',
+      'Quanto tempo leva para melhorar o perfil',
+      'A pagina do site interfere no mapa'
+    ],
+    internalLinks: [
+      { label: 'Google Meu Negocio', path: '/servicos/google-meu-negocio/', reason: 'Servico canonico principal.' },
+      { label: 'SEO local para clinicas medicas em Belo Horizonte', path: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/', reason: 'Pagina complementar local.' },
+      { label: 'Google Meu Negocio para clinicas medicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'BOFU direto.' },
+      { label: 'Belo Horizonte', path: '/cidades/belo-horizonte/', reason: 'Contexto geografico principal.' }
+    ],
+    ctaPrimary: 'Solicitar diagnostico de GBP em Belo Horizonte',
+    ctaSecondary: 'Entender a estrategia de Maps em BH',
+    schemaTypes: ['Service', 'FAQPage', 'BreadcrumbList'],
+    avoidOverlapWith: ['/servicos/google-meu-negocio/', '/blog/google-meu-negocio-para-clinicas-medicas/']
+  }
+];
+
+export const allCommercialBriefs = [
+  ...saoPauloWaveOneCommercialBriefs,
+  ...saoPauloWaveTwoCommercialBriefs,
+  ...southeastExpansionWaveOneCommercialBriefs
+];
