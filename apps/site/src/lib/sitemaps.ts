@@ -90,6 +90,8 @@ const serviceEntries: SitemapUrlEntry[] = [
   { path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/' },
   { path: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/' },
   { path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/' },
+  { path: '/servicos/seo-local-para-clinicas-medicas-em-porto-alegre/' },
+  { path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-porto-alegre/' },
   { path: '/servicos/seo-local-para-odontologia-em-curitiba/' },
   { path: '/servicos/google-meu-negocio-para-odontologia-em-curitiba/' },
   { path: '/servicos/seo-local-para-odontologia-em-brasilia/' },
@@ -131,6 +133,7 @@ const clusterEntries: SitemapUrlEntry[] = [
   { path: '/cidades/belo-horizonte/' },
   { path: '/cidades/curitiba/' },
   { path: '/cidades/brasilia/' },
+  { path: '/cidades/porto-alegre/' },
   { path: '/lp/ai-overview-optimization-clinicas-medicas-sao-paulo/' }
 ];
 

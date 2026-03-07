@@ -464,6 +464,7 @@ export const blogCategories: BlogCategoryDefinition[] = [
       'seo-local-para-clinicas-medicas-em-belo-horizonte-vale-a-pena',
       'seo-local-para-clinicas-medicas-em-curitiba-vale-a-pena',
       'seo-local-para-clinicas-medicas-em-brasilia-vale-a-pena',
+      'seo-local-para-clinicas-medicas-em-porto-alegre-vale-a-pena',
       'seo-local-para-odontologia-em-curitiba-vale-a-pena',
       'seo-local-para-odontologia-em-brasilia-vale-a-pena',
       'seo-local-para-dermatologistas-em-curitiba-vale-a-pena',

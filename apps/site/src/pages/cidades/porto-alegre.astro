@@ -1,0 +1,153 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import CityLayout from '../../layouts/CityLayout.astro';
+
+const focusAreas = [
+  {
+    title: 'Leitura local com precisão',
+    copy:
+      'Em Porto Alegre, a página local precisa explicar serviço, geografia e próximo passo sem depender de texto genérico.'
+  },
+  {
+    title: 'Integração com busca local',
+    copy:
+      'Maps, contexto urbano e página comercial precisam operar juntos para sustentar descoberta qualificada.'
+  },
+  {
+    title: 'Escala com disciplina',
+    copy:
+      'Porto Alegre entra como capital estratégica do Sul e precisa de uma base local clara antes de novas derivações.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Por que Porto Alegre merece uma página local própria?',
+    answer:
+      'Porque é uma praça econômica relevante do Sul, com contexto urbano suficiente para justificar mensagem local, páginas derivadas por serviço e descoberta orgânica mais qualificada.'
+  },
+  {
+    question: 'Essa página substitui páginas comerciais em Porto Alegre?',
+    answer:
+      'Não. Ela organiza o contexto geográfico. As páginas de serviço traduzem a oferta para a intenção comercial dentro da cidade.'
+  },
+  {
+    question: 'Quais frentes fazem mais sentido em Porto Alegre?',
+    answer:
+      'SEO Local, Google Meu Negócio e páginas comerciais service-first costumam ser os melhores pontos de partida nesta fase.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<CityLayout
+  title="AUDITSEO em Porto Alegre | SEO Local, IA e Estrutura Comercial"
+  description="Página local da AUDITSEO para Porto Alegre: SEO local, Google Maps, descoberta regional e estrutura comercial para empresas que precisam gerar demanda qualificada."
+  canonicalPath="/cidades/porto-alegre/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Cidades', path: '/cidades/' },
+    { label: 'Porto Alegre', path: '/cidades/porto-alegre/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/cidades/">Cidades</a>
+      <span>›</span>
+      <span class="current">Porto Alegre</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Cobertura em Porto Alegre</span>
+        <h1 class="ee-page-title">
+          SEO E IA EM <span class="accent">PORTO ALEGRE</span> COM FOCO EM DEMANDA QUALIFICADA
+        </h1>
+        <p class="ee-page-subtitle">
+          Em Porto Alegre, a página local precisa conectar
+          <strong> geografia</strong>, <strong>clareza comercial</strong> e
+          <strong> descoberta recorrente</strong>, sem depender só de discurso nacional.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">Busca Local</span>
+          <span class="ee-page-highlight">Google Maps</span>
+          <span class="ee-page-highlight">Páginas Comerciais</span>
+          <span class="ee-page-highlight">Escala com Critério</span>
+        </div>
+      </div>
+
+      <aside class="ee-page-hero-card">
+        <h2>Entradas mais aderentes</h2>
+        <p>
+          Em Porto Alegre, a combinação mais consistente tende a passar por SEO Local, GBP e
+          páginas comerciais que traduzam a oferta para a cidade.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/seo-local-para-clinicas-medicas-em-porto-alegre/">Ver SEO local para clínicas</a>
+          <a href="/servicos/google-meu-negocio-para-clinicas-medicas-em-porto-alegre/">Ver GBP para clínicas</a>
+          <a href="/contato/">Solicitar diagnóstico</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Prioridades</span>
+        <h2 class="ee-page-section-title">O QUE COSTUMA PESAR MAIS EM PORTO ALEGRE</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {focusAreas.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-cta">
+      <div class="ee-page-cta-box">
+        <span class="ee-page-section-badge">Próximo passo</span>
+        <h2 class="ee-page-section-title">QUER TESTAR UMA ESTRUTURA LOCAL EM PORTO ALEGRE?</h2>
+        <p class="ee-page-cta-copy">
+          Se a empresa depende da cidade para gerar demanda, a melhor entrada é um diagnóstico que
+          ligue geografia, página comercial e busca local.
+        </p>
+        <div class="ee-page-cta-actions">
+          <button class="ee-page-primary" type="button" data-open-cta-modal>Solicitar diagnóstico</button>
+          <a class="ee-page-secondary" href="/servicos/seo-local/">Ver SEO Local</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ee-page-section ee-page-faq">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DÚVIDAS COMUNS SOBRE A FRENTE EM PORTO ALEGRE</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</CityLayout>

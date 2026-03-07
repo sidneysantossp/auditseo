@@ -4,58 +4,64 @@ import CityLayout from '../../layouts/CityLayout.astro';
 
 const cityCards = [
   {
-    title: 'Sao Paulo',
+    title: 'São Paulo',
     copy:
-      'Pagina local focada em empresas que disputam descoberta organica, AI Overviews, SEO local e arquitetura comercial em um mercado altamente competitivo.',
+      'Página local focada em empresas que disputam descoberta orgânica, AI Overviews, SEO local e arquitetura comercial em um mercado altamente competitivo.',
     href: '/cidades/sao-paulo/'
   },
   {
     title: 'Campinas',
     copy:
-      'Pagina local orientada para negocios que precisam combinar autoridade regional, descoberta local e paginas comerciais com intencao clara.',
+      'Página local orientada para negócios que precisam combinar autoridade regional, descoberta local e páginas comerciais com intenção clara.',
     href: '/cidades/campinas/'
   },
   {
     title: 'Rio de Janeiro',
     copy:
-      'Pagina local focada em descoberta organica, Google Maps e paginas comerciais para uma das principais pracas urbanas do pais.',
+      'Página local focada em descoberta orgânica, Google Maps e páginas comerciais para uma das principais praças urbanas do país.',
     href: '/cidades/rio-de-janeiro/'
   },
   {
     title: 'Belo Horizonte',
     copy:
-      'Pagina local orientada para empresas que precisam conectar contexto regional, busca local e estrutura comercial em uma capital estrategica.',
+      'Página local orientada para empresas que precisam conectar contexto regional, busca local e estrutura comercial em uma capital estratégica.',
     href: '/cidades/belo-horizonte/'
   },
   {
     title: 'Curitiba',
     copy:
-      'Pagina local voltada a descoberta regional, Google Maps e paginas comerciais para uma das principais pracas do Sul.',
+      'Página local voltada à descoberta regional, Google Maps e páginas comerciais para uma das principais praças do Sul.',
     href: '/cidades/curitiba/'
   },
   {
-    title: 'Brasilia',
+    title: 'Brasília',
     copy:
-      'Pagina local orientada a empresas que precisam conectar contexto urbano, busca local e estrutura comercial no Distrito Federal.',
+      'Página local orientada a empresas que precisam conectar contexto urbano, busca local e estrutura comercial no Distrito Federal.',
     href: '/cidades/brasilia/'
+  },
+  {
+    title: 'Porto Alegre',
+    copy:
+      'Página local orientada para empresas que precisam combinar descoberta urbana, Google Maps e páginas comerciais em uma capital estratégica do Sul.',
+    href: '/cidades/porto-alegre/'
   }
 ];
 
 const faqs = [
   {
-    question: 'Qual a diferenca entre pagina de cidade e pagina de nicho?',
+    question: 'Qual a diferença entre página de cidade e página de nicho?',
     answer:
-      'A pagina de cidade organiza o contexto geografico e local. A pagina de nicho organiza o contexto setorial. A landing page combina os dois quando ha demanda real.'
+      'A página de cidade organiza o contexto geográfico e local. A página de nicho organiza o contexto setorial. A landing page combina os dois quando há demanda real.'
   },
   {
-    question: 'Toda cidade merece uma pagina propria?',
+    question: 'Toda cidade merece uma página própria?',
     answer:
-      'Nao. A AUDITSEO so materializa cidade quando existe cobertura comercial, intencao local e possibilidade de prova ou adaptacao de mensagem.'
+      'Não. A AUDITSEO só materializa cidade quando existe cobertura comercial, intenção local e possibilidade de prova ou adaptação de mensagem.'
   },
   {
-    question: 'Paginas locais servem so para SEO local?',
+    question: 'Páginas locais servem só para SEO local?',
     answer:
-      'Nao. Elas tambem ajudam em descoberta organica, reforco de autoridade regional e conexao com landings mais especificas.'
+      'Não. Elas também ajudam em descoberta orgânica, reforço de autoridade regional e conexão com landings mais específicas.'
   }
 ];
 
@@ -74,7 +80,7 @@ const faqSchema = {
 ---
 <CityLayout
   title="Cidades Atendidas pela AUDITSEO"
-  description="Paginas locais da AUDITSEO para organizar descoberta regional, mensagem comercial e conexao entre servicos, nichos e landing pages."
+  description="Páginas locais da AUDITSEO para organizar descoberta regional, mensagem comercial e conexão entre serviços, nichos e landing pages."
   canonicalPath="/cidades/"
   breadcrumbs={[
     { label: 'Home', path: '/' },
@@ -92,32 +98,32 @@ const faqSchema = {
       <div>
         <span class="ee-page-badge">Cobertura Local</span>
         <h1 class="ee-page-title">
-          CIDADES COM <span class="accent">CONTEXTO</span>, SERVICO E INTENCAO REAL
+          CIDADES COM <span class="accent">CONTEXTO</span>, SERVIÇO E INTENÇÃO REAL
         </h1>
         <p class="ee-page-subtitle">
-          As paginas locais da AUDITSEO existem para traduzir a estrategia em um contexto
-          geografico especifico, sem cair em paginas vazias. Cada cidade precisa sustentar
+          As páginas locais da AUDITSEO existem para traduzir a estratégia em um contexto
+          geográfico específico, sem cair em páginas vazias. Cada cidade precisa sustentar
           <strong> demanda</strong>, <strong>mensagem local</strong> e
-          <strong> conexao comercial clara</strong>.
+          <strong> conexão comercial clara</strong>.
         </p>
         <div class="ee-page-highlights">
           <span class="ee-page-highlight">SEO Local</span>
           <span class="ee-page-highlight">Descoberta Regional</span>
           <span class="ee-page-highlight">Clusters Comerciais</span>
-          <span class="ee-page-highlight">Sem Pagina Inflada</span>
+          <span class="ee-page-highlight">Sem Página Inflada</span>
         </div>
       </div>
 
       <aside class="ee-page-hero-card">
         <h2>Como essa camada se encaixa</h2>
         <p>
-          Cidade conecta o bloco institucional aos servicos, aos nichos e as landings de alta
-          conversao quando existe combinacao comercial valida.
+          Cidade conecta o bloco institucional aos serviços, aos nichos e às landings de alta
+          conversão quando existe combinação comercial válida.
         </p>
         <div class="ee-page-links">
-          <a href="/servicos/">Ver servicos</a>
+          <a href="/servicos/">Ver serviços</a>
           <a href="/nichos/">Ver nichos</a>
-          <a href="/contato/">Solicitar diagnostico</a>
+          <a href="/contato/">Solicitar diagnóstico</a>
         </div>
       </aside>
     </section>
@@ -125,7 +131,7 @@ const faqSchema = {
     <section class="ee-page-section">
       <div class="ee-page-section-head">
         <span class="ee-page-section-badge">Cobertura atual</span>
-        <h2 class="ee-page-section-title">CIDADES JA ATIVAS NA NOVA ARQUITETURA</h2>
+        <h2 class="ee-page-section-title">CIDADES JÁ ATIVAS NA NOVA ARQUITETURA</h2>
       </div>
       <div class="ee-page-panels">
         {cityCards.map((item) => (
@@ -148,15 +154,15 @@ const faqSchema = {
       <div class="ee-page-grid three">
         <article class="ee-page-card">
           <h3>Demanda comercial</h3>
-          <p>Sem busca, lead ou proposta real, a cidade nao entra na estrutura publica.</p>
+          <p>Sem busca, lead ou proposta real, a cidade não entra na estrutura pública.</p>
         </article>
         <article class="ee-page-card">
-          <h3>Diferenciacao local</h3>
-          <p>Precisa existir algo de linguagem, prova ou contexto que nao caiba em uma pagina generica.</p>
+          <h3>Diferenciação local</h3>
+          <p>Precisa existir algo de linguagem, prova ou contexto que não caiba em uma página genérica.</p>
         </article>
         <article class="ee-page-card">
-          <h3>Conexao com servico</h3>
-          <p>A cidade precisa reforcar servicos e landings, nao competir com a Home ou com o blog.</p>
+          <h3>Conexão com serviço</h3>
+          <p>A cidade precisa reforçar serviços e landings, não competir com a Home ou com o blog.</p>
         </article>
       </div>
     </section>
@@ -164,7 +170,7 @@ const faqSchema = {
     <section class="ee-page-section ee-page-faq">
       <div class="ee-page-section-head">
         <span class="ee-page-section-badge">FAQ</span>
-        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE PAGINAS LOCAIS</h2>
+        <h2 class="ee-page-section-title">DÚVIDAS COMUNS SOBRE PÁGINAS LOCAIS</h2>
       </div>
       <div class="ee-page-faqs">
         {faqs.map((item) => (

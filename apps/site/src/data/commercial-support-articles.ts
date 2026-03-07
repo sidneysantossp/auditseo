@@ -1,4 +1,5 @@
 import { commercialSupportArticlesCuritibaBrasilia } from './commercial-support-articles-curitiba-brasilia';
+import { commercialSupportArticlesPortoAlegre } from './commercial-support-articles-porto-alegre';
 import { commercialSupportArticlesRioBh } from './commercial-support-articles-rio-bh';
 
 export interface CommercialSupportArticleFaq {
@@ -1541,5 +1542,6 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
     ctaLabel: 'Ver a página local de Brasília'
   },
   ...commercialSupportArticlesCuritibaBrasilia,
-  ...commercialSupportArticlesRioBh
+  ...commercialSupportArticlesRioBh,
+  ...commercialSupportArticlesPortoAlegre
 ];

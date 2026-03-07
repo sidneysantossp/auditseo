@@ -1,4 +1,5 @@
 import { curitibaBrasiliaCommercialBriefs } from './commercial-page-briefs-curitiba-brasilia';
+import { portoAlegreCommercialBriefs } from './commercial-page-briefs-porto-alegre';
 import { rioBhCommercialBriefs } from './commercial-page-briefs-rio-bh';
 
 export type CommercialBriefPageType = 'sectoral-anchor' | 'local-commercial' | 'regional-bridge';
@@ -884,5 +885,6 @@ export const allCommercialBriefs = [
   ...saoPauloWaveTwoCommercialBriefs,
   ...southeastExpansionWaveOneCommercialBriefs,
   ...curitibaBrasiliaCommercialBriefs,
-  ...rioBhCommercialBriefs
+  ...rioBhCommercialBriefs,
+  ...portoAlegreCommercialBriefs
 ];

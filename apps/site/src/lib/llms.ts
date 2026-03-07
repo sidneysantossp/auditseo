@@ -230,6 +230,16 @@ const serviceResources: LlmsResource[] = [
     description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas em Brasilia.'
   },
   {
+    title: 'SEO Local para Clinicas Medicas em Porto Alegre',
+    path: '/servicos/seo-local-para-clinicas-medicas-em-porto-alegre/',
+    description: 'Pagina comercial local para clinicas medicas em Porto Alegre, com foco em descoberta por geografia, especialidades e Google Maps.'
+  },
+  {
+    title: 'Google Meu Negocio para Clinicas Medicas em Porto Alegre',
+    path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-porto-alegre/',
+    description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas em Porto Alegre.'
+  },
+  {
     title: 'SEO Local para Odontologia em Curitiba',
     path: '/servicos/seo-local-para-odontologia-em-curitiba/',
     description: 'Pagina comercial local para odontologia em Curitiba, com foco em procedimentos, mapa e busca por proximidade.'
@@ -421,6 +431,11 @@ const clusterResources: LlmsResource[] = [
     title: 'Brasilia',
     path: '/cidades/brasilia/',
     description: 'Pagina local para demanda comercial e organica na cidade de Brasilia.'
+  },
+  {
+    title: 'Porto Alegre',
+    path: '/cidades/porto-alegre/',
+    description: 'Pagina local para demanda comercial e organica na cidade de Porto Alegre.'
   },
   {
     title: 'Landing Page AI Overview Optimization para Clinicas Medicas em Sao Paulo',
