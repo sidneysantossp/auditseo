@@ -2089,6 +2089,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         label: 'Quanto custa SEO para escritórios de advocacia?',
         path: '/blog/quanto-custa-seo-para-escritorios-de-advocacia/',
         reason: 'Objeção de orçamento diretamente ligada ao setor jurídico.'
+      },
+      {
+        label: 'Em quanto tempo SEO gera resultado para escritórios de advocacia?',
+        path: '/blog/em-quanto-tempo-seo-gera-resultado-para-escritorios-de-advocacia/',
+        reason: 'Objeção de prazo ligada à vertical jurídica.'
       }
     ],
     faqItems: [
@@ -2251,6 +2256,16 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         label: 'Consultoria SEO para energia solar vale a pena?',
         path: '/blog/consultoria-seo-para-energia-solar-vale-a-pena/',
         reason: 'Artigo BOFU de ROI ligado à vertical.'
+      },
+      {
+        label: 'Quanto custa SEO para energia solar?',
+        path: '/blog/quanto-custa-seo-para-energia-solar/',
+        reason: 'Objeção de orçamento ligada ao setor.'
+      },
+      {
+        label: 'Em quanto tempo SEO gera demanda para energia solar?',
+        path: '/blog/em-quanto-tempo-seo-gera-demanda-para-energia-solar/',
+        reason: 'Objeção de prazo ligada à geração de demanda.'
       }
     ],
     faqItems: [
@@ -2413,6 +2428,16 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         label: 'Consultoria SEO para software B2B vale a pena?',
         path: '/blog/consultoria-seo-para-software-b2b-vale-a-pena/',
         reason: 'Artigo de ROI e maturidade comercial da vertical.'
+      },
+      {
+        label: 'Quanto custa SEO para software B2B?',
+        path: '/blog/quanto-custa-seo-para-software-b2b/',
+        reason: 'Objeção de orçamento ligada à vertical.'
+      },
+      {
+        label: 'Em quanto tempo SEO gera pipeline para software B2B?',
+        path: '/blog/em-quanto-tempo-seo-gera-pipeline-para-software-b2b/',
+        reason: 'Objeção de prazo ligada à geração de pipeline.'
       }
     ],
     faqItems: [
