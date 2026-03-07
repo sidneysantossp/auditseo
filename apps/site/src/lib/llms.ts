@@ -288,6 +288,76 @@ const serviceResources: LlmsResource[] = [
     title: 'Consultoria SEO para Software B2B em Brasilia',
     path: '/servicos/consultoria-seo-para-software-b2b-em-brasilia/',
     description: 'Pagina comercial para software B2B em Brasilia, com foco em categoria, comparacao e descoberta organica.'
+  },
+  {
+    title: 'SEO Local para Odontologia no Rio de Janeiro',
+    path: '/servicos/seo-local-para-odontologia-em-rio-de-janeiro/',
+    description: 'Pagina comercial local para odontologia no Rio de Janeiro, com foco em procedimentos, mapa e busca por proximidade.'
+  },
+  {
+    title: 'Google Meu Negocio para Odontologia no Rio de Janeiro',
+    path: '/servicos/google-meu-negocio-para-odontologia-em-rio-de-janeiro/',
+    description: 'Pagina comercial local focada em Google Maps e perfil da empresa para odontologia no Rio de Janeiro.'
+  },
+  {
+    title: 'SEO Local para Odontologia em Belo Horizonte',
+    path: '/servicos/seo-local-para-odontologia-em-belo-horizonte/',
+    description: 'Pagina comercial local para odontologia em Belo Horizonte, com foco em procedimentos, mapa e busca por proximidade.'
+  },
+  {
+    title: 'Google Meu Negocio para Odontologia em Belo Horizonte',
+    path: '/servicos/google-meu-negocio-para-odontologia-em-belo-horizonte/',
+    description: 'Pagina comercial local focada em Google Maps e perfil da empresa para odontologia em Belo Horizonte.'
+  },
+  {
+    title: 'SEO Local para Dermatologistas no Rio de Janeiro',
+    path: '/servicos/seo-local-para-dermatologistas-em-rio-de-janeiro/',
+    description: 'Pagina comercial local para dermatologistas no Rio de Janeiro, com foco em tratamentos, descoberta urbana e conversao qualificada.'
+  },
+  {
+    title: 'Google Meu Negocio para Dermatologistas no Rio de Janeiro',
+    path: '/servicos/google-meu-negocio-para-dermatologistas-em-rio-de-janeiro/',
+    description: 'Pagina comercial local focada em Google Maps para dermatologistas no Rio de Janeiro.'
+  },
+  {
+    title: 'SEO Local para Dermatologistas em Belo Horizonte',
+    path: '/servicos/seo-local-para-dermatologistas-em-belo-horizonte/',
+    description: 'Pagina comercial local para dermatologistas em Belo Horizonte, com foco em tratamentos, descoberta urbana e conversao qualificada.'
+  },
+  {
+    title: 'Google Meu Negocio para Dermatologistas em Belo Horizonte',
+    path: '/servicos/google-meu-negocio-para-dermatologistas-em-belo-horizonte/',
+    description: 'Pagina comercial local focada em Google Maps para dermatologistas em Belo Horizonte.'
+  },
+  {
+    title: 'SEO para Escritorios de Advocacia no Rio de Janeiro',
+    path: '/servicos/seo-para-escritorios-de-advocacia-em-rio-de-janeiro/',
+    description: 'Pagina comercial juridica para o Rio de Janeiro, com foco em areas de atuacao, autoridade e descoberta qualificada.'
+  },
+  {
+    title: 'SEO para Escritorios de Advocacia em Belo Horizonte',
+    path: '/servicos/seo-para-escritorios-de-advocacia-em-belo-horizonte/',
+    description: 'Pagina comercial juridica para Belo Horizonte, com foco em areas de atuacao, autoridade e descoberta qualificada.'
+  },
+  {
+    title: 'Consultoria SEO para Software B2B no Rio de Janeiro',
+    path: '/servicos/consultoria-seo-para-software-b2b-em-rio-de-janeiro/',
+    description: 'Pagina comercial para software B2B no Rio de Janeiro, com foco em categoria, comparacao e descoberta organica.'
+  },
+  {
+    title: 'Consultoria SEO para Software B2B em Belo Horizonte',
+    path: '/servicos/consultoria-seo-para-software-b2b-em-belo-horizonte/',
+    description: 'Pagina comercial para software B2B em Belo Horizonte, com foco em categoria, comparacao e descoberta organica.'
+  },
+  {
+    title: 'Consultoria SEO para Energia Solar no Rio de Janeiro',
+    path: '/servicos/consultoria-seo-para-energia-solar-em-rio-de-janeiro/',
+    description: 'Pagina comercial para energia solar no Rio de Janeiro, com foco em solucao, jornada consultiva e demanda organica qualificada.'
+  },
+  {
+    title: 'Consultoria SEO para Energia Solar em Belo Horizonte',
+    path: '/servicos/consultoria-seo-para-energia-solar-em-belo-horizonte/',
+    description: 'Pagina comercial para energia solar em Belo Horizonte, com foco em solucao, jornada consultiva e demanda organica qualificada.'
   }
 ];
 

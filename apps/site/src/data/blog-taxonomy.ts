@@ -471,7 +471,17 @@ export const blogCategories: BlogCategoryDefinition[] = [
       'seo-para-escritorios-de-advocacia-em-curitiba-funciona',
       'seo-para-escritorios-de-advocacia-em-brasilia-funciona',
       'seo-para-software-b2b-em-curitiba-como-funciona',
-      'seo-para-software-b2b-em-brasilia-como-funciona'
+      'seo-para-software-b2b-em-brasilia-como-funciona',
+      'seo-local-para-odontologia-no-rio-de-janeiro-vale-a-pena',
+      'seo-local-para-odontologia-em-belo-horizonte-vale-a-pena',
+      'seo-local-para-dermatologistas-no-rio-de-janeiro-vale-a-pena',
+      'seo-local-para-dermatologistas-em-belo-horizonte-vale-a-pena',
+      'seo-para-escritorios-de-advocacia-no-rio-de-janeiro-funciona',
+      'seo-para-escritorios-de-advocacia-em-belo-horizonte-funciona',
+      'seo-para-software-b2b-no-rio-de-janeiro-como-funciona',
+      'seo-para-software-b2b-em-belo-horizonte-como-funciona',
+      'seo-para-energia-solar-no-rio-de-janeiro-como-gerar-demanda-qualificada',
+      'seo-para-energia-solar-em-belo-horizonte-como-gerar-demanda-qualificada'
     ]
   }
 ];

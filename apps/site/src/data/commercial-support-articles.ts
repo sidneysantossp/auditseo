@@ -1,4 +1,5 @@
 import { commercialSupportArticlesCuritibaBrasilia } from './commercial-support-articles-curitiba-brasilia';
+import { commercialSupportArticlesRioBh } from './commercial-support-articles-rio-bh';
 
 export interface CommercialSupportArticleFaq {
   question: string;
@@ -1539,5 +1540,6 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
     ctaPath: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/',
     ctaLabel: 'Ver a página local de Brasília'
   },
-  ...commercialSupportArticlesCuritibaBrasilia
+  ...commercialSupportArticlesCuritibaBrasilia,
+  ...commercialSupportArticlesRioBh
 ];

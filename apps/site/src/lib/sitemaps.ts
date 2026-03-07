@@ -101,7 +101,21 @@ const serviceEntries: SitemapUrlEntry[] = [
   { path: '/servicos/seo-para-escritorios-de-advocacia-em-curitiba/' },
   { path: '/servicos/seo-para-escritorios-de-advocacia-em-brasilia/' },
   { path: '/servicos/consultoria-seo-para-software-b2b-em-curitiba/' },
-  { path: '/servicos/consultoria-seo-para-software-b2b-em-brasilia/' }
+  { path: '/servicos/consultoria-seo-para-software-b2b-em-brasilia/' },
+  { path: '/servicos/seo-local-para-odontologia-em-rio-de-janeiro/' },
+  { path: '/servicos/google-meu-negocio-para-odontologia-em-rio-de-janeiro/' },
+  { path: '/servicos/seo-local-para-odontologia-em-belo-horizonte/' },
+  { path: '/servicos/google-meu-negocio-para-odontologia-em-belo-horizonte/' },
+  { path: '/servicos/seo-local-para-dermatologistas-em-rio-de-janeiro/' },
+  { path: '/servicos/google-meu-negocio-para-dermatologistas-em-rio-de-janeiro/' },
+  { path: '/servicos/seo-local-para-dermatologistas-em-belo-horizonte/' },
+  { path: '/servicos/google-meu-negocio-para-dermatologistas-em-belo-horizonte/' },
+  { path: '/servicos/seo-para-escritorios-de-advocacia-em-rio-de-janeiro/' },
+  { path: '/servicos/seo-para-escritorios-de-advocacia-em-belo-horizonte/' },
+  { path: '/servicos/consultoria-seo-para-software-b2b-em-rio-de-janeiro/' },
+  { path: '/servicos/consultoria-seo-para-software-b2b-em-belo-horizonte/' },
+  { path: '/servicos/consultoria-seo-para-energia-solar-em-rio-de-janeiro/' },
+  { path: '/servicos/consultoria-seo-para-energia-solar-em-belo-horizonte/' }
 ];
 
 const clusterEntries: SitemapUrlEntry[] = [

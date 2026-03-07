@@ -1,5 +1,6 @@
 import { allCommercialBriefs, type CommercialPageBrief, type CommercialInternalLink } from './commercial-page-briefs';
 import { buildCuritibaBrasiliaServiceFirstCommercialPages } from './service-first-commercial-pages-curitiba-brasilia';
+import { buildRioBhServiceFirstCommercialPages } from './service-first-commercial-pages-rio-bh';
 
 interface PageStat {
   value: string;
@@ -3869,7 +3870,8 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
     areaServedName: 'Brasília',
     brief: requireBrief('/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/')
   },
-  ...buildCuritibaBrasiliaServiceFirstCommercialPages(requireBrief)
+  ...buildCuritibaBrasiliaServiceFirstCommercialPages(requireBrief),
+  ...buildRioBhServiceFirstCommercialPages(requireBrief)
 ];
 
 export function getServiceFirstCommercialPageBySlug(slug: string) {
