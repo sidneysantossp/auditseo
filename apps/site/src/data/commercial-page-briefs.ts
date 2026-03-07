@@ -1,3 +1,5 @@
+import { curitibaBrasiliaCommercialBriefs } from './commercial-page-briefs-curitiba-brasilia';
+
 export type CommercialBriefPageType = 'sectoral-anchor' | 'local-commercial' | 'regional-bridge';
 
 export interface CommercialInternalLink {
@@ -879,5 +881,6 @@ export const southeastExpansionWaveOneCommercialBriefs: CommercialPageBrief[] = 
 export const allCommercialBriefs = [
   ...saoPauloWaveOneCommercialBriefs,
   ...saoPauloWaveTwoCommercialBriefs,
-  ...southeastExpansionWaveOneCommercialBriefs
+  ...southeastExpansionWaveOneCommercialBriefs,
+  ...curitibaBrasiliaCommercialBriefs
 ];

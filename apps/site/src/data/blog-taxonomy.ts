@@ -463,7 +463,15 @@ export const blogCategories: BlogCategoryDefinition[] = [
       'seo-local-para-clinicas-medicas-no-rio-de-janeiro-vale-a-pena',
       'seo-local-para-clinicas-medicas-em-belo-horizonte-vale-a-pena',
       'seo-local-para-clinicas-medicas-em-curitiba-vale-a-pena',
-      'seo-local-para-clinicas-medicas-em-brasilia-vale-a-pena'
+      'seo-local-para-clinicas-medicas-em-brasilia-vale-a-pena',
+      'seo-local-para-odontologia-em-curitiba-vale-a-pena',
+      'seo-local-para-odontologia-em-brasilia-vale-a-pena',
+      'seo-local-para-dermatologistas-em-curitiba-vale-a-pena',
+      'seo-local-para-dermatologistas-em-brasilia-vale-a-pena',
+      'seo-para-escritorios-de-advocacia-em-curitiba-funciona',
+      'seo-para-escritorios-de-advocacia-em-brasilia-funciona',
+      'seo-para-software-b2b-em-curitiba-como-funciona',
+      'seo-para-software-b2b-em-brasilia-como-funciona'
     ]
   }
 ];

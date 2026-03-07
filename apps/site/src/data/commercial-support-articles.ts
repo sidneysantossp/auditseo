@@ -1,3 +1,5 @@
+import { commercialSupportArticlesCuritibaBrasilia } from './commercial-support-articles-curitiba-brasilia';
+
 export interface CommercialSupportArticleFaq {
   question: string;
   answer: string;
@@ -1536,5 +1538,6 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
       'Se Brasília já influencia a maior parte da demanda da clínica, o próximo passo é analisar a página comercial local específica dessa praça.',
     ctaPath: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/',
     ctaLabel: 'Ver a página local de Brasília'
-  }
+  },
+  ...commercialSupportArticlesCuritibaBrasilia
 ];

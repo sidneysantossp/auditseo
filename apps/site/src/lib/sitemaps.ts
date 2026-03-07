@@ -89,7 +89,19 @@ const serviceEntries: SitemapUrlEntry[] = [
   { path: '/servicos/seo-local-para-clinicas-medicas-em-curitiba/' },
   { path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/' },
   { path: '/servicos/seo-local-para-clinicas-medicas-em-brasilia/' },
-  { path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/' }
+  { path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/' },
+  { path: '/servicos/seo-local-para-odontologia-em-curitiba/' },
+  { path: '/servicos/google-meu-negocio-para-odontologia-em-curitiba/' },
+  { path: '/servicos/seo-local-para-odontologia-em-brasilia/' },
+  { path: '/servicos/google-meu-negocio-para-odontologia-em-brasilia/' },
+  { path: '/servicos/seo-local-para-dermatologistas-em-curitiba/' },
+  { path: '/servicos/google-meu-negocio-para-dermatologistas-em-curitiba/' },
+  { path: '/servicos/seo-local-para-dermatologistas-em-brasilia/' },
+  { path: '/servicos/google-meu-negocio-para-dermatologistas-em-brasilia/' },
+  { path: '/servicos/seo-para-escritorios-de-advocacia-em-curitiba/' },
+  { path: '/servicos/seo-para-escritorios-de-advocacia-em-brasilia/' },
+  { path: '/servicos/consultoria-seo-para-software-b2b-em-curitiba/' },
+  { path: '/servicos/consultoria-seo-para-software-b2b-em-brasilia/' }
 ];
 
 const clusterEntries: SitemapUrlEntry[] = [

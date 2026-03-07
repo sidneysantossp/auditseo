@@ -228,6 +228,66 @@ const serviceResources: LlmsResource[] = [
     title: 'Google Meu Negocio para Clinicas Medicas em Brasilia',
     path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/',
     description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas em Brasilia.'
+  },
+  {
+    title: 'SEO Local para Odontologia em Curitiba',
+    path: '/servicos/seo-local-para-odontologia-em-curitiba/',
+    description: 'Pagina comercial local para odontologia em Curitiba, com foco em procedimentos, mapa e busca por proximidade.'
+  },
+  {
+    title: 'Google Meu Negocio para Odontologia em Curitiba',
+    path: '/servicos/google-meu-negocio-para-odontologia-em-curitiba/',
+    description: 'Pagina comercial local focada em Google Maps e perfil da empresa para odontologia em Curitiba.'
+  },
+  {
+    title: 'SEO Local para Odontologia em Brasilia',
+    path: '/servicos/seo-local-para-odontologia-em-brasilia/',
+    description: 'Pagina comercial local para odontologia em Brasilia, com foco em procedimentos, mapa e busca por proximidade.'
+  },
+  {
+    title: 'Google Meu Negocio para Odontologia em Brasilia',
+    path: '/servicos/google-meu-negocio-para-odontologia-em-brasilia/',
+    description: 'Pagina comercial local focada em Google Maps e perfil da empresa para odontologia em Brasilia.'
+  },
+  {
+    title: 'SEO Local para Dermatologistas em Curitiba',
+    path: '/servicos/seo-local-para-dermatologistas-em-curitiba/',
+    description: 'Pagina comercial local para dermatologistas em Curitiba, com foco em tratamentos, descoberta urbana e conversao qualificada.'
+  },
+  {
+    title: 'Google Meu Negocio para Dermatologistas em Curitiba',
+    path: '/servicos/google-meu-negocio-para-dermatologistas-em-curitiba/',
+    description: 'Pagina comercial local focada em Google Maps para dermatologistas em Curitiba.'
+  },
+  {
+    title: 'SEO Local para Dermatologistas em Brasilia',
+    path: '/servicos/seo-local-para-dermatologistas-em-brasilia/',
+    description: 'Pagina comercial local para dermatologistas em Brasilia, com foco em tratamentos, descoberta urbana e conversao qualificada.'
+  },
+  {
+    title: 'Google Meu Negocio para Dermatologistas em Brasilia',
+    path: '/servicos/google-meu-negocio-para-dermatologistas-em-brasilia/',
+    description: 'Pagina comercial local focada em Google Maps para dermatologistas em Brasilia.'
+  },
+  {
+    title: 'SEO para Escritorios de Advocacia em Curitiba',
+    path: '/servicos/seo-para-escritorios-de-advocacia-em-curitiba/',
+    description: 'Pagina comercial juridica para Curitiba, com foco em areas de atuacao, autoridade e descoberta qualificada.'
+  },
+  {
+    title: 'SEO para Escritorios de Advocacia em Brasilia',
+    path: '/servicos/seo-para-escritorios-de-advocacia-em-brasilia/',
+    description: 'Pagina comercial juridica para Brasilia, com foco em areas de atuacao, autoridade e descoberta qualificada.'
+  },
+  {
+    title: 'Consultoria SEO para Software B2B em Curitiba',
+    path: '/servicos/consultoria-seo-para-software-b2b-em-curitiba/',
+    description: 'Pagina comercial para software B2B em Curitiba, com foco em categoria, comparacao e descoberta organica.'
+  },
+  {
+    title: 'Consultoria SEO para Software B2B em Brasilia',
+    path: '/servicos/consultoria-seo-para-software-b2b-em-brasilia/',
+    description: 'Pagina comercial para software B2B em Brasilia, com foco em categoria, comparacao e descoberta organica.'
   }
 ];
 
