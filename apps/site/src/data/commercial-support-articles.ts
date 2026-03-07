@@ -848,5 +848,349 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
       'Se o perfil local ainda não está sustentando bem a descoberta e o contato, o melhor próximo passo é validar a página específica de GBP para odontologia.',
     ctaPath: '/servicos/google-meu-negocio-para-odontologia-em-sao-paulo/',
     ctaLabel: 'Ver a página de GBP para odontologia'
+  },
+  {
+    slug: 'seo-para-escritorios-de-advocacia-funciona',
+    title: 'SEO para Escritórios de Advocacia Funciona?',
+    seoTitle: 'SEO para Escritórios de Advocacia Funciona? | AUDITSEO',
+    description:
+      'Entenda quando SEO funciona para escritórios de advocacia, quais estruturas comerciais fazem diferença e por que autoridade institucional sozinha não basta.',
+    excerpt:
+      'No jurídico, SEO funciona quando o escritório transforma autoridade, áreas de atuação e clareza comercial em uma arquitetura encontrável. Sem isso, o site tende a informar, mas não captar.',
+    categorySlug: 'estrategia',
+    imagePath: '/images/agencia-de-seo.png',
+    publishedTime: '2026-03-07T16:10:00-03:00',
+    modifiedTime: '2026-03-07T16:10:00-03:00',
+    readingTime: 7,
+    keywords: ['seo para escritorios de advocacia funciona', 'seo juridico', 'seo para advogados', 'advocacia seo'],
+    badge: 'Jurídico e Busca Comercial',
+    subtitle:
+      'Escritórios de advocacia não perdem visibilidade só por falta de autoridade. Perdem quando a autoridade não está organizada em áreas de atuação, intenção comercial e descoberta local.',
+    sections: [
+      {
+        title: 'Quando SEO realmente funciona no setor jurídico',
+        paragraphs: [
+          'Funciona quando o escritório organiza páginas por área de atuação, torna a oferta mais compreensível e reduz o excesso de institucional vazio.',
+          'Em mercados competitivos como São Paulo, o problema quase nunca é só reputação. É a falta de uma arquitetura que transforme reputação em descoberta.'
+        ]
+      },
+      {
+        title: 'O que trava resultado na maioria dos escritórios',
+        paragraphs: [
+          'Home genérica, páginas frágeis por serviço e dificuldade de explicar de forma objetiva para quem o escritório atende e em que contexto atua.',
+          'Quando tudo fica no mesmo nível de mensagem, a busca perde precisão e a página compete mal por intenção qualificada.'
+        ],
+        bullets: [
+          'Áreas de atuação mal separadas',
+          'Copy excessivamente institucional',
+          'Pouca clareza comercial sobre serviço e contexto',
+          'Ausência de camada local quando a praça pesa na decisão'
+        ]
+      },
+      {
+        title: 'Como o SEO jurídico deve ser estruturado',
+        paragraphs: [
+          'A lógica mais saudável parte de uma página comercial principal, derivações controladas por área e apoio editorial para objeções e decisão.',
+          'Isso ajuda a captar intenção sem cair em multiplicação desordenada de páginas parecidas.'
+        ]
+      },
+      {
+        title: 'Quando vale a contratação',
+        paragraphs: [
+          'Vale quando o escritório quer depender menos de indicação isolada, ganhar mais previsibilidade orgânica e fortalecer a descoberta em áreas estratégicas.',
+          'Nessa etapa, SEO deixa de ser só canal de tráfego e passa a ser infraestrutura comercial.'
+        ]
+      }
+    ],
+    faqItems: [
+      {
+        question: 'SEO funciona para qualquer escritório de advocacia?',
+        answer: 'Funciona melhor quando existe clareza sobre áreas de atuação, posicionamento e contexto comercial. Sem isso, o site tende a competir mal por intenção qualificada.'
+      },
+      {
+        question: 'Autoridade institucional basta para ranquear?',
+        answer: 'Não. Autoridade ajuda, mas precisa estar conectada a páginas comerciais claras e a uma arquitetura que facilite descoberta e decisão.'
+      },
+      {
+        question: 'Vale criar páginas por área de atuação?',
+        answer: 'Na maioria dos casos, sim. Mas só quando cada área tem intenção própria, contexto distinto e uma função clara na arquitetura comercial.'
+      },
+      {
+        question: 'SEO para advocacia depende de cidade?',
+        answer: 'Depende quando a praça interfere na descoberta e na decisão. Em São Paulo, a camada geográfica pode ser relevante para várias frentes.'
+      },
+      {
+        question: 'O blog substitui a página comercial do escritório?',
+        answer: 'Não. O blog ajuda a qualificar decisão e reforçar autoridade, mas a intenção de contratação precisa de página comercial própria.'
+      }
+    ],
+    resourceLinks: [
+      { label: 'SEO para Escritórios de Advocacia em São Paulo', path: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/' },
+      { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
+      { label: 'Escritórios de advocacia', path: '/nichos/escritorios-advocacia/' }
+    ],
+    ctaTitle: 'QUER VALIDAR A ESTRUTURA CERTA PARA O SEU ESCRITÓRIO?',
+    ctaCopy:
+      'Se o escritório quer transformar autoridade em descoberta orgânica mais previsível, o próximo passo é analisar a página comercial específica da vertical.',
+    ctaPath: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/',
+    ctaLabel: 'Ver a página para escritórios de advocacia'
+  },
+  {
+    slug: 'seo-para-energia-solar-como-gerar-demanda-qualificada',
+    title: 'SEO para Energia Solar: Como Gerar Demanda Qualificada',
+    seoTitle: 'SEO para Energia Solar: Como Gerar Demanda Qualificada | AUDITSEO',
+    description:
+      'Veja como SEO pode ajudar empresas de energia solar a captar demanda mais qualificada com páginas de solução, contexto consultivo e arquitetura comercial.',
+    excerpt:
+      'No setor de energia solar, volume sem intenção gera lead ruim. O papel do SEO é estruturar a busca por solução, aplicação e contexto comercial para filtrar melhor a demanda.',
+    categorySlug: 'estrategia',
+    imagePath: '/images/agencia-de-seo.png',
+    publishedTime: '2026-03-07T16:20:00-03:00',
+    modifiedTime: '2026-03-07T16:20:00-03:00',
+    readingTime: 7,
+    keywords: ['seo para energia solar', 'demanda qualificada energia solar', 'consultoria seo energia solar', 'seo b2b energia solar'],
+    badge: 'Energia Solar e Demanda B2B',
+    subtitle:
+      'Empresas de energia solar não precisam só de mais tráfego. Precisam de páginas e mensagens que atraiam a demanda certa, no contexto comercial certo.',
+    sections: [
+      {
+        title: 'Por que volume de tráfego não resolve sozinho',
+        paragraphs: [
+          'Porque no setor de energia solar parte importante da jornada é consultiva, comparativa e sensível ao perfil da oportunidade.',
+          'Se o site só atrai volume amplo, a operação gasta energia com contatos pouco aderentes à proposta comercial.'
+        ]
+      },
+      {
+        title: 'O que gera demanda mais qualificada',
+        paragraphs: [
+          'Páginas mais claras por solução, aplicação e contexto de decisão. Isso ajuda o usuário a se reconhecer mais cedo na oferta.',
+          'Também ajuda o Google a entender melhor quando aquela página merece aparecer para buscas comerciais do setor.'
+        ],
+        bullets: [
+          'Página principal da vertical',
+          'Páginas por solução ou aplicação',
+          'Mensagem comercial orientada a jornada B2B',
+          'Apoio editorial para comparação e decisão'
+        ]
+      },
+      {
+        title: 'Como SEO entra na venda consultiva',
+        paragraphs: [
+          'Entrando antes do contato, quando o decisor ainda está entendendo solução, escopo, viabilidade e fornecedor.',
+          'A estrutura orgânica correta reduz ruído e aumenta a proporção de oportunidades com mais aderência comercial.'
+        ]
+      },
+      {
+        title: 'Quando essa frente merece prioridade',
+        paragraphs: [
+          'Quando a empresa depende demais de mídia paga, geração fria ou indicação e quer construir uma base mais previsível de captação.',
+          'Nesse cenário, SEO ajuda a transformar o site em ativo comercial e não apenas institucional.'
+        ]
+      }
+    ],
+    faqItems: [
+      {
+        question: 'SEO funciona para energia solar em cenário B2B?',
+        answer: 'Sim. Principalmente quando a empresa organiza melhor solução, aplicação, contexto consultivo e mensagens de decisão.'
+      },
+      {
+        question: 'Mais tráfego significa mais oportunidade qualificada?',
+        answer: 'Não necessariamente. O importante é filtrar intenção e atrair buscas com maior aderência ao tipo de projeto que a empresa quer gerar.'
+      },
+      {
+        question: 'Que páginas uma empresa de energia solar deveria priorizar?',
+        answer: 'Normalmente a página principal da vertical, páginas por solução e conteúdos de apoio para comparação e decisão.'
+      },
+      {
+        question: 'SEO substitui outras frentes comerciais no setor?',
+        answer: 'Não. Ele complementa o comercial, mas ajuda a reduzir dependência excessiva de prospecção fria e mídia paga.'
+      },
+      {
+        question: 'Quando contratar consultoria SEO para energia solar faz mais sentido?',
+        answer: 'Quando a empresa quer estruturar melhor a jornada orgânica e gerar mais oportunidades qualificadas com base em busca comercial.'
+      }
+    ],
+    resourceLinks: [
+      { label: 'Consultoria SEO para Energia Solar em São Paulo', path: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/' },
+      { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
+      { label: 'Energia solar', path: '/nichos/energia-solar/' }
+    ],
+    ctaTitle: 'QUER AUMENTAR A QUALIDADE DA DEMANDA ORGÂNICA NO SETOR DE ENERGIA SOLAR?',
+    ctaCopy:
+      'Se a operação ainda depende demais de mídia paga ou geração fria, o melhor próximo passo é validar a página comercial específica de energia solar.',
+    ctaPath: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/',
+    ctaLabel: 'Ver a página de energia solar'
+  },
+  {
+    slug: 'seo-para-software-b2b-como-funciona',
+    title: 'SEO para Software B2B: Como Funciona',
+    seoTitle: 'SEO para Software B2B: Como Funciona | AUDITSEO',
+    description:
+      'Entenda como SEO funciona para software B2B, quais páginas são mais importantes e como categoria, solução e comparação sustentam descoberta orgânica.',
+    excerpt:
+      'Software B2B exige mais do que conteúdo técnico. Exige uma arquitetura que conecte categoria, solução, comparação e intenção de compra ao longo de um ciclo comercial mais longo.',
+    categorySlug: 'estrategia',
+    imagePath: '/images/agencia-de-seo.png',
+    publishedTime: '2026-03-07T16:30:00-03:00',
+    modifiedTime: '2026-03-07T16:30:00-03:00',
+    readingTime: 8,
+    keywords: ['seo para software b2b', 'seo saas b2b', 'seo para software como funciona', 'seo para saas'],
+    badge: 'Software B2B e Descoberta de Categoria',
+    subtitle:
+      'Em software B2B, o comprador pesquisa problema, categoria, solução e comparação. Se o site não acompanha essa jornada, o produto some justamente nas etapas mais importantes.',
+    sections: [
+      {
+        title: 'Por que software B2B pede uma arquitetura diferente',
+        paragraphs: [
+          'Porque o ciclo comercial é mais longo e a busca raramente começa já na marca. Ela passa por categoria, problema, comparação e solução.',
+          'Isso exige páginas com papéis diferentes e um interlinking mais disciplinado para não concentrar tudo em uma única home.'
+        ]
+      },
+      {
+        title: 'Quais páginas fazem mais diferença',
+        paragraphs: [
+          'A base costuma incluir página de categoria, página de solução, páginas comparativas e ativos de apoio para objeção e decisão.',
+          'Quando essas camadas faltam, a marca até tem produto forte, mas não aparece nos momentos em que o comprador está formulando a demanda.'
+        ],
+        bullets: [
+          'Página de categoria',
+          'Página de solução',
+          'Página comparativa ou de use case',
+          'Conteúdo BOFU e técnico de apoio'
+        ]
+      },
+      {
+        title: 'Como SEO e descoberta assistida por IA se conectam',
+        paragraphs: [
+          'Em software B2B, clareza semântica, estrutura por tema e entidade de marca ajudam tanto a busca tradicional quanto ambientes com respostas geradas por IA.',
+          'Por isso, SEO e LLM Brand Presence podem trabalhar juntos sem virar projetos paralelos.'
+        ]
+      },
+      {
+        title: 'Quando a contratação faz sentido',
+        paragraphs: [
+          'Quando a empresa quer reduzir dependência de outbound, fortalecer categoria e criar uma base mais previsível de descoberta orgânica.',
+          'Nessa fase, SEO passa a influenciar pipeline, percepção de categoria e geração de demanda qualificada.'
+        ]
+      }
+    ],
+    faqItems: [
+      {
+        question: 'SEO funciona para software B2B com ciclo longo?',
+        answer: 'Sim. Justamente porque ajuda a capturar busca ao longo de diferentes etapas da decisão, não só no momento final da compra.'
+      },
+      {
+        question: 'Produto complexo precisa de mais do que uma home?',
+        answer: 'Precisa. Home sozinha raramente sustenta categoria, solução, comparação e intenção comercial com profundidade suficiente.'
+      },
+      {
+        question: 'SEO para software B2B é igual a SEO genérico?',
+        answer: 'Não. O setor exige leitura mais técnica, comparativa e orientada a jornada consultiva.'
+      },
+      {
+        question: 'LLM Brand Presence entra nessa estratégia?',
+        answer: 'Em muitos casos, sim. Principalmente quando a marca quer reforçar descoberta em comparações e respostas assistidas por IA.'
+      },
+      {
+        question: 'Quando vale contratar consultoria SEO para software B2B?',
+        answer: 'Quando a empresa quer estruturar categoria, solução e descoberta orgânica com mais previsibilidade comercial.'
+      }
+    ],
+    resourceLinks: [
+      { label: 'Consultoria SEO para Software B2B em São Paulo', path: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/' },
+      { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
+      { label: 'LLM Brand Presence', path: '/servicos/llm-brand-presence/' }
+    ],
+    ctaTitle: 'QUER ESTRUTURAR MELHOR A DESCOBERTA ORGÂNICA DO SEU SOFTWARE B2B?',
+    ctaCopy:
+      'Se o produto ainda depende demais de outbound ou mídia paga, o próximo passo é validar a página comercial específica para software B2B.',
+    ctaPath: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/',
+    ctaLabel: 'Ver a página para software B2B'
+  },
+  {
+    slug: 'quando-criar-pagina-regional-no-interior-de-sao-paulo',
+    title: 'Quando Criar Página Regional no Interior de São Paulo',
+    seoTitle: 'Quando Criar Página Regional no Interior de São Paulo | AUDITSEO',
+    description:
+      'Saiba quando faz sentido criar uma página regional para o interior de São Paulo, como priorizar polos econômicos e quando abrir páginas por cidade.',
+    excerpt:
+      'Página regional só faz sentido quando organiza expansão real. No interior paulista, ela deve ajudar a priorizar polos, sustentar cobertura e evitar massa de páginas geográficas frágeis.',
+    categorySlug: 'estrategia',
+    imagePath: '/images/agencia-de-seo.png',
+    publishedTime: '2026-03-07T16:40:00-03:00',
+    modifiedTime: '2026-03-07T16:40:00-03:00',
+    readingTime: 7,
+    keywords: ['pagina regional interior de sao paulo', 'seo interior de sao paulo', 'pagina regional seo', 'expansao regional seo'],
+    badge: 'Expansão Regional e Arquitetura Comercial',
+    subtitle:
+      'Interior de São Paulo não deve ser tratado como bloco genérico nem como lista infinita de cidades. A página regional existe para organizar crescimento com critério comercial.',
+    sections: [
+      {
+        title: 'Quando a página regional faz sentido',
+        paragraphs: [
+          'Faz sentido quando a empresa atende mais de um polo relevante, já tem cobertura real e precisa organizar a expansão sem abrir páginas locais cedo demais.',
+          'Ela funciona como camada intermediária entre a página canônica do serviço e futuras páginas por cidade.'
+        ]
+      },
+      {
+        title: 'O que uma página regional não deve ser',
+        paragraphs: [
+          'Não deve ser uma página vaga, cheia de cidades listadas sem contexto, nem uma tentativa de ranquear por geografia sem operação real.',
+          'Se a página não explica cobertura, polos prioritários e critério de expansão, ela vira ruído.'
+        ]
+      },
+      {
+        title: 'Como priorizar polos do interior',
+        paragraphs: [
+          'A prioridade deve considerar densidade econômica, capacidade de atendimento, competição e potencial comercial por praça.',
+          'Campinas, São José dos Campos, Ribeirão Preto e Sorocaba costumam ilustrar bem como os polos do interior pedem leituras diferentes.'
+        ],
+        bullets: [
+          'Capacidade real de atendimento',
+          'Peso econômico do polo',
+          'Demanda comercial observável',
+          'Necessidade ou não de página própria por cidade'
+        ]
+      },
+      {
+        title: 'Quando evoluir para páginas por cidade',
+        paragraphs: [
+          'Quando a cidade já demonstra intenção suficiente, diferenciação de mensagem e papel comercial próprio dentro da malha.',
+          'Antes disso, a página regional costuma ser a melhor forma de consolidar contexto sem inflar a arquitetura.'
+        ]
+      }
+    ],
+    faqItems: [
+      {
+        question: 'Vale criar uma página para o interior de São Paulo?',
+        answer: 'Vale quando a empresa realmente atua em mais de um polo relevante e precisa organizar cobertura regional com critério comercial.'
+      },
+      {
+        question: 'Página regional substitui página por cidade?',
+        answer: 'Não necessariamente. Ela ajuda a organizar a camada regional e a decidir quando uma cidade já merece uma página própria.'
+      },
+      {
+        question: 'Interior de São Paulo é uma busca útil para SEO comercial?',
+        answer: 'Pode ser, desde que a página trate a região com contexto econômico e comercial real, e não como geografia vaga.'
+      },
+      {
+        question: 'Qual o risco de abrir muitas cidades cedo demais?',
+        answer: 'O risco é gerar páginas geográficas fracas, pouco diferenciadas e com baixa utilidade real para o usuário.'
+      },
+      {
+        question: 'Quando contratar consultoria para expansão regional faz mais sentido?',
+        answer: 'Quando a empresa quer crescer fora da capital com mais previsibilidade e precisa priorizar polos e páginas com base em critério comercial.'
+      }
+    ],
+    resourceLinks: [
+      { label: 'Consultoria SEO para Empresas no Interior de São Paulo', path: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/' },
+      { label: 'Campinas', path: '/cidades/campinas/' },
+      { label: 'SEO Local para Clínicas Médicas em Campinas', path: '/servicos/seo-local-para-clinicas-medicas-em-campinas/' }
+    ],
+    ctaTitle: 'QUER ORGANIZAR A EXPANSÃO ORGÂNICA DA SUA EMPRESA NO INTERIOR PAULISTA?',
+    ctaCopy:
+      'Se a operação já atende polos do interior, mas ainda não tem uma arquitetura regional clara, o próximo passo é validar a página comercial específica dessa frente.',
+    ctaPath: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/',
+    ctaLabel: 'Ver a página regional do interior de São Paulo'
   }
 ];

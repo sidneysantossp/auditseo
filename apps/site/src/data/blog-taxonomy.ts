@@ -455,7 +455,11 @@ export const blogCategories: BlogCategoryDefinition[] = [
       'seo-para-dermatologistas-vale-a-pena',
       'google-meu-negocio-para-dermatologistas',
       'seo-para-odontologia-como-funciona',
-      'google-meu-negocio-para-odontologia'
+      'google-meu-negocio-para-odontologia',
+      'seo-para-escritorios-de-advocacia-funciona',
+      'seo-para-energia-solar-como-gerar-demanda-qualificada',
+      'seo-para-software-b2b-como-funciona',
+      'quando-criar-pagina-regional-no-interior-de-sao-paulo'
     ]
   }
 ];

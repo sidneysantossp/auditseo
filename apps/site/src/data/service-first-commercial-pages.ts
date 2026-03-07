@@ -2065,8 +2065,12 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
       { label: 'Escritórios de advocacia', path: '/nichos/escritorios-advocacia/', reason: 'Hub setorial de apoio.' },
       { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Contexto geográfico principal.' },
-      { label: 'Como escolher agência SEO', path: '/blog/como-escolher-agencia-seo/', reason: 'Apoio BOFU de decisão.' },
-      { label: 'Especialista em SEO', path: '/blog/especialista-em-seo/', reason: 'Recurso complementar de decisão.' }
+      {
+        label: 'SEO para escritórios de advocacia funciona?',
+        path: '/blog/seo-para-escritorios-de-advocacia-funciona/',
+        reason: 'Apoio BOFU setorial para decisão.'
+      },
+      { label: 'Como escolher agência SEO', path: '/blog/como-escolher-agencia-seo/', reason: 'Apoio BOFU complementar.' }
     ],
     faqItems: [
       {
@@ -2219,8 +2223,12 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
       { label: 'Energia solar', path: '/nichos/energia-solar/', reason: 'Hub setorial de apoio.' },
       { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Contexto geográfico principal.' },
-      { label: 'Quanto custa SEO', path: '/blog/quanto-custa-seo/', reason: 'Apoio de decisão comercial.' },
-      { label: 'Como escolher agência SEO', path: '/blog/como-escolher-agencia-seo/', reason: 'Apoio BOFU complementar.' }
+      {
+        label: 'SEO para energia solar: como gerar demanda qualificada',
+        path: '/blog/seo-para-energia-solar-como-gerar-demanda-qualificada/',
+        reason: 'Apoio BOFU setorial para decisão.'
+      },
+      { label: 'Quanto custa SEO', path: '/blog/quanto-custa-seo/', reason: 'Apoio de decisão comercial.' }
     ],
     faqItems: [
       {
@@ -2373,8 +2381,12 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
       { label: 'LLM Brand Presence', path: '/servicos/llm-brand-presence/', reason: 'Complemento estratégico de descoberta.' },
       { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Contexto geográfico principal.' },
-      { label: 'O que é LLM SEO', path: '/blog/o-que-e-llm-seo/', reason: 'Apoio técnico sobre descoberta em IA.' },
-      { label: 'ROI de SEO', path: '/blog/roi-seo-ia/', reason: 'Apoio BOFU sobre retorno e decisão.' }
+      {
+        label: 'SEO para software B2B: como funciona',
+        path: '/blog/seo-para-software-b2b-como-funciona/',
+        reason: 'Apoio BOFU setorial para decisão.'
+      },
+      { label: 'O que é LLM SEO', path: '/blog/o-que-e-llm-seo/', reason: 'Apoio técnico sobre descoberta em IA.' }
     ],
     faqItems: [
       {
@@ -2539,7 +2551,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         path: '/servicos/seo-local-para-clinicas-medicas-em-sao-jose-dos-campos/',
         reason: 'Outro polo real da malha paulista.'
       },
-      { label: 'Como escolher agência SEO', path: '/blog/como-escolher-agencia-seo/', reason: 'Apoio BOFU de decisão.' }
+      {
+        label: 'Quando criar página regional no interior de São Paulo',
+        path: '/blog/quando-criar-pagina-regional-no-interior-de-sao-paulo/',
+        reason: 'Apoio BOFU para expansão regional.'
+      }
     ],
     faqItems: [
       {
