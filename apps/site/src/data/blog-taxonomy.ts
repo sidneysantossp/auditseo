@@ -459,7 +459,9 @@ export const blogCategories: BlogCategoryDefinition[] = [
       'seo-para-escritorios-de-advocacia-funciona',
       'seo-para-energia-solar-como-gerar-demanda-qualificada',
       'seo-para-software-b2b-como-funciona',
-      'quando-criar-pagina-regional-no-interior-de-sao-paulo'
+      'quando-criar-pagina-regional-no-interior-de-sao-paulo',
+      'seo-local-para-clinicas-medicas-no-rio-de-janeiro-vale-a-pena',
+      'seo-local-para-clinicas-medicas-em-belo-horizonte-vale-a-pena'
     ]
   }
 ];

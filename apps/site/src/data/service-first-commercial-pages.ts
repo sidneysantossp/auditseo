@@ -2707,7 +2707,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
       { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
       { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
       { label: 'Rio de Janeiro', path: '/cidades/rio-de-janeiro/', reason: 'Contexto geográfico principal.' },
-      { label: 'SEO local vale a pena para clínicas médicas', path: '/blog/seo-local-vale-a-pena-para-clinicas-medicas/', reason: 'Apoio BOFU de decisão.' },
+      {
+        label: 'SEO local para clínicas médicas no Rio de Janeiro vale a pena?',
+        path: '/blog/seo-local-para-clinicas-medicas-no-rio-de-janeiro-vale-a-pena/',
+        reason: 'Apoio BOFU local para decisão.'
+      },
       { label: 'Google Meu Negócio para Clínicas Médicas no Rio de Janeiro', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/', reason: 'Complemento local de Maps.' }
     ],
     faqItems: [
@@ -2860,6 +2864,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
       { label: 'Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
       { label: 'SEO Local para Clínicas Médicas no Rio de Janeiro', path: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/', reason: 'Página local complementar.' },
       { label: 'Google Meu Negócio para clínicas médicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'Apoio BOFU direto.' },
+      {
+        label: 'SEO local para clínicas médicas no Rio de Janeiro vale a pena?',
+        path: '/blog/seo-local-para-clinicas-medicas-no-rio-de-janeiro-vale-a-pena/',
+        reason: 'Apoio BOFU local de decisão.'
+      },
       { label: 'Rio de Janeiro', path: '/cidades/rio-de-janeiro/', reason: 'Contexto geográfico principal.' },
       { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Vertical-mãe da operação.' }
     ],
@@ -3013,7 +3022,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
       { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Página setorial-mãe.' },
       { label: 'SEO Local', path: '/servicos/seo-local/', reason: 'Serviço canônico principal.' },
       { label: 'Belo Horizonte', path: '/cidades/belo-horizonte/', reason: 'Contexto geográfico principal.' },
-      { label: 'SEO local vale a pena para clínicas médicas', path: '/blog/seo-local-vale-a-pena-para-clinicas-medicas/', reason: 'Apoio BOFU de decisão.' },
+      {
+        label: 'SEO local para clínicas médicas em Belo Horizonte vale a pena?',
+        path: '/blog/seo-local-para-clinicas-medicas-em-belo-horizonte-vale-a-pena/',
+        reason: 'Apoio BOFU local para decisão.'
+      },
       { label: 'Google Meu Negócio para Clínicas Médicas em Belo Horizonte', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/', reason: 'Complemento local de Maps.' }
     ],
     faqItems: [
@@ -3166,6 +3179,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
       { label: 'Google Meu Negócio', path: '/servicos/google-meu-negocio/', reason: 'Serviço canônico principal.' },
       { label: 'SEO Local para Clínicas Médicas em Belo Horizonte', path: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/', reason: 'Página local complementar.' },
       { label: 'Google Meu Negócio para clínicas médicas', path: '/blog/google-meu-negocio-para-clinicas-medicas/', reason: 'Apoio BOFU direto.' },
+      {
+        label: 'SEO local para clínicas médicas em Belo Horizonte vale a pena?',
+        path: '/blog/seo-local-para-clinicas-medicas-em-belo-horizonte-vale-a-pena/',
+        reason: 'Apoio BOFU local de decisão.'
+      },
       { label: 'Belo Horizonte', path: '/cidades/belo-horizonte/', reason: 'Contexto geográfico principal.' },
       { label: 'SEO para Clínicas Médicas', path: '/servicos/seo-para-clinicas-medicas/', reason: 'Vertical-mãe da operação.' }
     ],

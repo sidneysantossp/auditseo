@@ -1192,5 +1192,177 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
       'Se a operação já atende polos do interior, mas ainda não tem uma arquitetura regional clara, o próximo passo é validar a página comercial específica dessa frente.',
     ctaPath: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/',
     ctaLabel: 'Ver a página regional do interior de São Paulo'
+  },
+  {
+    slug: 'seo-local-para-clinicas-medicas-no-rio-de-janeiro-vale-a-pena',
+    title: 'SEO Local para Clínicas Médicas no Rio de Janeiro Vale a Pena?',
+    seoTitle: 'SEO Local para Clínicas Médicas no Rio de Janeiro Vale a Pena? | AUDITSEO',
+    description:
+      'Entenda quando SEO local realmente faz sentido para clínicas médicas no Rio de Janeiro e por que a cidade exige uma página comercial mais específica.',
+    excerpt:
+      'No Rio de Janeiro, a geografia pesa cedo na decisão. Quando a clínica depende de descoberta por bairro, proximidade e especialidade, SEO local deixa de ser detalhe e vira estrutura comercial.',
+    categorySlug: 'estrategia',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    publishedTime: '2026-03-07T17:10:00-03:00',
+    modifiedTime: '2026-03-07T17:10:00-03:00',
+    readingTime: 7,
+    keywords: ['seo local para clinicas medicas no rio de janeiro vale a pena', 'seo local clinicas rio', 'clinicas medicas rio de janeiro seo', 'google maps clinicas rio'],
+    badge: 'Rio de Janeiro e Decisão Local',
+    subtitle:
+      'No Rio, a clínica tende a disputar descoberta por cidade, especialidade e conveniência. Isso faz a estrutura local pesar mais cedo na jornada do paciente.',
+    sections: [
+      {
+        title: 'Quando SEO local realmente ganha peso no Rio',
+        paragraphs: [
+          'Ganha peso quando a clínica depende de cidade, bairro, mapa e proximidade para gerar a maior parte dos contatos.',
+          'No Rio, essa leitura costuma ser ainda mais forte quando especialidade e região se cruzam cedo na pesquisa.'
+        ]
+      },
+      {
+        title: 'O que precisa existir para funcionar',
+        paragraphs: [
+          'Não basta citar a cidade na página. A força vem da combinação entre página comercial local, contexto médico e coerência com Google Maps.',
+          'Quando essas camadas operam juntas, a clínica ganha uma presença mais clara e menos genérica.'
+        ],
+        bullets: [
+          'Página local com mensagem própria',
+          'Especialidade tratada com clareza',
+          'Perfil local coerente com o site',
+          'FAQ e argumentos comerciais orientados à decisão'
+        ]
+      },
+      {
+        title: 'Quando a estratégia não entrega o esperado',
+        paragraphs: [
+          'Normalmente quando a clínica tenta resolver o Rio com uma página nacional, um perfil local solto ou uma home institucional genérica.',
+          'Nesse cenário, a presença existe, mas a descoberta não se converte em contato com consistência.'
+        ]
+      },
+      {
+        title: 'Como saber se faz sentido priorizar agora',
+        paragraphs: [
+          'Se a clínica já percebe que cidade, bairro e mapa influenciam a demanda, a resposta tende a ser sim.',
+          'Nessa fase, o melhor caminho é organizar a arquitetura local antes de abrir volume de conteúdo sem função comercial.'
+        ]
+      }
+    ],
+    faqItems: [
+      {
+        question: 'SEO local vale a pena para qualquer clínica no Rio?',
+        answer: 'Na maior parte dos casos, sim. Principalmente quando a descoberta depende de geografia, proximidade e especialidade.'
+      },
+      {
+        question: 'O Rio exige algo diferente de São Paulo?',
+        answer: 'Sim. A cidade tem leitura urbana própria, e a página local precisa refletir esse contexto em vez de copiar a lógica paulista.'
+      },
+      {
+        question: 'Google Meu Negócio entra junto nessa estratégia?',
+        answer: 'Na maioria dos casos, sim. Para clínicas, perfil local e página da cidade costumam funcionar melhor quando são tratados em conjunto.'
+      },
+      {
+        question: 'Vale começar por SEO local mesmo sem blog forte?',
+        answer: 'Sim. Para muitas clínicas, a camada local e comercial é mais urgente do que expandir o blog sem base de conversão.'
+      },
+      {
+        question: 'Como validar se a clínica está pronta para isso?',
+        answer: 'Verifique se a cidade já pesa na demanda, se o mapa participa da descoberta e se a clínica realmente depende de presença local para crescer.'
+      }
+    ],
+    resourceLinks: [
+      { label: 'SEO Local para Clínicas Médicas no Rio de Janeiro', path: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/' },
+      { label: 'Google Meu Negócio para Clínicas Médicas no Rio de Janeiro', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/' },
+      { label: 'Rio de Janeiro', path: '/cidades/rio-de-janeiro/' }
+    ],
+    ctaTitle: 'QUER VALIDAR SE O RIO JÁ EXIGE UMA ESTRUTURA LOCAL MAIS FORTE?',
+    ctaCopy:
+      'Se a cidade já influencia a maior parte da demanda da clínica, o próximo passo é analisar a página comercial local específica dessa praça.',
+    ctaPath: '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/',
+    ctaLabel: 'Ver a página local do Rio de Janeiro'
+  },
+  {
+    slug: 'seo-local-para-clinicas-medicas-em-belo-horizonte-vale-a-pena',
+    title: 'SEO Local para Clínicas Médicas em Belo Horizonte Vale a Pena?',
+    seoTitle: 'SEO Local para Clínicas Médicas em Belo Horizonte Vale a Pena? | AUDITSEO',
+    description:
+      'Saiba quando SEO local faz sentido para clínicas médicas em Belo Horizonte e por que a cidade pede uma camada comercial própria.',
+    excerpt:
+      'Em Belo Horizonte, a descoberta local costuma pesar cedo quando a clínica depende de cidade, proximidade e especialidade. Nesses casos, SEO local deixa de ser complemento e vira infraestrutura.',
+    categorySlug: 'estrategia',
+    imagePath: '/images/google-meu-negocio.jpeg',
+    publishedTime: '2026-03-07T17:20:00-03:00',
+    modifiedTime: '2026-03-07T17:20:00-03:00',
+    readingTime: 7,
+    keywords: ['seo local para clinicas medicas em belo horizonte vale a pena', 'seo local clinicas bh', 'clinicas medicas belo horizonte seo', 'google maps clinicas bh'],
+    badge: 'Belo Horizonte e Decisão Local',
+    subtitle:
+      'Em BH, a clínica tende a disputar descoberta por cidade, conveniência e confiança. Isso faz a página local pesar mais cedo do que muitos sites tratam.',
+    sections: [
+      {
+        title: 'Quando SEO local ganha prioridade em Belo Horizonte',
+        paragraphs: [
+          'Ganha prioridade quando a clínica depende de cidade, mapa e proximidade para gerar boa parte dos contatos.',
+          'Em BH, a página local costuma fazer diferença quando a estrutura atual ainda está concentrada em uma home genérica.'
+        ]
+      },
+      {
+        title: 'O que faz a estratégia funcionar',
+        paragraphs: [
+          'Não é só mencionar Belo Horizonte no texto. A força vem da combinação entre página local, contexto médico e coerência com Google Maps.',
+          'Quando essas camadas operam juntas, a clínica ganha uma presença mais clara e mais confiável.'
+        ],
+        bullets: [
+          'Página local com mensagem própria',
+          'Especialidade e cidade conectadas',
+          'Perfil local coerente com o site',
+          'FAQ comercial orientado à decisão'
+        ]
+      },
+      {
+        title: 'Quando a estratégia não entrega o esperado',
+        paragraphs: [
+          'Normalmente quando a clínica tenta resolver a cidade com uma página nacional, um perfil local isolado ou uma arquitetura rasa de especialidades.',
+          'Nessa situação, a presença aparece, mas a descoberta não se converte em demanda com boa qualidade.'
+        ]
+      },
+      {
+        title: 'Como saber se faz sentido priorizar agora',
+        paragraphs: [
+          'Se a cidade já pesa na demanda, a clínica quer reduzir dependência de mídia paga e o mapa influencia contatos, a prioridade tende a ser real.',
+          'O melhor caminho é estruturar a camada local antes de aumentar volume de conteúdo sem função comercial clara.'
+        ]
+      }
+    ],
+    faqItems: [
+      {
+        question: 'SEO local vale a pena para qualquer clínica em BH?',
+        answer: 'Na maior parte dos casos, sim. Principalmente quando geografia, mapa e proximidade participam da decisão do paciente.'
+      },
+      {
+        question: 'Belo Horizonte precisa de uma página local própria?',
+        answer: 'Sim, quando a cidade já influencia a demanda e a clínica quer traduzir a oferta para uma intenção mais localizada.'
+      },
+      {
+        question: 'Google Meu Negócio entra junto nessa estratégia?',
+        answer: 'Na maioria dos casos, sim. Para clínicas, perfil local e página da cidade tendem a funcionar melhor quando são tratados juntos.'
+      },
+      {
+        question: 'Vale começar por SEO local mesmo sem blog forte?',
+        answer: 'Sim. Em muitos casos, a camada local e comercial é mais urgente do que escalar o blog sem base de conversão.'
+      },
+      {
+        question: 'Como validar se a clínica está pronta para isso?',
+        answer: 'Verifique se a cidade já pesa na geração de demanda, se o mapa participa da descoberta e se a clínica depende de presença local para crescer.'
+      }
+    ],
+    resourceLinks: [
+      { label: 'SEO Local para Clínicas Médicas em Belo Horizonte', path: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/' },
+      { label: 'Google Meu Negócio para Clínicas Médicas em Belo Horizonte', path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/' },
+      { label: 'Belo Horizonte', path: '/cidades/belo-horizonte/' }
+    ],
+    ctaTitle: 'QUER VALIDAR SE BH JÁ EXIGE UMA ESTRUTURA LOCAL MAIS FORTE?',
+    ctaCopy:
+      'Se Belo Horizonte já influencia a maior parte da demanda da clínica, o próximo passo é analisar a página comercial local específica dessa praça.',
+    ctaPath: '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/',
+    ctaLabel: 'Ver a página local de Belo Horizonte'
   }
 ];
