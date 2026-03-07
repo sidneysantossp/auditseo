@@ -1,0 +1,102 @@
+---
+import type { ServiceCanonicalResourceGroup } from '../data/service-canonical-resource-links';
+
+interface Props {
+  group: ServiceCanonicalResourceGroup;
+}
+
+const { group } = Astro.props as Props;
+---
+<section class="service-canonical-resources">
+  <div class="container-shell">
+    <div class="service-canonical-resources__head">
+      <span class="section-eyebrow">{group.eyebrow}</span>
+      <h2 class="service-canonical-resources__title">{group.title}</h2>
+      <p class="service-canonical-resources__copy">{group.copy}</p>
+    </div>
+
+    <div class="service-canonical-resources__grid">
+      {group.links.map((link) => (
+        <article class="service-canonical-resources__card">
+          <h3>{link.label}</h3>
+          <p>{link.description}</p>
+          <a href={link.path}>Abrir recurso</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-canonical-resources {
+    padding: 5rem 0 6rem;
+    background:
+      radial-gradient(circle at top left, rgba(230, 57, 70, 0.08), transparent 34%),
+      radial-gradient(circle at bottom right, rgba(212, 165, 116, 0.08), transparent 34%);
+  }
+
+  .service-canonical-resources__head {
+    max-width: 56rem;
+    margin-bottom: 2rem;
+  }
+
+  .service-canonical-resources__title {
+    margin: 1rem 0 1rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    background: var(--gradient-fire);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .service-canonical-resources__copy {
+    max-width: 44rem;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  .service-canonical-resources__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-canonical-resources__card {
+    padding: 2rem;
+    min-height: 100%;
+    border: 1px solid var(--border-soft);
+    background: rgba(14, 14, 16, 0.92);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+  }
+
+  .service-canonical-resources__card h3 {
+    margin: 0 0 0.75rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: var(--text-light);
+  }
+
+  .service-canonical-resources__card p {
+    margin: 0 0 1.25rem;
+    color: var(--text-muted);
+  }
+
+  .service-canonical-resources__card a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--accent-gold);
+  }
+
+  @media (max-width: 960px) {
+    .service-canonical-resources__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,8 +1,13 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ServiceCanonicalResources from '../components/ServiceCanonicalResources.astro';
+import { serviceCanonicalResourceLinks } from '../data/service-canonical-resource-links';
 
 const props = Astro.props;
+const canonicalPath = (props.canonicalPath ?? Astro.url.pathname) as string;
+const resourceGroup = serviceCanonicalResourceLinks[canonicalPath];
 ---
 <BaseLayout {...props}>
   <slot />
+  {resourceGroup && <ServiceCanonicalResources group={resourceGroup} />}
 </BaseLayout>
