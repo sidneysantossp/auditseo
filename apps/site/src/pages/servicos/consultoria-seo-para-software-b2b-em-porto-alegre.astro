@@ -1,0 +1,28 @@
+---
+import CommercialServiceHead from '../../components/CommercialServiceHead.astro';
+import CommercialServicePage from '../../components/CommercialServicePage.astro';
+import { getServiceFirstCommercialPageBySlug } from '../../data/service-first-commercial-pages';
+import InstitutionalLayout from '../../layouts/InstitutionalLayout.astro';
+
+const page = getServiceFirstCommercialPageBySlug('/servicos/consultoria-seo-para-software-b2b-em-porto-alegre/');
+const displayTitle = page?.displayTitle ?? page?.brief.pageTitle;
+
+if (!page) {
+  throw new Error('Página comercial não encontrada: consultoria-seo-para-software-b2b-em-porto-alegre');
+}
+---
+<InstitutionalLayout
+  title={page.seoTitle}
+  description={page.description}
+  canonicalPath={page.slug}
+  imagePath={page.imagePath}
+  pageType="Service"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Serviços', path: '/servicos/' },
+    { label: displayTitle, path: page.slug }
+  ]}
+>
+  <CommercialServiceHead slot="head" page={page} />
+  <CommercialServicePage page={page} />
+</InstitutionalLayout>

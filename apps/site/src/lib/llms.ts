@@ -240,6 +240,41 @@ const serviceResources: LlmsResource[] = [
     description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas em Porto Alegre.'
   },
   {
+    title: 'SEO Local para Odontologia em Porto Alegre',
+    path: '/servicos/seo-local-para-odontologia-em-porto-alegre/',
+    description: 'Pagina comercial local para odontologia em Porto Alegre, com foco em procedimentos, mapa e busca por proximidade.'
+  },
+  {
+    title: 'Google Meu Negocio para Odontologia em Porto Alegre',
+    path: '/servicos/google-meu-negocio-para-odontologia-em-porto-alegre/',
+    description: 'Pagina comercial local focada em Google Maps e Google Business Profile para odontologia em Porto Alegre.'
+  },
+  {
+    title: 'SEO Local para Dermatologistas em Porto Alegre',
+    path: '/servicos/seo-local-para-dermatologistas-em-porto-alegre/',
+    description: 'Pagina comercial local para dermatologistas em Porto Alegre, com foco em tratamentos, busca local e autoridade clinica.'
+  },
+  {
+    title: 'Google Meu Negocio para Dermatologistas em Porto Alegre',
+    path: '/servicos/google-meu-negocio-para-dermatologistas-em-porto-alegre/',
+    description: 'Pagina comercial local focada em Google Maps e Google Business Profile para dermatologistas em Porto Alegre.'
+  },
+  {
+    title: 'SEO para Escritorios de Advocacia em Porto Alegre',
+    path: '/servicos/seo-para-escritorios-de-advocacia-em-porto-alegre/',
+    description: 'Pagina comercial juridica para Porto Alegre com foco em areas de atuacao, autoridade e descoberta qualificada.'
+  },
+  {
+    title: 'Consultoria SEO para Software B2B em Porto Alegre',
+    path: '/servicos/consultoria-seo-para-software-b2b-em-porto-alegre/',
+    description: 'Pagina comercial para software B2B em Porto Alegre com foco em categoria, comparacao e demanda consultiva.'
+  },
+  {
+    title: 'Consultoria SEO para Energia Solar em Porto Alegre',
+    path: '/servicos/consultoria-seo-para-energia-solar-em-porto-alegre/',
+    description: 'Pagina comercial de energia solar em Porto Alegre com foco em solucao, jornada consultiva e demanda qualificada.'
+  },
+  {
     title: 'SEO Local para Odontologia em Curitiba',
     path: '/servicos/seo-local-para-odontologia-em-curitiba/',
     description: 'Pagina comercial local para odontologia em Curitiba, com foco em procedimentos, mapa e busca por proximidade.'
