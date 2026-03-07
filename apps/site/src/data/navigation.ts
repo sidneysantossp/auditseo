@@ -32,15 +32,6 @@ export const footerGroups: Array<FooterLinkGroup> = [
     ]
   },
   {
-    title: 'Clusters',
-    links: [
-      { label: 'Nichos', path: '/nichos/' },
-      { label: 'Cidades', path: '/cidades/' },
-      { label: 'Cases', path: '/cases/' },
-      { label: 'Ferramentas', path: '/ferramentas/' }
-    ]
-  },
-  {
     title: 'Institucional',
     links: [
       { label: 'Sobre Nos', path: '/sobre/' },

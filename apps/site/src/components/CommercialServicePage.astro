@@ -1,0 +1,201 @@
+---
+import '../styles/institutional-trust-pages.css';
+import '../styles/commercial-service-pages.css';
+import type { ServiceFirstCommercialPage } from '../data/service-first-commercial-pages';
+
+interface Props {
+  page: ServiceFirstCommercialPage;
+}
+
+const { page } = Astro.props as Props;
+const displayTitle = page.displayTitle ?? page.brief.pageTitle;
+const coreOffer = page.coreOffer ?? page.brief.coreOffer;
+const painPoints = page.painPoints ?? page.brief.painPoints;
+const ctaPrimaryLabel = page.ctaPrimaryLabel ?? page.brief.ctaPrimary;
+
+const breadcrumbs = [
+  { label: 'Home', path: '/' },
+  { label: 'Serviços', path: '/servicos/' },
+  { label: displayTitle, path: page.slug }
+];
+---
+<div class="ee-page ee-commercial-page">
+  <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+    {breadcrumbs.map((item, index) => (
+      <>
+        {index > 0 && <span>›</span>}
+        {index < breadcrumbs.length - 1 ? <a href={item.path}>{item.label}</a> : <span class="current">{item.label}</span>}
+      </>
+    ))}
+  </nav>
+
+  <section class="ee-page-hero">
+    <div>
+      <span class="ee-page-badge">{page.badge}</span>
+      <h1 class="ee-page-title">
+        {page.heroTitlePrefix}
+        <span class="accent">{page.heroTitleAccent}</span>
+        {page.heroTitleSuffix ? ` ${page.heroTitleSuffix}` : ''}
+      </h1>
+      <p class="ee-page-subtitle">{page.heroSubtitle}</p>
+      <div class="ee-page-highlights">
+        {page.highlights.map((item) => (
+          <span class="ee-page-highlight">{item}</span>
+        ))}
+      </div>
+    </div>
+
+    <aside class="ee-page-hero-card">
+      <h2>{page.heroCard.title}</h2>
+      <p>{page.heroCard.copy}</p>
+      <div class="ee-page-links">
+        {page.heroCard.links.map((link) => (
+          <a href={link.path}>{link.label}</a>
+        ))}
+      </div>
+    </aside>
+  </section>
+
+  <section class="ee-page-stats" aria-label={`Resumo da página ${displayTitle}`}>
+    {page.stats.map((stat) => (
+      <article class="ee-page-stat">
+        <div class="ee-page-stat-value">{stat.value}</div>
+        <div class="ee-page-stat-label">{stat.label}</div>
+        <p class="ee-page-stat-copy">{stat.copy}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="ee-page-section">
+    <div class="ee-page-section-head">
+      <span class="ee-page-section-badge">Mercado</span>
+      <h2 class="ee-page-section-title">POR QUE ESSA BUSCA PRECISA DE UMA PÁGINA PRÓPRIA</h2>
+    </div>
+    <div class="ee-page-grid three">
+      {page.marketCards.map((item) => (
+        <article class="ee-page-card">
+          <h3>{item.title}</h3>
+          <p>{item.copy}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="ee-page-section">
+    <div class="ee-page-section-head">
+      <span class="ee-page-section-badge">Entrega</span>
+      <h2 class="ee-page-section-title">COMO A AUDITSEO ESTRUTURA ESSA FRENTE COMERCIAL</h2>
+      <p class="ee-page-section-subtitle">{coreOffer}</p>
+    </div>
+    <div class="ee-page-panels">
+      <article class="ee-page-panel">
+        <h3>Dores mais comuns</h3>
+        <ul class="ee-page-list">
+          {painPoints.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+      <article class="ee-page-panel">
+        <h3>Entregas mais importantes</h3>
+        <ul class="ee-page-list">
+          {page.deliveryItems.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="ee-page-section">
+    <div class="ee-page-section-head">
+      <span class="ee-page-section-badge">Método</span>
+      <h2 class="ee-page-section-title">COMO A OPERAÇÃO EVOLUI SEM PERDER FOCO COMERCIAL</h2>
+    </div>
+    <div class="ee-commercial-process">
+      {page.methodSteps.map((step, index) => (
+        <article class="ee-page-step">
+          <div class="ee-page-step-number">{String(index + 1).padStart(2, '0')}</div>
+          <h3>{step.title}</h3>
+          <p>{step.copy}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="ee-page-section">
+    <div class="ee-page-section-head">
+      <span class="ee-page-section-badge">Prova</span>
+      <h2 class="ee-page-section-title">POR QUE ESSA PÁGINA NÃO É UMA DERIVAÇÃO GENÉRICA</h2>
+    </div>
+    <div class="ee-commercial-proof-grid">
+      <article class="ee-page-panel">
+        <h3>Diferenciais da AUDITSEO</h3>
+        <ul class="ee-page-list">
+          {page.differentiators.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+      <article class="ee-page-panel">
+        <h3>Ativos de prova aceitos aqui</h3>
+        <ul class="ee-page-list">
+          {page.proofPoints.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+      <article class="ee-page-panel">
+        <h3>Recursos relacionados</h3>
+        <ul class="ee-page-list">
+          {page.relatedLinks.map((item) => (
+            <li>
+              <a class="ee-page-inline-link" href={item.path}>
+                {item.label}
+              </a>
+              <div class="ee-commercial-link-reason">{item.reason}</div>
+            </li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <div class="faq-container">
+      <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+        <span class="section-label" style="justify-content: center;">PERGUNTAS FREQUENTES</span>
+        <h2 class="section-title">
+          Dúvidas sobre<br />
+          {displayTitle}?
+        </h2>
+      </div>
+
+      <div class="faq-list">
+        {page.faqItems.map((item) => (
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+              <span class="faq-question-text">{item.question}</span>
+              <span class="faq-question-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="ee-page-cta">
+    <div class="ee-page-cta-box">
+      <span class="ee-page-section-badge">Próximo passo</span>
+      <h2 class="ee-page-section-title">{page.ctaTitle}</h2>
+      <p class="ee-page-cta-copy">{page.ctaCopy}</p>
+      <div class="ee-page-cta-actions">
+        <button class="ee-page-primary" type="button" data-open-cta-modal>{ctaPrimaryLabel}</button>
+        <a class="ee-page-secondary" href={page.ctaSecondaryPath}>{page.ctaSecondaryLabel}</a>
+      </div>
+    </div>
+  </section>
+</div>

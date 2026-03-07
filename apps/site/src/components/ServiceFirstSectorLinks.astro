@@ -1,0 +1,42 @@
+---
+import '../styles/institutional-trust-pages.css';
+import '../styles/commercial-service-pages.css';
+
+const sectorLinks = [
+  {
+    title: 'SEO para Clínicas Médicas',
+    copy: 'Página comercial setorial para clínicas médicas com foco em descoberta, GBP e páginas de decisão.',
+    path: '/servicos/seo-para-clinicas-medicas/'
+  },
+  {
+    title: 'SEO para Dermatologistas',
+    copy: 'Vertical comercial para dermatologia com foco em tratamentos, busca local e contexto de alta concorrência.',
+    path: '/servicos/seo-para-dermatologistas/'
+  },
+  {
+    title: 'SEO para Odontologia',
+    copy: 'Página comercial para odontologia orientada a procedimentos, mapa e agenda qualificada.',
+    path: '/servicos/seo-para-odontologia/'
+  }
+];
+---
+<section class="ee-page-section ee-commercial-hub-extension">
+  <div class="ee-page-section-head">
+    <span class="ee-page-section-badge">Aplicações Comerciais</span>
+    <h2 class="ee-page-section-title">VERTICAIS SERVICE-FIRST JÁ DISPONÍVEIS</h2>
+    <p class="ee-page-section-subtitle">
+      Essas páginas comerciais existem para capturar intenção de contratação sem expor a taxonomia interna do projeto na URL pública.
+    </p>
+  </div>
+  <div class="ee-page-grid three">
+    {sectorLinks.map((item) => (
+      <article class="ee-page-card">
+        <h3>{item.title}</h3>
+        <p>{item.copy}</p>
+        <div class="ee-page-links">
+          <a href={item.path}>Abrir página</a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

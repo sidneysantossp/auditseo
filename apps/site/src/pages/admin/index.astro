@@ -1,0 +1,157 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getAdminDashboardData } from '../../lib/admin-dashboard';
+
+const dashboard = await getAdminDashboardData();
+const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
+---
+<AdminLayout
+  title="Painel Editorial"
+  description="Camada administrativa da AUDITSEO para governar clusters, backlog editorial, categorias e ativos de prova sem quebrar a arquitetura do site."
+  eyebrow="Admin"
+>
+  <div class="admin-banner">
+    <strong>Fase 1 do admin</strong>
+    <div>
+      Painel operacional com dados reais do site. A proxima fase adiciona autenticacao, persistencia e fluxo de
+      publicacao transacional sem soltar a arquitetura.
+    </div>
+  </div>
+
+  <section class="admin-grid admin-grid--metrics">
+    {dashboard.metrics.map((metric) => (
+      <article class="admin-stat-card">
+        <div class="admin-card-eyebrow">{metric.label}</div>
+        <div class="admin-stat-value">{metric.value}</div>
+        <p class="admin-stat-copy">{metric.copy}</p>
+      </article>
+    ))}
+  </section>
+
+  <section class="admin-section">
+    <div class="admin-section-head">
+      <div>
+        <div class="admin-card-eyebrow">Foco imediato</div>
+        <h2 class="admin-section-title">Clusters que definem a marca</h2>
+      </div>
+      <p class="admin-section-copy">
+        Estes 3 clusters concentram a tese central do dominio. Se eles ficarem rasos, o restante cresce torto.
+      </p>
+    </div>
+
+    <div class="admin-focus-grid">
+      {focusClusters.map((cluster) => (
+        <article class="admin-focus-card">
+          <div class="admin-chip-row">
+            <span class="admin-chip admin-pill-live">B{cluster.businessPriority}</span>
+            <span class="admin-chip admin-pill-live">E{cluster.editorialPriority}</span>
+            <span class="admin-chip">{cluster.status}</span>
+          </div>
+          <h3 class="admin-focus-title">{cluster.title}</h3>
+          <p class="admin-focus-copy">{cluster.thesis}</p>
+          <div class="admin-progress" aria-label={`Maturidade do cluster ${cluster.title}`}>
+            <span style={`width:${cluster.completionRate}%`}></span>
+          </div>
+          <div class="admin-kpi-inline">{cluster.completionRate}% dos ativos priorizados ja publicados</div>
+          <ul class="admin-focus-list">
+            {cluster.nextActions.slice(0, 3).map((item) => (
+              <li class="admin-focus-item">
+                <strong>{item}</strong>
+              </li>
+            ))}
+          </ul>
+          <div class="admin-chip-row">
+            {cluster.dominantIntents.map((intent) => (
+              <span class="admin-chip">{intent}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="admin-grid admin-grid--two admin-section">
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Fila</div>
+          <h2 class="admin-section-title">Backlog editorial prioritario</h2>
+        </div>
+      </div>
+      <ul class="admin-list">
+        {dashboard.publicationQueue.slice(0, 8).map((item) => (
+          <li class="admin-list-item">
+            <div class="admin-list-label">{item.type}</div>
+            <strong class="admin-list-title">{item.label}</strong>
+            <div class="admin-list-meta">{item.clusterTitle} • {item.priority}</div>
+            <p class="admin-list-copy">{item.notes}</p>
+          </li>
+        ))}
+      </ul>
+    </article>
+
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Atualizacoes</div>
+          <h2 class="admin-section-title">Artigos mais recentes</h2>
+        </div>
+      </div>
+      <ul class="admin-list">
+        {dashboard.recentUpdates.map((article) => (
+          <li class="admin-list-item">
+            <div class="admin-list-label">{article.category.shortTitle}</div>
+            <a class="admin-list-title admin-inline-link" href={article.canonicalPath}>
+              {article.title}
+            </a>
+            <div class="admin-list-meta">
+              {article.publishedLabel} • atualizado em {new Intl.DateTimeFormat('pt-BR').format(new Date(article.modifiedTime))}
+            </div>
+            <p class="admin-list-copy">{article.excerpt}</p>
+          </li>
+        ))}
+      </ul>
+    </article>
+  </section>
+
+  <section class="admin-section">
+    <div class="admin-section-head">
+      <div>
+        <div class="admin-card-eyebrow">Cobertura</div>
+        <h2 class="admin-section-title">Categorias do blog</h2>
+      </div>
+      <p class="admin-section-copy">
+        A categoria so pode escalar se tiver pilares, volume util e ligacao real com servicos.
+      </p>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Categoria</th>
+            <th>Artigos</th>
+            <th>Pilares</th>
+            <th>Links para servicos</th>
+            <th>Ultima atualizacao</th>
+          </tr>
+        </thead>
+        <tbody>
+          {dashboard.categoryCoverage.map((category) => (
+            <tr>
+              <td>
+                <a href={`/blog/categoria/${category.slug}/`}>{category.title}</a>
+              </td>
+              <td>{category.articlesCount}</td>
+              <td>
+                {category.pillarCoverage}/{category.pillarTarget}
+              </td>
+              <td>{category.serviceLinksCount}</td>
+              <td>{category.latestUpdate}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</AdminLayout>

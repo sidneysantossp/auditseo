@@ -3,17 +3,17 @@ import { siteMetadata } from '../data/site';
 ---
 <div class="modal-overlay" id="cta-modal" data-endpoint={siteMetadata.forms.diagnosticEndpoint} aria-hidden="true">
   <div class="modal-container">
-    <button class="modal-close" type="button" data-close-cta-modal aria-label="Fechar formulario">
+    <button class="modal-close" type="button" data-close-cta-modal aria-label="Fechar formulário">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M18 6L6 18M6 6l12 12"></path>
       </svg>
     </button>
 
     <div class="modal-header">
-      <span class="modal-badge">DIAGNOSTICO AI-FIRST</span>
-      <h2 class="modal-title">Vamos comecar sua<br />transformacao digital</h2>
+      <span class="modal-badge">DIAGNÓSTICO AI-FIRST</span>
+      <h2 class="modal-title">Vamos começar sua<br />transformação digital</h2>
       <p class="modal-subtitle">
-        Preencha as informacoes abaixo e receba seu diagnostico personalizado em ate 48h.
+        Preencha as informações abaixo e receba seu diagnóstico personalizado em até 48h.
       </p>
     </div>
 
@@ -28,7 +28,7 @@ import { siteMetadata } from '../data/site';
     <form class="form-content" id="cta-diagnostic-form">
       <div class="form-slide active" data-form-slide="1">
         <div class="form-group">
-          <label class="form-label" for="cta-name">Qual e o seu nome? <span>*</span></label>
+          <label class="form-label" for="cta-name">Qual é o seu nome? <span>*</span></label>
           <input class="form-input" id="cta-name" name="Nome" type="text" placeholder="Digite seu nome completo" required />
         </div>
         <div class="form-nav">
@@ -49,7 +49,7 @@ import { siteMetadata } from '../data/site';
 
       <div class="form-slide" data-form-slide="3">
         <div class="form-group">
-          <label class="form-label" for="cta-site">Qual e o site da sua empresa?</label>
+          <label class="form-label" for="cta-site">Qual é o site da sua empresa?</label>
           <input class="form-input" id="cta-site" name="Site" type="url" placeholder="https://suaempresa.com.br" />
         </div>
         <div class="form-nav">
@@ -60,7 +60,7 @@ import { siteMetadata } from '../data/site';
 
       <div class="form-slide" data-form-slide="4">
         <div class="form-group">
-          <label class="form-label" for="cta-services">Cite 3 servicos ou produtos <span>*</span></label>
+          <label class="form-label" for="cta-services">Cite 3 serviços ou produtos <span>*</span></label>
           <textarea class="form-input form-textarea" id="cta-services" name="Servicos_Produtos" placeholder="Ex: Consultoria empresarial, Treinamentos corporativos, Mentoria executiva" required></textarea>
         </div>
         <div class="form-nav">
@@ -71,7 +71,7 @@ import { siteMetadata } from '../data/site';
 
       <div class="form-slide" data-form-slide="5">
         <div class="form-group">
-          <label class="form-label">Ja faz investimentos em SEO? <span>*</span></label>
+          <label class="form-label">Já faz investimentos em SEO? <span>*</span></label>
           <div class="form-options">
             <div class="form-option">
               <input id="seo-1" name="Investimento_SEO" type="radio" value="Sim, atualmente invisto em SEO" />
@@ -81,10 +81,10 @@ import { siteMetadata } from '../data/site';
               </label>
             </div>
             <div class="form-option">
-              <input id="seo-2" name="Investimento_SEO" type="radio" value="Ja investi, mas parei" />
+              <input id="seo-2" name="Investimento_SEO" type="radio" value="Já investi, mas parei" />
               <label for="seo-2">
                 <span class="form-option-radio"></span>
-                <span class="form-option-text">Ja investi, mas parei</span>
+                <span class="form-option-text">Já investi, mas parei</span>
               </label>
             </div>
             <div class="form-option">
@@ -95,10 +95,10 @@ import { siteMetadata } from '../data/site';
               </label>
             </div>
             <div class="form-option">
-              <input id="seo-4" name="Investimento_SEO" type="radio" value="Faco SEO internamente" />
+              <input id="seo-4" name="Investimento_SEO" type="radio" value="Faço SEO internamente" />
               <label for="seo-4">
                 <span class="form-option-radio"></span>
-                <span class="form-option-text">Faco SEO internamente</span>
+                <span class="form-option-text">Faço SEO internamente</span>
               </label>
             </div>
           </div>
@@ -106,7 +106,7 @@ import { siteMetadata } from '../data/site';
         <div class="form-nav">
           <button class="form-nav-btn btn-back" type="button" data-prev-step="5">Voltar</button>
           <button class="form-nav-btn btn-next" id="cta-submit-button" type="button">
-            <span class="btn-text">Enviar diagnostico</span>
+            <span class="btn-text">Enviar diagnóstico</span>
             <span class="btn-loading" hidden>Enviando...</span>
           </button>
         </div>
@@ -121,8 +121,8 @@ import { siteMetadata } from '../data/site';
           </div>
           <h3 class="form-success-title">Enviado com sucesso</h3>
           <p class="form-success-text">
-            Obrigado pelo seu interesse. Nossa equipe analisara suas informacoes e entrara em
-            contato em ate 48 horas com seu diagnostico personalizado.
+            Obrigado pelo seu interesse. Nossa equipe analisará suas informações e entrará em
+            contato em até 48 horas com seu diagnóstico personalizado.
           </p>
           <button class="form-nav-btn btn-next" type="button" data-close-cta-modal>Fechar</button>
         </div>
@@ -199,7 +199,7 @@ import { siteMetadata } from '../data/site';
       if (step === 5) {
         const checked = overlay.querySelector('input[name="Investimento_SEO"]:checked');
         if (!checked) {
-          window.alert('Selecione uma opcao antes de continuar.');
+          window.alert('Selecione uma opção antes de continuar.');
           return false;
         }
         return true;
@@ -262,7 +262,7 @@ import { siteMetadata } from '../data/site';
       if (!validateStep(5) || !form || !endpoint) return;
 
       const payload = Object.fromEntries(new FormData(form).entries());
-      payload._subject = 'Novo Diagnostico AI-First - AUDITSEO';
+      payload._subject = 'Novo Diagnóstico AI-First - AUDITSEO';
       payload._captcha = 'false';
 
       submitButton.disabled = true;
@@ -280,13 +280,13 @@ import { siteMetadata } from '../data/site';
         });
 
         if (!response.ok) {
-          throw new Error('Falha ao enviar o formulario.');
+          throw new Error('Falha ao enviar o formulário.');
         }
 
         showSuccess();
       } catch (error) {
         console.error(error);
-        window.alert('Nao foi possivel enviar agora. Tente novamente em instantes.');
+        window.alert('Não foi possível enviar agora. Tente novamente em instantes.');
         submitButton.disabled = false;
         if (submitText) submitText.hidden = false;
         if (submitLoading) submitLoading.hidden = true;

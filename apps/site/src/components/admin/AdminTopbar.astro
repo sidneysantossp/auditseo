@@ -1,0 +1,26 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+}
+
+const { eyebrow, title, description } = Astro.props as Props;
+---
+<header class="admin-topbar">
+  <div class="admin-topbar__intro">
+    <div class="admin-topbar__eyebrow">{eyebrow}</div>
+    <h1 class="admin-topbar__title">{title}</h1>
+    <p class="admin-topbar__description">{description}</p>
+  </div>
+
+  <div class="admin-topbar__actions">
+    <div class="admin-session" data-admin-session-box></div>
+    <a class="admin-topbar__button admin-topbar__button--ghost" href="/politica-editorial/">
+      Governanca editorial
+    </a>
+    <a class="admin-topbar__button admin-topbar__button--primary" href="/blog/">
+      Ver blog publico
+    </a>
+  </div>
+</header>

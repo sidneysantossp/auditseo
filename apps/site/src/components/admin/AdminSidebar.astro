@@ -1,0 +1,79 @@
+---
+interface NavItem {
+  label: string;
+  path: string;
+  description: string;
+}
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props as Props;
+
+const primaryNav: NavItem[] = [
+  {
+    label: 'Dashboard',
+    path: '/admin/',
+    description: 'Leitura executiva da operacao editorial'
+  },
+  {
+    label: 'Conteudos',
+    path: '/admin/conteudos/',
+    description: 'Inventario, categorias e backlog de publicacao'
+  },
+  {
+    label: 'Clusters',
+    path: '/admin/clusters/',
+    description: 'Mapa mestre e progresso dos 12 clusters'
+  },
+  {
+    label: 'Workflow',
+    path: '/admin/workflow/',
+    description: 'Fila, governanca e proximas entregas'
+  }
+];
+
+function isActive(path: string) {
+  if (path === '/admin/') {
+    return currentPath === '/admin/';
+  }
+
+  return currentPath.startsWith(path);
+}
+---
+<aside class="admin-sidebar" id="admin-sidebar">
+  <div class="admin-sidebar__brand">
+    <a class="admin-sidebar__logo" href="/admin/">AUDITSEO</a>
+    <p class="admin-sidebar__subtitle">Painel editorial e operacao de cluster</p>
+  </div>
+
+  <div class="admin-sidebar__section">
+    <div class="admin-sidebar__heading">Operacao</div>
+    <nav class="admin-sidebar__nav" aria-label="Navegacao do painel">
+      {primaryNav.map((item) => (
+        <a class:list={['admin-sidebar__link', isActive(item.path) && 'is-active']} href={item.path}>
+          <span class="admin-sidebar__link-label">{item.label}</span>
+          <span class="admin-sidebar__link-copy">{item.description}</span>
+        </a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="admin-sidebar__section">
+    <div class="admin-sidebar__heading">Base publica</div>
+    <div class="admin-sidebar__meta-card">
+      <div class="admin-sidebar__meta-label">Stack atual</div>
+      <div class="admin-sidebar__meta-value">Astro + conteudo tipado</div>
+      <p class="admin-sidebar__meta-copy">
+        O painel segue o mesmo DNA visual do site, mas prepara a camada administrativa para um CMS
+        estruturado na proxima fase.
+      </p>
+    </div>
+  </div>
+
+  <div class="admin-sidebar__section admin-sidebar__section--footer">
+    <a class="admin-sidebar__ghost-link" href="/">Abrir site publico</a>
+    <a class="admin-sidebar__ghost-link" href="/metodologia/">Ver metodologia</a>
+  </div>
+</aside>

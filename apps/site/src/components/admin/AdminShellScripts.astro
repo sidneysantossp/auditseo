@@ -1,0 +1,19 @@
+<script is:inline>
+  const mobileToggle = document.querySelector('[data-admin-toggle]');
+  const sidebar = document.getElementById('admin-sidebar');
+
+  if (mobileToggle && sidebar) {
+    mobileToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('is-open');
+      document.body.classList.toggle('admin-sidebar-open');
+    });
+  }
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof HTMLElement) || !sidebar || !mobileToggle) return;
+    if (window.innerWidth > 1024) return;
+    if (sidebar.contains(event.target) || mobileToggle.contains(event.target)) return;
+    sidebar.classList.remove('is-open');
+    document.body.classList.remove('admin-sidebar-open');
+  });
+</script>

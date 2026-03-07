@@ -23,3 +23,4 @@ dist/
 .tmp/
 tmp/
 .vercel
+apps/cms-api/data/store.json

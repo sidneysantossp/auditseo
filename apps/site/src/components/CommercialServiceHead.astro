@@ -1,0 +1,78 @@
+---
+import { siteMetadata } from '../data/site';
+import type { ServiceFirstCommercialPage } from '../data/service-first-commercial-pages';
+
+interface Props {
+  page: ServiceFirstCommercialPage;
+}
+
+const { page } = Astro.props as Props;
+const canonicalUrl = new URL(page.slug, siteMetadata.siteUrl).toString();
+const displayTitle = page.displayTitle ?? page.brief.pageTitle;
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'Service',
+    '@id': `${canonicalUrl}#service`,
+    name: displayTitle,
+    url: canonicalUrl,
+    description: page.description,
+    serviceType: displayTitle,
+    provider: {
+      '@id': `${siteMetadata.siteUrl}/#organization`
+    },
+    audience: {
+      '@type': 'Audience',
+      audienceType: page.brief.targetAudience
+    },
+    areaServed: {
+      '@type': page.areaServedName === 'Brasil' ? 'Country' : 'Place',
+      name: page.areaServedName
+    },
+    mainEntityOfPage: {
+      '@id': `${canonicalUrl}#webpage`
+    },
+    offers: {
+      '@type': 'Offer',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'BRL'
+      },
+      availability: 'https://schema.org/InStock',
+      url: canonicalUrl
+    },
+    about: [
+      {
+        '@type': 'Thing',
+        name: page.brief.primaryKeyword
+      },
+      ...page.brief.secondaryKeywords.map((keyword) => ({
+        '@type': 'Thing',
+        name: keyword
+      }))
+    ]
+  }
+];
+
+if (page.faqItems.length > 0) {
+  graph.push({
+    '@type': 'FAQPage',
+    '@id': `${canonicalUrl}#faq`,
+    mainEntity: page.faqItems.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  });
+}
+
+const schemaJson = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': graph
+});
+---
+<meta name="keywords" content={[page.brief.primaryKeyword, ...page.brief.secondaryKeywords].join(', ')} />
+<script is:inline type="application/ld+json" set:html={schemaJson}></script>

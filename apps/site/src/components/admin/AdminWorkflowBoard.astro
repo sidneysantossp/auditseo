@@ -1,0 +1,13 @@
+---
+import type { AdminManagedItem } from '../../lib/admin-dashboard';
+
+interface Props {
+  items: AdminManagedItem[];
+}
+
+const { items } = Astro.props as Props;
+---
+<div class="admin-runtime-board" data-admin-runtime-board>
+  <div class="admin-board" data-admin-runtime-board-target></div>
+  <script is:inline type="application/json" data-admin-items set:html={JSON.stringify(items)} />
+</div>

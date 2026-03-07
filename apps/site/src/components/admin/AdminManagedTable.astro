@@ -1,0 +1,43 @@
+---
+import type { AdminManagedItem } from '../../lib/admin-dashboard';
+
+interface Props {
+  items: AdminManagedItem[];
+}
+
+const { items } = Astro.props as Props;
+---
+<div class="admin-content-manager" data-admin-content-manager>
+  <div class="admin-filters">
+    <input class="admin-field" data-admin-filter-search type="search" placeholder="Buscar por titulo, cluster ou tipo" />
+    <select class="admin-field" data-admin-filter-type>
+      <option value="">Todos os tipos</option>
+    </select>
+    <select class="admin-field" data-admin-filter-status>
+      <option value="">Todos os status</option>
+      <option value="draft">Draft</option>
+      <option value="review">Review</option>
+      <option value="scheduled">Scheduled</option>
+      <option value="published">Published</option>
+    </select>
+  </div>
+
+  <div class="admin-table-wrap">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Ativo</th>
+          <th>Tipo</th>
+          <th>Cluster</th>
+          <th>Workflow</th>
+          <th>Responsavel</th>
+          <th>Data alvo</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody data-admin-managed-rows></tbody>
+    </table>
+  </div>
+
+  <script is:inline type="application/json" data-admin-items set:html={JSON.stringify(items)} />
+</div>

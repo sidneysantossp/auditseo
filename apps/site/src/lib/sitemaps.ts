@@ -65,7 +65,19 @@ const serviceEntries: SitemapUrlEntry[] = [
   { path: '/servicos/seo-local/' },
   { path: '/servicos/google-meu-negocio/' },
   { path: '/servicos/ai-overview-optimization/' },
-  { path: '/servicos/llm-brand-presence/' }
+  { path: '/servicos/llm-brand-presence/' },
+  { path: '/servicos/seo-para-clinicas-medicas/' },
+  { path: '/servicos/seo-para-dermatologistas/' },
+  { path: '/servicos/seo-para-odontologia/' },
+  { path: '/servicos/seo-local-para-clinicas-medicas-em-sao-paulo/' },
+  { path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-sao-paulo/' },
+  { path: '/servicos/seo-local-para-dermatologistas-em-sao-paulo/' },
+  { path: '/servicos/google-meu-negocio-para-dermatologistas-em-sao-paulo/' },
+  { path: '/servicos/seo-local-para-odontologia-em-sao-paulo/' },
+  { path: '/servicos/google-meu-negocio-para-odontologia-em-sao-paulo/' },
+  { path: '/servicos/seo-local-para-clinicas-medicas-na-grande-sao-paulo/' },
+  { path: '/servicos/seo-local-para-clinicas-medicas-em-campinas/' },
+  { path: '/servicos/seo-local-para-clinicas-medicas-em-sao-jose-dos-campos/' }
 ];
 
 const clusterEntries: SitemapUrlEntry[] = [

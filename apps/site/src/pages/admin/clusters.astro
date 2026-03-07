@@ -1,0 +1,71 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getAdminDashboardData } from '../../lib/admin-dashboard';
+
+const dashboard = await getAdminDashboardData();
+---
+<AdminLayout
+  title="Clusters"
+  description="Mapa mestre dos 12 primeiros clusters com status, tese, ativos prioritarios e ordem de maturacao."
+  eyebrow="Admin / Clusters"
+>
+  <div class="admin-banner">
+    <strong>Leitura arquitetural</strong>
+    <div>
+      O cluster nao existe para acumular URLs. Ele existe para consolidar entidade, ligar descoberta a conversao e evitar canibalizacao.
+    </div>
+  </div>
+
+  <section class="admin-focus-grid">
+    {dashboard.clusterSnapshots.map((cluster) => (
+      <article class="admin-focus-card">
+        <div class="admin-chip-row">
+          <span class="admin-chip">B{cluster.businessPriority}</span>
+          <span class="admin-chip">E{cluster.editorialPriority}</span>
+          <span class:list={[
+            'admin-chip',
+            cluster.status === 'live' && 'admin-pill-live',
+            cluster.status === 'in-progress' && 'admin-pill-progress',
+            cluster.status === 'planned' && 'admin-pill-planned'
+          ]}>
+            {cluster.status}
+          </span>
+        </div>
+        <h2 class="admin-focus-title">{cluster.title}</h2>
+        <p class="admin-focus-copy">{cluster.thesis}</p>
+        <div class="admin-progress">
+          <span style={`width:${cluster.completionRate}%`}></span>
+        </div>
+        <div class="admin-kpi-inline">
+          {cluster.liveAssets} live • {cluster.inProgressAssets} em maturacao • {cluster.plannedAssets} planejados
+        </div>
+
+        <div class="admin-chip-row">
+          {cluster.dominantIntents.map((intent) => (
+            <span class="admin-chip">{intent}</span>
+          ))}
+        </div>
+
+        <ul class="admin-focus-list">
+          {cluster.priorityAssets.slice(0, 6).map((asset) => (
+            <li class="admin-focus-item">
+              <strong>{asset.label}</strong>
+              <div class="admin-list-meta">
+                {asset.type} • {asset.status}
+                {asset.path ? ` • ${asset.path}` : ''}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <ul class="admin-rule-list">
+          {cluster.nextActions.slice(0, 3).map((step) => (
+            <li class="admin-rule-item">
+              <strong>{step}</strong>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </section>
+</AdminLayout>

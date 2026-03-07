@@ -1,0 +1,39 @@
+<div class="admin-auth" data-admin-auth hidden>
+  <div class="admin-auth__dialog">
+    <div class="admin-auth__brand">AUDITSEO</div>
+    <div class="admin-auth__eyebrow" data-admin-auth-mode-label>Configurar acesso local</div>
+    <h2 class="admin-auth__title" data-admin-auth-title>Painel editorial</h2>
+    <p class="admin-auth__copy" data-admin-auth-copy>
+      Este acesso e local ao navegador atual. Na proxima fase ele sera substituido por autenticacao real de ambiente.
+    </p>
+
+    <form class="admin-auth__form" data-admin-auth-form>
+      <label class="admin-auth__label" for="admin-email">Email</label>
+      <input class="admin-auth__input" id="admin-email" name="email" type="email" autocomplete="username" required />
+
+      <label class="admin-auth__label" for="admin-password">Senha</label>
+      <input
+        class="admin-auth__input"
+        id="admin-password"
+        name="password"
+        type="password"
+        autocomplete="current-password"
+        required
+      />
+
+      <div data-admin-auth-confirm-wrap>
+        <label class="admin-auth__label" for="admin-password-confirm">Confirmar senha</label>
+        <input
+          class="admin-auth__input"
+          id="admin-password-confirm"
+          name="passwordConfirm"
+          type="password"
+          autocomplete="new-password"
+        />
+      </div>
+
+      <button class="admin-auth__button" type="submit" data-admin-auth-submit>Salvar acesso local</button>
+      <p class="admin-auth__error" data-admin-auth-error hidden></p>
+    </form>
+  </div>
+</div>

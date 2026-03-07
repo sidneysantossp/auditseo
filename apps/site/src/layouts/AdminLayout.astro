@@ -1,0 +1,45 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import AdminSidebar from '../components/admin/AdminSidebar.astro';
+import AdminTopbar from '../components/admin/AdminTopbar.astro';
+import AdminShellScripts from '../components/admin/AdminShellScripts.astro';
+import AdminAuthGate from '../components/admin/AdminAuthGate.astro';
+import '../styles/tokens.css';
+import '../styles/admin.css';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+}
+
+const { title, description, eyebrow } = Astro.props as Props;
+const currentPath = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="pt-BR" dir="ltr">
+  <head>
+    <SeoHead title={title} description={description} canonicalPath={currentPath} noindex />
+  </head>
+  <body class="admin-body">
+    <div class="admin-app">
+      <button class="admin-mobile-toggle" type="button" data-admin-toggle aria-label="Abrir menu administrativo">
+        Menu
+      </button>
+
+      <AdminSidebar currentPath={currentPath} />
+
+      <div class="admin-main">
+        <AdminTopbar eyebrow={eyebrow} title={title} description={description} />
+
+        <main class="admin-content">
+          <slot />
+        </main>
+      </div>
+    </div>
+
+    <AdminAuthGate />
+    <AdminShellScripts />
+    <script is:inline type="module" src="/admin-client.js"></script>
+  </body>
+</html>

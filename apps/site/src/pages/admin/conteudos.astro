@@ -1,0 +1,110 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getAdminDashboardData } from '../../lib/admin-dashboard';
+import AdminManagedTable from '../../components/admin/AdminManagedTable.astro';
+
+const dashboard = await getAdminDashboardData();
+const publishedArticles = dashboard.publishedAssets.filter((asset) => asset.type === 'article');
+---
+<AdminLayout
+  title="Conteudos"
+  description="Inventario editorial da AUDITSEO com leitura por categoria, tipo de ativo e fila de publicacao planejada."
+  eyebrow="Admin / Conteudos"
+>
+  <div class="admin-banner">
+    <strong>Regra operacional</strong>
+    <div>
+      Nenhuma URL nova entra sem papel no cluster, canonical dominante e plano de links internos recebidos e enviados.
+    </div>
+  </div>
+
+  <section class="admin-grid admin-grid--three">
+    <article class="admin-stat-card">
+      <div class="admin-card-eyebrow">Blog canonico</div>
+      <div class="admin-stat-value">{publishedArticles.length}</div>
+      <p class="admin-stat-copy">Artigos publicados na camada canonica do blog.</p>
+    </article>
+    <article class="admin-stat-card">
+      <div class="admin-card-eyebrow">Fila ativa</div>
+      <div class="admin-stat-value">{dashboard.publicationQueue.length}</div>
+      <p class="admin-stat-copy">Itens planejados ou em maturacao aguardando copy, prova ou contexto.</p>
+    </article>
+    <article class="admin-stat-card">
+      <div class="admin-card-eyebrow">Categorias</div>
+      <div class="admin-stat-value">{dashboard.categoryCoverage.length}</div>
+      <p class="admin-stat-copy">Hubs editoriais reais conectados a servicos e clusters comerciais.</p>
+    </article>
+  </section>
+
+  <section class="admin-section">
+    <div class="admin-section-head">
+      <div>
+        <div class="admin-card-eyebrow">Inventario</div>
+        <h2 class="admin-section-title">Todos os ativos publicados</h2>
+      </div>
+      <p class="admin-section-copy">
+        O painel abaixo mistura blog, servicos, nichos, cidades, ferramentas e cases para leitura da malha como um sistema unico.
+      </p>
+    </div>
+
+    <div class="admin-content-card">
+      <AdminManagedTable items={dashboard.managedItems} />
+    </div>
+  </section>
+
+  <section class="admin-grid admin-grid--two admin-section">
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Cobertura por categoria</div>
+          <h2 class="admin-section-title">Saude editorial do blog</h2>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Artigos</th>
+              <th>Pilares</th>
+              <th>Ultima atualizacao</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dashboard.categoryCoverage.map((category) => (
+              <tr>
+                <td>
+                  <a href={`/blog/categoria/${category.slug}/`}>{category.title}</a>
+                </td>
+                <td>{category.articlesCount}</td>
+                <td>
+                  {category.pillarCoverage}/{category.pillarTarget}
+                </td>
+                <td>{category.latestUpdate}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Fila estrategica</div>
+          <h2 class="admin-section-title">Proximos ativos</h2>
+        </div>
+      </div>
+      <ul class="admin-list">
+        {dashboard.publicationQueue.slice(0, 12).map((item) => (
+          <li class="admin-list-item">
+            <div class="admin-list-label">{item.type}</div>
+            <strong class="admin-list-title">{item.label}</strong>
+            <div class="admin-list-meta">{item.clusterTitle} • prioridade {item.priority}</div>
+            <p class="admin-list-copy">{item.notes}</p>
+          </li>
+        ))}
+      </ul>
+    </article>
+  </section>
+</AdminLayout>

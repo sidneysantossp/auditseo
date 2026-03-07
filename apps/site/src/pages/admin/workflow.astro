@@ -1,0 +1,69 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import { getAdminDashboardData } from '../../lib/admin-dashboard';
+import AdminWorkflowBoard from '../../components/admin/AdminWorkflowBoard.astro';
+
+const dashboard = await getAdminDashboardData();
+const workflowRules = [
+  'Nenhuma URL nova entra sem query principal e pagina canonica dominante.',
+  'Todo servico precisa ligar para categoria, pilares, prova e ativos de expansao.',
+  'Toda LP so entra quando servico, nicho e cidade ja estiverem maduros.',
+  'Case e ferramenta funcionam como prova, nao como apendice decorativo.',
+  'Atualizacao editorial precisa ser planejada antes de abrir novo cluster.'
+];
+---
+<AdminLayout
+  title="Workflow Editorial"
+  description="Fila de publicacao, governanca e sequenciamento operacional para expandir o dominio sem comprometer a arquitetura."
+  eyebrow="Admin / Workflow"
+>
+  <div class="admin-banner">
+    <strong>Objetivo do workflow</strong>
+    <div>
+      Transformar o site em sistema editorial governado, nao em repositório de paginas isoladas.
+    </div>
+  </div>
+
+  <section>
+    <AdminWorkflowBoard items={dashboard.managedItems} />
+  </section>
+
+  <section class="admin-grid admin-grid--two admin-section">
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Governanca</div>
+          <h2 class="admin-section-title">Regras que seguram a arquitetura</h2>
+        </div>
+      </div>
+      <ul class="admin-rule-list">
+        {workflowRules.map((rule) => (
+          <li class="admin-rule-item">
+            <strong>{rule}</strong>
+          </li>
+        ))}
+      </ul>
+    </article>
+
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Sequencia recomendada</div>
+          <h2 class="admin-section-title">Proximos movimentos</h2>
+        </div>
+      </div>
+      <ul class="admin-list">
+        {dashboard.clusterSnapshots.slice(0, 6).map((cluster) => (
+          <li class="admin-list-item">
+            <div class="admin-list-label">cluster</div>
+            <strong class="admin-list-title">{cluster.title}</strong>
+            <div class="admin-list-meta">
+              prioridade comercial {cluster.businessPriority} • maturidade {cluster.completionRate}%
+            </div>
+            <p class="admin-list-copy">{cluster.nextActions[0]}</p>
+          </li>
+        ))}
+      </ul>
+    </article>
+  </section>
+</AdminLayout>

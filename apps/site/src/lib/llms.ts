@@ -108,6 +108,66 @@ const serviceResources: LlmsResource[] = [
     title: 'Google Meu Negocio',
     path: '/servicos/google-meu-negocio/',
     description: 'Servico voltado a perfil da empresa, relevancia local e otimizacao de Google Business Profile.'
+  },
+  {
+    title: 'SEO para Clinicas Medicas',
+    path: '/servicos/seo-para-clinicas-medicas/',
+    description: 'Pagina comercial service-first para clinicas medicas, com foco em descoberta local, paginas comerciais e captacao de pacientes.'
+  },
+  {
+    title: 'SEO para Dermatologistas',
+    path: '/servicos/seo-para-dermatologistas/',
+    description: 'Pagina comercial setorial para dermatologistas, com foco em tratamentos, contexto local e conversao qualificada.'
+  },
+  {
+    title: 'SEO para Odontologia',
+    path: '/servicos/seo-para-odontologia/',
+    description: 'Pagina comercial setorial para odontologia, com foco em procedimentos, mapa e paginas de decisao.'
+  },
+  {
+    title: 'SEO Local para Clinicas Medicas em Sao Paulo',
+    path: '/servicos/seo-local-para-clinicas-medicas-em-sao-paulo/',
+    description: 'Pagina comercial local para clinicas medicas em Sao Paulo, com foco em descoberta por geografia, especialidades e Google Maps.'
+  },
+  {
+    title: 'Google Meu Negocio para Clinicas Medicas em Sao Paulo',
+    path: '/servicos/google-meu-negocio-para-clinicas-medicas-em-sao-paulo/',
+    description: 'Pagina comercial local focada em Google Maps e Google Business Profile para clinicas medicas na capital.'
+  },
+  {
+    title: 'SEO Local para Dermatologistas em Sao Paulo',
+    path: '/servicos/seo-local-para-dermatologistas-em-sao-paulo/',
+    description: 'Pagina comercial local para dermatologistas em Sao Paulo, com foco em tratamentos, descoberta urbana e conversao qualificada.'
+  },
+  {
+    title: 'Google Meu Negocio para Dermatologistas em Sao Paulo',
+    path: '/servicos/google-meu-negocio-para-dermatologistas-em-sao-paulo/',
+    description: 'Pagina comercial local focada em Google Maps para dermatologistas na capital.'
+  },
+  {
+    title: 'SEO Local para Odontologia em Sao Paulo',
+    path: '/servicos/seo-local-para-odontologia-em-sao-paulo/',
+    description: 'Pagina comercial local para odontologia em Sao Paulo, com foco em procedimentos, mapa e busca por proximidade.'
+  },
+  {
+    title: 'Google Meu Negocio para Odontologia em Sao Paulo',
+    path: '/servicos/google-meu-negocio-para-odontologia-em-sao-paulo/',
+    description: 'Pagina comercial local focada em Google Maps e perfil da empresa para odontologia em Sao Paulo.'
+  },
+  {
+    title: 'SEO Local para Clinicas Medicas na Grande Sao Paulo',
+    path: '/servicos/seo-local-para-clinicas-medicas-na-grande-sao-paulo/',
+    description: 'Pagina comercial regional para operacoes medicas que atendem mais de uma cidade da Grande Sao Paulo.'
+  },
+  {
+    title: 'SEO Local para Clinicas Medicas em Campinas',
+    path: '/servicos/seo-local-para-clinicas-medicas-em-campinas/',
+    description: 'Pagina comercial local para clinicas medicas em Campinas, com foco em descoberta regional e Google Maps.'
+  },
+  {
+    title: 'SEO Local para Clinicas Medicas em Sao Jose dos Campos',
+    path: '/servicos/seo-local-para-clinicas-medicas-em-sao-jose-dos-campos/',
+    description: 'Pagina comercial local para clinicas medicas em Sao Jose dos Campos e no Vale do Paraiba.'
   }
 ];
 

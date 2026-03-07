@@ -5,6 +5,29 @@
     const mobileMenu = document.getElementById('site-mobile-nav');
     const burger = document.querySelector('[data-mobile-toggle]');
 
+    window.toggleFaq = (button) => {
+      const item = button?.parentElement;
+      const answer = item?.querySelector('.faq-answer');
+      const icon = button?.querySelector('.faq-question-icon');
+      const isOpen = Boolean(answer?.style.maxHeight && answer.style.maxHeight !== '0px');
+
+      document.querySelectorAll('.faq-answer').forEach((node) => {
+        node.style.maxHeight = '0px';
+      });
+      document.querySelectorAll('.faq-question-icon').forEach((node) => {
+        node.style.transform = 'rotate(0deg)';
+        node.textContent = '+';
+      });
+      document.querySelectorAll('.faq-question').forEach((node) => {
+        node.setAttribute('aria-expanded', 'false');
+      });
+
+      if (!answer || !icon || isOpen) return;
+      answer.style.maxHeight = `${answer.scrollHeight}px`;
+      icon.style.transform = 'rotate(45deg)';
+      button.setAttribute('aria-expanded', 'true');
+    };
+
     const closeMobile = () => {
       body.classList.remove('as-mobile-open');
       mobileMenu?.classList.remove('is-open');
