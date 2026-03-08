@@ -138,6 +138,7 @@ function getDeflectionSignals() {
 const fitSignals = getFitSignals();
 const deflectionSignals = getDeflectionSignals();
 const decisionStartLinks = page.relatedLinks.slice(0, 3);
+const sectoralIntakeLayer = page.brief.pageType === 'sectoral-anchor' ? getSectoralIntakeLayer() : null;
 
 function getOperationalProofCards() {
   if (page.brief.pageType === 'sectoral-anchor') {
@@ -243,6 +244,167 @@ function getOperationalSignals() {
   }
 
   return [page.areaServedName, verticalContext.signal, 'Ativo local', 'BOFU aderente'];
+}
+
+function getSectoralIntakeLayer() {
+  if (page.slug.includes('clinicas-medicas')) {
+    return {
+      title: 'COMO ENTRAR NESTA VERTICAL COM MAIS CLAREZA',
+      copy:
+        'Na saúde privada, a conversa comercial precisa começar com clareza sobre especialidades, unidades e papel real da busca local. O objetivo aqui é filtrar contexto antes do diagnóstico.',
+      prepareItems: [
+        'Especialidades, unidades e serviços que mais deveriam gerar contato hoje.',
+        'Quais cidades já participam da aquisição e onde a clínica sente mais perda de demanda.',
+        'Leitura honesta do papel atual do site, Google Maps e páginas por especialidade.'
+      ],
+      receiveItems: [
+        'Hipótese inicial de como separar página setorial, páginas locais e páginas por especialidade.',
+        'Sinal mais claro sobre o que precisa entrar primeiro para melhorar descoberta e contato.',
+        'Leitura mais objetiva de timing, escopo e prioridades comerciais da vertical.'
+      ],
+      disqualifiers: [
+        'Se a clínica ainda não sabe quais especialidades ou unidades deveriam ser priorizadas.',
+        'Se a expectativa é depender só de blog ou só de mídia para resolver descoberta orgânica.',
+        'Se a operação ainda não reconhece busca local como parte real da captação.'
+      ]
+    };
+  }
+
+  if (page.slug.includes('dermatologistas')) {
+    return {
+      title: 'COMO ENTRAR NA DERMATOLOGIA SEM RUÍDO',
+      copy:
+        'Dermatologia exige muito mais precisão de oferta e de contexto do que outras verticais. A conversa inicial precisa separar tratamento, praça e objetivo comercial com mais nitidez.',
+      prepareItems: [
+        'Tratamentos ou frentes que mais deveriam puxar demanda qualificada.',
+        'Quais cidades ou bairros concentram a disputa principal hoje.',
+        'Como o site, o perfil local e a mensagem comercial estão distribuídos hoje.'
+      ],
+      receiveItems: [
+        'Leitura inicial do que precisa ser setorial, local e BOFU na mesma arquitetura.',
+        'Critério mais claro para priorizar páginas de tratamento, cidade e especialidade.',
+        'Sinal de quais ruídos hoje atrapalham confiança e descoberta comercial.'
+      ],
+      disqualifiers: [
+        'Se a clínica espera competir só com copy genérica e reputação social.',
+        'Se ainda não existe clareza sobre quais tratamentos sustentam melhor a frente.',
+        'Se a busca local ainda não é tratada como parte da decisão do paciente.'
+      ]
+    };
+  }
+
+  if (page.slug.includes('odontologia')) {
+    return {
+      title: 'COMO ENTRAR NA ODONTOLOGIA COM RECORTE CERTO',
+      copy:
+        'Em odontologia, proximidade, procedimento e velocidade de decisão entram muito cedo. A triagem precisa deixar claro o que é vertical, o que é local e o que é urgência comercial.',
+      prepareItems: [
+        'Procedimentos e especialidades que mais deveriam puxar agenda.',
+        'Praças prioritárias e contexto local que mais pesa na decisão.',
+        'Como site, Google Maps e páginas de procedimento estão operando hoje.'
+      ],
+      receiveItems: [
+        'Direção inicial para separar página setorial, páginas locais e páginas de procedimento.',
+        'Leitura mais clara de quais ativos ajudam mais a converter primeiro.',
+        'Critério para priorizar expansão sem sobrepor intenção entre páginas.'
+      ],
+      disqualifiers: [
+        'Se a operação ainda não sabe quais procedimentos deveriam puxar a frente comercial.',
+        'Se a expectativa é resolver a descoberta só com ajustes em Google Maps.',
+        'Se ainda falta clareza mínima sobre cidade, oferta e proposta principal.'
+      ]
+    };
+  }
+
+  if (page.slug.includes('escritorios-de-advocacia')) {
+    return {
+      title: 'COMO ENTRAR NA ADVOCACIA COM DEMANDA MAIS QUALIFICADA',
+      copy:
+        'Na advocacia, a primeira conversa precisa separar área de atuação, praça e objetivo comercial. Sem isso, a página vira institucional e perde função de aquisição.',
+      prepareItems: [
+        'Áreas do direito que mais precisam gerar consulta ou reunião qualificada.',
+        'Praças prioritárias e sinais de demanda que já aparecem no site.',
+        'Leitura atual das páginas por área, prova institucional e conteúdo de apoio.'
+      ],
+      receiveItems: [
+        'Hipótese inicial sobre qual área deveria ganhar página mais forte primeiro.',
+        'Sinal mais claro de como ligar autoridade, área de atuação e contexto local.',
+        'Direção sobre o que precisa ser institucional, comercial e BOFU na vertical.'
+      ],
+      disqualifiers: [
+        'Se o escritório ainda não definiu claramente as áreas que quer priorizar.',
+        'Se a expectativa é ranquear sem reforçar confiança e clareza jurídica.',
+        'Se a operação ainda trata a página como cartão institucional e não como ativo comercial.'
+      ]
+    };
+  }
+
+  if (page.slug.includes('software-b2b')) {
+    return {
+      title: 'COMO ENTRAR EM SOFTWARE B2B COM MENOS RUÍDO DE PIPELINE',
+      copy:
+        'Em software B2B, a triagem inicial precisa separar categoria, ICP e estágio de demanda. O objetivo é evitar conversa genérica e direcionar o diagnóstico para pipeline real.',
+      prepareItems: [
+        'Categoria do produto, ICP e tipo de demanda que mais interessa à operação.',
+        'Páginas que hoje deveriam gerar pipeline e ainda não sustentam essa função.',
+        'Leitura do papel de conteúdo, comparativos e páginas de solução na aquisição.'
+      ],
+      receiveItems: [
+        'Hipótese inicial de quais páginas ajudam mais a gerar pipeline qualificado.',
+        'Direção sobre como separar solução, comparativo e conteúdo de decisão.',
+        'Sinal de quais ajustes entram primeiro para reduzir ruído entre tráfego e oportunidade.'
+      ],
+      disqualifiers: [
+        'Se a operação ainda não tem clareza sobre ICP e categoria central da oferta.',
+        'Se a expectativa é tratar SEO como substituto de toda a geração outbound.',
+        'Se o site ainda não consegue sustentar páginas de solução e decisão com mínima consistência.'
+      ]
+    };
+  }
+
+  if (page.slug.includes('energia-solar')) {
+    return {
+      title: 'COMO ENTRAR EM ENERGIA SOLAR COM MAIS CLAREZA COMERCIAL',
+      copy:
+        'Em energia solar, a conversa inicial precisa separar demanda regional, oferta consultiva e papel do SEO frente à mídia paga. Isso evita diagnóstico errado já na entrada.',
+      prepareItems: [
+        'Praças ou regiões que mais deveriam gerar demanda qualificada hoje.',
+        'Tipo de oferta principal e como a empresa hoje explica valor, economia e proposta.',
+        'Leitura do papel atual de páginas de solução, comparativos e mídia paga.'
+      ],
+      receiveItems: [
+        'Leitura inicial sobre onde a arquitetura comercial está fraca para gerar demanda.',
+        'Direção de como conectar vertical, praça e comparativos sem ruído.',
+        'Sinal mais claro do que precisa ser reforçado para a operação deixar de depender só de mídia.'
+      ],
+      disqualifiers: [
+        'Se a empresa ainda não definiu quais regiões realmente importam comercialmente.',
+        'Se a expectativa é usar SEO só como complemento tático sem ajustar a mensagem da oferta.',
+        'Se o site ainda não tem base mínima para sustentar prova, solução e conteúdo de decisão.'
+      ]
+    };
+  }
+
+  return {
+    title: 'COMO ENTRAR NESTA FRENTE COM MAIS CLAREZA',
+    copy:
+      'A conversa inicial precisa reduzir ruído de timing, escopo e contexto antes do diagnóstico. Esta camada existe para filtrar melhor a demanda.',
+    prepareItems: [
+      'Quais serviços, mercados ou cidades mais importam hoje.',
+      'Como o site participa da aquisição neste momento.',
+      'Onde a operação sente mais perda de demanda.'
+    ],
+    receiveItems: [
+      'Leitura inicial das prioridades comerciais.',
+      'Hipótese sobre o melhor ponto de entrada da arquitetura.',
+      'Direção do que deveria entrar primeiro.'
+    ],
+    disqualifiers: [
+      'Se a operação ainda não tem contexto mínimo para priorizar a frente.',
+      'Se a expectativa está restrita a resultado imediato sem estrutura.',
+      'Se a página ainda não é o ponto certo de entrada para a demanda.'
+    ]
+  };
 }
 
 function getVerticalContext() {
@@ -596,6 +758,42 @@ const breadcrumbs = [
       </article>
     </div>
   </section>
+
+  {sectoralIntakeLayer && (
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Triagem comercial</span>
+        <h2 class="ee-page-section-title">{sectoralIntakeLayer.title}</h2>
+        <p class="ee-page-section-subtitle">{sectoralIntakeLayer.copy}</p>
+      </div>
+      <div class="ee-commercial-fit-grid">
+        <article class="ee-page-panel">
+          <h3>Traga para a conversa</h3>
+          <ul class="ee-page-list">
+            {sectoralIntakeLayer.prepareItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-panel">
+          <h3>O que você recebe primeiro</h3>
+          <ul class="ee-page-list">
+            {sectoralIntakeLayer.receiveItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-panel">
+          <h3>Talvez não seja a entrada certa se...</h3>
+          <ul class="ee-page-list">
+            {sectoralIntakeLayer.disqualifiers.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </section>
+  )}
 
   <section class="ee-page-section">
     <div class="ee-page-section-head">
