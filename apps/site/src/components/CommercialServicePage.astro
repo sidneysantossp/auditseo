@@ -13,7 +13,6 @@ const displayTitle = page.displayTitle ?? page.brief.pageTitle;
 const coreOffer = page.coreOffer ?? page.brief.coreOffer;
 const painPoints = page.painPoints ?? page.brief.painPoints;
 const ctaPrimaryLabel = page.ctaPrimaryLabel ?? page.brief.ctaPrimary;
-const objectionItems = page.faqItems.slice(0, 3);
 const isLocalCommercialPage = page.brief.pageType === 'local-commercial';
 const verticalContext = getVerticalContext();
 const cityContext = getCityContext();
@@ -137,8 +136,16 @@ function getDeflectionSignals() {
 }
 const fitSignals = getFitSignals();
 const deflectionSignals = getDeflectionSignals();
-const decisionStartLinks = page.relatedLinks.slice(0, 3);
+const intentOrderedLinks = getIntentOrderedLinks();
+const decisionStartLinks = intentOrderedLinks.slice(0, 3);
+const proofResourceLinks = intentOrderedLinks.slice(0, 5);
+const decisionObjectionItems = getDecisionObjectionItems();
 const sectoralIntakeLayer = page.brief.pageType === 'sectoral-anchor' ? getSectoralIntakeLayer() : null;
+
+type DecisionObjectionItem = {
+  title: string;
+  copy: string;
+};
 
 function getOperationalProofCards() {
   if (page.brief.pageType === 'sectoral-anchor') {
@@ -405,6 +412,99 @@ function getSectoralIntakeLayer() {
       'Se a página ainda não é o ponto certo de entrada para a demanda.'
     ]
   };
+}
+
+function getDecisionObjectionItems(): DecisionObjectionItem[] {
+  if (page.brief.pageType === 'sectoral-anchor') {
+    return [
+      {
+        title: 'A vertical ainda está ampla demais',
+        copy: `Sem clareza sobre ${verticalContext.demandCore}, a operação tende a abrir página setorial antes de definir que recorte realmente sustenta negócio.`
+      },
+      {
+        title: 'A comparação ainda está errada',
+        copy: `Quando ${displayTitle.toLowerCase()} é comparada de forma rasa com mídia, rede social ou um ativo isolado, a decisão perde o papel de ${verticalContext.supportSystem.toLowerCase()} na mesma jornada.`
+      },
+      {
+        title: 'A arquitetura ainda não conversa',
+        copy: `Se página setorial, serviço canônico e ativos locais não se reforçam mutuamente, a vertical vira só mais uma URL e não uma entrada comercial legítima.`
+      }
+    ];
+  }
+
+  if (page.brief.pageType === 'regional-bridge') {
+    return [
+      {
+        title: 'A região entrou cedo demais',
+        copy: 'Sem cidades prioritárias ou papel comercial claro da região, a página regional tende a virar agregação geográfica sem função real.'
+      },
+      {
+        title: 'A ponte não está conectada',
+        copy: 'Quando a camada regional não reforça a vertical principal nem organiza as cidades derivadas, a expansão começa a competir consigo mesma.'
+      },
+      {
+        title: 'A expectativa ainda é de atalho',
+        copy: 'Página regional não resolve sozinha descoberta local. Ela só faz sentido quando entra para ordenar expansão e qualificação com mais clareza.'
+      }
+    ];
+  }
+
+  return [
+    {
+      title: 'A praça ainda não foi validada',
+      copy: `Se ${page.areaServedName} ainda não participa da aquisição com clareza, a página local entra cedo demais e tende a competir com a vertical-mãe.`
+    },
+    {
+      title: 'O ativo complementar está solto',
+      copy: `Quando ${verticalContext.localPrimaryAsset} e o ativo complementar não sustentam a mesma leitura comercial, a busca local perde força rapidamente.`
+    },
+    {
+      title: 'A decisão ainda está genérica',
+      copy: `Sem recorte claro de praça, oferta e próximo passo, ${displayTitle.toLowerCase()} pode até atrair clique, mas não melhora a qualidade do contato.`
+    }
+  ];
+}
+
+function getIntentOrderedLinks() {
+  const deduped = new Map<string, (typeof page.relatedLinks)[number]>();
+
+  for (const item of page.relatedLinks) {
+    if (!deduped.has(item.path)) {
+      deduped.set(item.path, item);
+    }
+  }
+
+  return [...deduped.values()].sort((left, right) => getLinkScore(right) - getLinkScore(left));
+}
+
+function getLinkScore(link: (typeof page.relatedLinks)[number]) {
+  const text = `${link.label} ${link.reason} ${link.path}`.toLowerCase();
+  let score = 0;
+
+  if (page.brief.pageType === 'sectoral-anchor') {
+    if (/quanto-custa|em-quanto-tempo|vale-a-pena|como-funciona|agencia|consultoria|auditoria/.test(text)) score += 7;
+    if (/apoio bofu/.test(text)) score += 6;
+    if (/setorial-mãe|setorial mae|serviço canônico|servico canonico/.test(text)) score += 5;
+    if (/contexto geográfico principal|contexto geografico principal/.test(text)) score += 3;
+    if (text.includes('/blog/')) score += 2;
+  } else if (page.brief.pageType === 'regional-bridge') {
+    if (/apoio bofu/.test(text)) score += 7;
+    if (/contexto geográfico principal|contexto geografico principal/.test(text)) score += 6;
+    if (/setorial-mãe|setorial mae|serviço canônico|servico canonico/.test(text)) score += 5;
+    if (/complemento local|ponte regional/.test(text)) score += 4;
+  } else {
+    if (/apoio bofu local/.test(text)) score += 8;
+    if (/complemento local/.test(text)) score += 7;
+    if (/contexto geográfico principal|contexto geografico principal/.test(text)) score += 6;
+    if (/setorial-mãe|setorial mae/.test(text)) score += 5;
+    if (/serviço canônico|servico canonico/.test(text)) score += 4;
+    if (text.includes(page.areaServedName.toLowerCase())) score += 3;
+  }
+
+  if (link.path.startsWith('/blog/')) score += 1;
+  if (link.path.startsWith('/servicos/')) score += 1;
+
+  return score;
 }
 
 function getVerticalContext() {
@@ -889,7 +989,7 @@ const breadcrumbs = [
       <article class="ee-page-panel">
         <h3>Recursos relacionados</h3>
         <ul class="ee-page-list">
-          {page.relatedLinks.map((item) => (
+          {proofResourceLinks.map((item) => (
             <li>
               <a class="ee-page-inline-link" href={item.path}>
                 {item.label}
@@ -911,10 +1011,10 @@ const breadcrumbs = [
       </p>
     </div>
     <div class="ee-commercial-objection-grid">
-      {objectionItems.map((item) => (
+      {decisionObjectionItems.map((item) => (
         <article class="ee-page-card ee-commercial-objection-card">
-          <h3>{item.question}</h3>
-          <p>{item.answer}</p>
+          <h3>{item.title}</h3>
+          <p>{item.copy}</p>
         </article>
       ))}
     </div>
