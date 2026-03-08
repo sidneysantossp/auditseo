@@ -14,6 +14,8 @@ const painPoints = page.painPoints ?? page.brief.painPoints;
 const ctaPrimaryLabel = page.ctaPrimaryLabel ?? page.brief.ctaPrimary;
 const objectionItems = page.faqItems.slice(0, 3);
 const isLocalCommercialPage = page.brief.pageType === 'local-commercial';
+const verticalContext = getVerticalContext();
+const cityContext = getCityContext();
 const localCityLink =
   page.relatedLinks.find((item) => item.label === page.areaServedName || item.reason.includes('Contexto geográfico principal')) ?? null;
 const localBofuLink = page.relatedLinks.find((item) => item.reason.includes('Apoio BOFU local')) ?? null;
@@ -23,25 +25,25 @@ const institutionalProofLinks = [
   {
     label: 'Metodologia',
     title: `Como a AUDITSEO estrutura ${displayTitle.toLowerCase()}`,
-    copy: 'Mostra a logica comercial, tecnica e de priorizacao usada para esta frente.',
+    copy: 'Mostra a lógica comercial, técnica e de priorização usada para esta frente.',
     path: '/metodologia/'
   },
   {
-    label: 'Fontes e metodos',
-    title: 'Como validamos fontes, criterio e raciocinio',
-    copy: 'Explica como a camada editorial evita conteudo generico e deriva pagina a partir de contexto real.',
+    label: 'Fontes e métodos',
+    title: 'Como validamos fontes, critério e raciocínio',
+    copy: 'Explica como a camada editorial evita conteúdo genérico e deriva página a partir de contexto real.',
     path: '/fontes-e-metodos/'
   },
   {
     label: 'Autor',
-    title: 'Quem responde pela camada estrategica',
-    copy: 'Conecta a pagina a autoria, especialidade e responsabilidade editorial.',
+    title: 'Quem responde pela camada estratégica',
+    copy: 'Conecta a página à autoria, especialidade e responsabilidade editorial.',
     path: '/autores/sidney-santos/'
   },
   {
     label: 'Contato',
-    title: 'Canal direto para diagnostico comercial',
-    copy: 'Se a operacao ja tem contexto suficiente, o proximo passo pode ser avancar para um diagnostico.',
+    title: 'Canal direto para diagnóstico comercial',
+    copy: 'Se a operação já tem contexto suficiente, o próximo passo pode ser avançar para um diagnóstico.',
     path: '/contato/'
   }
 ];
@@ -50,28 +52,28 @@ const localProofCards = isLocalCommercialPage
       {
         label: 'Praça',
         title: `${page.areaServedName} entra como mercado próprio`,
-        copy: `Esta página trata ${page.areaServedName} como contexto comercial real, com função específica dentro da arquitetura local da vertical.`,
+        copy: cityContext.marketRole,
         path: localCityLink?.path ?? null,
         linkLabel: localCityLink ? `Abrir ${page.areaServedName}` : null
       },
       {
         label: 'BOFU local',
         title: 'Existe apoio editorial específico para a cidade',
-        copy: 'A jornada local não depende só da página comercial. Ela também é sustentada por conteúdo de decisão aderente à mesma praça.',
+        copy: `A jornada local de ${verticalContext.marketLabel} não depende só da página comercial. Ela também é sustentada por conteúdo de decisão aderente à mesma praça.`,
         path: localBofuLink?.path ?? null,
         linkLabel: localBofuLink?.label ?? null
       },
       {
         label: 'Complemento',
         title: 'A página conversa com o ativo local complementar',
-        copy: 'A operação local fica mais sólida quando página principal e ativo complementar sustentam a mesma intenção sem competir entre si.',
+        copy: cityContext.complementRole,
         path: localComplementLink?.path ?? null,
         linkLabel: localComplementLink?.label ?? null
       },
       {
         label: 'Vertical',
         title: 'A praça continua ligada à tese setorial-mãe',
-        copy: 'A cidade não foi isolada da estratégia. Ela reforça a mesma vertical comercial, preservando hierarquia e evitando canibalização.',
+        copy: `A cidade não foi isolada da estratégia. Ela reforça a mesma tese de ${verticalContext.marketLabel}, preservando hierarquia e evitando canibalização.`,
         path: localSectorLink?.path ?? null,
         linkLabel: localSectorLink?.label ?? null
       }
@@ -82,9 +84,9 @@ const operationalSignals = getOperationalSignals();
 function getFitSignals() {
   if (page.brief.pageType === 'sectoral-anchor') {
     return [
-      'Quando o segmento depende de busca orgânica e descoberta local para gerar novos contatos.',
+      `Quando ${verticalContext.marketLabel} depende de busca orgânica e descoberta local para gerar novos contatos.`,
       'Quando o site ainda está institucional demais e não tem páginas suficientes para capturar intenção comercial.',
-      'Quando SEO local, Google Maps e páginas por serviço precisam operar como o mesmo sistema.'
+      `Quando ${verticalContext.supportSystem} precisam operar como o mesmo sistema.`
     ];
   }
 
@@ -98,7 +100,7 @@ function getFitSignals() {
 
   return [
     `Quando ${page.areaServedName} já participa da geração de demanda e a cidade influencia a decisão do cliente.`,
-    'Quando a operação precisa alinhar página comercial, ativo local complementar e descoberta no Google.',
+    `Quando a operação precisa alinhar ${verticalContext.localPrimaryAsset}, ativo local complementar e descoberta no Google.`,
     'Quando a meta é gerar contatos locais melhores sem depender exclusivamente de mídia paga.'
   ];
 }
@@ -108,7 +110,7 @@ function getDeflectionSignals() {
     return [
       'Se a dúvida principal ainda é preço, prazo ou modelo de contratação, a entrada correta pode ser um artigo BOFU e não a página setorial.',
       'Se o problema real é diagnóstico técnico, talvez auditoria SEO faça mais sentido do que abrir uma frente setorial imediatamente.',
-      'Se a operação ainda não trata busca como canal comercial, esta página pode entrar cedo demais.'
+      `Se a operação ainda não trata ${verticalContext.demandCore} como canal comercial, esta página pode entrar cedo demais.`
     ];
   }
 
@@ -122,7 +124,7 @@ function getDeflectionSignals() {
 
   return [
     'Se a cidade ainda não participa da aquisição de clientes, abrir uma página local agora pode gerar ruído.',
-    'Se a expectativa é resultado imediato sem alinhar site, perfil local e contexto comercial, a página entra com premissa errada.',
+    `Se a expectativa é resultado imediato sem alinhar ${verticalContext.localPrimaryAsset}, perfil local e contexto comercial, a página entra com premissa errada.`,
     'Se a dúvida principal ainda é setorial e não geográfica, a vertical-mãe pode ser a entrada melhor neste momento.'
   ];
 }
@@ -136,23 +138,24 @@ function getOperationalProofCards() {
       {
         label: 'Leitura',
         title: 'O que entra na leitura da vertical',
-        copy: 'A página setorial não nasce de volume. Ela nasce da combinação entre demanda, contexto comercial e arquitetura da oferta.',
+        copy: `A página setorial de ${verticalContext.marketLabel} não nasce de volume. Ela nasce da combinação entre demanda, contexto comercial e arquitetura da oferta.`,
         items: [
-          'Mapeamento da demanda por especialidade, serviço ou dor do mercado.',
+          verticalContext.readingBullets[0],
+          verticalContext.readingBullets[1],
           'Separação entre intenção setorial, intenção local e conteúdo de apoio.',
-          'Leitura dos ativos que precisam existir para a vertical fechar negócio.'
+          `Leitura dos ativos que precisam existir para ${verticalContext.marketLabel} fechar negócio.`
         ]
       },
       {
         label: 'Estrutura',
         title: 'Quais ativos passam a andar juntos',
-        copy: 'A frente setorial só ganha força quando a página principal organiza o resto do sistema comercial.',
+        copy: `A frente setorial só ganha força quando a página principal organiza ${verticalContext.supportSystem.toLowerCase()} dentro do mesmo sistema comercial.`,
         items: page.deliveryItems.slice(0, 3)
       },
       {
         label: 'Gestão',
         title: 'Como a decisão evolui depois da leitura',
-        copy: 'A operação deixa de tratar busca como canal isolado e passa a priorizar com mais clareza o que realmente precisa entrar.',
+        copy: `A operação deixa de tratar ${verticalContext.demandCore} como canal isolado e passa a priorizar com mais clareza o que realmente precisa entrar.`,
         items: [
           'Definição das próximas páginas locais ou comerciais derivadas.',
           'Uso de BOFU e FAQ para filtrar objeções antes do contato.',
@@ -197,26 +200,26 @@ function getOperationalProofCards() {
     {
       label: 'Praça',
       title: `Como ${page.areaServedName} entra nesta operação`,
-      copy: 'A página local só existe porque a praça muda a decisão comercial, a descoberta orgânica e o tipo de ativo que precisa sustentar a busca.',
+      copy: `A página local só existe porque ${page.areaServedName} muda a decisão comercial, a descoberta orgânica e o tipo de ativo que precisa sustentar ${verticalContext.marketLabel}.`,
       items: [
-        `Leitura de ${page.areaServedName} como contexto real de aquisição.`,
-        'Separação entre demanda geográfica, demanda setorial e dúvida de contratação.',
+        cityContext.localBullets[0],
+        cityContext.localBullets[1],
         'Filtro para a cidade não virar apenas uma derivação da página principal.'
       ]
     },
     {
       label: 'Ativos',
       title: 'Quais peças precisam operar juntas',
-      copy: 'A página local precisa conversar com a vertical-mãe, o serviço canônico e os recursos de decisão corretos.',
+      copy: `A página local precisa conversar com a vertical-mãe, ${verticalContext.localPrimaryAsset} e os recursos de decisão corretos.`,
       items: page.deliveryItems.slice(0, 3)
     },
     {
       label: 'Gestão',
       title: 'O que passa a ser acompanhado com critério',
-      copy: 'A decisão local melhora quando a operação entende o papel da praça e protege a coerência entre os ativos que sustentam a busca.',
+      copy: `A decisão local melhora quando a operação entende o papel de ${page.areaServedName} e protege a coerência entre os ativos que sustentam ${verticalContext.marketLabel}.`,
       items: [
         'Consistência entre página local, ativo complementar e conteúdo BOFU.',
-        'Critério para reforçar a cidade sem inflar promessas ou páginas repetidas.',
+        cityContext.localBullets[2],
         'Próximos movimentos de expansão guiados pela mesma lógica comercial.'
       ]
     }
@@ -225,14 +228,257 @@ function getOperationalProofCards() {
 
 function getOperationalSignals() {
   if (page.brief.pageType === 'sectoral-anchor') {
-    return ['Vertical-mãe', 'Páginas derivadas', 'BOFU comercial', 'Expansão controlada'];
+    return ['Vertical-mãe', verticalContext.signal, 'BOFU comercial', 'Expansão controlada'];
   }
 
   if (page.brief.pageType === 'regional-bridge') {
     return ['Ponte regional', 'Praças derivadas', 'Hierarquia geográfica', 'Decisão de expansão'];
   }
 
-  return [page.areaServedName, 'Leitura por praça', 'Ativo local', 'BOFU aderente'];
+  return [page.areaServedName, verticalContext.signal, 'Ativo local', 'BOFU aderente'];
+}
+
+function getVerticalContext() {
+  const slug = page.slug;
+
+  if (slug.includes('clinicas-medicas')) {
+    return {
+      marketLabel: 'clínicas médicas',
+      demandCore: 'busca por especialidade, unidade e agendamento',
+      supportSystem: 'SEO local, Google Maps e páginas por especialidade',
+      localPrimaryAsset: 'página comercial da cidade',
+      signal: 'Saúde privada',
+      readingBullets: [
+        'Mapeamento da demanda por especialidade, tratamento e unidade.',
+        'Leitura da jornada entre descoberta local, confiança clínica e contato.'
+      ]
+    };
+  }
+
+  if (slug.includes('dermatologistas')) {
+    return {
+      marketLabel: 'dermatologia',
+      demandCore: 'busca por tratamento, autoridade e proximidade',
+      supportSystem: 'SEO local, páginas de tratamento e Google Maps',
+      localPrimaryAsset: 'página local da especialidade',
+      signal: 'Especialidade premium',
+      readingBullets: [
+        'Mapeamento da demanda por tratamento, procedimento e intenção estética ou clínica.',
+        'Leitura da relação entre autoridade local, clareza de oferta e decisão rápida.'
+      ]
+    };
+  }
+
+  if (slug.includes('odontologia')) {
+    return {
+      marketLabel: 'odontologia',
+      demandCore: 'busca por procedimento, proximidade e agendamento',
+      supportSystem: 'SEO local, páginas de procedimento e Google Maps',
+      localPrimaryAsset: 'página local da clínica odontológica',
+      signal: 'Procedimentos locais',
+      readingBullets: [
+        'Mapeamento da demanda por procedimento, especialidade e urgência de contato.',
+        'Leitura da jornada entre busca local, prova e facilidade de conversão.'
+      ]
+    };
+  }
+
+  if (slug.includes('escritorios-de-advocacia')) {
+    return {
+      marketLabel: 'escritórios de advocacia',
+      demandCore: 'busca por área de atuação, confiança e contexto jurídico',
+      supportSystem: 'páginas por área, autoridade local e conteúdo de decisão',
+      localPrimaryAsset: 'página comercial da área jurídica na praça',
+      signal: 'Serviço consultivo',
+      readingBullets: [
+        'Mapeamento da demanda por área de atuação, tipo de problema e contexto da busca.',
+        'Leitura da relação entre confiança, clareza jurídica e qualificação do contato.'
+      ]
+    };
+  }
+
+  if (slug.includes('software-b2b')) {
+    return {
+      marketLabel: 'software B2B',
+      demandCore: 'busca por categoria, solução, comparação e pipeline',
+      supportSystem: 'páginas de solução, comparativos e conteúdo de decisão',
+      localPrimaryAsset: 'página comercial da solução na praça',
+      signal: 'Pipeline qualificado',
+      readingBullets: [
+        'Mapeamento da demanda por categoria, caso de uso e comparação entre soluções.',
+        'Leitura da jornada entre descoberta orgânica, consideração e geração de pipeline.'
+      ]
+    };
+  }
+
+  if (slug.includes('energia-solar')) {
+    return {
+      marketLabel: 'energia solar',
+      demandCore: 'busca por solução, economia, confiança e avaliação comercial',
+      supportSystem: 'páginas de solução, prova comercial e conteúdo comparativo',
+      localPrimaryAsset: 'página comercial da solução por praça',
+      signal: 'Jornada consultiva',
+      readingBullets: [
+        'Mapeamento da demanda por solução, economia e estágio da jornada consultiva.',
+        'Leitura da relação entre prova comercial, clareza de oferta e geração de demanda.'
+      ]
+    };
+  }
+
+  return {
+    marketLabel: 'essa frente comercial',
+    demandCore: 'busca orgânica qualificada',
+    supportSystem: 'página comercial, ativos locais e conteúdo de apoio',
+    localPrimaryAsset: 'página comercial principal',
+    signal: 'Busca comercial',
+    readingBullets: [
+      'Mapeamento da demanda principal da vertical.',
+      'Leitura da relação entre descoberta, consideração e contato.'
+    ]
+  };
+}
+
+function getCityContext() {
+  const city = page.areaServedName;
+
+  const base = {
+    marketRole: `${city} entra aqui como contexto comercial real, com função própria dentro da arquitetura local da vertical.`,
+    complementRole:
+      'A operação local fica mais sólida quando página principal e ativo complementar sustentam a mesma intenção sem competir entre si.',
+    localBullets: [
+      `Leitura de ${city} como contexto real de aquisição.`,
+      'Separação entre demanda geográfica, demanda setorial e dúvida de contratação.',
+      'Critério para reforçar a praça sem inflar promessas ou páginas repetidas.'
+    ]
+  };
+
+  if (city === 'São Paulo') {
+    return {
+      marketRole:
+        'São Paulo entra como praça de alta competição e alta densidade de demanda, exigindo página local com mais precisão de oferta, prova e recorte comercial.',
+      complementRole:
+        'Na capital, a operação local fica mais sólida quando página principal e ativo complementar sustentam a mesma intenção sem competir entre si.',
+      localBullets: [
+        'Leitura de São Paulo como praça de competição orgânica mais intensa e demanda mais fragmentada.',
+        'Separação entre busca por vertical, busca por bairro ou região e busca puramente local.',
+        'Critério para reforçar a capital sem virar uma variação genérica da vertical-mãe.'
+      ]
+    };
+  }
+
+  if (city === 'Rio de Janeiro') {
+    return {
+      marketRole:
+        'O Rio de Janeiro entra como praça em que contexto local, confiança e clareza de oferta pesam cedo na decisão comercial.',
+      complementRole:
+        'No Rio, a operação local fica mais forte quando página principal e ativo complementar sustentam a mesma intenção com contexto comercial claro.',
+      localBullets: [
+        'Leitura do Rio de Janeiro como praça em que contexto local influencia fortemente a triagem da demanda.',
+        'Separação entre busca por especialidade, descoberta local e dúvidas de contratação.',
+        'Critério para reforçar a cidade sem diluir o papel comercial da vertical.'
+      ]
+    };
+  }
+
+  if (city === 'Belo Horizonte') {
+    return {
+      marketRole:
+        'Belo Horizonte entra como praça em que clareza de proposta, confiança e contexto geográfico ajudam a qualificar melhor a descoberta orgânica.',
+      complementRole:
+        'Em Belo Horizonte, a página principal ganha força quando o ativo complementar reforça a mesma leitura comercial da praça.',
+      localBullets: [
+        'Leitura de Belo Horizonte como praça em que contexto regional e proximidade ainda pesam cedo na decisão.',
+        'Separação entre busca local, vertical comercial e conteúdo de decisão de apoio.',
+        'Critério para reforçar a cidade sem inflar variações desnecessárias.'
+      ]
+    };
+  }
+
+  if (city === 'Curitiba') {
+    return {
+      marketRole:
+        'Curitiba entra como praça em que disciplina de oferta, clareza e coerência entre ativos locais tende a pesar mais na qualidade do contato.',
+      complementRole:
+        'Em Curitiba, a operação local ganha força quando página principal e ativo complementar reforçam a mesma proposta de valor sem ruído.',
+      localBullets: [
+        'Leitura de Curitiba como praça que responde melhor a estrutura comercial coerente do que à copy genérica.',
+        'Separação entre contexto da cidade, intenção setorial e conteúdo de apoio para decisão.',
+        'Critério para expandir a praça mantendo clareza e hierarquia entre os ativos.'
+      ]
+    };
+  }
+
+  if (city === 'Brasília') {
+    return {
+      marketRole:
+        'Brasília entra como praça em que busca qualificada e leitura institucional costumam ter peso maior na percepção de confiança da operação.',
+      complementRole:
+        'Em Brasília, a página principal fica mais sólida quando o ativo complementar reforça a mesma leitura institucional e comercial.',
+      localBullets: [
+        'Leitura de Brasília como praça em que clareza de posicionamento e confiança institucional pesam cedo.',
+        'Separação entre busca local, busca por serviço e conteúdo que filtra objeção de contratação.',
+        'Critério para reforçar a praça sem romper a coerência com a vertical-mãe.'
+      ]
+    };
+  }
+
+  if (city === 'Porto Alegre') {
+    return {
+      marketRole:
+        'Porto Alegre entra como praça em que a consistência entre página, oferta e prova tende a influenciar mais a qualidade do contato.',
+      complementRole:
+        'Em Porto Alegre, a operação local fica mais sólida quando página principal e ativo complementar reforçam a mesma lógica de decisão.',
+      localBullets: [
+        'Leitura de Porto Alegre como praça em que contexto local e coerência de oferta ajudam a filtrar melhor a demanda.',
+        'Separação entre busca por vertical, busca local e dúvida de contratação.',
+        'Critério para reforçar a cidade sem multiplicar páginas frágeis.'
+      ]
+    };
+  }
+
+  if (city === 'Campinas') {
+    return {
+      marketRole:
+        'Campinas entra como praça com densidade empresarial própria, exigindo página local que conecte vertical, cidade e prova comercial com mais precisão.',
+      complementRole:
+        'Em Campinas, a operação local ganha força quando ativo complementar e página principal sustentam a mesma intenção comercial.',
+      localBullets: [
+        'Leitura de Campinas como praça própria e não apenas derivação da capital.',
+        'Separação entre busca local, busca regional e vertical setorial.',
+        'Critério para expandir a praça mantendo uma hierarquia geográfica limpa.'
+      ]
+    };
+  }
+
+  if (city === 'São José dos Campos') {
+    return {
+      marketRole:
+        'São José dos Campos entra como praça em que contexto local e filtro de intenção ajudam a tornar a busca mais qualificada e menos genérica.',
+      complementRole:
+        'Em São José dos Campos, a operação local ganha mais força quando a página principal conversa com o ativo complementar sem competir pela mesma função.',
+      localBullets: [
+        'Leitura de São José dos Campos como praça em que recorte local melhora a qualidade da descoberta.',
+        'Separação entre demanda local, demanda setorial e conteúdo de apoio para decisão.',
+        'Critério para expandir a cidade com páginas realmente justificadas.'
+      ]
+    };
+  }
+
+  if (city === 'Grande São Paulo') {
+    return {
+      marketRole:
+        'Grande São Paulo entra como ponte regional válida quando ajuda a organizar várias praças próximas sob uma mesma lógica comercial.',
+      complementRole:
+        'Na Grande São Paulo, a operação regional fica mais forte quando ativo complementar e página principal deixam claro o papel da região frente às cidades.',
+      localBullets: [
+        'Leitura da Grande São Paulo como camada regional com função própria dentro da expansão.',
+        'Separação entre papel da região, papel da capital e papel das cidades derivadas.',
+        'Critério para sustentar a região sem transformar a página em agregação vazia.'
+      ]
+    };
+  }
+
+  return base;
 }
 
 const breadcrumbs = [
