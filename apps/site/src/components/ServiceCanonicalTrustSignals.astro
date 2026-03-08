@@ -1,0 +1,114 @@
+---
+import type { ServiceCanonicalTrustGroup } from '../data/service-canonical-trust-signals';
+
+interface Props {
+  group: ServiceCanonicalTrustGroup;
+}
+
+const { group } = Astro.props as Props;
+---
+<section class="service-trust-signals">
+  <div class="container-shell">
+    <div class="service-trust-signals__head">
+      <span class="section-eyebrow">{group.eyebrow}</span>
+      <h2 class="service-trust-signals__title">{group.title}</h2>
+      <p class="service-trust-signals__copy">{group.copy}</p>
+    </div>
+
+    <div class="service-trust-signals__grid">
+      {group.cards.map((card) => (
+        <article class="service-trust-signals__card">
+          <span class="service-trust-signals__label">{card.label}</span>
+          <h3>{card.title}</h3>
+          <p>{card.description}</p>
+          <a href={card.path}>Abrir página</a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-trust-signals {
+    padding: 0 0 6rem;
+  }
+
+  .service-trust-signals__head {
+    max-width: 58rem;
+    margin-bottom: 2rem;
+  }
+
+  .service-trust-signals__title {
+    margin: 1rem 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.9rem, 6vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    color: var(--text-light);
+  }
+
+  .service-trust-signals__copy {
+    max-width: 46rem;
+    color: var(--text-muted);
+    font-size: 1.08rem;
+  }
+
+  .service-trust-signals__grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .service-trust-signals__card {
+    min-height: 100%;
+    padding: 1.6rem;
+    border: 1px solid var(--border-soft);
+    background: rgba(14, 14, 16, 0.9);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.18);
+  }
+
+  .service-trust-signals__label {
+    display: inline-flex;
+    margin-bottom: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+  }
+
+  .service-trust-signals__card h3 {
+    margin: 0 0 0.75rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    color: var(--text-light);
+  }
+
+  .service-trust-signals__card p {
+    margin: 0 0 1.1rem;
+    color: var(--text-muted);
+  }
+
+  .service-trust-signals__card a {
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+  }
+
+  @media (max-width: 1200px) {
+    .service-trust-signals__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .service-trust-signals__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
