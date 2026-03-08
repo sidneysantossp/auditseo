@@ -1,5 +1,11 @@
 import { blogCategories, getBlogCategoryForArticle } from '../src/data/blog-taxonomy';
 import { canonicalBlogArticleRedirects } from '../src/data/blog-editorial';
+import {
+  commercialArticleContexts,
+  getCommercialArticleContext,
+  getCommercialArticleContextKey
+} from '../src/data/blog-commercial-context';
+import { commercialSupportArticles } from '../src/data/commercial-support-articles';
 import { getAllBlogArticles, getLegacyArticleBySlug } from '../src/lib/legacy-blog';
 
 function normalize(value: string) {
@@ -25,6 +31,7 @@ const duplicateTitles = collectDuplicates(articles, (article) => article.title);
 const duplicateSeoTitles = collectDuplicates(articles, (article) => article.seoTitle);
 const duplicateDescriptions = collectDuplicates(articles, (article) => article.description);
 const duplicateCanonicals = collectDuplicates(articles, (article) => article.canonicalPath);
+const duplicateCommercialContexts = collectDuplicates(commercialArticleContexts, (context) => getCommercialArticleContextKey(context));
 
 for (const [value, bucket] of duplicateTitles) {
   errors.push(`Titulos canonicos duplicados: "${value}" -> ${bucket.map((article) => article.slug).join(', ')}`);
@@ -37,6 +44,9 @@ for (const [value, bucket] of duplicateDescriptions) {
 }
 for (const [value, bucket] of duplicateCanonicals) {
   errors.push(`Canonicals duplicadas: "${value}" -> ${bucket.map((article) => article.slug).join(', ')}`);
+}
+for (const [value, bucket] of duplicateCommercialContexts) {
+  errors.push(`Contexto comercial duplicado: "${value}" -> ${bucket.map((context) => context.slug).join(', ')}`);
 }
 
 for (const article of articles) {
@@ -51,6 +61,12 @@ for (const article of articles) {
   }
   if (article.excerpt.length < 90) {
     warnings.push(`Excerpt curto demais: ${article.slug}`);
+  }
+}
+
+for (const article of commercialSupportArticles) {
+  if (!getCommercialArticleContext(article.slug)) {
+    errors.push(`Artigo comercial sem contexto editorial normalizado: ${article.slug}`);
   }
 }
 

@@ -17,6 +17,7 @@ import {
   type BlogCategoryDefinition,
   type BlogCategoryFaq
 } from '../data/blog-taxonomy';
+import { getCommercialArticleRelationScore } from '../data/blog-commercial-context';
 import { legacyBlogSlugRedirects, legacyPathRedirects } from '../data/legacy-aliases';
 
 const blogDir = path.join(process.cwd(), 'src', 'legacy', 'blog');
@@ -417,6 +418,20 @@ export function getBlogCategoryArticles(categorySlug: string) {
 export function getRelatedBlogArticles(slug: string, limit = 3) {
   const current = getLegacyArticleBySlug(slug);
   if (!current) return [];
+
+  const commercialRelated = getArticles()
+    .filter((article) => article.slug !== slug)
+    .map((article) => ({
+      article,
+      score: getCommercialArticleRelationScore(slug, article.slug)
+    }))
+    .filter((item) => item.score >= 0)
+    .sort((left, right) => right.score - left.score)
+    .map((item) => item.article);
+
+  if (commercialRelated.length > 0) {
+    return uniqueArticles(commercialRelated).slice(0, limit);
+  }
 
   const prioritySlugs = [current.category.featuredSlug, ...current.category.pillarSlugs].filter((item) => item !== slug);
   const priorityArticles = prioritySlugs
