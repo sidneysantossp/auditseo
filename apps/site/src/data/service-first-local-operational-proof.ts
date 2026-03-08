@@ -28,6 +28,189 @@ function createGroup(
   };
 }
 
+type HealthProofCity = {
+  name: string;
+  slugSuffix: string;
+  locationLabel: string;
+  locationUpper: string;
+  cityContext: string;
+  discoveryContext: string;
+  mapContext: string;
+  signal: string;
+};
+
+type HealthProofSector = {
+  slugBase: string;
+  label: string;
+  titleLabel: string;
+  demandContext: string;
+  structureContext: string;
+  mapDecisionContext: string;
+  mapComparisonContext: string;
+};
+
+function createHealthSeoProof(city: HealthProofCity, sector: HealthProofSector): ServiceFirstOperationalProofGroup {
+  return createGroup(
+    `COMO ${sector.titleLabel} É TRATADA LOCALMENTE ${city.locationUpper}`,
+    `${city.cityContext} ${sector.label} precisa ser organizada com leitura local real, sem virar adaptação genérica da vertical nacional.`,
+    [
+      {
+        label: 'Mercado',
+        title: `Como ${sector.label.toLowerCase()} é lida ${city.locationLabel}`,
+        copy: `${city.discoveryContext} ${sector.demandContext}`,
+        items: [
+          `Mapeamento da demanda de ${sector.label.toLowerCase()} com recorte real da praça.`,
+          `Separação entre busca local, busca setorial e conteúdo de apoio para ${sector.label.toLowerCase()}.`,
+          'Filtro para a página local existir por função comercial e não por simples variação de URL.'
+        ]
+      },
+      {
+        label: 'Estrutura',
+        title: 'Quais ativos precisam reforçar a mesma tese',
+        copy: `${sector.structureContext} ${city.cityContext.toLowerCase()}`,
+        items: [
+          `Página local de ${sector.label.toLowerCase()} ligada à vertical principal.`,
+          `Integração com Google Meu Negócio e BOFU da praça para ${sector.label.toLowerCase()}.`,
+          'Clareza de mensagem para reduzir ruído entre descoberta e contato.'
+        ]
+      },
+      {
+        label: 'Decisão',
+        title: 'O que essa página precisa orientar',
+        copy: 'A utilidade da página local está em ajudar a operação a decidir próximos reforços da praça com mais precisão.',
+        items: [
+          `Critério para aprofundar ${city.name} sem inflar a arquitetura.`,
+          'Leitura das consultas que puxam melhor demanda qualificada.',
+          `Proteção da hierarquia entre ${sector.label.toLowerCase()} e os ativos locais da praça.`
+        ]
+      }
+    ],
+    [sector.label, city.name, 'SEO local', city.signal]
+  );
+}
+
+function createHealthGbpProof(city: HealthProofCity, sector: HealthProofSector): ServiceFirstOperationalProofGroup {
+  return createGroup(
+    `COMO O MAPA É OPERADO PARA ${sector.titleLabel} ${city.locationUpper}`,
+    `${city.mapContext} o perfil local precisa reforçar a mesma leitura comercial da página certa, sem operar como cadastro isolado.`,
+    [
+      {
+        label: 'Perfil',
+        title: 'O que é lido no ativo local',
+        copy: `${sector.mapDecisionContext} ${city.locationLabel}`,
+        items: [
+          'Coerência entre perfil, especialidade, geografia e proposta comercial.',
+          `Leitura do papel do Maps na triagem local da busca ${city.locationLabel}.`,
+          'Filtro entre presença no perfil e capacidade real de gerar contato.'
+        ]
+      },
+      {
+        label: 'Integração',
+        title: 'Como o perfil conversa com a página',
+        copy: `${sector.mapComparisonContext} o usuário precisa encontrar a mesma proposta no perfil e na página local.`,
+        items: [
+          `Integração direta com a página local de ${sector.label.toLowerCase()} ${city.locationLabel}.`,
+          'Compatibilidade entre contexto da praça, CTA e proposta principal.',
+          'Ligação com BOFU da praça para reduzir objeção de descoberta local.'
+        ]
+      },
+      {
+        label: 'Governança',
+        title: 'O que precisa ser mantido com critério',
+        copy: 'A governança do perfil protege a aderência comercial da praça ao longo do tempo.',
+        items: [
+          'Atualização do perfil sem ruído entre site e Maps.',
+          `Leitura do papel do mapa dentro da jornada local de ${sector.label.toLowerCase()}.`,
+          `Critério para reforçar ${city.name} sem romper a hierarquia do cluster.`
+        ]
+      }
+    ],
+    [sector.label, city.name, 'Maps', city.signal]
+  );
+}
+
+function createHealthProofSet(city: HealthProofCity, sector: HealthProofSector) {
+  return {
+    [`/servicos/seo-local-para-${sector.slugBase}-${city.slugSuffix}/`]: createHealthSeoProof(city, sector),
+    [`/servicos/google-meu-negocio-para-${sector.slugBase}-${city.slugSuffix}/`]: createHealthGbpProof(city, sector)
+  };
+}
+
+const rioCityProof: HealthProofCity = {
+  name: 'Rio de Janeiro',
+  slugSuffix: 'em-rio-de-janeiro',
+  locationLabel: 'no Rio de Janeiro',
+  locationUpper: 'NO RIO DE JANEIRO',
+  cityContext: 'No Rio de Janeiro,',
+  discoveryContext: 'No Rio, contexto local, confiança e comparação urbana pesam cedo na decisão.',
+  mapContext: 'No Rio,',
+  signal: 'Confiança local'
+};
+
+const beloHorizonteCityProof: HealthProofCity = {
+  name: 'Belo Horizonte',
+  slugSuffix: 'em-belo-horizonte',
+  locationLabel: 'em Belo Horizonte',
+  locationUpper: 'EM BELO HORIZONTE',
+  cityContext: 'Em Belo Horizonte,',
+  discoveryContext: 'Em BH, clareza de proposta, contexto geográfico e confiança ajudam a qualificar melhor a descoberta.',
+  mapContext: 'Em BH,',
+  signal: 'Praça própria'
+};
+
+const curitibaCityProof: HealthProofCity = {
+  name: 'Curitiba',
+  slugSuffix: 'em-curitiba',
+  locationLabel: 'em Curitiba',
+  locationUpper: 'EM CURITIBA',
+  cityContext: 'Em Curitiba,',
+  discoveryContext: 'Em Curitiba, coerência de oferta e disciplina comercial tendem a pesar mais na qualidade do contato.',
+  mapContext: 'Em Curitiba,',
+  signal: 'Clareza comercial'
+};
+
+const brasiliaCityProof: HealthProofCity = {
+  name: 'Brasília',
+  slugSuffix: 'em-brasilia',
+  locationLabel: 'em Brasília',
+  locationUpper: 'EM BRASÍLIA',
+  cityContext: 'Em Brasília,',
+  discoveryContext: 'Em Brasília, posicionamento, clareza de proposta e confiança institucional pesam cedo na triagem.',
+  mapContext: 'Em Brasília,',
+  signal: 'Confiança institucional'
+};
+
+const portoAlegreCityProof: HealthProofCity = {
+  name: 'Porto Alegre',
+  slugSuffix: 'em-porto-alegre',
+  locationLabel: 'em Porto Alegre',
+  locationUpper: 'EM PORTO ALEGRE',
+  cityContext: 'Em Porto Alegre,',
+  discoveryContext: 'Em Porto Alegre, consistência entre oferta, página e prova local ajuda a filtrar melhor a demanda.',
+  mapContext: 'Em Porto Alegre,',
+  signal: 'Coerência local'
+};
+
+const dermatologiaProofSector: HealthProofSector = {
+  slugBase: 'dermatologistas',
+  label: 'dermatologia',
+  titleLabel: 'DERMATOLOGIA',
+  demandContext: 'Tratamento, autoridade local e comparação rápida entram na mesma decisão comercial.',
+  structureContext: 'A operação fica mais forte quando a página local conversa com a vertical, o mapa e os conteúdos de decisão corretos.',
+  mapDecisionContext: 'O ativo local precisa refletir a especialidade com clareza suficiente para o contexto da praça.',
+  mapComparisonContext: 'Na dermatologia, o mapa participa cedo da comparação'
+};
+
+const odontologiaProofSector: HealthProofSector = {
+  slugBase: 'odontologia',
+  label: 'odontologia',
+  titleLabel: 'ODONTOLOGIA',
+  demandContext: 'Procedimento, proximidade e decisão rápida entram no mesmo sistema comercial da praça.',
+  structureContext: 'A página local precisa funcionar como peça central da descoberta comercial da praça.',
+  mapDecisionContext: 'Em odontologia, o perfil local precisa sustentar proximidade, clareza e ação rápida.',
+  mapComparisonContext: 'Na odontologia, o mapa participa cedo da comparação'
+};
+
 export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOperationalProofGroup> = {
   '/servicos/seo-local-para-clinicas-medicas-em-sao-paulo/': createGroup(
     'COMO SÃO PAULO É TRABALHADA NESTA FRENTE LOCAL',
@@ -731,5 +914,15 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
       }
     ],
     ['Porto Alegre', 'Maps', 'Integração com site', 'Coerência local']
-  )
+  ),
+  ...createHealthProofSet(rioCityProof, dermatologiaProofSector),
+  ...createHealthProofSet(rioCityProof, odontologiaProofSector),
+  ...createHealthProofSet(beloHorizonteCityProof, dermatologiaProofSector),
+  ...createHealthProofSet(beloHorizonteCityProof, odontologiaProofSector),
+  ...createHealthProofSet(curitibaCityProof, dermatologiaProofSector),
+  ...createHealthProofSet(curitibaCityProof, odontologiaProofSector),
+  ...createHealthProofSet(brasiliaCityProof, dermatologiaProofSector),
+  ...createHealthProofSet(brasiliaCityProof, odontologiaProofSector),
+  ...createHealthProofSet(portoAlegreCityProof, dermatologiaProofSector),
+  ...createHealthProofSet(portoAlegreCityProof, odontologiaProofSector)
 };
