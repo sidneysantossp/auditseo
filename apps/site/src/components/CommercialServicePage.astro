@@ -141,10 +141,19 @@ const decisionStartLinks = intentOrderedLinks.slice(0, 3);
 const proofResourceLinks = intentOrderedLinks.slice(0, 5);
 const decisionObjectionItems = getDecisionObjectionItems();
 const sectoralIntakeLayer = page.brief.pageType === 'sectoral-anchor' ? getSectoralIntakeLayer() : null;
+const localIntakeLayer = isLocalCommercialPage ? getLocalIntakeLayer() : null;
 
 type DecisionObjectionItem = {
   title: string;
   copy: string;
+};
+
+type PageIntakeLayer = {
+  title: string;
+  copy: string;
+  prepareItems: string[];
+  receiveItems: string[];
+  disqualifiers: string[];
 };
 
 function getOperationalProofCards() {
@@ -410,6 +419,138 @@ function getSectoralIntakeLayer() {
       'Se a operação ainda não tem contexto mínimo para priorizar a frente.',
       'Se a expectativa está restrita a resultado imediato sem estrutura.',
       'Se a página ainda não é o ponto certo de entrada para a demanda.'
+    ]
+  };
+}
+
+function getLocalIntakeLayer(): PageIntakeLayer {
+  if (page.slug.includes('google-meu-negocio')) {
+    return {
+      title: `COMO VALIDAR O PAPEL DO MAPA EM ${page.areaServedName.toUpperCase()}`,
+      copy: `${page.areaServedName} precisa entrar aqui como praça real de descoberta, comparação e contato. A conversa inicial precisa deixar claro o papel do perfil local dentro da mesma arquitetura comercial da página.`,
+      prepareItems: [
+        `Perfil atual, categorias e sinais locais que já existem em ${page.areaServedName}.`,
+        `Página comercial que deveria sustentar a mesma leitura de ${verticalContext.marketLabel}.`,
+        `Quais ligações, rotas ou contatos locais deveriam crescer em ${page.areaServedName}.`
+      ],
+      receiveItems: [
+        `Leitura mais clara do papel do Maps dentro da jornada local de ${verticalContext.marketLabel}.`,
+        `Direção inicial sobre o que precisa ser ajustado primeiro entre perfil, página e contexto da praça.`,
+        `Sinal mais forte sobre quando ${page.areaServedName} merece reforço local adicional sem romper a hierarquia do cluster.`
+      ],
+      disqualifiers: [
+        'Se a expectativa é usar o perfil como substituto da página comercial.',
+        `Se ${page.areaServedName} ainda não participa da aquisição com contexto suficiente.`,
+        `Se o problema principal ainda está na oferta ou na estrutura do site, e não no ativo local.`
+      ]
+    };
+  }
+
+  if (page.slug.includes('seo-local')) {
+    return {
+      title: `COMO ENTRAR NESTA PRAÇA COM MAIS CLAREZA COMERCIAL`,
+      copy: `${cityContext.marketRole} A triagem inicial existe para separar descoberta local real de simples expansão geográfica, e para mostrar que ativos precisam operar juntos em ${page.areaServedName}.`,
+      prepareItems: [
+        `Quais serviços, especialidades ou frentes de ${verticalContext.marketLabel} deveriam gerar mais demanda em ${page.areaServedName}.`,
+        `Como ${verticalContext.localPrimaryAsset} e os ativos locais estão operando hoje.`,
+        `Que sinais já mostram que ${page.areaServedName} influencia contato, comparação ou decisão comercial.`
+      ],
+      receiveItems: [
+        'Hipótese inicial sobre o papel da página local dentro da arquitetura da vertical.',
+        `Direção de quais ativos precisam reforçar ${page.areaServedName} primeiro com mais aderência comercial.`,
+        'Critério mais claro sobre se a cidade está pronta para aprofundamento ou ainda precisa de outra entrada.'
+      ],
+      disqualifiers: [
+        `Se ${page.areaServedName} ainda não está validada como praça real de aquisição.`,
+        `Se ${verticalContext.localPrimaryAsset} e o ativo complementar ainda não sustentam a mesma proposta de valor.`,
+        'Se a expectativa é obter resultado local sem alinhar página, contexto geográfico e próximo passo comercial.'
+      ]
+    };
+  }
+
+  if (page.slug.includes('escritorios-de-advocacia')) {
+    return {
+      title: `COMO VALIDAR ADVOCACIA EM ${page.areaServedName.toUpperCase()} SEM RUÍDO`,
+      copy: `Na advocacia, a cidade precisa entrar com função comercial real. A conversa inicial deve separar área de atuação, praça e tipo de lead antes de transformar a página em ativo de aquisição.`,
+      prepareItems: [
+        'Áreas do direito que mais precisam gerar reunião ou contato qualificado.',
+        `Praça prioritária em ${page.areaServedName} e sinais de demanda que já aparecem no site.`,
+        'Como as páginas jurídicas e a camada institucional estão distribuídas hoje.'
+      ],
+      receiveItems: [
+        'Leitura inicial sobre qual recorte jurídico e geográfico sustenta melhor a praça.',
+        'Direção sobre o que precisa ser comercial, institucional e BOFU dentro da mesma vertical.',
+        `Critério sobre como expandir ${page.areaServedName} sem repetir a tese da página nacional.`
+      ],
+      disqualifiers: [
+        'Se o escritório ainda não definiu claramente as áreas que quer priorizar.',
+        'Se a expectativa é ranquear sem reforçar confiança, contexto e clareza jurídica.',
+        'Se a página ainda está sendo tratada como cartão institucional e não como ativo comercial.'
+      ]
+    };
+  }
+
+  if (page.slug.includes('software-b2b')) {
+    return {
+      title: `COMO ENTRAR EM SOFTWARE B2B EM ${page.areaServedName.toUpperCase()}`,
+      copy: `Nesta vertical, a cidade só faz sentido quando ajuda a filtrar melhor ICP, categoria e estágio do pipeline. A triagem existe para evitar conversa genérica e aproximar a página da aquisição real.`,
+      prepareItems: [
+        'ICP, categoria do produto e tipo de demanda que deveria virar pipeline primeiro.',
+        `Páginas que hoje deveriam converter melhor em ${page.areaServedName}.`,
+        'Como comparativos, solução e conteúdo de decisão estão apoiando a venda.'
+      ],
+      receiveItems: [
+        'Leitura inicial das páginas que mais deveriam sustentar pipeline qualificado.',
+        'Direção sobre como separar solução, comparação e contexto regional da oferta.',
+        `Sinal mais forte sobre como ${page.areaServedName} entra na malha comercial sem sobreposição.`
+      ],
+      disqualifiers: [
+        'Se a operação ainda não definiu o ICP com clareza suficiente.',
+        'Se a expectativa é usar SEO como substituto completo de outbound e mídia.',
+        'Se o site ainda não sustenta páginas de solução e decisão com consistência mínima.'
+      ]
+    };
+  }
+
+  if (page.slug.includes('energia-solar')) {
+    return {
+      title: `COMO VALIDAR ENERGIA SOLAR EM ${page.areaServedName.toUpperCase()}`,
+      copy: `Em energia solar, praça e região alteram muito a leitura da demanda. A conversa inicial precisa separar proposta comercial, maturidade do site e papel do SEO frente à mídia paga.`,
+      prepareItems: [
+        `Praças, regiões e tipos de proposta que mais importam em ${page.areaServedName}.`,
+        'Como a empresa hoje explica solução, economia e diferenciais no site.',
+        'Qual o papel atual de mídia paga, conteúdo e páginas comerciais na geração de demanda.'
+      ],
+      receiveItems: [
+        'Leitura inicial sobre como conectar praça, oferta consultiva e comparativos de decisão.',
+        'Direção de quais ativos precisam reforço primeiro para gerar demanda mais qualificada.',
+        `Critério sobre quando ${page.areaServedName} está pronta para expansão adicional dentro da vertical.`
+      ],
+      disqualifiers: [
+        'Se a empresa ainda não definiu que praças ou regiões realmente importam comercialmente.',
+        'Se a expectativa é resolver a aquisição sem ajustar mensagem, prova e contexto da oferta.',
+        'Se o site ainda não tem base mínima para sustentar solução, comparação e conteúdo de decisão.'
+      ]
+    };
+  }
+
+  return {
+    title: `COMO VALIDAR ESTA PRAÇA COM MAIS CLAREZA`,
+    copy: 'A triagem comercial local existe para filtrar contexto, expectativa e papel real da cidade antes do diagnóstico.',
+    prepareItems: [
+      'Quais ofertas deveriam performar melhor nesta praça.',
+      'Como os ativos locais e comerciais estão distribuídos hoje.',
+      'Onde a operação sente mais perda de demanda qualificada.'
+    ],
+    receiveItems: [
+      'Leitura inicial da função comercial da praça.',
+      'Direção do que precisa entrar primeiro para a cidade fazer sentido.',
+      'Critério para decidir expansão, reforço ou recuo da frente local.'
+    ],
+    disqualifiers: [
+      'Se a cidade ainda não tem papel real na aquisição.',
+      'Se o site ainda não consegue sustentar contexto local com clareza.',
+      'Se a expectativa está desalinhada com o tipo de ativo que a praça exige.'
     ]
   };
 }
@@ -887,6 +1028,42 @@ const breadcrumbs = [
           <h3>Talvez não seja a entrada certa se...</h3>
           <ul class="ee-page-list">
             {sectoralIntakeLayer.disqualifiers.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </section>
+  )}
+
+  {localIntakeLayer && (
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Triagem da praça</span>
+        <h2 class="ee-page-section-title">{localIntakeLayer.title}</h2>
+        <p class="ee-page-section-subtitle">{localIntakeLayer.copy}</p>
+      </div>
+      <div class="ee-commercial-fit-grid">
+        <article class="ee-page-panel">
+          <h3>Traga para a conversa</h3>
+          <ul class="ee-page-list">
+            {localIntakeLayer.prepareItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-panel">
+          <h3>O que você recebe primeiro</h3>
+          <ul class="ee-page-list">
+            {localIntakeLayer.receiveItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+        <article class="ee-page-panel">
+          <h3>Talvez a praça ainda não seja a entrada certa se...</h3>
+          <ul class="ee-page-list">
+            {localIntakeLayer.disqualifiers.map((item) => (
               <li>{item}</li>
             ))}
           </ul>
