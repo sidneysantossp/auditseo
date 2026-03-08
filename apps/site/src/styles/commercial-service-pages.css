@@ -21,14 +21,16 @@
 }
 
 .ee-commercial-objection-grid,
-.ee-commercial-proof-rail {
+.ee-commercial-proof-rail,
+.ee-commercial-local-proof-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
 }
 
 .ee-commercial-objection-card h3,
-.ee-commercial-proof-rail-card h3 {
+.ee-commercial-proof-rail-card h3,
+.ee-commercial-local-proof-card h3 {
   margin: 0 0 0.75rem;
 }
 
@@ -36,7 +38,8 @@
   margin-bottom: 1rem;
 }
 
-.ee-commercial-proof-rail-card .ee-page-inline-link {
+.ee-commercial-proof-rail-card .ee-page-inline-link,
+.ee-commercial-local-proof-card .ee-page-inline-link {
   display: inline-flex;
   margin-top: 1rem;
 }
@@ -114,7 +117,8 @@
   .ee-commercial-process,
   .ee-commercial-proof-grid,
   .ee-commercial-objection-grid,
-  .ee-commercial-proof-rail {
+  .ee-commercial-proof-rail,
+  .ee-commercial-local-proof-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -123,7 +127,8 @@
   .ee-commercial-process,
   .ee-commercial-proof-grid,
   .ee-commercial-objection-grid,
-  .ee-commercial-proof-rail {
+  .ee-commercial-proof-rail,
+  .ee-commercial-local-proof-grid {
     grid-template-columns: 1fr;
   }
 

@@ -13,6 +13,12 @@ const coreOffer = page.coreOffer ?? page.brief.coreOffer;
 const painPoints = page.painPoints ?? page.brief.painPoints;
 const ctaPrimaryLabel = page.ctaPrimaryLabel ?? page.brief.ctaPrimary;
 const objectionItems = page.faqItems.slice(0, 3);
+const isLocalCommercialPage = page.brief.pageType === 'local-commercial';
+const localCityLink =
+  page.relatedLinks.find((item) => item.label === page.areaServedName || item.reason.includes('Contexto geográfico principal')) ?? null;
+const localBofuLink = page.relatedLinks.find((item) => item.reason.includes('Apoio BOFU local')) ?? null;
+const localComplementLink = page.relatedLinks.find((item) => item.reason.includes('Complemento local')) ?? null;
+const localSectorLink = page.relatedLinks.find((item) => item.reason.includes('setorial-mãe') || item.reason.includes('setorial mae')) ?? null;
 const institutionalProofLinks = [
   {
     label: 'Metodologia',
@@ -39,6 +45,38 @@ const institutionalProofLinks = [
     path: '/contato/'
   }
 ];
+const localProofCards = isLocalCommercialPage
+  ? [
+      {
+        label: 'Praça',
+        title: `${page.areaServedName} entra como mercado próprio`,
+        copy: `Esta página trata ${page.areaServedName} como contexto comercial real, com função específica dentro da arquitetura local da vertical.`,
+        path: localCityLink?.path ?? null,
+        linkLabel: localCityLink ? `Abrir ${page.areaServedName}` : null
+      },
+      {
+        label: 'BOFU local',
+        title: 'Existe apoio editorial específico para a cidade',
+        copy: 'A jornada local não depende só da página comercial. Ela também é sustentada por conteúdo de decisão aderente à mesma praça.',
+        path: localBofuLink?.path ?? null,
+        linkLabel: localBofuLink?.label ?? null
+      },
+      {
+        label: 'Complemento',
+        title: 'A página conversa com o ativo local complementar',
+        copy: 'A operação local fica mais sólida quando página principal e ativo complementar sustentam a mesma intenção sem competir entre si.',
+        path: localComplementLink?.path ?? null,
+        linkLabel: localComplementLink?.label ?? null
+      },
+      {
+        label: 'Vertical',
+        title: 'A praça continua ligada à tese setorial-mãe',
+        copy: 'A cidade não foi isolada da estratégia. Ela reforça a mesma vertical comercial, preservando hierarquia e evitando canibalização.',
+        path: localSectorLink?.path ?? null,
+        linkLabel: localSectorLink?.label ?? null
+      }
+    ]
+  : [];
 
 const breadcrumbs = [
   { label: 'Home', path: '/' },
@@ -224,6 +262,32 @@ const breadcrumbs = [
       ))}
     </div>
   </section>
+
+  {localProofCards.length > 0 && (
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Prova local</span>
+        <h2 class="ee-page-section-title">COMO ESTA PRAÇA ENTRA NA ARQUITETURA COMERCIAL</h2>
+        <p class="ee-page-section-subtitle">
+          A cidade não aparece aqui como adereço. Ela entra como camada comercial própria, com apoio editorial e ligação clara com a vertical.
+        </p>
+      </div>
+      <div class="ee-commercial-local-proof-grid">
+        {localProofCards.map((item) => (
+          <article class="ee-page-panel ee-commercial-local-proof-card">
+            <span class="ee-page-badge">{item.label}</span>
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+            {item.path && item.linkLabel && (
+              <a class="ee-page-inline-link" href={item.path}>
+                {item.linkLabel}
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
 
   <section class="faq-section" id="faq">
     <div class="faq-container">
