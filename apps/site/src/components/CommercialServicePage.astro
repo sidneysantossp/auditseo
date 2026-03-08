@@ -142,6 +142,7 @@ const proofResourceLinks = intentOrderedLinks.slice(0, 5);
 const decisionObjectionItems = getDecisionObjectionItems();
 const sectoralIntakeLayer = page.brief.pageType === 'sectoral-anchor' ? getSectoralIntakeLayer() : null;
 const localIntakeLayer = isLocalCommercialPage ? getLocalIntakeLayer() : null;
+const finalCtaLayer = getFinalCtaLayer();
 
 type DecisionObjectionItem = {
   title: string;
@@ -155,6 +156,112 @@ type PageIntakeLayer = {
   receiveItems: string[];
   disqualifiers: string[];
 };
+
+type FinalCtaCard = {
+  title: string;
+  items: string[];
+};
+
+type FinalCtaLayer = {
+  eyebrow: string;
+  cards: FinalCtaCard[];
+};
+
+function getFinalCtaLayer(): FinalCtaLayer {
+  if (page.brief.pageType === 'sectoral-anchor') {
+    return {
+      eyebrow: 'Próximo passo',
+      cards: [
+        {
+          title: 'Esse contato vale mais quando...',
+          items: [
+            `A operação quer transformar ${verticalContext.demandCore} em aquisição mais previsível.`,
+            'Já existe clareza mínima sobre serviço, mercado e objetivo comercial.',
+            'O time quer decidir arquitetura e prioridade, não só pedir orçamento genérico.'
+          ]
+        },
+        {
+          title: 'O primeiro escopo normalmente cobre...',
+          items: [
+            `Leitura da vertical, páginas mais críticas e ativos que precisam entrar primeiro.`,
+            'Direção entre serviço canônico, páginas derivadas e apoio BOFU.',
+            'Sinal mais claro de timing, dependências e próximo ciclo de execução.'
+          ]
+        },
+        {
+          title: 'Talvez outro ativo venha antes se...',
+          items: [
+            'A dúvida principal ainda for preço, prazo ou modelo de contratação.',
+            'O gargalo real ainda for técnico e pedir diagnóstico antes da expansão.',
+            'A operação ainda não souber que recorte setorial deveria sustentar a frente.'
+          ]
+        }
+      ]
+    };
+  }
+
+  if (page.brief.pageType === 'regional-bridge') {
+    return {
+      eyebrow: 'Próximo passo regional',
+      cards: [
+        {
+          title: 'Esse contato vale mais quando...',
+          items: [
+            `A região ${page.areaServedName} já funciona como mercado reconhecível para a operação.`,
+            'Existem cidades prioritárias abaixo dessa camada ou plano real para abri-las.',
+            'A página regional precisa ordenar expansão, não apenas aumentar cobertura geográfica.'
+          ]
+        },
+        {
+          title: 'O primeiro escopo normalmente cobre...',
+          items: [
+            'Validação do papel da região dentro da arquitetura comercial.',
+            'Separação entre camada regional, cidades derivadas e vertical principal.',
+            'Critério de expansão sem canibalização entre região e cidades.'
+          ]
+        },
+        {
+          title: 'Talvez outro ativo venha antes se...',
+          items: [
+            'A operação ainda não validou as cidades que deveriam puxar essa camada.',
+            'A região ainda não tem proposta comercial própria.',
+            'O melhor ponto de entrada ainda é uma cidade específica ou a vertical-mãe.'
+          ]
+        }
+      ]
+    };
+  }
+
+  return {
+    eyebrow: 'Próximo passo local',
+    cards: [
+      {
+        title: 'Esse contato vale mais quando...',
+        items: [
+          `${page.areaServedName} já participa da aquisição e merece leitura própria dentro de ${verticalContext.marketLabel}.`,
+          `A operação quer alinhar ${verticalContext.localPrimaryAsset}, ativo complementar e contexto da praça na mesma conversa.`,
+          'O objetivo é qualificar melhor a demanda local e não só aumentar cobertura geográfica.'
+        ]
+      },
+      {
+        title: 'O primeiro escopo normalmente cobre...',
+        items: [
+          `Papel de ${page.areaServedName} dentro da arquitetura comercial da vertical.`,
+          'Ativos que precisam ser reforçados primeiro para a praça fazer sentido.',
+          'Próximos passos de página, ativo complementar e apoio BOFU local.'
+        ]
+      },
+      {
+        title: 'Talvez outro ativo venha antes se...',
+        items: [
+          `A praça ${page.areaServedName} ainda não foi validada como contexto real de aquisição.`,
+          'O problema principal ainda está no serviço canônico ou na vertical-mãe, e não na cidade.',
+          'A expectativa está concentrada em resultado imediato sem estrutura comercial mínima.'
+        ]
+      }
+    ]
+  };
+}
 
 function getOperationalProofCards() {
   if (page.brief.pageType === 'sectoral-anchor') {
@@ -1270,9 +1377,21 @@ const breadcrumbs = [
 
   <section class="ee-page-cta">
     <div class="ee-page-cta-box">
-      <span class="ee-page-section-badge">Próximo passo</span>
+      <span class="ee-page-section-badge">{finalCtaLayer.eyebrow}</span>
       <h2 class="ee-page-section-title">{page.ctaTitle}</h2>
       <p class="ee-page-cta-copy">{page.ctaCopy}</p>
+      <div class="ee-commercial-cta-grid">
+        {finalCtaLayer.cards.map((card) => (
+          <article class="ee-commercial-cta-card">
+            <h3>{card.title}</h3>
+            <ul class="ee-page-list">
+              {card.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
       <div class="ee-page-cta-actions">
         <button class="ee-page-primary" type="button" data-open-cta-modal>{ctaPrimaryLabel}</button>
         <a class="ee-page-secondary" href={page.ctaSecondaryPath}>{page.ctaSecondaryLabel}</a>
