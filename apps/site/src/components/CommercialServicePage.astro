@@ -2,6 +2,7 @@
 import '../styles/institutional-trust-pages.css';
 import '../styles/commercial-service-pages.css';
 import type { ServiceFirstCommercialPage } from '../data/service-first-commercial-pages';
+import { serviceFirstLocalOperationalProof } from '../data/service-first-local-operational-proof';
 
 interface Props {
   page: ServiceFirstCommercialPage;
@@ -21,6 +22,7 @@ const localCityLink =
 const localBofuLink = page.relatedLinks.find((item) => item.reason.includes('Apoio BOFU local')) ?? null;
 const localComplementLink = page.relatedLinks.find((item) => item.reason.includes('Complemento local')) ?? null;
 const localSectorLink = page.relatedLinks.find((item) => item.reason.includes('setorial-mãe') || item.reason.includes('setorial mae')) ?? null;
+const operationalProofOverride = serviceFirstLocalOperationalProof[page.slug] ?? null;
 const institutionalProofLinks = [
   {
     label: 'Metodologia',
@@ -79,8 +81,13 @@ const localProofCards = isLocalCommercialPage
       }
     ]
   : [];
-const operationalProofCards = getOperationalProofCards();
-const operationalSignals = getOperationalSignals();
+const operationalProofEyebrow = operationalProofOverride?.eyebrow ?? 'Prova operacional';
+const operationalProofTitle = operationalProofOverride?.title ?? 'COMO ESSA FRENTE É CONDUZIDA NA PRÁTICA';
+const operationalProofCopy =
+  operationalProofOverride?.copy ??
+  'Aqui a prova não depende de case público antigo. Ela aparece na forma como a AUDITSEO lê contexto, organiza ativos e transforma a página em decisão operacional.';
+const operationalProofCards = operationalProofOverride?.cards ?? getOperationalProofCards();
+const operationalSignals = operationalProofOverride?.signals ?? getOperationalSignals();
 function getFitSignals() {
   if (page.brief.pageType === 'sectoral-anchor') {
     return [
@@ -634,11 +641,9 @@ const breadcrumbs = [
 
   <section class="ee-page-section">
     <div class="ee-page-section-head">
-      <span class="ee-page-section-badge">Prova operacional</span>
-      <h2 class="ee-page-section-title">COMO ESSA FRENTE É CONDUZIDA NA PRÁTICA</h2>
-      <p class="ee-page-section-subtitle">
-        Aqui a prova não depende de case público antigo. Ela aparece na forma como a AUDITSEO lê contexto, organiza ativos e transforma a página em decisão operacional.
-      </p>
+      <span class="ee-page-section-badge">{operationalProofEyebrow}</span>
+      <h2 class="ee-page-section-title">{operationalProofTitle}</h2>
+      <p class="ee-page-section-subtitle">{operationalProofCopy}</p>
     </div>
     <div class="ee-commercial-operational-grid">
       {operationalProofCards.map((item) => (
