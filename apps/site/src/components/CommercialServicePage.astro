@@ -12,6 +12,33 @@ const displayTitle = page.displayTitle ?? page.brief.pageTitle;
 const coreOffer = page.coreOffer ?? page.brief.coreOffer;
 const painPoints = page.painPoints ?? page.brief.painPoints;
 const ctaPrimaryLabel = page.ctaPrimaryLabel ?? page.brief.ctaPrimary;
+const objectionItems = page.faqItems.slice(0, 3);
+const institutionalProofLinks = [
+  {
+    label: 'Metodologia',
+    title: `Como a AUDITSEO estrutura ${displayTitle.toLowerCase()}`,
+    copy: 'Mostra a logica comercial, tecnica e de priorizacao usada para esta frente.',
+    path: '/metodologia/'
+  },
+  {
+    label: 'Fontes e metodos',
+    title: 'Como validamos fontes, criterio e raciocinio',
+    copy: 'Explica como a camada editorial evita conteudo generico e deriva pagina a partir de contexto real.',
+    path: '/fontes-e-metodos/'
+  },
+  {
+    label: 'Autor',
+    title: 'Quem responde pela camada estrategica',
+    copy: 'Conecta a pagina a autoria, especialidade e responsabilidade editorial.',
+    path: '/autores/sidney-santos/'
+  },
+  {
+    label: 'Contato',
+    title: 'Canal direto para diagnostico comercial',
+    copy: 'Se a operacao ja tem contexto suficiente, o proximo passo pode ser avancar para um diagnostico.',
+    path: '/contato/'
+  }
+];
 
 const breadcrumbs = [
   { label: 'Home', path: '/' },
@@ -158,6 +185,43 @@ const breadcrumbs = [
           ))}
         </ul>
       </article>
+    </div>
+  </section>
+
+  <section class="ee-page-section">
+    <div class="ee-page-section-head">
+      <span class="ee-page-section-badge">Objeções</span>
+      <h2 class="ee-page-section-title">O QUE NORMALMENTE ATRASA ESSA DECISÃO</h2>
+      <p class="ee-page-section-subtitle">
+        Antes do contato comercial, estas costumam ser as travas mais recorrentes para este tipo de contratacao.
+      </p>
+    </div>
+    <div class="ee-commercial-objection-grid">
+      {objectionItems.map((item) => (
+        <article class="ee-page-card ee-commercial-objection-card">
+          <h3>{item.question}</h3>
+          <p>{item.answer}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="ee-page-section">
+    <div class="ee-page-section-head">
+      <span class="ee-page-section-badge">Base institucional</span>
+      <h2 class="ee-page-section-title">CAMADA DE CONFIANÇA QUE SUSTENTA A OFERTA</h2>
+    </div>
+    <div class="ee-commercial-proof-rail">
+      {institutionalProofLinks.map((item) => (
+        <article class="ee-page-panel ee-commercial-proof-rail-card">
+          <span class="ee-page-badge">{item.label}</span>
+          <h3>{item.title}</h3>
+          <p>{item.copy}</p>
+          <a class="ee-page-inline-link" href={item.path}>
+            Abrir pagina
+          </a>
+        </article>
+      ))}
     </div>
   </section>
 

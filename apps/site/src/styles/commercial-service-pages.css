@@ -20,6 +20,27 @@
   gap: 1rem;
 }
 
+.ee-commercial-objection-grid,
+.ee-commercial-proof-rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.ee-commercial-objection-card h3,
+.ee-commercial-proof-rail-card h3 {
+  margin: 0 0 0.75rem;
+}
+
+.ee-commercial-proof-rail-card .ee-page-badge {
+  margin-bottom: 1rem;
+}
+
+.ee-commercial-proof-rail-card .ee-page-inline-link {
+  display: inline-flex;
+  margin-top: 1rem;
+}
+
 .ee-commercial-link-reason {
   margin-top: 0.45rem;
   font-size: 0.92rem;
@@ -91,14 +112,18 @@
 
 @media (max-width: 1180px) {
   .ee-commercial-process,
-  .ee-commercial-proof-grid {
+  .ee-commercial-proof-grid,
+  .ee-commercial-objection-grid,
+  .ee-commercial-proof-rail {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .ee-commercial-process,
-  .ee-commercial-proof-grid {
+  .ee-commercial-proof-grid,
+  .ee-commercial-objection-grid,
+  .ee-commercial-proof-rail {
     grid-template-columns: 1fr;
   }
 

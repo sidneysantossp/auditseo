@@ -4,14 +4,18 @@ import ServiceCanonicalResources from '../components/ServiceCanonicalResources.a
 import { serviceCanonicalResourceLinks } from '../data/service-canonical-resource-links';
 import ServiceCanonicalTrustSignals from '../components/ServiceCanonicalTrustSignals.astro';
 import { serviceCanonicalTrustSignals } from '../data/service-canonical-trust-signals';
+import ServiceCanonicalDecisionLayer from '../components/ServiceCanonicalDecisionLayer.astro';
+import { serviceCanonicalDecisionLayer } from '../data/service-canonical-decision-layer';
 
 const props = Astro.props;
 const canonicalPath = (props.canonicalPath ?? Astro.url.pathname) as string;
 const resourceGroup = serviceCanonicalResourceLinks[canonicalPath];
 const trustGroup = serviceCanonicalTrustSignals[canonicalPath];
+const decisionLayer = serviceCanonicalDecisionLayer[canonicalPath];
 ---
 <BaseLayout {...props}>
   <slot />
   {resourceGroup && <ServiceCanonicalResources group={resourceGroup} />}
   {trustGroup && <ServiceCanonicalTrustSignals group={trustGroup} />}
+  {decisionLayer && <ServiceCanonicalDecisionLayer layer={decisionLayer} />}
 </BaseLayout>
