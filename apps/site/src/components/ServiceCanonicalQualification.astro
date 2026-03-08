@@ -1,0 +1,129 @@
+---
+import type { ServiceCanonicalQualification as ServiceCanonicalQualificationData } from '../data/service-canonical-qualification';
+import type { ServiceCanonicalResourceLink } from '../data/service-canonical-resource-links';
+
+interface Props {
+  qualification: ServiceCanonicalQualificationData;
+  resourceLinks: ServiceCanonicalResourceLink[];
+}
+
+const { qualification, resourceLinks } = Astro.props as Props;
+---
+<section class="service-canonical-qualification">
+  <div class="container-shell">
+    <div class="service-canonical-qualification__head">
+      <span class="section-eyebrow">{qualification.eyebrow}</span>
+      <h2 class="service-canonical-qualification__title">{qualification.title}</h2>
+      <p class="service-canonical-qualification__copy">{qualification.copy}</p>
+    </div>
+
+    <div class="service-canonical-qualification__grid">
+      <article class="service-canonical-qualification__card">
+        <h3>Faz sentido agora quando...</h3>
+        <ul>
+          {qualification.fitSignals.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+
+      <article class="service-canonical-qualification__card">
+        <h3>A entrada pode ser outra quando...</h3>
+        <ul>
+          {qualification.deflectionSignals.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+
+      <article class="service-canonical-qualification__card">
+        <h3>Se a duvida estiver em outro ponto, comece aqui</h3>
+        <ul>
+          {resourceLinks.map((item) => (
+            <li>
+              <a href={item.path}>{item.label}</a>
+              <p>{item.description}</p>
+            </li>
+          ))}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .service-canonical-qualification {
+    padding: 5rem 0 0;
+  }
+
+  .service-canonical-qualification__head {
+    max-width: 56rem;
+    margin-bottom: 2rem;
+  }
+
+  .service-canonical-qualification__title {
+    margin: 1rem 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 4.9rem);
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    color: var(--text-light);
+  }
+
+  .service-canonical-qualification__copy {
+    max-width: 44rem;
+    color: var(--text-muted);
+    font-size: 1.08rem;
+  }
+
+  .service-canonical-qualification__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .service-canonical-qualification__card {
+    padding: 2rem;
+    border: 1px solid var(--border-soft);
+    background: rgba(14, 14, 16, 0.92);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  .service-canonical-qualification__card h3 {
+    margin: 0 0 0.9rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    line-height: 0.98;
+    letter-spacing: 0.03em;
+    color: var(--text-light);
+  }
+
+  .service-canonical-qualification__card ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--text-muted);
+  }
+
+  .service-canonical-qualification__card li + li {
+    margin-top: 0.85rem;
+  }
+
+  .service-canonical-qualification__card a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .service-canonical-qualification__card p {
+    margin: 0.45rem 0 0;
+  }
+
+  @media (max-width: 960px) {
+    .service-canonical-qualification__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

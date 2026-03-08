@@ -2,6 +2,8 @@
 import BaseLayout from './BaseLayout.astro';
 import ServiceCanonicalResources from '../components/ServiceCanonicalResources.astro';
 import { serviceCanonicalResourceLinks } from '../data/service-canonical-resource-links';
+import ServiceCanonicalQualification from '../components/ServiceCanonicalQualification.astro';
+import { serviceCanonicalQualification } from '../data/service-canonical-qualification';
 import ServiceCanonicalTrustSignals from '../components/ServiceCanonicalTrustSignals.astro';
 import { serviceCanonicalTrustSignals } from '../data/service-canonical-trust-signals';
 import ServiceCanonicalDecisionLayer from '../components/ServiceCanonicalDecisionLayer.astro';
@@ -10,11 +12,13 @@ import { serviceCanonicalDecisionLayer } from '../data/service-canonical-decisio
 const props = Astro.props;
 const canonicalPath = (props.canonicalPath ?? Astro.url.pathname) as string;
 const resourceGroup = serviceCanonicalResourceLinks[canonicalPath];
+const qualificationGroup = serviceCanonicalQualification[canonicalPath];
 const trustGroup = serviceCanonicalTrustSignals[canonicalPath];
 const decisionLayer = serviceCanonicalDecisionLayer[canonicalPath];
 ---
 <BaseLayout {...props}>
   <slot />
+  {qualificationGroup && resourceGroup && <ServiceCanonicalQualification qualification={qualificationGroup} resourceLinks={resourceGroup.links} />}
   {resourceGroup && <ServiceCanonicalResources group={resourceGroup} />}
   {trustGroup && <ServiceCanonicalTrustSignals group={trustGroup} />}
   {decisionLayer && <ServiceCanonicalDecisionLayer layer={decisionLayer} />}
