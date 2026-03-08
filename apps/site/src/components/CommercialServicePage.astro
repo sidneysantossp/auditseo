@@ -77,6 +77,8 @@ const localProofCards = isLocalCommercialPage
       }
     ]
   : [];
+const operationalProofCards = getOperationalProofCards();
+const operationalSignals = getOperationalSignals();
 function getFitSignals() {
   if (page.brief.pageType === 'sectoral-anchor') {
     return [
@@ -127,6 +129,111 @@ function getDeflectionSignals() {
 const fitSignals = getFitSignals();
 const deflectionSignals = getDeflectionSignals();
 const decisionStartLinks = page.relatedLinks.slice(0, 3);
+
+function getOperationalProofCards() {
+  if (page.brief.pageType === 'sectoral-anchor') {
+    return [
+      {
+        label: 'Leitura',
+        title: 'O que entra na leitura da vertical',
+        copy: 'A página setorial não nasce de volume. Ela nasce da combinação entre demanda, contexto comercial e arquitetura da oferta.',
+        items: [
+          'Mapeamento da demanda por especialidade, serviço ou dor do mercado.',
+          'Separação entre intenção setorial, intenção local e conteúdo de apoio.',
+          'Leitura dos ativos que precisam existir para a vertical fechar negócio.'
+        ]
+      },
+      {
+        label: 'Estrutura',
+        title: 'Quais ativos passam a andar juntos',
+        copy: 'A frente setorial só ganha força quando a página principal organiza o resto do sistema comercial.',
+        items: page.deliveryItems.slice(0, 3)
+      },
+      {
+        label: 'Gestão',
+        title: 'Como a decisão evolui depois da leitura',
+        copy: 'A operação deixa de tratar busca como canal isolado e passa a priorizar com mais clareza o que realmente precisa entrar.',
+        items: [
+          'Definição das próximas páginas locais ou comerciais derivadas.',
+          'Uso de BOFU e FAQ para filtrar objeções antes do contato.',
+          'Critério para expandir sem sobrepor página setorial e página local.'
+        ]
+      }
+    ];
+  }
+
+  if (page.brief.pageType === 'regional-bridge') {
+    return [
+      {
+        label: 'Região',
+        title: 'Como a camada regional é validada',
+        copy: 'A região só entra quando tem papel comercial próprio e quando ajuda a organizar cidades próximas sob uma mesma lógica.',
+        items: [
+          `Leitura de ${page.areaServedName} como mercado com dinâmica própria.`,
+          'Separação entre página regional, páginas locais e vertical-mãe.',
+          'Filtro para evitar que a região vire agregação geográfica sem função.'
+        ]
+      },
+      {
+        label: 'Ativos',
+        title: 'O que precisa sustentar a ponte regional',
+        copy: 'A camada regional só funciona quando deriva de ativos já coerentes e ajuda a organizar a expansão.',
+        items: page.deliveryItems.slice(0, 3)
+      },
+      {
+        label: 'Decisão',
+        title: 'Como a expansão é mantida sob controle',
+        copy: 'A utilidade da página regional está em reduzir dispersão, não em multiplicar variações de URL.',
+        items: [
+          'Clareza sobre quando abrir cidade específica e quando manter a região.',
+          'Vínculo com a vertical principal e com os recursos BOFU corretos.',
+          'Critério para priorizar as próximas praças sem canibalização.'
+        ]
+      }
+    ];
+  }
+
+  return [
+    {
+      label: 'Praça',
+      title: `Como ${page.areaServedName} entra nesta operação`,
+      copy: 'A página local só existe porque a praça muda a decisão comercial, a descoberta orgânica e o tipo de ativo que precisa sustentar a busca.',
+      items: [
+        `Leitura de ${page.areaServedName} como contexto real de aquisição.`,
+        'Separação entre demanda geográfica, demanda setorial e dúvida de contratação.',
+        'Filtro para a cidade não virar apenas uma derivação da página principal.'
+      ]
+    },
+    {
+      label: 'Ativos',
+      title: 'Quais peças precisam operar juntas',
+      copy: 'A página local precisa conversar com a vertical-mãe, o serviço canônico e os recursos de decisão corretos.',
+      items: page.deliveryItems.slice(0, 3)
+    },
+    {
+      label: 'Gestão',
+      title: 'O que passa a ser acompanhado com critério',
+      copy: 'A decisão local melhora quando a operação entende o papel da praça e protege a coerência entre os ativos que sustentam a busca.',
+      items: [
+        'Consistência entre página local, ativo complementar e conteúdo BOFU.',
+        'Critério para reforçar a cidade sem inflar promessas ou páginas repetidas.',
+        'Próximos movimentos de expansão guiados pela mesma lógica comercial.'
+      ]
+    }
+  ];
+}
+
+function getOperationalSignals() {
+  if (page.brief.pageType === 'sectoral-anchor') {
+    return ['Vertical-mãe', 'Páginas derivadas', 'BOFU comercial', 'Expansão controlada'];
+  }
+
+  if (page.brief.pageType === 'regional-bridge') {
+    return ['Ponte regional', 'Praças derivadas', 'Hierarquia geográfica', 'Decisão de expansão'];
+  }
+
+  return [page.areaServedName, 'Leitura por praça', 'Ativo local', 'BOFU aderente'];
+}
 
 const breadcrumbs = [
   { label: 'Home', path: '/' },
@@ -281,6 +388,35 @@ const breadcrumbs = [
 
   <section class="ee-page-section">
     <div class="ee-page-section-head">
+      <span class="ee-page-section-badge">Prova operacional</span>
+      <h2 class="ee-page-section-title">COMO ESSA FRENTE É CONDUZIDA NA PRÁTICA</h2>
+      <p class="ee-page-section-subtitle">
+        Aqui a prova não depende de case público antigo. Ela aparece na forma como a AUDITSEO lê contexto, organiza ativos e transforma a página em decisão operacional.
+      </p>
+    </div>
+    <div class="ee-commercial-operational-grid">
+      {operationalProofCards.map((item) => (
+        <article class="ee-page-panel ee-commercial-operational-card">
+          <span class="ee-page-badge">{item.label}</span>
+          <h3>{item.title}</h3>
+          <p>{item.copy}</p>
+          <ul class="ee-page-list">
+            {item.items.map((entry) => (
+              <li>{entry}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+    <div class="ee-commercial-operational-signals">
+      {operationalSignals.map((item) => (
+        <span>{item}</span>
+      ))}
+    </div>
+  </section>
+
+  <section class="ee-page-section">
+    <div class="ee-page-section-head">
       <span class="ee-page-section-badge">Prova</span>
       <h2 class="ee-page-section-title">POR QUE ESSA PÁGINA NÃO É UMA DERIVAÇÃO GENÉRICA</h2>
     </div>
@@ -322,7 +458,7 @@ const breadcrumbs = [
       <span class="ee-page-section-badge">Objeções</span>
       <h2 class="ee-page-section-title">O QUE NORMALMENTE ATRASA ESSA DECISÃO</h2>
       <p class="ee-page-section-subtitle">
-        Antes do contato comercial, estas costumam ser as travas mais recorrentes para este tipo de contratacao.
+        Antes do contato comercial, estas costumam ser as travas mais recorrentes para este tipo de contratação.
       </p>
     </div>
     <div class="ee-commercial-objection-grid">
@@ -347,7 +483,7 @@ const breadcrumbs = [
           <h3>{item.title}</h3>
           <p>{item.copy}</p>
           <a class="ee-page-inline-link" href={item.path}>
-            Abrir pagina
+            Abrir página
           </a>
         </article>
       ))}
