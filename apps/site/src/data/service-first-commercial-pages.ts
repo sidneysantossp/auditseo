@@ -2094,6 +2094,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         label: 'Em quanto tempo SEO gera resultado para escritórios de advocacia?',
         path: '/blog/em-quanto-tempo-seo-gera-resultado-para-escritorios-de-advocacia/',
         reason: 'Objeção de prazo ligada à vertical jurídica.'
+      },
+      {
+        label: 'SEO para escritórios de advocacia ou indicação?',
+        path: '/blog/seo-para-escritorios-de-advocacia-ou-indicacao/',
+        reason: 'Comparação contra o principal motor histórico de aquisição do setor.'
       }
     ],
     faqItems: [
@@ -2266,6 +2271,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         label: 'Em quanto tempo SEO gera demanda para energia solar?',
         path: '/blog/em-quanto-tempo-seo-gera-demanda-para-energia-solar/',
         reason: 'Objeção de prazo ligada à geração de demanda.'
+      },
+      {
+        label: 'SEO para energia solar ou mídia paga?',
+        path: '/blog/seo-para-energia-solar-ou-midia-paga/',
+        reason: 'Comparação contra o canal que mais disputa verba no setor.'
       }
     ],
     faqItems: [
@@ -2438,6 +2448,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
         label: 'Em quanto tempo SEO gera pipeline para software B2B?',
         path: '/blog/em-quanto-tempo-seo-gera-pipeline-para-software-b2b/',
         reason: 'Objeção de prazo ligada à geração de pipeline.'
+      },
+      {
+        label: 'SEO para software B2B ou outbound?',
+        path: '/blog/seo-para-software-b2b-ou-outbound/',
+        reason: 'Comparação contra o motor de prospecção mais comum da vertical.'
       }
     ],
     faqItems: [

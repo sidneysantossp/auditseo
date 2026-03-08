@@ -1,4 +1,5 @@
 import { commercialSupportArticlesBofuContracting } from './commercial-support-articles-bofu-contracting';
+import { commercialSupportArticlesBofuSectorComparison } from './commercial-support-articles-bofu-sector-comparison';
 import { commercialSupportArticlesBofuSectorPricing } from './commercial-support-articles-bofu-sector-pricing';
 import { commercialSupportArticlesCuritibaBrasilia } from './commercial-support-articles-curitiba-brasilia';
 import { commercialSupportArticlesBofuTransversal } from './commercial-support-articles-bofu-transversal';
@@ -1545,6 +1546,7 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
     ctaLabel: 'Ver a página local de Brasília'
   },
   ...commercialSupportArticlesBofuContracting,
+  ...commercialSupportArticlesBofuSectorComparison,
   ...commercialSupportArticlesBofuSectorPricing,
   ...commercialSupportArticlesBofuTransversal,
   ...commercialSupportArticlesCuritibaBrasilia,
