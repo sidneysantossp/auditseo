@@ -14,6 +14,12 @@
   min-height: 15rem;
 }
 
+.ee-commercial-fit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
 .ee-commercial-proof-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -114,6 +120,7 @@
 }
 
 @media (max-width: 1180px) {
+  .ee-commercial-fit-grid,
   .ee-commercial-process,
   .ee-commercial-proof-grid,
   .ee-commercial-objection-grid,
@@ -124,6 +131,7 @@
 }
 
 @media (max-width: 768px) {
+  .ee-commercial-fit-grid,
   .ee-commercial-process,
   .ee-commercial-proof-grid,
   .ee-commercial-objection-grid,

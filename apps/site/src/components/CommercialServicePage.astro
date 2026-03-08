@@ -77,6 +77,56 @@ const localProofCards = isLocalCommercialPage
       }
     ]
   : [];
+function getFitSignals() {
+  if (page.brief.pageType === 'sectoral-anchor') {
+    return [
+      'Quando o segmento depende de busca orgânica e descoberta local para gerar novos contatos.',
+      'Quando o site ainda está institucional demais e não tem páginas suficientes para capturar intenção comercial.',
+      'Quando SEO local, Google Maps e páginas por serviço precisam operar como o mesmo sistema.'
+    ];
+  }
+
+  if (page.brief.pageType === 'regional-bridge') {
+    return [
+      'Quando a região já funciona como uma praça comercial reconhecível pela operação.',
+      'Quando existem cidades prioritárias abaixo dessa camada ou plano real para abri-las.',
+      'Quando a narrativa regional ajuda a reduzir dispersão entre várias páginas locais próximas.'
+    ];
+  }
+
+  return [
+    `Quando ${page.areaServedName} já participa da geração de demanda e a cidade influencia a decisão do cliente.`,
+    'Quando a operação precisa alinhar página comercial, ativo local complementar e descoberta no Google.',
+    'Quando a meta é gerar contatos locais melhores sem depender exclusivamente de mídia paga.'
+  ];
+}
+
+function getDeflectionSignals() {
+  if (page.brief.pageType === 'sectoral-anchor') {
+    return [
+      'Se a dúvida principal ainda é preço, prazo ou modelo de contratação, a entrada correta pode ser um artigo BOFU e não a página setorial.',
+      'Se o problema real é diagnóstico técnico, talvez auditoria SEO faça mais sentido do que abrir uma frente setorial imediatamente.',
+      'Se a operação ainda não trata busca como canal comercial, esta página pode entrar cedo demais.'
+    ];
+  }
+
+  if (page.brief.pageType === 'regional-bridge') {
+    return [
+      'Se a operação ainda não validou cidades prioritárias, a camada regional pode entrar cedo demais.',
+      'Se a região não tem proposta comercial distinta, a página tende a parecer apenas uma agregação geográfica.',
+      'Se a dúvida principal é local e imediata, a entrada correta pode ser uma cidade específica e não a região.'
+    ];
+  }
+
+  return [
+    'Se a cidade ainda não participa da aquisição de clientes, abrir uma página local agora pode gerar ruído.',
+    'Se a expectativa é resultado imediato sem alinhar site, perfil local e contexto comercial, a página entra com premissa errada.',
+    'Se a dúvida principal ainda é setorial e não geográfica, a vertical-mãe pode ser a entrada melhor neste momento.'
+  ];
+}
+const fitSignals = getFitSignals();
+const deflectionSignals = getDeflectionSignals();
+const decisionStartLinks = page.relatedLinks.slice(0, 3);
 
 const breadcrumbs = [
   { label: 'Home', path: '/' },
@@ -143,6 +193,47 @@ const breadcrumbs = [
           <p>{item.copy}</p>
         </article>
       ))}
+    </div>
+  </section>
+
+  <section class="ee-page-section">
+    <div class="ee-page-section-head">
+      <span class="ee-page-section-badge">Qualificação</span>
+      <h2 class="ee-page-section-title">QUANDO ESTA PÁGINA É A ENTRADA CERTA</h2>
+      <p class="ee-page-section-subtitle">
+        Esta camada filtra expectativa errada antes do contato comercial e mostra quando a decisão deveria começar em outro ativo da arquitetura.
+      </p>
+    </div>
+    <div class="ee-commercial-fit-grid">
+      <article class="ee-page-panel">
+        <h3>Faz sentido agora quando...</h3>
+        <ul class="ee-page-list">
+          {fitSignals.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+      <article class="ee-page-panel">
+        <h3>A entrada pode ser outra quando...</h3>
+        <ul class="ee-page-list">
+          {deflectionSignals.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </article>
+      <article class="ee-page-panel">
+        <h3>Se a dúvida estiver em outro ponto, comece aqui</h3>
+        <ul class="ee-page-list">
+          {decisionStartLinks.map((item) => (
+            <li>
+              <a class="ee-page-inline-link" href={item.path}>
+                {item.label}
+              </a>
+              <div class="ee-commercial-link-reason">{item.reason}</div>
+            </li>
+          ))}
+        </ul>
+      </article>
     </div>
   </section>
 
