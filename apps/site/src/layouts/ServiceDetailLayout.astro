@@ -4,6 +4,8 @@ import ServiceCanonicalResources from '../components/ServiceCanonicalResources.a
 import { serviceCanonicalResourceLinks } from '../data/service-canonical-resource-links';
 import ServiceCanonicalQualification from '../components/ServiceCanonicalQualification.astro';
 import { serviceCanonicalQualification } from '../data/service-canonical-qualification';
+import ServiceCanonicalOperationalProof from '../components/ServiceCanonicalOperationalProof.astro';
+import { serviceCanonicalOperationalProof } from '../data/service-canonical-operational-proof';
 import ServiceCanonicalTrustSignals from '../components/ServiceCanonicalTrustSignals.astro';
 import { serviceCanonicalTrustSignals } from '../data/service-canonical-trust-signals';
 import ServiceCanonicalDecisionLayer from '../components/ServiceCanonicalDecisionLayer.astro';
@@ -13,6 +15,7 @@ const props = Astro.props;
 const canonicalPath = (props.canonicalPath ?? Astro.url.pathname) as string;
 const resourceGroup = serviceCanonicalResourceLinks[canonicalPath];
 const qualificationGroup = serviceCanonicalQualification[canonicalPath];
+const operationalProofGroup = serviceCanonicalOperationalProof[canonicalPath];
 const trustGroup = serviceCanonicalTrustSignals[canonicalPath];
 const decisionLayer = serviceCanonicalDecisionLayer[canonicalPath];
 ---
@@ -20,6 +23,7 @@ const decisionLayer = serviceCanonicalDecisionLayer[canonicalPath];
   <slot />
   {qualificationGroup && resourceGroup && <ServiceCanonicalQualification qualification={qualificationGroup} resourceLinks={resourceGroup.links} />}
   {resourceGroup && <ServiceCanonicalResources group={resourceGroup} />}
+  {operationalProofGroup && <ServiceCanonicalOperationalProof group={operationalProofGroup} />}
   {trustGroup && <ServiceCanonicalTrustSignals group={trustGroup} />}
   {decisionLayer && <ServiceCanonicalDecisionLayer layer={decisionLayer} />}
 </BaseLayout>
