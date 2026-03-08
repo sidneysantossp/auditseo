@@ -10,6 +10,8 @@ import ServiceCanonicalTrustSignals from '../components/ServiceCanonicalTrustSig
 import { serviceCanonicalTrustSignals } from '../data/service-canonical-trust-signals';
 import ServiceCanonicalDecisionLayer from '../components/ServiceCanonicalDecisionLayer.astro';
 import { serviceCanonicalDecisionLayer } from '../data/service-canonical-decision-layer';
+import ServiceCanonicalIntake from '../components/ServiceCanonicalIntake.astro';
+import { serviceCanonicalIntake } from '../data/service-canonical-intake';
 
 const props = Astro.props;
 const canonicalPath = (props.canonicalPath ?? Astro.url.pathname) as string;
@@ -18,6 +20,7 @@ const qualificationGroup = serviceCanonicalQualification[canonicalPath];
 const operationalProofGroup = serviceCanonicalOperationalProof[canonicalPath];
 const trustGroup = serviceCanonicalTrustSignals[canonicalPath];
 const decisionLayer = serviceCanonicalDecisionLayer[canonicalPath];
+const intakeLayer = serviceCanonicalIntake[canonicalPath];
 ---
 <BaseLayout {...props}>
   <slot />
@@ -25,5 +28,6 @@ const decisionLayer = serviceCanonicalDecisionLayer[canonicalPath];
   {resourceGroup && <ServiceCanonicalResources group={resourceGroup} />}
   {operationalProofGroup && <ServiceCanonicalOperationalProof group={operationalProofGroup} />}
   {trustGroup && <ServiceCanonicalTrustSignals group={trustGroup} />}
+  {intakeLayer && <ServiceCanonicalIntake layer={intakeLayer} />}
   {decisionLayer && <ServiceCanonicalDecisionLayer layer={decisionLayer} />}
 </BaseLayout>

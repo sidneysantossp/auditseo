@@ -12,10 +12,10 @@ function createQualification(
   deflectionSignals: string[]
 ): ServiceCanonicalQualification {
   return {
-    eyebrow: 'Qualificacao comercial',
-    title: `QUANDO ${serviceLabel.toUpperCase()} E A ENTRADA CERTA`,
+    eyebrow: 'Qualificação comercial',
+    title: `QUANDO ${serviceLabel.toUpperCase()} É A ENTRADA CERTA`,
     copy:
-      'Esta camada filtra timing, expectativa e tipo de demanda antes da contratacao. O objetivo e deixar claro quando o servico faz sentido agora e quando a operacao deveria comecar por outro ponto.',
+      'Esta camada filtra timing, expectativa e tipo de demanda antes da contratação. O objetivo é deixar claro quando o serviço faz sentido agora e quando a operação deveria começar por outro ponto.',
     fitSignals,
     deflectionSignals
   };
@@ -25,79 +25,79 @@ export const serviceCanonicalQualification: Record<string, ServiceCanonicalQuali
   '/servicos/consultoria-seo/': createQualification(
     'Consultoria SEO',
     [
-      'Quando a operacao ja tem demanda, backlog potencial e precisa de direcionamento continuo para priorizar melhor.',
-      'Quando a empresa quer evoluir a arquitetura comercial e editorial sem depender de acao isolada.',
-      'Quando o gargalo principal ja nao e descobrir o problema, mas decidir o que fazer primeiro.'
+      'Quando a operação já tem demanda, backlog potencial e precisa de direcionamento contínuo para priorizar melhor.',
+      'Quando a empresa quer evoluir a arquitetura comercial e editorial sem depender de ação isolada.',
+      'Quando o gargalo principal já não é descobrir o problema, mas decidir o que fazer primeiro.'
     ],
     [
-      'Se a duvida principal ainda e diagnosticar o que trava o site, auditoria SEO pode ser a entrada mais correta.',
-      'Se a expectativa e delegar execucao inteira sem maturidade interna minima, a operacao pode precisar de outro formato.',
-      'Se a busca hoje e apenas por preco ou urgencia, vale qualificar melhor a demanda antes de contratar consultoria.'
+      'Se a dúvida principal ainda é diagnosticar o que trava o site, auditoria SEO pode ser a entrada mais correta.',
+      'Se a expectativa é delegar execução inteira sem maturidade interna mínima, a operação pode precisar de outro formato.',
+      'Se a busca hoje é apenas por preço ou urgência, vale qualificar melhor a demanda antes de contratar consultoria.'
     ]
   ),
   '/servicos/auditoria-seo/': createQualification(
     'Auditoria SEO',
     [
-      'Quando a operacao ainda nao tem clareza sobre os gargalos tecnicos, semanticos ou comerciais do site.',
-      'Quando e preciso traduzir problema difuso em backlog priorizado e defendivel.',
-      'Quando a empresa quer uma leitura profunda antes de escalar conteudo, local ou arquitetura.'
+      'Quando a operação ainda não tem clareza sobre os gargalos técnicos, semânticos ou comerciais do site.',
+      'Quando é preciso traduzir problema difuso em backlog priorizado e defensável.',
+      'Quando a empresa quer uma leitura profunda antes de escalar conteúdo, local ou arquitetura.'
     ],
     [
-      'Se o problema ja esta identificado e o desafio agora e acompanhar execucao, consultoria SEO pode ser mais adequada.',
-      'Se a expectativa e impacto imediato sem implementacao posterior, auditoria tende a ser mal interpretada.',
-      'Se o site ainda esta em fase muito inicial, pode ser cedo para um diagnostico mais profundo.'
+      'Se o problema já está identificado e o desafio agora é acompanhar execução, consultoria SEO pode ser mais adequada.',
+      'Se a expectativa é impacto imediato sem implementação posterior, auditoria tende a ser mal interpretada.',
+      'Se o site ainda está em fase muito inicial, pode ser cedo para um diagnóstico mais profundo.'
     ]
   ),
   '/servicos/seo-local/': createQualification(
     'SEO Local',
     [
-      'Quando geografia, proximidade e descoberta no Google participam diretamente da geracao de demanda.',
-      'Quando pagina comercial, perfil local e mapa precisam parar de operar de forma solta.',
-      'Quando a empresa quer construir ativo local recorrente e nao apenas comprar urgencia.'
+      'Quando geografia, proximidade e descoberta no Google participam diretamente da geração de demanda.',
+      'Quando página comercial, perfil local e mapa precisam parar de operar de forma solta.',
+      'Quando a empresa quer construir ativo local recorrente e não apenas comprar urgência.'
     ],
     [
-      'Se a operacao ainda nao depende de busca local para vender, a frente pode entrar antes da hora.',
-      'Se a expectativa e resultado imediato sem alinhar site, perfil e contexto local, a premissa esta errada.',
-      'Se a duvida principal ainda e sobre canal ou modelo de contratacao, vale começar por comparativos e diagnostico.'
+      'Se a operação ainda não depende de busca local para vender, a frente pode entrar antes da hora.',
+      'Se a expectativa é resultado imediato sem alinhar site, perfil e contexto local, a premissa está errada.',
+      'Se a dúvida principal ainda é sobre canal ou modelo de contratação, vale começar por comparativos e diagnóstico.'
     ]
   ),
   '/servicos/google-meu-negocio/': createQualification(
-    'Google Meu Negocio',
+    'Google Meu Negócio',
     [
-      'Quando o perfil local pesa na comparacao, na rota, na ligacao e na validacao rapida da empresa.',
-      'Quando o mapa ja influencia a descoberta, mas ainda falta integracao com a pagina comercial certa.',
-      'Quando a empresa precisa estruturar melhor categoria, prova, horario, servicos e consistencia local.'
+      'Quando o perfil local pesa na comparação, na rota, na ligação e na validação rápida da empresa.',
+      'Quando o mapa já influencia a descoberta, mas ainda falta integração com a página comercial certa.',
+      'Quando a empresa precisa estruturar melhor categoria, prova, horário, serviços e consistência local.'
     ],
     [
-      'Se a expectativa e tratar GBP como substituto do site, a entrada esta equivocada.',
-      'Se o problema principal e arquitetura local do dominio, SEO local pode ser a frente mais completa.',
-      'Se a empresa ainda nao validou geografia, oferta e conversao local, o perfil sozinho tende a render pouco.'
+      'Se a expectativa é tratar GBP como substituto do site, a entrada está equivocada.',
+      'Se o problema principal é arquitetura local do domínio, SEO local pode ser a frente mais completa.',
+      'Se a empresa ainda não validou geografia, oferta e conversão local, o perfil sozinho tende a render pouco.'
     ]
   ),
   '/servicos/ai-overview-optimization/': createQualification(
     'AI Overview Optimization',
     [
-      'Quando o site ja tem base editorial ou comercial suficiente para sustentar citabilidade e evolucao por cluster.',
-      'Quando a operacao quer transformar IA em descoberta estruturada, e nao em experimento solto.',
-      'Quando conteudo, entidade e arquitetura precisam conversar para aumentar a chance de aparicao em respostas generativas.'
+      'Quando o site já tem base editorial ou comercial suficiente para sustentar citabilidade e evolução por cluster.',
+      'Quando a operação quer transformar IA em descoberta estruturada, e não em experimento solto.',
+      'Quando conteúdo, entidade e arquitetura precisam conversar para aumentar a chance de aparição em respostas generativas.'
     ],
     [
-      'Se a base tecnica ainda esta fragil, talvez auditoria ou SEO tecnico sejam a entrada correta.',
-      'Se a operacao ainda nao publica com consistencia, AI Overview Optimization pode entrar cedo demais.',
-      'Se a expectativa e aparicao imediata sem governanca editorial, a leitura do servico esta incompleta.'
+      'Se a base técnica ainda está frágil, talvez auditoria ou SEO técnico sejam a entrada correta.',
+      'Se a operação ainda não publica com consistência, AI Overview Optimization pode entrar cedo demais.',
+      'Se a expectativa é aparição imediata sem governança editorial, a leitura do serviço está incompleta.'
     ]
   ),
   '/servicos/llm-brand-presence/': createQualification(
     'LLM Brand Presence',
     [
-      'Quando a marca precisa ser interpretada com mais consistencia em ambientes generativos.',
-      'Quando descoberta, entidade e clareza semantica ja viraram prioridade real da operacao.',
-      'Quando o objetivo nao e apenas trafego, mas tambem citacao, referencia e presenca de marca em LLMs.'
+      'Quando a marca precisa ser interpretada com mais consistência em ambientes generativos.',
+      'Quando descoberta, entidade e clareza semântica já viraram prioridade real da operação.',
+      'Quando o objetivo não é apenas tráfego, mas também citação, referência e presença de marca em LLMs.'
     ],
     [
-      'Se a base comercial do site ainda esta desorganizada, a entrada pode precisar ser consultoria ou auditoria.',
-      'Se a expectativa e performance imediata de clique, a leitura do servico ainda esta estreita demais.',
-      'Se a marca nao tem consistencia editorial nem institucional, o servico entra sem fundacao minima.'
+      'Se a base comercial do site ainda está desorganizada, a entrada pode precisar ser consultoria ou auditoria.',
+      'Se a expectativa é performance imediata de clique, a leitura do serviço ainda está estreita demais.',
+      'Se a marca não tem consistência editorial nem institucional, o serviço entra sem fundação mínima.'
     ]
   )
 };

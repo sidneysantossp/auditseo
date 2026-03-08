@@ -21,10 +21,10 @@ function createBaseDecisionLayer(
   objectionThree: string
 ): ServiceCanonicalDecisionLayer {
   return {
-    eyebrow: 'Decisao comercial',
-    title: `OBJECOES QUE MAIS ATRASAM A CONTRATACAO DE ${serviceLabel.toUpperCase()}`,
+    eyebrow: 'Decisão comercial',
+    title: `OBJEÇÕES QUE MAIS ATRASAM A CONTRATAÇÃO DE ${serviceLabel.toUpperCase()}`,
     copy:
-      'A camada abaixo antecipa as travas mais comuns da decisao. O objetivo nao e pressionar a contratacao, mas reduzir ruido antes do proximo passo comercial.',
+      'A camada abaixo antecipa as travas mais comuns da decisão. O objetivo não é pressionar a contratação, mas reduzir ruído antes do próximo passo comercial.',
     objections: [
       {
         title: 'Timing errado',
@@ -39,9 +39,9 @@ function createBaseDecisionLayer(
         copy: objectionThree
       }
     ],
-    ctaTitle: `QUER VALIDAR SE ${serviceLabel.toUpperCase()} FAZ SENTIDO PARA O MOMENTO DA OPERACAO?`,
+    ctaTitle: `QUER VALIDAR SE ${serviceLabel.toUpperCase()} FAZ SENTIDO PARA O MOMENTO DA OPERAÇÃO?`,
     ctaCopy:
-      'Se a duvida hoje e entender timing, escopo e o papel real desse servico dentro do crescimento, a melhor entrada e um diagnostico orientado a decisao.',
+      'Se a dúvida hoje é entender timing, escopo e o papel real desse serviço dentro do crescimento, a melhor entrada é um diagnóstico orientado à decisão.',
     secondaryPath: '/contato/',
     secondaryLabel: 'Falar com a AUDITSEO'
   };
@@ -50,38 +50,38 @@ function createBaseDecisionLayer(
 export const serviceCanonicalDecisionLayer: Record<string, ServiceCanonicalDecisionLayer> = {
   '/servicos/consultoria-seo/': createBaseDecisionLayer(
     'Consultoria SEO',
-    'Consultoria SEO gera mais valor quando a operacao ja tem site, demanda e maturidade suficiente para implementar backlog estrategico com continuidade.',
-    'Comparar consultoria apenas com agencia ou freelancer tende a esconder a diferenca entre direcionamento estrategico, profundidade tecnica e capacidade de priorizacao.',
-    'Sem clareza de escopo, a operacao compra reuniao e relatorio. O ganho vem quando diagnostico, plano e execucao passam a conversar.'
+    'Consultoria SEO gera mais valor quando a operação já tem site, demanda e maturidade suficiente para implementar backlog estratégico com continuidade.',
+    'Comparar consultoria apenas com agência ou freelancer tende a esconder a diferença entre direcionamento estratégico, profundidade técnica e capacidade de priorização.',
+    'Sem clareza de escopo, a operação compra reunião e relatório. O ganho vem quando diagnóstico, plano e execução passam a conversar.'
   ),
   '/servicos/auditoria-seo/': createBaseDecisionLayer(
     'Auditoria SEO',
-    'Auditoria faz sentido quando ainda existe duvida sobre o que trava a performance. Se o problema ja esta claro, talvez a operacao precise de execucao e nao de novo diagnostico.',
-    'Comparar auditoria com acompanhamento mensal costuma distorcer a decisao, porque um entrega leitura profunda e o outro sustenta a evolucao continua.',
-    'Se o backlog tecnico e comercial nao for traduzido em prioridade de negocio, a auditoria vira documento e nao instrumento de decisao.'
+    'Auditoria faz sentido quando ainda existe dúvida sobre o que trava a performance. Se o problema já está claro, talvez a operação precise de execução e não de novo diagnóstico.',
+    'Comparar auditoria com acompanhamento mensal costuma distorcer a decisão, porque um entrega leitura profunda e o outro sustenta a evolução contínua.',
+    'Se o backlog técnico e comercial não for traduzido em prioridade de negócio, a auditoria vira documento e não instrumento de decisão.'
   ),
   '/servicos/seo-local/': createBaseDecisionLayer(
     'SEO Local',
-    'SEO local nao resolve em dias. Ele funciona melhor quando a empresa aceita construir ativo organico local e nao apenas procurar atalho imediato.',
-    'Muita comparacao ruim coloca SEO local contra media paga como se ambos servissem ao mesmo horizonte. Um compra urgencia, o outro constroi presenca recorrente.',
-    'Sem alinhar pagina comercial, Google Maps e sinais locais, o projeto perde clareza e fica reduzido a manutencao de perfil.'
+    'SEO local não resolve em dias. Ele funciona melhor quando a empresa aceita construir ativo orgânico local e não apenas procurar atalho imediato.',
+    'Muita comparação ruim coloca SEO local contra mídia paga como se ambos servissem ao mesmo horizonte. Um compra urgência, o outro constrói presença recorrente.',
+    'Sem alinhar página comercial, Google Maps e sinais locais, o projeto perde clareza e fica reduzido à manutenção de perfil.'
   ),
   '/servicos/google-meu-negocio/': createBaseDecisionLayer(
-    'Google Meu Negocio',
-    'Perfil local isolado ajuda menos do que parece quando a pagina comercial do site nao sustenta a mesma proposta de valor e a mesma geografia.',
-    'A comparacao errada trata Google Meu Negocio como substituto de SEO local. Na pratica, ele funciona melhor como parte da mesma arquitetura.',
-    'Sem criterio de categoria, prova, horario, servicos e integracao com o site, a operacao melhora o perfil, mas nao melhora a decisao do cliente.'
+    'Google Meu Negócio',
+    'Perfil local isolado ajuda menos do que parece quando a página comercial do site não sustenta a mesma proposta de valor e a mesma geografia.',
+    'A comparação errada trata Google Meu Negócio como substituto de SEO local. Na prática, ele funciona melhor como parte da mesma arquitetura.',
+    'Sem critério de categoria, prova, horário, serviços e integração com o site, a operação melhora o perfil, mas não melhora a decisão do cliente.'
   ),
   '/servicos/ai-overview-optimization/': createBaseDecisionLayer(
     'AI Overview Optimization',
-    'Esse servico faz mais sentido quando o site ja tem base editorial e comercial suficiente para sustentar citabilidade, clareza semantica e evolucao por cluster.',
-    'Comparar AI Overview Optimization com SEO tecnico puro ou com producao de conteudo isolada leva a diagnosticos incompletos sobre o que realmente precisa mudar.',
-    'Sem amarrar fonte, entidade, arquitetura e conteudo citavel, a operacao discute IA sem construir um ativo consistente para respostas generativas.'
+    'Esse serviço faz mais sentido quando o site já tem base editorial e comercial suficiente para sustentar citabilidade, clareza semântica e evolução por cluster.',
+    'Comparar AI Overview Optimization com SEO técnico puro ou com produção de conteúdo isolada leva a diagnósticos incompletos sobre o que realmente precisa mudar.',
+    'Sem amarrar fonte, entidade, arquitetura e conteúdo citável, a operação discute IA sem construir um ativo consistente para respostas generativas.'
   ),
   '/servicos/llm-brand-presence/': createBaseDecisionLayer(
     'LLM Brand Presence',
-    'Presenca em LLMs nao e um botao. Ela depende de entidade, consistencia editorial e sinais suficientemente claros para a marca ser interpretada e citada.',
-    'Comparar esse servico com SEO tradicional sem considerar interfaces generativas reduz a discussao a clique e ignora descoberta, referencia e citacao.',
-    'Sem governanca editorial, fontes claras e paginas comercialmente coerentes, a marca ate aparece, mas nao consolida presenca nem vantagem.'
+    'Presença em LLMs não é um botão. Ela depende de entidade, consistência editorial e sinais suficientemente claros para a marca ser interpretada e citada.',
+    'Comparar esse serviço com SEO tradicional sem considerar interfaces generativas reduz a discussão a clique e ignora descoberta, referência e citação.',
+    'Sem governança editorial, fontes claras e páginas comercialmente coerentes, a marca até aparece, mas não consolida presença nem vantagem.'
   )
 };
