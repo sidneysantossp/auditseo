@@ -361,5 +361,375 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
       }
     ],
     ['São José dos Campos', 'Expansão seletiva', 'Saúde privada', 'Praça validada']
+  ),
+  '/servicos/seo-local-para-clinicas-medicas-em-rio-de-janeiro/': createGroup(
+    'COMO O RIO DE JANEIRO É TRATADO NESTA FRENTE LOCAL',
+    'No Rio de Janeiro, a prova operacional precisa mostrar como contexto local, confiança e descoberta comercial são organizados para a vertical de clínicas médicas.',
+    [
+      {
+        label: 'Praça',
+        title: 'O que o Rio muda na leitura',
+        copy: 'O Rio entra como praça em que contexto local, clareza de oferta e triagem de confiança pesam cedo na decisão do paciente.',
+        items: [
+          'Leitura da cidade por intenção local, especialidade e contexto de comparação.',
+          'Separação entre busca local do Rio, busca setorial e conteúdo de apoio.',
+          'Filtro para a página local não competir com a vertical nacional.'
+        ]
+      },
+      {
+        label: 'Ativos',
+        title: 'Quais peças precisam sustentar a operação',
+        copy: 'A força da praça aparece quando página local, SEO local, mapa e BOFU reforçam a mesma lógica comercial.',
+        items: [
+          'Página local de clínicas médicas ligada à tese nacional da vertical.',
+          'Integração com Google Meu Negócio e conteúdo BOFU da cidade.',
+          'Estrutura pronta para descoberta local sem replicar a capital paulista.'
+        ]
+      },
+      {
+        label: 'Gestão',
+        title: 'Como a cidade orienta o próximo passo',
+        copy: 'A utilidade da página está em ajudar a priorizar reforços locais e leitura comercial da praça.',
+        items: [
+          'Critério para aprofundar o Rio sem inflar a arquitetura.',
+          'Leitura das consultas que puxam contato mais qualificado.',
+          'Proteção da hierarquia entre cidade, vertical e serviço canônico.'
+        ]
+      }
+    ],
+    ['Rio de Janeiro', 'Saúde privada', 'SEO local', 'Confiança local']
+  ),
+  '/servicos/google-meu-negocio-para-clinicas-medicas-em-rio-de-janeiro/': createGroup(
+    'COMO O MAPA É OPERADO PARA CLÍNICAS NO RIO DE JANEIRO',
+    'No Rio, o perfil local precisa funcionar como ativo de descoberta e comparação junto da página correta, e não como cadastro isolado.',
+    [
+      {
+        label: 'Perfil',
+        title: 'O que é lido no ativo local',
+        copy: 'O Maps precisa refletir a mesma clareza comercial que a praça exige para clínicas médicas.',
+        items: [
+          'Coerência entre perfil, cidade, especialidade e oferta principal.',
+          'Leitura do papel do mapa na triagem local da busca no Rio.',
+          'Filtro entre presença no perfil e geração real de contato.'
+        ]
+      },
+      {
+        label: 'Integração',
+        title: 'Como o perfil conversa com a página',
+        copy: 'A força do ativo cresce quando o mapa empurra o usuário para a mesma leitura da página local.',
+        items: [
+          'Integração com a página de clínicas médicas no Rio de Janeiro.',
+          'Compatibilidade entre CTA, geografia e contexto da praça.',
+          'Apoio de conteúdo BOFU para remover objeções locais.'
+        ]
+      },
+      {
+        label: 'Rotina',
+        title: 'O que precisa ser mantido com disciplina',
+        copy: 'Sem governança, o perfil perde aderência à praça e ao site.',
+        items: [
+          'Critério para atualização do perfil sem ruído comercial.',
+          'Consistência entre o que o usuário encontra no mapa e na página.',
+          'Leitura do que fortalece ou enfraquece a descoberta local no Rio.'
+        ]
+      }
+    ],
+    ['Rio de Janeiro', 'Maps', 'Integração com site', 'Triagem local']
+  ),
+  '/servicos/seo-local-para-clinicas-medicas-em-belo-horizonte/': createGroup(
+    'COMO BELO HORIZONTE É TRABALHADA NESTA FRENTE LOCAL',
+    'Em Belo Horizonte, a prova operacional precisa mostrar como proposta, confiança e contexto geográfico ajudam a qualificar melhor a descoberta orgânica da clínica.',
+    [
+      {
+        label: 'Praça',
+        title: 'O que BH muda na leitura',
+        copy: 'Belo Horizonte entra como praça em que contexto regional, clareza de proposta e proximidade ajudam a filtrar melhor a demanda.',
+        items: [
+          'Leitura da cidade por intenção local, contexto de busca e aderência comercial.',
+          'Separação entre busca local de BH, busca setorial e conteúdo de decisão.',
+          'Filtro para a página local existir por função comercial e não por volume.'
+        ]
+      },
+      {
+        label: 'Ativos',
+        title: 'Quais peças precisam operar juntas',
+        copy: 'A força da praça aparece quando a página local conversa com os ativos certos da vertical.',
+        items: [
+          'Página local de clínicas médicas ligada ao serviço canônico.',
+          'Integração com Google Meu Negócio e conteúdos BOFU da cidade.',
+          'Estrutura preparada para reforçar descoberta local sem ruído geográfico.'
+        ]
+      },
+      {
+        label: 'Gestão',
+        title: 'Como a praça orienta os próximos movimentos',
+        copy: 'A página local também serve para guiar a expansão e a leitura da cidade como mercado.',
+        items: [
+          'Critério para reforçar BH sem repetir a capital ou a região.',
+          'Leitura das consultas que geram contato de melhor qualidade.',
+          'Proteção da hierarquia entre cidade, vertical e conteúdo de apoio.'
+        ]
+      }
+    ],
+    ['Belo Horizonte', 'Saúde privada', 'SEO local', 'Praça própria']
+  ),
+  '/servicos/google-meu-negocio-para-clinicas-medicas-em-belo-horizonte/': createGroup(
+    'COMO O MAPA É OPERADO PARA CLÍNICAS EM BELO HORIZONTE',
+    'Em BH, o Google Meu Negócio precisa reforçar proposta, geografia e coerência entre perfil e página local, sem operar como ativo isolado.',
+    [
+      {
+        label: 'Perfil',
+        title: 'O que é lido no Maps',
+        copy: 'O ativo local precisa refletir a mesma clareza de proposta e contexto geográfico da página da cidade.',
+        items: [
+          'Coerência entre perfil, especialidade e oferta principal.',
+          'Leitura do papel do mapa na triagem da busca local em BH.',
+          'Filtro entre visibilidade do perfil e qualidade real do contato.'
+        ]
+      },
+      {
+        label: 'Conexão',
+        title: 'Como o perfil reforça a página correta',
+        copy: 'A operação fica mais forte quando o mapa empurra o usuário para a mesma mensagem da página local.',
+        items: [
+          'Integração com a página de clínicas médicas em Belo Horizonte.',
+          'Compatibilidade entre CTA, contexto da cidade e proposta local.',
+          'Ligação com BOFU que ajuda a filtrar objeção de descoberta local.'
+        ]
+      },
+      {
+        label: 'Governança',
+        title: 'O que precisa ser mantido com critério',
+        copy: 'A governança do perfil protege a aderência comercial da praça ao longo do tempo.',
+        items: [
+          'Atualização do perfil sem ruído entre site e Maps.',
+          'Leitura do papel do mapa dentro da jornada local da clínica.',
+          'Critério para reforçar BH sem quebrar a hierarquia do cluster.'
+        ]
+      }
+    ],
+    ['Belo Horizonte', 'Maps', 'Coerência local', 'Integração com site']
+  ),
+  '/servicos/seo-local-para-clinicas-medicas-em-curitiba/': createGroup(
+    'COMO CURITIBA É TRATADA NESTA FRENTE LOCAL',
+    'Em Curitiba, a prova operacional precisa mostrar como disciplina de oferta e coerência entre ativos locais ajudam a gerar contatos melhores para clínicas médicas.',
+    [
+      {
+        label: 'Praça',
+        title: 'O que Curitiba muda na leitura',
+        copy: 'Curitiba responde melhor a estrutura comercial coerente do que a página local genérica.',
+        items: [
+          'Leitura da cidade por contexto local, proposta e intenção de busca.',
+          'Separação entre busca de Curitiba, vertical setorial e conteúdo de apoio.',
+          'Filtro para a praça existir por função comercial clara.'
+        ]
+      },
+      {
+        label: 'Ativos',
+        title: 'Quais peças precisam sustentar a cidade',
+        copy: 'A operação local só ganha força quando a página conversa com os ativos certos da vertical.',
+        items: [
+          'Página local conectada à tese nacional de clínicas médicas.',
+          'Integração com Google Meu Negócio e BOFU da cidade.',
+          'Estrutura pronta para reforçar descoberta sem repetir outras praças.'
+        ]
+      },
+      {
+        label: 'Gestão',
+        title: 'Como a praça orienta a expansão',
+        copy: 'A página local ajuda a organizar os próximos movimentos da cidade sem inflar a arquitetura.',
+        items: [
+          'Critério para reforçar Curitiba com mais precisão comercial.',
+          'Leitura das consultas que mostram melhor aderência local.',
+          'Proteção da hierarquia entre praça, vertical e serviço canônico.'
+        ]
+      }
+    ],
+    ['Curitiba', 'Saúde privada', 'SEO local', 'Clareza comercial']
+  ),
+  '/servicos/google-meu-negocio-para-clinicas-medicas-em-curitiba/': createGroup(
+    'COMO O MAPA É OPERADO PARA CLÍNICAS EM CURITIBA',
+    'Em Curitiba, o perfil local precisa reforçar proposta, clareza e contexto da praça junto da página local correta.',
+    [
+      {
+        label: 'Perfil',
+        title: 'O que é lido no ativo local',
+        copy: 'O Maps precisa refletir o mesmo nível de coerência comercial da página da cidade.',
+        items: [
+          'Coerência entre perfil, especialidade e proposta principal.',
+          'Leitura do papel do mapa na triagem local da busca em Curitiba.',
+          'Filtro entre presença no perfil e contato comercial útil.'
+        ]
+      },
+      {
+        label: 'Integração',
+        title: 'Como o perfil conversa com a página',
+        copy: 'A força do ativo aumenta quando o mapa reforça a mesma mensagem da página local.',
+        items: [
+          'Integração com a página de clínicas médicas em Curitiba.',
+          'Compatibilidade entre geografia, CTA e contexto da praça.',
+          'Ligação com conteúdo BOFU da cidade para reduzir objeção local.'
+        ]
+      },
+      {
+        label: 'Rotina',
+        title: 'O que precisa ser mantido com disciplina',
+        copy: 'A governança do perfil protege a aderência da praça e a qualidade da descoberta.',
+        items: [
+          'Atualização coerente entre site, perfil e proposta local.',
+          'Leitura do papel do Maps na jornada da clínica em Curitiba.',
+          'Critério para reforçar a praça sem perder a hierarquia do cluster.'
+        ]
+      }
+    ],
+    ['Curitiba', 'Maps', 'Integração com site', 'Descoberta local']
+  ),
+  '/servicos/seo-local-para-clinicas-medicas-em-brasilia/': createGroup(
+    'COMO BRASÍLIA É TRABALHADA NESTA FRENTE LOCAL',
+    'Em Brasília, a prova operacional precisa mostrar como posicionamento, contexto institucional e clareza de proposta ajudam a qualificar a descoberta orgânica da clínica.',
+    [
+      {
+        label: 'Praça',
+        title: 'O que Brasília muda na leitura',
+        copy: 'Brasília entra como praça em que clareza de posicionamento e percepção de confiança institucional pesam cedo na triagem.',
+        items: [
+          'Leitura da cidade por contexto local, intenção de busca e clareza de oferta.',
+          'Separação entre busca local da praça, busca setorial e conteúdo de apoio.',
+          'Filtro para a página local ter função comercial distinta.'
+        ]
+      },
+      {
+        label: 'Ativos',
+        title: 'Quais peças precisam operar juntas',
+        copy: 'A cidade só ganha força quando a página local conversa com a vertical e com os ativos certos do cluster.',
+        items: [
+          'Página local de clínicas médicas ligada ao serviço canônico.',
+          'Integração com Google Meu Negócio e BOFU da própria praça.',
+          'Estrutura pronta para reforçar descoberta local sem ruído institucional.'
+        ]
+      },
+      {
+        label: 'Gestão',
+        title: 'Como a praça orienta o próximo passo',
+        copy: 'A utilidade da página está em ajudar a decidir próximos reforços da cidade com mais precisão.',
+        items: [
+          'Critério para fortalecer Brasília sem romper a hierarquia nacional.',
+          'Leitura das consultas que puxam melhor demanda qualificada.',
+          'Proteção da relação entre praça, vertical e recursos de decisão.'
+        ]
+      }
+    ],
+    ['Brasília', 'Saúde privada', 'SEO local', 'Confiança institucional']
+  ),
+  '/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/': createGroup(
+    'COMO O MAPA É OPERADO PARA CLÍNICAS EM BRASÍLIA',
+    'Em Brasília, o Google Meu Negócio precisa reforçar clareza institucional e contexto da praça junto da página local correta.',
+    [
+      {
+        label: 'Perfil',
+        title: 'O que é lido no Maps',
+        copy: 'O ativo local precisa refletir a mesma consistência de proposta e contexto da página da cidade.',
+        items: [
+          'Coerência entre perfil, geografia e oferta principal.',
+          'Leitura do papel do mapa na triagem local da busca em Brasília.',
+          'Filtro entre visibilidade no perfil e capacidade real de gerar contato.'
+        ]
+      },
+      {
+        label: 'Integração',
+        title: 'Como o perfil reforça a página correta',
+        copy: 'A força do ativo cresce quando o mapa empurra o usuário para a mesma leitura comercial da página local.',
+        items: [
+          'Integração com a página de clínicas médicas em Brasília.',
+          'Compatibilidade entre CTA, proposta e contexto da praça.',
+          'Ligação com conteúdo BOFU para reduzir objeções locais.'
+        ]
+      },
+      {
+        label: 'Governança',
+        title: 'O que precisa ser mantido com critério',
+        copy: 'A governança aqui protege a aderência comercial da praça e evita ruído entre perfil e site.',
+        items: [
+          'Atualização do perfil sem desencontro entre Maps e página local.',
+          'Leitura do papel do mapa dentro da jornada local da clínica.',
+          'Critério para reforçar Brasília sem quebrar a hierarquia do cluster.'
+        ]
+      }
+    ],
+    ['Brasília', 'Maps', 'Clareza institucional', 'Integração com site']
+  ),
+  '/servicos/seo-local-para-clinicas-medicas-em-porto-alegre/': createGroup(
+    'COMO PORTO ALEGRE É TRATADA NESTA FRENTE LOCAL',
+    'Em Porto Alegre, a prova operacional precisa mostrar como consistência entre página, oferta e prova local melhora a qualidade do contato para clínicas médicas.',
+    [
+      {
+        label: 'Praça',
+        title: 'O que Porto Alegre muda na leitura',
+        copy: 'Porto Alegre entra como praça em que coerência de oferta e contexto local ajudam a filtrar melhor a demanda.',
+        items: [
+          'Leitura da cidade por contexto local, proposta e aderência comercial.',
+          'Separação entre busca local da praça, vertical setorial e conteúdo BOFU.',
+          'Filtro para a cidade não virar apenas extensão de outra praça.'
+        ]
+      },
+      {
+        label: 'Ativos',
+        title: 'Quais peças precisam sustentar a operação',
+        copy: 'A cidade fica mais legítima quando a página local conversa com os ativos certos da vertical.',
+        items: [
+          'Página local de clínicas médicas ligada à vertical nacional.',
+          'Integração com Google Meu Negócio e artigo BOFU da cidade.',
+          'Estrutura pronta para reforçar descoberta com coerência local.'
+        ]
+      },
+      {
+        label: 'Gestão',
+        title: 'Como a praça orienta os próximos movimentos',
+        copy: 'A utilidade da página está em ajudar a decidir reforços locais sem inflar a malha comercial.',
+        items: [
+          'Critério para fortalecer Porto Alegre sem repetir outras praças.',
+          'Leitura das consultas que mostram melhor aderência da cidade.',
+          'Proteção da hierarquia entre cidade, vertical e serviço canônico.'
+        ]
+      }
+    ],
+    ['Porto Alegre', 'Saúde privada', 'SEO local', 'Coerência de oferta']
+  ),
+  '/servicos/google-meu-negocio-para-clinicas-medicas-em-porto-alegre/': createGroup(
+    'COMO O MAPA É OPERADO PARA CLÍNICAS EM PORTO ALEGRE',
+    'Em Porto Alegre, o perfil local precisa reforçar a mesma lógica comercial da página da cidade, com contexto e clareza de oferta bem amarrados.',
+    [
+      {
+        label: 'Perfil',
+        title: 'O que é lido no ativo local',
+        copy: 'O Maps precisa refletir a mesma coerência de proposta e contexto comercial da página local.',
+        items: [
+          'Coerência entre perfil, especialidade e geografia da praça.',
+          'Leitura do papel do mapa na triagem da busca local em Porto Alegre.',
+          'Filtro entre presença no perfil e contato realmente qualificado.'
+        ]
+      },
+      {
+        label: 'Integração',
+        title: 'Como o perfil conversa com a página',
+        copy: 'A operação fica mais forte quando o mapa empurra o usuário para a mesma leitura comercial da cidade.',
+        items: [
+          'Integração com a página de clínicas médicas em Porto Alegre.',
+          'Compatibilidade entre CTA, contexto local e proposta da clínica.',
+          'Ligação com artigo BOFU da própria praça.'
+        ]
+      },
+      {
+        label: 'Rotina',
+        title: 'O que precisa ser mantido com disciplina',
+        copy: 'A governança do perfil protege a coerência da descoberta local ao longo do tempo.',
+        items: [
+          'Atualização do perfil sem ruído entre site e Maps.',
+          'Leitura do papel do ativo dentro da jornada local da clínica.',
+          'Critério para reforçar a praça sem romper a hierarquia do cluster.'
+        ]
+      }
+    ],
+    ['Porto Alegre', 'Maps', 'Integração com site', 'Coerência local']
   )
 };
