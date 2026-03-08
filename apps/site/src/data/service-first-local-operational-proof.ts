@@ -49,6 +49,27 @@ type HealthProofSector = {
   mapComparisonContext: string;
 };
 
+type CommercialProofCity = {
+  name: string;
+  slugSuffix: string;
+  locationLabel: string;
+  locationUpper: string;
+  cityContext: string;
+  discoveryContext: string;
+  signal: string;
+};
+
+type CommercialProofSector = {
+  slugBase: string;
+  label: string;
+  titleLabel: string;
+  offerLabel: string;
+  demandContext: string;
+  structureContext: string;
+  qualificationContext: string;
+  signal: string;
+};
+
 function createHealthSeoProof(city: HealthProofCity, sector: HealthProofSector): ServiceFirstOperationalProofGroup {
   return createGroup(
     `COMO ${sector.titleLabel} É TRATADA LOCALMENTE ${city.locationUpper}`,
@@ -136,6 +157,55 @@ function createHealthProofSet(city: HealthProofCity, sector: HealthProofSector) 
   };
 }
 
+function createCommercialCityProof(
+  city: CommercialProofCity,
+  sector: CommercialProofSector
+): ServiceFirstOperationalProofGroup {
+  return createGroup(
+    `COMO ${sector.titleLabel} É OPERADA ${city.locationUpper}`,
+    `${city.cityContext} a prova operacional precisa mostrar por que essa oferta existe na praça, como ela conversa com a vertical nacional e o que a torna comercialmente legítima.`,
+    [
+      {
+        label: 'Praça',
+        title: `O que ${city.name} muda na leitura da oferta`,
+        copy: `${city.discoveryContext} ${sector.demandContext}`,
+        items: [
+          `Leitura de ${sector.label.toLowerCase()} com recorte real de ${city.name}.`,
+          'Separação entre busca ampla, busca geográfica e decisão comercial mais próxima da contratação.',
+          'Filtro para a página existir por função comercial real e não por simples expansão de URL.'
+        ]
+      },
+      {
+        label: 'Estrutura',
+        title: 'Quais ativos precisam sustentar a mesma tese',
+        copy: `${sector.structureContext} ${city.cityContext.toLowerCase()}`,
+        items: [
+          `Página de ${sector.offerLabel.toLowerCase()} ligada ao serviço canônico correto.`,
+          `Integração com BOFU local e com os ativos setoriais que sustentam ${sector.label.toLowerCase()}.`,
+          'Compatibilidade entre mensagem, CTA e grau de maturidade da praça.'
+        ]
+      },
+      {
+        label: 'Qualificação',
+        title: 'O que a página precisa filtrar antes do contato',
+        copy: `${sector.qualificationContext} a página precisa ajudar a separar interesse exploratório de demanda pronta para conversa comercial.`,
+        items: [
+          `Critério para aprofundar ${city.name} sem gerar sobreposição com outras praças.`,
+          `Leitura das consultas que puxam melhor aderência para ${sector.label.toLowerCase()}.`,
+          'Proteção da hierarquia entre a página local, a vertical e o serviço canônico.'
+        ]
+      }
+    ],
+    [sector.label, city.name, sector.signal, city.signal]
+  );
+}
+
+function createCommercialProofSet(city: CommercialProofCity, sector: CommercialProofSector) {
+  return {
+    [`/servicos/${sector.slugBase}-${city.slugSuffix}/`]: createCommercialCityProof(city, sector)
+  };
+}
+
 const rioCityProof: HealthProofCity = {
   name: 'Rio de Janeiro',
   slugSuffix: 'em-rio-de-janeiro',
@@ -191,6 +261,56 @@ const portoAlegreCityProof: HealthProofCity = {
   signal: 'Coerência local'
 };
 
+const rioCommercialProof: CommercialProofCity = {
+  name: 'Rio de Janeiro',
+  slugSuffix: 'em-rio-de-janeiro',
+  locationLabel: 'no Rio de Janeiro',
+  locationUpper: 'NO RIO DE JANEIRO',
+  cityContext: 'No Rio de Janeiro,',
+  discoveryContext: 'No Rio, contexto local, confiança e comparação urbana pesam cedo na avaliação comercial.',
+  signal: 'Confiança local'
+};
+
+const beloHorizonteCommercialProof: CommercialProofCity = {
+  name: 'Belo Horizonte',
+  slugSuffix: 'em-belo-horizonte',
+  locationLabel: 'em Belo Horizonte',
+  locationUpper: 'EM BELO HORIZONTE',
+  cityContext: 'Em Belo Horizonte,',
+  discoveryContext: 'Em BH, clareza de proposta, aderência de praça e consistência de mensagem ajudam a filtrar melhor o lead.',
+  signal: 'Praça própria'
+};
+
+const curitibaCommercialProof: CommercialProofCity = {
+  name: 'Curitiba',
+  slugSuffix: 'em-curitiba',
+  locationLabel: 'em Curitiba',
+  locationUpper: 'EM CURITIBA',
+  cityContext: 'Em Curitiba,',
+  discoveryContext: 'Em Curitiba, disciplina comercial e coerência entre oferta, prova e CTA pesam mais cedo na triagem.',
+  signal: 'Clareza comercial'
+};
+
+const brasiliaCommercialProof: CommercialProofCity = {
+  name: 'Brasília',
+  slugSuffix: 'em-brasilia',
+  locationLabel: 'em Brasília',
+  locationUpper: 'EM BRASÍLIA',
+  cityContext: 'Em Brasília,',
+  discoveryContext: 'Em Brasília, confiança institucional, proposta clara e contexto geográfico entram cedo na qualificação.',
+  signal: 'Confiança institucional'
+};
+
+const portoAlegreCommercialProof: CommercialProofCity = {
+  name: 'Porto Alegre',
+  slugSuffix: 'em-porto-alegre',
+  locationLabel: 'em Porto Alegre',
+  locationUpper: 'EM PORTO ALEGRE',
+  cityContext: 'Em Porto Alegre,',
+  discoveryContext: 'Em Porto Alegre, coerência entre oferta, prova local e leitura de mercado ajuda a filtrar melhor a conversa.',
+  signal: 'Coerência local'
+};
+
 const dermatologiaProofSector: HealthProofSector = {
   slugBase: 'dermatologistas',
   label: 'dermatologia',
@@ -209,6 +329,45 @@ const odontologiaProofSector: HealthProofSector = {
   structureContext: 'A página local precisa funcionar como peça central da descoberta comercial da praça.',
   mapDecisionContext: 'Em odontologia, o perfil local precisa sustentar proximidade, clareza e ação rápida.',
   mapComparisonContext: 'Na odontologia, o mapa participa cedo da comparação'
+};
+
+const lawProofSector: CommercialProofSector = {
+  slugBase: 'seo-para-escritorios-de-advocacia',
+  label: 'advocacia',
+  titleLabel: 'ADVOCACIA',
+  offerLabel: 'SEO para escritórios de advocacia',
+  demandContext: 'Confiança, especialidade percebida e clareza de posicionamento costumam entrar na mesma decisão.',
+  structureContext:
+    'A operação fica mais forte quando a página local conversa com a tese jurídica principal e com os conteúdos de decisão corretos.',
+  qualificationContext:
+    'Em advocacia, a página local precisa separar busca informativa, comparação de fornecedor e intenção real de contratação.',
+  signal: 'Demanda qualificada'
+};
+
+const softwareProofSector: CommercialProofSector = {
+  slugBase: 'consultoria-seo-para-software-b2b',
+  label: 'software B2B',
+  titleLabel: 'SOFTWARE B2B',
+  offerLabel: 'consultoria SEO para software B2B',
+  demandContext: 'Pipeline, ciclo comercial e aderência ao ICP mudam a leitura da praça e o que vale como lead qualificado.',
+  structureContext:
+    'A página local precisa conectar a oferta ao serviço canônico, aos comparativos e aos artigos de decisão com mais maturidade.',
+  qualificationContext:
+    'Em software B2B, o papel da página local é filtrar curiosidade de mercado e puxar conversas com aderência comercial mais clara.',
+  signal: 'Pipeline qualificado'
+};
+
+const energyProofSector: CommercialProofSector = {
+  slugBase: 'consultoria-seo-para-energia-solar',
+  label: 'energia solar',
+  titleLabel: 'ENERGIA SOLAR',
+  offerLabel: 'consultoria SEO para energia solar',
+  demandContext: 'Captação regional, decisão por proposta e comparação com mídia paga alteram a função comercial da praça.',
+  structureContext:
+    'A página local precisa sustentar a mesma tese da vertical de energia solar sem parecer apenas uma derivação geográfica.',
+  qualificationContext:
+    'Em energia solar, a URL local precisa ajudar a separar pesquisa de mercado, comparação de canal e demanda pronta para venda.',
+  signal: 'Demanda regional'
 };
 
 export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOperationalProofGroup> = {
@@ -924,5 +1083,20 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
   ...createHealthProofSet(brasiliaCityProof, dermatologiaProofSector),
   ...createHealthProofSet(brasiliaCityProof, odontologiaProofSector),
   ...createHealthProofSet(portoAlegreCityProof, dermatologiaProofSector),
-  ...createHealthProofSet(portoAlegreCityProof, odontologiaProofSector)
+  ...createHealthProofSet(portoAlegreCityProof, odontologiaProofSector),
+  ...createCommercialProofSet(rioCommercialProof, lawProofSector),
+  ...createCommercialProofSet(rioCommercialProof, softwareProofSector),
+  ...createCommercialProofSet(rioCommercialProof, energyProofSector),
+  ...createCommercialProofSet(beloHorizonteCommercialProof, lawProofSector),
+  ...createCommercialProofSet(beloHorizonteCommercialProof, softwareProofSector),
+  ...createCommercialProofSet(beloHorizonteCommercialProof, energyProofSector),
+  ...createCommercialProofSet(curitibaCommercialProof, lawProofSector),
+  ...createCommercialProofSet(curitibaCommercialProof, softwareProofSector),
+  ...createCommercialProofSet(curitibaCommercialProof, energyProofSector),
+  ...createCommercialProofSet(brasiliaCommercialProof, lawProofSector),
+  ...createCommercialProofSet(brasiliaCommercialProof, softwareProofSector),
+  ...createCommercialProofSet(brasiliaCommercialProof, energyProofSector),
+  ...createCommercialProofSet(portoAlegreCommercialProof, lawProofSector),
+  ...createCommercialProofSet(portoAlegreCommercialProof, softwareProofSector),
+  ...createCommercialProofSet(portoAlegreCommercialProof, energyProofSector)
 };
