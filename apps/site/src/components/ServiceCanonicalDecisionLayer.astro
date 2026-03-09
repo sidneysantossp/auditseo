@@ -25,9 +25,21 @@ const { layer } = Astro.props as Props;
     </div>
 
     <div class="service-canonical-decision__cta">
-      <span class="section-eyebrow">Próximo passo</span>
+      <span class="section-eyebrow">{layer.ctaEyebrow}</span>
       <h3>{layer.ctaTitle}</h3>
       <p>{layer.ctaCopy}</p>
+      <div class="service-canonical-decision__cta-grid">
+        {layer.ctaCards.map((card) => (
+          <article class="service-canonical-decision__cta-card">
+            <h4>{card.title}</h4>
+            <ul>
+              {card.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
       <div class="service-canonical-decision__actions">
         <button type="button" data-open-cta-modal>Solicitar diagnóstico</button>
         <a href={layer.secondaryPath}>{layer.secondaryLabel}</a>
@@ -99,6 +111,38 @@ const { layer } = Astro.props as Props;
     margin-top: 1.25rem;
   }
 
+  .service-canonical-decision__cta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .service-canonical-decision__cta-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-soft);
+    background: rgba(10, 10, 12, 0.75);
+  }
+
+  .service-canonical-decision__cta-card h4 {
+    margin: 0 0 0.85rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    line-height: 0.98;
+    letter-spacing: 0.03em;
+    color: var(--text-light);
+  }
+
+  .service-canonical-decision__cta-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--text-muted);
+  }
+
+  .service-canonical-decision__cta-card li + li {
+    margin-top: 0.85rem;
+  }
+
   .service-canonical-decision__actions button,
   .service-canonical-decision__actions a {
     min-height: 3.4rem;
@@ -127,7 +171,8 @@ const { layer } = Astro.props as Props;
   }
 
   @media (max-width: 960px) {
-    .service-canonical-decision__grid {
+    .service-canonical-decision__grid,
+    .service-canonical-decision__cta-grid {
       grid-template-columns: 1fr;
     }
   }
