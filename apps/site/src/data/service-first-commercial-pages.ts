@@ -1,5 +1,6 @@
 import { allCommercialBriefs, type CommercialPageBrief, type CommercialInternalLink } from './commercial-page-briefs';
 import { buildCuritibaBrasiliaServiceFirstCommercialPages } from './service-first-commercial-pages-curitiba-brasilia';
+import { buildCirurgiaPlasticaServiceFirstCommercialPages } from './service-first-commercial-pages-cirurgia-plastica';
 import { buildNationalSectorCommercialPages } from './service-first-commercial-pages-national-sectors';
 import { buildPortoAlegreServiceFirstCommercialPages } from './service-first-commercial-pages-porto-alegre';
 import { buildRioBhServiceFirstCommercialPages } from './service-first-commercial-pages-rio-bh';
@@ -566,6 +567,7 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
     areaServedName: 'Brasil',
     brief: requireBrief('/servicos/seo-para-odontologia/')
   },
+  ...buildCirurgiaPlasticaServiceFirstCommercialPages(requireBrief),
   ...buildNationalSectorCommercialPages(requireBrief),
   {
     slug: '/servicos/seo-local-para-clinicas-medicas-em-sao-paulo/',

@@ -1,4 +1,5 @@
 import { nationalSectorCommercialBriefs } from './commercial-page-briefs-national-sectors';
+import { cirurgiaPlasticaCommercialBriefs } from './commercial-page-briefs-cirurgia-plastica';
 import { curitibaBrasiliaCommercialBriefs } from './commercial-page-briefs-curitiba-brasilia';
 import { portoAlegreCommercialBriefs } from './commercial-page-briefs-porto-alegre';
 import { rioBhCommercialBriefs } from './commercial-page-briefs-rio-bh';
@@ -883,6 +884,7 @@ export const southeastExpansionWaveOneCommercialBriefs: CommercialPageBrief[] = 
 
 export const allCommercialBriefs = [
   ...saoPauloWaveOneCommercialBriefs,
+  ...cirurgiaPlasticaCommercialBriefs,
   ...nationalSectorCommercialBriefs,
   ...saoPauloWaveTwoCommercialBriefs,
   ...southeastExpansionWaveOneCommercialBriefs,

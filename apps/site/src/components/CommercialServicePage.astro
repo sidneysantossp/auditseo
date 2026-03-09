@@ -439,6 +439,29 @@ function getSectoralIntakeLayer() {
     };
   }
 
+  if (page.slug.includes('cirurgia-plastica')) {
+    return {
+      title: 'COMO ENTRAR EM CIRURGIA PLÁSTICA COM MAIS PRECISÃO',
+      copy:
+        'Em cirurgia plástica, a conversa inicial precisa separar procedimento, praça e proposta premium com nitidez. Sem isso, a página perde força comercial e a triagem começa errada.',
+      prepareItems: [
+        'Procedimentos ou frentes que mais deveriam gerar consulta qualificada.',
+        'Praças ou bairros onde a competição pesa mais cedo na decisão.',
+        'Como site, prova local e Google Maps estão distribuídos hoje.'
+      ],
+      receiveItems: [
+        'Direção inicial para separar página setorial, páginas locais e páginas por procedimento.',
+        'Leitura mais clara dos ativos que precisam reforçar descoberta e confiança primeiro.',
+        'Critério para expandir a vertical sem sobrepor intenção entre páginas.'
+      ],
+      disqualifiers: [
+        'Se a clínica ainda não sabe quais procedimentos ou frentes deveriam puxar a frente comercial.',
+        'Se a expectativa é competir só com estética visual, social ou reputação difusa.',
+        'Se a busca local ainda não é tratada como parte real da decisão do paciente.'
+      ]
+    };
+  }
+
   if (page.slug.includes('escritorios-de-advocacia')) {
     return {
       title: 'COMO ENTRAR NA ADVOCACIA COM DEMANDA MAIS QUALIFICADA',
@@ -796,6 +819,20 @@ function getVerticalContext() {
       readingBullets: [
         'Mapeamento da demanda por procedimento, especialidade e urgência de contato.',
         'Leitura da jornada entre busca local, prova e facilidade de conversão.'
+      ]
+    };
+  }
+
+  if (slug.includes('cirurgia-plastica')) {
+    return {
+      marketLabel: 'cirurgia plástica',
+      demandCore: 'busca por procedimento, confiança premium e comparação local',
+      supportSystem: 'SEO local, páginas por procedimento e Google Maps',
+      localPrimaryAsset: 'página local da clínica de cirurgia plástica',
+      signal: 'Saúde premium',
+      readingBullets: [
+        'Mapeamento da demanda por procedimento, contexto premium e intenção de consulta.',
+        'Leitura da relação entre prova local, clareza da oferta e descoberta qualificada.'
       ]
     };
   }

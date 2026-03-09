@@ -593,6 +593,80 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
     ],
     ['Odontologia', 'Maps', 'São Paulo capital', 'Ação rápida']
   ),
+  '/servicos/seo-local-para-cirurgia-plastica-em-sao-paulo/': createGroup(
+    'COMO A CIRURGIA PLÁSTICA É TRATADA LOCALMENTE EM SÃO PAULO',
+    'Na cirurgia plástica, a prova operacional precisa mostrar como procedimento, praça premium e descoberta local entram no mesmo sistema comercial da capital.',
+    [
+      {
+        label: 'Praça',
+        title: 'O que muda na leitura da capital',
+        copy: 'São Paulo entra aqui como praça premium, altamente comparativa e com forte peso de contexto, prova e localização.',
+        items: [
+          'Leitura da capital por procedimento, proposta premium e contexto local.',
+          'Separação entre busca por clínica, busca por procedimento e busca geográfica.',
+          'Filtro para São Paulo existir como praça comercial real e não como adaptação genérica.'
+        ]
+      },
+      {
+        label: 'Ativos',
+        title: 'O que precisa operar junto',
+        copy: 'A página local precisa conversar com a vertical, o mapa e o apoio BOFU correto da mesma praça.',
+        items: [
+          'Página local alinhada à tese comercial de cirurgia plástica.',
+          'Integração com Google Meu Negócio e conteúdo de decisão da vertical.',
+          'Estrutura pronta para reforçar proposta premium sem canibalização.'
+        ]
+      },
+      {
+        label: 'Gestão',
+        title: 'Como a capital orienta os próximos passos',
+        copy: 'A utilidade da página está em decidir o que merece reforço na praça e o que ainda não deve virar nova URL.',
+        items: [
+          'Critério para aprofundar procedimento ou contexto local só quando houver demanda observável.',
+          'Leitura das consultas que sustentam consulta mais qualificada.',
+          'Proteção da hierarquia entre a vertical nacional e a capital.'
+        ]
+      }
+    ],
+    ['Cirurgia plástica', 'São Paulo capital', 'Praça premium', 'SEO local']
+  ),
+  '/servicos/google-meu-negocio-para-cirurgia-plastica-em-sao-paulo/': createGroup(
+    'COMO O MAPA É TRATADO PARA CIRURGIA PLÁSTICA EM SÃO PAULO',
+    'Em cirurgia plástica, o mapa participa cedo da comparação premium. A prova operacional está em mostrar como o perfil local reforça a mesma tese da página certa.',
+    [
+      {
+        label: 'Maps',
+        title: 'O que é lido no perfil local',
+        copy: 'Na capital, o perfil precisa sustentar localização, contexto premium e coerência comercial com muito mais disciplina.',
+        items: [
+          'Leitura do perfil como ativo de comparação local e não só de presença.',
+          'Coerência entre cidade, proposta premium e proposta comercial.',
+          'Filtro para o usuário encontrar no mapa a mesma leitura da página local.'
+        ]
+      },
+      {
+        label: 'Integração',
+        title: 'Como o perfil conversa com a página',
+        copy: 'A integração correta evita ruído entre o que o usuário vê no mapa e no site.',
+        items: [
+          'Ligação direta com a página local de cirurgia plástica em São Paulo.',
+          'Compatibilidade entre oferta, contexto da praça e CTA.',
+          'Apoio dos conteúdos BOFU que ajudam a decisão local da vertical.'
+        ]
+      },
+      {
+        label: 'Rotina',
+        title: 'O que precisa ser mantido com critério',
+        copy: 'A operação de Maps só se sustenta quando existe disciplina e leitura de contexto premium ao longo do tempo.',
+        items: [
+          'Governança do perfil sem sinais contraditórios entre site e mapa.',
+          'Leitura do papel do mapa dentro da jornada local da clínica.',
+          'Critério para reforçar a capital sem romper a hierarquia da vertical.'
+        ]
+      }
+    ],
+    ['Cirurgia plástica', 'Maps', 'São Paulo capital', 'Descoberta premium']
+  ),
   '/servicos/seo-local-para-clinicas-medicas-na-grande-sao-paulo/': createGroup(
     'COMO A GRANDE SÃO PAULO É TRABALHADA COMO PONTE REGIONAL',
     'Aqui a prova operacional precisa mostrar por que a região existe: para organizar uma expansão comercial coerente entre a capital e as demais praças prioritárias.',

@@ -3,6 +3,7 @@ import { commercialSupportArticles } from './commercial-support-articles';
 export type CommercialArticleMarket =
   | 'generic'
   | 'clinicas-medicas'
+  | 'cirurgia-plastica'
   | 'dermatologistas'
   | 'odontologia'
   | 'escritorios-de-advocacia'
@@ -97,6 +98,7 @@ function resolveScope(slug: string) {
 
 function resolveMarket(slug: string): CommercialArticleMarket {
   if (slug.includes('clinicas-medicas')) return 'clinicas-medicas';
+  if (slug.includes('cirurgia-plastica')) return 'cirurgia-plastica';
   if (slug.includes('dermatologistas')) return 'dermatologistas';
   if (slug.includes('odontologia')) return 'odontologia';
   if (slug.includes('escritorios-de-advocacia')) return 'escritorios-de-advocacia';
@@ -132,6 +134,7 @@ function resolveFocusKey(slug: string) {
   if (slug === 'quando-nao-contratar-seo') return 'nao-contratar-seo';
   if (slug === 'seo-local-ou-google-ads-para-clinicas-medicas') return 'seo-local-vs-google-ads';
   if (slug === 'seo-local-ou-google-meu-negocio-para-clinicas-medicas') return 'seo-local-vs-google-meu-negocio';
+  if (slug === 'seo-local-ou-google-meu-negocio-para-cirurgia-plastica') return 'seo-local-vs-google-meu-negocio';
   if (slug === 'seo-local-ou-google-meu-negocio-para-dermatologistas') return 'seo-local-vs-google-meu-negocio';
   if (slug === 'seo-local-ou-google-meu-negocio-para-odontologia') return 'seo-local-vs-google-meu-negocio';
   if (slug === 'seo-ou-trafego-pago-para-software-b2b') return 'seo-vs-trafego-pago';
