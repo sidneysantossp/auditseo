@@ -377,6 +377,7 @@ function createLawCityPage(requireBrief: RequireBrief, city: CityConfig, slug: s
     ],
     relatedLinks: [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'SEO para Escritórios de Advocacia', path: '/servicos/seo-para-escritorios-de-advocacia/', reason: 'Página setorial-mãe da vertical.' },
       { label: 'Escritórios de advocacia', path: '/nichos/escritorios-advocacia/', reason: 'Hub setorial de apoio.' },
       { label: city.name, path: city.path, reason: 'Contexto geográfico principal.' },
       { label: 'SEO para escritórios de advocacia funciona?', path: localArticlePath, reason: 'Apoio BOFU local de decisão.' },
@@ -477,6 +478,7 @@ function createSoftwareCityPage(requireBrief: RequireBrief, city: CityConfig, sl
     ],
     relatedLinks: [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'Consultoria SEO para Software B2B', path: '/servicos/consultoria-seo-para-software-b2b/', reason: 'Página setorial-mãe da vertical.' },
       { label: 'LLM Brand Presence', path: '/servicos/llm-brand-presence/', reason: 'Complemento estratégico de descoberta.' },
       { label: city.name, path: city.path, reason: 'Contexto geográfico principal.' },
       { label: 'SEO para software B2B: como funciona', path: localArticlePath, reason: 'Apoio BOFU local de decisão.' },
@@ -577,6 +579,7 @@ function createEnergyCityPage(requireBrief: RequireBrief, city: CityConfig, slug
     ],
     relatedLinks: [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'Consultoria SEO para Energia Solar', path: '/servicos/consultoria-seo-para-energia-solar/', reason: 'Página setorial-mãe da vertical.' },
       { label: 'Energia solar', path: '/nichos/energia-solar/', reason: 'Hub setorial de apoio.' },
       { label: city.name, path: city.path, reason: 'Contexto geográfico principal.' },
       { label: 'SEO para energia solar: como gerar demanda qualificada', path: localArticlePath, reason: 'Apoio BOFU local de decisão.' },

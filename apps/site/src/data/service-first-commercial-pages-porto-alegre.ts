@@ -364,6 +364,7 @@ function createLawCityPage(requireBrief: RequireBrief, slug: string): ServiceFir
     ],
     relatedLinks: [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'SEO para Escritórios de Advocacia', path: '/servicos/seo-para-escritorios-de-advocacia/', reason: 'Página setorial-mãe da vertical.' },
       { label: 'Escritórios de advocacia', path: '/nichos/escritorios-advocacia/', reason: 'Hub setorial de apoio.' },
       { label: 'Porto Alegre', path: portoAlegreCity.path, reason: 'Contexto geográfico principal.' },
       { label: 'SEO para escritórios de advocacia em Porto Alegre funciona?', path: localArticlePath, reason: 'Apoio BOFU local de decisão.' },
@@ -462,6 +463,7 @@ function createSoftwareCityPage(requireBrief: RequireBrief, slug: string): Servi
     ],
     relatedLinks: [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'Consultoria SEO para Software B2B', path: '/servicos/consultoria-seo-para-software-b2b/', reason: 'Página setorial-mãe da vertical.' },
       { label: 'LLM Brand Presence', path: '/servicos/llm-brand-presence/', reason: 'Complemento estratégico de descoberta.' },
       { label: 'Porto Alegre', path: portoAlegreCity.path, reason: 'Contexto geográfico principal.' },
       { label: 'SEO para software B2B em Porto Alegre: como funciona', path: localArticlePath, reason: 'Apoio BOFU local de decisão.' },
@@ -560,6 +562,7 @@ function createEnergyCityPage(requireBrief: RequireBrief, slug: string): Service
     ],
     relatedLinks: [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      { label: 'Consultoria SEO para Energia Solar', path: '/servicos/consultoria-seo-para-energia-solar/', reason: 'Página setorial-mãe da vertical.' },
       { label: 'Energia solar', path: '/nichos/energia-solar/', reason: 'Hub setorial de apoio.' },
       { label: 'Porto Alegre', path: portoAlegreCity.path, reason: 'Contexto geográfico principal.' },
       { label: 'SEO para energia solar em Porto Alegre: como gerar demanda qualificada', path: localArticlePath, reason: 'Apoio BOFU local de decisão.' },
