@@ -122,7 +122,7 @@ export const commercialSupportArticlesBofuSectorComparison: CommercialSupportArt
     sectorLower: 'escritórios de advocacia',
     comparisonLabel: 'Indicação',
     comparisonLower: 'indicação',
-    sectorPath: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/',
+    sectorPath: '/servicos/seo-para-escritorios-de-advocacia/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [
@@ -148,7 +148,7 @@ export const commercialSupportArticlesBofuSectorComparison: CommercialSupportArt
     sectorLower: 'energia solar',
     comparisonLabel: 'Mídia paga',
     comparisonLower: 'mídia paga',
-    sectorPath: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/',
+    sectorPath: '/servicos/consultoria-seo-para-energia-solar/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [
@@ -174,7 +174,7 @@ export const commercialSupportArticlesBofuSectorComparison: CommercialSupportArt
     sectorLower: 'software B2B',
     comparisonLabel: 'Outbound',
     comparisonLower: 'outbound',
-    sectorPath: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/',
+    sectorPath: '/servicos/consultoria-seo-para-software-b2b/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [

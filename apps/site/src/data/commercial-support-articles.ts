@@ -933,14 +933,14 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
       }
     ],
     resourceLinks: [
-      { label: 'SEO para Escritórios de Advocacia em São Paulo', path: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/' },
+      { label: 'SEO para Escritórios de Advocacia', path: '/servicos/seo-para-escritorios-de-advocacia/' },
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
       { label: 'Escritórios de advocacia', path: '/nichos/escritorios-advocacia/' }
     ],
     ctaTitle: 'QUER VALIDAR A ESTRUTURA CERTA PARA O SEU ESCRITÓRIO?',
     ctaCopy:
       'Se o escritório quer transformar autoridade em descoberta orgânica mais previsível, o próximo passo é analisar a página comercial específica da vertical.',
-    ctaPath: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/',
+    ctaPath: '/servicos/seo-para-escritorios-de-advocacia/',
     ctaLabel: 'Ver a página para escritórios de advocacia'
   },
   {
@@ -1019,14 +1019,14 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
       }
     ],
     resourceLinks: [
-      { label: 'Consultoria SEO para Energia Solar em São Paulo', path: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/' },
+      { label: 'Consultoria SEO para Energia Solar', path: '/servicos/consultoria-seo-para-energia-solar/' },
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
       { label: 'Energia solar', path: '/nichos/energia-solar/' }
     ],
     ctaTitle: 'QUER AUMENTAR A QUALIDADE DA DEMANDA ORGÂNICA NO SETOR DE ENERGIA SOLAR?',
     ctaCopy:
       'Se a operação ainda depende demais de mídia paga ou geração fria, o melhor próximo passo é validar a página comercial específica de energia solar.',
-    ctaPath: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/',
+    ctaPath: '/servicos/consultoria-seo-para-energia-solar/',
     ctaLabel: 'Ver a página de energia solar'
   },
   {
@@ -1105,14 +1105,14 @@ export const commercialSupportArticles: CommercialSupportArticleSource[] = [
       }
     ],
     resourceLinks: [
-      { label: 'Consultoria SEO para Software B2B em São Paulo', path: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/' },
+      { label: 'Consultoria SEO para Software B2B', path: '/servicos/consultoria-seo-para-software-b2b/' },
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
       { label: 'LLM Brand Presence', path: '/servicos/llm-brand-presence/' }
     ],
     ctaTitle: 'QUER ESTRUTURAR MELHOR A DESCOBERTA ORGÂNICA DO SEU SOFTWARE B2B?',
     ctaCopy:
       'Se o produto ainda depende demais de outbound ou mídia paga, o próximo passo é validar a página comercial específica para software B2B.',
-    ctaPath: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/',
+    ctaPath: '/servicos/consultoria-seo-para-software-b2b/',
     ctaLabel: 'Ver a página para software B2B'
   },
   {

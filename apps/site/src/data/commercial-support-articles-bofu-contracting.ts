@@ -427,14 +427,14 @@ export const commercialSupportArticlesBofuContracting: CommercialSupportArticleS
       }
     ],
     resourceLinks: [
-      { label: 'Consultoria SEO para Software B2B em São Paulo', path: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/' },
+      { label: 'Consultoria SEO para Software B2B', path: '/servicos/consultoria-seo-para-software-b2b/' },
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
       { label: 'LLM Brand Presence', path: '/servicos/llm-brand-presence/' }
     ],
     ctaTitle: 'PRECISA DECIDIR ENTRE VELOCIDADE E CONSTRUÇÃO DE CANAL?',
     ctaCopy:
       'Se a empresa quer escolher melhor entre SEO e mídia paga, o próximo passo é revisar o estágio da categoria, do site e da pressão comercial por pipeline.',
-    ctaPath: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/',
+    ctaPath: '/servicos/consultoria-seo-para-software-b2b/',
     ctaLabel: 'Ver a página comercial de software B2B'
   }
 ];

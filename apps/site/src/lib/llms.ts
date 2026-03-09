@@ -170,6 +170,21 @@ const serviceResources: LlmsResource[] = [
     description: 'Pagina comercial local para clinicas medicas em Sao Jose dos Campos e no Vale do Paraiba.'
   },
   {
+    title: 'SEO para Escritorios de Advocacia',
+    path: '/servicos/seo-para-escritorios-de-advocacia/',
+    description: 'Pagina comercial setorial para advocacia com foco em areas de atuacao, autoridade e descoberta qualificada.'
+  },
+  {
+    title: 'Consultoria SEO para Energia Solar',
+    path: '/servicos/consultoria-seo-para-energia-solar/',
+    description: 'Pagina comercial setorial para energia solar com foco em demanda consultiva, solucao e geracao qualificada.'
+  },
+  {
+    title: 'Consultoria SEO para Software B2B',
+    path: '/servicos/consultoria-seo-para-software-b2b/',
+    description: 'Pagina comercial setorial para software B2B com foco em categoria, comparacao e descoberta organica.'
+  },
+  {
     title: 'SEO para Escritorios de Advocacia em Sao Paulo',
     path: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/',
     description: 'Pagina comercial juridica para Sao Paulo, com foco em areas de atuacao, autoridade e descoberta qualificada.'

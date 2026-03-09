@@ -452,14 +452,14 @@ export const commercialSupportArticlesBofuTransversal: CommercialSupportArticleS
       }
     ],
     resourceLinks: [
-      { label: 'SEO para Escritórios de Advocacia em São Paulo', path: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/' },
+      { label: 'SEO para Escritórios de Advocacia', path: '/servicos/seo-para-escritorios-de-advocacia/' },
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
       { label: 'São Paulo', path: '/cidades/sao-paulo/' }
     ],
     ctaTitle: 'QUER ENTENDER O ESCOPO CERTO PARA O SEU ESCRITÓRIO?',
     ctaCopy:
       'Se a meta é comparar investimento com critério comercial e não por preço raso, o próximo passo é revisar a base de páginas e áreas de atuação do escritório.',
-    ctaPath: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/',
+    ctaPath: '/servicos/seo-para-escritorios-de-advocacia/',
     ctaLabel: 'Ver a página comercial jurídica'
   },
   createValueArticle({
@@ -475,7 +475,7 @@ export const commercialSupportArticlesBofuTransversal: CommercialSupportArticleS
     badge: 'Software B2B e ROI',
     sectorLabel: 'consultoria SEO para software B2B',
     sectorLower: 'software B2B',
-    sectorPath: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/',
+    sectorPath: '/servicos/consultoria-seo-para-software-b2b/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [
@@ -498,7 +498,7 @@ export const commercialSupportArticlesBofuTransversal: CommercialSupportArticleS
     badge: 'Energia Solar e ROI',
     sectorLabel: 'consultoria SEO para energia solar',
     sectorLower: 'energia solar',
-    sectorPath: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/',
+    sectorPath: '/servicos/consultoria-seo-para-energia-solar/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [

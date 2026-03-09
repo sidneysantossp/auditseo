@@ -204,7 +204,7 @@ export const commercialSupportArticlesBofuSectorPricing: CommercialSupportArticl
     imagePath: '/images/agencia-de-seo.png',
     sectorLabel: 'escritórios de advocacia',
     sectorLower: 'escritórios de advocacia',
-    sectorPath: '/servicos/seo-para-escritorios-de-advocacia-em-sao-paulo/',
+    sectorPath: '/servicos/seo-para-escritorios-de-advocacia/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [
@@ -228,7 +228,7 @@ export const commercialSupportArticlesBofuSectorPricing: CommercialSupportArticl
     imagePath: '/images/agencia-de-seo.png',
     sectorLabel: 'energia solar',
     sectorLower: 'energia solar',
-    sectorPath: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/',
+    sectorPath: '/servicos/consultoria-seo-para-energia-solar/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [
@@ -252,7 +252,7 @@ export const commercialSupportArticlesBofuSectorPricing: CommercialSupportArticl
     imagePath: '/images/agencia-de-seo.png',
     sectorLabel: 'energia solar',
     sectorLower: 'energia solar',
-    sectorPath: '/servicos/consultoria-seo-para-energia-solar-em-sao-paulo/',
+    sectorPath: '/servicos/consultoria-seo-para-energia-solar/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [
@@ -276,7 +276,7 @@ export const commercialSupportArticlesBofuSectorPricing: CommercialSupportArticl
     imagePath: '/images/agencia-de-seo.png',
     sectorLabel: 'software B2B',
     sectorLower: 'software B2B',
-    sectorPath: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/',
+    sectorPath: '/servicos/consultoria-seo-para-software-b2b/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [
@@ -300,7 +300,7 @@ export const commercialSupportArticlesBofuSectorPricing: CommercialSupportArticl
     imagePath: '/images/agencia-de-seo.png',
     sectorLabel: 'software B2B',
     sectorLower: 'software B2B',
-    sectorPath: '/servicos/consultoria-seo-para-software-b2b-em-sao-paulo/',
+    sectorPath: '/servicos/consultoria-seo-para-software-b2b/',
     canonicalPath: '/servicos/consultoria-seo/',
     cityPath: '/cidades/sao-paulo/',
     keywords: [

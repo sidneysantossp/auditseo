@@ -1,5 +1,6 @@
 import { allCommercialBriefs, type CommercialPageBrief, type CommercialInternalLink } from './commercial-page-briefs';
 import { buildCuritibaBrasiliaServiceFirstCommercialPages } from './service-first-commercial-pages-curitiba-brasilia';
+import { buildNationalSectorCommercialPages } from './service-first-commercial-pages-national-sectors';
 import { buildPortoAlegreServiceFirstCommercialPages } from './service-first-commercial-pages-porto-alegre';
 import { buildRioBhServiceFirstCommercialPages } from './service-first-commercial-pages-rio-bh';
 
@@ -565,6 +566,7 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
     areaServedName: 'Brasil',
     brief: requireBrief('/servicos/seo-para-odontologia/')
   },
+  ...buildNationalSectorCommercialPages(requireBrief),
   {
     slug: '/servicos/seo-local-para-clinicas-medicas-em-sao-paulo/',
     seoTitle: 'SEO Local para Clínicas Médicas em São Paulo | AUDITSEO',
@@ -2078,6 +2080,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
     ],
     relatedLinks: [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      {
+        label: 'SEO para Escritórios de Advocacia',
+        path: '/servicos/seo-para-escritorios-de-advocacia/',
+        reason: 'Página setorial-mãe da vertical.'
+      },
       { label: 'Escritórios de advocacia', path: '/nichos/escritorios-advocacia/', reason: 'Hub setorial de apoio.' },
       { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Contexto geográfico principal.' },
       {
@@ -2250,6 +2257,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
     ],
     relatedLinks: [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      {
+        label: 'Consultoria SEO para Energia Solar',
+        path: '/servicos/consultoria-seo-para-energia-solar/',
+        reason: 'Página setorial-mãe da vertical.'
+      },
       { label: 'Energia solar', path: '/nichos/energia-solar/', reason: 'Hub setorial de apoio.' },
       { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Contexto geográfico principal.' },
       {
@@ -2427,6 +2439,11 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
     ],
     relatedLinks: [
       { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Serviço canônico principal.' },
+      {
+        label: 'Consultoria SEO para Software B2B',
+        path: '/servicos/consultoria-seo-para-software-b2b/',
+        reason: 'Página setorial-mãe da vertical.'
+      },
       { label: 'LLM Brand Presence', path: '/servicos/llm-brand-presence/', reason: 'Complemento estratégico de descoberta.' },
       { label: 'São Paulo', path: '/cidades/sao-paulo/', reason: 'Contexto geográfico principal.' },
       {
