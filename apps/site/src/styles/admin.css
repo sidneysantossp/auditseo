@@ -756,6 +756,28 @@ body.admin-auth-open {
   font-size: 14px;
 }
 
+.admin-auth__switch-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.admin-auth__switch {
+  border: none;
+  background: transparent;
+  color: var(--admin-text-3);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 6px 0;
+}
+
+.admin-auth__switch:hover {
+  color: var(--admin-text-1);
+}
+
 .admin-auth__error {
   color: var(--admin-red);
 }

@@ -8,6 +8,7 @@ const runtime = {
   apiBase: null,
   session: null,
   bootstrapReady: false,
+  authView: 'login',
   editorialState: {
     items: {},
     updatedAt: new Date().toISOString()
@@ -316,6 +317,8 @@ async function applyAuthGate() {
   const submit = auth.querySelector('[data-admin-auth-submit]');
   const error = auth.querySelector('[data-admin-auth-error]');
   const confirmWrap = auth.querySelector('[data-admin-auth-confirm-wrap]');
+  const switchWrap = auth.querySelector('[data-admin-auth-switch-wrap]');
+  const switchButton = auth.querySelector('[data-admin-auth-switch]');
 
   if (runtime.session) {
     auth.hidden = true;
@@ -327,25 +330,50 @@ async function applyAuthGate() {
   auth.hidden = false;
   document.body.classList.add('admin-auth-open');
 
-  if (runtime.bootstrapReady) {
-    modeLabel.textContent = runtime.mode === 'api' ? 'Entrar na API do CMS' : 'Entrar no painel local';
-    title.textContent = 'Sessão administrativa';
-    copy.textContent =
-      runtime.mode === 'api'
+  const setAuthView = (view) => {
+    runtime.authView = view;
+    error.hidden = true;
+    error.textContent = '';
+
+    if (runtime.mode === 'api') {
+      modeLabel.textContent = runtime.bootstrapReady ? 'Entrar na API do CMS' : 'Bootstrap da API do CMS';
+      title.textContent = runtime.bootstrapReady ? 'Sessão administrativa' : 'Inicializar painel';
+      copy.textContent = runtime.bootstrapReady
         ? 'A API do CMS está online. Este login usa autenticação real do backend e persistência centralizada.'
-        : 'A API não está disponível. O painel segue em modo local neste navegador e não reutiliza usuários do backend.';
+        : 'Nenhum usuário do CMS foi configurado ainda. Esta criação inicial fica persistida no backend separado.';
+      submit.textContent = runtime.bootstrapReady ? 'Entrar' : 'Criar usuário do CMS';
+      confirmWrap.hidden = runtime.bootstrapReady;
+      if (switchWrap) switchWrap.hidden = true;
+      return;
+    }
+
+    if (view === 'bootstrap') {
+      modeLabel.textContent = 'Configurar acesso local';
+      title.textContent = 'Primeiro acesso';
+      copy.textContent = 'A API pública do CMS ainda não está ativa. Este acesso será salvo apenas neste navegador para uso local.';
+      submit.textContent = 'Salvar acesso local';
+      confirmWrap.hidden = false;
+      if (switchWrap) switchWrap.hidden = false;
+      if (switchButton) switchButton.textContent = 'Já tenho acesso local';
+      return;
+    }
+
+    modeLabel.textContent = 'Entrar no painel';
+    title.textContent = 'Sessão administrativa';
+    copy.textContent = runtime.bootstrapReady
+      ? 'A API pública do CMS não está disponível. Você pode entrar com o acesso local já salvo neste navegador.'
+      : 'A API pública do CMS ainda não está ativa. Se este navegador ainda não tiver acesso salvo, use a opção de primeiro acesso.';
     submit.textContent = 'Entrar';
     confirmWrap.hidden = true;
-  } else {
-    modeLabel.textContent = runtime.mode === 'api' ? 'Bootstrap da API do CMS' : 'Configurar acesso local';
-    title.textContent = 'Inicializar painel';
-    copy.textContent =
-      runtime.mode === 'api'
-        ? 'Nenhum usuário do CMS foi configurado ainda. Esta criação inicial fica persistida no backend separado.'
-        : 'A API não está disponível. O acesso inicial será salvo apenas neste navegador até o backend ser ativado.';
-    submit.textContent = runtime.mode === 'api' ? 'Criar usuário do CMS' : 'Salvar acesso local';
-    confirmWrap.hidden = false;
-  }
+    if (switchWrap) switchWrap.hidden = false;
+    if (switchButton) switchButton.textContent = 'Primeiro acesso neste navegador';
+  };
+
+  setAuthView(runtime.mode === 'api' ? (runtime.bootstrapReady ? 'login' : 'bootstrap') : 'login');
+
+  switchButton?.addEventListener('click', () => {
+    setAuthView(runtime.authView === 'bootstrap' ? 'login' : 'bootstrap');
+  });
 
   if (form?.dataset.adminBound === 'true') return;
   form.dataset.adminBound = 'true';
@@ -366,22 +394,24 @@ async function applyAuthGate() {
       return;
     }
 
-    if (!runtime.bootstrapReady && password !== passwordConfirm) {
+    const bootstrapFlow = runtime.mode === 'api' ? !runtime.bootstrapReady : runtime.authView === 'bootstrap';
+
+    if (bootstrapFlow && password !== passwordConfirm) {
       error.hidden = false;
       error.textContent = 'A confirmação de senha não confere.';
       return;
     }
 
-    if (!runtime.bootstrapReady && password.length < 8) {
+    if (bootstrapFlow && password.length < 8) {
       error.hidden = false;
       error.textContent = 'Use uma senha com pelo menos 8 caracteres.';
       return;
     }
 
     try {
-      runtime.session = runtime.bootstrapReady
-        ? await loginAdmin(email, password)
-        : await bootstrapAdmin(email, password);
+      runtime.session = bootstrapFlow
+        ? await bootstrapAdmin(email, password)
+        : await loginAdmin(email, password);
       runtime.bootstrapReady = true;
       auth.hidden = true;
       document.body.classList.remove('admin-auth-open');
@@ -401,7 +431,11 @@ async function applyAuthGate() {
       renderWorkflowBoard();
     } catch {
       error.hidden = false;
-      error.textContent = runtime.mode === 'api' ? 'Falha na autenticação do CMS.' : 'Credenciais locais inválidas.';
+      error.textContent = runtime.mode === 'api'
+        ? 'Falha na autenticação do CMS.'
+        : runtime.authView === 'bootstrap'
+          ? 'Não foi possível salvar o acesso local neste navegador.'
+          : 'Credenciais locais inválidas ou acesso ainda não configurado neste navegador.';
     }
   });
 }
