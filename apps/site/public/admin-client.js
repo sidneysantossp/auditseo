@@ -49,7 +49,13 @@ function inferApiBase() {
   if (explicit) return explicit;
 
   const { protocol, hostname } = window.location;
-  if (hostname === 'localhost' || hostname === '127.0.0.1' || /^\d+\.\d+\.\d+\.\d+$/.test(hostname)) {
+  if (hostname === 'localhost') {
+    // Astro dev uses an internal IPv6 port that can collide with localhost:4322 on macOS.
+    // Force the CMS API to the IPv4 loopback so the admin talks to the real backend.
+    return `${protocol}//127.0.0.1:4322`;
+  }
+
+  if (hostname === '127.0.0.1' || /^\d+\.\d+\.\d+\.\d+$/.test(hostname)) {
     return `${protocol}//${hostname}:4322`;
   }
 
@@ -327,7 +333,7 @@ async function applyAuthGate() {
     copy.textContent =
       runtime.mode === 'api'
         ? 'A API do CMS esta online. Este login usa autenticacao real do backend e persistencia centralizada.'
-        : 'A API nao esta disponivel. O painel segue em modo local para nao travar sua operacao.';
+        : 'A API nao esta disponivel. O painel segue em modo local neste navegador e nao reutiliza usuarios do backend.';
     submit.textContent = 'Entrar';
     confirmWrap.hidden = true;
   } else {
@@ -336,7 +342,7 @@ async function applyAuthGate() {
     copy.textContent =
       runtime.mode === 'api'
         ? 'Nenhum usuario do CMS foi configurado ainda. Esta criacao inicial fica persistida no backend separado.'
-        : 'A API nao esta disponivel. O acesso inicial sera salvo neste navegador ate o backend ser ativado.';
+        : 'A API nao esta disponivel. O acesso inicial sera salvo apenas neste navegador ate o backend ser ativado.';
     submit.textContent = runtime.mode === 'api' ? 'Criar usuario do CMS' : 'Salvar acesso local';
     confirmWrap.hidden = false;
   }
