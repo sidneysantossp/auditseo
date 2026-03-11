@@ -6,7 +6,10 @@ const API_SESSION_KEY = 'auditseo-admin-api-session-v1';
 const runtime = {
   mode: 'local',
   apiBase: null,
-  session: null,
+  session: {
+    email: 'Acesso aberto',
+    authMode: 'open'
+  },
   bootstrapReady: false,
   authView: 'login',
   editorialState: {
@@ -283,161 +286,21 @@ function renderSessionBox() {
   const sessionBox = document.querySelector('[data-admin-session-box]');
   if (!sessionBox) return;
 
-  if (!runtime.session) {
-    sessionBox.innerHTML = '<span class="admin-session__empty">Sessão bloqueada</span>';
-    return;
-  }
-
   sessionBox.innerHTML = `
     <div class="admin-session__meta">
-      <span class="admin-session__label">Sessão ${runtime.mode === 'api' ? 'API' : 'Local'}</span>
-      <strong>${escapeHtml(runtime.session.email)}</strong>
+      <span class="admin-session__label">Acesso</span>
+      <strong>${escapeHtml(runtime.session?.email || 'Acesso aberto')}</strong>
     </div>
-    <button type="button" class="admin-session__button" data-admin-logout>Sair</button>
   `;
-
-  const logout = sessionBox.querySelector('[data-admin-logout]');
-  logout?.addEventListener('click', async () => {
-    await logoutAdmin();
-    window.location.reload();
-  });
 }
 
 async function applyAuthGate() {
   const auth = document.querySelector('[data-admin-auth]');
   if (!auth) return;
 
-  runtime.bootstrapReady = await getBootstrapStatus();
-  runtime.session = await getSession();
-
-  const title = auth.querySelector('[data-admin-auth-title]');
-  const copy = auth.querySelector('[data-admin-auth-copy]');
-  const modeLabel = auth.querySelector('[data-admin-auth-mode-label]');
-  const form = auth.querySelector('[data-admin-auth-form]');
-  const submit = auth.querySelector('[data-admin-auth-submit]');
-  const error = auth.querySelector('[data-admin-auth-error]');
-  const confirmWrap = auth.querySelector('[data-admin-auth-confirm-wrap]');
-  const switchWrap = auth.querySelector('[data-admin-auth-switch-wrap]');
-  const switchButton = auth.querySelector('[data-admin-auth-switch]');
-
-  if (runtime.session) {
-    auth.hidden = true;
-    document.body.classList.remove('admin-auth-open');
-    renderSessionBox();
-    return;
-  }
-
-  auth.hidden = false;
-  document.body.classList.add('admin-auth-open');
-
-  const setAuthView = (view) => {
-    runtime.authView = view;
-    error.hidden = true;
-    error.textContent = '';
-
-    if (runtime.mode === 'api') {
-      modeLabel.textContent = runtime.bootstrapReady ? 'Entrar na API do CMS' : 'Bootstrap da API do CMS';
-      title.textContent = runtime.bootstrapReady ? 'Sessão administrativa' : 'Inicializar painel';
-      copy.textContent = runtime.bootstrapReady
-        ? 'A API do CMS está online. Este login usa autenticação real do backend e persistência centralizada.'
-        : 'Nenhum usuário do CMS foi configurado ainda. Esta criação inicial fica persistida no backend separado.';
-      submit.textContent = runtime.bootstrapReady ? 'Entrar' : 'Criar usuário do CMS';
-      confirmWrap.hidden = runtime.bootstrapReady;
-      if (switchWrap) switchWrap.hidden = true;
-      return;
-    }
-
-    if (view === 'bootstrap') {
-      modeLabel.textContent = 'Configurar acesso local';
-      title.textContent = 'Primeiro acesso';
-      copy.textContent = 'A API pública do CMS ainda não está ativa. Este acesso será salvo apenas neste navegador para uso local.';
-      submit.textContent = 'Salvar acesso local';
-      confirmWrap.hidden = false;
-      if (switchWrap) switchWrap.hidden = false;
-      if (switchButton) switchButton.textContent = 'Já tenho acesso local';
-      return;
-    }
-
-    modeLabel.textContent = 'Entrar no painel';
-    title.textContent = 'Sessão administrativa';
-    copy.textContent = runtime.bootstrapReady
-      ? 'A API pública do CMS não está disponível. Você pode entrar com o acesso local já salvo neste navegador.'
-      : 'A API pública do CMS ainda não está ativa. Se este navegador ainda não tiver acesso salvo, use a opção de primeiro acesso.';
-    submit.textContent = 'Entrar';
-    confirmWrap.hidden = true;
-    if (switchWrap) switchWrap.hidden = false;
-    if (switchButton) switchButton.textContent = 'Primeiro acesso neste navegador';
-  };
-
-  setAuthView(runtime.mode === 'api' ? (runtime.bootstrapReady ? 'login' : 'bootstrap') : 'login');
-
-  switchButton?.addEventListener('click', () => {
-    setAuthView(runtime.authView === 'bootstrap' ? 'login' : 'bootstrap');
-  });
-
-  if (form?.dataset.adminBound === 'true') return;
-  form.dataset.adminBound = 'true';
-
-  form?.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    error.hidden = true;
-    error.textContent = '';
-
-    const formData = new FormData(form);
-    const email = String(formData.get('email') || '').trim().toLowerCase();
-    const password = String(formData.get('password') || '');
-    const passwordConfirm = String(formData.get('passwordConfirm') || '');
-
-    if (!email || !password) {
-      error.hidden = false;
-      error.textContent = 'Preencha email e senha.';
-      return;
-    }
-
-    const bootstrapFlow = runtime.mode === 'api' ? !runtime.bootstrapReady : runtime.authView === 'bootstrap';
-
-    if (bootstrapFlow && password !== passwordConfirm) {
-      error.hidden = false;
-      error.textContent = 'A confirmação de senha não confere.';
-      return;
-    }
-
-    if (bootstrapFlow && password.length < 8) {
-      error.hidden = false;
-      error.textContent = 'Use uma senha com pelo menos 8 caracteres.';
-      return;
-    }
-
-    try {
-      runtime.session = bootstrapFlow
-        ? await bootstrapAdmin(email, password)
-        : await loginAdmin(email, password);
-      runtime.bootstrapReady = true;
-      auth.hidden = true;
-      document.body.classList.remove('admin-auth-open');
-      form.reset();
-      renderSessionBox();
-
-      try {
-        runtime.editorialState = await loadEditorialState();
-      } catch {
-        if (runtime.mode === 'api') {
-          runtime.mode = 'local';
-          runtime.editorialState = getLocalEditorialState();
-        }
-      }
-
-      renderManagedTable();
-      renderWorkflowBoard();
-    } catch {
-      error.hidden = false;
-      error.textContent = runtime.mode === 'api'
-        ? 'Falha na autenticação do CMS.'
-        : runtime.authView === 'bootstrap'
-          ? 'Não foi possível salvar o acesso local neste navegador.'
-          : 'Credenciais locais inválidas ou acesso ainda não configurado neste navegador.';
-    }
-  });
+  auth.hidden = true;
+  document.body.classList.remove('admin-auth-open');
+  renderSessionBox();
 }
 
 function buildRow(item) {
@@ -608,20 +471,10 @@ function renderManagedTable() {
 }
 
 async function init() {
-  runtime.mode = (await detectApi()) ? 'api' : 'local';
+  runtime.mode = 'local';
   await applyAuthGate();
   renderSessionBox();
-
-  if (!runtime.session) return;
-
-  try {
-    runtime.editorialState = await loadEditorialState();
-  } catch {
-    if (runtime.mode === 'api') {
-      runtime.mode = 'local';
-      runtime.editorialState = getLocalEditorialState();
-    }
-  }
+  runtime.editorialState = getLocalEditorialState();
 
   renderManagedTable();
   renderWorkflowBoard();
