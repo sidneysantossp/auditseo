@@ -262,8 +262,20 @@ import { siteMetadata } from '../data/site';
       if (!validateStep(5) || !form || !endpoint) return;
 
       const payload = Object.fromEntries(new FormData(form).entries());
+      const context = window.auditseoAttribution?.getContext?.() ?? null;
       payload._subject = 'Novo Diagnóstico AI-First - AUDITSEO';
       payload._captcha = 'false';
+      payload.Pagina_Atual = context?.pagePath ?? window.location.pathname;
+      payload.URL_Atual = context?.pageUrl ?? window.location.href;
+      payload.Titulo_Pagina = context?.pageTitle ?? document.title;
+      payload.Primeira_Pagina_Sessao = context?.firstLandingUrl ?? window.location.href;
+      payload.Referrer = context?.referrer ?? (document.referrer || 'direto');
+
+      if (context?.utm) {
+        Object.entries(context.utm).forEach(([key, value]) => {
+          payload[key.toUpperCase()] = value;
+        });
+      }
 
       submitButton.disabled = true;
       if (submitText) submitText.hidden = true;

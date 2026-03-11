@@ -4,6 +4,111 @@
     const header = document.querySelector('.as-header');
     const mobileMenu = document.getElementById('site-mobile-nav');
     const burger = document.querySelector('[data-mobile-toggle]');
+    const landingKey = 'auditseo:first-landing-url';
+    const referrerKey = 'auditseo:first-referrer';
+    const utmKey = 'auditseo:utm-context';
+
+    const safeReadStorage = (key) => {
+      try {
+        return window.sessionStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    };
+
+    const safeWriteStorage = (key, value) => {
+      try {
+        window.sessionStorage.setItem(key, value);
+      } catch {
+        return null;
+      }
+    };
+
+    if (!safeReadStorage(landingKey)) {
+      safeWriteStorage(landingKey, window.location.href);
+    }
+
+    if (!safeReadStorage(referrerKey) && document.referrer) {
+      safeWriteStorage(referrerKey, document.referrer);
+    }
+
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmContext = Object.fromEntries(
+      utmParams
+        .map((key) => [key, urlParams.get(key)])
+        .filter(([, value]) => Boolean(value))
+    );
+
+    if (Object.keys(utmContext).length > 0) {
+      safeWriteStorage(utmKey, JSON.stringify(utmContext));
+    }
+
+    const parseStoredUtm = () => {
+      const raw = safeReadStorage(utmKey);
+      if (!raw) return {};
+
+      try {
+        return JSON.parse(raw);
+      } catch {
+        return {};
+      }
+    };
+
+    const getAttributionContext = () => {
+      const storedLanding = safeReadStorage(landingKey);
+      const storedReferrer = safeReadStorage(referrerKey);
+      const storedUtm = parseStoredUtm();
+
+      return {
+        pageUrl: window.location.href,
+        pagePath: window.location.pathname,
+        pageTitle: document.title,
+        firstLandingUrl: storedLanding || window.location.href,
+        referrer: document.referrer || storedReferrer || 'direto',
+        utm: storedUtm
+      };
+    };
+
+    const buildTrackedWhatsappUrl = (rawUrl) => {
+      const context = getAttributionContext();
+      const url = new URL(rawUrl, window.location.origin);
+      const originalText = url.searchParams.get('text') || 'Olá! Vim pelo site da AUDITSEO e gostaria de mais informações.';
+      const extraLines = [
+        '',
+        '---',
+        `Página atual: ${context.pagePath}`,
+        `URL atual: ${context.pageUrl}`,
+        `Título: ${context.pageTitle}`,
+        `Primeira página da sessão: ${context.firstLandingUrl}`,
+        `Referrer: ${context.referrer}`
+      ];
+
+      const utmEntries = Object.entries(context.utm);
+      if (utmEntries.length > 0) {
+        extraLines.push(`UTMs: ${utmEntries.map(([key, value]) => `${key}=${value}`).join(', ')}`);
+      }
+
+      url.searchParams.set('text', `${originalText}\n${extraLines.join('\n')}`);
+      return url.toString();
+    };
+
+    window.auditseoAttribution = {
+      getContext: getAttributionContext,
+      buildTrackedWhatsappUrl
+    };
+
+    const enhanceWhatsappLinks = () => {
+      document.querySelectorAll('a[href*="wa.me/5511996384376"], a[href*="api.whatsapp.com/send"]').forEach((link) => {
+        if (!(link instanceof HTMLAnchorElement)) return;
+        if (link.dataset.whatsappTracked === 'true') return;
+
+        link.dataset.whatsappTracked = 'true';
+        link.addEventListener('click', () => {
+          link.href = buildTrackedWhatsappUrl(link.href);
+        });
+      });
+    };
 
     window.toggleFaq = (button) => {
       const item = button?.parentElement;
@@ -69,6 +174,7 @@
       header?.classList.toggle('as-scrolled', window.scrollY > 16);
     };
 
+    enhanceWhatsappLinks();
     document.addEventListener('scroll', syncHeaderState, { passive: true });
     syncHeaderState();
   })();
