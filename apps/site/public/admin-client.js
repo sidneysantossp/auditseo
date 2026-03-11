@@ -347,6 +347,9 @@ async function applyAuthGate() {
     confirmWrap.hidden = false;
   }
 
+  if (form?.dataset.adminBound === 'true') return;
+  form.dataset.adminBound = 'true';
+
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     error.hidden = true;
@@ -379,7 +382,23 @@ async function applyAuthGate() {
       runtime.session = runtime.bootstrapReady
         ? await loginAdmin(email, password)
         : await bootstrapAdmin(email, password);
-      window.location.reload();
+      runtime.bootstrapReady = true;
+      auth.hidden = true;
+      document.body.classList.remove('admin-auth-open');
+      form.reset();
+      renderSessionBox();
+
+      try {
+        runtime.editorialState = await loadEditorialState();
+      } catch {
+        if (runtime.mode === 'api') {
+          runtime.mode = 'local';
+          runtime.editorialState = getLocalEditorialState();
+        }
+      }
+
+      renderManagedTable();
+      renderWorkflowBoard();
     } catch {
       error.hidden = false;
       error.textContent = runtime.mode === 'api' ? 'Falha na autenticação do CMS.' : 'Credenciais locais inválidas.';
