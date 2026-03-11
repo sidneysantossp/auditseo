@@ -1,18 +1,40 @@
 ---
 interface Props {
-  eyebrow: string;
-  title: string;
-  description: string;
+  currentPath: string;
 }
 
-const { eyebrow, title, description } = Astro.props as Props;
+interface NavItem {
+  label: string;
+  path: string;
+}
+
+const { currentPath } = Astro.props as Props;
+
+const navItems: NavItem[] = [
+  { label: 'Dashboard', path: '/admin/' },
+  { label: 'Conteúdos', path: '/admin/conteudos/' },
+  { label: 'Clusters', path: '/admin/clusters/' },
+  { label: 'Workflow', path: '/admin/workflow/' }
+];
+
+function isActive(path: string) {
+  if (path === '/admin/') {
+    return currentPath === '/admin/';
+  }
+
+  return currentPath.startsWith(path);
+}
 ---
 <header class="admin-topbar">
-  <div class="admin-topbar__intro">
-    <div class="admin-topbar__eyebrow">{eyebrow}</div>
-    <h1 class="admin-topbar__title">{title}</h1>
-    <p class="admin-topbar__description">{description}</p>
-  </div>
+  <a class="admin-topbar__brand" href="/admin/">AUDITSEO</a>
+
+  <nav class="admin-topbar__nav" aria-label="Navegação principal do admin">
+    {navItems.map((item) => (
+      <a class:list={['admin-topbar__nav-link', isActive(item.path) && 'is-active']} href={item.path}>
+        {item.label}
+      </a>
+    ))}
+  </nav>
 
   <div class="admin-topbar__actions">
     <div class="admin-session" data-admin-session-box></div>

@@ -1,8 +1,6 @@
 ---
 import SeoHead from '../components/SeoHead.astro';
-import AdminSidebar from '../components/admin/AdminSidebar.astro';
 import AdminTopbar from '../components/admin/AdminTopbar.astro';
-import AdminShellScripts from '../components/admin/AdminShellScripts.astro';
 import '../styles/tokens.css';
 import '../styles/admin.css';
 
@@ -29,22 +27,19 @@ const currentPath = Astro.url.pathname;
   </head>
   <body class="admin-body">
     <div class="admin-app">
-      <button class="admin-mobile-toggle" type="button" data-admin-toggle aria-label="Abrir menu administrativo">
-        Menu
-      </button>
+      <AdminTopbar currentPath={currentPath} />
 
-      <AdminSidebar currentPath={currentPath} />
+      <main class="admin-content">
+        <section class="admin-page-head">
+          <div class="admin-page-head__eyebrow">{eyebrow}</div>
+          <h1 class="admin-page-head__title">{title}</h1>
+          <p class="admin-page-head__description">{description}</p>
+        </section>
 
-      <div class="admin-main">
-        <AdminTopbar eyebrow={eyebrow} title={title} description={description} />
-
-        <main class="admin-content">
-          <slot />
-        </main>
-      </div>
+        <slot />
+      </main>
     </div>
 
-    <AdminShellScripts />
     <script is:inline type="module" src="/admin-client.js"></script>
   </body>
 </html>
