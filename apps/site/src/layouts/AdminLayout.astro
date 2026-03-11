@@ -31,8 +31,10 @@ const currentPath = Astro.url.pathname;
 
       <main class="admin-content">
         <section class="admin-page-head">
-          <div class="admin-page-head__eyebrow">{eyebrow}</div>
-          <h1 class="admin-page-head__title">{title}</h1>
+          <div class="admin-page-head__row">
+            <h1 class="admin-page-head__title">{title}</h1>
+            <span class="admin-page-head__badge">{eyebrow}</span>
+          </div>
           <p class="admin-page-head__description">{description}</p>
         </section>
 
