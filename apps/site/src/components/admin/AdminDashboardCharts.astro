@@ -1,0 +1,176 @@
+---
+import type { AdminCategoryCoverage, AdminClusterSnapshot } from '../../lib/admin-dashboard';
+
+interface Props {
+  categories: AdminCategoryCoverage[];
+  clusters: AdminClusterSnapshot[];
+}
+
+const { categories, clusters } = Astro.props as Props;
+
+const categorySeries = categories.slice(0, 6).map((item) => ({
+  title: item.title,
+  articles: item.articlesCount,
+  links: item.serviceLinksCount
+}));
+
+const clusterSeries = clusters.slice(0, 6).map((item) => ({
+  title: item.title,
+  completion: item.completionRate,
+  liveAssets: item.liveAssets,
+  plannedAssets: item.plannedAssets
+}));
+---
+<section class="admin-chart-row admin-section">
+  <article class="admin-chart-card">
+    <div class="admin-section-head admin-section-head--compact">
+      <div>
+        <div class="admin-card-eyebrow">Cobertura editorial</div>
+        <h2 class="admin-section-title admin-section-title--compact">Categorias com mais densidade</h2>
+      </div>
+    </div>
+    <div class="admin-chart-box">
+      <canvas id="adminCategoriesChart"></canvas>
+    </div>
+  </article>
+
+  <article class="admin-chart-card">
+    <div class="admin-section-head admin-section-head--compact">
+      <div>
+        <div class="admin-card-eyebrow">Maturidade operacional</div>
+        <h2 class="admin-section-title admin-section-title--compact">Clusters prioritários</h2>
+      </div>
+    </div>
+    <div class="admin-chart-box">
+      <canvas id="adminClustersChart"></canvas>
+    </div>
+  </article>
+
+  <script is:inline type="application/json" id="adminCategoriesChartData" set:html={JSON.stringify(categorySeries)}></script>
+  <script is:inline type="application/json" id="adminClustersChartData" set:html={JSON.stringify(clusterSeries)}></script>
+  <script is:inline>
+    (() => {
+      if (typeof window === 'undefined' || !window.Chart) return;
+      const categoryCanvas = document.getElementById('adminCategoriesChart');
+      const clusterCanvas = document.getElementById('adminClustersChart');
+      const categoryPayload = document.getElementById('adminCategoriesChartData');
+      const clusterPayload = document.getElementById('adminClustersChartData');
+
+      if (!(categoryCanvas instanceof HTMLCanvasElement) || !(clusterCanvas instanceof HTMLCanvasElement)) return;
+      if (!categoryPayload?.textContent || !clusterPayload?.textContent) return;
+      if (categoryCanvas.dataset.bound === 'true' || clusterCanvas.dataset.bound === 'true') return;
+
+      const categoryData = JSON.parse(categoryPayload.textContent);
+      const clusterData = JSON.parse(clusterPayload.textContent);
+
+      new window.Chart(categoryCanvas, {
+        type: 'bar',
+        data: {
+          labels: categoryData.map((item) => item.title),
+          datasets: [
+            {
+              label: 'Artigos',
+              data: categoryData.map((item) => item.articles),
+              backgroundColor: 'rgba(255,106,0,0.55)',
+              borderColor: '#ff6a00',
+              borderWidth: 1,
+              borderRadius: 6,
+              barThickness: 18
+            },
+            {
+              label: 'Links para serviços',
+              data: categoryData.map((item) => item.links),
+              backgroundColor: 'rgba(59,130,246,0.42)',
+              borderColor: '#3b82f6',
+              borderWidth: 1,
+              borderRadius: 6,
+              barThickness: 18
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              labels: {
+                color: '#b8b4aa',
+                font: { family: 'JetBrains Mono', size: 10 }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: '#807c74', font: { family: 'JetBrains Mono', size: 9 } },
+              grid: { display: false }
+            },
+            y: {
+              ticks: { color: '#807c74', font: { family: 'JetBrains Mono', size: 9 } },
+              grid: { color: 'rgba(255,255,255,0.05)' }
+            }
+          }
+        }
+      });
+
+      new window.Chart(clusterCanvas, {
+        type: 'line',
+        data: {
+          labels: clusterData.map((item) => item.title),
+          datasets: [
+            {
+              label: 'Maturidade (%)',
+              data: clusterData.map((item) => item.completion),
+              borderColor: '#00d4ff',
+              backgroundColor: 'rgba(0,212,255,0.12)',
+              fill: true,
+              tension: 0.3,
+              pointBackgroundColor: '#00d4ff'
+            },
+            {
+              label: 'Ativos live',
+              data: clusterData.map((item) => item.liveAssets),
+              borderColor: '#22c55e',
+              backgroundColor: 'rgba(34,197,94,0.08)',
+              fill: false,
+              tension: 0.3,
+              pointBackgroundColor: '#22c55e',
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              labels: {
+                color: '#b8b4aa',
+                font: { family: 'JetBrains Mono', size: 10 }
+              }
+            }
+          },
+          scales: {
+            x: {
+              ticks: { color: '#807c74', font: { family: 'JetBrains Mono', size: 9 } },
+              grid: { display: false }
+            },
+            y: {
+              min: 0,
+              max: 100,
+              ticks: { color: '#807c74', font: { family: 'JetBrains Mono', size: 9 } },
+              grid: { color: 'rgba(255,255,255,0.05)' }
+            },
+            y1: {
+              position: 'right',
+              ticks: { color: '#22c55e', font: { family: 'JetBrains Mono', size: 9 } },
+              grid: { display: false }
+            }
+          }
+        }
+      });
+
+      categoryCanvas.dataset.bound = 'true';
+      clusterCanvas.dataset.bound = 'true';
+    })();
+  </script>
+</section>

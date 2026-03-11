@@ -283,13 +283,13 @@ function renderSessionBox() {
   if (!sessionBox) return;
 
   if (!runtime.session) {
-    sessionBox.innerHTML = '<span class="admin-session__empty">Sessao bloqueada</span>';
+    sessionBox.innerHTML = '<span class="admin-session__empty">Sessão bloqueada</span>';
     return;
   }
 
   sessionBox.innerHTML = `
     <div class="admin-session__meta">
-      <span class="admin-session__label">Sessao ${runtime.mode === 'api' ? 'API' : 'Local'}</span>
+      <span class="admin-session__label">Sessão ${runtime.mode === 'api' ? 'API' : 'Local'}</span>
       <strong>${escapeHtml(runtime.session.email)}</strong>
     </div>
     <button type="button" class="admin-session__button" data-admin-logout>Sair</button>
@@ -329,11 +329,11 @@ async function applyAuthGate() {
 
   if (runtime.bootstrapReady) {
     modeLabel.textContent = runtime.mode === 'api' ? 'Entrar na API do CMS' : 'Entrar no painel local';
-    title.textContent = 'Sessao administrativa';
+    title.textContent = 'Sessão administrativa';
     copy.textContent =
       runtime.mode === 'api'
-        ? 'A API do CMS esta online. Este login usa autenticacao real do backend e persistencia centralizada.'
-        : 'A API nao esta disponivel. O painel segue em modo local neste navegador e nao reutiliza usuarios do backend.';
+        ? 'A API do CMS está online. Este login usa autenticação real do backend e persistência centralizada.'
+        : 'A API não está disponível. O painel segue em modo local neste navegador e não reutiliza usuários do backend.';
     submit.textContent = 'Entrar';
     confirmWrap.hidden = true;
   } else {
@@ -341,9 +341,9 @@ async function applyAuthGate() {
     title.textContent = 'Inicializar painel';
     copy.textContent =
       runtime.mode === 'api'
-        ? 'Nenhum usuario do CMS foi configurado ainda. Esta criacao inicial fica persistida no backend separado.'
-        : 'A API nao esta disponivel. O acesso inicial sera salvo apenas neste navegador ate o backend ser ativado.';
-    submit.textContent = runtime.mode === 'api' ? 'Criar usuario do CMS' : 'Salvar acesso local';
+        ? 'Nenhum usuário do CMS foi configurado ainda. Esta criação inicial fica persistida no backend separado.'
+        : 'A API não está disponível. O acesso inicial será salvo apenas neste navegador até o backend ser ativado.';
+    submit.textContent = runtime.mode === 'api' ? 'Criar usuário do CMS' : 'Salvar acesso local';
     confirmWrap.hidden = false;
   }
 
@@ -365,7 +365,7 @@ async function applyAuthGate() {
 
     if (!runtime.bootstrapReady && password !== passwordConfirm) {
       error.hidden = false;
-      error.textContent = 'A confirmacao de senha nao confere.';
+      error.textContent = 'A confirmação de senha não confere.';
       return;
     }
 
@@ -382,7 +382,7 @@ async function applyAuthGate() {
       window.location.reload();
     } catch {
       error.hidden = false;
-      error.textContent = runtime.mode === 'api' ? 'Falha na autenticacao do CMS.' : 'Credenciais locais invalidas.';
+      error.textContent = runtime.mode === 'api' ? 'Falha na autenticação do CMS.' : 'Credenciais locais inválidas.';
     }
   });
 }
@@ -417,13 +417,13 @@ function buildRow(item) {
         </select>
       </td>
       <td>
-        <input class="admin-field" data-admin-field="owner" type="text" value="${escapeHtml(owner)}" placeholder="Responsavel" />
+        <input class="admin-field" data-admin-field="owner" type="text" value="${escapeHtml(owner)}" placeholder="Responsável" />
       </td>
       <td>
         <input class="admin-field" data-admin-field="targetDate" type="date" value="${escapeHtml(targetDate)}" />
       </td>
       <td>
-        <textarea class="admin-field admin-field--textarea" data-admin-field="note" rows="3" placeholder="Observacoes operacionais">${escapeHtml(note)}</textarea>
+        <textarea class="admin-field admin-field--textarea" data-admin-field="note" rows="3" placeholder="Observações operacionais">${escapeHtml(note)}</textarea>
       </td>
     </tr>
   `;
@@ -444,11 +444,11 @@ function renderWorkflowBoard() {
     },
     review: {
       title: 'Review',
-      copy: 'Itens em revisao editorial, tecnica ou de posicionamento.'
+      copy: 'Itens em revisão editorial, técnica ou de posicionamento.'
     },
     scheduled: {
       title: 'Scheduled',
-      copy: 'Fila pronta para publicacao ou atualizacao em janela definida.'
+      copy: 'Fila pronta para publicação ou atualização em janela definida.'
     },
     published: {
       title: 'Published',
@@ -475,8 +475,8 @@ function renderWorkflowBoard() {
                   <li class="admin-board-card">
                     <strong>${escapeHtml(item.label)}</strong>
                     <div class="admin-list-meta">${escapeHtml(item.type)} • ${escapeHtml(item.clusterTitle)}</div>
-                    <p class="admin-list-copy">${escapeHtml(state.note || item.notes || 'Sem observacao registrada.')}</p>
-                    <div class="admin-helper-text">${escapeHtml(state.owner || 'Sem responsavel')}${
+                    <p class="admin-list-copy">${escapeHtml(state.note || item.notes || 'Sem observação registrada.')}</p>
+                    <div class="admin-helper-text">${escapeHtml(state.owner || 'Sem responsável')}${
                   state.targetDate ? ` • alvo ${escapeHtml(state.targetDate)}` : ''
                 }</div>
                   </li>

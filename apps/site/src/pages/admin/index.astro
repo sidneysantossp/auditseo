@@ -1,5 +1,6 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
+import AdminDashboardCharts from '../../components/admin/AdminDashboardCharts.astro';
 import { getAdminDashboardData } from '../../lib/admin-dashboard';
 
 const dashboard = await getAdminDashboardData();
@@ -13,8 +14,8 @@ const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
   <div class="admin-banner">
     <strong>Fase 1 do admin</strong>
     <div>
-      Painel operacional com dados reais do site. A proxima fase adiciona autenticacao, persistencia e fluxo de
-      publicacao transacional sem soltar a arquitetura.
+      Painel operacional com dados reais do site. A próxima fase adiciona autenticação, persistência e fluxo de
+      publicação transacional sem soltar a arquitetura.
     </div>
   </div>
 
@@ -28,6 +29,8 @@ const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
     ))}
   </section>
 
+  <AdminDashboardCharts categories={dashboard.categoryCoverage} clusters={dashboard.clusterSnapshots} />
+
   <section class="admin-section">
     <div class="admin-section-head">
       <div>
@@ -35,7 +38,7 @@ const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
         <h2 class="admin-section-title">Clusters que definem a marca</h2>
       </div>
       <p class="admin-section-copy">
-        Estes 3 clusters concentram a tese central do dominio. Se eles ficarem rasos, o restante cresce torto.
+        Estes 3 clusters concentram a tese central do domínio. Se eles ficarem rasos, o restante cresce torto.
       </p>
     </div>
 
@@ -52,7 +55,7 @@ const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
           <div class="admin-progress" aria-label={`Maturidade do cluster ${cluster.title}`}>
             <span style={`width:${cluster.completionRate}%`}></span>
           </div>
-          <div class="admin-kpi-inline">{cluster.completionRate}% dos ativos priorizados ja publicados</div>
+          <div class="admin-kpi-inline">{cluster.completionRate}% dos ativos priorizados já publicados</div>
           <ul class="admin-focus-list">
             {cluster.nextActions.slice(0, 3).map((item) => (
               <li class="admin-focus-item">
@@ -75,7 +78,7 @@ const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
       <div class="admin-section-head">
         <div>
           <div class="admin-card-eyebrow">Fila</div>
-          <h2 class="admin-section-title">Backlog editorial prioritario</h2>
+          <h2 class="admin-section-title">Backlog editorial prioritário</h2>
         </div>
       </div>
       <ul class="admin-list">
@@ -93,7 +96,7 @@ const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
     <article class="admin-content-card">
       <div class="admin-section-head">
         <div>
-          <div class="admin-card-eyebrow">Atualizacoes</div>
+          <div class="admin-card-eyebrow">Atualizações</div>
           <h2 class="admin-section-title">Artigos mais recentes</h2>
         </div>
       </div>
@@ -121,7 +124,7 @@ const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
         <h2 class="admin-section-title">Categorias do blog</h2>
       </div>
       <p class="admin-section-copy">
-        A categoria so pode escalar se tiver pilares, volume util e ligacao real com servicos.
+        A categoria só pode escalar se tiver pilares, volume útil e ligação real com serviços.
       </p>
     </div>
 
@@ -132,8 +135,8 @@ const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
             <th>Categoria</th>
             <th>Artigos</th>
             <th>Pilares</th>
-            <th>Links para servicos</th>
-            <th>Ultima atualizacao</th>
+            <th>Links para serviços</th>
+            <th>Última atualização</th>
           </tr>
         </thead>
         <tbody>
