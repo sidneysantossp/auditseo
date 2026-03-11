@@ -3,7 +3,6 @@ import SeoHead from '../components/SeoHead.astro';
 import AdminSidebar from '../components/admin/AdminSidebar.astro';
 import AdminTopbar from '../components/admin/AdminTopbar.astro';
 import AdminShellScripts from '../components/admin/AdminShellScripts.astro';
-import AdminAuthGate from '../components/admin/AdminAuthGate.astro';
 import '../styles/tokens.css';
 import '../styles/admin.css';
 
@@ -45,7 +44,6 @@ const currentPath = Astro.url.pathname;
       </div>
     </div>
 
-    <AdminAuthGate />
     <AdminShellScripts />
     <script is:inline type="module" src="/admin-client.js"></script>
   </body>
