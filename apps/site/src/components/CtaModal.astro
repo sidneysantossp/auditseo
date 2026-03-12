@@ -295,6 +295,20 @@ import { siteMetadata } from '../data/site';
           throw new Error('Falha ao enviar o formulário.');
         }
 
+        try {
+          await window.auditseoLeadCapture?.send?.({
+            captureType: 'diagnostic-form',
+            channel: 'form',
+            name: payload.Nome,
+            whatsapp: payload.WhatsApp,
+            site: payload.Site,
+            serviceIntent: payload.Servicos_Produtos,
+            seoInvestment: payload.Investimento_SEO
+          });
+        } catch (captureError) {
+          console.error('Lead capture error', captureError);
+        }
+
         showSuccess();
       } catch (error) {
         console.error(error);

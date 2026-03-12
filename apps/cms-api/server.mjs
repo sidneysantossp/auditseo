@@ -7,6 +7,8 @@ import { ensureStore, readStore, updateStore } from './lib/store.mjs';
 const PORT = Number(process.env.PORT || 4322);
 const HOST = process.env.HOST || '0.0.0.0';
 const SESSION_TTL_DAYS = 7;
+const CRM_EVENT_LIMIT = 500;
+const CRM_LEAD_LIMIT = 250;
 const allowedOrigins = (process.env.CMS_ALLOWED_ORIGINS ||
   'http://localhost:4321,http://127.0.0.1:4321,http://192.168.0.5:4321,https://www.auditseo.com.br,https://auditseo.com.br')
   .split(',')
@@ -75,6 +77,154 @@ function normalizeEditorialPayload(payload) {
   };
 }
 
+function sanitizeText(value, maxLength = 400) {
+  return String(value || '')
+    .trim()
+    .replace(/\s+/g, ' ')
+    .slice(0, maxLength);
+}
+
+function sanitizePath(value) {
+  const path = sanitizeText(value, 280);
+  if (!path) return '/';
+  return path.startsWith('/') ? path : `/${path}`;
+}
+
+function sanitizeUrl(value) {
+  const raw = sanitizeText(value, 600);
+  if (!raw) return '';
+
+  try {
+    return new URL(raw).toString();
+  } catch {
+    return '';
+  }
+}
+
+function sanitizeUtm(value) {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) return {};
+
+  return Object.fromEntries(
+    Object.entries(value)
+      .map(([key, item]) => [sanitizeText(key, 40).toLowerCase(), sanitizeText(item, 160)])
+      .filter(([key, item]) => key && item)
+  );
+}
+
+function normalizeLeadCapturePayload(payload, request) {
+  const captureType = (() => {
+    const value = sanitizeText(payload.captureType, 40).toLowerCase();
+    if (['diagnostic-form', 'contact-form', 'whatsapp-click'].includes(value)) return value;
+    return 'unknown';
+  })();
+
+  const createdAt = new Date().toISOString();
+  const utm =
+    typeof payload.utm === 'object' && payload.utm !== null
+      ? sanitizeUtm(payload.utm)
+      : sanitizeUtm(
+          Object.fromEntries(
+            Object.entries(payload).filter(([key]) => key.toLowerCase().startsWith('utm_'))
+          )
+        );
+
+  const context = {
+    pagePath: sanitizePath(payload.pagePath || payload.Pagina_Atual),
+    pageUrl: sanitizeUrl(payload.pageUrl || payload.URL_Atual),
+    pageTitle: sanitizeText(payload.pageTitle || payload.Titulo_Pagina, 240),
+    firstLandingUrl: sanitizeUrl(payload.firstLandingUrl || payload.Primeira_Pagina_Sessao),
+    referrer: sanitizeText(payload.referrer || payload.Referrer || 'direto', 400),
+    utm
+  };
+
+  const lead = {
+    id: `lead_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`,
+    captureType,
+    channel: sanitizeText(payload.channel || (captureType === 'whatsapp-click' ? 'whatsapp' : 'form'), 40),
+    source: sanitizeText(payload.source || 'site', 40),
+    name: sanitizeText(payload.name || payload.Nome, 160),
+    email: sanitizeText(payload.email || payload.Email, 180).toLowerCase(),
+    whatsapp: sanitizeText(payload.whatsapp || payload.WhatsApp, 40),
+    company: sanitizeText(payload.company || payload.Empresa, 180),
+    site: sanitizeUrl(payload.site || payload.Site),
+    message: sanitizeText(payload.message || payload.Mensagem, 3000),
+    serviceIntent: sanitizeText(
+      payload.serviceIntent || payload.Servicos_Produtos || payload.anchorLabel || payload.anchorText,
+      1200
+    ),
+    seoInvestment: sanitizeText(payload.seoInvestment || payload.Investimento_SEO, 180),
+    pagePath: context.pagePath,
+    pageUrl: context.pageUrl,
+    firstLandingUrl: context.firstLandingUrl,
+    referrer: context.referrer,
+    utm,
+    createdAt,
+    ip: sanitizeText(
+      request.headers['x-forwarded-for'] || request.socket.remoteAddress || '',
+      140
+    ),
+    userAgent: sanitizeText(request.headers['user-agent'] || '', 400)
+  };
+
+  return {
+    captureType,
+    context,
+    lead
+  };
+}
+
+function buildCrmEvent(record) {
+  return {
+    id: `evt_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`,
+    captureType: record.captureType,
+    source: record.source,
+    channel: record.channel,
+    pagePath: record.pagePath,
+    pageUrl: record.pageUrl,
+    pageTitle: record.pageTitle || '',
+    firstLandingUrl: record.firstLandingUrl,
+    referrer: record.referrer,
+    utm: record.utm,
+    company: record.company,
+    site: record.site,
+    serviceIntent: record.serviceIntent,
+    createdAt: record.createdAt
+  };
+}
+
+function summarizeCrmState(store) {
+  const crmState = store.crmState || { leads: [], events: [] };
+  const leads = Array.isArray(crmState.leads) ? crmState.leads : [];
+  const events = Array.isArray(crmState.events) ? crmState.events : [];
+
+  const pageMap = new Map();
+  const captureMap = new Map();
+
+  events.forEach((event) => {
+    const path = event.pagePath || '/';
+    pageMap.set(path, (pageMap.get(path) || 0) + 1);
+    captureMap.set(event.captureType || 'unknown', (captureMap.get(event.captureType || 'unknown') || 0) + 1);
+  });
+
+  return {
+    totals: {
+      leads: leads.length,
+      events: events.length,
+      forms: events.filter((event) => event.captureType !== 'whatsapp-click').length,
+      whatsappClicks: events.filter((event) => event.captureType === 'whatsapp-click').length
+    },
+    lastLeadAt: leads[0]?.createdAt || null,
+    topPages: Array.from(pageMap.entries())
+      .map(([path, count]) => ({ path, count }))
+      .sort((left, right) => right.count - left.count)
+      .slice(0, 8),
+    captureTypes: Array.from(captureMap.entries())
+      .map(([captureType, count]) => ({ captureType, count }))
+      .sort((left, right) => right.count - left.count),
+    updatedAt: crmState.updatedAt || null
+  };
+}
+
 const server = http.createServer(async (request, response) => {
   const origin = request.headers.origin;
   const corsHeaders = getCorsHeaders(origin, allowedOrigins);
@@ -95,6 +245,47 @@ const server = http.createServer(async (request, response) => {
     if (request.method === 'GET' && pathname === '/api/bootstrap-status') {
       const store = withCleanSessions(readStore());
       json(response, 200, { hasUsers: store.users.length > 0 }, corsHeaders);
+      return;
+    }
+
+    if (request.method === 'GET' && pathname === '/api/public/crm-summary') {
+      const store = withCleanSessions(readStore());
+      json(response, 200, summarizeCrmState(store), corsHeaders);
+      return;
+    }
+
+    if (request.method === 'POST' && pathname === '/api/public/lead-capture') {
+      const body = await readJsonBody(request);
+      const { lead, context } = normalizeLeadCapturePayload(body, request);
+      const event = buildCrmEvent({
+        ...lead,
+        pageTitle: context.pageTitle
+      });
+
+      const nextStore = updateStore((current) => {
+        current.crmState.events = [event, ...(current.crmState.events || [])].slice(0, CRM_EVENT_LIMIT);
+
+        if (lead.captureType !== 'whatsapp-click') {
+          current.crmState.leads = [lead, ...(current.crmState.leads || [])].slice(0, CRM_LEAD_LIMIT);
+        }
+
+        current.crmState.updatedAt = new Date().toISOString();
+        return withCleanSessions(current);
+      });
+
+      json(
+        response,
+        202,
+        {
+          ok: true,
+          captureType: lead.captureType,
+          totals: {
+            leads: nextStore.crmState.leads.length,
+            events: nextStore.crmState.events.length
+          }
+        },
+        corsHeaders
+      );
       return;
     }
 
@@ -199,6 +390,14 @@ const server = http.createServer(async (request, response) => {
       if (!context) return;
       const store = withCleanSessions(readStore());
       json(response, 200, store.editorialState, corsHeaders);
+      return;
+    }
+
+    if (request.method === 'GET' && pathname === '/api/crm-state') {
+      const context = requireAuth(request, response, corsHeaders);
+      if (!context) return;
+      const store = withCleanSessions(readStore());
+      json(response, 200, store.crmState, corsHeaders);
       return;
     }
 

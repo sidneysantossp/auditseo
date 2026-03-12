@@ -1,3 +1,5 @@
+const rawCrmCaptureEndpoint = import.meta.env.PUBLIC_CMS_CAPTURE_ENDPOINT?.trim?.() || '';
+
 export const siteMetadata = {
   brandName: 'AUDITSEO',
   legalName: 'AUDITSEO',
@@ -27,6 +29,7 @@ export const siteMetadata = {
     facebook: 'https://facebook.com/auditseo'
   },
   forms: {
-    diagnosticEndpoint: 'https://formsubmit.co/ajax/sid.websp@gmail.com'
+    diagnosticEndpoint: 'https://formsubmit.co/ajax/sid.websp@gmail.com',
+    crmCaptureEndpoint: rawCrmCaptureEndpoint
   }
 } as const;

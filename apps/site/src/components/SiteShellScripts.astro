@@ -1,3 +1,12 @@
+---
+import { siteMetadata } from '../data/site';
+---
+<script
+  is:inline
+  type="application/json"
+  id="auditseo-crm-capture-config"
+  set:html={JSON.stringify({ endpoint: siteMetadata.forms.crmCaptureEndpoint })}
+></script>
 <script is:inline>
   (() => {
     const body = document.body;
@@ -70,6 +79,58 @@
       };
     };
 
+    const captureConfigNode = document.getElementById('auditseo-crm-capture-config');
+    let captureEndpoint = '';
+
+    if (captureConfigNode?.textContent) {
+      try {
+        captureEndpoint = JSON.parse(captureConfigNode.textContent).endpoint || '';
+      } catch {
+        captureEndpoint = '';
+      }
+    }
+
+    const sendLeadCapture = async (payload, options = {}) => {
+      if (!captureEndpoint) {
+        return { ok: false, skipped: true };
+      }
+
+      const context = getAttributionContext();
+      const body = {
+        source: 'site',
+        pagePath: context.pagePath,
+        pageUrl: context.pageUrl,
+        pageTitle: context.pageTitle,
+        firstLandingUrl: context.firstLandingUrl,
+        referrer: context.referrer,
+        utm: context.utm,
+        ...payload
+      };
+
+      if (options.beacon && navigator.sendBeacon) {
+        const blob = new Blob([JSON.stringify(body)], { type: 'application/json' });
+        return {
+          ok: navigator.sendBeacon(captureEndpoint, blob),
+          mode: 'beacon'
+        };
+      }
+
+      const response = await fetch(captureEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(body),
+        keepalive: options.keepalive === true
+      });
+
+      return {
+        ok: response.ok,
+        mode: 'fetch'
+      };
+    };
+
     const buildTrackedWhatsappUrl = (rawUrl) => {
       const context = getAttributionContext();
       const url = new URL(rawUrl, window.location.origin);
@@ -97,6 +158,10 @@
       getContext: getAttributionContext,
       buildTrackedWhatsappUrl
     };
+    window.auditseoLeadCapture = {
+      getEndpoint: () => captureEndpoint,
+      send: sendLeadCapture
+    };
 
     const enhanceWhatsappLinks = () => {
       document.querySelectorAll('a[href*="wa.me/5511996384376"], a[href*="api.whatsapp.com/send"]').forEach((link) => {
@@ -105,6 +170,14 @@
 
         link.dataset.whatsappTracked = 'true';
         link.addEventListener('click', () => {
+          void sendLeadCapture(
+            {
+              captureType: 'whatsapp-click',
+              channel: 'whatsapp',
+              anchorText: link.textContent?.trim() || link.getAttribute('aria-label') || 'WhatsApp'
+            },
+            { beacon: true }
+          ).catch(() => null);
           link.href = buildTrackedWhatsappUrl(link.href);
         });
       });

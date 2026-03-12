@@ -52,6 +52,20 @@ import { siteMetadata } from '../data/site';
           throw new Error('Falha ao enviar o formulario de contato.');
         }
 
+        try {
+          await window.auditseoLeadCapture?.send?.({
+            captureType: 'contact-form',
+            channel: 'form',
+            name: payload.Nome,
+            email: payload.Email,
+            company: payload.Empresa,
+            site: payload.Site,
+            message: payload.Mensagem
+          });
+        } catch (captureError) {
+          console.error('Contact lead capture error', captureError);
+        }
+
         form.reset();
         form.hidden = true;
         success.hidden = false;
