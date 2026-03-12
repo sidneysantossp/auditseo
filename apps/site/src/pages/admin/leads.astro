@@ -1,0 +1,59 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+<AdminLayout
+  title="Leads"
+  description="Leitura comercial de entrada, temperatura, origem e capacidade de fechamento dentro do ecossistema da AUDITSEO."
+  eyebrow="CRM / Leads"
+>
+  <div class="admin-banner">
+    <strong>Objetivo comercial</strong>
+    <div>
+      Capturar, qualificar e organizar demanda antes da proposta. O lead precisa entrar no sistema com contexto, não só com nome e telefone.
+    </div>
+  </div>
+
+  <section class="admin-grid admin-grid--metrics" data-admin-crm-kpis="leads"></section>
+
+  <section class="admin-content-card admin-section" data-admin-crm-page="leads">
+    <div class="admin-section-head">
+      <div>
+        <div class="admin-card-eyebrow">Inventário comercial</div>
+        <h2 class="admin-section-title">Leads em aberto</h2>
+      </div>
+      <div class="admin-toolbar">
+        <button class="admin-topbar__button admin-topbar__button--primary" type="button" data-admin-crm-open-lead>
+          + Novo lead
+        </button>
+      </div>
+    </div>
+
+    <div class="admin-filters">
+      <input class="admin-field" data-admin-crm-filter="search" type="search" placeholder="Buscar empresa ou contato" />
+      <select class="admin-field" data-admin-crm-filter="stage">
+        <option value="">Todas as etapas</option>
+      </select>
+      <select class="admin-field" data-admin-crm-filter="segment">
+        <option value="">Todos os segmentos</option>
+      </select>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Empresa</th>
+            <th>Contato</th>
+            <th>Serviço</th>
+            <th>Valor</th>
+            <th>Etapa</th>
+            <th>Temperatura</th>
+            <th>Origem</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody data-admin-crm-leads-rows></tbody>
+      </table>
+    </div>
+  </section>
+</AdminLayout>

@@ -16,9 +16,30 @@ const primaryNav: NavItem[] = [
   {
     label: 'Dashboard',
     path: '/admin/',
-    description: 'Leitura executiva da operação editorial',
+    description: 'Leitura executiva da operação',
     icon: '📊'
   },
+  {
+    label: 'Pipeline',
+    path: '/admin/pipeline/',
+    description: 'Etapas comerciais e negociação',
+    icon: '📈'
+  },
+  {
+    label: 'Leads',
+    path: '/admin/leads/',
+    description: 'Entrada comercial e origem da demanda',
+    icon: '🧲'
+  },
+  {
+    label: 'Atividades',
+    path: '/admin/atividades/',
+    description: 'Follow-ups, reuniões e cadência',
+    icon: '🗓️'
+  },
+];
+
+const editorialNav: NavItem[] = [
   {
     label: 'Conteúdos',
     path: '/admin/conteudos/',
@@ -54,9 +75,24 @@ function isActive(path: string) {
   </div>
 
   <div class="admin-sidebar__section">
-    <div class="admin-sidebar__heading">Operação</div>
+    <div class="admin-sidebar__heading">CRM</div>
     <nav class="admin-sidebar__nav" aria-label="Navegação do painel">
       {primaryNav.map((item) => (
+        <a class:list={['admin-sidebar__link', isActive(item.path) && 'is-active']} href={item.path}>
+          <span class="admin-sidebar__link-head">
+            <span class="admin-sidebar__icon" aria-hidden="true">{item.icon}</span>
+            <span class="admin-sidebar__link-label">{item.label}</span>
+          </span>
+          <span class="admin-sidebar__link-copy">{item.description}</span>
+        </a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="admin-sidebar__section">
+    <div class="admin-sidebar__heading">Editorial</div>
+    <nav class="admin-sidebar__nav" aria-label="Navegação editorial do painel">
+      {editorialNav.map((item) => (
         <a class:list={['admin-sidebar__link', isActive(item.path) && 'is-active']} href={item.path}>
           <span class="admin-sidebar__link-head">
             <span class="admin-sidebar__icon" aria-hidden="true">{item.icon}</span>
@@ -80,6 +116,10 @@ function isActive(path: string) {
   </div>
 
   <div class="admin-sidebar__section admin-sidebar__section--footer">
+    <div class="admin-sidebar__user">
+      <strong>Acesso aberto</strong>
+      <span>Painel operacional no diretório `/admin`</span>
+    </div>
     <a class="admin-sidebar__ghost-link" href="/">Abrir site público</a>
     <a class="admin-sidebar__ghost-link" href="/metodologia/">Ver metodologia</a>
   </div>

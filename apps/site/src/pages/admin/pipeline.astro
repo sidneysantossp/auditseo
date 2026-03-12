@@ -1,0 +1,45 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+<AdminLayout
+  title="Pipeline"
+  description="Kanban comercial para mover oportunidade de prospecção até ganho, sem perder temperatura, valor ou próximo passo."
+  eyebrow="CRM / Pipeline"
+>
+  <div class="admin-banner">
+    <strong>Regra de operação</strong>
+    <div>
+      Lead não pode ficar parado sem responsável, próxima ação e temperatura visível. O pipeline precisa mostrar risco, não só volume.
+    </div>
+  </div>
+
+  <section class="admin-grid admin-grid--metrics" data-admin-crm-kpis="pipeline"></section>
+
+  <section class="admin-content-card admin-section" data-admin-crm-page="pipeline">
+    <div class="admin-section-head">
+      <div>
+        <div class="admin-card-eyebrow">Kanban comercial</div>
+        <h2 class="admin-section-title">Movimento por etapa</h2>
+      </div>
+      <div class="admin-toolbar">
+        <button class="admin-topbar__button admin-topbar__button--primary" type="button" data-admin-crm-open-lead>
+          + Novo lead
+        </button>
+      </div>
+    </div>
+
+    <div class="admin-filters">
+      <select class="admin-field" data-admin-crm-filter="temp">
+        <option value="">Todas as temperaturas</option>
+      </select>
+      <select class="admin-field" data-admin-crm-filter="service">
+        <option value="">Todos os serviços</option>
+      </select>
+      <select class="admin-field" data-admin-crm-filter="source">
+        <option value="">Todas as origens</option>
+      </select>
+    </div>
+
+    <div class="admin-board admin-board--pipeline" data-admin-crm-pipeline-board></div>
+  </section>
+</AdminLayout>

@@ -1,6 +1,8 @@
 ---
 import SeoHead from '../components/SeoHead.astro';
-import AdminTopbar from '../components/admin/AdminTopbar.astro';
+import AdminSidebar from '../components/admin/AdminSidebar.astro';
+import AdminCrmModals from '../components/admin/AdminCrmModals.astro';
+import AdminShellScripts from '../components/admin/AdminShellScripts.astro';
 import '../styles/tokens.css';
 import '../styles/admin.css';
 
@@ -20,28 +22,44 @@ const currentPath = Astro.url.pathname;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   </head>
   <body class="admin-body">
-    <div class="admin-app">
-      <AdminTopbar currentPath={currentPath} />
+    <button class="admin-mobile-toggle" type="button" aria-label="Abrir navegação do admin" data-admin-toggle>
+      ☰
+    </button>
 
-      <main class="admin-content">
+    <div class="admin-app">
+      <AdminSidebar currentPath={currentPath} />
+
+      <main class="admin-main">
         <section class="admin-page-head">
-          <div class="admin-page-head__row">
+          <div class="admin-page-head__main">
+            <div class="admin-page-head__eyebrow">{eyebrow}</div>
             <h1 class="admin-page-head__title">{title}</h1>
-            <span class="admin-page-head__badge">{eyebrow}</span>
+            <p class="admin-page-head__description">{description}</p>
           </div>
-          <p class="admin-page-head__description">{description}</p>
+          <div class="admin-page-head__actions">
+            <div class="admin-session" data-admin-session-box></div>
+            <a class="admin-topbar__button admin-topbar__button--ghost" href="/politica-editorial/">
+              Governança editorial
+            </a>
+            <a class="admin-topbar__button admin-topbar__button--primary" href="/blog/">
+              Ver blog público
+            </a>
+          </div>
         </section>
 
         <slot />
       </main>
     </div>
 
+    <AdminCrmModals />
+    <AdminShellScripts />
     <script is:inline type="module" src="/admin-client.js"></script>
+    <script is:inline type="module" src="/admin-crm.js"></script>
   </body>
 </html>

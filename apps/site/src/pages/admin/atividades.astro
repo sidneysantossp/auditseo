@@ -1,0 +1,45 @@
+---
+import AdminLayout from '../../layouts/AdminLayout.astro';
+---
+<AdminLayout
+  title="Atividades"
+  description="Follow-ups, reuniões, emails e notas amarrados aos leads para manter cadência comercial e previsibilidade operacional."
+  eyebrow="CRM / Atividades"
+>
+  <div class="admin-banner">
+    <strong>Cadência comercial</strong>
+    <div>
+      Atividade sem data ou sem dono não é processo. Esta visão existe para reduzir atraso e aumentar taxa de resposta nas negociações.
+    </div>
+  </div>
+
+  <section class="admin-grid admin-grid--metrics" data-admin-crm-kpis="activities"></section>
+
+  <section class="admin-content-card admin-section" data-admin-crm-page="activities">
+    <div class="admin-section-head">
+      <div>
+        <div class="admin-card-eyebrow">Ritmo operacional</div>
+        <h2 class="admin-section-title">Fila de atividades</h2>
+      </div>
+      <div class="admin-toolbar">
+        <button class="admin-topbar__button admin-topbar__button--primary" type="button" data-admin-crm-open-activity>
+          + Nova atividade
+        </button>
+      </div>
+    </div>
+
+    <div class="admin-filters">
+      <select class="admin-field" data-admin-crm-filter="activityType">
+        <option value="">Todos os tipos</option>
+      </select>
+      <select class="admin-field" data-admin-crm-filter="activityStatus">
+        <option value="">Todos os status</option>
+        <option value="pendente">Pendente</option>
+        <option value="concluida">Concluída</option>
+        <option value="atrasada">Atrasada</option>
+      </select>
+    </div>
+
+    <div class="admin-activity-list" data-admin-crm-activities-list></div>
+  </section>
+</AdminLayout>

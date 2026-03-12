@@ -1,0 +1,139 @@
+<div class="admin-modal-overlay" data-admin-modal="lead" hidden>
+  <div class="admin-modal">
+    <div class="admin-modal__header">
+      <h2 class="admin-modal__title" data-admin-modal-title="lead">Novo lead</h2>
+      <button class="admin-modal__close" type="button" data-admin-modal-close="lead" aria-label="Fechar modal">
+        ×
+      </button>
+    </div>
+    <form class="admin-modal__body" data-admin-crm-form="lead">
+      <input type="hidden" name="id" />
+      <div class="admin-form-row">
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadCompany">Empresa</label>
+          <input class="admin-field" id="crmLeadCompany" name="company" required />
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadContact">Contato</label>
+          <input class="admin-field" id="crmLeadContact" name="contact" required />
+        </div>
+      </div>
+      <div class="admin-form-row">
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadEmail">Email</label>
+          <input class="admin-field" id="crmLeadEmail" name="email" type="email" />
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadPhone">Telefone</label>
+          <input class="admin-field" id="crmLeadPhone" name="phone" />
+        </div>
+      </div>
+      <div class="admin-form-row">
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadService">Serviço</label>
+          <select class="admin-field" id="crmLeadService" name="service"></select>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadValue">Valor mensal (R$)</label>
+          <input class="admin-field" id="crmLeadValue" name="value" type="number" min="0" step="0.01" />
+        </div>
+      </div>
+      <div class="admin-form-row">
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadStage">Etapa</label>
+          <select class="admin-field" id="crmLeadStage" name="stage"></select>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadTemp">Temperatura</label>
+          <select class="admin-field" id="crmLeadTemp" name="temp">
+            <option value="Hot">Hot</option>
+            <option value="Warm">Warm</option>
+            <option value="Cold">Cold</option>
+          </select>
+        </div>
+      </div>
+      <div class="admin-form-row">
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadSegment">Segmento</label>
+          <select class="admin-field" id="crmLeadSegment" name="segment"></select>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmLeadSource">Origem</label>
+          <select class="admin-field" id="crmLeadSource" name="source"></select>
+        </div>
+      </div>
+      <div class="admin-form-group">
+        <label class="admin-form-label" for="crmLeadNotes">Notas</label>
+        <textarea class="admin-field admin-field--textarea" id="crmLeadNotes" name="notes" rows="4"></textarea>
+      </div>
+      <div class="admin-modal__footer">
+        <button class="admin-topbar__button admin-topbar__button--ghost" type="button" data-admin-modal-close="lead">
+          Cancelar
+        </button>
+        <button class="admin-topbar__button admin-topbar__button--primary" type="submit">
+          Salvar lead
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="admin-modal-overlay" data-admin-modal="activity" hidden>
+  <div class="admin-modal">
+    <div class="admin-modal__header">
+      <h2 class="admin-modal__title" data-admin-modal-title="activity">Nova atividade</h2>
+      <button class="admin-modal__close" type="button" data-admin-modal-close="activity" aria-label="Fechar modal">
+        ×
+      </button>
+    </div>
+    <form class="admin-modal__body" data-admin-crm-form="activity">
+      <input type="hidden" name="id" />
+      <div class="admin-form-row">
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmActivityLead">Lead</label>
+          <select class="admin-field" id="crmActivityLead" name="leadId"></select>
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmActivityType">Tipo</label>
+          <select class="admin-field" id="crmActivityType" name="type">
+            <option value="call">Ligação</option>
+            <option value="email">Email</option>
+            <option value="meeting">Reunião</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="followup">Follow-up</option>
+            <option value="note">Nota</option>
+          </select>
+        </div>
+      </div>
+      <div class="admin-form-row">
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmActivityDate">Data</label>
+          <input class="admin-field" id="crmActivityDate" name="date" type="date" />
+        </div>
+        <div class="admin-form-group">
+          <label class="admin-form-label" for="crmActivityTime">Hora</label>
+          <input class="admin-field" id="crmActivityTime" name="time" type="time" />
+        </div>
+      </div>
+      <div class="admin-form-group">
+        <label class="admin-form-label" for="crmActivityDesc">Descrição</label>
+        <textarea class="admin-field admin-field--textarea" id="crmActivityDesc" name="desc" rows="4"></textarea>
+      </div>
+      <div class="admin-form-group">
+        <label class="admin-form-label" for="crmActivityStatus">Status</label>
+        <select class="admin-field" id="crmActivityStatus" name="status">
+          <option value="pendente">Pendente</option>
+          <option value="concluida">Concluída</option>
+        </select>
+      </div>
+      <div class="admin-modal__footer">
+        <button class="admin-topbar__button admin-topbar__button--ghost" type="button" data-admin-modal-close="activity">
+          Cancelar
+        </button>
+        <button class="admin-topbar__button admin-topbar__button--primary" type="submit">
+          Salvar atividade
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
