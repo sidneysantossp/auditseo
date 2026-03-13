@@ -1,8 +1,9 @@
 import http from 'node:http';
-import { URL } from 'node:url';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 import { getCorsHeaders, json, noContent, readJsonBody } from './lib/http.mjs';
 import { hashPassword, hashToken, verifyPassword, generateSessionToken } from './lib/security.mjs';
-import { ensureStore, readStore, updateStore } from './lib/store.mjs';
+import { ensureStore, getStoreMode, readStore, updateStore } from './lib/store.mjs';
 
 const PORT = Number(process.env.PORT || 4322);
 const HOST = process.env.HOST || '0.0.0.0';
@@ -14,8 +15,6 @@ const allowedOrigins = (process.env.CMS_ALLOWED_ORIGINS ||
   .split(',')
   .map((item) => item.trim())
   .filter(Boolean);
-
-ensureStore();
 
 function withCleanSessions(store) {
   const now = Date.now();
@@ -36,11 +35,11 @@ function getTokenFromRequest(request) {
   return header.slice('Bearer '.length).trim();
 }
 
-function getSessionContext(request) {
+async function getSessionContext(request) {
   const token = getTokenFromRequest(request);
   if (!token) return null;
 
-  const store = withCleanSessions(readStore());
+  const store = withCleanSessions(await readStore());
   const tokenHash = hashToken(token);
   const session = store.sessions.find((item) => item.tokenHash === tokenHash);
   if (!session) return null;
@@ -55,8 +54,8 @@ function getSessionContext(request) {
   };
 }
 
-function requireAuth(request, response, corsHeaders) {
-  const context = getSessionContext(request);
+async function requireAuth(request, response, corsHeaders) {
+  const context = await getSessionContext(request);
   if (!context) {
     json(response, 401, { error: 'unauthorized' }, corsHeaders);
     return null;
@@ -160,7 +159,7 @@ function normalizeLeadCapturePayload(payload, request) {
     utm,
     createdAt,
     ip: sanitizeText(
-      request.headers['x-forwarded-for'] || request.socket.remoteAddress || '',
+      request.headers['x-forwarded-for'] || request.socket?.remoteAddress || '',
       140
     ),
     userAgent: sanitizeText(request.headers['user-agent'] || '', 400)
@@ -225,10 +224,10 @@ function summarizeCrmState(store) {
   };
 }
 
-const server = http.createServer(async (request, response) => {
+export async function handleRequest(request, response) {
   const origin = request.headers.origin;
   const corsHeaders = getCorsHeaders(origin, allowedOrigins);
-  const url = new URL(request.url || '/', `http://${request.headers.host}`);
+  const url = new URL(request.url || '/', `http://${request.headers.host || 'localhost'}`);
   const pathname = url.pathname;
 
   if (request.method === 'OPTIONS') {
@@ -237,19 +236,19 @@ const server = http.createServer(async (request, response) => {
   }
 
   try {
-    if (request.method === 'GET' && pathname === '/health') {
-      json(response, 200, { ok: true, service: 'auditseo-cms-api', mode: 'file-store' }, corsHeaders);
+    if (request.method === 'GET' && (pathname === '/health' || pathname === '/api/health')) {
+      json(response, 200, { ok: true, service: 'auditseo-cms-api', mode: getStoreMode() }, corsHeaders);
       return;
     }
 
     if (request.method === 'GET' && pathname === '/api/bootstrap-status') {
-      const store = withCleanSessions(readStore());
+      const store = withCleanSessions(await readStore());
       json(response, 200, { hasUsers: store.users.length > 0 }, corsHeaders);
       return;
     }
 
     if (request.method === 'GET' && pathname === '/api/public/crm-summary') {
-      const store = withCleanSessions(readStore());
+      const store = withCleanSessions(await readStore());
       json(response, 200, summarizeCrmState(store), corsHeaders);
       return;
     }
@@ -262,7 +261,7 @@ const server = http.createServer(async (request, response) => {
         pageTitle: context.pageTitle
       });
 
-      const nextStore = updateStore((current) => {
+      const nextStore = await updateStore((current) => {
         current.crmState.events = [event, ...(current.crmState.events || [])].slice(0, CRM_EVENT_LIMIT);
 
         if (lead.captureType !== 'whatsapp-click') {
@@ -290,7 +289,7 @@ const server = http.createServer(async (request, response) => {
     }
 
     if (request.method === 'POST' && pathname === '/api/bootstrap') {
-      const store = withCleanSessions(readStore());
+      const store = withCleanSessions(await readStore());
       if (store.users.length > 0) {
         json(response, 409, { error: 'already_bootstrapped' }, corsHeaders);
         return;
@@ -310,7 +309,7 @@ const server = http.createServer(async (request, response) => {
       const tokenHash = hashToken(token);
       const expiresAt = new Date(Date.now() + SESSION_TTL_DAYS * 24 * 60 * 60 * 1000).toISOString();
 
-      const nextStore = updateStore((current) => {
+      const nextStore = await updateStore((current) => {
         current.users.push({
           email,
           passwordHash: hashPassword(password),
@@ -334,7 +333,7 @@ const server = http.createServer(async (request, response) => {
       const body = await readJsonBody(request);
       const email = String(body.email || '').trim().toLowerCase();
       const password = String(body.password || '');
-      const store = withCleanSessions(readStore());
+      const store = withCleanSessions(await readStore());
       const user = store.users.find((item) => item.email === email);
 
       if (!user || !verifyPassword(password, user.passwordHash)) {
@@ -347,7 +346,7 @@ const server = http.createServer(async (request, response) => {
       const createdAt = new Date().toISOString();
       const expiresAt = new Date(Date.now() + SESSION_TTL_DAYS * 24 * 60 * 60 * 1000).toISOString();
 
-      updateStore((current) => {
+      await updateStore((current) => {
         current.sessions.push({
           email,
           tokenHash,
@@ -362,7 +361,7 @@ const server = http.createServer(async (request, response) => {
     }
 
     if (request.method === 'GET' && pathname === '/api/session') {
-      const context = requireAuth(request, response, corsHeaders);
+      const context = await requireAuth(request, response, corsHeaders);
       if (!context) return;
       json(response, 200, { user: sanitizeUser(context.user), expiresAt: context.session.expiresAt }, corsHeaders);
       return;
@@ -375,7 +374,7 @@ const server = http.createServer(async (request, response) => {
         return;
       }
 
-      updateStore((current) => {
+      await updateStore((current) => {
         const tokenHash = hashToken(token);
         current.sessions = current.sessions.filter((item) => item.tokenHash !== tokenHash);
         return withCleanSessions(current);
@@ -386,23 +385,23 @@ const server = http.createServer(async (request, response) => {
     }
 
     if (request.method === 'GET' && pathname === '/api/editorial-state') {
-      const context = requireAuth(request, response, corsHeaders);
+      const context = await requireAuth(request, response, corsHeaders);
       if (!context) return;
-      const store = withCleanSessions(readStore());
+      const store = withCleanSessions(await readStore());
       json(response, 200, store.editorialState, corsHeaders);
       return;
     }
 
     if (request.method === 'GET' && pathname === '/api/crm-state') {
-      const context = requireAuth(request, response, corsHeaders);
+      const context = await requireAuth(request, response, corsHeaders);
       if (!context) return;
-      const store = withCleanSessions(readStore());
+      const store = withCleanSessions(await readStore());
       json(response, 200, store.crmState, corsHeaders);
       return;
     }
 
     if (request.method === 'PUT' && pathname.startsWith('/api/editorial-state/items/')) {
-      const context = requireAuth(request, response, corsHeaders);
+      const context = await requireAuth(request, response, corsHeaders);
       if (!context) return;
 
       const id = decodeURIComponent(pathname.replace('/api/editorial-state/items/', ''));
@@ -414,7 +413,7 @@ const server = http.createServer(async (request, response) => {
       const body = await readJsonBody(request);
       const payload = normalizeEditorialPayload(body);
 
-      const nextStore = updateStore((current) => {
+      const nextStore = await updateStore((current) => {
         current.editorialState.items[id] = payload;
         current.editorialState.updatedAt = new Date().toISOString();
         return withCleanSessions(current);
@@ -443,8 +442,25 @@ const server = http.createServer(async (request, response) => {
     console.error(error);
     json(response, 500, { error: 'internal_error' }, corsHeaders);
   }
-});
+}
 
-server.listen(PORT, HOST, () => {
-  console.log(`AUDITSEO CMS API em http://${HOST}:${PORT}`);
-});
+export function createServer() {
+  return http.createServer(handleRequest);
+}
+
+async function startServer() {
+  await ensureStore();
+  const server = createServer();
+  server.listen(PORT, HOST, () => {
+    console.log(`AUDITSEO CMS API em http://${HOST}:${PORT}`);
+  });
+}
+
+const isEntrypoint = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+
+if (isEntrypoint) {
+  startServer().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}

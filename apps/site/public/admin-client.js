@@ -6,6 +6,7 @@ const API_SESSION_KEY = 'auditseo-admin-api-session-v1';
 const runtime = {
   mode: 'local',
   apiBase: null,
+  crmSummaryEndpoint: null,
   session: {
     email: 'Acesso aberto',
     authMode: 'open'
@@ -64,6 +65,23 @@ function inferApiBase() {
   }
 
   return `${protocol}//cms.auditseo.com.br`;
+}
+
+function inferCrmSummaryEndpoint() {
+  const explicit = window.__AUDITSEO_ADMIN_CONFIG__?.crmSummaryEndpoint;
+  const { protocol, hostname } = window.location;
+
+  if (hostname === 'localhost') {
+    return `${protocol}//127.0.0.1:4322/api/public/crm-summary`;
+  }
+
+  if (hostname === '127.0.0.1' || /^\d+\.\d+\.\d+\.\d+$/.test(hostname)) {
+    return `${protocol}//${hostname}:4322/api/public/crm-summary`;
+  }
+
+  if (explicit) return explicit;
+
+  return 'https://auditseo-cms-api.vercel.app/api/public/crm-summary';
 }
 
 function getLocalBootstrap() {
@@ -294,6 +312,116 @@ function renderSessionBox() {
   `;
 }
 
+function getCaptureTypeLabel(value) {
+  const labels = {
+    'diagnostic-form': 'Diagnóstico',
+    'contact-form': 'Contato',
+    'whatsapp-click': 'WhatsApp',
+    unknown: 'Desconhecido'
+  };
+
+  return labels[value] || value || 'Desconhecido';
+}
+
+function renderCrmCaptureSummary(summary) {
+  const root = document.querySelector('[data-admin-capture-summary-root]');
+  if (!root) return;
+
+  const cards = root.querySelector('[data-admin-capture-summary-cards]');
+  const pages = root.querySelector('[data-admin-capture-pages]');
+  const types = root.querySelector('[data-admin-capture-types]');
+  if (!cards || !pages || !types) return;
+
+  const totals = summary?.totals || {
+    leads: 0,
+    events: 0,
+    forms: 0,
+    whatsappClicks: 0
+  };
+
+  cards.innerHTML = [
+    {
+      label: 'Leads capturados',
+      value: totals.leads,
+      copy: 'Entradas reais registradas via formulários do site.'
+    },
+    {
+      label: 'Eventos totais',
+      value: totals.events,
+      copy: 'Soma de formulários e cliques em CTA rastreados.'
+    },
+    {
+      label: 'Formulários',
+      value: totals.forms,
+      copy: 'Captações vindas de contato e diagnóstico.'
+    },
+    {
+      label: 'WhatsApp',
+      value: totals.whatsappClicks,
+      copy: 'Cliques em links de WhatsApp com contexto de origem.'
+    }
+  ]
+    .map(
+      (item) => `
+        <article class="admin-stat-card">
+          <div class="admin-card-eyebrow">${escapeHtml(item.label)}</div>
+          <div class="admin-stat-value">${escapeHtml(item.value)}</div>
+          <p class="admin-stat-copy">${escapeHtml(item.copy)}</p>
+        </article>
+      `
+    )
+    .join('');
+
+  pages.innerHTML = (summary?.topPages || []).length
+    ? summary.topPages
+        .map(
+          (item) => `
+            <tr>
+              <td><a href="${escapeHtml(item.path || '/')}" target="_blank" rel="noreferrer">${escapeHtml(item.path || '/')}</a></td>
+              <td>${escapeHtml(item.count || 0)}</td>
+            </tr>
+          `
+        )
+        .join('')
+    : '<tr><td colspan="2">Nenhuma captura registrada ainda.</td></tr>';
+
+  types.innerHTML = (summary?.captureTypes || []).length
+    ? summary.captureTypes
+        .map(
+          (item) => `
+            <li class="admin-list-item">
+              <div class="admin-list-label">${escapeHtml(getCaptureTypeLabel(item.captureType))}</div>
+              <strong class="admin-list-title">${escapeHtml(item.count || 0)} eventos</strong>
+              <div class="admin-list-meta">${escapeHtml(item.captureType || 'unknown')}</div>
+            </li>
+          `
+        )
+        .join('')
+    : '<li class="admin-list-item">Nenhum tipo de captura registrado ainda.</li>';
+
+  root.hidden = false;
+}
+
+async function loadCrmCaptureSummary() {
+  const root = document.querySelector('[data-admin-capture-summary-root]');
+  if (!root) return;
+
+  runtime.crmSummaryEndpoint = inferCrmSummaryEndpoint();
+
+  try {
+    const response = await fetch(runtime.crmSummaryEndpoint, {
+      headers: { Accept: 'application/json' }
+    });
+
+    if (!response.ok) return;
+
+    const summary = await response.json();
+    renderCrmCaptureSummary(summary);
+  } catch {
+    // The summary is supplemental. Keep the dashboard usable if the endpoint is unavailable.
+  }
+}
+
 async function applyAuthGate() {
   const auth = document.querySelector('[data-admin-auth]');
   if (!auth) return;
@@ -476,6 +604,7 @@ async function init() {
   renderSessionBox();
   runtime.editorialState = getLocalEditorialState();
 
+  await loadCrmCaptureSummary();
   renderManagedTable();
   renderWorkflowBoard();
 }

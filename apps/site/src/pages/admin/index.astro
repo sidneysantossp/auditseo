@@ -29,6 +29,52 @@ const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
     ))}
   </section>
 
+  <section class="admin-section" data-admin-capture-summary-root hidden>
+    <div class="admin-section-head">
+      <div>
+        <div class="admin-card-eyebrow">Atribuição</div>
+        <h2 class="admin-section-title">Resumo de captação do site</h2>
+      </div>
+      <p class="admin-section-copy">
+        Resumo anônimo da origem das conversões capturadas pelo site público. Serve para identificar páginas e tipos de entrada com mais tração.
+      </p>
+    </div>
+
+    <div class="admin-grid admin-grid--metrics" data-admin-capture-summary-cards></div>
+
+    <div class="admin-grid admin-grid--two admin-section">
+      <article class="admin-content-card">
+        <div class="admin-section-head">
+          <div>
+            <div class="admin-card-eyebrow">Top páginas</div>
+            <h3 class="admin-section-title">Páginas com mais origem de captura</h3>
+          </div>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Página</th>
+                <th>Capturas</th>
+              </tr>
+            </thead>
+            <tbody data-admin-capture-pages></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="admin-content-card">
+        <div class="admin-section-head">
+          <div>
+            <div class="admin-card-eyebrow">Tipos</div>
+            <h3 class="admin-section-title">Mix de conversão</h3>
+          </div>
+        </div>
+        <ul class="admin-list" data-admin-capture-types></ul>
+      </article>
+    </div>
+  </section>
+
   <AdminDashboardCharts categories={dashboard.categoryCoverage} clusters={dashboard.clusterSnapshots} />
 
   <section class="admin-section">
