@@ -2,7 +2,6 @@
 interface NavItem {
   label: string;
   path: string;
-  description: string;
   icon: string;
 }
 
@@ -16,26 +15,22 @@ const primaryNav: NavItem[] = [
   {
     label: 'Dashboard',
     path: '/admin/',
-    description: 'Leitura executiva da operação',
-    icon: '📊'
+    icon: 'dashboard'
   },
   {
     label: 'Pipeline',
     path: '/admin/pipeline/',
-    description: 'Etapas comerciais e negociação',
-    icon: '📈'
+    icon: 'pipeline'
   },
   {
     label: 'Leads',
     path: '/admin/leads/',
-    description: 'Entrada comercial e origem da demanda',
-    icon: '🧲'
+    icon: 'leads'
   },
   {
     label: 'Atividades',
     path: '/admin/atividades/',
-    description: 'Follow-ups, reuniões e cadência',
-    icon: '🗓️'
+    icon: 'activities'
   },
 ];
 
@@ -43,20 +38,17 @@ const editorialNav: NavItem[] = [
   {
     label: 'Conteúdos',
     path: '/admin/conteudos/',
-    description: 'Inventário, categorias e backlog',
-    icon: '🗂️'
+    icon: 'content'
   },
   {
     label: 'Clusters',
     path: '/admin/clusters/',
-    description: 'Mapa mestre e prioridade comercial',
-    icon: '🧭'
+    icon: 'clusters'
   },
   {
     label: 'Workflow',
     path: '/admin/workflow/',
-    description: 'Fila, governança e operação',
-    icon: '⚙️'
+    icon: 'workflow'
   }
 ];
 
@@ -66,6 +58,27 @@ function isActive(path: string) {
   }
 
   return currentPath.startsWith(path);
+}
+
+function iconPath(icon: string) {
+  switch (icon) {
+    case 'dashboard':
+      return 'M4 5.75A1.75 1.75 0 0 1 5.75 4h4.5A1.75 1.75 0 0 1 12 5.75v4.5A1.75 1.75 0 0 1 10.25 12h-4.5A1.75 1.75 0 0 1 4 10.25zm8 0A1.75 1.75 0 0 1 13.75 4h4.5A1.75 1.75 0 0 1 20 5.75v1.5A1.75 1.75 0 0 1 18.25 9h-4.5A1.75 1.75 0 0 1 12 7.25zm0 8A1.75 1.75 0 0 1 13.75 12h4.5A1.75 1.75 0 0 1 20 13.75v4.5A1.75 1.75 0 0 1 18.25 20h-4.5A1.75 1.75 0 0 1 12 18.25zm-8 1.5A1.75 1.75 0 0 1 5.75 12h1.5A1.75 1.75 0 0 1 9 13.75v4.5A1.75 1.75 0 0 1 7.25 20h-1.5A1.75 1.75 0 0 1 4 18.25z';
+    case 'pipeline':
+      return 'M5 18.25V13m7 5.25V9m7 9.25V5M3.75 20h16.5';
+    case 'leads':
+      return 'M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-7 8a7 7 0 0 1 14 0';
+    case 'activities':
+      return 'M7.75 4v3m8.5-3v3M5 9.25h14M6.75 6h10.5A1.75 1.75 0 0 1 19 7.75v10.5A1.75 1.75 0 0 1 17.25 20H6.75A1.75 1.75 0 0 1 5 18.25V7.75A1.75 1.75 0 0 1 6.75 6Z';
+    case 'content':
+      return 'M6.75 5h10.5A1.75 1.75 0 0 1 19 6.75v10.5A1.75 1.75 0 0 1 17.25 19H6.75A1.75 1.75 0 0 1 5 17.25V6.75A1.75 1.75 0 0 1 6.75 5Zm2.25 4h6m-6 3h6m-6 3h4';
+    case 'clusters':
+      return 'M12 5.5 18 9v6l-6 3.5L6 15V9ZM12 5.5V12m0 0 6-3m-6 3-6-3';
+    case 'workflow':
+      return 'M5 7h8m0 0-2.5-2.5M13 7l-2.5 2.5M19 17h-8m0 0 2.5-2.5M11 17l2.5 2.5';
+    default:
+      return 'M12 6v12M6 12h12';
+  }
 }
 ---
 <aside class="admin-sidebar" id="admin-sidebar">
@@ -80,10 +93,13 @@ function isActive(path: string) {
       {primaryNav.map((item) => (
         <a class:list={['admin-sidebar__link', isActive(item.path) && 'is-active']} href={item.path}>
           <span class="admin-sidebar__link-head">
-            <span class="admin-sidebar__icon" aria-hidden="true">{item.icon}</span>
+            <span class="admin-sidebar__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d={iconPath(item.icon)} />
+              </svg>
+            </span>
             <span class="admin-sidebar__link-label">{item.label}</span>
           </span>
-          <span class="admin-sidebar__link-copy">{item.description}</span>
         </a>
       ))}
     </nav>
@@ -95,10 +111,13 @@ function isActive(path: string) {
       {editorialNav.map((item) => (
         <a class:list={['admin-sidebar__link', isActive(item.path) && 'is-active']} href={item.path}>
           <span class="admin-sidebar__link-head">
-            <span class="admin-sidebar__icon" aria-hidden="true">{item.icon}</span>
+            <span class="admin-sidebar__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d={iconPath(item.icon)} />
+              </svg>
+            </span>
             <span class="admin-sidebar__link-label">{item.label}</span>
           </span>
-          <span class="admin-sidebar__link-copy">{item.description}</span>
         </a>
       ))}
     </nav>

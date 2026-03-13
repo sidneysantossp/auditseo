@@ -1131,9 +1131,8 @@ body.admin-body {
 }
 
 .admin-sidebar__link {
-  display: grid;
-  gap: 6px;
-  padding: 10px 16px 10px 14px;
+  display: block;
+  padding: 11px 16px 11px 14px;
   color: #aaa;
   text-decoration: none;
   border-left: 3px solid transparent;
@@ -1155,22 +1154,25 @@ body.admin-body {
 
 .admin-sidebar__icon {
   display: inline-flex;
-  width: 18px;
+  width: 16px;
+  height: 16px;
   justify-content: center;
-  font-size: 1rem;
+  align-items: center;
+  color: #d5d0c6;
+  flex: 0 0 16px;
+}
+
+.admin-sidebar__icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
 .admin-sidebar__link-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 500;
-}
-
-.admin-sidebar__link-copy {
-  padding-left: 28px;
-  color: #807c74;
-  font-size: 0.86rem;
-  line-height: 1.35;
+  letter-spacing: 0.08em;
 }
 
 .admin-sidebar__meta-card {
