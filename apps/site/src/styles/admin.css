@@ -947,6 +947,10 @@ body.admin-auth-open {
   backdrop-filter: blur(6px);
 }
 
+.admin-modal-overlay[hidden] {
+  display: none !important;
+}
+
 .admin-modal {
   width: min(760px, 100%);
   max-height: calc(100vh - 48px);
