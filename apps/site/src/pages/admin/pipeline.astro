@@ -13,9 +13,9 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
     </div>
   </div>
 
-  <section class="admin-grid admin-grid--metrics" data-admin-crm-kpis="pipeline"></section>
+  <section class="admin-grid admin-grid--metrics admin-grid--metrics-crm" data-admin-crm-kpis="pipeline"></section>
 
-  <section class="admin-content-card admin-section" data-admin-crm-page="pipeline">
+  <section class="admin-content-card admin-content-card--pipeline admin-section" data-admin-crm-page="pipeline">
     <div class="admin-section-head">
       <div>
         <div class="admin-card-eyebrow">Kanban comercial</div>
@@ -28,7 +28,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
       </div>
     </div>
 
-    <div class="admin-filters">
+    <div class="admin-filters admin-filters--pipeline">
       <select class="admin-field" data-admin-crm-filter="temp">
         <option value="">Todas as temperaturas</option>
       </select>

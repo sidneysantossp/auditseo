@@ -15,6 +15,7 @@ interface Props {
 
 const { title, description, eyebrow } = Astro.props as Props;
 const currentPath = Astro.url.pathname;
+const isCrmPage = eyebrow.startsWith('CRM');
 const crmSummaryEndpoint = (() => {
   const captureEndpoint = siteMetadata.forms.crmCaptureEndpoint?.trim();
 
@@ -42,7 +43,7 @@ const adminConfig = {
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   </head>
-  <body class="admin-body">
+  <body class:list={['admin-body', isCrmPage && 'admin-body--crm']}>
     <button class="admin-mobile-toggle" type="button" aria-label="Abrir navegação do admin" data-admin-toggle>
       ☰
     </button>
@@ -50,8 +51,8 @@ const adminConfig = {
     <div class="admin-app">
       <AdminSidebar currentPath={currentPath} />
 
-      <main class="admin-main">
-        <section class="admin-page-head">
+      <main class:list={['admin-main', isCrmPage && 'admin-main--crm']}>
+        <section class:list={['admin-page-head', isCrmPage && 'admin-page-head--crm']}>
           <div class="admin-page-head__main">
             <div class="admin-page-head__row">
               <div class="admin-page-head__eyebrow">{eyebrow}</div>
