@@ -13,8 +13,6 @@ export const mainNavigation: Array<NavItem> = [
   { label: 'Home', path: '/', match: 'exact' },
   { label: 'Agencia de SEO', path: '/agencia-de-seo/' },
   { label: 'Servicos', path: '/servicos/' },
-  { label: 'Nichos', path: '/nichos/' },
-  { label: 'Cidades', path: '/cidades/' },
   { label: 'Sobre', path: '/sobre/' },
   { label: 'Blog', path: '/blog/' }
 ];
