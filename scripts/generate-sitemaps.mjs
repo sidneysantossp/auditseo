@@ -1,5 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { printLegacyNotice } from './legacy-notice.mjs';
+
+printLegacyNotice('scripts/generate-sitemaps.mjs', 'npm run build');
 
 const DOMAIN = 'https://www.auditseo.com.br';
 const SITE_DIRS = ['servicos', 'nichos', 'saude', 'b2b', 'blog', 'agencia-de-seo', 'sobre'];

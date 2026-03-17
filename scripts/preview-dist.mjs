@@ -1,6 +1,9 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import { printLegacyNotice } from './legacy-notice.mjs';
+
+printLegacyNotice('scripts/preview-dist.mjs', 'npm run preview');
 
 const root = path.join(process.cwd(), 'dist');
 const port = Number(process.env.PORT || 4173);

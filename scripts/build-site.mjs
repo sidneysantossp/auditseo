@@ -1,6 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { printLegacyNotice } from './legacy-notice.mjs';
+
+printLegacyNotice('scripts/build-site.mjs', 'npm run build');
 
 const root = process.cwd();
 const distDir = path.join(root, 'dist');

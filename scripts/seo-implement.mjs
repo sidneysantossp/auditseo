@@ -1,5 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { printLegacyNotice } from './legacy-notice.mjs';
+
+printLegacyNotice('scripts/seo-implement.mjs', 'npm run qa');
 
 const root = process.cwd();
 const DOMAIN = 'https://www.auditseo.com.br';

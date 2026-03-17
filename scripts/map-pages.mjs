@@ -1,5 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { printLegacyNotice } from './legacy-notice.mjs';
+
+printLegacyNotice('scripts/map-pages.mjs', 'npm run qa');
 
 const root = process.cwd();
 const outputDir = path.join(root, 'to-do');

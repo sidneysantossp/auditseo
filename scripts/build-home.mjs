@@ -1,5 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { printLegacyNotice } from './legacy-notice.mjs';
+
+printLegacyNotice('scripts/build-home.mjs', 'npm run dev');
 
 const root = process.cwd();
 const sourceFile = path.join(root, 'index.html');
