@@ -1,12 +1,14 @@
 {
-  "name": "auditseo-static-home-poc",
+  "name": "auditseo-workspace",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "build:home": "node scripts/build-home.mjs",
-    "build:site": "node scripts/build-site.mjs",
-    "build": "npm run build:site",
+    "dev": "npm run site:dev",
+    "build": "npm run site:build",
+    "preview": "npm run site:preview",
+    "check": "npm run site:check",
+    "qa": "npm run site:qa",
     "site:dev": "npm --prefix apps/site run dev",
     "site:build": "npm --prefix apps/site run build",
     "site:preview": "npm --prefix apps/site run preview",
@@ -15,9 +17,11 @@
     "cms:dev": "npm --prefix apps/cms-api run dev",
     "cms:start": "npm --prefix apps/cms-api run start",
     "cms:reset": "npm --prefix apps/cms-api run reset",
-    "preview:dist": "node scripts/preview-dist.mjs",
-    "map:pages": "node scripts/map-pages.mjs",
-    "seo:implement": "node scripts/seo-implement.mjs",
-    "sitemap:generate": "node scripts/generate-sitemaps.mjs"
+    "legacy:build:home": "node scripts/build-home.mjs",
+    "legacy:build:site": "node scripts/build-site.mjs",
+    "legacy:preview:dist": "node scripts/preview-dist.mjs",
+    "legacy:map:pages": "node scripts/map-pages.mjs",
+    "legacy:seo:implement": "node scripts/seo-implement.mjs",
+    "legacy:sitemap:generate": "node scripts/generate-sitemaps.mjs"
   }
 }
