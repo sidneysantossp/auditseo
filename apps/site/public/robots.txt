@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.auditseo.com.br/sitemap.xml
+Sitemap: https://www.auditseo.com.br/sitemap-index.xml
