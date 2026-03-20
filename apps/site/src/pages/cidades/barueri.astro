@@ -1,0 +1,154 @@
+---
+import '../../styles/institutional-trust-pages.css';
+import CityLayout from '../../layouts/CityLayout.astro';
+
+const focusAreas = [
+  {
+    title: 'Barueri como ancora estrutural',
+    copy:
+      'A cidade entra como base canonicamente segura para a praca, sem inflar URLs por cada variacao local de keyword.'
+  },
+  {
+    title: 'Alphaville como eixo comercial',
+    copy:
+      'O Centro Comercial de Alphaville entra como modificador de mercado, comparacao e demanda mais madura dentro da mesma praca.'
+  },
+  {
+    title: 'Expansao com disciplina',
+    copy:
+      'Barueri so deve ganhar novas derivacoes quando a pagina principal, os servicos e o tracking mostrarem aderencia real.'
+  }
+];
+
+const faqs = [
+  {
+    question: 'Por que Barueri merece uma pagina local propria?',
+    answer:
+      'Porque a cidade funciona como ancora estrutural segura para uma praca empresarial forte que inclui o eixo de Alphaville, sem depender de paginas repetidas por variacao semantica.'
+  },
+  {
+    question: 'Alphaville entra como pagina separada?',
+    answer:
+      'Nao nesta fase. Alphaville entra forte como contexto comercial, copy, FAQs, links internos e leitura de mercado dentro da mesma praca ancorada em Barueri.'
+  },
+  {
+    question: 'Quais frentes fazem mais sentido primeiro?',
+    answer:
+      'Agencia de SEO como pagina money local, seguida por consultoria SEO e auditoria SEO como portas tecnicas complementares.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer
+    }
+  }))
+};
+---
+<CityLayout
+  title="AUDITSEO em Barueri | SEO, IA e Operacao Comercial para Alphaville"
+  description="Pagina local da AUDITSEO para Barueri, com foco em SEO, consultoria, auditoria e demanda qualificada no eixo comercial de Alphaville."
+  canonicalPath="/cidades/barueri/"
+  breadcrumbs={[
+    { label: 'Home', path: '/' },
+    { label: 'Cidades', path: '/cidades/' },
+    { label: 'Barueri', path: '/cidades/barueri/' }
+  ]}
+>
+  <div class="ee-page">
+    <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>›</span>
+      <a href="/cidades/">Cidades</a>
+      <span>›</span>
+      <span class="current">Barueri</span>
+    </nav>
+
+    <section class="ee-page-hero">
+      <div>
+        <span class="ee-page-badge">Cobertura em Barueri e Alphaville</span>
+        <h1 class="ee-page-title">
+          SEO E IA EM <span class="accent">BARUERI</span> COM FOCO EMPRESARIAL EM ALPHAVILLE
+        </h1>
+        <p class="ee-page-subtitle">
+          Em Barueri, a estrutura local precisa conectar
+          <strong> cidade</strong>, <strong>eixo comercial</strong> e
+          <strong> demanda de contratacao</strong> sem cair em paginas vazias. Alphaville entra aqui
+          como contexto real de mercado, nao como inflacao de URL.
+        </p>
+        <div class="ee-page-highlights">
+          <span class="ee-page-highlight">Barueri</span>
+          <span class="ee-page-highlight">Alphaville</span>
+          <span class="ee-page-highlight">Busca Comercial</span>
+          <span class="ee-page-highlight">Expansao Controlada</span>
+        </div>
+      </div>
+
+      <aside class="ee-page-hero-card">
+        <h2>Entradas mais aderentes</h2>
+        <p>
+          Em Barueri e Alphaville, a frente local mais forte comeca com a pagina money de agencia,
+          apoiada por consultoria e auditoria como portas complementares.
+        </p>
+        <div class="ee-page-links">
+          <a href="/servicos/agencia-de-seo-em-barueri/">Ver agencia de SEO</a>
+          <a href="/servicos/consultoria-seo-em-barueri/">Ver consultoria SEO</a>
+          <a href="/servicos/auditoria-seo-em-barueri/">Ver auditoria SEO</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Prioridades</span>
+        <h2 class="ee-page-section-title">O QUE MAIS PESA NESTA PRACA</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {focusAreas.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-cta">
+      <div class="ee-page-cta-box">
+        <span class="ee-page-section-badge">Proximo passo</span>
+        <h2 class="ee-page-section-title">QUER TESTAR UMA OPERACAO LOCAL FORTE EM BARUERI E ALPHAVILLE?</h2>
+        <p class="ee-page-cta-copy">
+          Se a praca ja participa da geracao de demanda, o melhor inicio e um diagnostico que ligue
+          cidade, pagina principal, servicos complementares e medicao local.
+        </p>
+        <div class="ee-page-cta-actions">
+          <button class="ee-page-primary" type="button" data-open-cta-modal>Solicitar diagnostico</button>
+          <a class="ee-page-secondary" href="/agencia-de-seo/">Ver agencia de SEO</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="ee-page-section ee-page-faq">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">FAQ</span>
+        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE A FRENTE EM BARUERI</h2>
+      </div>
+      <div class="ee-page-faqs">
+        {faqs.map((item) => (
+          <article class="ee-page-faq">
+            <h3>{item.question}</h3>
+            <p>{item.answer}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</CityLayout>

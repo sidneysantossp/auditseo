@@ -200,6 +200,21 @@ const serviceResources: LlmsResource[] = [
     description: 'Pagina comercial para software B2B em Sao Paulo, com foco em categoria, comparacao e descoberta organica.'
   },
   {
+    title: 'Agencia de SEO em Barueri',
+    path: '/servicos/agencia-de-seo-em-barueri/',
+    description: 'Pagina money local para busca de contratacao de SEO em Barueri, com contexto empresarial forte de Alphaville.'
+  },
+  {
+    title: 'Consultoria SEO em Barueri',
+    path: '/servicos/consultoria-seo-em-barueri/',
+    description: 'Pagina local de consultoria SEO para empresas em Barueri e Alphaville com foco em backlog, governanca e crescimento organico.'
+  },
+  {
+    title: 'Auditoria SEO em Barueri',
+    path: '/servicos/auditoria-seo-em-barueri/',
+    description: 'Pagina local de auditoria SEO para Barueri e Alphaville com foco em diagnostico tecnico, arquitetura comercial e prioridades.'
+  },
+  {
     title: 'Consultoria SEO para Empresas no Interior de Sao Paulo',
     path: '/servicos/consultoria-seo-para-empresas-no-interior-de-sao-paulo/',
     description: 'Pagina regional para empresas do interior paulista, com foco em expansao comercial e cobertura por polos economicos.'
@@ -456,6 +471,11 @@ const clusterResources: LlmsResource[] = [
     title: 'Sao Paulo',
     path: '/cidades/sao-paulo/',
     description: 'Pagina local para demanda comercial e organica na cidade de Sao Paulo.'
+  },
+  {
+    title: 'Barueri',
+    path: '/cidades/barueri/',
+    description: 'Pagina local para Barueri com leitura comercial orientada ao eixo empresarial de Alphaville.'
   },
   {
     title: 'Campinas',

@@ -46,6 +46,7 @@ export interface CommercialArticleContext {
 const commercialSupportSlugs = new Set(commercialSupportArticles.map((article) => article.slug));
 
 const cityMatchers = [
+  { token: 'em-barueri', slug: 'barueri', label: 'Barueri' },
   { token: 'no-rio-de-janeiro', slug: 'rio-de-janeiro', label: 'Rio de Janeiro' },
   { token: 'em-rio-de-janeiro', slug: 'rio-de-janeiro', label: 'Rio de Janeiro' },
   { token: 'em-belo-horizonte', slug: 'belo-horizonte', label: 'Belo Horizonte' },

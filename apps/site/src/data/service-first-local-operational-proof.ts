@@ -1172,5 +1172,116 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
   ...createCommercialProofSet(brasiliaCommercialProof, energyProofSector),
   ...createCommercialProofSet(portoAlegreCommercialProof, lawProofSector),
   ...createCommercialProofSet(portoAlegreCommercialProof, softwareProofSector),
-  ...createCommercialProofSet(portoAlegreCommercialProof, energyProofSector)
+  ...createCommercialProofSet(portoAlegreCommercialProof, energyProofSector),
+  '/servicos/agencia-de-seo-em-barueri/': createGroup(
+    'COMO BARUERI E ALPHAVILLE SUSTENTAM A PÁGINA MONEY LOCAL',
+    'Nesta frente, Barueri entra como âncora estrutural da URL e Alphaville como eixo comercial real da mesma praça. A prova operacional precisa mostrar por que essa combinação existe e o que ela muda na leitura da oferta.',
+    [
+      {
+        label: 'Praça',
+        title: 'O que Barueri organiza e o que Alphaville reforça',
+        copy: 'A cidade dá estabilidade estrutural. Alphaville aumenta a densidade comercial e a maturidade da demanda dentro da mesma narrativa.',
+        items: [
+          'Barueri como base segura para a URL principal da praça.',
+          'Alphaville tratado como eixo empresarial e não como inflação de páginas.',
+          'Leitura local voltada a contratação de SEO por empresas e decisores.'
+        ]
+      },
+      {
+        label: 'Estrutura',
+        title: 'Quais ativos precisam sustentar a tese',
+        copy: 'A página money só fica legítima quando conversa com a cidade, com os serviços complementares e com os apoios BOFU da praça.',
+        items: [
+          'Ligação com a página de Barueri e com os serviços de consultoria e auditoria.',
+          'Copy local forte para busca genérica de contratação.',
+          'Integração com artigos de decisão para remover objeção e timing errado.'
+        ]
+      },
+      {
+        label: 'Gestão',
+        title: 'Como a praça orienta o próximo movimento',
+        copy: 'A utilidade da página está em medir se o cluster local merece mais reforço ou se ainda precisa de prova operacional adicional.',
+        items: [
+          'Leitura de consultas e leads do eixo Barueri/Alphaville.',
+          'Critério para expandir a praça sem abrir microvariações frágeis.',
+          'Proteção da hierarquia entre página local, serviço canônico e ativos BOFU.'
+        ]
+      }
+    ],
+    ['Barueri', 'Alphaville', 'Página money local', 'Busca de contratação']
+  ),
+  '/servicos/consultoria-seo-em-barueri/': createGroup(
+    'COMO A CONSULTORIA É QUALIFICADA EM BARUERI E ALPHAVILLE',
+    'Aqui a prova operacional precisa mostrar que a praça não busca pacote genérico. Ela exige governança, backlog e leitura de maturidade comercial mais alta.',
+    [
+      {
+        label: 'Maturidade',
+        title: 'Quando consultoria local faz sentido',
+        copy: 'Em Barueri e Alphaville, a consultoria precisa aparecer como camada de direção contínua para operações que já pedem backlog e governança.',
+        items: [
+          'Separação entre curiosidade comercial e demanda pronta para acompanhamento.',
+          'Leitura de fit entre praça, operação e momento da empresa.',
+          'Conexão entre busca local, pipeline e sistema de execução.'
+        ]
+      },
+      {
+        label: 'Ativos',
+        title: 'Quais peças reforçam a decisão',
+        copy: 'A consultoria local precisa conversar com a página money, com a auditoria e com os recursos de comparação da contratação.',
+        items: [
+          'Ligação com a página principal de agência em Barueri.',
+          'Apoio BOFU sobre valor, timing e aderência da consultoria.',
+          'Hierarquia clara entre serviço canônico e derivação da praça.'
+        ]
+      },
+      {
+        label: 'Qualificação',
+        title: 'O que a página precisa filtrar',
+        copy: 'A função da página é ajudar a separar operação madura de pesquisa exploratória sem tese clara de SEO.',
+        items: [
+          'Critério para saber quando auditoria entra antes.',
+          'Leitura do peso comercial de Alphaville na contratação.',
+          'Proteção da oferta contra comparações rasas com agência generalista.'
+        ]
+      }
+    ],
+    ['Barueri', 'Alphaville', 'Consultoria SEO', 'Governança de backlog']
+  ),
+  '/servicos/auditoria-seo-em-barueri/': createGroup(
+    'COMO A AUDITORIA ORGANIZA O CLUSTER BARUERI E ALPHAVILLE',
+    'Nesta frente, a auditoria existe para descobrir se o problema está na técnica, na arquitetura comercial ou na própria leitura da praça antes de escalar a operação local.',
+    [
+      {
+        label: 'Diagnóstico',
+        title: 'O que a auditoria precisa revisar primeiro',
+        copy: 'A praça precisa ser lida como sistema. Técnica, páginas comerciais e prova local não podem ser auditadas separadamente.',
+        items: [
+          'Indexação, estrutura e sinais técnicos das páginas principais.',
+          'Papel da página money e relação com consultoria e cidade.',
+          'Coerência do uso de Barueri e Alphaville na narrativa pública.'
+        ]
+      },
+      {
+        label: 'Prioridade',
+        title: 'Como o backlog nasce com mais clareza',
+        copy: 'A auditoria precisa ordenar o que entra primeiro para não transformar a praça em execução dispersa sem tese estável.',
+        items: [
+          'Separação entre problema técnico e problema comercial.',
+          'Critério para reforço de entidade local sem prometer o que ainda não existe.',
+          'Base para decidir o próximo passo com mais segurança.'
+        ]
+      },
+      {
+        label: 'Desdobramento',
+        title: 'O que acontece depois da auditoria',
+        copy: 'O ganho está em transformar o diagnóstico em direção objetiva para o cluster, e não em relatório sem consequência.',
+        items: [
+          'Definição entre consultoria contínua e correção pontual.',
+          'Ajuste da hierarquia entre cidade, serviços e BOFU local.',
+          'Leitura de expansão da praça apoiada em base real.'
+        ]
+      }
+    ],
+    ['Barueri', 'Alphaville', 'Auditoria SEO', 'Prioridade local']
+  )
 };

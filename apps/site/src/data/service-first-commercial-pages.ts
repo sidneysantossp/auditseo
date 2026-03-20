@@ -1,4 +1,5 @@
 import { allCommercialBriefs, type CommercialPageBrief, type CommercialInternalLink } from './commercial-page-briefs';
+import { buildBarueriAlphavilleServiceFirstCommercialPages } from './service-first-commercial-pages-barueri-alphaville';
 import { buildCuritibaBrasiliaServiceFirstCommercialPages } from './service-first-commercial-pages-curitiba-brasilia';
 import { buildCirurgiaPlasticaServiceFirstCommercialPages } from './service-first-commercial-pages-cirurgia-plastica';
 import { buildNationalSectorCommercialPages } from './service-first-commercial-pages-national-sectors';
@@ -3954,6 +3955,7 @@ export const serviceFirstCommercialPages: ServiceFirstCommercialPage[] = [
     areaServedName: 'Brasília',
     brief: requireBrief('/servicos/google-meu-negocio-para-clinicas-medicas-em-brasilia/')
   },
+  ...buildBarueriAlphavilleServiceFirstCommercialPages(requireBrief),
   ...buildCuritibaBrasiliaServiceFirstCommercialPages(requireBrief),
   ...buildRioBhServiceFirstCommercialPages(requireBrief),
   ...buildPortoAlegreServiceFirstCommercialPages(requireBrief)
