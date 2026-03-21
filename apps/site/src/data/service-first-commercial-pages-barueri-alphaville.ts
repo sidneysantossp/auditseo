@@ -104,6 +104,9 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
       { label: 'Auditoria SEO', path: '/servicos/auditoria-seo/', reason: 'Servico canonico complementar.' },
       { label: 'Barueri', path: barueriCity.path, reason: 'Contexto geográfico principal.' },
       { label: 'Agencia de SEO para empresas em Barueri: como escolher', path: '/blog/agencia-seo-para-empresas-em-barueri-como-escolher/', reason: 'Apoio BOFU local para decisao.' },
+      { label: 'Quanto custa SEO em Barueri e Alphaville', path: '/blog/quanto-custa-seo-em-barueri-e-alphaville/', reason: 'Apoio local de preco para decisao comercial.' },
+      { label: 'Em quanto tempo SEO gera resultado em Barueri e Alphaville', path: '/blog/em-quanto-tempo-seo-gera-resultado-em-barueri-e-alphaville/', reason: 'Apoio local de prazo para calibrar expectativa.' },
+      { label: 'Agencia SEO ou consultoria SEO em Barueri e Alphaville', path: '/blog/agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville/', reason: 'Comparativo local de modelo de contratacao.' },
       { label: 'Consultoria SEO em Barueri vale a pena?', path: '/blog/consultoria-seo-em-barueri-vale-a-pena/', reason: 'Apoio BOFU sobre aderencia e timing.' }
     ),
     faqItems: [
@@ -213,6 +216,8 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
       { label: 'Auditoria SEO em Barueri', path: '/servicos/auditoria-seo-em-barueri/', reason: 'Entrada tecnica complementar.' },
       { label: 'Barueri', path: barueriCity.path, reason: 'Contexto geográfico principal.' },
       { label: 'Consultoria SEO em Barueri vale a pena?', path: '/blog/consultoria-seo-em-barueri-vale-a-pena/', reason: 'Apoio BOFU local para fit e timing.' },
+      { label: 'Quanto custa SEO em Barueri e Alphaville', path: '/blog/quanto-custa-seo-em-barueri-e-alphaville/', reason: 'Apoio local de preco para contratacao.' },
+      { label: 'Agencia SEO ou consultoria SEO em Barueri e Alphaville', path: '/blog/agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville/', reason: 'Comparativo local para decidir modelo de servico.' },
       { label: 'Agencia SEO ou consultoria SEO?', path: '/blog/agencia-seo-ou-consultoria-seo/', reason: 'Comparativo de contratacao relevante para a praca.' }
     ),
     faqItems: [
@@ -322,6 +327,7 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
       { label: 'Agencia de SEO em Barueri', path: '/servicos/agencia-de-seo-em-barueri/', reason: 'Pagina money principal da praca.' },
       { label: 'Barueri', path: barueriCity.path, reason: 'Contexto geográfico principal.' },
       { label: 'Auditoria SEO em Barueri: quando faz sentido', path: '/blog/auditoria-seo-em-barueri-quando-faz-sentido/', reason: 'Apoio BOFU local para timing da contratacao.' },
+      { label: 'Em quanto tempo SEO gera resultado em Barueri e Alphaville', path: '/blog/em-quanto-tempo-seo-gera-resultado-em-barueri-e-alphaville/', reason: 'Apoio local de prazo apos o diagnostico.' },
       { label: 'Consultoria SEO ou auditoria SEO?', path: '/blog/consultoria-seo-ou-auditoria-seo/', reason: 'Comparativo de decisao de servico.' }
     ),
     faqItems: [

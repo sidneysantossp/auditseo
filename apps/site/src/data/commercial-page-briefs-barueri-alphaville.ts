@@ -39,6 +39,11 @@ export const barueriAlphavilleCommercialBriefs: CommercialPageBrief[] = [
         label: 'Como escolher agencia de SEO em Barueri e Alphaville',
         path: '/blog/agencia-seo-para-empresas-em-barueri-como-escolher/',
         reason: 'Apoio BOFU para decisao de contratacao.'
+      },
+      {
+        label: 'Quanto custa SEO em Barueri e Alphaville',
+        path: '/blog/quanto-custa-seo-em-barueri-e-alphaville/',
+        reason: 'Apoio local de preco para comparacao comercial.'
       }
     ],
     ctaPrimary: 'Solicitar diagnostico em Barueri e Alphaville',
@@ -84,6 +89,11 @@ export const barueriAlphavilleCommercialBriefs: CommercialPageBrief[] = [
         label: 'Consultoria SEO em Barueri vale a pena?',
         path: '/blog/consultoria-seo-em-barueri-vale-a-pena/',
         reason: 'Apoio BOFU para timing e aderencia.'
+      },
+      {
+        label: 'Agencia SEO ou consultoria SEO em Barueri e Alphaville',
+        path: '/blog/agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville/',
+        reason: 'Comparativo local entre modelos de contratacao.'
       }
     ],
     ctaPrimary: 'Solicitar diagnostico de consultoria em Barueri',
@@ -129,6 +139,11 @@ export const barueriAlphavilleCommercialBriefs: CommercialPageBrief[] = [
         label: 'Auditoria SEO em Barueri: quando faz sentido',
         path: '/blog/auditoria-seo-em-barueri-quando-faz-sentido/',
         reason: 'Apoio BOFU para diagnostico e timing.'
+      },
+      {
+        label: 'Em quanto tempo SEO gera resultado em Barueri e Alphaville',
+        path: '/blog/em-quanto-tempo-seo-gera-resultado-em-barueri-e-alphaville/',
+        reason: 'Apoio local de prazo e expectativa.'
       }
     ],
     ctaPrimary: 'Solicitar auditoria SEO em Barueri',
