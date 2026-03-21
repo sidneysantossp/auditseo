@@ -18,6 +18,12 @@ export function getStaticPaths() {
 const allArticles = getAllBlogArticles();
 const page = Number.parseInt(Astro.params.page ?? '2', 10);
 const archivePage = getBlogArchivePage(page);
+const resourceLinks = [
+  { label: 'Agencia de SEO em Barueri e Alphaville', path: '/servicos/agencia-de-seo-em-barueri/' },
+  { label: 'Consultoria SEO em Barueri e Alphaville', path: '/servicos/consultoria-seo-em-barueri/' },
+  { label: 'Auditoria SEO em Barueri e Alphaville', path: '/servicos/auditoria-seo-em-barueri/' },
+  { label: 'Hub local de Barueri', path: '/cidades/barueri/' }
+];
 ---
 <BlogIndexLayout
   title={`Blog AUDITSEO | Pagina ${archivePage.currentPage}`}
@@ -55,6 +61,7 @@ const archivePage = getBlogArchivePage(page);
     articleCountLabel={`${allArticles.length} Artigos no total`}
     pageLabel={`Pagina ${archivePage.currentPage} de ${archivePage.totalPages}`}
     sectionTitle="ARTIGOS DESTA PAGINA"
+    resourceLinks={resourceLinks}
     pagination={archivePage}
     includeNewsletter={true}
   />
