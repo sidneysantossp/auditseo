@@ -19,9 +19,9 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
   const slug = '/servicos/agencia-de-seo-em-barueri/';
   return {
     slug,
-    seoTitle: 'Agencia de SEO em Barueri e Alphaville | AUDITSEO',
+    seoTitle: 'Agencia de SEO em Barueri e Alphaville para Empresas | AUDITSEO',
     description:
-      'Agencia de SEO para empresas em Barueri e Alphaville com foco em demanda qualificada, arquitetura comercial, consultoria SEO e geracao organica mais previsivel.',
+      'Empresa de SEO em Barueri e Alphaville para empresas que querem gerar demanda qualificada com pagina money local, consultoria SEO e auditoria SEO no eixo comercial de Alphaville.',
     imagePath: '/images/agencia-de-seo.png',
     displayTitle: 'Agencia de SEO em Barueri e Alphaville',
     badge: 'Barueri, Alphaville e Busca Comercial',
@@ -29,12 +29,12 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
     heroTitleAccent: 'EM BARUERI',
     heroTitleSuffix: ' PARA EMPRESAS DE ALPHAVILLE',
     heroSubtitle:
-      'Quem procura uma empresa de SEO em Barueri, uma agencia de SEO para empresas em Alphaville ou um especialista em SEO para operar a praca precisa chegar na mesma pagina money local. Barueri sustenta a URL. Alphaville entra como eixo comercial real da mesma praca.',
+      'Quem procura uma empresa de SEO em Barueri, uma agencia de SEO em Alphaville ou um especialista em SEO para gerar demanda na praca precisa chegar na mesma pagina principal local. Barueri sustenta a URL. Alphaville entra como eixo comercial real da mesma praca.',
     highlights: ['Barueri', 'Alphaville', 'Empresa de SEO', 'SEO Especializado'],
     heroCard: {
-      title: 'Quando essa pagina faz sentido',
+      title: 'Quando entrar por esta pagina',
       copy:
-        'Quando a operacao quer disputar termos genericos de contratacao em uma praca empresarial forte, sem depender so da home ou da pagina institucional da agencia.',
+        'Quando a empresa quer disputar termos genericos de contratacao, pedir proposta com mais contexto e reduzir a dependencia da home ou da pagina institucional da agencia.',
       links: [
         { label: 'Ver Agencia de SEO', path: '/agencia-de-seo/', reason: 'Pagina institucional principal.' },
         { label: 'Ver Consultoria SEO', path: '/servicos/consultoria-seo/', reason: 'Servico canonico complementar.' },
@@ -120,10 +120,10 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
       { question: 'Essa pagina e so para empresas grandes?', answer: 'Nao. Ela serve para operacoes que pesquisam fornecedor com intencao comercial clara, independentemente do porte, desde que o fit seja real.' },
       { question: 'Qual e o melhor proximo passo?', answer: 'Validar a operacao local, a prova de praca e a relacao entre pagina money, consultoria, auditoria e apoio editorial.' }
     ],
-    ctaTitle: 'QUER DISPUTAR BUSCA DE CONTRATACAO EM BARUERI E ALPHAVILLE COM MAIS FORCA?',
+    ctaTitle: 'QUER RECEBER UMA LEITURA SERIA DA SUA OPERACAO DE SEO EM BARUERI E ALPHAVILLE?',
     ctaCopy:
-      'Se a praca ja faz parte da sua operacao comercial, o melhor proximo passo e um diagnostico que una pagina money local, servicos canonicamente corretos e leitura real da demanda.',
-    ctaPrimaryLabel: 'Solicitar diagnostico em Barueri',
+      'Se a sua empresa quer captar mais busca de contratacao na praca, o melhor proximo passo e um diagnostico que una pagina principal, consultoria, auditoria e criterio real de medicao.',
+    ctaPrimaryLabel: 'Solicitar diagnostico da praca',
     ctaSecondaryPath: '/contato/',
     ctaSecondaryLabel: 'Falar com a AUDITSEO',
     areaServedName: 'Barueri',
@@ -136,9 +136,9 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
   const slug = '/servicos/consultoria-seo-em-barueri/';
   return {
     slug,
-    seoTitle: 'Consultoria SEO em Barueri e Alphaville | AUDITSEO',
+    seoTitle: 'Consultoria SEO em Barueri e Alphaville para Empresas | AUDITSEO',
     description:
-      'Consultoria SEO para empresas em Barueri e Alphaville com foco em arquitetura, priorizacao, conteudo comercial e geracao organica mais previsivel.',
+      'Consultoria SEO em Barueri e Alphaville para empresas que precisam de consultor SEO, backlog priorizado, governanca e geracao organica mais previsivel.',
     imagePath: '/images/agencia-de-seo.png',
     displayTitle: 'Consultoria SEO em Barueri e Alphaville',
     badge: 'Consultoria SEO, Barueri e Alphaville',
@@ -146,7 +146,7 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     heroTitleAccent: 'EM BARUERI',
     heroTitleSuffix: ' PARA EMPRESAS DE ALPHAVILLE',
     heroSubtitle:
-      'Quando a empresa ja procura um consultor SEO em Barueri ou um especialista SEO em Alphaville, a conversa deixa de ser apenas sobre agencia e passa a exigir direcao, backlog e criterio. Em Barueri e Alphaville, isso costuma aparecer cedo nas operacoes mais maduras.',
+      'Quando a empresa ja procura um consultor SEO em Barueri ou um especialista SEO em Alphaville, a conversa deixa de ser apenas sobre agencia e passa a exigir direcao, backlog, proposta e criterio. Em Barueri e Alphaville, isso costuma aparecer cedo nas operacoes mais maduras.',
     highlights: ['Consultoria', 'Barueri', 'Alphaville', 'Consultor SEO'],
     heroCard: {
       title: 'Quando essa pagina faz sentido',
@@ -235,8 +235,8 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     ],
     ctaTitle: 'QUER ORGANIZAR SEO COMO SISTEMA DE CRESCIMENTO EM BARUERI E ALPHAVILLE?',
     ctaCopy:
-      'Se a operacao ja precisa de governanca, prioridade e acompanhamento continuo, o melhor inicio e um diagnostico que mostre como Barueri e Alphaville entram no plano de SEO.',
-    ctaPrimaryLabel: 'Solicitar consultoria em Barueri',
+      'Se a operacao ja precisa de governanca, prioridade e acompanhamento continuo, o melhor inicio e um diagnostico que mostre como Barueri e Alphaville entram no plano comercial e no backlog de SEO.',
+    ctaPrimaryLabel: 'Solicitar diagnostico de consultoria',
     ctaSecondaryPath: '/contato/',
     ctaSecondaryLabel: 'Falar com a AUDITSEO',
     areaServedName: 'Barueri',
@@ -249,9 +249,9 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
   const slug = '/servicos/auditoria-seo-em-barueri/';
   return {
     slug,
-    seoTitle: 'Auditoria SEO em Barueri e Alphaville | AUDITSEO',
+    seoTitle: 'Auditoria SEO em Barueri e Alphaville para Empresas | AUDITSEO',
     description:
-      'Auditoria SEO para empresas em Barueri e Alphaville com foco em diagnostico tecnico, arquitetura comercial, entidade local e prioridades de execucao.',
+      'Auditoria SEO em Barueri e Alphaville para empresas que precisam de diagnostico tecnico, arquitetura comercial e prioridades claras antes de escalar a praca.',
     imagePath: '/images/coreweb-vitals.jpeg',
     displayTitle: 'Auditoria SEO em Barueri e Alphaville',
     badge: 'Diagnostico SEO, Barueri e Alphaville',
@@ -259,7 +259,7 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
     heroTitleAccent: 'EM BARUERI',
     heroTitleSuffix: ' PARA EMPRESAS DE ALPHAVILLE',
     heroSubtitle:
-      'Nem toda operacao local precisa partir direto para acompanhamento continuo. Em Barueri e Alphaville, quem procura um especialista em SEO para diagnostico tecnico ou um consultor para revisar a base pode precisar comecar por auditoria antes de qualquer expansao.',
+      'Nem toda operacao local precisa partir direto para acompanhamento continuo. Em Barueri e Alphaville, quem procura um especialista em SEO para diagnostico tecnico, revisar a base ou decidir o proximo passo pode precisar comecar por auditoria antes de qualquer expansao.',
     highlights: ['Diagnostico', 'Barueri', 'Alphaville', 'Especialista SEO'],
     heroCard: {
       title: 'Quando essa pagina faz sentido',
