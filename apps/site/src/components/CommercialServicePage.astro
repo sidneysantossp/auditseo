@@ -142,6 +142,7 @@ const proofResourceLinks = intentOrderedLinks.slice(0, 5);
 const decisionObjectionItems = getDecisionObjectionItems();
 const sectoralIntakeLayer = page.brief.pageType === 'sectoral-anchor' ? getSectoralIntakeLayer() : null;
 const localIntakeLayer = isLocalCommercialPage ? getLocalIntakeLayer() : null;
+const localEntryChoiceLayer = isLocalCommercialPage ? getLocalEntryChoiceLayer() : null;
 const finalCtaLayer = getFinalCtaLayer();
 
 type DecisionObjectionItem = {
@@ -155,6 +156,20 @@ type PageIntakeLayer = {
   prepareItems: string[];
   receiveItems: string[];
   disqualifiers: string[];
+};
+
+type EntryChoiceCard = {
+  title: string;
+  items: string[];
+  path: string;
+  linkLabel: string;
+};
+
+type EntryChoiceLayer = {
+  eyebrow: string;
+  title: string;
+  copy: string;
+  cards: EntryChoiceCard[];
 };
 
 type FinalCtaCard = {
@@ -681,6 +696,142 @@ function getLocalIntakeLayer(): PageIntakeLayer {
       'Se a cidade ainda não tem papel real na aquisição.',
       'Se o site ainda não consegue sustentar contexto local com clareza.',
       'Se a expectativa está desalinhada com o tipo de ativo que a praça exige.'
+    ]
+  };
+}
+
+function getLocalEntryChoiceLayer(): EntryChoiceLayer | null {
+  const isBarueriAlphavilleSeoCluster =
+    page.areaServedName === 'Barueri' &&
+    page.areaServedNames?.includes('Alphaville') &&
+    (page.slug.includes('agencia-de-seo') || page.slug.includes('consultoria-seo') || page.slug.includes('auditoria-seo'));
+
+  if (!isBarueriAlphavilleSeoCluster) {
+    return null;
+  }
+
+  const agencyPath = '/servicos/agencia-de-seo-em-barueri/';
+  const consultingPath = '/servicos/consultoria-seo-em-barueri/';
+  const auditPath = '/servicos/auditoria-seo-em-barueri/';
+
+  if (page.slug.includes('agencia-de-seo')) {
+    return {
+      eyebrow: 'Escolha de entrada',
+      title: 'AGÊNCIA, CONSULTORIA OU AUDITORIA: POR ONDE ESTA PRAÇA DEVERIA ENTRAR',
+      copy:
+        'Nesta praça, a página de agência concentra a contratação genérica. Consultoria e auditoria continuam existindo, mas entram melhor quando a demanda já chega mais qualificada ou mais técnica.',
+      cards: [
+        {
+          title: 'Fique em agência local se...',
+          items: [
+            'A busca principal é por agência ou empresa de SEO em Barueri e Alphaville.',
+            'A operação quer discutir contratação, proposta e papel da página money local.',
+            'Ainda faz mais sentido organizar a malha comercial da praça antes de aprofundar o escopo.'
+          ],
+          path: agencyPath,
+          linkLabel: 'Abrir página de agência'
+        },
+        {
+          title: 'Consultoria entra melhor se...',
+          items: [
+            'Já existe base mínima e o problema agora é prioridade, backlog e governança.',
+            'A empresa procura consultor SEO ou especialista para acompanhamento contínuo.',
+            'A conversa já saiu da contratação genérica e entrou em direção estratégica.'
+          ],
+          path: consultingPath,
+          linkLabel: 'Ir para consultoria local'
+        },
+        {
+          title: 'Auditoria entra melhor se...',
+          items: [
+            'Ainda não está claro o que trava a operação orgânica da praça.',
+            'A empresa precisa diagnosticar técnica, arquitetura e coerência local antes de investir mais.',
+            'O pedido vem como especialista em SEO, mas o contexto real ainda é de diagnóstico.'
+          ],
+          path: auditPath,
+          linkLabel: 'Ir para auditoria local'
+        }
+      ]
+    };
+  }
+
+  if (page.slug.includes('consultoria-seo')) {
+    return {
+      eyebrow: 'Escolha de entrada',
+      title: 'CONSULTORIA, AGÊNCIA OU AUDITORIA: QUAL É A ENTRADA CERTA AQUI',
+      copy:
+        'A consultoria local existe para operações mais maduras. Se a demanda ainda estiver genérica demais ou técnica demais, a entrada correta muda e a qualidade do lead melhora quando isso fica explícito antes do CTA.',
+      cards: [
+        {
+          title: 'Fique em consultoria local se...',
+          items: [
+            'A empresa já quer acompanhamento, governança e backlog contínuo.',
+            'A demanda chega como consultor SEO, consultoria SEO ou especialista para direção recorrente.',
+            'O site já tem base mínima e precisa de sistema, não só de página nova.'
+          ],
+          path: consultingPath,
+          linkLabel: 'Abrir consultoria local'
+        },
+        {
+          title: 'Volte para agência local se...',
+          items: [
+            'A dúvida principal ainda é contratação genérica de SEO na praça.',
+            'A operação ainda quer entender a função da página money antes do acompanhamento contínuo.',
+            'O lead ainda compara agência, empresa de SEO e proposta comercial básica.'
+          ],
+          path: agencyPath,
+          linkLabel: 'Voltar para agência local'
+        },
+        {
+          title: 'Comece por auditoria se...',
+          items: [
+            'Ainda não está claro se o gargalo é técnico, arquitetural ou comercial.',
+            'A empresa pede orientação, mas sem hipótese mínima do que deveria ser priorizado.',
+            'O lead parece pedir consultoria quando, na prática, ainda precisa de diagnóstico.'
+          ],
+          path: auditPath,
+          linkLabel: 'Ir para auditoria local'
+        }
+      ]
+    };
+  }
+
+  return {
+    eyebrow: 'Escolha de entrada',
+    title: 'AUDITORIA, CONSULTORIA OU AGÊNCIA: COMO FILTRAR A ENTRADA CERTA',
+    copy:
+      'Nesta página, a auditoria existe para organizar a decisão. Ela é a melhor porta quando o problema ainda não foi identificado, mas não substitui agência ou consultoria quando a demanda já vem mais clara.',
+    cards: [
+      {
+        title: 'Fique em auditoria local se...',
+        items: [
+          'A empresa ainda não sabe o que trava técnica, arquitetura ou coerência da praça.',
+          'A busca vem como especialista em SEO, mas o contexto real ainda pede diagnóstico.',
+          'Antes de contratar acompanhamento, a operação precisa ordenar prioridade e risco.'
+        ],
+        path: auditPath,
+        linkLabel: 'Abrir auditoria local'
+      },
+      {
+        title: 'Consultoria entra melhor se...',
+        items: [
+          'O diagnóstico principal já existe e a operação agora precisa de governança contínua.',
+          'A demanda chega como consultor SEO para direção recorrente e backlog.',
+          'O problema deixou de ser descoberta e passou a ser acompanhamento.'
+        ],
+        path: consultingPath,
+        linkLabel: 'Ir para consultoria local'
+      },
+      {
+        title: 'Agência entra melhor se...',
+        items: [
+          'A busca principal ainda é por contratação genérica de SEO em Barueri e Alphaville.',
+          'A empresa precisa primeiro entender a página money e a função comercial da praça.',
+          'O lead ainda não chegou com maturidade suficiente para consultoria ou auditoria isolada.'
+        ],
+        path: agencyPath,
+        linkLabel: 'Ir para agência local'
+      }
     ]
   };
 }
@@ -1212,6 +1363,31 @@ const breadcrumbs = [
             ))}
           </ul>
         </article>
+      </div>
+    </section>
+  )}
+
+  {localEntryChoiceLayer && (
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">{localEntryChoiceLayer.eyebrow}</span>
+        <h2 class="ee-page-section-title">{localEntryChoiceLayer.title}</h2>
+        <p class="ee-page-section-subtitle">{localEntryChoiceLayer.copy}</p>
+      </div>
+      <div class="ee-commercial-fit-grid">
+        {localEntryChoiceLayer.cards.map((card) => (
+          <article class="ee-page-panel">
+            <h3>{card.title}</h3>
+            <ul class="ee-page-list">
+              {card.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <a class="ee-page-inline-link" href={card.path}>
+              {card.linkLabel}
+            </a>
+          </article>
+        ))}
       </div>
     </section>
   )}
