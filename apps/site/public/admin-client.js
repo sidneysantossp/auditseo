@@ -19,6 +19,24 @@ const runtime = {
   }
 };
 
+function getOpenSession() {
+  return {
+    email: 'Acesso aberto',
+    authMode: 'open'
+  };
+}
+
+function emitSessionChange() {
+  window.dispatchEvent(
+    new CustomEvent('auditseo-admin-session-changed', {
+      detail: {
+        mode: runtime.mode,
+        session: runtime.session
+      }
+    })
+  );
+}
+
 function readJson(key, fallback) {
   try {
     const value = localStorage.getItem(key);
@@ -304,12 +322,172 @@ function renderSessionBox() {
   const sessionBox = document.querySelector('[data-admin-session-box]');
   if (!sessionBox) return;
 
+  const isPrivate = runtime.session?.authMode === 'api';
+  const privateAvailable = runtime.mode === 'api';
+  const helperCopy = isPrivate
+    ? 'Modo privado ativo'
+    : privateAvailable
+      ? 'Modo aberto'
+      : 'API privada indisponível';
+
   sessionBox.innerHTML = `
     <div class="admin-session__meta">
       <span class="admin-session__label">Acesso</span>
       <strong>${escapeHtml(runtime.session?.email || 'Acesso aberto')}</strong>
+      <div class="admin-helper-text">${escapeHtml(helperCopy)}</div>
     </div>
+    ${
+      privateAvailable
+        ? isPrivate
+          ? '<button class="admin-session__button" type="button" data-admin-session-action="logout">Sair</button>'
+          : '<button class="admin-session__button" type="button" data-admin-session-action="login">Modo privado</button>'
+        : ''
+    }
   `;
+
+  sessionBox.querySelectorAll('[data-admin-session-action]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const action = button.getAttribute('data-admin-session-action');
+      if (action === 'login') {
+        openAuthDialog();
+        return;
+      }
+
+      if (action === 'logout') {
+        await logoutAdmin();
+        runtime.session = getOpenSession();
+        runtime.editorialState = getLocalEditorialState();
+        renderSessionBox();
+        renderManagedTable();
+        renderWorkflowBoard();
+        emitSessionChange();
+      }
+    });
+  });
+}
+
+function renderAuthDialog() {
+  const auth = document.querySelector('[data-admin-auth]');
+  if (!auth) return;
+
+  const modeLabel = auth.querySelector('[data-admin-auth-mode-label]');
+  const title = auth.querySelector('[data-admin-auth-title]');
+  const copy = auth.querySelector('[data-admin-auth-copy]');
+  const submit = auth.querySelector('[data-admin-auth-submit]');
+  const confirmWrap = auth.querySelector('[data-admin-auth-confirm-wrap]');
+  const confirmInput = auth.querySelector('#admin-password-confirm');
+  const switchWrap = auth.querySelector('[data-admin-auth-switch-wrap]');
+  const error = auth.querySelector('[data-admin-auth-error]');
+
+  const isBootstrap = runtime.authView === 'bootstrap';
+
+  if (modeLabel) {
+    modeLabel.textContent = isBootstrap ? 'Configurar acesso privado' : 'Entrar em modo privado';
+  }
+  if (title) {
+    title.textContent = isBootstrap ? 'Painel privado' : 'Modo privado';
+  }
+  if (copy) {
+    copy.textContent = isBootstrap
+      ? 'Primeiro acesso protegido do painel. Depois disso, os leads reais ficam disponíveis apenas com autenticação.'
+      : 'Entrar libera leitura privada de leads reais e do estado autenticado do CMS.';
+  }
+  if (submit) {
+    submit.textContent = isBootstrap ? 'Criar acesso privado' : 'Entrar';
+  }
+  if (confirmWrap) {
+    confirmWrap.hidden = !isBootstrap;
+  }
+  if (confirmInput instanceof HTMLInputElement) {
+    confirmInput.required = isBootstrap;
+    if (!isBootstrap) confirmInput.value = '';
+  }
+  if (switchWrap) {
+    switchWrap.hidden = true;
+  }
+  if (error) {
+    error.hidden = true;
+    error.textContent = '';
+  }
+}
+
+function openAuthDialog() {
+  if (runtime.mode !== 'api') return;
+  const auth = document.querySelector('[data-admin-auth]');
+  if (!auth) return;
+
+  runtime.authView = runtime.bootstrapReady ? 'login' : 'bootstrap';
+  renderAuthDialog();
+  auth.hidden = false;
+  document.body.classList.add('admin-auth-open');
+}
+
+function closeAuthDialog() {
+  const auth = document.querySelector('[data-admin-auth]');
+  if (!auth) return;
+  auth.hidden = true;
+  document.body.classList.remove('admin-auth-open');
+}
+
+function bindAuthDialog() {
+  const auth = document.querySelector('[data-admin-auth]');
+  if (!auth) return;
+
+  auth.querySelectorAll('[data-admin-auth-close]').forEach((button) => {
+    button.addEventListener('click', closeAuthDialog);
+  });
+
+  auth.addEventListener('click', (event) => {
+    if (event.target === auth) {
+      closeAuthDialog();
+    }
+  });
+
+  auth.querySelector('[data-admin-auth-form]')?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!(form instanceof HTMLFormElement)) return;
+
+    const error = auth.querySelector('[data-admin-auth-error]');
+    const email = String(form.elements.email?.value || '').trim();
+    const password = String(form.elements.password?.value || '');
+    const passwordConfirm = String(form.elements.passwordConfirm?.value || '');
+
+    if (runtime.authView === 'bootstrap' && password !== passwordConfirm) {
+      if (error) {
+        error.textContent = 'A confirmação de senha não confere.';
+        error.hidden = false;
+      }
+      return;
+    }
+
+    try {
+      runtime.session =
+        runtime.authView === 'bootstrap'
+          ? await bootstrapAdmin(email, password)
+          : await loginAdmin(email, password);
+      runtime.bootstrapReady = true;
+      runtime.editorialState = await loadEditorialState();
+      closeAuthDialog();
+      renderSessionBox();
+      renderManagedTable();
+      renderWorkflowBoard();
+      emitSessionChange();
+    } catch (requestError) {
+      const message = (() => {
+        if (!(requestError instanceof Error)) return 'Nao foi possivel entrar no modo privado.';
+        if (requestError.message === 'invalid_credentials') return 'Credenciais invalidas.';
+        if (requestError.message === 'already_bootstrapped') return 'O acesso privado ja foi configurado. Use o login.';
+        if (requestError.message === 'invalid_payload') return 'Use um email valido e senha com pelo menos 8 caracteres.';
+        return 'Nao foi possivel entrar no modo privado.';
+      })();
+
+      if (error) {
+        error.textContent = message;
+        error.hidden = false;
+      }
+    }
+  });
 }
 
 function getCaptureTypeLabel(value) {
@@ -551,7 +729,6 @@ async function applyAuthGate() {
 
   auth.hidden = true;
   document.body.classList.remove('admin-auth-open');
-  renderSessionBox();
 }
 
 function buildRow(item) {
@@ -722,10 +899,18 @@ function renderManagedTable() {
 }
 
 async function init() {
-  runtime.mode = 'local';
+  const apiAvailable = await detectApi();
+  runtime.mode = apiAvailable ? 'api' : 'local';
+  runtime.bootstrapReady = apiAvailable ? await getBootstrapStatus() : false;
+  runtime.session = (apiAvailable ? await getSession() : null) || getOpenSession();
   await applyAuthGate();
+  bindAuthDialog();
   renderSessionBox();
-  runtime.editorialState = getLocalEditorialState();
+  runtime.editorialState =
+    runtime.mode === 'api' && runtime.session?.authMode === 'api'
+      ? await loadEditorialState()
+      : getLocalEditorialState();
+  emitSessionChange();
 
   await loadCrmCaptureSummary();
   await loadLocalClusterSummary();

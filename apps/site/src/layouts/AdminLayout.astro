@@ -1,6 +1,7 @@
 ---
 import SeoHead from '../components/SeoHead.astro';
 import AdminSidebar from '../components/admin/AdminSidebar.astro';
+import AdminAuthGate from '../components/admin/AdminAuthGate.astro';
 import AdminCrmModals from '../components/admin/AdminCrmModals.astro';
 import AdminShellScripts from '../components/admin/AdminShellScripts.astro';
 import { siteMetadata } from '../data/site';
@@ -25,9 +26,14 @@ const crmSummaryEndpoint = (() => {
 
   return 'https://auditseo-cms-api.vercel.app/api/public/crm-summary';
 })();
+const apiBase = (() => {
+  const captureEndpoint = siteMetadata.forms.crmCaptureEndpoint?.trim();
+  if (!captureEndpoint) return null;
+  return captureEndpoint.replace(/\/api\/public\/lead-capture\/?$/, '');
+})();
 
 const adminConfig = {
-  apiBase: null,
+  apiBase,
   crmSummaryEndpoint
 };
 ---
@@ -78,6 +84,7 @@ const adminConfig = {
     </div>
 
     <AdminCrmModals />
+    <AdminAuthGate />
     <AdminShellScripts />
     <script is:inline define:vars={{ adminConfig }}>
       window.__AUDITSEO_ADMIN_CONFIG__ = adminConfig;

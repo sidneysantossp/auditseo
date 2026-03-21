@@ -576,7 +576,12 @@ body.admin-auth-open {
   backdrop-filter: blur(10px);
 }
 
+.admin-auth[hidden] {
+  display: none !important;
+}
+
 .admin-auth__dialog {
+  position: relative;
   width: 100%;
   max-width: 440px;
   padding: 40px;
@@ -636,6 +641,21 @@ body.admin-auth-open {
   min-height: 56px;
   margin-top: 8px;
   font-size: 14px;
+}
+
+.admin-auth__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--admin-bg-5);
+  border-radius: 999px;
+  background: var(--admin-bg-3);
+  color: var(--admin-text-2);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .admin-auth__switch-wrap {
@@ -715,8 +735,7 @@ body.admin-auth-open {
 
 
 .admin-mobile-toggle,
-.admin-sidebar,
-.admin-auth {
+.admin-sidebar {
   display: none !important;
 }
 
