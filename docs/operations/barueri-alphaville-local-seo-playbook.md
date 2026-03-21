@@ -83,3 +83,7 @@ Abrir nova derivação local apenas se houver:
 5. O hub de cidade distribui para páginas e BOFU local.
 6. O tracking captura página, cidade e origem do lead.
 7. A mensagem pública não sugere storefront aberto se a operação não funciona assim.
+
+## Docs operacionais relacionados
+- [barueri-alphaville-gbp-checklist.md](/Applications/MAMP/htdocs/auditseo/docs/operations/barueri-alphaville-gbp-checklist.md)
+- [barueri-alphaville-measurement-plan.md](/Applications/MAMP/htdocs/auditseo/docs/operations/barueri-alphaville-measurement-plan.md)

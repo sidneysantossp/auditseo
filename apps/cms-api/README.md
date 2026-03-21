@@ -29,6 +29,15 @@ Manter o site publico em `Astro static-first` e mover autenticacao, sessao e per
 - `GET /api/public/crm-summary` (anonimo)
 - `POST /api/public/lead-capture`
 
+## Filtros do resumo publico
+
+`GET /api/public/crm-summary` aceita filtros opcionais:
+
+- `paths=/rota-a/,/rota-b/`
+- `days=7`
+
+Isso permite ler captação anonima por cluster local sem expor PII.
+
 ## Integracao com o site
 
 O frontend do site so envia eventos de captura se a env abaixo estiver definida no build da app Astro:

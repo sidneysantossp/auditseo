@@ -191,10 +191,45 @@ function buildCrmEvent(record) {
   };
 }
 
-function summarizeCrmState(store) {
+function normalizeSummaryFilters(searchParams) {
+  const rawPaths = String(searchParams.get('paths') || '')
+    .split(',')
+    .map((item) => String(item || '').trim())
+    .filter(Boolean)
+    .map((item) => sanitizePath(item));
+  const paths = [...new Set(rawPaths)];
+  const rawDays = Number.parseInt(searchParams.get('days') || '', 10);
+  const days = Number.isFinite(rawDays) && rawDays > 0 ? Math.min(rawDays, 365) : null;
+
+  return {
+    paths,
+    days
+  };
+}
+
+function summarizeCrmState(store, filters = {}) {
   const crmState = store.crmState || { leads: [], events: [] };
-  const leads = Array.isArray(crmState.leads) ? crmState.leads : [];
-  const events = Array.isArray(crmState.events) ? crmState.events : [];
+  const allLeads = Array.isArray(crmState.leads) ? crmState.leads : [];
+  const allEvents = Array.isArray(crmState.events) ? crmState.events : [];
+  const pathSet = new Set((filters.paths || []).map((item) => sanitizePath(item)));
+  const minCreatedAt = filters.days
+    ? Date.now() - filters.days * 24 * 60 * 60 * 1000
+    : null;
+
+  const isWithinWindow = (record) => {
+    if (!minCreatedAt) return true;
+    const createdAt = new Date(record.createdAt || '').getTime();
+    if (!Number.isFinite(createdAt)) return false;
+    return createdAt >= minCreatedAt;
+  };
+
+  const isIncludedPath = (record) => {
+    if (pathSet.size === 0) return true;
+    return pathSet.has(sanitizePath(record.pagePath || '/'));
+  };
+
+  const leads = allLeads.filter((record) => isWithinWindow(record) && isIncludedPath(record));
+  const events = allEvents.filter((record) => isWithinWindow(record) && isIncludedPath(record));
 
   const pageMap = new Map();
   const captureMap = new Map();
@@ -220,7 +255,11 @@ function summarizeCrmState(store) {
     captureTypes: Array.from(captureMap.entries())
       .map(([captureType, count]) => ({ captureType, count }))
       .sort((left, right) => right.count - left.count),
-    updatedAt: crmState.updatedAt || null
+    updatedAt: crmState.updatedAt || null,
+    filters: {
+      paths: [...pathSet],
+      days: filters.days || null
+    }
   };
 }
 
@@ -249,7 +288,7 @@ export async function handleRequest(request, response) {
 
     if (request.method === 'GET' && pathname === '/api/public/crm-summary') {
       const store = withCleanSessions(await readStore());
-      json(response, 200, summarizeCrmState(store), corsHeaders);
+      json(response, 200, summarizeCrmState(store, normalizeSummaryFilters(url.searchParams)), corsHeaders);
       return;
     }
 

@@ -323,6 +323,21 @@ function getCaptureTypeLabel(value) {
   return labels[value] || value || 'Desconhecido';
 }
 
+function buildCrmSummaryUrl(filters = {}) {
+  const endpoint = runtime.crmSummaryEndpoint || inferCrmSummaryEndpoint();
+  const url = new URL(endpoint, window.location.origin);
+
+  if (Array.isArray(filters.paths) && filters.paths.length > 0) {
+    url.searchParams.set('paths', filters.paths.join(','));
+  }
+
+  if (Number.isFinite(filters.days) && filters.days > 0) {
+    url.searchParams.set('days', String(filters.days));
+  }
+
+  return url.toString();
+}
+
 function renderCrmCaptureSummary(summary) {
   const root = document.querySelector('[data-admin-capture-summary-root]');
   if (!root) return;
@@ -402,6 +417,101 @@ function renderCrmCaptureSummary(summary) {
   root.hidden = false;
 }
 
+function renderLocalClusterSummary(summary, watchlist, days) {
+  const root = document.querySelector('[data-admin-local-cluster-summary-root]');
+  if (!root) return;
+
+  const cards = root.querySelector('[data-admin-local-cluster-summary-cards]');
+  const pages = root.querySelector('[data-admin-local-cluster-pages]');
+  const types = root.querySelector('[data-admin-local-cluster-types]');
+  if (!cards || !pages || !types) return;
+
+  const totals = summary?.totals || {
+    leads: 0,
+    events: 0,
+    forms: 0,
+    whatsappClicks: 0
+  };
+  const topPagesMap = new Map((summary?.topPages || []).map((item) => [item.path || '/', item.count || 0]));
+  const lastLeadLabel = summary?.lastLeadAt
+    ? new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'short' }).format(new Date(summary.lastLeadAt))
+    : 'Nenhum lead ainda';
+
+  cards.innerHTML = [
+    {
+      label: 'Leads locais',
+      value: totals.leads,
+      copy: `Entradas locais qualificadas nos últimos ${days} dias.`
+    },
+    {
+      label: 'Eventos locais',
+      value: totals.events,
+      copy: 'Formulários e WhatsApp associados às páginas da praça.'
+    },
+    {
+      label: 'Formulários locais',
+      value: totals.forms,
+      copy: 'Captações de contato e diagnóstico dentro do cluster.'
+    },
+    {
+      label: 'Último lead',
+      value: lastLeadLabel,
+      copy: 'Momento da última entrada não-anônima da praça.'
+    }
+  ]
+    .map(
+      (item) => `
+        <article class="admin-stat-card">
+          <div class="admin-card-eyebrow">${escapeHtml(item.label)}</div>
+          <div class="admin-stat-value">${escapeHtml(item.value)}</div>
+          <p class="admin-stat-copy">${escapeHtml(item.copy)}</p>
+        </article>
+      `
+    )
+    .join('');
+
+  pages.innerHTML = watchlist.length
+    ? watchlist
+        .map(
+          (item) => `
+            <tr>
+              <td><a href="${escapeHtml(item.path)}" target="_blank" rel="noreferrer">${escapeHtml(item.label)}</a></td>
+              <td>${escapeHtml(topPagesMap.get(item.path) || 0)}</td>
+            </tr>
+          `
+        )
+        .join('')
+    : '<tr><td colspan="2">Nenhuma página local configurada.</td></tr>';
+
+  types.innerHTML = (summary?.captureTypes || []).length
+    ? summary.captureTypes
+        .map(
+          (item) => `
+            <li class="admin-list-item">
+              <div class="admin-list-label">${escapeHtml(getCaptureTypeLabel(item.captureType))}</div>
+              <strong class="admin-list-title">${escapeHtml(item.count || 0)} eventos</strong>
+              <div class="admin-list-meta">${escapeHtml(item.captureType || 'unknown')}</div>
+            </li>
+          `
+        )
+        .join('')
+    : '<li class="admin-list-item">Nenhuma captura local registrada ainda.</li>';
+
+  root.hidden = false;
+}
+
+async function fetchCrmSummary(filters = {}) {
+  const response = await fetch(buildCrmSummaryUrl(filters), {
+    headers: { Accept: 'application/json' }
+  });
+
+  if (!response.ok) {
+    throw new Error('crm_summary_unavailable');
+  }
+
+  return response.json();
+}
+
 async function loadCrmCaptureSummary() {
   const root = document.querySelector('[data-admin-capture-summary-root]');
   if (!root) return;
@@ -409,16 +519,29 @@ async function loadCrmCaptureSummary() {
   runtime.crmSummaryEndpoint = inferCrmSummaryEndpoint();
 
   try {
-    const response = await fetch(runtime.crmSummaryEndpoint, {
-      headers: { Accept: 'application/json' }
-    });
-
-    if (!response.ok) return;
-
-    const summary = await response.json();
+    const summary = await fetchCrmSummary();
     renderCrmCaptureSummary(summary);
   } catch {
     // The summary is supplemental. Keep the dashboard usable if the endpoint is unavailable.
+  }
+}
+
+async function loadLocalClusterSummary() {
+  const root = document.querySelector('[data-admin-local-cluster-summary-root]');
+  if (!root) return;
+
+  runtime.crmSummaryEndpoint = inferCrmSummaryEndpoint();
+  const watchlistNode = root.querySelector('[data-admin-local-cluster-watchlist]');
+  const days = Number.parseInt(root.getAttribute('data-admin-local-cluster-days') || '7', 10) || 7;
+  if (!watchlistNode?.textContent) return;
+
+  try {
+    const watchlist = JSON.parse(watchlistNode.textContent);
+    const paths = watchlist.map((item) => item.path).filter(Boolean);
+    const summary = await fetchCrmSummary({ paths, days });
+    renderLocalClusterSummary(summary, watchlist, days);
+  } catch {
+    // Keep the dashboard usable if the local summary endpoint is unavailable or malformed.
   }
 }
 
@@ -605,6 +728,7 @@ async function init() {
   runtime.editorialState = getLocalEditorialState();
 
   await loadCrmCaptureSummary();
+  await loadLocalClusterSummary();
   renderManagedTable();
   renderWorkflowBoard();
 }
