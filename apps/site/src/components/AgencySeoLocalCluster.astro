@@ -1,15 +1,35 @@
 ---
 import '../styles/institutional-trust-pages.css';
 
+interface LocalClusterLink {
+  title: string;
+  copy: string;
+  path: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  links?: LocalClusterLink[];
+}
+
+const {
+  eyebrow = 'Frente local ativa',
+  title = 'BARUERI E ALPHAVILLE JÁ OPERAM COMO CLUSTER LOCAL',
+  subtitle = 'A página canônica da agência continua ampla. As buscas locais mais próximas da contratação em Barueri e Alphaville são organizadas em um cluster próprio, com página money, consultoria, auditoria e apoio BOFU.',
+  links
+} = Astro.props as Props;
+
 const localLinks = [
   {
     title: 'Agencia de SEO em Barueri e Alphaville',
-    copy: 'Pagina money local para captar buscas de contratacao no eixo empresarial da praca sem inflar URLs por sinonimo.',
+    copy: 'Pagina money local para captar buscas por agencia de SEO, empresa de SEO e contratacao no eixo empresarial da praca sem inflar URLs por sinonimo.',
     path: '/servicos/agencia-de-seo-em-barueri/'
   },
   {
     title: 'Consultoria SEO em Barueri e Alphaville',
-    copy: 'Entrada para operacoes que ja procuram consultor SEO, direcao estrategica e governanca continua.',
+    copy: 'Entrada para operacoes que ja procuram consultor SEO, consultoria SEO e governanca continua em Barueri e Alphaville.',
     path: '/servicos/consultoria-seo-em-barueri/'
   },
   {
@@ -21,21 +41,42 @@ const localLinks = [
     title: 'Hub local de Barueri',
     copy: 'Pagina de cidade que conecta Barueri, Alphaville e os ativos BOFU locais da mesma arquitetura comercial.',
     path: '/cidades/barueri/'
+  },
+  {
+    title: 'Quanto custa SEO em Barueri e Alphaville',
+    copy: 'Ativo BOFU para quem ja compara preco, escopo, empresa de SEO e maturidade de contratacao na mesma praca.',
+    path: '/blog/quanto-custa-seo-em-barueri-e-alphaville/'
+  },
+  {
+    title: 'Agencia SEO ou consultoria SEO em Barueri e Alphaville',
+    copy: 'Comparativo local para quem chega por busca de especialista, consultor ou agencia e ainda precisa decidir o modelo correto.',
+    path: '/blog/agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville/'
   }
 ];
+
+const semanticSignals = [
+  'Agencia de SEO em Barueri',
+  'Agencia de SEO em Alphaville',
+  'Empresa de SEO em Barueri',
+  'Consultor SEO em Barueri',
+  'Especialista em SEO em Alphaville'
+];
+
+const items = links?.length ? links : localLinks;
 ---
 <section class="ee-page-section">
   <div class="ee-page-section-head">
-    <span class="ee-page-section-badge">Frente local ativa</span>
-    <h2 class="ee-page-section-title">BARUERI E ALPHAVILLE JÁ OPERAM COMO CLUSTER LOCAL</h2>
+    <span class="ee-page-section-badge">{eyebrow}</span>
+    <h2 class="ee-page-section-title">{title}</h2>
     <p class="ee-page-section-subtitle">
-      A página canônica da agência continua ampla. As buscas locais mais próximas da contratação em
-      Barueri e Alphaville são organizadas em um cluster próprio, com página money, consultoria,
-      auditoria e apoio BOFU.
+      {subtitle}
     </p>
   </div>
+  <div class="ee-page-highlights" style="margin-bottom:1rem;">
+    {semanticSignals.map((signal) => <span class="ee-page-highlight">{signal}</span>)}
+  </div>
   <div class="ee-page-grid three">
-    {localLinks.map((item) => (
+    {items.map((item) => (
       <article class="ee-page-card">
         <h3>{item.title}</h3>
         <p>{item.copy}</p>

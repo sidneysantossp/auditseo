@@ -1,4 +1,5 @@
 ---
+import AgencySeoLocalCluster from '../components/AgencySeoLocalCluster.astro';
 import HomeEnhancements from '../components/HomeEnhancements.astro';
 import HomeLegacyContent from '../components/HomeLegacyContent.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
@@ -11,5 +12,10 @@ import HomeLayout from '../layouts/HomeLayout.astro';
   breadcrumbs={[{ label: 'Home', path: '/' }]}
 >
   <HomeLegacyContent />
+  <AgencySeoLocalCluster
+    eyebrow="Praca local prioritaria"
+    title="BARUERI E ALPHAVILLE SAO A PRIMEIRA FRENTE LOCAL DA AUDITSEO"
+    subtitle="A operacao nacional continua ampla, mas a primeira malha local ja esta montada para captar buscas de agencia, empresa, consultoria, consultor e especialista em SEO no eixo empresarial de Barueri e Alphaville."
+  />
   <HomeEnhancements />
 </HomeLayout>
