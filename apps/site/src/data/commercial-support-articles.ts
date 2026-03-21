@@ -1,4 +1,5 @@
 import { commercialSupportArticlesBofuContracting } from './commercial-support-articles-bofu-contracting';
+import { commercialSupportArticlesAiOverviewsCommercial } from './commercial-support-articles-ai-overviews-commercial';
 import { commercialSupportArticlesBofuSectorComparison } from './commercial-support-articles-bofu-sector-comparison';
 import { commercialSupportArticlesBofuSectorPricing } from './commercial-support-articles-bofu-sector-pricing';
 import { commercialSupportArticlesBarueriAlphaville } from './commercial-support-articles-barueri-alphaville';
@@ -191,6 +192,7 @@ export function renderCommercialSupportArticleHtml(source: CommercialSupportArti
 export const commercialSupportArticles: CommercialSupportArticleSource[] = [
   ...commercialSupportArticlesBarueriAlphaville,
   ...commercialSupportArticlesCirurgiaPlastica,
+  ...commercialSupportArticlesAiOverviewsCommercial,
   {
     slug: 'quanto-custa-seo-para-clinicas-medicas',
     title: 'Quanto Custa SEO para Clínicas Médicas',

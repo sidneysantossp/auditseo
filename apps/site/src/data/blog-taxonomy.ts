@@ -68,7 +68,16 @@ export const blogCategories: BlogCategoryDefinition[] = [
       { label: 'Clinicas medicas', path: '/nichos/clinicas-medicas/' },
       { label: 'Sao Paulo', path: '/cidades/sao-paulo/' }
     ],
-    categoryKeywords: ['ai overviews', 'google ai overviews', 'como aparecer ai overviews', 'citabilidade em ia'],
+    categoryKeywords: [
+      'ai overviews',
+      'google ai overviews',
+      'como aparecer ai overviews',
+      'citabilidade em ia',
+      'agencia seo para ai overviews',
+      'consultoria seo para ai overviews',
+      'auditoria seo para ai overviews',
+      'agencia seo ou consultoria seo para ai overviews'
+    ],
     faqs: [
       {
         question: 'Esta categoria fala so sobre o conceito de AI Overviews?',
@@ -96,7 +105,11 @@ export const blogCategories: BlogCategoryDefinition[] = [
       'queries-ai-overviews',
       'estruturar-conteudo-ai-overviews',
       'case-study-ai-overviews',
-      'google-ai-mode'
+      'google-ai-mode',
+      'agencia-seo-para-ai-overviews-como-escolher',
+      'consultoria-seo-para-ai-overviews',
+      'auditoria-seo-para-ai-overviews',
+      'agencia-seo-ou-consultoria-seo-para-ai-overviews'
     ]
   },
   {
