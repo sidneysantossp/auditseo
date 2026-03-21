@@ -35,6 +35,32 @@ const barueriAlphavilleWatchlist = [
     path: '/blog/agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville/'
   }
 ];
+const barueriAlphavilleQueryMatrix = [
+  {
+    family: 'Contratação genérica',
+    primaryPage: '/servicos/agencia-de-seo-em-barueri/',
+    acceptablePage: '/agencia-de-seo/',
+    queries: ['agencia de seo em barueri', 'agencia de seo alphaville', 'empresa de seo em barueri', 'empresa de seo alphaville']
+  },
+  {
+    family: 'Consultoria e consultor',
+    primaryPage: '/servicos/consultoria-seo-em-barueri/',
+    acceptablePage: '/servicos/agencia-de-seo-em-barueri/',
+    queries: ['consultoria seo em barueri', 'consultoria seo alphaville', 'consultor seo em barueri', 'consultor seo alphaville', 'especialista seo barueri']
+  },
+  {
+    family: 'Diagnóstico e auditoria',
+    primaryPage: '/servicos/auditoria-seo-em-barueri/',
+    acceptablePage: '/servicos/consultoria-seo-em-barueri/',
+    queries: ['auditoria seo em barueri', 'especialista em seo alphaville', 'diagnostico seo barueri']
+  }
+];
+const barueriAlphavilleSearchConsoleRules = [
+  'Se a query local relevante cair na home ou na canônica ampla por 2 a 3 semanas, reforçar links internos e copy da página local correta.',
+  'Se impressões subirem e CTR cair abaixo de 2%, revisar primeiro title, description e snippet da página que já recebe a impressão.',
+  'Se a família de consultor ou especialista crescer, reforçar consultoria local antes de pensar em nova URL.',
+  'Se auditoria local aparecer pouco e a query cair em consultoria, revisar FAQ, prova operacional e comparativos de entrada.'
+];
 ---
 <AdminLayout
   title="Painel Editorial"
@@ -156,6 +182,63 @@ const barueriAlphavilleWatchlist = [
         <ul class="admin-list" data-admin-local-cluster-types></ul>
       </article>
     </div>
+  </section>
+
+  <section class="admin-grid admin-grid--two admin-section">
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Search Console</div>
+          <h2 class="admin-section-title">Watchlist de queries esperadas</h2>
+        </div>
+        <p class="admin-section-copy">
+          Esta matriz define qual página deveria receber cada família de query local de Barueri / Alphaville antes de qualquer expansão de URL.
+        </p>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Família</th>
+              <th>Página primária</th>
+              <th>Aceitável</th>
+              <th>Queries</th>
+            </tr>
+          </thead>
+          <tbody>
+            {barueriAlphavilleQueryMatrix.map((group) => (
+              <tr>
+                <td>{group.family}</td>
+                <td><code>{group.primaryPage}</code></td>
+                <td><code>{group.acceptablePage}</code></td>
+                <td>{group.queries.join(' • ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Regras</div>
+          <h2 class="admin-section-title">Como interpretar a praça</h2>
+        </div>
+        <p class="admin-section-copy">
+          Antes de abrir qualquer nova derivação, estas são as respostas operacionais esperadas para as leituras do cluster.
+        </p>
+      </div>
+
+      <ul class="admin-list">
+        {barueriAlphavilleSearchConsoleRules.map((item) => (
+          <li class="admin-list-item">
+            <strong class="admin-list-title">{item}</strong>
+          </li>
+        ))}
+      </ul>
+    </article>
   </section>
 
   <AdminDashboardCharts categories={dashboard.categoryCoverage} clusters={dashboard.clusterSnapshots} />

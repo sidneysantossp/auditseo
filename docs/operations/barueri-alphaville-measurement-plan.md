@@ -51,6 +51,40 @@ Sem inflar URLs e sem criar ativos novos cedo demais.
    - CTR
    - posicao media
 
+## Matriz query -> pagina esperada
+### Contratacao generica
+- queries:
+  - `agencia de seo em barueri`
+  - `agencia de seo alphaville`
+  - `empresa de seo em barueri`
+  - `empresa de seo alphaville`
+- pagina primaria:
+  - `/servicos/agencia-de-seo-em-barueri/`
+- pagina aceitavel no comeco:
+  - `/agencia-de-seo/`
+
+### Consultoria e consultor
+- queries:
+  - `consultoria seo em barueri`
+  - `consultoria seo alphaville`
+  - `consultor seo em barueri`
+  - `consultor seo alphaville`
+  - `especialista seo barueri`
+- pagina primaria:
+  - `/servicos/consultoria-seo-em-barueri/`
+- pagina aceitavel no comeco:
+  - `/servicos/agencia-de-seo-em-barueri/`
+
+### Diagnostico e auditoria
+- queries:
+  - `auditoria seo em barueri`
+  - `especialista em seo alphaville`
+  - `diagnostico seo barueri`
+- pagina primaria:
+  - `/servicos/auditoria-seo-em-barueri/`
+- pagina aceitavel no comeco:
+  - `/servicos/consultoria-seo-em-barueri/`
+
 ### Sinais de acao
 - `impressoes sobem e CTR cai`
   - revisar title/meta
