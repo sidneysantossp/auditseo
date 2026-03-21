@@ -1,13 +1,14 @@
 ---
 import '../styles/agencia-seo-parity.css';
 import AgencySeoLegacyContent from '../components/AgencySeoLegacyContent.astro';
+import AgencySeoLocalCluster from '../components/AgencySeoLocalCluster.astro';
 import AgencySeoSchemas from '../components/AgencySeoSchemas.astro';
 import LegacyContentEnhancements from '../components/LegacyContentEnhancements.astro';
 import InstitutionalLayout from '../layouts/InstitutionalLayout.astro';
 ---
 <InstitutionalLayout
-  title="Agencia de SEO em Sao Paulo"
-  description="Procurando uma agencia de SEO em Sao Paulo? A AUDITSEO oferece consultoria SEO especializada em SEO tecnico, AI Overviews, SEO Local e busca generativa."
+  title="Agencia de SEO AI-First"
+  description="A AUDITSEO oferece consultoria SEO especializada em SEO tecnico, AI Overviews, SEO Local e busca generativa para empresas em todo o Brasil."
   canonicalPath="/agencia-de-seo/"
   imagePath="/images/agencia-de-seo.png"
   breadcrumbs={[
@@ -16,6 +17,7 @@ import InstitutionalLayout from '../layouts/InstitutionalLayout.astro';
   ]}
 >
   <AgencySeoLegacyContent />
+  <AgencySeoLocalCluster />
   <AgencySeoSchemas />
   <LegacyContentEnhancements />
 </InstitutionalLayout>

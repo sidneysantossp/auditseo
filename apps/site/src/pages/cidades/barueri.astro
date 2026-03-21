@@ -4,19 +4,19 @@ import CityLayout from '../../layouts/CityLayout.astro';
 
 const focusAreas = [
   {
-    title: 'Barueri como ancora estrutural',
+    title: 'Agencia de SEO em Barueri sem inflar a arquitetura',
     copy:
-      'A cidade entra como base canonicamente segura para a praca, sem inflar URLs por cada variacao local de keyword.'
+      'Barueri entra como ancora estrutural segura para capturar buscas como agencia de SEO em Barueri e empresa de SEO em Barueri sem abrir uma URL para cada sinonimo.'
   },
   {
-    title: 'Alphaville como eixo comercial',
+    title: 'Alphaville como contexto para consultoria e especialista SEO',
     copy:
-      'O Centro Comercial de Alphaville entra como modificador de mercado, comparacao e demanda mais madura dentro da mesma praca.'
+      'O Centro Comercial de Alphaville entra como modificador comercial forte para buscas por consultoria SEO, consultor SEO e especialista em SEO dentro da mesma praca.'
   },
   {
-    title: 'Expansao com disciplina',
+    title: 'Empresa de SEO com expansao controlada',
     copy:
-      'Barueri so deve ganhar novas derivacoes quando a pagina principal, os servicos e o tracking mostrarem aderencia real.'
+      'A frente local so deve ganhar novas derivacoes quando a pagina principal, os servicos, o BOFU e o tracking mostrarem aderencia real.'
   }
 ];
 
@@ -32,9 +32,65 @@ const faqs = [
       'Nao nesta fase. Alphaville entra forte como contexto comercial, copy, FAQs, links internos e leitura de mercado dentro da mesma praca ancorada em Barueri.'
   },
   {
+    question: 'Quem procura empresa de SEO em Alphaville ou consultor SEO em Barueri deveria começar por onde?',
+    answer:
+      'Na mesma malha local. A pagina money de agencia organiza a intencao generica de contratacao e as paginas de consultoria e auditoria filtram etapas mais especificas da decisao.'
+  },
+  {
+    question: 'A AUDITSEO recebe clientes presencialmente em Alphaville?',
+    answer:
+      'Nao como storefront aberto. O atendimento e remoto e reunioes presenciais so acontecem sob agendamento quando fizer sentido para a operacao.'
+  },
+  {
+    question: 'Especialista em SEO e consultoria SEO viram paginas separadas em Alphaville?',
+    answer:
+      'Nao. Essas variacoes entram na copy, FAQ, links internos e artigos de apoio do mesmo cluster local para evitar canibalizacao e inflacao de URLs.'
+  },
+  {
     question: 'Quais frentes fazem mais sentido primeiro?',
     answer:
       'Agencia de SEO como pagina money local, seguida por consultoria SEO e auditoria SEO como portas tecnicas complementares.'
+  }
+];
+
+const decisionLinks = [
+  {
+    title: 'Agencia de SEO em Barueri e Alphaville',
+    copy: 'Pagina money local para buscas genericas de contratacao e empresa de SEO na praca.',
+    path: '/servicos/agencia-de-seo-em-barueri/'
+  },
+  {
+    title: 'Consultoria SEO em Barueri e Alphaville',
+    copy: 'Entrada para operacoes que ja procuram consultor SEO, backlog e governanca.',
+    path: '/servicos/consultoria-seo-em-barueri/'
+  },
+  {
+    title: 'Auditoria SEO em Barueri e Alphaville',
+    copy: 'Porta tecnica para diagnostico quando o gargalo ainda nao esta claro.',
+    path: '/servicos/auditoria-seo-em-barueri/'
+  }
+];
+
+const bofuLinks = [
+  {
+    title: 'Como escolher agencia de SEO em Barueri e Alphaville',
+    copy: 'Reduz comparacao rasa entre agencia generalista, especialista e operacao focada em SEO.',
+    path: '/blog/agencia-seo-para-empresas-em-barueri-como-escolher/'
+  },
+  {
+    title: 'Quanto custa SEO em Barueri e Alphaville',
+    copy: 'Ajuda a calibrar escopo, preco e maturidade da operacao local.',
+    path: '/blog/quanto-custa-seo-em-barueri-e-alphaville/'
+  },
+  {
+    title: 'Em quanto tempo SEO gera resultado em Barueri e Alphaville',
+    copy: 'Ajusta expectativa de prazo e evita leitura errada da praca.',
+    path: '/blog/em-quanto-tempo-seo-gera-resultado-em-barueri-e-alphaville/'
+  },
+  {
+    title: 'Agencia SEO ou consultoria SEO em Barueri e Alphaville',
+    copy: 'Compara os modelos de contratacao mais proximos da decisao comercial local.',
+    path: '/blog/agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville/'
   }
 ];
 
@@ -52,8 +108,8 @@ const faqSchema = {
 };
 ---
 <CityLayout
-  title="AUDITSEO em Barueri | SEO, IA e Operacao Comercial para Alphaville"
-  description="Pagina local da AUDITSEO para Barueri, com foco em SEO, consultoria, auditoria e demanda qualificada no eixo comercial de Alphaville."
+  title="Agencia de SEO em Barueri | Contexto Comercial para Alphaville"
+  description="Hub local da AUDITSEO para Barueri e Alphaville com foco em agencia de SEO, consultoria SEO, auditoria SEO e apoio BOFU para a praca."
   canonicalPath="/cidades/barueri/"
   breadcrumbs={[
     { label: 'Home', path: '/' },
@@ -74,19 +130,20 @@ const faqSchema = {
       <div>
         <span class="ee-page-badge">Cobertura em Barueri e Alphaville</span>
         <h1 class="ee-page-title">
-          SEO E IA EM <span class="accent">BARUERI</span> COM FOCO EMPRESARIAL EM ALPHAVILLE
+          AGENCIA DE SEO EM <span class="accent">BARUERI</span> COM HUB COMERCIAL PARA ALPHAVILLE
         </h1>
         <p class="ee-page-subtitle">
-          Em Barueri, a estrutura local precisa conectar
-          <strong> cidade</strong>, <strong>eixo comercial</strong> e
-          <strong> demanda de contratacao</strong> sem cair em paginas vazias. Alphaville entra aqui
-          como contexto real de mercado, nao como inflacao de URL.
+          Em Barueri, a estrutura local precisa conectar <strong>cidade</strong>,
+          <strong>eixo comercial</strong> e <strong>demanda de contratacao</strong> sem cair em
+          paginas vazias. Alphaville entra aqui como contexto real para buscas por
+          <strong> empresa de SEO</strong>, <strong>consultoria SEO</strong> e
+          <strong> especialista em SEO</strong>, nao como inflacao de URL.
         </p>
         <div class="ee-page-highlights">
           <span class="ee-page-highlight">Barueri</span>
           <span class="ee-page-highlight">Alphaville</span>
-          <span class="ee-page-highlight">Busca Comercial</span>
-          <span class="ee-page-highlight">Expansao Controlada</span>
+          <span class="ee-page-highlight">Agencia de SEO</span>
+          <span class="ee-page-highlight">Consultoria SEO</span>
         </div>
       </div>
 
@@ -94,7 +151,8 @@ const faqSchema = {
         <h2>Entradas mais aderentes</h2>
         <p>
           Em Barueri e Alphaville, a frente local mais forte comeca com a pagina money de agencia,
-          apoiada por consultoria e auditoria como portas complementares.
+          apoiada por consultoria e auditoria como portas complementares. O atendimento e remoto e
+          reunioes presenciais acontecem somente sob agendamento quando necessario.
         </p>
         <div class="ee-page-links">
           <a href="/servicos/agencia-de-seo-em-barueri/">Ver agencia de SEO</a>
@@ -114,6 +172,42 @@ const faqSchema = {
           <article class="ee-page-card">
             <h3>{item.title}</h3>
             <p>{item.copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">Entradas por intencao</span>
+        <h2 class="ee-page-section-title">COMO A PRACA SE DIVIDE SEM ABRIR URL DESNECESSARIA</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {decisionLinks.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+            <div class="ee-page-links">
+              <a href={item.path}>Abrir pagina</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="ee-page-section">
+      <div class="ee-page-section-head">
+        <span class="ee-page-section-badge">BOFU local</span>
+        <h2 class="ee-page-section-title">RECURSOS DE DECISAO PARA BARUERI E ALPHAVILLE</h2>
+      </div>
+      <div class="ee-page-grid three">
+        {bofuLinks.map((item) => (
+          <article class="ee-page-card">
+            <h3>{item.title}</h3>
+            <p>{item.copy}</p>
+            <div class="ee-page-links">
+              <a href={item.path}>Abrir artigo</a>
+            </div>
           </article>
         ))}
       </div>

@@ -29,8 +29,8 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
     heroTitleAccent: 'EM BARUERI',
     heroTitleSuffix: ' PARA EMPRESAS DE ALPHAVILLE',
     heroSubtitle:
-      'Para capturar demanda de empresas em Alphaville sem abrir paginas finas para cada variacao de keyword, a operacao precisa de uma pagina money local forte. Barueri sustenta a URL. Alphaville entra como eixo comercial real da mesma praca.',
-    highlights: ['Barueri', 'Alphaville', 'Busca Comercial', 'SEO Especializado'],
+      'Quem procura uma empresa de SEO em Barueri, uma agencia de SEO para empresas em Alphaville ou um especialista em SEO para operar a praca precisa chegar na mesma pagina money local. Barueri sustenta a URL. Alphaville entra como eixo comercial real da mesma praca.',
+    highlights: ['Barueri', 'Alphaville', 'Empresa de SEO', 'SEO Especializado'],
     heroCard: {
       title: 'Quando essa pagina faz sentido',
       copy:
@@ -56,7 +56,7 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
       {
         title: 'Espaco para SEO especializado',
         copy:
-          'Boa parte da concorrencia local e agencia de marketing ampla. Isso abre espaco para uma tese mais especializada em SEO e AI search.'
+          'Boa parte da concorrencia local e agencia de marketing ampla. Isso abre espaco para uma empresa de SEO mais especializada e para uma leitura de especialista em SEO, nao de fornecedor generalista.'
       },
       {
         title: 'Entidade local com funcao comercial',
@@ -89,7 +89,7 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
     differentiators: [
       'URL unica para a intencao generica mais forte da praca.',
       'Alphaville usado como modificador comercial e nao como inflacao estrutural.',
-      'Ligacao entre agencia, consultoria e auditoria sem abrir pagina duplicada para cada sinonimo.',
+      'Ligacao entre agencia, empresa de SEO, especialista em SEO e consultoria sem abrir pagina duplicada para cada sinonimo.',
       'Base pronta para medir resultado por cluster local.'
     ],
     proofPoints: [
@@ -113,6 +113,7 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
       { question: 'Por que usar Barueri na URL e Alphaville na copy?', answer: 'Porque Barueri e a ancora estrutural mais segura para a cidade, enquanto Alphaville entra como eixo comercial forte da mesma praca.' },
       { question: 'Essa pagina compete com a pagina institucional da agencia?', answer: 'Nao. A pagina institucional sustenta a marca. Esta pagina traduz a oferta para uma intencao local de contratacao.' },
       { question: 'Vale abrir paginas separadas para empresa de SEO, especialista em SEO e consultor SEO?', answer: 'Nao. Essas variacoes ficam melhor tratadas na mesma pagina money local, com reforco semantico e apoio BOFU.' },
+      { question: 'Quem procura uma empresa de SEO em Barueri ou um especialista em SEO em Alphaville chega nesta pagina?', answer: 'Sim. Esta pagina existe exatamente para concentrar a intencao local de contratacao sem espalhar a mesma demanda em varias URLs quase iguais.' },
       { question: 'Quando essa frente faz mais sentido?', answer: 'Quando Barueri e Alphaville ja entram na conversa comercial com funcao real e a operacao quer capturar demanda mais madura.' },
       { question: 'Alphaville pode aparecer sem endereco oficial local?', answer: 'Pode entrar como contexto comercial e area atendida, mas a entidade e o NAP so devem mudar quando a operacao fisica estiver validada.' },
       { question: 'A pagina local substitui consultoria ou auditoria?', answer: 'Nao. Ela organiza a intencao generica de contratacao. Consultoria e auditoria continuam como portas tecnicas diferentes.' },
@@ -126,6 +127,7 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
     ctaSecondaryPath: '/contato/',
     ctaSecondaryLabel: 'Falar com a AUDITSEO',
     areaServedName: 'Barueri',
+    areaServedNames: ['Barueri', 'Alphaville'],
     brief: requireBrief(slug)
   };
 }
@@ -144,8 +146,8 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     heroTitleAccent: 'EM BARUERI',
     heroTitleSuffix: ' PARA EMPRESAS DE ALPHAVILLE',
     heroSubtitle:
-      'Quando a empresa ja tem estrutura, equipe ou demanda recorrente, a conversa deixa de ser apenas sobre agencia e passa a exigir direcao, backlog e criterio. Em Barueri e Alphaville, isso costuma aparecer cedo nas operacoes mais maduras.',
-    highlights: ['Consultoria', 'Barueri', 'Alphaville', 'Governanca'],
+      'Quando a empresa ja procura um consultor SEO em Barueri ou um especialista SEO em Alphaville, a conversa deixa de ser apenas sobre agencia e passa a exigir direcao, backlog e criterio. Em Barueri e Alphaville, isso costuma aparecer cedo nas operacoes mais maduras.',
+    highlights: ['Consultoria', 'Barueri', 'Alphaville', 'Consultor SEO'],
     heroCard: {
       title: 'Quando essa pagina faz sentido',
       copy:
@@ -165,7 +167,7 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     marketCards: [
       {
         title: 'Operacoes mais maduras',
-        copy: 'Barueri e Alphaville tendem a concentrar empresas que ja entendem a diferenca entre diagnostico isolado e acompanhamento continuo.'
+        copy: 'Barueri e Alphaville tendem a concentrar empresas que ja entendem a diferenca entre diagnostico isolado, consultor SEO pontual e acompanhamento continuo com governanca.'
       },
       {
         title: 'Decisao orientada a pipeline',
@@ -201,7 +203,7 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     differentiators: [
       'Consultoria ancorada em servico canonico e pagina local distinta.',
       'Leitura de praca com foco em pipeline e governanca.',
-      'Integra SEO comercial, tecnico e editorial sem tratar a cidade como enfeite.',
+      'Integra SEO comercial, tecnico e editorial sem tratar a cidade como enfeite nem confundir consultor, especialista e agencia como se fossem paginas separadas.',
       'Base pronta para medir fit real da operacao local.'
     ],
     proofPoints: [
@@ -223,6 +225,7 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     faqItems: [
       { question: 'Quando consultoria SEO faz mais sentido do que agencia local?', answer: 'Quando a operacao precisa de direcao, governanca e acompanhamento continuo, e nao apenas execucao isolada.' },
       { question: 'Consultoria local compete com a pagina money da agencia?', answer: 'Nao. A pagina da agencia organiza a intencao generica. A consultoria atende uma etapa mais qualificada da decisao.' },
+      { question: 'Quem busca consultor SEO em Barueri ou especialista SEO em Alphaville encontra o que aqui?', answer: 'Encontra a camada local da consultoria, voltada para operacoes que ja precisam de direcao estrategica, backlog e leitura comercial mais madura.' },
       { question: 'Alphaville entra de que forma aqui?', answer: 'Como modificador comercial forte da praca, reforcando contexto empresarial e aderencia da oferta.' },
       { question: 'Consultoria entra antes de auditoria?', answer: 'Depende. Quando ainda falta clareza sobre o gargalo principal, auditoria pode ser a porta correta.' },
       { question: 'Essa pagina serve para operacoes pequenas?', answer: 'Serve quando existe fit de maturidade e necessidade de acompanhamento. Sem isso, a operacao pode precisar de uma etapa anterior.' },
@@ -237,6 +240,7 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     ctaSecondaryPath: '/contato/',
     ctaSecondaryLabel: 'Falar com a AUDITSEO',
     areaServedName: 'Barueri',
+    areaServedNames: ['Barueri', 'Alphaville'],
     brief: requireBrief(slug)
   };
 }
@@ -255,8 +259,8 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
     heroTitleAccent: 'EM BARUERI',
     heroTitleSuffix: ' PARA EMPRESAS DE ALPHAVILLE',
     heroSubtitle:
-      'Nem toda operacao local precisa partir direto para acompanhamento continuo. Em Barueri e Alphaville, muitas vezes o primeiro passo correto e descobrir se o gargalo principal esta na tecnica, na arquitetura, na copy comercial ou na propria leitura da praca.',
-    highlights: ['Diagnostico', 'Barueri', 'Alphaville', 'Prioridade'],
+      'Nem toda operacao local precisa partir direto para acompanhamento continuo. Em Barueri e Alphaville, quem procura um especialista em SEO para diagnostico tecnico ou um consultor para revisar a base pode precisar comecar por auditoria antes de qualquer expansao.',
+    highlights: ['Diagnostico', 'Barueri', 'Alphaville', 'Especialista SEO'],
     heroCard: {
       title: 'Quando essa pagina faz sentido',
       copy:
@@ -333,6 +337,7 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
     faqItems: [
       { question: 'Quando auditoria SEO faz mais sentido nesta praca?', answer: 'Quando ainda nao esta claro se o gargalo principal e tecnico, editorial, arquitetural ou de leitura local.' },
       { question: 'Auditoria local compete com consultoria local?', answer: 'Nao. A auditoria diagnostica. A consultoria acompanha e executa a evolucao do sistema.' },
+      { question: 'Quem procura um especialista em SEO em Alphaville para diagnostico deveria começar aqui?', answer: 'Sim, quando a prioridade e descobrir o que trava a operacao antes de assumir um acompanhamento continuo ou uma expansao local maior.' },
       { question: 'O que a auditoria precisa revisar sobre Alphaville?', answer: 'Principalmente coerencia de uso da praca, papel comercial do eixo e riscos de prometer entidade local sem base suficiente.' },
       { question: 'Ela serve para empresa sem queda de trafego?', answer: 'Sim. Muitas vezes o problema nao e queda, e falta de estrutura para transformar busca em oportunidade.' },
       { question: 'A auditoria tambem olha pagina money e blog?', answer: 'Sim. O diagnostico precisa enxergar pagina principal, servicos, apoio editorial e sinais locais como o mesmo sistema.' },
@@ -347,6 +352,7 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
     ctaSecondaryPath: '/contato/',
     ctaSecondaryLabel: 'Falar com a AUDITSEO',
     areaServedName: 'Barueri',
+    areaServedNames: ['Barueri', 'Alphaville'],
     brief: requireBrief(slug)
   };
 }

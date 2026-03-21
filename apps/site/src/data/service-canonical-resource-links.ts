@@ -32,6 +32,11 @@ export const serviceCanonicalResourceLinks: Record<string, ServiceCanonicalResou
         label: 'Quando não contratar SEO',
         path: '/blog/quando-nao-contratar-seo/',
         description: 'Filtra timing e maturidade antes da contratação.'
+      },
+      {
+        label: 'Consultoria SEO em Barueri e Alphaville',
+        path: '/servicos/consultoria-seo-em-barueri/',
+        description: 'Mostra a aplicação local da consultoria em uma praça empresarial já aberta.'
       }
     ]
   },
@@ -55,6 +60,11 @@ export const serviceCanonicalResourceLinks: Record<string, ServiceCanonicalResou
         label: 'Agência SEO ou consultoria SEO?',
         path: '/blog/agencia-seo-ou-consultoria-seo/',
         description: 'Complementa a decisão de modelo depois do diagnóstico.'
+      },
+      {
+        label: 'Auditoria SEO em Barueri e Alphaville',
+        path: '/servicos/auditoria-seo-em-barueri/',
+        description: 'Mostra como o diagnóstico local entra antes da expansão em uma praça comercial real.'
       }
     ]
   },

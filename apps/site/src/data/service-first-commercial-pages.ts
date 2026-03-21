@@ -62,6 +62,7 @@ export interface ServiceFirstCommercialPage {
   ctaSecondaryPath: string;
   ctaSecondaryLabel: string;
   areaServedName: string;
+  areaServedNames?: string[];
   brief: CommercialPageBrief;
 }
 

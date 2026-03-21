@@ -1,0 +1,48 @@
+---
+import '../styles/institutional-trust-pages.css';
+
+const localLinks = [
+  {
+    title: 'Agencia de SEO em Barueri e Alphaville',
+    copy: 'Pagina money local para captar buscas de contratacao no eixo empresarial da praca sem inflar URLs por sinonimo.',
+    path: '/servicos/agencia-de-seo-em-barueri/'
+  },
+  {
+    title: 'Consultoria SEO em Barueri e Alphaville',
+    copy: 'Entrada para operacoes que ja procuram consultor SEO, direcao estrategica e governanca continua.',
+    path: '/servicos/consultoria-seo-em-barueri/'
+  },
+  {
+    title: 'Auditoria SEO em Barueri e Alphaville',
+    copy: 'Porta tecnica para diagnostico quando o gargalo ainda nao esta claro e a praca precisa de revisao mais profunda.',
+    path: '/servicos/auditoria-seo-em-barueri/'
+  },
+  {
+    title: 'Hub local de Barueri',
+    copy: 'Pagina de cidade que conecta Barueri, Alphaville e os ativos BOFU locais da mesma arquitetura comercial.',
+    path: '/cidades/barueri/'
+  }
+];
+---
+<section class="ee-page-section">
+  <div class="ee-page-section-head">
+    <span class="ee-page-section-badge">Frente local ativa</span>
+    <h2 class="ee-page-section-title">BARUERI E ALPHAVILLE JÁ OPERAM COMO CLUSTER LOCAL</h2>
+    <p class="ee-page-section-subtitle">
+      A página canônica da agência continua ampla. As buscas locais mais próximas da contratação em
+      Barueri e Alphaville são organizadas em um cluster próprio, com página money, consultoria,
+      auditoria e apoio BOFU.
+    </p>
+  </div>
+  <div class="ee-page-grid three">
+    {localLinks.map((item) => (
+      <article class="ee-page-card">
+        <h3>{item.title}</h3>
+        <p>{item.copy}</p>
+        <div class="ee-page-links">
+          <a href={item.path}>Abrir página</a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
