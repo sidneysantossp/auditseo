@@ -24,6 +24,10 @@ const {
 
 const canonicalUrl = new URL(canonicalPath, siteMetadata.siteUrl).toString();
 const logoUrl = new URL(siteMetadata.logoPath, siteMetadata.siteUrl).toString();
+const areaServed = siteMetadata.localPresence.areasServed.map((area) => ({
+  '@type': area === 'Brasil' ? 'Country' : 'Place',
+  name: area
+}));
 const graph: Record<string, unknown>[] = [
   {
     '@type': 'Organization',
@@ -37,14 +41,7 @@ const graph: Record<string, unknown>[] = [
       url: logoUrl
     },
     sameAs: Object.values(siteMetadata.social),
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: siteMetadata.address.street,
-      addressLocality: siteMetadata.address.city,
-      addressRegion: siteMetadata.address.state,
-      postalCode: siteMetadata.address.zip,
-      addressCountry: 'BR'
-    }
+    areaServed
   },
   {
     '@type': 'WebSite',

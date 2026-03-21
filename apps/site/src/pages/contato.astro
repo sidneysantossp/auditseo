@@ -25,7 +25,7 @@ const contactCards = [
   },
   {
     title: 'Endereco',
-    copy: 'Base operacional da AUDITSEO em Sao Paulo, usada como referencia institucional e comercial.',
+    copy: 'Base operacional da AUDITSEO em Barueri, com reunioes presenciais somente sob agendamento quando necessario.',
     href: '/sobre/',
     label: 'Ver dados institucionais'
   }
@@ -60,7 +60,7 @@ const faqs = [
   {
     question: 'A AUDITSEO atende apenas Sao Paulo?',
     answer:
-      'Nao. A base institucional esta em Sao Paulo, mas o atendimento pode cobrir empresas de outras cidades e operacoes nacionais.'
+      'Nao. A operacao atende empresas em todo o Brasil de forma remota, com base operacional em Barueri e encontros presenciais apenas sob agendamento quando fizer sentido.'
   },
   {
     question: 'O formulario desta pagina substitui o modal de diagnostico?',
@@ -114,7 +114,7 @@ const faqSchema = {
         <div class="ee-page-highlights">
           <span class="ee-page-highlight">WhatsApp</span>
           <span class="ee-page-highlight">Formulario Oficial</span>
-          <span class="ee-page-highlight">Sao Paulo</span>
+          <span class="ee-page-highlight">Barueri</span>
           <span class="ee-page-highlight">Diagnostico AI-First</span>
         </div>
       </div>
@@ -122,7 +122,8 @@ const faqSchema = {
         <h2>Dados principais</h2>
         <p><strong>E-mail:</strong> <a class="ee-page-inline-link" href={`mailto:${siteMetadata.contact.email}`}>{siteMetadata.contact.email}</a></p>
         <p><strong>Telefone:</strong> <a class="ee-page-inline-link" href="tel:+5511996384376">{siteMetadata.contact.phone}</a></p>
-        <p><strong>Endereco:</strong> {siteMetadata.address.street}, {siteMetadata.address.city} - {siteMetadata.address.state}</p>
+        <p><strong>Base operacional:</strong> {siteMetadata.localPresence.operationalBaseLabel}, {siteMetadata.localPresence.city} - {siteMetadata.localPresence.state}</p>
+        <p><strong>Modelo:</strong> Atendimento remoto com reunioes presenciais somente sob agendamento.</p>
         <div class="ee-page-links">
           <a href={siteMetadata.contact.whatsappUrl} target="_blank" rel="noopener">Abrir WhatsApp</a>
           <button type="button" class="ee-page-secondary" data-open-cta-modal>Abrir modal</button>
@@ -147,9 +148,9 @@ const faqSchema = {
         <p class="ee-page-stat-copy">A pagina reduz dispersao e centraliza o contato comercial.</p>
       </article>
       <article class="ee-page-stat">
-        <div class="ee-page-stat-value">SP</div>
-        <div class="ee-page-stat-label">Base institucional</div>
-        <p class="ee-page-stat-copy">Sao Paulo como referencia comercial e operacional da marca.</p>
+        <div class="ee-page-stat-value">REMOTO</div>
+        <div class="ee-page-stat-label">Modelo de atendimento</div>
+        <p class="ee-page-stat-copy">Operacao nacional com base em Barueri e encontros presenciais somente quando agendados.</p>
       </article>
     </section>
 

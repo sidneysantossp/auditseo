@@ -3,6 +3,10 @@ import { siteMetadata } from '../data/site';
 
 const canonicalPath = '/agencia-de-seo/';
 const canonicalUrl = new URL(canonicalPath, siteMetadata.siteUrl).toString();
+const areaServed = siteMetadata.localPresence.areasServed.map((area) => ({
+  '@type': area === 'Brasil' ? 'Country' : 'Place',
+  name: area
+}));
 
 const faqItems = [
   {
@@ -40,21 +44,10 @@ const schema = {
       name: siteMetadata.legalName,
       url: canonicalUrl,
       description:
-        'Agencia de SEO em Sao Paulo especializada em Search Intelligence AI, AI Overviews, SEO Local e presenca em LLMs.',
+        'Agencia de SEO especializada em Search Intelligence AI, AI Overviews, SEO Local e presenca em LLMs, com operacao remota e cobertura comercial em Barueri e Alphaville.',
       telephone: siteMetadata.contact.phone,
       email: siteMetadata.contact.email,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: siteMetadata.address.street,
-        addressLocality: siteMetadata.address.city,
-        addressRegion: siteMetadata.address.state,
-        postalCode: siteMetadata.address.zip,
-        addressCountry: 'BR'
-      },
-      areaServed: {
-        '@type': 'Country',
-        name: 'Brasil'
-      }
+      areaServed
     },
     {
       '@type': 'Service',
@@ -64,10 +57,7 @@ const schema = {
       provider: {
         '@id': `${canonicalUrl}#localbusiness`
       },
-      areaServed: {
-        '@type': 'Country',
-        name: 'Brasil'
-      },
+      areaServed,
       description:
         'Consultoria SEO especializada em SEO tecnico, AI Overviews, LLMs, SEO Local e busca generativa.'
     },

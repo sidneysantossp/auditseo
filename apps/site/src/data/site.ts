@@ -16,12 +16,15 @@ export const siteMetadata = {
     whatsappUrl:
       'https://wa.me/5511996384376?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20AUDITSEO.'
   },
-  address: {
-    street: 'Rua Baronesa de Bela Vista, 411',
-    city: 'Sao Paulo',
+  localPresence: {
+    model: 'service-area-business',
+    operationalBaseLabel: 'Centro Comercial Alphaville',
+    city: 'Barueri',
     state: 'SP',
-    zip: '01520-000',
-    country: 'Brasil'
+    zip: '06453-016',
+    country: 'Brasil',
+    publicLabel: 'Atendimento remoto em todo o Brasil, com base operacional em Barueri e reunioes presenciais somente sob agendamento.',
+    areasServed: ['Brasil', 'Barueri', 'Alphaville']
   },
   social: {
     instagram: 'https://instagram.com/auditseo',
