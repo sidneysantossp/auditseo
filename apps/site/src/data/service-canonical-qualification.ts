@@ -79,12 +79,14 @@ export const serviceCanonicalQualification: Record<string, ServiceCanonicalQuali
     [
       'Quando o site já tem base editorial ou comercial suficiente para sustentar citabilidade e evolução por cluster.',
       'Quando a operação quer transformar IA em descoberta estruturada, e não em experimento solto.',
-      'Quando conteúdo, entidade e arquitetura precisam conversar para aumentar a chance de aparição em respostas generativas.'
+      'Quando conteúdo, entidade e arquitetura precisam conversar para aumentar a chance de aparição em respostas generativas.',
+      'Quando a empresa já separou se precisa de reforço de agência, consultoria ou auditoria antes de escalar AI Overviews.'
     ],
     [
       'Se a base técnica ainda está frágil, talvez auditoria ou SEO técnico sejam a entrada correta.',
       'Se a operação ainda não publica com consistência, AI Overview Optimization pode entrar cedo demais.',
-      'Se a expectativa é aparição imediata sem governança editorial, a leitura do serviço está incompleta.'
+      'Se a expectativa é aparição imediata sem governança editorial, a leitura do serviço está incompleta.',
+      'Se a dúvida principal ainda é escolher entre agência, consultoria ou diagnóstico, vale resolver o modelo antes.'
     ]
   ),
   '/servicos/llm-brand-presence/': createQualification(

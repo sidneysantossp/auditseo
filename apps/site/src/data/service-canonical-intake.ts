@@ -102,12 +102,14 @@ export const serviceCanonicalIntake: Record<string, ServiceCanonicalIntakeLayer>
     [
       'Clusters prioritários, páginas mais estratégicas e como o conteúdo é produzido hoje.',
       'Quais ativos já sustentam fonte, método, autoria e papel claro dentro do domínio.',
-      'Leitura realista do que o site consegue sustentar em citabilidade neste momento.'
+      'Leitura realista do que o site consegue sustentar em citabilidade neste momento.',
+      'Qual é a porta de entrada comercial mais coerente entre agência, consultoria, auditoria e reforço específico de IA.'
     ],
     [
       'Diagnóstico inicial de base semântica, citabilidade e arquitetura por cluster.',
       'Sinal de quais páginas podem ser reforçadas primeiro com menos ruído.',
-      'Direção sobre se a entrada correta é AI Overviews, SEO técnico ou reestruturação editorial.'
+      'Direção sobre se a entrada correta é AI Overviews, SEO técnico ou reestruturação editorial.',
+      'Critério para separar reforço de agência, acompanhamento contínuo e diagnóstico antes da execução.'
     ],
     [
       'Se a operação ainda publica sem consistência nem governança mínima.',

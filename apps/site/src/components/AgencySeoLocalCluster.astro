@@ -12,13 +12,15 @@ interface Props {
   title?: string;
   subtitle?: string;
   links?: LocalClusterLink[];
+  signals?: string[];
 }
 
 const {
   eyebrow = 'Frente local ativa',
   title = 'BARUERI E ALPHAVILLE JÁ OPERAM COMO CLUSTER LOCAL',
   subtitle = 'A página canônica da agência continua ampla. As buscas locais mais próximas da contratação em Barueri e Alphaville são organizadas em um cluster próprio, com página money, consultoria, auditoria e apoio BOFU.',
-  links
+  links,
+  signals
 } = Astro.props as Props;
 
 const localLinks = [
@@ -63,6 +65,7 @@ const semanticSignals = [
 ];
 
 const items = links?.length ? links : localLinks;
+const semanticItems = signals?.length ? signals : semanticSignals;
 ---
 <section class="ee-page-section">
   <div class="ee-page-section-head">
@@ -73,7 +76,7 @@ const items = links?.length ? links : localLinks;
     </p>
   </div>
   <div class="ee-page-highlights" style="margin-bottom:1rem;">
-    {semanticSignals.map((signal) => <span class="ee-page-highlight">{signal}</span>)}
+    {semanticItems.map((signal) => <span class="ee-page-highlight">{signal}</span>)}
   </div>
   <div class="ee-page-grid three">
     {items.map((item) => (

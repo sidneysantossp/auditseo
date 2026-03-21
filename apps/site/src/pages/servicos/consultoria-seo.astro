@@ -6,8 +6,8 @@ import LegacyContentEnhancements from '../../components/LegacyContentEnhancement
 import ServiceDetailLayout from '../../layouts/ServiceDetailLayout.astro';
 ---
 <ServiceDetailLayout
-  title="Consultoria SEO para Empresas | AUDITSEO"
-  description="Consultoria SEO especializada com estrategia personalizada, acompanhamento continuo e orientacao pratica para crescimento organico, arquitetura e governanca de execucao, com aplicacao local ativa em Barueri e Alphaville."
+  title="Consultoria SEO para Empresas | AI Overviews e SEO Generativo | AUDITSEO"
+  description="Consultoria SEO especializada para empresas que precisam de estrategia continua, consultor SEO, governanca de backlog, AI Overviews e SEO generativo com aplicacao local ativa em Barueri e Alphaville."
   canonicalPath="/servicos/consultoria-seo/"
   imagePath="/images/seo.jpeg"
   pageType="Service"
@@ -19,9 +19,38 @@ import ServiceDetailLayout from '../../layouts/ServiceDetailLayout.astro';
 >
   <ConsultoriaSeoLegacyContent />
   <AgencySeoLocalCluster
-    eyebrow="Aplicacao local"
-    title="CONSULTORIA CANONICA JA SUSTENTA BARUERI E ALPHAVILLE"
-    subtitle="A pagina canonica de consultoria continua ampla, mas a aplicacao local ja esta pronta para captar quem procura consultoria SEO, consultor SEO ou especialista em SEO no eixo empresarial de Barueri e Alphaville, sem competir com a pagina money local de agencia."
+    eyebrow="Desdobramento comercial"
+    title="CONSULTORIA PRECISA CAPTAR CONSULTOR, ESPECIALISTA E AI OVERVIEWS SEM NOVA URL POR SINONIMO"
+    subtitle="A pagina canonica de consultoria continua ampla, mas agora deve absorver buscas por consultor SEO, especialista em SEO e governanca para AI Overviews, distribuindo a aplicacao local para Barueri e Alphaville sem competir com a pagina money de agencia."
+    signals={[
+      'Consultor SEO',
+      'Especialista em SEO',
+      'AI Overviews',
+      'SEO generativo',
+      'Barueri e Alphaville'
+    ]}
+    links={[
+      {
+        title: 'AI Overview Optimization',
+        copy: 'Servico canonico para quando a conversa gira em torno de citabilidade, respostas generativas e reforco de paginas que ja tem base comercial.',
+        path: '/servicos/ai-overview-optimization/'
+      },
+      {
+        title: 'Auditoria SEO',
+        copy: 'Entrada tecnica para quando a operacao ainda nao sabe se o gargalo principal esta na base, na arquitetura ou no papel de IA dentro da jornada.',
+        path: '/servicos/auditoria-seo/'
+      },
+      {
+        title: 'Consultoria SEO em Barueri',
+        copy: 'Aplicacao local da consultoria para a praca empresarial mais proxima da tese vencedora de Sao Paulo.',
+        path: '/servicos/consultoria-seo-em-barueri/'
+      },
+      {
+        title: 'Agencia de SEO',
+        copy: 'Hub comercial mais amplo para quem ainda chega por empresa de SEO, agencia de SEO ou contratacao continua sem clareza total do modelo.',
+        path: '/agencia-de-seo/'
+      }
+    ]}
   />
   <LegacyContentEnhancements />
 </ServiceDetailLayout>

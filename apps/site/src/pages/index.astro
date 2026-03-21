@@ -5,17 +5,57 @@ import HomeLegacyContent from '../components/HomeLegacyContent.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
 ---
 <HomeLayout
-  title="Agencia de SEO AI-First para Empresas | AUDITSEO"
-  description="AUDITSEO e a agencia de SEO AI-first para empresas, com operacao nacional e primeira frente local em Barueri e Alphaville para buscas de agencia, empresa, consultoria e especialista em SEO."
+  title="Agencia de SEO em Sao Paulo Especializada em AI Overviews | AUDITSEO"
+  description="A AUDITSEO e a agencia de SEO em Sao Paulo especializada em AI Overviews, SEO generativo, consultoria SEO e auditoria estrategica para empresas, com operacao nacional e frente local ativa em Barueri e Alphaville."
   canonicalPath="/"
   imagePath="/images/agencia-de-seo.png"
   breadcrumbs={[{ label: 'Home', path: '/' }]}
 >
   <HomeLegacyContent />
   <AgencySeoLocalCluster
-    eyebrow="Praca local prioritaria"
-    title="BARUERI E ALPHAVILLE SAO A PRIMEIRA FRENTE LOCAL DA AUDITSEO"
-    subtitle="A operacao nacional continua ampla, mas a primeira malha local ja esta montada para captar buscas de agencia, empresa, consultoria, consultor e especialista em SEO no eixo empresarial de Barueri e Alphaville, com Barueri sustentando a ancora estrutural da URL e Alphaville reforcando a densidade comercial da praca."
+    eyebrow="Cluster vencedor"
+    title="A VITORIA EM SAO PAULO AGORA PRECISA PUXAR TODO O CLUSTER COMERCIAL"
+    subtitle="A home continua validando a tese de agencia de SEO em Sao Paulo especializada em AI Overviews. O proximo passo nao e inflar URLs por sinonimo, e sim distribuir autoridade para agencia, consultoria, auditoria, AI Overview Optimization e a camada local da Grande Sao Paulo."
+    signals={[
+      'Agencia de SEO em Sao Paulo',
+      'AI Overviews',
+      'Consultoria SEO',
+      'Auditoria SEO',
+      'SEO generativo',
+      'Barueri e Alphaville'
+    ]}
+    links={[
+      {
+        title: 'Agencia de SEO',
+        copy: 'Hub comercial principal da tese AI-first. Deve receber a demanda ampla de agencia e redistribuir peso para consultoria, auditoria e comparativos BOFU.',
+        path: '/agencia-de-seo/'
+      },
+      {
+        title: 'Consultoria SEO',
+        copy: 'Entrada para operacoes que chegam por consultor SEO, especialista em SEO e backlog continuo com governanca de execucao.',
+        path: '/servicos/consultoria-seo/'
+      },
+      {
+        title: 'Auditoria SEO',
+        copy: 'Porta tecnica para diagnostico quando a empresa ainda nao sabe se o gargalo principal esta em arquitetura, tecnica ou citabilidade.',
+        path: '/servicos/auditoria-seo/'
+      },
+      {
+        title: 'AI Overview Optimization',
+        copy: 'Servico canonico que traduz a especializacao em AI Overviews para uma proposta comercial clara, sem deixar o tema solto do restante do portfolio.',
+        path: '/servicos/ai-overview-optimization/'
+      },
+      {
+        title: 'Sao Paulo',
+        copy: 'Hub de apoio da capital para reforcar contexto geografico, competicao e aplicacao comercial sem disputar ownership com a home vencedora.',
+        path: '/cidades/sao-paulo/'
+      },
+      {
+        title: 'Barueri e Alphaville',
+        copy: 'Expansao local mais proxima da Grande Sao Paulo, com cluster ja operacional para buscas de agencia, consultoria e auditoria.',
+        path: '/servicos/agencia-de-seo-em-barueri/'
+      }
+    ]}
   />
   <HomeEnhancements />
 </HomeLayout>

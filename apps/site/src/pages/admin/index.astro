@@ -61,6 +61,66 @@ const barueriAlphavilleSearchConsoleRules = [
   'Se a família de consultor ou especialista crescer, reforçar consultoria local antes de pensar em nova URL.',
   'Se auditoria local aparecer pouco e a query cair em consultoria, revisar FAQ, prova operacional e comparativos de entrada.'
 ];
+const saoPauloAiCommercialWatchlist = [
+  { label: 'Home vencedora', path: '/' },
+  { label: 'Agencia de SEO', path: '/agencia-de-seo/' },
+  { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
+  { label: 'Auditoria SEO', path: '/servicos/auditoria-seo/' },
+  { label: 'AI Overview Optimization', path: '/servicos/ai-overview-optimization/' },
+  { label: 'Sao Paulo', path: '/cidades/sao-paulo/' },
+  { label: 'BOFU agencia IA', path: '/blog/agencia-seo-para-ai-overviews-como-escolher/' },
+  { label: 'BOFU consultoria IA', path: '/blog/consultoria-seo-para-ai-overviews/' },
+  { label: 'BOFU auditoria IA', path: '/blog/auditoria-seo-para-ai-overviews/' },
+  { label: 'BOFU agencia x consultoria IA', path: '/blog/agencia-seo-ou-consultoria-seo-para-ai-overviews/' }
+];
+const saoPauloAiCommercialQueryMatrix = [
+  {
+    family: 'Agencia + Sao Paulo + AI Overviews',
+    primaryPage: '/',
+    acceptablePage: '/agencia-de-seo/',
+    queries: [
+      'agencia de seo em sao paulo especializada em ai overviews',
+      'agencia de seo sao paulo ia',
+      'empresa de seo em sao paulo especializada em ai overviews'
+    ]
+  },
+  {
+    family: 'Agencia / empresa de SEO AI-first',
+    primaryPage: '/agencia-de-seo/',
+    acceptablePage: '/',
+    queries: [
+      'agencia de seo ai overviews',
+      'empresa de seo ai overviews',
+      'agencia de seo generativo'
+    ]
+  },
+  {
+    family: 'Consultoria / consultor SEO para IA',
+    primaryPage: '/servicos/consultoria-seo/',
+    acceptablePage: '/servicos/ai-overview-optimization/',
+    queries: [
+      'consultoria seo para ai overviews',
+      'consultor seo ai overviews',
+      'especialista em seo ai overviews'
+    ]
+  },
+  {
+    family: 'Auditoria / diagnostico para IA',
+    primaryPage: '/servicos/auditoria-seo/',
+    acceptablePage: '/servicos/ai-overview-optimization/',
+    queries: [
+      'auditoria seo para ai overviews',
+      'diagnostico seo ai overviews',
+      'auditoria seo generativo'
+    ]
+  }
+];
+const saoPauloAiCommercialRules = [
+  'Se a home continuar ganhando a query exata de Sao Paulo + AI Overviews, nao abrir uma URL nova para o mesmo recorte. Use a home como distribuidora.',
+  'Se /agencia-de-seo/ subir para queries mais amplas de agencia ou empresa de SEO AI-first, reforcar essa URL como hub comercial sem mexer no ownership da home.',
+  'Se consultoria ou auditoria começarem a receber impressao para queries de IA, ajustar primeiro title, FAQ e recursos relacionados antes de criar novas paginas.',
+  'Se os BOFUs novos passarem a captar impressao, usar isso para empurrar CTR e passagem interna, nao para competir com as paginas canônicas.'
+];
 ---
 <AdminLayout
   title="Painel Editorial"
@@ -238,6 +298,82 @@ const barueriAlphavilleSearchConsoleRules = [
           </li>
         ))}
       </ul>
+    </article>
+  </section>
+
+  <section class="admin-grid admin-grid--two admin-section">
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Search Console</div>
+          <h2 class="admin-section-title">Sao Paulo + AI Overviews</h2>
+        </div>
+        <p class="admin-section-copy">
+          Esta matriz organiza a familia vencedora da home e como ela deve transferir autoridade para agencia, consultoria, auditoria e AI Overview Optimization sem canibalizar.
+        </p>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Familia</th>
+              <th>Pagina primaria</th>
+              <th>Aceitavel</th>
+              <th>Queries</th>
+            </tr>
+          </thead>
+          <tbody>
+            {saoPauloAiCommercialQueryMatrix.map((group) => (
+              <tr>
+                <td>{group.family}</td>
+                <td><code>{group.primaryPage}</code></td>
+                <td><code>{group.acceptablePage}</code></td>
+                <td>{group.queries.join(' • ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Execucao</div>
+          <h2 class="admin-section-title">Como interpretar o cluster vencedor</h2>
+        </div>
+        <p class="admin-section-copy">
+          A vitoria da home deve puxar outras URLs juntas. O papel desta watchlist e impedir reacoes erradas de arquitetura.
+        </p>
+      </div>
+
+      <ul class="admin-list">
+        {saoPauloAiCommercialRules.map((item) => (
+          <li class="admin-list-item">
+            <strong class="admin-list-title">{item}</strong>
+          </li>
+        ))}
+      </ul>
+
+      <div class="admin-table-wrap" style="margin-top:1.5rem;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Watchlist</th>
+              <th>Path</th>
+            </tr>
+          </thead>
+          <tbody>
+            {saoPauloAiCommercialWatchlist.map((item) => (
+              <tr>
+                <td>{item.label}</td>
+                <td><code>{item.path}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </article>
   </section>
 

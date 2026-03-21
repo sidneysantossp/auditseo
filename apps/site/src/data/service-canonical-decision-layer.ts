@@ -203,7 +203,8 @@ export const serviceCanonicalDecisionLayer: Record<string, ServiceCanonicalDecis
         items: [
           'O domínio já tem base editorial e comercial para sustentar citabilidade.',
           'A operação quer priorizar clusters, fontes e páginas com maior potencial de reforço.',
-          'A dúvida principal é arquitetura e semântica, não só produção de conteúdo.'
+          'A dúvida principal é arquitetura e semântica, não só produção de conteúdo.',
+          'A empresa já sabe se precisa de agência, consultoria ou auditoria antes de refinar a camada de IA.'
         ]
       },
       {
@@ -211,7 +212,8 @@ export const serviceCanonicalDecisionLayer: Record<string, ServiceCanonicalDecis
         items: [
           'Leitura de citabilidade, entidade e estrutura por cluster.',
           'Priorização das páginas que podem ser reforçadas com menos ruído.',
-          'Direção sobre quando a entrada correta é AI Overviews, técnico ou revisão editorial.'
+          'Direção sobre quando a entrada correta é AI Overviews, técnico ou revisão editorial.',
+          'Separação entre reforço comercial amplo, acompanhamento contínuo e diagnóstico mais técnico.'
         ]
       },
       {

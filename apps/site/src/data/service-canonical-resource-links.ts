@@ -19,14 +19,19 @@ export const serviceCanonicalResourceLinks: Record<string, ServiceCanonicalResou
       'Antes de contratar consultoria, vale entender modelo de contratação, diferença para auditoria e o nível de maturidade que a operação já precisa ter.',
     links: [
       {
+        label: 'Consultoria SEO para AI Overviews',
+        path: '/blog/consultoria-seo-para-ai-overviews/',
+        description: 'Mostra quando governança contínua faz mais sentido que experimentação solta em IA.'
+      },
+      {
         label: 'Consultoria SEO ou auditoria SEO?',
         path: '/blog/consultoria-seo-ou-auditoria-seo/',
         description: 'Ajuda a decidir entre diagnóstico técnico e evolução contínua.'
       },
       {
-        label: 'Agência SEO ou consultoria SEO?',
-        path: '/blog/agencia-seo-ou-consultoria-seo/',
-        description: 'Compara direção estratégica e modelo de execução.'
+        label: 'Agência SEO ou consultoria SEO para AI Overviews?',
+        path: '/blog/agencia-seo-ou-consultoria-seo-para-ai-overviews/',
+        description: 'Compara modelo de operação para empresas que já chegaram na camada comercial de IA.'
       },
       {
         label: 'Quando não contratar SEO',
@@ -47,6 +52,11 @@ export const serviceCanonicalResourceLinks: Record<string, ServiceCanonicalResou
       'A auditoria faz mais sentido quando ainda falta clareza sobre o que trava o site. Esses recursos ajudam a separar diagnóstico de acompanhamento contínuo.',
     links: [
       {
+        label: 'Auditoria SEO para AI Overviews',
+        path: '/blog/auditoria-seo-para-ai-overviews/',
+        description: 'Mostra quando IA ainda pede diagnóstico técnico, semântico e editorial antes da execução.'
+      },
+      {
         label: 'Consultoria SEO ou auditoria SEO?',
         path: '/blog/consultoria-seo-ou-auditoria-seo/',
         description: 'Mostra quando auditoria entra antes da consultoria.'
@@ -65,6 +75,34 @@ export const serviceCanonicalResourceLinks: Record<string, ServiceCanonicalResou
         label: 'Auditoria SEO em Barueri e Alphaville',
         path: '/servicos/auditoria-seo-em-barueri/',
         description: 'Mostra como o diagnóstico local entra antes da expansão em uma praça comercial real.'
+      }
+    ]
+  },
+  '/servicos/ai-overview-optimization/': {
+    eyebrow: 'Recursos de decisão',
+    title: 'COMO TRANSFORMAR AI OVERVIEWS EM SERVIÇO COMERCIAL, NÃO EM MODA',
+    copy:
+      'AI Overview Optimization rende mais quando a operação entende modelo de contratação, critério de diagnóstico e a diferença entre reforçar agência, consultoria ou auditoria.',
+    links: [
+      {
+        label: 'Como escolher agência de SEO para AI Overviews',
+        path: '/blog/agencia-seo-para-ai-overviews-como-escolher/',
+        description: 'Ajuda a avaliar especialização real em AI Overviews sem cair em promessa vaga.'
+      },
+      {
+        label: 'Consultoria SEO para AI Overviews',
+        path: '/blog/consultoria-seo-para-ai-overviews/',
+        description: 'Mostra quando a entrada correta é governança contínua e não só produção de conteúdo.'
+      },
+      {
+        label: 'Auditoria SEO para AI Overviews',
+        path: '/blog/auditoria-seo-para-ai-overviews/',
+        description: 'Explica quando o site ainda precisa de diagnóstico antes de escalar citabilidade.'
+      },
+      {
+        label: 'Agência SEO ou consultoria SEO para AI Overviews?',
+        path: '/blog/agencia-seo-ou-consultoria-seo-para-ai-overviews/',
+        description: 'Compara os dois modelos para empresas que já estão na fase BOFU da nova SERP.'
       }
     ]
   },

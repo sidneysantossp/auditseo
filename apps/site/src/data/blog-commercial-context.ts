@@ -115,7 +115,8 @@ function resolveIntent(slug: string): CommercialArticleIntent {
   if (
     slug === 'consultoria-seo-ou-auditoria-seo' ||
     slug === 'agencia-seo-ou-consultoria-seo' ||
-    slug === 'agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville'
+    slug === 'agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville' ||
+    slug === 'agencia-seo-ou-consultoria-seo-para-ai-overviews'
   ) {
     return 'service-choice';
   }
@@ -139,6 +140,7 @@ function resolveFocusKey(slug: string) {
   if (slug === 'consultoria-seo-ou-auditoria-seo') return 'consultoria-vs-auditoria';
   if (slug === 'agencia-seo-ou-consultoria-seo') return 'agencia-vs-consultoria';
   if (slug === 'agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville') return 'agencia-vs-consultoria-barueri';
+  if (slug === 'agencia-seo-ou-consultoria-seo-para-ai-overviews') return 'agencia-vs-consultoria-ai-overviews';
   if (slug === 'quando-nao-contratar-seo') return 'nao-contratar-seo';
   if (slug === 'seo-local-ou-google-ads-para-clinicas-medicas') return 'seo-local-vs-google-ads';
   if (slug === 'seo-local-ou-google-meu-negocio-para-clinicas-medicas') return 'seo-local-vs-google-meu-negocio';
