@@ -94,9 +94,9 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
     ],
     proofPoints: [
       'Pagina institucional da agencia ja publicada.',
-      'Servicos canonicamente separados entre consultoria e auditoria.',
-      'Camada local nova desenhada para Barueri e Alphaville sem doorway pages.',
-      'Cluster BOFU local previsto para reduzir objecao de contratacao.'
+      'Pagina local preparada para absorver busca por agencia, empresa e especialista em SEO na mesma praca.',
+      'Servicos canonicamente separados entre consultoria, auditoria e etapa de diagnostico.',
+      'Cluster BOFU local ativo para reduzir objecao de contratacao, prazo e comparacao com agencias generalistas.'
     ],
     relatedLinks: createRelatedLinks(
       { label: 'Agencia de SEO', path: '/agencia-de-seo/', reason: 'Pagina institucional principal.' },
@@ -113,11 +113,12 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
       { question: 'Por que usar Barueri na URL e Alphaville na copy?', answer: 'Porque Barueri e a ancora estrutural mais segura para a cidade, enquanto Alphaville entra como eixo comercial forte da mesma praca.' },
       { question: 'Essa pagina compete com a pagina institucional da agencia?', answer: 'Nao. A pagina institucional sustenta a marca. Esta pagina traduz a oferta para uma intencao local de contratacao.' },
       { question: 'Vale abrir paginas separadas para empresa de SEO, especialista em SEO e consultor SEO?', answer: 'Nao. Essas variacoes ficam melhor tratadas na mesma pagina money local, com reforco semantico e apoio BOFU.' },
-      { question: 'Quem procura uma empresa de SEO em Barueri ou um especialista em SEO em Alphaville chega nesta pagina?', answer: 'Sim. Esta pagina existe exatamente para concentrar a intencao local de contratacao sem espalhar a mesma demanda em varias URLs quase iguais.' },
+      { question: 'Quem procura uma empresa de SEO em Barueri, uma agencia de SEO em Alphaville ou um especialista em SEO local chega nesta pagina?', answer: 'Sim. Esta pagina existe exatamente para concentrar a intencao local de contratacao mais generica sem espalhar a mesma demanda em varias URLs quase iguais.' },
       { question: 'Quando essa frente faz mais sentido?', answer: 'Quando Barueri e Alphaville ja entram na conversa comercial com funcao real e a operacao quer capturar demanda mais madura.' },
+      { question: 'Empresa de SEO em Alphaville precisa de URL propria?', answer: 'Nao nesta fase. Alphaville ja entra forte na copy, no FAQ, no BOFU e na prova local da mesma pagina principal de Barueri.' },
       { question: 'Alphaville pode aparecer sem endereco oficial local?', answer: 'Pode entrar como contexto comercial e area atendida, mas a entidade e o NAP so devem mudar quando a operacao fisica estiver validada.' },
       { question: 'A pagina local substitui consultoria ou auditoria?', answer: 'Nao. Ela organiza a intencao generica de contratacao. Consultoria e auditoria continuam como portas tecnicas diferentes.' },
-      { question: 'Essa pagina e so para empresas grandes?', answer: 'Nao. Ela serve para operacoes que pesquisam fornecedor com intencao comercial clara, independentemente do porte, desde que o fit seja real.' },
+      { question: 'Essa pagina e so para empresas grandes?', answer: 'Nao. Ela serve para operacoes que pesquisam agencia, empresa ou especialista em SEO com intencao comercial clara, independentemente do porte, desde que o fit seja real.' },
       { question: 'Qual e o melhor proximo passo?', answer: 'Validar a operacao local, a prova de praca e a relacao entre pagina money, consultoria, auditoria e apoio editorial.' }
     ],
     ctaTitle: 'QUER RECEBER UMA LEITURA SERIA DA SUA OPERACAO DE SEO EM BARUERI E ALPHAVILLE?',
@@ -208,8 +209,8 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     ],
     proofPoints: [
       'Servico canonico de consultoria ja publicado.',
-      'Pagina money local da praca conectada ao servico principal.',
-      'BOFU local para timing e aderencia da contratacao.',
+      'Pagina money local da praca conectada ao servico principal e a busca por consultor SEO.',
+      'BOFU local para timing, aderencia da contratacao e comparacao entre agencia e consultoria.',
       'Cidade de Barueri entrando como contexto oficial do cluster.'
     ],
     relatedLinks: createRelatedLinks(
@@ -225,9 +226,10 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     faqItems: [
       { question: 'Quando consultoria SEO faz mais sentido do que agencia local?', answer: 'Quando a operacao precisa de direcao, governanca e acompanhamento continuo, e nao apenas execucao isolada.' },
       { question: 'Consultoria local compete com a pagina money da agencia?', answer: 'Nao. A pagina da agencia organiza a intencao generica. A consultoria atende uma etapa mais qualificada da decisao.' },
-      { question: 'Quem busca consultor SEO em Barueri ou especialista SEO em Alphaville encontra o que aqui?', answer: 'Encontra a camada local da consultoria, voltada para operacoes que ja precisam de direcao estrategica, backlog e leitura comercial mais madura.' },
+      { question: 'Quem busca consultor SEO em Barueri, consultoria SEO em Alphaville ou especialista SEO local encontra o que aqui?', answer: 'Encontra a camada local da consultoria, voltada para operacoes que ja precisam de direcao estrategica, backlog e leitura comercial mais madura.' },
       { question: 'Alphaville entra de que forma aqui?', answer: 'Como modificador comercial forte da praca, reforcando contexto empresarial e aderencia da oferta.' },
       { question: 'Consultoria entra antes de auditoria?', answer: 'Depende. Quando ainda falta clareza sobre o gargalo principal, auditoria pode ser a porta correta.' },
+      { question: 'Especialista em SEO e consultoria SEO viram paginas separadas em Alphaville?', answer: 'Nao. A linguagem de especialista e consultor entra na mesma pagina local de consultoria, reforcada por links internos e BOFU da praca.' },
       { question: 'Essa pagina serve para operacoes pequenas?', answer: 'Serve quando existe fit de maturidade e necessidade de acompanhamento. Sem isso, a operacao pode precisar de uma etapa anterior.' },
       { question: 'O que essa consultoria olha primeiro?', answer: 'Arquitetura, paginas que deveriam converter melhor, backlog tecnico e relacao entre conteudo, busca e lead.' },
       { question: 'Como saber se a praca merece mais expansao?', answer: 'Quando queries locais, leads atribuidos e qualidade comercial mostram aderencia real do cluster.' },
@@ -321,8 +323,8 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
     ],
     proofPoints: [
       'Servico canonico de auditoria ja publicado.',
-      'Ligacao direta com a pagina de consultoria local e a pagina money da praca.',
-      'BOFU local previsto para timing e justificativa da contratacao.',
+      'Ligacao direta com a pagina de consultoria local, a pagina money da praca e a busca por especialista em SEO.',
+      'BOFU local previsto para timing, justificativa da contratacao e escolha do modelo de entrada.',
       'Cidade de Barueri usada como ancora do cluster local.'
     ],
     relatedLinks: createRelatedLinks(
@@ -337,7 +339,7 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
     faqItems: [
       { question: 'Quando auditoria SEO faz mais sentido nesta praca?', answer: 'Quando ainda nao esta claro se o gargalo principal e tecnico, editorial, arquitetural ou de leitura local.' },
       { question: 'Auditoria local compete com consultoria local?', answer: 'Nao. A auditoria diagnostica. A consultoria acompanha e executa a evolucao do sistema.' },
-      { question: 'Quem procura um especialista em SEO em Alphaville para diagnostico deveria começar aqui?', answer: 'Sim, quando a prioridade e descobrir o que trava a operacao antes de assumir um acompanhamento continuo ou uma expansao local maior.' },
+      { question: 'Quem procura um especialista em SEO em Alphaville, um consultor SEO tecnico ou auditoria SEO em Barueri deveria começar aqui?', answer: 'Sim, quando a prioridade e descobrir o que trava a operacao antes de assumir um acompanhamento continuo ou uma expansao local maior.' },
       { question: 'O que a auditoria precisa revisar sobre Alphaville?', answer: 'Principalmente coerencia de uso da praca, papel comercial do eixo e riscos de prometer entidade local sem base suficiente.' },
       { question: 'Ela serve para empresa sem queda de trafego?', answer: 'Sim. Muitas vezes o problema nao e queda, e falta de estrutura para transformar busca em oportunidade.' },
       { question: 'A auditoria tambem olha pagina money e blog?', answer: 'Sim. O diagnostico precisa enxergar pagina principal, servicos, apoio editorial e sinais locais como o mesmo sistema.' },

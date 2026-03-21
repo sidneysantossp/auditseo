@@ -1184,7 +1184,7 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
         items: [
           'Barueri como base segura para a URL principal da praça.',
           'Alphaville tratado como eixo empresarial e não como inflação de páginas.',
-          'Leitura local voltada a contratação de SEO por empresas e decisores.'
+          'Leitura local voltada a contratação por empresas, decisores e buscas por empresa ou especialista em SEO.'
         ]
       },
       {
@@ -1193,8 +1193,8 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
         copy: 'A página money só fica legítima quando conversa com a cidade, com os serviços complementares e com os apoios BOFU da praça.',
         items: [
           'Ligação com a página de Barueri e com os serviços de consultoria e auditoria.',
-          'Copy local forte para busca genérica de contratação.',
-          'Integração com artigos de decisão para remover objeção e timing errado.'
+          'Copy local forte para busca genérica de contratação, empresa de SEO e agência de SEO.',
+          'Integração com artigos de decisão para remover objeção, timing errado e comparação rasa com consultor SEO isolado.'
         ]
       },
       {
@@ -1203,12 +1203,12 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
         copy: 'A utilidade da página está em medir se o cluster local merece mais reforço ou se ainda precisa de prova operacional adicional.',
         items: [
           'Leitura de consultas e leads do eixo Barueri/Alphaville.',
-          'Critério para expandir a praça sem abrir microvariações frágeis.',
+          'Critério para expandir a praça sem abrir microvariações frágeis para cada sinônimo.',
           'Proteção da hierarquia entre página local, serviço canônico e ativos BOFU.'
         ]
       }
     ],
-    ['Barueri', 'Alphaville', 'Página money local', 'Busca de contratação']
+    ['Barueri', 'Alphaville', 'Empresa de SEO', 'Página money local']
   ),
   '/servicos/consultoria-seo-em-barueri/': createGroup(
     'COMO A CONSULTORIA É QUALIFICADA EM BARUERI E ALPHAVILLE',
@@ -1221,7 +1221,8 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
         items: [
           'Separação entre curiosidade comercial e demanda pronta para acompanhamento.',
           'Leitura de fit entre praça, operação e momento da empresa.',
-          'Conexão entre busca local, pipeline e sistema de execução.'
+          'Conexão entre busca local, pipeline e sistema de execução.',
+          'Cobertura de intenção para consultor SEO e especialista SEO sem duplicar URLs.'
         ]
       },
       {
@@ -1241,11 +1242,11 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
         items: [
           'Critério para saber quando auditoria entra antes.',
           'Leitura do peso comercial de Alphaville na contratação.',
-          'Proteção da oferta contra comparações rasas com agência generalista.'
+          'Proteção da oferta contra comparações rasas com agência generalista ou consultor SEO isolado sem escopo.'
         ]
       }
     ],
-    ['Barueri', 'Alphaville', 'Consultoria SEO', 'Governança de backlog']
+    ['Barueri', 'Alphaville', 'Consultor SEO', 'Governança de backlog']
   ),
   '/servicos/auditoria-seo-em-barueri/': createGroup(
     'COMO A AUDITORIA ORGANIZA O CLUSTER BARUERI E ALPHAVILLE',
@@ -1258,7 +1259,8 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
         items: [
           'Indexação, estrutura e sinais técnicos das páginas principais.',
           'Papel da página money e relação com consultoria e cidade.',
-          'Coerência do uso de Barueri e Alphaville na narrativa pública.'
+          'Coerência do uso de Barueri e Alphaville na narrativa pública.',
+          'Aderência entre busca por especialista em SEO e necessidade real de diagnóstico.'
         ]
       },
       {
@@ -1268,7 +1270,8 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
         items: [
           'Separação entre problema técnico e problema comercial.',
           'Critério para reforço de entidade local sem prometer o que ainda não existe.',
-          'Base para decidir o próximo passo com mais segurança.'
+          'Base para decidir o próximo passo com mais segurança.',
+          'Filtro entre auditoria real e pedido genérico por consultor SEO sem escopo.'
         ]
       },
       {
@@ -1282,6 +1285,6 @@ export const serviceFirstLocalOperationalProof: Record<string, ServiceFirstOpera
         ]
       }
     ],
-    ['Barueri', 'Alphaville', 'Auditoria SEO', 'Prioridade local']
+    ['Barueri', 'Alphaville', 'Auditoria SEO', 'Diagnóstico técnico']
   )
 };
