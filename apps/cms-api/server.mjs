@@ -110,6 +110,99 @@ function sanitizeUtm(value) {
   );
 }
 
+function getUrlHostname(value) {
+  const sanitized = sanitizeUrl(value);
+  if (!sanitized) return '';
+
+  try {
+    return new URL(sanitized).hostname.replace(/^www\./, '');
+  } catch {
+    return '';
+  }
+}
+
+function maskEmail(value) {
+  const email = sanitizeText(value, 180).toLowerCase();
+  if (!email || !email.includes('@')) return '';
+
+  const [localPart, domain] = email.split('@');
+  if (!localPart || !domain) return '';
+
+  const visible = localPart.slice(0, Math.min(2, localPart.length));
+  const masked = '*'.repeat(Math.max(2, Math.min(6, localPart.length - visible.length || 2)));
+  return `${visible}${masked}@${domain}`;
+}
+
+function maskPhone(value) {
+  const digits = String(value || '').replace(/\D+/g, '');
+  if (!digits) return '';
+  return `••••${digits.slice(-4)}`;
+}
+
+function maskName(value) {
+  const raw = sanitizeText(value, 120);
+  if (!raw) return '';
+  const [firstName] = raw.split(' ').filter(Boolean);
+  return firstName ? `${firstName} • nome` : '';
+}
+
+function inferLeadEntryType(record) {
+  const haystack = `${sanitizePath(record.pagePath || '/')} ${sanitizeText(record.serviceIntent, 1200)}`
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+
+  if (/auditori|diagnost/.test(haystack)) return 'Auditoria';
+  if (/consultori|consultor|especialista/.test(haystack)) return 'Consultoria';
+  return 'Agência';
+}
+
+function getLeadServiceLabel(record) {
+  const entryType = inferLeadEntryType(record);
+  if (entryType === 'Auditoria') return 'Auditoria SEO';
+  if (entryType === 'Consultoria') return 'Consultoria SEO';
+  return 'Agência SEO';
+}
+
+function getLeadContactPreview(record) {
+  return (
+    maskEmail(record.email) ||
+    maskPhone(record.whatsapp) ||
+    maskName(record.name) ||
+    getUrlHostname(record.site) ||
+    'captura privada'
+  );
+}
+
+function getLeadCompanyPreview(record) {
+  return sanitizeText(record.company, 180) || getUrlHostname(record.site) || 'Lead inbound';
+}
+
+function getCrmFilterHelpers(filters = {}) {
+  const pathSet = new Set((filters.paths || []).map((item) => sanitizePath(item)));
+  const minCreatedAt = filters.days
+    ? Date.now() - filters.days * 24 * 60 * 60 * 1000
+    : null;
+
+  const isWithinWindow = (record) => {
+    if (!minCreatedAt) return true;
+    const createdAt = new Date(record.createdAt || '').getTime();
+    if (!Number.isFinite(createdAt)) return false;
+    return createdAt >= minCreatedAt;
+  };
+
+  const isIncludedPath = (record) => {
+    if (pathSet.size === 0) return true;
+    return pathSet.has(sanitizePath(record.pagePath || '/'));
+  };
+
+  return {
+    pathSet,
+    isWithinWindow,
+    isIncludedPath
+  };
+}
+
 function normalizeLeadCapturePayload(payload, request) {
   const captureType = (() => {
     const value = sanitizeText(payload.captureType, 40).toLowerCase();
@@ -207,26 +300,22 @@ function normalizeSummaryFilters(searchParams) {
   };
 }
 
+function normalizeLeadListFilters(searchParams) {
+  const baseFilters = normalizeSummaryFilters(searchParams);
+  const rawLimit = Number.parseInt(searchParams.get('limit') || '', 10);
+  const limit = Number.isFinite(rawLimit) && rawLimit > 0 ? Math.min(rawLimit, 50) : 12;
+
+  return {
+    ...baseFilters,
+    limit
+  };
+}
+
 function summarizeCrmState(store, filters = {}) {
   const crmState = store.crmState || { leads: [], events: [] };
   const allLeads = Array.isArray(crmState.leads) ? crmState.leads : [];
   const allEvents = Array.isArray(crmState.events) ? crmState.events : [];
-  const pathSet = new Set((filters.paths || []).map((item) => sanitizePath(item)));
-  const minCreatedAt = filters.days
-    ? Date.now() - filters.days * 24 * 60 * 60 * 1000
-    : null;
-
-  const isWithinWindow = (record) => {
-    if (!minCreatedAt) return true;
-    const createdAt = new Date(record.createdAt || '').getTime();
-    if (!Number.isFinite(createdAt)) return false;
-    return createdAt >= minCreatedAt;
-  };
-
-  const isIncludedPath = (record) => {
-    if (pathSet.size === 0) return true;
-    return pathSet.has(sanitizePath(record.pagePath || '/'));
-  };
+  const { pathSet, isWithinWindow, isIncludedPath } = getCrmFilterHelpers(filters);
 
   const leads = allLeads.filter((record) => isWithinWindow(record) && isIncludedPath(record));
   const events = allEvents.filter((record) => isWithinWindow(record) && isIncludedPath(record));
@@ -263,6 +352,41 @@ function summarizeCrmState(store, filters = {}) {
   };
 }
 
+function listPublicCrmLeads(store, filters = {}) {
+  const crmState = store.crmState || { leads: [] };
+  const allLeads = Array.isArray(crmState.leads) ? crmState.leads : [];
+  const { isWithinWindow, isIncludedPath } = getCrmFilterHelpers(filters);
+
+  const leads = allLeads
+    .filter((record) => isWithinWindow(record) && isIncludedPath(record))
+    .sort((left, right) => new Date(right.createdAt || 0).getTime() - new Date(left.createdAt || 0).getTime());
+
+  const items = leads.slice(0, filters.limit || 12).map((record) => ({
+    id: sanitizeText(record.id, 80),
+    company: getLeadCompanyPreview(record),
+    contact: getLeadContactPreview(record),
+    source: sanitizeText(record.source || 'site', 40),
+    captureType: sanitizeText(record.captureType || 'unknown', 40),
+    pagePath: sanitizePath(record.pagePath || '/'),
+    pageUrl: sanitizeUrl(record.pageUrl),
+    serviceIntent: sanitizeText(record.serviceIntent, 240),
+    serviceLabel: getLeadServiceLabel(record),
+    entryType: inferLeadEntryType(record),
+    siteHost: getUrlHostname(record.site),
+    createdAt: sanitizeText(record.createdAt, 80)
+  }));
+
+  return {
+    total: leads.length,
+    items,
+    filters: {
+      paths: (filters.paths || []).map((item) => sanitizePath(item)),
+      days: filters.days || null,
+      limit: filters.limit || 12
+    }
+  };
+}
+
 export async function handleRequest(request, response) {
   const origin = request.headers.origin;
   const corsHeaders = getCorsHeaders(origin, allowedOrigins);
@@ -289,6 +413,12 @@ export async function handleRequest(request, response) {
     if (request.method === 'GET' && pathname === '/api/public/crm-summary') {
       const store = withCleanSessions(await readStore());
       json(response, 200, summarizeCrmState(store, normalizeSummaryFilters(url.searchParams)), corsHeaders);
+      return;
+    }
+
+    if (request.method === 'GET' && pathname === '/api/public/crm-leads') {
+      const store = withCleanSessions(await readStore());
+      json(response, 200, listPublicCrmLeads(store, normalizeLeadListFilters(url.searchParams)), corsHeaders);
       return;
     }
 

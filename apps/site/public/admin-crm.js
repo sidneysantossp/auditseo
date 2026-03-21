@@ -20,7 +20,8 @@ const CRM_DEFAULT_STATE = {
 };
 
 const crmRuntime = {
-  state: readCrmState()
+  state: readCrmState(),
+  capturedLeads: []
 };
 
 function readCrmState() {
@@ -105,6 +106,92 @@ function getActivityTypeLabel(type) {
     followup: 'Follow-up',
     note: 'Nota'
   }[type] || type;
+}
+
+function inferCrmLeadsEndpoint() {
+  const explicitSummary = window.__AUDITSEO_ADMIN_CONFIG__?.crmSummaryEndpoint;
+  const { protocol, hostname } = window.location;
+
+  if (explicitSummary) {
+    return explicitSummary.replace(/\/crm-summary\/?$/, '/crm-leads');
+  }
+
+  if (hostname === 'localhost') {
+    return `${protocol}//127.0.0.1:4322/api/public/crm-leads`;
+  }
+
+  if (hostname === '127.0.0.1' || /^\d+\.\d+\.\d+\.\d+$/.test(hostname)) {
+    return `${protocol}//${hostname}:4322/api/public/crm-leads`;
+  }
+
+  return 'https://auditseo-cms-api.vercel.app/api/public/crm-leads';
+}
+
+function buildCrmLeadsUrl(filters = {}) {
+  const url = new URL(inferCrmLeadsEndpoint(), window.location.origin);
+
+  if (Array.isArray(filters.paths) && filters.paths.length > 0) {
+    url.searchParams.set('paths', filters.paths.join(','));
+  }
+
+  if (Number.isFinite(filters.days) && filters.days > 0) {
+    url.searchParams.set('days', String(filters.days));
+  }
+
+  if (Number.isFinite(filters.limit) && filters.limit > 0) {
+    url.searchParams.set('limit', String(filters.limit));
+  }
+
+  return url.toString();
+}
+
+async function fetchCapturedLeads(filters = {}) {
+  const response = await fetch(buildCrmLeadsUrl(filters), {
+    headers: { Accept: 'application/json' }
+  });
+
+  if (!response.ok) {
+    throw new Error('crm_leads_unavailable');
+  }
+
+  return response.json();
+}
+
+function inferManualLeadEntryType(lead) {
+  if (lead.entryType) return lead.entryType;
+  if (lead.service === 'audit') return 'Auditoria';
+  if (lead.service === 'consulting') return 'Consultoria';
+  return 'Agência';
+}
+
+function getEntryTypeBadge(value) {
+  const entryType = String(value || 'Agência');
+  const tone =
+    entryType === 'Consultoria'
+      ? 'admin-status-proposta'
+      : entryType === 'Auditoria'
+        ? 'admin-status-reuniao'
+        : 'admin-status-contato';
+
+  return `<span class="admin-status-badge ${tone}">${crmEscape(entryType)}</span>`;
+}
+
+function getCaptureTypeLabel(type) {
+  return {
+    'diagnostic-form': 'Diagnóstico',
+    'contact-form': 'Contato',
+    'whatsapp-click': 'WhatsApp',
+    unknown: 'Desconhecido'
+  }[type] || type || 'Desconhecido';
+}
+
+function formatDateTime(value) {
+  const timestamp = new Date(value || '');
+  if (Number.isNaN(timestamp.getTime())) return '—';
+  return new Intl.DateTimeFormat('pt-BR', {
+    dateStyle: 'short',
+    timeStyle: 'short'
+  }).format(timestamp);
 }
 
 function populateSelectOptions(select, values, placeholder) {
@@ -199,7 +286,7 @@ function renderLeadsPage() {
     });
 
     if (!filtered.length) {
-      rows.innerHTML = '<tr><td colspan="8"><div class="admin-empty-state">Nenhum lead registrado ainda.</div></td></tr>';
+      rows.innerHTML = '<tr><td colspan="9"><div class="admin-empty-state">Nenhum lead registrado ainda.</div></td></tr>';
       return;
     }
 
@@ -207,13 +294,20 @@ function renderLeadsPage() {
       .map(
         (lead) => `
           <tr>
-            <td><strong>${crmEscape(lead.company)}</strong></td>
+            <td>
+              <strong>${crmEscape(lead.company)}</strong>
+              ${lead.notes ? `<div class="admin-helper-text">${crmEscape(lead.notes)}</div>` : ''}
+            </td>
             <td>${crmEscape(lead.contact)}</td>
+            <td>${getEntryTypeBadge(inferManualLeadEntryType(lead))}</td>
             <td>${crmEscape(getServiceName(lead.service))}</td>
             <td>${crmEscape(crmCurrency(lead.value))}</td>
             <td>${getLeadStageBadge(lead.stage)}</td>
             <td>${getTempBadge(lead.temp)}</td>
-            <td>${crmEscape(lead.source || '—')}</td>
+            <td>
+              ${crmEscape(lead.source || '—')}
+              ${lead.pagePath ? `<div class="admin-helper-text">${crmEscape(lead.pagePath)}</div>` : ''}
+            </td>
             <td>
               <div class="admin-inline-actions">
                 <button class="admin-inline-button" type="button" data-admin-crm-edit-lead="${crmEscape(lead.id)}">Editar</button>
@@ -247,6 +341,88 @@ function renderLeadsPage() {
   });
 
   render();
+}
+
+function renderCapturedLeadsSection() {
+  const section = document.querySelector('[data-admin-captured-leads]');
+  if (!section) return;
+
+  const rows = section.querySelector('[data-admin-captured-leads-rows]');
+  const meta = section.querySelector('[data-admin-captured-leads-meta]');
+  if (!rows || !meta) return;
+
+  const items = Array.isArray(crmRuntime.capturedLeads) ? crmRuntime.capturedLeads : [];
+
+  meta.textContent = items.length
+    ? `${items.length} entradas recentes do cluster local. Contato mascarado por segurança enquanto o painel permanecer aberto.`
+    : 'Nenhuma captura automática do cluster local disponível ainda.';
+
+  if (!items.length) {
+    rows.innerHTML = '<tr><td colspan="7"><div class="admin-empty-state">Nenhuma captura automática do cluster local disponível ainda.</div></td></tr>';
+    return;
+  }
+
+  rows.innerHTML = items
+    .map(
+      (lead) => `
+        <tr>
+          <td>
+            <strong>${crmEscape(lead.company || 'Lead inbound')}</strong>
+            ${
+              lead.serviceIntent
+                ? `<div class="admin-helper-text">${crmEscape(lead.serviceIntent)}</div>`
+                : lead.siteHost
+                  ? `<div class="admin-helper-text">${crmEscape(lead.siteHost)}</div>`
+                  : ''
+            }
+          </td>
+          <td>${crmEscape(lead.contact || 'captura privada')}</td>
+          <td>${getEntryTypeBadge(lead.entryType || 'Agência')}</td>
+          <td>
+            ${crmEscape(lead.source || 'site')}
+            <div class="admin-helper-text">${crmEscape(lead.serviceLabel || 'Agência SEO')}</div>
+          </td>
+          <td>
+            ${
+              lead.pageUrl
+                ? `<a href="${crmEscape(lead.pageUrl)}" target="_blank" rel="noreferrer">${crmEscape(lead.pagePath || '/')}</a>`
+                : crmEscape(lead.pagePath || '/')
+            }
+          </td>
+          <td>${crmEscape(getCaptureTypeLabel(lead.captureType))}</td>
+          <td>${crmEscape(formatDateTime(lead.createdAt))}</td>
+        </tr>
+      `
+    )
+    .join('');
+}
+
+async function loadCapturedLeadsSection() {
+  const section = document.querySelector('[data-admin-captured-leads]');
+  if (!section) return;
+
+  const pathsScript = section.querySelector('[data-admin-captured-leads-paths]');
+  const days = Number.parseInt(section.getAttribute('data-admin-captured-leads-days') || '30', 10) || 30;
+  const limit = Number.parseInt(section.getAttribute('data-admin-captured-leads-limit') || '12', 10) || 12;
+
+  let paths = [];
+  if (pathsScript?.textContent) {
+    try {
+      const items = JSON.parse(pathsScript.textContent);
+      paths = Array.isArray(items) ? items.map((item) => item?.path).filter(Boolean) : [];
+    } catch {
+      paths = [];
+    }
+  }
+
+  try {
+    const payload = await fetchCapturedLeads({ paths, days, limit });
+    crmRuntime.capturedLeads = Array.isArray(payload?.items) ? payload.items : [];
+  } catch {
+    crmRuntime.capturedLeads = [];
+  }
+
+  renderCapturedLeadsSection();
 }
 
 function renderPipelinePage() {
@@ -581,11 +757,14 @@ function bindCrmForms() {
   });
 }
 
-function initAdminCrm() {
+async function initAdminCrm() {
   bindCrmForms();
   renderLeadsPage();
   renderPipelinePage();
   renderActivitiesPage();
+  await loadCapturedLeadsSection();
 }
 
-window.addEventListener('DOMContentLoaded', initAdminCrm);
+window.addEventListener('DOMContentLoaded', () => {
+  initAdminCrm();
+});

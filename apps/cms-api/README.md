@@ -27,6 +27,7 @@ Manter o site publico em `Astro static-first` e mover autenticacao, sessao e per
 - `PUT /api/editorial-state/items/:id`
 - `GET /api/crm-state` (privado)
 - `GET /api/public/crm-summary` (anonimo)
+- `GET /api/public/crm-leads` (anonimo, saneado)
 - `POST /api/public/lead-capture`
 
 ## Filtros do resumo publico
@@ -37,6 +38,12 @@ Manter o site publico em `Astro static-first` e mover autenticacao, sessao e per
 - `days=7`
 
 Isso permite ler captação anonima por cluster local sem expor PII.
+
+`GET /api/public/crm-leads` aceita os mesmos filtros e tambem:
+
+- `limit=12`
+
+Esse endpoint devolve apenas lista saneada para operacao aberta do `/admin`, com contato mascarado e classificacao derivada de entrada (`Agencia`, `Consultoria`, `Auditoria`).
 
 ## Integracao com o site
 

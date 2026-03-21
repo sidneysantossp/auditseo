@@ -1,5 +1,18 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
+
+const localLeadWatchlist = [
+  { path: '/servicos/agencia-de-seo-em-barueri/' },
+  { path: '/servicos/consultoria-seo-em-barueri/' },
+  { path: '/servicos/auditoria-seo-em-barueri/' },
+  { path: '/cidades/barueri/' },
+  { path: '/blog/agencia-seo-para-empresas-em-barueri-como-escolher/' },
+  { path: '/blog/consultoria-seo-em-barueri-vale-a-pena/' },
+  { path: '/blog/auditoria-seo-em-barueri-quando-faz-sentido/' },
+  { path: '/blog/quanto-custa-seo-em-barueri-e-alphaville/' },
+  { path: '/blog/em-quanto-tempo-seo-gera-resultado-em-barueri-e-alphaville/' },
+  { path: '/blog/agencia-seo-ou-consultoria-seo-em-barueri-e-alphaville/' }
+];
 ---
 <AdminLayout
   title="Leads"
@@ -44,6 +57,7 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
           <tr>
             <th>Empresa</th>
             <th>Contato</th>
+            <th>Entrada</th>
             <th>Serviço</th>
             <th>Valor</th>
             <th>Etapa</th>
@@ -55,5 +69,36 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
         <tbody data-admin-crm-leads-rows></tbody>
       </table>
     </div>
+  </section>
+
+  <section class="admin-content-card admin-section" data-admin-captured-leads data-admin-captured-leads-days="30" data-admin-captured-leads-limit="12">
+    <div class="admin-section-head">
+      <div>
+        <div class="admin-card-eyebrow">Captação da praça</div>
+        <h2 class="admin-section-title">Entradas automáticas de Barueri / Alphaville</h2>
+        <p class="admin-section-copy" data-admin-captured-leads-meta>
+          Leitura automática do cluster local. Contato mascarado enquanto o admin permanecer sem autenticação.
+        </p>
+      </div>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Empresa</th>
+            <th>Contato</th>
+            <th>Entrada</th>
+            <th>Origem</th>
+            <th>Página</th>
+            <th>Captura</th>
+            <th>Quando</th>
+          </tr>
+        </thead>
+        <tbody data-admin-captured-leads-rows></tbody>
+      </table>
+    </div>
+
+    <script is:inline type="application/json" data-admin-captured-leads-paths set:html={JSON.stringify(localLeadWatchlist)} />
   </section>
 </AdminLayout>
