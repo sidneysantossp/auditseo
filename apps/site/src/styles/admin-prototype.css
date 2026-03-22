@@ -454,63 +454,8 @@ body.admin-prototype-body {
   font-size: 0.9rem;
 }
 
-.proto-card--profile,
 .proto-card--gauge {
   text-align: center;
-}
-
-.proto-profile__cover {
-  height: 96px;
-  margin: -24px -24px 0;
-  border-radius: 28px 28px 0 0;
-  background: linear-gradient(180deg, #30384b 0%, #79839a 100%);
-}
-
-.proto-profile__avatar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 96px;
-  height: 96px;
-  margin-top: -48px;
-  border-radius: 50%;
-  border: 6px solid #fff;
-  background: #dce2eb;
-  color: var(--proto-title);
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.proto-card--profile h2 {
-  margin-top: 18px;
-}
-
-.proto-card--profile p {
-  color: var(--proto-body);
-  font-size: 0.98rem;
-  line-height: 1.7;
-}
-
-.proto-profile__stats {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid #e6ebf2;
-}
-
-.proto-profile__stats strong {
-  display: block;
-  font-size: 1.96rem;
-  color: var(--proto-title);
-  letter-spacing: -0.06em;
-  font-weight: 760;
-}
-
-.proto-profile__stats span {
-  color: var(--proto-body);
-  font-size: 0.98rem;
 }
 
 .proto-gauge {
