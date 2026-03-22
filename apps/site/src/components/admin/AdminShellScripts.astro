@@ -3,9 +3,23 @@
   const sidebar = document.getElementById('admin-sidebar');
 
   if (mobileToggle && sidebar) {
+    const syncSidebarState = () => {
+      const isOpen = sidebar.classList.contains('is-open');
+      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      document.body.classList.toggle('admin-sidebar-open', isOpen);
+    };
+
     mobileToggle.addEventListener('click', () => {
       sidebar.classList.toggle('is-open');
-      document.body.classList.toggle('admin-sidebar-open');
+      syncSidebarState();
+    });
+
+    syncSidebarState();
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || window.innerWidth > 1024) return;
+      sidebar.classList.remove('is-open');
+      syncSidebarState();
     });
   }
 
@@ -14,6 +28,7 @@
     if (window.innerWidth > 1024) return;
     if (sidebar.contains(event.target) || mobileToggle.contains(event.target)) return;
     sidebar.classList.remove('is-open');
+    mobileToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('admin-sidebar-open');
   });
 </script>

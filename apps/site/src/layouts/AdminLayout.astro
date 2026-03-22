@@ -1,6 +1,7 @@
 ---
 import SeoHead from '../components/SeoHead.astro';
 import AdminSidebar from '../components/admin/AdminSidebar.astro';
+import AdminTopbar from '../components/admin/AdminTopbar.astro';
 import AdminAuthGate from '../components/admin/AdminAuthGate.astro';
 import AdminCrmModals from '../components/admin/AdminCrmModals.astro';
 import AdminShellScripts from '../components/admin/AdminShellScripts.astro';
@@ -50,37 +51,29 @@ const adminConfig = {
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   </head>
   <body class:list={['admin-body', isCrmPage && 'admin-body--crm']}>
-    <button class="admin-mobile-toggle" type="button" aria-label="Abrir navegação do admin" data-admin-toggle>
-      ☰
-    </button>
-
     <div class="admin-app">
       <AdminSidebar currentPath={currentPath} />
 
-      <main class:list={['admin-main', isCrmPage && 'admin-main--crm']}>
-        <section class:list={['admin-page-head', isCrmPage && 'admin-page-head--crm']}>
-          <div class="admin-page-head__main">
-            <div class="admin-page-head__row">
-              <div class="admin-page-head__eyebrow">{eyebrow}</div>
-              <span class="admin-page-head__badge">Governança editorial</span>
+      <div class="admin-workspace">
+        <AdminTopbar eyebrow={eyebrow} title={title} />
+
+        <main class:list={['admin-main', isCrmPage && 'admin-main--crm']}>
+          <section class:list={['admin-page-head', isCrmPage && 'admin-page-head--crm']}>
+            <div class="admin-page-head__main">
+              <div class="admin-page-head__row">
+                <div class="admin-page-head__eyebrow">{eyebrow}</div>
+                <span class="admin-page-head__badge">{isCrmPage ? 'CRM operacional' : 'Governança editorial'}</span>
+              </div>
+              <h1 class="admin-page-head__title">{title}</h1>
+              <p class="admin-page-head__description">{description}</p>
             </div>
-            <h1 class="admin-page-head__title">{title}</h1>
-            <p class="admin-page-head__description">{description}</p>
-          </div>
+          </section>
 
-          <div class="admin-page-head__actions">
-            <div class="admin-session" data-admin-session-box></div>
-            <a class="admin-topbar__button admin-topbar__button--ghost" href="/politica-editorial/">
-              Governança editorial
-            </a>
-            <a class="admin-topbar__button admin-topbar__button--primary" href="/blog/">
-              Ver blog público
-            </a>
+          <div class="admin-page-body">
+            <slot />
           </div>
-        </section>
-
-        <slot />
-      </main>
+        </main>
+      </div>
     </div>
 
     <AdminCrmModals />

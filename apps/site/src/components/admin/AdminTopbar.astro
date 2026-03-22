@@ -1,51 +1,46 @@
 ---
 interface Props {
-  currentPath: string;
+  eyebrow: string;
+  title: string;
 }
 
-interface NavItem {
-  label: string;
-  path: string;
-}
-
-const { currentPath } = Astro.props as Props;
-
-const navItems: NavItem[] = [
-  { label: 'Dashboard', path: '/admin/' },
-  { label: 'Pipeline', path: '/admin/pipeline/' },
-  { label: 'Leads', path: '/admin/leads/' },
-  { label: 'Atividades', path: '/admin/atividades/' },
-  { label: 'Conteúdos', path: '/admin/conteudos/' },
-  { label: 'Clusters', path: '/admin/clusters/' },
-  { label: 'Workflow', path: '/admin/workflow/' }
-];
-
-function isActive(path: string) {
-  if (path === '/admin/') {
-    return currentPath === '/admin/';
-  }
-
-  return currentPath.startsWith(path);
-}
+const { eyebrow, title } = Astro.props as Props;
+const breadcrumb = eyebrow
+  .split('/')
+  .map((item) => item.trim())
+  .filter(Boolean)
+  .join(' / ');
 ---
 <header class="admin-topbar">
-  <a class="admin-topbar__brand" href="/admin/">AUDITSEO</a>
+  <div class="admin-topbar__left">
+    <button
+      class="admin-topbar__toggle"
+      type="button"
+      aria-label="Abrir navegação do admin"
+      aria-controls="admin-sidebar"
+      aria-expanded="false"
+      data-admin-toggle
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M4 7h16" />
+        <path d="M4 12h16" />
+        <path d="M4 17h16" />
+      </svg>
+    </button>
 
-  <nav class="admin-topbar__nav" aria-label="Navegação principal do admin">
-    {navItems.map((item) => (
-      <a class:list={['admin-topbar__nav-link', isActive(item.path) && 'is-active']} href={item.path}>
-        {item.label}
-      </a>
-    ))}
-  </nav>
+    <div class="admin-topbar__meta">
+      <div class="admin-topbar__eyebrow">{breadcrumb}</div>
+      <div class="admin-topbar__context">{title}</div>
+    </div>
+  </div>
 
   <div class="admin-topbar__actions">
     <div class="admin-session" data-admin-session-box></div>
     <a class="admin-topbar__button admin-topbar__button--ghost" href="/politica-editorial/">
-      Governança editorial
+      Padrões editoriais
     </a>
     <a class="admin-topbar__button admin-topbar__button--primary" href="/blog/">
-      Ver blog público
+      Abrir site
     </a>
   </div>
 </header>
