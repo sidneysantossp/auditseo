@@ -2,94 +2,95 @@
 import '../styles/institutional-trust-pages.css';
 import LegalLayout from '../layouts/LegalLayout.astro';
 import { siteMetadata } from '../data/site';
+import { normalizeEditorialValue } from '../lib/editorial-text';
 
-const principles = [
+const principles = normalizeEditorialValue([
   {
-    title: 'Uso licito e responsavel',
+    title: 'Uso lícito e responsável',
     copy:
-      'O site deve ser usado para consulta, contato, avaliacao de servicos e interacao legitima com o conteudo da AUDITSEO.'
+      'O site deve ser usado para consulta, contato, avaliação de serviços e interação legítima com o conteúdo da AUDITSEO.'
   },
   {
-    title: 'Conteudo com finalidade informativa e comercial',
+    title: 'Conteúdo com finalidade informativa e comercial',
     copy:
-      'As paginas explicam servicos, metodologia, visao editorial e materiais do site. Elas nao substituem aconselhamento juridico, contabil ou regulatorio individualizado.'
+      'As páginas explicam serviços, metodologia, visão editorial e materiais do site. Elas não substituem aconselhamento jurídico, contábil ou regulatório individualizado.'
   },
   {
-    title: 'Protecao da estrutura intelectual',
+    title: 'Proteção da estrutura intelectual',
     copy:
-      'Texto, layout, elementos de marca, materiais proprietarios e organizacao da informacao pertencem a AUDITSEO ou a seus respectivos titulares.'
+      'Texto, layout, elementos de marca, materiais proprietários e organização da informação pertencem à AUDITSEO ou a seus respectivos titulares.'
   },
   {
-    title: 'Atualizacao continua',
+    title: 'Atualização contínua',
     copy:
-      'O site pode mudar sem aviso previo para refletir novas paginas, ajustes tecnicos, mudancas de produto e evolucao da operacao.'
+      'O site pode mudar sem aviso prévio para refletir novas páginas, ajustes técnicos, mudanças de produto e evolução da operação.'
   }
-];
+]);
 
-const usagePanels = [
+const usagePanels = normalizeEditorialValue([
   {
     title: 'Uso permitido',
     items: [
-      'Ler, compartilhar e citar o conteudo com contexto adequado',
-      'Entrar em contato para briefing, diagnostico, proposta ou parceria',
-      'Usar as paginas como referencia de arquitetura, SEO e estrategia',
-      'Navegar nas rotas publicas dentro da finalidade normal do site'
+      'Ler, compartilhar e citar o conteúdo com contexto adequado',
+      'Entrar em contato para briefing, diagnóstico, proposta ou parceria',
+      'Usar as páginas como referência de arquitetura, SEO e estratégia',
+      'Navegar nas rotas públicas dentro da finalidade normal do site'
     ]
   },
   {
-    title: 'Uso nao permitido',
+    title: 'Uso não permitido',
     items: [
-      'Tentar explorar vulnerabilidades, automacoes abusivas ou indisponibilidade do site',
-      'Copiar integralmente materiais proprietarios para republicacao como se fossem proprios',
-      'Usar formularios ou canais oficiais para spam, fraude ou coleta indevida',
-      'Apresentar o conteudo da AUDITSEO como garantia de resultado sem contexto tecnico'
+      'Tentar explorar vulnerabilidades, automações abusivas ou indisponibilidade do site',
+      'Copiar integralmente materiais proprietários para republicação como se fossem próprios',
+      'Usar formulários ou canais oficiais para spam, fraude ou coleta indevida',
+      'Apresentar o conteúdo da AUDITSEO como garantia de resultado sem contexto técnico'
     ]
   }
-];
+]);
 
-const contractPanels = [
+const contractPanels = normalizeEditorialValue([
   {
     title: 'Limites de responsabilidade',
     items: [
-      'A navegacao no site nao cria automaticamente contrato de prestacao de servico',
-      'Qualquer escopo comercial depende de proposta, alinhamento e aceite especifico',
-      'Resultados de SEO, IA e crescimento organico dependem de contexto, execucao e concorrencia',
+      'A navegação no site não cria automaticamente contrato de prestação de serviço',
+      'Qualquer escopo comercial depende de proposta, alinhamento e aceite específico',
+      'Resultados de SEO, IA e crescimento orgânico dependem de contexto, execução e concorrência',
       'O site pode conter links para materiais externos de contexto, sem controle editorial integral sobre esses ambientes'
     ]
   },
   {
-    title: 'Relacao com formularios e contato',
+    title: 'Relação com formulários e contato',
     items: [
-      'Enviar um formulario nao garante aceite comercial, prazo ou contratacao',
+      'Enviar um formulário não garante aceite comercial, prazo ou contratação',
       'A AUDITSEO pode responder, recusar ou redirecionar demandas fora do escopo',
-      'O usuario deve enviar informacoes verdadeiras e sob seu proprio controle',
-      'Canais como e-mail e WhatsApp devem ser usados de boa-fe e com finalidade legitima'
+      'O usuário deve enviar informações verdadeiras e sob seu próprio controle',
+      'Canais como e-mail e WhatsApp devem ser usados de boa-fé e com finalidade legítima'
     ]
   }
-];
+]);
 
-const faqs = [
+const faqs = normalizeEditorialValue([
   {
-    question: 'Ler o site cria uma relacao contratual com a AUDITSEO?',
+    question: 'Ler o site cria uma relação contratual com a AUDITSEO?',
     answer:
-      'Nao. A navegacao no site tem finalidade informativa e comercial, mas nao substitui proposta, aceite, contrato ou definicao formal de escopo.'
+      'Não. A navegação no site tem finalidade informativa e comercial, mas não substitui proposta, aceite, contrato ou definição formal de escopo.'
   },
   {
-    question: 'Posso reproduzir o conteudo da AUDITSEO em outro site?',
+    question: 'Posso reproduzir o conteúdo da AUDITSEO em outro site?',
     answer:
-      'Trechos curtos com citacao adequada podem ser referenciados, mas a reproducao integral, a copia estrutural ou o reaproveitamento de materiais proprietarios sem autorizacao nao sao permitidos.'
+      'Trechos curtos com citação adequada podem ser referenciados, mas a reprodução integral, a cópia estrutural ou o reaproveitamento de materiais proprietários sem autorização não são permitidos.'
   },
   {
-    question: 'Os servicos e promessas do site valem para qualquer negocio?',
+    question: 'Os serviços e promessas do site valem para qualquer negócio?',
     answer:
-      'Nao. Cada negocio tem contexto tecnico, concorrencial e operacional proprio. O site explica oferta e metodologia, mas qualquer expectativa precisa ser validada no diagnostico.'
+      'Não. Cada negócio tem contexto técnico, concorrencial e operacional próprio. O site explica oferta e metodologia, mas qualquer expectativa precisa ser validada no diagnóstico.'
   },
   {
     question: 'A AUDITSEO pode alterar estes termos?',
     answer:
-      'Sim. Os termos podem ser atualizados para refletir mudancas de produto, operacao, arquitetura do site ou exigencias legais.'
+      'Sim. Os termos podem ser atualizados para refletir mudanças de produto, operação, arquitetura do site ou exigências legais.'
   }
-];
+]);
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -106,7 +107,7 @@ const faqSchema = {
 ---
 <LegalLayout
   title="Termos de Uso da AUDITSEO"
-  description="Leia os termos de uso do site da AUDITSEO, incluindo finalidade do conteudo, limites de responsabilidade, propriedade intelectual e uso correto dos canais oficiais."
+  description="Leia os termos de uso do site da AUDITSEO, incluindo finalidade do conteúdo, limites de responsabilidade, propriedade intelectual e uso correto dos canais oficiais."
   canonicalPath="/termos-de-uso/"
   noindex={true}
   breadcrumbs={[
@@ -128,24 +129,24 @@ const faqSchema = {
           TERMOS DE <span class="accent">USO</span> DA AUDITSEO
         </h1>
         <p class="ee-page-subtitle">
-          Estes termos explicam a finalidade do site, o que pode ou nao pode ser feito com o
-          conteudo publicado, como funcionam os <strong>canais de contato</strong>, quais sao os
-          <strong>limites de responsabilidade</strong> da AUDITSEO e como a estrutura publica pode
+          Estes termos explicam a finalidade do site, o que pode ou não pode ser feito com o
+          conteúdo publicado, como funcionam os <strong>canais de contato</strong>, quais são os
+          <strong>limites de responsabilidade</strong> da AUDITSEO e como a estrutura pública pode
           ser atualizada ao longo do tempo.
         </p>
         <div class="ee-page-highlights">
-          <span class="ee-page-highlight">Uso Licito</span>
-          <span class="ee-page-highlight">Conteudo Informativo</span>
+          <span class="ee-page-highlight">Uso Lícito</span>
+          <span class="ee-page-highlight">Conteúdo Informativo</span>
           <span class="ee-page-highlight">Propriedade Intelectual</span>
-          <span class="ee-page-highlight">Sem Contrato Automatico</span>
+          <span class="ee-page-highlight">Sem Contrato Automático</span>
         </div>
       </div>
       <aside class="ee-page-hero-card">
         <h2>Para que estes termos existem</h2>
-        <p>Para alinhar expectativa, proteger a operacao do site e dar clareza sobre o uso da base publica.</p>
+        <p>Para alinhar expectativa, proteger a operação do site e dar clareza sobre o uso da base pública.</p>
         <p>
-          Eles convivem com a politica de privacidade e com as paginas institucionais que explicam
-          metodologia, autoria e criterios de publicacao.
+          Eles convivem com a política de privacidade e com as páginas institucionais que explicam
+          metodologia, autoria e critérios de publicação.
         </p>
         <div class="ee-page-links">
           <a href="/politica-de-privacidade/">Privacidade</a>
@@ -159,28 +160,28 @@ const faqSchema = {
       <article class="ee-page-stat">
         <div class="ee-page-stat-value">2</div>
         <div class="ee-page-stat-label">Blocos centrais</div>
-        <p class="ee-page-stat-copy">Uso permitido e limites operacionais da base publica.</p>
+        <p class="ee-page-stat-copy">Uso permitido e limites operacionais da base pública.</p>
       </article>
       <article class="ee-page-stat">
         <div class="ee-page-stat-value">0</div>
-        <div class="ee-page-stat-label">Contrato automatico</div>
-        <p class="ee-page-stat-copy">Contato pelo site nao substitui proposta, aceite ou escopo.</p>
+        <div class="ee-page-stat-label">Contrato automático</div>
+        <p class="ee-page-stat-copy">Contato pelo site não substitui proposta, aceite ou escopo.</p>
       </article>
       <article class="ee-page-stat">
         <div class="ee-page-stat-value">1</div>
         <div class="ee-page-stat-label">Titular da marca</div>
-        <p class="ee-page-stat-copy">A marca e os materiais do site pertencem a AUDITSEO.</p>
+        <p class="ee-page-stat-copy">A marca e os materiais do site pertencem à AUDITSEO.</p>
       </article>
       <article class="ee-page-stat">
         <div class="ee-page-stat-value">1</div>
         <div class="ee-page-stat-label">Canal oficial</div>
-        <p class="ee-page-stat-copy">Duvidas formais podem ser enviadas para {siteMetadata.contact.email}.</p>
+        <p class="ee-page-stat-copy">Dúvidas formais podem ser enviadas para {siteMetadata.contact.email}.</p>
       </article>
     </section>
 
     <section class="ee-page-section">
       <div class="ee-page-section-head">
-        <span class="ee-page-section-badge">Principios</span>
+        <span class="ee-page-section-badge">Princípios</span>
         <h2 class="ee-page-section-title">COMO O SITE DEVE SER INTERPRETADO</h2>
       </div>
       <div class="ee-page-grid four">
@@ -196,7 +197,7 @@ const faqSchema = {
     <section class="ee-page-section">
       <div class="ee-page-section-head">
         <span class="ee-page-section-badge">Uso</span>
-        <h2 class="ee-page-section-title">O QUE PODE E O QUE NAO PODE SER FEITO</h2>
+        <h2 class="ee-page-section-title">O QUE PODE E O QUE NÃO PODE SER FEITO</h2>
       </div>
       <div class="ee-page-panels">
         {usagePanels.map((panel) => (
@@ -215,7 +216,7 @@ const faqSchema = {
     <section class="ee-page-section">
       <div class="ee-page-section-head">
         <span class="ee-page-section-badge">Responsabilidade</span>
-        <h2 class="ee-page-section-title">CONTRATACAO, LIMITES E CANAIS OFICIAIS</h2>
+        <h2 class="ee-page-section-title">CONTRATAÇÃO, LIMITES E CANAIS OFICIAIS</h2>
       </div>
       <div class="ee-page-panels">
         {contractPanels.map((panel) => (
@@ -234,7 +235,7 @@ const faqSchema = {
     <section class="ee-page-section">
       <div class="ee-page-section-head">
         <span class="ee-page-section-badge">FAQ</span>
-        <h2 class="ee-page-section-title">DUVIDAS COMUNS SOBRE O USO DO SITE</h2>
+        <h2 class="ee-page-section-title">DÚVIDAS COMUNS SOBRE O USO DO SITE</h2>
       </div>
       <div class="ee-page-faqs">
         {faqs.map((item) => (
@@ -249,9 +250,9 @@ const faqSchema = {
     <section class="ee-page-cta">
       <div class="ee-page-cta-box">
         <span class="ee-page-section-badge">Canal oficial</span>
-        <h2 class="ee-page-section-title">PRECISA ESCLARECER ALGUM PONTO DE USO OU CONTRATACAO?</h2>
+        <h2 class="ee-page-section-title">PRECISA ESCLARECER ALGUM PONTO DE USO OU CONTRATAÇÃO?</h2>
         <p class="ee-page-cta-copy">
-          Use o e-mail oficial para registrar duvidas sobre os termos, sobre o uso do conteudo ou
+          Use o e-mail oficial para registrar dúvidas sobre os termos, sobre o uso do conteúdo ou
           sobre a forma correta de iniciar um contato comercial.
         </p>
         <div class="ee-page-cta-actions">

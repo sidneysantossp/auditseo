@@ -3,12 +3,14 @@ import '../styles/institutional-trust-pages.css';
 import '../styles/commercial-service-pages.css';
 import type { ServiceFirstCommercialPage } from '../data/service-first-commercial-pages';
 import { serviceFirstLocalOperationalProof } from '../data/service-first-local-operational-proof';
+import { normalizeEditorialValue } from '../lib/editorial-text';
 
 interface Props {
   page: ServiceFirstCommercialPage;
 }
 
-const { page } = Astro.props as Props;
+const { page: rawPage } = Astro.props as Props;
+const page = normalizeEditorialValue(rawPage);
 const displayTitle = page.displayTitle ?? page.brief.pageTitle;
 const coreOffer = page.coreOffer ?? page.brief.coreOffer;
 const painPoints = page.painPoints ?? page.brief.painPoints;
@@ -21,7 +23,7 @@ const localCityLink =
 const localBofuLink = page.relatedLinks.find((item) => item.reason.includes('Apoio BOFU local')) ?? null;
 const localComplementLink = page.relatedLinks.find((item) => item.reason.includes('Complemento local')) ?? null;
 const localSectorLink = page.relatedLinks.find((item) => item.reason.includes('setorial-mãe') || item.reason.includes('setorial mae')) ?? null;
-const operationalProofOverride = serviceFirstLocalOperationalProof[page.slug] ?? null;
+const operationalProofOverride = normalizeEditorialValue(serviceFirstLocalOperationalProof[page.slug] ?? null);
 const institutionalProofLinks = [
   {
     label: 'Metodologia',
@@ -1031,7 +1033,7 @@ function getVerticalContext() {
   }
 
   return {
-    marketLabel: 'essa frente comercial',
+    marketLabel: 'uma operação de SEO local',
     demandCore: 'busca orgânica qualificada',
     supportSystem: 'página comercial, ativos locais e conteúdo de apoio',
     localPrimaryAsset: 'página comercial principal',

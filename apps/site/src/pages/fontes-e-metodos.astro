@@ -1,98 +1,99 @@
 ---
 import '../styles/institutional-trust-pages.css';
 import InstitutionalLayout from '../layouts/InstitutionalLayout.astro';
+import { normalizeEditorialValue } from '../lib/editorial-text';
 
-const evidenceLayers = [
+const evidenceLayers = normalizeEditorialValue([
   {
-    title: 'Fonte primaria primeiro',
+    title: 'Fonte primária primeiro',
     copy:
-      'Documentacao oficial, help centers, comunicados de produto, APIs e guias publicados pela plataforma responsavel pelo recurso.'
+      'Documentação oficial, help centers, comunicados de produto, APIs e guias publicados pela plataforma responsável pelo recurso.'
   },
   {
-    title: 'Experimento proprio em seguida',
+    title: 'Experimento próprio em seguida',
     copy:
-      'Testes internos, comparacoes de SERP, logs de rastreamento, auditorias e observacao direta do comportamento das paginas.'
+      'Testes internos, comparações de SERP, logs de rastreamento, auditorias e observação direta do comportamento das páginas.'
   },
   {
-    title: 'Fonte secundaria com contexto',
+    title: 'Fonte secundária com contexto',
     copy:
       'Usamos analises externas apenas quando ajudam a interpretar o mercado, nunca como substituto da fonte oficial.'
   },
   {
     title: 'Data e escopo sempre claros',
     copy:
-      'Toda afirmacao sensivel precisa de contexto: quando foi observada, em que ambiente e com qual limite de confianca.'
+      'Toda afirmação sensível precisa de contexto: quando foi observada, em que ambiente e com qual limite de confiança.'
   }
-];
+]);
 
-const validationPanels = [
+const validationPanels = normalizeEditorialValue([
   {
-    title: 'O que aceitamos como base de recomendacao',
+    title: 'O que aceitamos como base de recomendação',
     items: [
-      'Google Search Central e documentacao oficial do Search Console',
-      'Guias oficiais de Google Business Profile quando o tema e local',
-      'Documentacao de plataforma quando falamos de crawlers e integracoes',
-      'Dados observados em auditoria tecnica e revisados no projeto',
-      'Mudancas de SERP ou comportamento confirmadas em ambiente real'
+      'Google Search Central e documentação oficial do Search Console',
+      'Guias oficiais de Google Business Profile quando o tema é local',
+      'Documentação de plataforma quando falamos de crawlers e integrações',
+      'Dados observados em auditoria técnica e revisados no projeto',
+      'Mudanças de SERP ou comportamento confirmadas em ambiente real'
     ]
   },
   {
     title: 'O que evitamos publicar como verdade',
     items: [
-      'Estatistica sem fonte ou sem metodologia explicada',
-      'Claim absoluto baseado em observacao isolada',
+      'Estatística sem fonte ou sem metodologia explicada',
+      'Claim absoluto baseado em observação isolada',
       'Regra universal para nichos e sites com contextos distintos',
-      'Promessa de ranking ou prazo sem dependencia tecnica mapeada',
-      'Recomendacao copiada de terceiros sem teste ou confrontacao'
+      'Promessa de ranking ou prazo sem dependência técnica mapeada',
+      'Recomendação copiada de terceiros sem teste ou confrontação'
     ]
   }
-];
+]);
 
-const sourceAreas = [
+const sourceAreas = normalizeEditorialValue([
   {
-    title: 'Busca e indexacao',
+    title: 'Busca e indexação',
     copy:
-      'Usamos documentacao oficial para crawling, indexacao, canonical, sitemaps, robots e rich results.'
+      'Usamos documentação oficial para crawling, indexação, canonical, sitemaps, robots e rich results.'
   },
   {
     title: 'Busca local',
     copy:
-      'Quando o tema envolve mapa, perfis locais e reputacao, a referencia precisa vir de help centers e diretrizes oficiais do produto.'
+      'Quando o tema envolve mapa, perfis locais e reputação, a referência precisa vir de help centers e diretrizes oficiais do produto.'
   },
   {
     title: 'AI e superfícies generativas',
     copy:
-      'Priorizamos informacoes publicadas pela propria plataforma ou sinais observados diretamente nas SERPs e interfaces.'
+      'Priorizamos informações publicadas pela própria plataforma ou sinais observados diretamente nas SERPs e interfaces.'
   },
   {
-    title: 'Analytics e medicao',
+    title: 'Analytics e medição',
     copy:
-      'Recomendacoes precisam bater com a instrumentacao usada no site, nao apenas com teoria editorial.'
+      'Recomendações precisam bater com a instrumentação usada no site, não apenas com teoria editorial.'
   }
-];
+]);
 
-const faqs = [
+const faqs = normalizeEditorialValue([
   {
     question: 'A AUDITSEO usa estudos de mercado de terceiros?',
     answer:
-      'Sim, quando agregam contexto. Mas eles entram como apoio interpretativo, nunca como fonte primaria para recomendacoes tecnicas sensiveis.'
+      'Sim, quando agregam contexto. Mas eles entram como apoio interpretativo, nunca como fonte primária para recomendações técnicas sensíveis.'
   },
   {
-    question: 'Toda estatistica publicada precisa de fonte?',
+    question: 'Toda estatística publicada precisa de fonte?',
     answer:
-      'Sim. Se a origem ou a metodologia nao forem claras, o dado nao deve virar claim editorial nem argumento comercial.'
+      'Sim. Se a origem ou a metodologia não forem claras, o dado não deve virar claim editorial nem argumento comercial.'
   },
   {
-    question: 'Como voces lidam com mudancas rapidas no Google?',
+    question: 'Como vocês lidam com mudanças rápidas no Google?',
     answer:
-      'Atualizamos o conteudo quando a documentacao oficial muda, quando a SERP muda de forma consistente ou quando nossos testes indicam um novo padrao.'
+      'Atualizamos o conteúdo quando a documentação oficial muda, quando a SERP muda de forma consistente ou quando nossos testes indicam um novo padrão.'
   },
   {
-    question: 'Fontes internas contam como evidencia?',
+    question: 'Fontes internas contam como evidência?',
     answer:
-      'Contam, desde que o contexto seja conhecido, a observacao seja repetivel e a conclusao nao extrapole o escopo do que foi testado.'
+      'Contam, desde que o contexto seja conhecido, a observação seja repetível e a conclusão não extrapole o escopo do que foi testado.'
   }
-];
+]);
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -108,33 +109,33 @@ const faqSchema = {
 };
 ---
 <InstitutionalLayout
-  title="Fontes e Metodos da AUDITSEO"
-  description="Veja como a AUDITSEO valida fontes, estatisticas, documentacao oficial e experimentos proprios para construir recomendacoes tecnicas confiaveis."
+  title="Fontes e Métodos da AUDITSEO"
+  description="Veja como a AUDITSEO valida fontes, estatísticas, documentação oficial e experimentos próprios para construir recomendações técnicas confiáveis."
   canonicalPath="/fontes-e-metodos/"
   breadcrumbs={[
     { label: 'Home', path: '/' },
-    { label: 'Fontes e Metodos', path: '/fontes-e-metodos/' }
+    { label: 'Fontes e Métodos', path: '/fontes-e-metodos/' }
   ]}
 >
   <div class="ee-page">
     <nav class="ee-page-breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span>›</span>
-      <span class="current">Fontes e Metodos</span>
+      <span class="current">Fontes e Métodos</span>
     </nav>
 
     <section class="ee-page-hero">
       <div>
-        <span class="ee-page-badge">Validacao Editorial</span>
+        <span class="ee-page-badge">Validação Editorial</span>
         <h1 class="ee-page-title">
-          FONTES <span class="accent">PRIMARIAS</span> E METODO DE PROVA
+          FONTES <span class="accent">PRIMÁRIAS</span> E MÉTODO DE PROVA
         </h1>
         <p class="ee-page-subtitle">
-          Para um site de SEO ser referencia, ele nao pode publicar recomendacao com base em
-          intuicao, numero solto ou copia de mercado. Nesta pagina, a AUDITSEO explica como trata
-          <strong>documentacao oficial</strong>, <strong>experimentos proprios</strong>,
-          <strong>fontes secundarias</strong> e <strong>claims sensiveis</strong> antes de levar
-          qualquer conclusao para artigos, paginas de servico e materiais institucionais.
+          Para um site de SEO ser referência, ele não pode publicar recomendação com base em
+          intuição, número solto ou cópia de mercado. Nesta página, a AUDITSEO explica como trata
+          <strong>documentação oficial</strong>, <strong>experimentos próprios</strong>,
+          <strong>fontes secundárias</strong> e <strong>claims sensíveis</strong> antes de levar
+          qualquer conclusão para artigos, páginas de serviço e materiais institucionais.
         </p>
         <div class="ee-page-highlights">
           <span class="ee-page-highlight">Google Primeiro</span>
@@ -145,46 +146,46 @@ const faqSchema = {
       </div>
       <aside class="ee-page-hero-card">
         <h2>Regra principal</h2>
-        <p>Fonte primaria sempre vence interpretacao de mercado quando existe conflito.</p>
+        <p>Fonte primária sempre vence interpretação de mercado quando existe conflito.</p>
         <p>
-          A funcao da pagina e reduzir dependencia de referencia inconsistente e tornar cada
-          recomendacao mais rastreavel para usuarios, bots e equipes tecnicas.
+          A função da página é reduzir dependência de referência inconsistente e tornar cada
+          recomendação mais rastreável para usuários, bots e equipes técnicas.
         </p>
         <div class="ee-page-links">
-          <a href="/politica-editorial/">Politica editorial</a>
+          <a href="/politica-editorial/">Política editorial</a>
           <a href="/metodologia/">Metodologia</a>
           <a href="/blog/">Artigos</a>
         </div>
       </aside>
     </section>
 
-    <section class="ee-page-stats" aria-label="Resumo das fontes e metodos">
+    <section class="ee-page-stats" aria-label="Resumo das fontes e métodos">
       <article class="ee-page-stat">
         <div class="ee-page-stat-value">1</div>
         <div class="ee-page-stat-label">Prioridade central</div>
-        <p class="ee-page-stat-copy">Fonte oficial antes de interpretacao externa.</p>
+        <p class="ee-page-stat-copy">Fonte oficial antes de interpretação externa.</p>
       </article>
       <article class="ee-page-stat">
         <div class="ee-page-stat-value">4</div>
-        <div class="ee-page-stat-label">Camadas de evidencia</div>
+        <div class="ee-page-stat-label">Camadas de evidência</div>
         <p class="ee-page-stat-copy">Fonte, teste, contexto e limite de escopo.</p>
       </article>
       <article class="ee-page-stat">
         <div class="ee-page-stat-value">100%</div>
         <div class="ee-page-stat-label">Claims revisados</div>
-        <p class="ee-page-stat-copy">Dado sem origem clara nao entra como argumento.</p>
+        <p class="ee-page-stat-copy">Dado sem origem clara não entra como argumento.</p>
       </article>
       <article class="ee-page-stat">
         <div class="ee-page-stat-value">0</div>
-        <div class="ee-page-stat-label">Tolerancia a rumor</div>
-        <p class="ee-page-stat-copy">Hipoteses podem existir, mas nao viram promessa editorial.</p>
+        <div class="ee-page-stat-label">Tolerância a rumor</div>
+        <p class="ee-page-stat-copy">Hipóteses podem existir, mas não viram promessa editorial.</p>
       </article>
     </section>
 
     <section class="ee-page-section">
       <div class="ee-page-section-head">
         <span class="ee-page-section-badge">Hierarquia</span>
-        <h2 class="ee-page-section-title">COMO A EVIDENCIA E ORGANIZADA</h2>
+        <h2 class="ee-page-section-title">COMO A EVIDÊNCIA É ORGANIZADA</h2>
       </div>
       <div class="ee-page-grid four">
         {evidenceLayers.map((item) => (
@@ -198,8 +199,8 @@ const faqSchema = {
 
     <section class="ee-page-section">
       <div class="ee-page-section-head">
-        <span class="ee-page-section-badge">Criterio</span>
-        <h2 class="ee-page-section-title">O QUE SUSTENTA UMA RECOMENDACAO PUBLICA</h2>
+        <span class="ee-page-section-badge">Critério</span>
+        <h2 class="ee-page-section-title">O QUE SUSTENTA UMA RECOMENDAÇÃO PÚBLICA</h2>
       </div>
       <div class="ee-page-panels">
         {validationPanels.map((panel) => (
@@ -218,7 +219,7 @@ const faqSchema = {
     <section class="ee-page-section">
       <div class="ee-page-section-head">
         <span class="ee-page-section-badge">Cobertura</span>
-        <h2 class="ee-page-section-title">AREAS EM QUE O METODO E APLICADO</h2>
+        <h2 class="ee-page-section-title">ÁREAS EM QUE O MÉTODO É APLICADO</h2>
       </div>
       <div class="ee-page-grid four">
         {sourceAreas.map((item) => (
@@ -233,7 +234,7 @@ const faqSchema = {
     <section class="ee-page-section">
       <div class="ee-page-section-head">
         <span class="ee-page-section-badge">FAQ</span>
-        <h2 class="ee-page-section-title">DUVIDAS SOBRE FONTES E VALIDACAO</h2>
+        <h2 class="ee-page-section-title">DÚVIDAS SOBRE FONTES E VALIDAÇÃO</h2>
       </div>
       <div class="ee-page-faqs">
         {faqs.map((item) => (
@@ -247,17 +248,17 @@ const faqSchema = {
 
     <section class="ee-page-cta">
       <div class="ee-page-cta-box">
-        <span class="ee-page-section-badge">Transparencia</span>
-        <h2 class="ee-page-section-title">QUER AUDITAR AS BASES DO SEU CONTEUDO?</h2>
+        <span class="ee-page-section-badge">Transparência</span>
+        <h2 class="ee-page-section-title">QUER AUDITAR AS BASES DO SEU CONTEÚDO?</h2>
         <p class="ee-page-cta-copy">
-          Se seu site depende de claims fracos, estatisticas vagas ou recomendacoes sem fonte, o
-          risco nao e so tecnico. E reputacional.
+          Se seu site depende de claims fracos, estatísticas vagas ou recomendações sem fonte, o
+          risco não é só técnico. É reputacional.
         </p>
         <div class="ee-page-cta-actions">
           <button type="button" class="ee-page-primary" data-open-cta-modal>
-            Solicitar Diagnostico
+            Solicitar Diagnóstico
           </button>
-          <a href="/politica-editorial/" class="ee-page-secondary">Ver politica editorial</a>
+          <a href="/politica-editorial/" class="ee-page-secondary">Ver política editorial</a>
         </div>
       </div>
     </section>

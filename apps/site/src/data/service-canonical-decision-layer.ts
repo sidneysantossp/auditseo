@@ -40,7 +40,7 @@ function createBaseDecisionLayer(
         copy: objectionOne
       },
       {
-        title: 'Comparacao ruim',
+        title: 'Comparação ruim',
         copy: objectionTwo
       },
       {

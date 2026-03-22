@@ -439,36 +439,36 @@ export const commercialSupportArticlesBarueriAlphaville: CommercialSupportArticl
         ]
       },
       {
-        title: 'Onde a comparacao costuma ficar rasa',
+        title: 'Onde a comparação costuma ficar rasa',
         paragraphs: [
-          'A comparacao fica rasa quando a empresa olha apenas preco, volume de entregas ou sensacao de proximidade. O ponto real e entender que problema precisa ser resolvido primeiro.',
-          'Se a praca ainda precisa de uma pagina principal forte, agencia pode fazer mais sentido como entrada. Se a operacao ja pede governanca e acompanhamento continuo, consultoria tende a encaixar melhor.'
+          'A comparação fica rasa quando a empresa olha apenas preço, volume de entregas ou sensação de proximidade. O ponto real é entender que problema precisa ser resolvido primeiro.',
+          'Se a praça ainda precisa de uma página principal forte, agência pode fazer mais sentido como entrada. Se a operação já pede governança e acompanhamento contínuo, consultoria tende a encaixar melhor.'
         ]
       },
       {
-        title: 'Qual e o melhor proximo passo',
+        title: 'Qual é o melhor próximo passo',
         paragraphs: [
-          'O melhor proximo passo e revisar se o desafio principal e estruturar a frente local ou organizar uma operacao mais madura de SEO dentro da praca.',
-          'Com essa resposta, a escolha entre agencia e consultoria fica mais objetiva e menos baseada em rotulo.'
+          'O melhor próximo passo é revisar se o desafio principal é estruturar a frente local ou organizar uma operação mais madura de SEO dentro da praça.',
+          'Com essa resposta, a escolha entre agência e consultoria fica mais objetiva e menos baseada em rótulo.'
         ]
       }
     ],
     faqItems: [
-      { question: 'Agencia e consultoria SEO sao a mesma coisa nesta praca?', answer: 'Nao. Elas podem se complementar, mas respondem a momentos diferentes de maturidade e necessidade operacional.' },
-      { question: 'Quando agencia tende a entrar antes?', answer: 'Quando a operacao ainda precisa consolidar a camada comercial principal da praca e transformar busca generica em demanda melhor.' },
-      { question: 'Quando consultoria tende a entrar antes?', answer: 'Quando ja existe base minima e a empresa precisa de governanca, prioridade e acompanhamento continuo.' },
-      { question: 'A decisao muda por causa de Alphaville?', answer: 'Muda porque o eixo empresarial aumenta a exigencia comercial e reforca a comparacao de fornecedor mais madura.' },
-      { question: 'Qual e o melhor proximo passo?', answer: 'Descobrir se a operacao precisa primeiro de estrutura comercial da praca ou de direcao continua para backlog e crescimento.' }
+      { question: 'Agência e consultoria SEO são a mesma coisa nesta praça?', answer: 'Não. Elas podem se complementar, mas respondem a momentos diferentes de maturidade e necessidade operacional.' },
+      { question: 'Quando agência tende a entrar antes?', answer: 'Quando a operação ainda precisa consolidar a camada comercial principal da praça e transformar busca genérica em demanda melhor.' },
+      { question: 'Quando consultoria tende a entrar antes?', answer: 'Quando já existe base mínima e a empresa precisa de governança, prioridade e acompanhamento contínuo.' },
+      { question: 'A decisão muda por causa de Alphaville?', answer: 'Muda porque o eixo empresarial aumenta a exigência comercial e reforça a comparação de fornecedor mais madura.' },
+      { question: 'Qual é o melhor próximo passo?', answer: 'Descobrir se a operação precisa primeiro de estrutura comercial da praça ou de direção contínua para backlog e crescimento.' }
     ],
     resourceLinks: [
       { label: 'Agencia de SEO em Barueri', path: '/servicos/agencia-de-seo-em-barueri/' },
       { label: 'Consultoria SEO em Barueri', path: '/servicos/consultoria-seo-em-barueri/' },
       { label: 'Quanto custa SEO em Barueri e Alphaville', path: '/blog/quanto-custa-seo-em-barueri-e-alphaville/' }
     ],
-    ctaTitle: 'QUER ESCOLHER ENTRE AGENCIA E CONSULTORIA COM MAIS CRITERIO NESTA PRACA?',
+    ctaTitle: 'QUER ESCOLHER ENTRE AGÊNCIA E CONSULTORIA COM MAIS CRITÉRIO NESTA PRAÇA?',
     ctaCopy:
-      'Se a comparacao ainda esta confusa, comece revisando a funcao da pagina principal da praca e depois decida se a operacao pede agencia ou consultoria.',
+      'Se a comparação ainda está confusa, comece revisando a função da página principal da praça e depois decida se a operação pede agência ou consultoria.',
     ctaPath: '/servicos/agencia-de-seo-em-barueri/',
-    ctaLabel: 'Abrir a pagina principal da praca'
+    ctaLabel: 'Abrir a página principal da praça'
   }
 ];

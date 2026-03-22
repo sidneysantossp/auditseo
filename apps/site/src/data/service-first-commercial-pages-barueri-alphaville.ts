@@ -1,5 +1,6 @@
 import type { CommercialPageBrief, CommercialInternalLink } from './commercial-page-briefs';
 import type { ServiceFirstCommercialPage } from './service-first-commercial-pages';
+import { normalizeEditorialValue } from '../lib/editorial-text';
 
 type RequireBrief = (slug: string) => CommercialPageBrief;
 
@@ -17,7 +18,7 @@ function createRelatedLinks(...links: CommercialInternalLink[]) {
 
 function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPage {
   const slug = '/servicos/agencia-de-seo-em-barueri/';
-  return {
+  return normalizeEditorialValue<ServiceFirstCommercialPage>({
     slug,
     seoTitle: 'Agencia de SEO em Barueri e Alphaville para Empresas | AUDITSEO',
     description:
@@ -56,7 +57,7 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
       {
         title: 'Espaco para SEO especializado',
         copy:
-          'Boa parte da concorrencia local e agencia de marketing ampla. Isso abre espaco para uma empresa de SEO mais especializada e para uma leitura de especialista em SEO, nao de fornecedor generalista.'
+          'Boa parte da concorrencia local ainda vem de agencias de marketing amplas. Isso abre espaco para uma empresa de SEO mais especializada e para uma leitura de especialista em SEO, nao de fornecedor generalista.'
       },
       {
         title: 'Entidade local com funcao comercial',
@@ -130,12 +131,12 @@ function createAgencyPage(requireBrief: RequireBrief): ServiceFirstCommercialPag
     areaServedName: 'Barueri',
     areaServedNames: ['Barueri', 'Alphaville'],
     brief: requireBrief(slug)
-  };
+  });
 }
 
 function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommercialPage {
   const slug = '/servicos/consultoria-seo-em-barueri/';
-  return {
+  return normalizeEditorialValue<ServiceFirstCommercialPage>({
     slug,
     seoTitle: 'Consultoria SEO em Barueri e Alphaville para Empresas | AUDITSEO',
     description:
@@ -160,7 +161,7 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
       ]
     },
     stats: [
-      { value: '1', label: 'Servico canonico', copy: 'Consultoria continua sendo a ancora tecnica da oferta.' },
+      { value: '1', label: 'Servico canonico', copy: 'Consultoria segue sendo a ancora tecnica da oferta.' },
       { value: '2', label: 'Leituras criticas', copy: 'Papel da praca e maturidade da operacao precisam bater.' },
       { value: '0', label: 'Espaco para pacote raso', copy: 'Aqui a decisao passa por backlog e governanca, nao por promessa vaga.' },
       { value: '100%', label: 'Dependencia de contexto', copy: 'Aderencia vem de fit real entre demanda, equipe e objetivo comercial.' }
@@ -172,7 +173,7 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
       },
       {
         title: 'Decisao orientada a pipeline',
-        copy: 'A conversa local costuma ser menos sobre trafego bruto e mais sobre previsibilidade comercial, pages com intencao e governanca de execucao.'
+        copy: 'A conversa local costuma ser menos sobre trafego bruto e mais sobre previsibilidade comercial, paginas com intencao e governanca de execucao.'
       },
       {
         title: 'Menos improviso',
@@ -183,7 +184,7 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
       'Consultoria SEO para empresas em Barueri e Alphaville com foco em arquitetura, backlog, paginas comerciais, conteudo de decisao e medicao de resultado.',
     painPoints: [
       'Equipe interna sem criterio claro de prioridade.',
-      'Pags do site competindo entre si ou sem funcao comercial suficiente.',
+      'Paginas do site competindo entre si ou sem funcao comercial suficiente.',
       'Dependencia de canais pagos para manter volume de oportunidade.',
       'Dificuldade de conectar estrategia, execucao e medicao local.'
     ],
@@ -244,12 +245,12 @@ function createConsultoriaPage(requireBrief: RequireBrief): ServiceFirstCommerci
     areaServedName: 'Barueri',
     areaServedNames: ['Barueri', 'Alphaville'],
     brief: requireBrief(slug)
-  };
+  });
 }
 
 function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercialPage {
   const slug = '/servicos/auditoria-seo-em-barueri/';
-  return {
+  return normalizeEditorialValue<ServiceFirstCommercialPage>({
     slug,
     seoTitle: 'Auditoria SEO em Barueri e Alphaville para Empresas | AUDITSEO',
     description:
@@ -266,7 +267,7 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
     heroCard: {
       title: 'Quando essa pagina faz sentido',
       copy:
-        'Quando a empresa ainda nao sabe com clareza o que trava indexacao, pages comerciais, sinais locais ou geracao de demanda na praca.',
+        'Quando a empresa ainda nao sabe com clareza o que trava indexacao, paginas comerciais, sinais locais ou geracao de demanda na praca.',
       links: [
         { label: 'Ver Auditoria SEO', path: '/servicos/auditoria-seo/', reason: 'Servico canonico principal.' },
         { label: 'Ver Consultoria SEO em Barueri', path: '/servicos/consultoria-seo-em-barueri/', reason: 'Passo seguinte apos o diagnostico.' },
@@ -282,7 +283,7 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
     marketCards: [
       {
         title: 'Diagnostico antes da expansao',
-        copy: 'Em praca nova, auditoria ajuda a evitar cluster local mal montado, entidade fraca ou pages que competem entre si.'
+        copy: 'Em praca nova, auditoria ajuda a evitar cluster local mal montado, entidade fraca ou paginas que competem entre si.'
       },
       {
         title: 'Leitura completa da operacao',
@@ -356,7 +357,7 @@ function createAuditoriaPage(requireBrief: RequireBrief): ServiceFirstCommercial
     areaServedName: 'Barueri',
     areaServedNames: ['Barueri', 'Alphaville'],
     brief: requireBrief(slug)
-  };
+  });
 }
 
 export function buildBarueriAlphavilleServiceFirstCommercialPages(requireBrief: RequireBrief): ServiceFirstCommercialPage[] {

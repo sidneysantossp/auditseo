@@ -17,7 +17,7 @@ const slug = Astro.params.slug ?? '';
 const category = getBlogCategoryBySlug(slug);
 
 if (!category) {
-  throw new Error(`Categoria do blog nao encontrada: ${slug}`);
+  throw new Error(`Categoria do blog não encontrada: ${slug}`);
 }
 
 const categoryArticles = getBlogCategoryArticles(category.slug);

@@ -1,3 +1,5 @@
+import { normalizeEditorialValue } from '../lib/editorial-text';
+
 export interface BlogCategoryFaq {
   question: string;
   answer: string;
@@ -30,7 +32,7 @@ export interface BlogCategoryDefinition {
   articleSlugs: string[];
 }
 
-export const blogCategories: BlogCategoryDefinition[] = [
+const rawBlogCategories: BlogCategoryDefinition[] = [
   {
     slug: 'ai-overviews',
     title: 'AI Overviews',
@@ -181,30 +183,30 @@ export const blogCategories: BlogCategoryDefinition[] = [
   },
   {
     slug: 'seo-tecnico',
-    title: 'SEO Tecnico',
-    shortTitle: 'SEO Tecnico',
-    badge: 'Cluster Implementacao',
-    heroTitle: 'SEO TECNICO PARA IA, RASTREABILIDADE E BASE DE PERFORMANCE',
+    title: 'SEO Técnico',
+    shortTitle: 'SEO Técnico',
+    badge: 'Cluster Implementação',
+    heroTitle: 'SEO TÉCNICO PARA IA, RASTREABILIDADE E BASE DE PERFORMANCE',
     heroSubtitle:
-      'Categoria focada em arquitetura, HTML, schema, sitemap, robots, performance, renderizacao e sinais tecnicos que sustentam indexacao, leitura por bots e consistencia do site.',
-    seoTitle: 'SEO Tecnico para AI Search e Sites Escalaveis | Blog AUDITSEO',
+      'Categoria focada em arquitetura, HTML, schema, sitemap, robots, performance, renderização e sinais técnicos que sustentam indexação, leitura por bots e consistência do site.',
+    seoTitle: 'SEO Técnico para AI Search e Sites Escaláveis | Blog AUDITSEO',
     seoDescription:
-      'Leia artigos sobre SEO tecnico, schema, sitemap, robots, performance, HTML e rastreabilidade para AI search e busca organica.',
+      'Leia artigos sobre SEO técnico, schema, sitemap, robots, performance, HTML e rastreabilidade para AI search e busca orgânica.',
     introCards: [
       {
         title: 'Base estrutural',
         copy:
-          'Tudo que afeta renderizacao, indexacao, consistencia semantica e capacidade do site de crescer sem quebrar navegacao, schema e descoberta.'
+          'Tudo que afeta renderização, indexação, consistência semântica e capacidade do site de crescer sem quebrar navegação, schema e descoberta.'
       },
       {
         title: 'Impacto comercial',
         copy:
-          'Sem base tecnica, pagina comercial, cluster de conteudo e citabilidade em IA perdem capacidade de competir e escalar.'
+          'Sem base técnica, página comercial, cluster de conteúdo e citabilidade em IA perdem capacidade de competir e escalar.'
       },
       {
         title: 'Como usar estes artigos',
         copy:
-          'A categoria foi pensada para servir como referencia de backlog tecnico para dev, SEO, produto e conteudo trabalhando na mesma fundacao.'
+          'A categoria foi pensada para servir como referência de backlog técnico para dev, SEO, produto e conteúdo trabalhando na mesma fundação.'
       }
     ],
     serviceLinks: [
@@ -389,20 +391,20 @@ export const blogCategories: BlogCategoryDefinition[] = [
   },
   {
     slug: 'estrategia',
-    title: 'Estrategia',
-    shortTitle: 'Estrategia',
-    badge: 'Cluster Gestao e Crescimento',
-    heroTitle: 'ESTRATEGIA SEO, GOVERNANCA EDITORIAL E CRESCIMENTO COM IA',
+    title: 'Estratégia',
+    shortTitle: 'Estratégia',
+    badge: 'Cluster Gestão e Crescimento',
+    heroTitle: 'ESTRATÉGIA SEO, GOVERNANÇA EDITORIAL E CRESCIMENTO COM IA',
     heroSubtitle:
-      'Categoria mais ampla do blog, voltada a visao estrategica: planejamento, funil, priorizacao, custos, equipe, integracao entre SEO tradicional e AI search, e leitura de negocio por tras da arquitetura.',
-    seoTitle: 'Estrategia SEO, Governanca e Crescimento Organico | Blog AUDITSEO',
+      'Categoria mais ampla do blog, voltada à visão estratégica: planejamento, funil, priorização, custos, equipe, integração entre SEO tradicional e AI search, e leitura de negócio por trás da arquitetura.',
+    seoTitle: 'Estratégia SEO, Governança e Crescimento Orgânico | Blog AUDITSEO',
     seoDescription:
-      'Artigos sobre estrategia SEO, governanca editorial, custos, priorizacao, equipe, SEO local e integracao entre busca organica e IA.',
+      'Artigos sobre estratégia SEO, governança editorial, custos, priorização, equipe, SEO local e integração entre busca orgânica e IA.',
     introCards: [
       {
         title: 'Onde esta categoria atua',
         copy:
-          'Ela faz a ponte entre conteudo, produto, comercial, paginas de servico e backlog tecnico. E a camada que organiza prioridade e evita esforco disperso.'
+          'Ela faz a ponte entre conteúdo, produto, comercial, páginas de serviço e backlog técnico. É a camada que organiza prioridade e evita esforço disperso.'
       },
       {
         title: 'Para quem ela e mais util',
@@ -537,10 +539,14 @@ export const blogCategories: BlogCategoryDefinition[] = [
 export const blogFeaturedArticleSlug = 'estrategia-seo-ia';
 export const blogPageSize = 24;
 
-const categoryBySlug = new Map(blogCategories.map((category) => [category.slug, category]));
+const normalizedBlogCategories = rawBlogCategories.map((category) => normalizeEditorialValue(category));
+
+export const blogCategories = normalizedBlogCategories;
+
+const categoryBySlug = new Map(normalizedBlogCategories.map((category) => [category.slug, category]));
 const articleToCategory = new Map<string, BlogCategoryDefinition>();
 
-for (const category of blogCategories) {
+for (const category of normalizedBlogCategories) {
   for (const slug of category.articleSlugs) {
     articleToCategory.set(slug, category);
   }
@@ -555,7 +561,7 @@ export function getBlogCategoryForArticle(slug: string) {
 }
 
 export function getBlogCategoryNavigation() {
-  return blogCategories.map((category) => ({
+  return normalizedBlogCategories.map((category) => ({
     slug: category.slug,
     title: category.shortTitle,
     path: `/blog/categoria/${category.slug}/`

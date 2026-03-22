@@ -8,7 +8,7 @@ const page = getServiceFirstCommercialPageBySlug('/servicos/agencia-de-seo-em-ba
 const displayTitle = page?.displayTitle ?? page?.brief.pageTitle;
 
 if (!page) {
-  throw new Error('Pagina comercial nao encontrada: agencia-de-seo-em-barueri');
+  throw new Error('Página comercial não encontrada: agencia-de-seo-em-barueri');
 }
 ---
 <InstitutionalLayout
@@ -19,7 +19,7 @@ if (!page) {
   pageType="Service"
   breadcrumbs={[
     { label: 'Home', path: '/' },
-    { label: 'Servicos', path: '/servicos/' },
+    { label: 'Serviços', path: '/servicos/' },
     { label: displayTitle, path: page.slug }
   ]}
 >
