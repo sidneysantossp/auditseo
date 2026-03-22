@@ -2,253 +2,287 @@
 import SeoHead from '../../components/SeoHead.astro';
 import '../../styles/admin-prototype.css';
 
-const navPrimary = [
-  'Overview',
-  'Pipeline',
-  'Leads',
-  'Atividades'
-];
-
-const navSecondary = [
-  'Conteúdos',
-  'Clusters',
-  'Workflow'
-];
-
-const kpis = [
-  { label: 'Receita aberta', value: 'R$ 184k', note: '18 oportunidades em andamento' },
-  { label: 'Hot leads', value: '07', note: '4 pedem follow-up hoje' },
-  { label: 'Publicações', value: '151', note: '12 ativos em produção' },
-  { label: 'CTR alvo', value: '4,8%', note: 'páginas money e clusters locais' }
-];
-
-const boardColumns = [
+const menuGroups = [
   {
-    title: 'Inbound',
-    count: '06',
+    title: 'Menu',
     items: [
-      { company: 'Clínica Atlas', meta: 'Agência SEO • Site', value: 'R$ 9k' },
-      { company: 'Solar Prime', meta: 'Consultoria • Indicação', value: 'R$ 12k' }
+      { label: 'Dashboard', count: '3', active: true },
+      { label: 'Pipeline' },
+      { label: 'Leads' },
+      { label: 'Atividades' }
     ]
   },
   {
-    title: 'Proposta',
-    count: '04',
+    title: 'Editorial',
     items: [
-      { company: 'Lex Barueri', meta: 'Auditoria • Orgânico', value: 'R$ 7k' },
-      { company: 'Oral Design', meta: 'Agência SEO • WhatsApp', value: 'R$ 11k' }
-    ]
-  },
-  {
-    title: 'Follow-up',
-    count: '05',
-    items: [
-      { company: 'B2B Signal', meta: 'Consultoria • Evento', value: 'R$ 15k' },
-      { company: 'Alpha Med', meta: 'Agência SEO • Site', value: 'R$ 8k' }
+      { label: 'Conteúdos' },
+      { label: 'Clusters' },
+      { label: 'Workflow' }
     ]
   }
 ];
 
-const leads = [
-  ['Clínica Atlas', 'Agência', 'SEO Local', 'Hot', 'Site'],
-  ['Solar Prime', 'Consultoria', 'SEO + IA', 'Warm', 'Indicação'],
-  ['Lex Barueri', 'Auditoria', 'Diagnóstico', 'Warm', 'Orgânico'],
-  ['Alpha Med', 'Agência', 'SEO Técnico', 'Cold', 'WhatsApp']
+const metricCards = [
+  { label: 'Receita aberta', value: 'R$ 184.000', delta: '+12%' },
+  { label: 'Leads qualificados', value: '27', delta: '+4' },
+  { label: 'Publicações ativas', value: '151', delta: '+9' },
+  { label: 'Clusters em ação', value: '7', delta: '2 locais' }
 ];
 
-const editorialQueue = [
-  ['Money page', 'Agência de SEO em Barueri', 'Hoje'],
-  ['BOFU', 'Quanto custa SEO em Alphaville', 'Amanhã'],
-  ['Refresh', 'Agência de SEO', 'Qui'],
-  ['Cluster', 'AI Overviews comercial', 'Sex']
+const overviewMatrix = [
+  ['Leads', '27'],
+  ['Propostas', '8'],
+  ['Ganhos', '3'],
+  ['Follow-up', '11'],
+  ['Clusters', '7'],
+  ['Backlog', '14']
+];
+
+const funnelCards = [
+  { title: 'Inbound', amount: '06', note: 'site, WhatsApp e orgânico' },
+  { title: 'Proposta', amount: '04', note: 'tickets entre R$ 7k e R$ 15k' },
+  { title: 'Negociação', amount: '05', note: '3 com follow-up nesta semana' }
+];
+
+const priorities = [
+  { rank: '#1', title: 'Alphaville / Barueri', note: 'money page + BOFU local' },
+  { rank: '#2', title: 'AI Overviews', note: 'expansão comercial nacional' },
+  { rank: '#3', title: 'Refresh / agência de SEO', note: 'preservar query vencedora' }
+];
+
+const timeline = [
+  ['Hoje', 'Revisar títulos locais e links internos'],
+  ['Amanhã', 'Publicar comparativo agência x consultoria'],
+  ['Qui', 'Ler Search Console por família de query'],
+  ['Sex', 'Validar saúde técnica do cluster']
 ];
 ---
 <!doctype html>
 <html lang="pt-BR">
   <head>
     <SeoHead
-      title="Protótipo Admin Clean"
-      description="Estudo de interface para o próximo admin da AUDITSEO em linguagem monocromática."
+      title="Protótipo Admin Borex Study"
+      description="Estudo de dashboard administrativo inspirado na malha de Borex, adaptado para a AUDITSEO."
       canonicalPath="/admin/prototipo/"
       noindex={true}
     />
   </head>
   <body class="admin-prototype-body">
-    <div class="proto-app">
+    <div class="proto-shell">
       <aside class="proto-sidebar">
-        <div class="proto-brand">
-          <span class="proto-kicker">AUDITSEO</span>
-          <h1>Admin prototype</h1>
-          <p>Estudo de layout em preto e branco para validar hierarquia, densidade e ritmo visual.</p>
+        <div class="proto-sidebar__brand">
+          <span class="proto-sidebar__mark">AUDITSEO</span>
+          <button class="proto-sidebar__toggle" type="button" aria-label="Menu de navegação">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
 
-        <nav class="proto-nav" aria-label="Navegação primária">
-          {navPrimary.map((item, index) => (
-            <a class:list={['proto-nav__link', index === 0 && 'is-active']} href="#">
-              <span>{item}</span>
-            </a>
-          ))}
-        </nav>
+        {menuGroups.map((group) => (
+          <section class="proto-sidebar__group">
+            <span class="proto-label">{group.title}</span>
+            <nav class="proto-menu">
+              {group.items.map((item) => (
+                <a class:list={['proto-menu__item', item.active && 'is-active']} href="#">
+                  <span>{item.label}</span>
+                  {item.count && <em>{item.count}</em>}
+                </a>
+              ))}
+            </nav>
+          </section>
+        ))}
 
-        <div class="proto-divider"></div>
-
-        <nav class="proto-nav proto-nav--secondary" aria-label="Navegação editorial">
-          {navSecondary.map((item) => (
-            <a class="proto-nav__link" href="#">
-              <span>{item}</span>
-            </a>
-          ))}
-        </nav>
-
-        <div class="proto-sidebar__meta">
-          <div>
-            <span class="proto-label">Modo</span>
-            <strong>Público com visão privada opcional</strong>
-          </div>
-          <div>
-            <span class="proto-label">Objetivo</span>
-            <strong>Operar CRM, conteúdo e expansão sem ruído visual</strong>
-          </div>
+        <div class="proto-sidebar__footer">
+          <span class="proto-label">Stack atual</span>
+          <strong>Astro + CMS API + operação editorial tipada</strong>
+          <p>Este mockup testa malha, densidade e scanning antes da migração do admin real.</p>
         </div>
       </aside>
 
-      <main class="proto-main">
+      <div class="proto-workspace">
         <header class="proto-topbar">
           <div>
-            <span class="proto-label">Estudo de interface</span>
-            <h2>Dashboard admin clean</h2>
+            <span class="proto-label">Admin</span>
+            <h1>Dashboard</h1>
           </div>
 
           <div class="proto-topbar__actions">
-            <span class="proto-pill">Monocromático</span>
-            <span class="proto-pill">Mock data</span>
-            <a class="proto-button" href="/admin/">Voltar ao admin atual</a>
+            <span class="proto-icon-button" aria-hidden="true"></span>
+            <span class="proto-icon-button" aria-hidden="true"></span>
+            <span class="proto-icon-button" aria-hidden="true"></span>
+            <a class="proto-primary-button" href="/admin/">Voltar ao admin atual</a>
+            <span class="proto-avatar" aria-hidden="true">AS</span>
           </div>
         </header>
 
-        <section class="proto-intro">
-          <div>
-            <span class="proto-label">Leitura principal</span>
-            <h3>Uma superfície sóbria, menos caixas e mais orientação.</h3>
-          </div>
-          <p>
-            O foco aqui é validar espaçamento, contraste, ritmo de leitura e como CRM, pipeline e editorial podem conviver em uma malha realmente administrativa.
-          </p>
-        </section>
+        <main class="proto-content">
+          <section class="proto-metrics">
+            {metricCards.map((item) => (
+              <article class="proto-card proto-card--metric">
+                <span class="proto-metric__icon" aria-hidden="true"></span>
+                <div class="proto-metric__body">
+                  <span class="proto-metric__label">{item.label}</span>
+                  <div class="proto-metric__row">
+                    <strong>{item.value}</strong>
+                    <em>{item.delta}</em>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </section>
 
-        <section class="proto-rail" aria-label="KPIs">
-          {kpis.map((item) => (
-            <article class="proto-rail__item">
-              <span class="proto-label">{item.label}</span>
-              <strong>{item.value}</strong>
-              <p>{item.note}</p>
-            </article>
-          ))}
-        </section>
-
-        <section class="proto-grid">
-          <article class="proto-surface proto-surface--board">
-            <div class="proto-surface__head">
-              <div>
-                <span class="proto-label">Pipeline</span>
-                <h3>Visão por etapa</h3>
+          <section class="proto-dashboard-grid">
+            <article class="proto-card proto-card--overview">
+              <div class="proto-card__head">
+                <div>
+                  <span class="proto-card__eyebrow">Overview</span>
+                  <h2>Operação do mês</h2>
+                </div>
+                <span class="proto-card__meta">Leitura anual</span>
               </div>
-              <span class="proto-surface__meta">18 oportunidades • R$ 184k</span>
-            </div>
 
-            <div class="proto-board">
-              {boardColumns.map((column) => (
-                <section class="proto-board__column">
-                  <header class="proto-board__head">
-                    <div>
-                      <span class="proto-label">{column.title}</span>
-                      <strong>{column.count}</strong>
-                    </div>
-                  </header>
+              <div class="proto-overview">
+                <div class="proto-overview__stats">
+                  <div class="proto-overview__lead">
+                    <span class="proto-card__eyebrow">Este mês</span>
+                    <strong>R$ 24.568</strong>
+                    <em>+2,65%</em>
+                  </div>
 
-                  <div class="proto-board__stack">
-                    {column.items.map((item) => (
-                      <article class="proto-lead-card">
-                        <strong>{item.company}</strong>
-                        <span>{item.meta}</span>
-                        <em>{item.value}</em>
-                      </article>
+                  <div class="proto-overview__matrix">
+                    {overviewMatrix.map((item) => (
+                      <div class="proto-overview__cell">
+                        <span>{item[0]}</span>
+                        <strong>{item[1]}</strong>
+                      </div>
                     ))}
                   </div>
-                </section>
-              ))}
-            </div>
-          </article>
-
-          <article class="proto-surface">
-            <div class="proto-surface__head">
-              <div>
-                <span class="proto-label">Operação</span>
-                <h3>Sinais que precisam aparecer</h3>
-              </div>
-            </div>
-
-            <ul class="proto-list">
-              <li>Topbar discreta, sem disputar com o workspace.</li>
-              <li>Sidebar com presença, mas sem roubar o canvas.</li>
-              <li>Uma rail de KPI contínua, em vez de mosaico de cards.</li>
-              <li>Tabelas só onde realmente ajudam a decidir.</li>
-              <li>Board com menos cor e mais scanning.</li>
-            </ul>
-          </article>
-        </section>
-
-        <section class="proto-grid proto-grid--bottom">
-          <article class="proto-surface">
-            <div class="proto-surface__head">
-              <div>
-                <span class="proto-label">Leads</span>
-                <h3>Fila de entrada</h3>
-              </div>
-              <span class="proto-surface__meta">filtro por intenção e origem</span>
-            </div>
-
-            <div class="proto-table">
-              <div class="proto-table__row proto-table__row--head">
-                <span>Conta</span>
-                <span>Entrada</span>
-                <span>Serviço</span>
-                <span>Temp.</span>
-                <span>Origem</span>
-              </div>
-              {leads.map((lead) => (
-                <div class="proto-table__row">
-                  {lead.map((item) => (
-                    <span>{item}</span>
-                  ))}
                 </div>
-              ))}
-            </div>
-          </article>
 
-          <article class="proto-surface">
-            <div class="proto-surface__head">
-              <div>
-                <span class="proto-label">Editorial</span>
-                <h3>Fila de produção</h3>
+                <div class="proto-chart" aria-label="Gráfico ilustrativo">
+                  <div class="proto-chart__bars">
+                    {[28, 34, 25, 39, 32, 41, 37, 48, 43].map((value) => (
+                      <span style={`height:${value}%`}></span>
+                    ))}
+                  </div>
+                  <div class="proto-chart__axis">
+                    <span>Fev</span>
+                    <span>Mar</span>
+                    <span>Abr</span>
+                    <span>Mai</span>
+                    <span>Jun</span>
+                    <span>Jul</span>
+                    <span>Ago</span>
+                    <span>Set</span>
+                    <span>Out</span>
+                  </div>
+                </div>
               </div>
-              <span class="proto-surface__meta">uma lista, não uma parede de cards</span>
-            </div>
+            </article>
 
-            <div class="proto-queue">
-              {editorialQueue.map((item) => (
-                <div class="proto-queue__item">
+            <aside class="proto-side-column">
+              <article class="proto-card proto-card--profile">
+                <div class="proto-profile__cover"></div>
+                <div class="proto-profile__avatar">A</div>
+                <h2>AUDITSEO Ops</h2>
+                <p>CRM, editorial e governança em uma malha mais administrativa e menos ruidosa.</p>
+
+                <div class="proto-profile__stats">
                   <div>
-                    <span class="proto-label">{item[0]}</span>
+                    <strong>1.269</strong>
+                    <span>ativos</span>
+                  </div>
+                  <div>
+                    <strong>5.2k</strong>
+                    <span>queries</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="proto-card proto-card--gauge">
+                <div class="proto-card__head">
+                  <div>
+                    <span class="proto-card__eyebrow">Evolução</span>
+                    <h2>Foco do trimestre</h2>
+                  </div>
+                </div>
+
+                <div class="proto-gauge">
+                  <div class="proto-gauge__ring">
+                    <div class="proto-gauge__core">76%</div>
+                  </div>
+                  <strong>Cluster local + AI Overviews</strong>
+                  <p>Prioridade concentrada em Alphaville/Barueri e expansão nacional orientada a SEO comercial.</p>
+                </div>
+              </article>
+            </aside>
+          </section>
+
+          <section class="proto-bottom-grid">
+            <article class="proto-card">
+              <div class="proto-card__head">
+                <div>
+                  <span class="proto-card__eyebrow">Pipeline</span>
+                  <h2>Movimento por etapa</h2>
+                </div>
+                <span class="proto-card__meta">R$ 184k em aberto</span>
+              </div>
+
+              <div class="proto-funnel">
+                {funnelCards.map((item) => (
+                  <div class="proto-funnel__card">
+                    <span>{item.title}</span>
+                    <strong>{item.amount}</strong>
+                    <p>{item.note}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article class="proto-card">
+              <div class="proto-card__head">
+                <div>
+                  <span class="proto-card__eyebrow">Prioridades</span>
+                  <h2>Ativos que puxam receita</h2>
+                </div>
+                <span class="proto-card__meta">mensal</span>
+              </div>
+
+              <div class="proto-priority-list">
+                {priorities.map((item) => (
+                  <div class="proto-priority-item">
+                    <span>{item.rank}</span>
+                    <div>
+                      <strong>{item.title}</strong>
+                      <p>{item.note}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article class="proto-card">
+              <div class="proto-card__head">
+                <div>
+                  <span class="proto-card__eyebrow">Agenda</span>
+                  <h2>Ritmo da semana</h2>
+                </div>
+                <span class="proto-card__meta">execução</span>
+              </div>
+
+              <div class="proto-timeline">
+                {timeline.map((item) => (
+                  <div class="proto-timeline__item">
+                    <span>{item[0]}</span>
                     <strong>{item[1]}</strong>
                   </div>
-                  <em>{item[2]}</em>
-                </div>
-              ))}
-            </div>
-          </article>
-        </section>
-      </main>
+                ))}
+              </div>
+            </article>
+          </section>
+        </main>
+      </div>
     </div>
   </body>
 </html>
