@@ -3228,3 +3228,261 @@ body.admin-body {
     border-radius: 16px;
   }
 }
+
+.admin-dashboard-command {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.admin-command-card,
+.admin-family-card,
+.admin-rule-card,
+.admin-watchlist-item,
+.admin-micro-metric,
+.admin-stage-card {
+  border: 1px solid var(--admin-border);
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.18);
+}
+
+.admin-command-card {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+  border-radius: 18px;
+}
+
+.admin-command-card--primary {
+  background:
+    radial-gradient(circle at top right, rgba(91, 124, 250, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(17, 24, 39, 0.98), rgba(15, 23, 42, 0.98));
+}
+
+.admin-command-title {
+  font-size: 1.7rem;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: #f8fbff;
+}
+
+.admin-command-copy {
+  margin: 0;
+  color: var(--admin-text-2);
+  line-height: 1.65;
+}
+
+.admin-command-list {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-command-item {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(11, 18, 32, 0.66);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.admin-command-item strong,
+.admin-family-title,
+.admin-watchlist-item strong {
+  color: #f8fbff;
+  font-size: 1rem;
+}
+
+.admin-command-item p {
+  margin: 0;
+  color: var(--admin-text-3);
+  line-height: 1.55;
+}
+
+.admin-family-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.admin-family-card {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 16px;
+}
+
+.admin-family-title {
+  line-height: 1.2;
+}
+
+.admin-family-meta {
+  display: grid;
+  gap: 4px;
+}
+
+.admin-family-card code,
+.admin-watchlist-item code,
+.admin-table code {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border-radius: 10px;
+  background: rgba(11, 18, 32, 0.8);
+  color: #dce7f3;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.admin-query-list,
+.admin-inline-summary,
+.admin-pipeline-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.admin-query-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(91, 124, 250, 0.2);
+  background: rgba(91, 124, 250, 0.1);
+  color: #dce7f3;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+
+.admin-rule-list,
+.admin-watchlist {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-rule-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-rule-card,
+.admin-watchlist-item,
+.admin-stage-card,
+.admin-micro-metric {
+  padding: 14px 16px;
+  border-radius: 14px;
+}
+
+.admin-rule-card strong {
+  display: block;
+  color: #f8fbff;
+  line-height: 1.55;
+}
+
+.admin-rule-card span,
+.admin-watchlist-item code {
+  color: var(--admin-text-3);
+}
+
+.admin-watchlist-item {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-micro-metrics,
+.admin-stage-rail {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-micro-metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 16px;
+}
+
+.admin-micro-metric {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-micro-metric strong,
+.admin-stage-card__count {
+  color: #f8fbff;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.admin-stage-rail {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+.admin-stage-card {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-stage-card__value {
+  color: var(--admin-text-3);
+  font-size: 0.9rem;
+}
+
+.admin-inline-summary {
+  margin-bottom: 16px;
+}
+
+.admin-inline-summary:empty,
+.admin-micro-metrics:empty,
+.admin-stage-rail:empty {
+  display: none;
+}
+
+.admin-board-column__head,
+.admin-pipeline-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-board-list--pipeline {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.admin-pipeline-card {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+}
+
+.admin-pipeline-card__title {
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #f8fbff;
+}
+
+.admin-pipeline-card__meta {
+  color: var(--admin-text-3);
+  font-size: 0.92rem;
+}
+
+.admin-pipeline-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #f8fbff;
+  font-weight: 600;
+}
+
+@media (max-width: 1180px) {
+  .admin-dashboard-command,
+  .admin-micro-metrics {
+    grid-template-columns: 1fr;
+  }
+}

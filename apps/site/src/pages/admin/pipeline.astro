@@ -15,6 +15,48 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
 
   <section class="admin-grid admin-grid--metrics admin-grid--metrics-crm" data-admin-crm-kpis="pipeline"></section>
 
+  <section class="admin-grid admin-grid--two admin-section">
+    <article class="admin-command-card admin-command-card--primary">
+      <div class="admin-card-eyebrow">Kanban comercial</div>
+      <h2 class="admin-command-title">Etapa boa é etapa com próximo passo claro.</h2>
+      <p class="admin-command-copy">
+        O pipeline precisa mostrar avanço, risco e valor. Coluna cheia sem responsável, sem temperatura e sem ação programada é só decoração.
+      </p>
+
+      <div class="admin-command-list">
+        <article class="admin-command-item">
+          <div class="admin-card-eyebrow">Qualificação</div>
+          <strong>Filtrar antes de investir tempo</strong>
+          <p>Temperatura, serviço e contexto precisam estar certos antes de empurrar para proposta.</p>
+        </article>
+        <article class="admin-command-item">
+          <div class="admin-card-eyebrow">Proposta</div>
+          <strong>Valor com tese comercial</strong>
+          <p>Se a proposta entra sem narrativa clara, a negociação vira fricção e não avanço.</p>
+        </article>
+        <article class="admin-command-item">
+          <div class="admin-card-eyebrow">Negociação</div>
+          <strong>Risco visível</strong>
+          <p>Oportunidade quente precisa de próximo contato e dono explícito, senão esfria no silêncio.</p>
+        </article>
+      </div>
+    </article>
+
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Leitura por etapa</div>
+          <h2 class="admin-section-title">Volume e valor em aberto</h2>
+        </div>
+        <p class="admin-section-copy">
+          Resumo executivo do pipeline filtrado. Use antes de entrar no board para entender onde o risco está concentrado.
+        </p>
+      </div>
+
+      <div class="admin-stage-rail admin-stage-rail--pipeline" data-admin-crm-pipeline-stage-summary></div>
+    </article>
+  </section>
+
   <section class="admin-content-card admin-content-card--pipeline admin-section" data-admin-crm-page="pipeline">
     <div class="admin-section-head">
       <div>
@@ -27,6 +69,8 @@ import AdminLayout from '../../layouts/AdminLayout.astro';
         </button>
       </div>
     </div>
+
+    <div class="admin-inline-summary" data-admin-crm-pipeline-inline-summary></div>
 
     <div class="admin-filters admin-filters--pipeline">
       <select class="admin-field" data-admin-crm-filter="temp">

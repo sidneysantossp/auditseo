@@ -5,6 +5,7 @@ const CRM_DEFAULT_STATE = {
   config: {
     stages: ['Prospecção', 'Qualificação', 'Levantamento', 'Proposta', 'Negociação', 'Fechamento', 'Ganho', 'Perdido'],
     services: [
+      { id: 'agency', name: 'Agência SEO' },
       { id: 'audit', name: 'Auditoria SEO' },
       { id: 'tech', name: 'SEO Técnico' },
       { id: 'local', name: 'SEO Local' },
@@ -23,15 +24,41 @@ const CRM_DEFAULT_STATE = {
 const crmRuntime = {
   state: readCrmState(),
   capturedLeads: [],
-  privateViewActive: false
+  privateViewActive: false,
+  ownerEmail: ''
 };
+
+function ensureCrmConfigIntegrity(state) {
+  const nextState = state;
+  const serviceIds = new Set((nextState.config.services || []).map((item) => item.id));
+
+  CRM_DEFAULT_STATE.config.services.forEach((service) => {
+    if (!serviceIds.has(service.id)) {
+      nextState.config.services.push(service);
+    }
+  });
+
+  if (!Array.isArray(nextState.config.stages) || !nextState.config.stages.length) {
+    nextState.config.stages = structuredClone(CRM_DEFAULT_STATE.config.stages);
+  }
+
+  if (!Array.isArray(nextState.config.sources) || !nextState.config.sources.length) {
+    nextState.config.sources = structuredClone(CRM_DEFAULT_STATE.config.sources);
+  }
+
+  if (!Array.isArray(nextState.config.segments) || !nextState.config.segments.length) {
+    nextState.config.segments = structuredClone(CRM_DEFAULT_STATE.config.segments);
+  }
+
+  return nextState;
+}
 
 function readCrmState() {
   try {
     const stored = localStorage.getItem(CRM_STORE_KEY);
-    if (!stored) return structuredClone(CRM_DEFAULT_STATE);
+    if (!stored) return ensureCrmConfigIntegrity(structuredClone(CRM_DEFAULT_STATE));
     const parsed = JSON.parse(stored);
-    return {
+    return ensureCrmConfigIntegrity({
       ...structuredClone(CRM_DEFAULT_STATE),
       ...parsed,
       config: {
@@ -40,9 +67,9 @@ function readCrmState() {
       },
       leads: Array.isArray(parsed.leads) ? parsed.leads : [],
       activities: Array.isArray(parsed.activities) ? parsed.activities : []
-    };
+    });
   } catch {
-    return structuredClone(CRM_DEFAULT_STATE);
+    return ensureCrmConfigIntegrity(structuredClone(CRM_DEFAULT_STATE));
   }
 }
 
@@ -77,6 +104,10 @@ function getServiceName(id) {
 
 function getLeadById(id) {
   return crmRuntime.state.leads.find((lead) => lead.id === id);
+}
+
+function isCapturedLeadImported(captureLeadId) {
+  return crmRuntime.state.leads.some((lead) => lead.captureLeadId && lead.captureLeadId === captureLeadId);
 }
 
 function getLeadStageBadge(stage) {
@@ -349,6 +380,77 @@ function renderCrmKpis(kind) {
     .join('');
 }
 
+function renderLeadEntrySummary(target, leads) {
+  if (!target) return;
+
+  const entries = ['Agência', 'Consultoria', 'Auditoria'].map((entryType) => ({
+    label: entryType,
+    value: leads.filter((lead) => inferManualLeadEntryType(lead) === entryType).length
+  }));
+
+  entries.push({
+    label: 'Hot leads',
+    value: leads.filter((lead) => lead.temp === 'Hot').length
+  });
+
+  target.innerHTML = entries
+    .map(
+      (item) => `
+        <article class="admin-micro-metric">
+          <div class="admin-card-eyebrow">${crmEscape(item.label)}</div>
+          <strong>${crmEscape(item.value)}</strong>
+        </article>
+      `
+    )
+    .join('');
+}
+
+function renderLeadStageSummary(target, leads) {
+  if (!target) return;
+
+  const stageCounts = crmRuntime.state.config.stages
+    .map((stage) => ({
+      label: stage,
+      value: leads.filter((lead) => lead.stage === stage).length
+    }))
+    .filter((item) => item.value > 0)
+    .slice(0, 6);
+
+  if (!stageCounts.length) {
+    target.innerHTML = '<div class="admin-empty-state admin-empty-state--compact">Nenhuma etapa ativa no recorte.</div>';
+    return;
+  }
+
+  target.innerHTML = stageCounts
+    .map(
+      (item) => `
+        <article class="admin-stage-card">
+          <div class="admin-card-eyebrow">${crmEscape(item.label)}</div>
+          <strong class="admin-stage-card__count">${crmEscape(item.value)}</strong>
+        </article>
+      `
+    )
+    .join('');
+}
+
+function renderInlineLeadSummary(target, leads) {
+  if (!target) return;
+
+  const activeCount = leads.filter((lead) => !['Ganho', 'Perdido'].includes(lead.stage)).length;
+  const openValue = leads
+    .filter((lead) => !['Ganho', 'Perdido'].includes(lead.stage))
+    .reduce((sum, lead) => sum + Number(lead.value || 0), 0);
+  const overdueCount = crmRuntime.state.activities.filter(
+    (activity) => activity.status === 'pendente' && activity.date < crmToday()
+  ).length;
+
+  target.innerHTML = `
+    <span class="admin-kpi-inline">${crmEscape(activeCount)} leads ativos no recorte</span>
+    <span class="admin-kpi-inline">${crmEscape(crmCurrency(openValue))} em potencial aberto</span>
+    <span class="admin-kpi-inline">${crmEscape(overdueCount)} follow-ups atrasados</span>
+  `;
+}
+
 function renderLeadsPage() {
   const page = document.querySelector('[data-admin-crm-page="leads"]');
   if (!page) return;
@@ -360,9 +462,17 @@ function renderLeadsPage() {
   const segment = page.querySelector('[data-admin-crm-filter="segment"]');
   const rows = page.querySelector('[data-admin-crm-leads-rows]');
   const openButton = page.querySelector('[data-admin-crm-open-lead]');
+  const entrySummary = document.querySelector('[data-admin-crm-leads-entry-summary]');
+  const stageSummary = document.querySelector('[data-admin-crm-leads-stage-summary]');
+  const inlineSummary = page.querySelector('[data-admin-crm-leads-inline-summary]');
+
+  const stageValueBefore = stage.value;
+  const segmentValueBefore = segment.value;
 
   populateSelectOptions(stage, crmRuntime.state.config.stages, 'Todas as etapas');
   populateSelectOptions(segment, crmRuntime.state.config.segments, 'Todos os segmentos');
+  if (stageValueBefore) stage.value = stageValueBefore;
+  if (segmentValueBefore) segment.value = segmentValueBefore;
 
   const render = () => {
     const searchTerm = String(search.value || '').trim().toLowerCase();
@@ -377,6 +487,10 @@ function renderLeadsPage() {
       return true;
     });
 
+    renderLeadEntrySummary(entrySummary, filtered);
+    renderLeadStageSummary(stageSummary, filtered);
+    renderInlineLeadSummary(inlineSummary, filtered);
+
     if (!filtered.length) {
       rows.innerHTML = '<tr><td colspan="9"><div class="admin-empty-state">Nenhum lead registrado ainda.</div></td></tr>';
       return;
@@ -389,8 +503,12 @@ function renderLeadsPage() {
             <td>
               <strong>${crmEscape(lead.company)}</strong>
               ${lead.notes ? `<div class="admin-helper-text">${crmEscape(lead.notes)}</div>` : ''}
+              ${lead.captureLeadId ? '<div class="admin-helper-text">Importado da captação do site</div>' : ''}
             </td>
-            <td>${crmEscape(lead.contact)}</td>
+            <td>
+              <strong>${crmEscape(lead.contact)}</strong>
+              ${lead.email ? `<div class="admin-helper-text">${crmEscape(lead.email)}</div>` : ''}
+            </td>
             <td>${getEntryTypeBadge(inferManualLeadEntryType(lead))}</td>
             <td>${crmEscape(getServiceName(lead.service))}</td>
             <td>${crmEscape(crmCurrency(lead.value))}</td>
@@ -412,25 +530,30 @@ function renderLeadsPage() {
       .join('');
   };
 
-  search.addEventListener('input', render);
-  stage.addEventListener('change', render);
-  segment.addEventListener('change', render);
-  openButton?.addEventListener('click', () => openLeadModal());
-  rows.addEventListener('click', (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLElement)) return;
+  page.__renderCrmLeads = render;
 
-    const editId = target.getAttribute('data-admin-crm-edit-lead');
-    if (editId) {
-      openLeadModal(editId);
-      return;
-    }
+  if (!page.dataset.bound) {
+    search.addEventListener('input', () => page.__renderCrmLeads?.());
+    stage.addEventListener('change', () => page.__renderCrmLeads?.());
+    segment.addEventListener('change', () => page.__renderCrmLeads?.());
+    openButton?.addEventListener('click', () => openLeadModal());
+    rows.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
 
-    const deleteId = target.getAttribute('data-admin-crm-delete-lead');
-    if (deleteId) {
-      deleteLead(deleteId);
-    }
-  });
+      const editId = target.getAttribute('data-admin-crm-edit-lead');
+      if (editId) {
+        openLeadModal(editId);
+        return;
+      }
+
+      const deleteId = target.getAttribute('data-admin-crm-delete-lead');
+      if (deleteId) {
+        deleteLead(deleteId);
+      }
+    });
+    page.dataset.bound = 'true';
+  }
 
   render();
 }
@@ -555,10 +678,19 @@ function renderPipelinePage() {
   const sourceFilter = page.querySelector('[data-admin-crm-filter="source"]');
   const board = page.querySelector('[data-admin-crm-pipeline-board]');
   const openButton = page.querySelector('[data-admin-crm-open-lead]');
+  const stageSummary = document.querySelector('[data-admin-crm-pipeline-stage-summary]');
+  const inlineSummary = page.querySelector('[data-admin-crm-pipeline-inline-summary]');
+
+  const tempValueBefore = tempFilter.value;
+  const serviceValueBefore = serviceFilter.value;
+  const sourceValueBefore = sourceFilter.value;
 
   populateSelectOptions(tempFilter, ['Hot', 'Warm', 'Cold'], 'Todas as temperaturas');
   populateSelectOptions(serviceFilter, crmRuntime.state.config.services, 'Todos os serviços');
   populateSelectOptions(sourceFilter, crmRuntime.state.config.sources, 'Todas as origens');
+  if (tempValueBefore) tempFilter.value = tempValueBefore;
+  if (serviceValueBefore) serviceFilter.value = serviceValueBefore;
+  if (sourceValueBefore) sourceFilter.value = sourceValueBefore;
 
   const columns = crmRuntime.state.config.stages.filter((stage) => !['Ganho', 'Perdido'].includes(stage));
 
@@ -574,13 +706,45 @@ function renderPipelinePage() {
       return !['Ganho', 'Perdido'].includes(lead.stage);
     });
 
+    if (stageSummary) {
+      stageSummary.innerHTML = columns
+        .map((stage) => {
+          const stagedLeads = filtered.filter((lead) => lead.stage === stage);
+          const stagedValue = stagedLeads.reduce((sum, lead) => sum + Number(lead.value || 0), 0);
+          return `
+            <article class="admin-stage-card admin-stage-card--pipeline">
+              <div class="admin-card-eyebrow">${crmEscape(stage)}</div>
+              <strong class="admin-stage-card__count">${crmEscape(stagedLeads.length)}</strong>
+              <span class="admin-stage-card__value">${crmEscape(crmCurrency(stagedValue))}</span>
+            </article>
+          `;
+        })
+        .join('');
+    }
+
+    if (inlineSummary) {
+      const totalValue = filtered.reduce((sum, lead) => sum + Number(lead.value || 0), 0);
+      const hotCount = filtered.filter((lead) => lead.temp === 'Hot').length;
+      const proposalCount = filtered.filter((lead) => ['Proposta', 'Negociação'].includes(lead.stage)).length;
+      inlineSummary.innerHTML = `
+        <span class="admin-kpi-inline">${crmEscape(filtered.length)} oportunidades no recorte</span>
+        <span class="admin-kpi-inline">${crmEscape(crmCurrency(totalValue))} em aberto</span>
+        <span class="admin-kpi-inline">${crmEscape(hotCount)} leads hot</span>
+        <span class="admin-kpi-inline">${crmEscape(proposalCount)} em proposta ou negociação</span>
+      `;
+    }
+
     board.innerHTML = columns
       .map((stage) => {
         const stagedLeads = filtered.filter((lead) => lead.stage === stage);
+        const stagedValue = stagedLeads.reduce((sum, lead) => sum + Number(lead.value || 0), 0);
         return `
           <article class="admin-board-column admin-board-column--pipeline" data-admin-crm-stage="${crmEscape(stage)}">
-            <h2 class="admin-board-title">${crmEscape(stage)}</h2>
-            <p class="admin-board-copy">${stagedLeads.length} oportunidade(s) nesta etapa.</p>
+            <div class="admin-board-column__head">
+              <h2 class="admin-board-title">${crmEscape(stage)}</h2>
+              <span class="admin-chip">${crmEscape(stagedLeads.length)} leads</span>
+            </div>
+            <p class="admin-board-copy">${crmEscape(crmCurrency(stagedValue))} nesta etapa.</p>
             <div class="admin-board-list admin-board-list--pipeline">
               ${
                 stagedLeads.length
@@ -588,8 +752,15 @@ function renderPipelinePage() {
                       .map(
                         (lead) => `
                           <div class="admin-pipeline-card" draggable="true" data-admin-crm-drag-lead="${crmEscape(lead.id)}">
-                            <strong class="admin-pipeline-card__title">${crmEscape(lead.company)}</strong>
-                            <div class="admin-pipeline-card__meta">${crmEscape(lead.contact)} • ${crmEscape(getServiceName(lead.service))}</div>
+                            <div class="admin-pipeline-card__top">
+                              <strong class="admin-pipeline-card__title">${crmEscape(lead.company)}</strong>
+                              ${getEntryTypeBadge(inferManualLeadEntryType(lead))}
+                            </div>
+                            <div class="admin-pipeline-card__meta">${crmEscape(lead.contact)}</div>
+                            <div class="admin-pipeline-card__tags">
+                              <span class="admin-chip">${crmEscape(getServiceName(lead.service))}</span>
+                              <span class="admin-chip">${crmEscape(lead.source || '—')}</span>
+                            </div>
                             <div class="admin-pipeline-card__footer">
                               <span>${crmEscape(crmCurrency(lead.value))}</span>
                               ${getTempBadge(lead.temp)}
@@ -630,10 +801,15 @@ function renderPipelinePage() {
     });
   };
 
-  tempFilter.addEventListener('change', render);
-  serviceFilter.addEventListener('change', render);
-  sourceFilter.addEventListener('change', render);
-  openButton?.addEventListener('click', () => openLeadModal());
+  page.__renderCrmPipeline = render;
+
+  if (!page.dataset.bound) {
+    tempFilter.addEventListener('change', () => page.__renderCrmPipeline?.());
+    serviceFilter.addEventListener('change', () => page.__renderCrmPipeline?.());
+    sourceFilter.addEventListener('change', () => page.__renderCrmPipeline?.());
+    openButton?.addEventListener('click', () => openLeadModal());
+    page.dataset.bound = 'true';
+  }
 
   render();
 }

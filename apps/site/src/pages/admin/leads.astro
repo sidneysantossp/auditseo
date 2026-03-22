@@ -28,6 +28,49 @@ const localLeadWatchlist = [
 
   <section class="admin-grid admin-grid--metrics" data-admin-crm-kpis="leads"></section>
 
+  <section class="admin-grid admin-grid--two admin-section">
+    <article class="admin-command-card admin-command-card--primary">
+      <div class="admin-card-eyebrow">Playbook comercial</div>
+      <h2 class="admin-command-title">Entrada boa é entrada classificada.</h2>
+      <p class="admin-command-copy">
+        O lead não pode entrar só como contato. Cada registro precisa deixar claro qual intenção trouxe a conta para dentro do CRM e qual caminho comercial faz sentido.
+      </p>
+
+      <div class="admin-command-list">
+        <article class="admin-command-item">
+          <div class="admin-card-eyebrow">Agência</div>
+          <strong>Demanda de contratação</strong>
+          <p>Usar quando a empresa quer operação recorrente, execução e ownership de crescimento.</p>
+        </article>
+        <article class="admin-command-item">
+          <div class="admin-card-eyebrow">Consultoria</div>
+          <strong>Direção e governança</strong>
+          <p>Usar quando o lead já tem estrutura, mas precisa de backlog, priorização e destrave estratégico.</p>
+        </article>
+        <article class="admin-command-item">
+          <div class="admin-card-eyebrow">Auditoria</div>
+          <strong>Diagnóstico de entrada</strong>
+          <p>Usar quando o gargalo ainda não está claro e a primeira entrega precisa ser diagnóstico técnico e comercial.</p>
+        </article>
+      </div>
+    </article>
+
+    <article class="admin-content-card">
+      <div class="admin-section-head">
+        <div>
+          <div class="admin-card-eyebrow">Radar da carteira</div>
+          <h2 class="admin-section-title">Composição atual dos leads</h2>
+        </div>
+        <p class="admin-section-copy">
+          Este bloco resume intenção de entrada e volume por etapa sem obrigar leitura da tabela inteira.
+        </p>
+      </div>
+
+      <div class="admin-micro-metrics" data-admin-crm-leads-entry-summary></div>
+      <div class="admin-stage-rail" data-admin-crm-leads-stage-summary></div>
+    </article>
+  </section>
+
   <section class="admin-content-card admin-section" data-admin-crm-page="leads">
     <div class="admin-section-head">
       <div>
@@ -40,6 +83,8 @@ const localLeadWatchlist = [
         </button>
       </div>
     </div>
+
+    <div class="admin-inline-summary" data-admin-crm-leads-inline-summary></div>
 
     <div class="admin-filters">
       <input class="admin-field" data-admin-crm-filter="search" type="search" placeholder="Buscar empresa ou contato" />
@@ -93,6 +138,7 @@ const localLeadWatchlist = [
             <th>Página</th>
             <th>Captura</th>
             <th>Quando</th>
+            <th>Ação</th>
           </tr>
         </thead>
         <tbody data-admin-captured-leads-rows></tbody>

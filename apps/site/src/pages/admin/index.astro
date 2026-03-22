@@ -5,6 +5,23 @@ import { getAdminDashboardData } from '../../lib/admin-dashboard';
 
 const dashboard = await getAdminDashboardData();
 const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
+const executiveStreams = [
+  {
+    label: 'Praça prioritária',
+    title: 'Barueri / Alphaville',
+    copy: 'Monitorar ownership das queries locais, captação do cluster e sinais de expansão sem criar URLs por impulso.'
+  },
+  {
+    label: 'Tese vencedora',
+    title: 'São Paulo + AI Overviews',
+    copy: 'Preservar a home como ativo vencedor e usar o ganho para empurrar agência, consultoria, auditoria e AI Overview Optimization.'
+  },
+  {
+    label: 'Motor editorial',
+    title: 'Clusters e backlog',
+    copy: 'Manter publicação, interlinking e categoria andando com prioridade real, não com volume cego.'
+  }
+];
 const barueriAlphavilleWatchlist = [
   {
     label: 'Hub Barueri',
@@ -67,7 +84,7 @@ const saoPauloAiCommercialWatchlist = [
   { label: 'Consultoria SEO', path: '/servicos/consultoria-seo/' },
   { label: 'Auditoria SEO', path: '/servicos/auditoria-seo/' },
   { label: 'AI Overview Optimization', path: '/servicos/ai-overview-optimization/' },
-  { label: 'Sao Paulo', path: '/cidades/sao-paulo/' },
+  { label: 'São Paulo', path: '/cidades/sao-paulo/' },
   { label: 'BOFU agencia IA', path: '/blog/agencia-seo-para-ai-overviews-como-escolher/' },
   { label: 'BOFU consultoria IA', path: '/blog/consultoria-seo-para-ai-overviews/' },
   { label: 'BOFU auditoria IA', path: '/blog/auditoria-seo-para-ai-overviews/' },
@@ -75,7 +92,7 @@ const saoPauloAiCommercialWatchlist = [
 ];
 const saoPauloAiCommercialQueryMatrix = [
   {
-    family: 'Agencia + Sao Paulo + AI Overviews',
+    family: 'Agência + São Paulo + AI Overviews',
     primaryPage: '/',
     acceptablePage: '/agencia-de-seo/',
     queries: [
@@ -116,10 +133,10 @@ const saoPauloAiCommercialQueryMatrix = [
   }
 ];
 const saoPauloAiCommercialRules = [
-  'Se a home continuar ganhando a query exata de Sao Paulo + AI Overviews, nao abrir uma URL nova para o mesmo recorte. Use a home como distribuidora.',
+  'Se a home continuar ganhando a query exata de São Paulo + AI Overviews, não abrir uma URL nova para o mesmo recorte. Use a home como distribuidora.',
   'Se /agencia-de-seo/ subir para queries mais amplas de agencia ou empresa de SEO AI-first, reforcar essa URL como hub comercial sem mexer no ownership da home.',
-  'Se consultoria ou auditoria começarem a receber impressao para queries de IA, ajustar primeiro title, FAQ e recursos relacionados antes de criar novas paginas.',
-  'Se os BOFUs novos passarem a captar impressao, usar isso para empurrar CTR e passagem interna, nao para competir com as paginas canônicas.'
+  'Se consultoria ou auditoria começarem a receber impressão para queries de IA, ajustar primeiro title, FAQ e recursos relacionados antes de criar novas páginas.',
+  'Se os BOFUs novos passarem a captar impressão, usar isso para empurrar CTR e passagem interna, não para competir com as páginas canônicas.'
 ];
 ---
 <AdminLayout
@@ -143,6 +160,64 @@ const saoPauloAiCommercialRules = [
         <p class="admin-stat-copy">{metric.copy}</p>
       </article>
     ))}
+  </section>
+
+  <section class="admin-dashboard-command admin-section">
+    <article class="admin-command-card admin-command-card--primary">
+      <div class="admin-card-eyebrow">Command center</div>
+      <h2 class="admin-command-title">O painel precisa responder crescimento, risco e ownership.</h2>
+      <p class="admin-command-copy">
+        O objetivo aqui não é acumular dados. É deixar claro o que proteger, o que empurrar e o que bloquear antes de mexer na arquitetura do domínio.
+      </p>
+
+      <div class="admin-command-list">
+        {executiveStreams.map((stream) => (
+          <article class="admin-command-item">
+            <div class="admin-card-eyebrow">{stream.label}</div>
+            <strong>{stream.title}</strong>
+            <p>{stream.copy}</p>
+          </article>
+        ))}
+      </div>
+    </article>
+
+    <article class="admin-command-card">
+      <div class="admin-card-eyebrow">Ritmo da semana</div>
+      <h2 class="admin-section-title">Leitura executiva</h2>
+      <ul class="admin-rule-list">
+        <li class="admin-rule-card">
+          <strong>Segunda</strong>
+          <span>Praça Barueri / Alphaville, query families e leads locais.</span>
+        </li>
+        <li class="admin-rule-card">
+          <strong>Quarta</strong>
+          <span>Home vencedora, AI Overviews e passagem de autoridade para páginas irmãs.</span>
+        </li>
+        <li class="admin-rule-card">
+          <strong>Sexta</strong>
+          <span>Saúde técnica, canibalização e refresh do que já tem tração.</span>
+        </li>
+      </ul>
+    </article>
+
+    <article class="admin-command-card">
+      <div class="admin-card-eyebrow">Gates</div>
+      <h2 class="admin-section-title">Antes de abrir nova URL</h2>
+      <ul class="admin-rule-list">
+        <li class="admin-rule-card">
+          <strong>Demanda real</strong>
+          <span>Impressão, clique, lead ou adjacency semântica defensável.</span>
+        </li>
+        <li class="admin-rule-card">
+          <strong>Ownership claro</strong>
+          <span>Definir qual URL deve ganhar a família de query e qual só pode apoiar.</span>
+        </li>
+        <li class="admin-rule-card">
+          <strong>Alternativas esgotadas</strong>
+          <span>Primeiro link interno, snippet, FAQ, reframing e refresh. Depois URL nova.</span>
+        </li>
+      </ul>
+    </article>
   </section>
 
   <section class="admin-section" data-admin-capture-summary-root hidden>
@@ -256,27 +331,25 @@ const saoPauloAiCommercialRules = [
         </p>
       </div>
 
-      <div class="admin-table-wrap">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Família</th>
-              <th>Página primária</th>
-              <th>Aceitável</th>
-              <th>Queries</th>
-            </tr>
-          </thead>
-          <tbody>
-            {barueriAlphavilleQueryMatrix.map((group) => (
-              <tr>
-                <td>{group.family}</td>
-                <td><code>{group.primaryPage}</code></td>
-                <td><code>{group.acceptablePage}</code></td>
-                <td>{group.queries.join(' • ')}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div class="admin-family-grid">
+        {barueriAlphavilleQueryMatrix.map((group) => (
+          <article class="admin-family-card">
+            <h3 class="admin-family-title">{group.family}</h3>
+            <div class="admin-family-meta">
+              <span class="admin-list-label">Página primária</span>
+              <code>{group.primaryPage}</code>
+            </div>
+            <div class="admin-family-meta">
+              <span class="admin-list-label">Página aceitável</span>
+              <code>{group.acceptablePage}</code>
+            </div>
+            <div class="admin-query-list">
+              {group.queries.map((query) => (
+                <span class="admin-query-chip">{query}</span>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
     </article>
 
@@ -291,13 +364,22 @@ const saoPauloAiCommercialRules = [
         </p>
       </div>
 
-      <ul class="admin-list">
+      <ul class="admin-rule-list">
         {barueriAlphavilleSearchConsoleRules.map((item) => (
-          <li class="admin-list-item">
-            <strong class="admin-list-title">{item}</strong>
+          <li class="admin-rule-card">
+            <strong>{item}</strong>
           </li>
         ))}
       </ul>
+
+      <div class="admin-watchlist">
+        {barueriAlphavilleWatchlist.map((item) => (
+          <div class="admin-watchlist-item">
+            <strong>{item.label}</strong>
+            <code>{item.path}</code>
+          </div>
+        ))}
+      </div>
     </article>
   </section>
 
@@ -306,73 +388,61 @@ const saoPauloAiCommercialRules = [
       <div class="admin-section-head">
         <div>
           <div class="admin-card-eyebrow">Search Console</div>
-          <h2 class="admin-section-title">Sao Paulo + AI Overviews</h2>
+          <h2 class="admin-section-title">São Paulo + AI Overviews</h2>
         </div>
         <p class="admin-section-copy">
-          Esta matriz organiza a familia vencedora da home e como ela deve transferir autoridade para agencia, consultoria, auditoria e AI Overview Optimization sem canibalizar.
+          Esta matriz organiza a família vencedora da home e como ela deve transferir autoridade para agência, consultoria, auditoria e AI Overview Optimization sem canibalizar.
         </p>
       </div>
 
-      <div class="admin-table-wrap">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Familia</th>
-              <th>Pagina primaria</th>
-              <th>Aceitavel</th>
-              <th>Queries</th>
-            </tr>
-          </thead>
-          <tbody>
-            {saoPauloAiCommercialQueryMatrix.map((group) => (
-              <tr>
-                <td>{group.family}</td>
-                <td><code>{group.primaryPage}</code></td>
-                <td><code>{group.acceptablePage}</code></td>
-                <td>{group.queries.join(' • ')}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div class="admin-family-grid">
+        {saoPauloAiCommercialQueryMatrix.map((group) => (
+          <article class="admin-family-card">
+            <h3 class="admin-family-title">{group.family}</h3>
+            <div class="admin-family-meta">
+              <span class="admin-list-label">Página primária</span>
+              <code>{group.primaryPage}</code>
+            </div>
+            <div class="admin-family-meta">
+              <span class="admin-list-label">Página aceitável</span>
+              <code>{group.acceptablePage}</code>
+            </div>
+            <div class="admin-query-list">
+              {group.queries.map((query) => (
+                <span class="admin-query-chip">{query}</span>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
     </article>
 
     <article class="admin-content-card">
       <div class="admin-section-head">
         <div>
-          <div class="admin-card-eyebrow">Execucao</div>
+          <div class="admin-card-eyebrow">Execução</div>
           <h2 class="admin-section-title">Como interpretar o cluster vencedor</h2>
         </div>
         <p class="admin-section-copy">
-          A vitoria da home deve puxar outras URLs juntas. O papel desta watchlist e impedir reacoes erradas de arquitetura.
+          A vitória da home deve puxar outras URLs juntas. O papel desta watchlist é impedir reações erradas de arquitetura.
         </p>
       </div>
 
-      <ul class="admin-list">
+      <ul class="admin-rule-list">
         {saoPauloAiCommercialRules.map((item) => (
-          <li class="admin-list-item">
-            <strong class="admin-list-title">{item}</strong>
+          <li class="admin-rule-card">
+            <strong>{item}</strong>
           </li>
         ))}
       </ul>
 
-      <div class="admin-table-wrap" style="margin-top:1.5rem;">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Watchlist</th>
-              <th>Path</th>
-            </tr>
-          </thead>
-          <tbody>
-            {saoPauloAiCommercialWatchlist.map((item) => (
-              <tr>
-                <td>{item.label}</td>
-                <td><code>{item.path}</code></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div class="admin-watchlist">
+        {saoPauloAiCommercialWatchlist.map((item) => (
+          <div class="admin-watchlist-item">
+            <strong>{item.label}</strong>
+            <code>{item.path}</code>
+          </div>
+        ))}
       </div>
     </article>
   </section>
