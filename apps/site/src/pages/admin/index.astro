@@ -1,10 +1,56 @@
 ---
 import AdminLayout from '../../layouts/AdminLayout.astro';
+import AdminIcon from '../../components/admin/AdminIcon.astro';
 import AdminDashboardCharts from '../../components/admin/AdminDashboardCharts.astro';
 import { getAdminDashboardData } from '../../lib/admin-dashboard';
 
 const dashboard = await getAdminDashboardData();
 const focusClusters = dashboard.clusterSnapshots.slice(0, 3);
+const dashboardMetricIcons = ['published', 'content', 'clusters', 'spark'];
+const dashboardHeroMetrics = dashboard.metrics.slice(0, 4).map((metric, index) => ({
+  ...metric,
+  icon: dashboardMetricIcons[index] ?? 'stack'
+}));
+const dashboardOverviewCells = [
+  { label: dashboard.metrics[1].label, value: dashboard.metrics[1].value },
+  { label: dashboard.metrics[2].label, value: dashboard.metrics[2].value },
+  { label: dashboard.metrics[3].label, value: dashboard.metrics[3].value },
+  { label: dashboard.metrics[4].label, value: dashboard.metrics[4].value },
+  { label: 'Categorias ativas', value: String(dashboard.categoryCoverage.length) },
+  { label: 'Updates recentes', value: String(dashboard.recentUpdates.length) }
+];
+const dashboardCadence = [
+  {
+    day: 'Segunda',
+    copy: 'Praça Barueri / Alphaville, query families e leads locais.'
+  },
+  {
+    day: 'Quarta',
+    copy: 'Home vencedora, AI Overviews e passagem de autoridade para páginas irmãs.'
+  },
+  {
+    day: 'Sexta',
+    copy: 'Saúde técnica, canibalização e refresh do que já tem tração.'
+  }
+];
+const dashboardRecentFeed = dashboard.recentUpdates.slice(0, 3).map((item) => ({
+  label: item.title,
+  note: item.category.title,
+  path: item.slug ? `/blog/${item.slug}/` : '/blog/'
+}));
+function shortClusterLabel(value: string) {
+  const cleaned = value.replace(/\s*\/\s*/g, ' · ');
+  return cleaned.length > 18 ? `${cleaned.slice(0, 18)}…` : cleaned;
+}
+const dashboardOverviewSeries = dashboard.clusterSnapshots.slice(0, 6).map((cluster) => {
+  const fallback = Math.max(8, cluster.completionRate - Math.max(6, cluster.inProgressAssets * 4));
+
+  return {
+    label: shortClusterLabel(cluster.title),
+    current: Math.max(cluster.completionRate, 10),
+    previous: Math.min(fallback, Math.max(cluster.completionRate - 4, 6))
+  };
+});
 const executiveStreams = [
   {
     label: 'Praça prioritária',
@@ -144,80 +190,140 @@ const saoPauloAiCommercialRules = [
   description="Camada administrativa da AUDITSEO para governar clusters, backlog editorial, categorias e ativos de prova sem quebrar a arquitetura do site."
   eyebrow="Admin"
 >
-  <div class="admin-banner">
-    <strong>Fase 1 do admin</strong>
-    <div>
-      Painel operacional com dados reais do site. A próxima fase adiciona autenticação, persistência e fluxo de
-      publicação transacional sem soltar a arquitetura.
+  <section class="admin-dashboard-shell">
+    <div class="admin-dashboard-shell__metrics">
+      {dashboardHeroMetrics.map((metric) => (
+        <article class="admin-dashboard-shell__metric">
+          <span class="admin-dashboard-shell__metric-icon" aria-hidden="true">
+            <AdminIcon name={metric.icon} size={22} stroke={1.7} />
+          </span>
+          <div class="admin-dashboard-shell__metric-body">
+            <span class="admin-dashboard-shell__metric-label">{metric.label}</span>
+            <strong>{metric.value}</strong>
+            <p>{metric.copy}</p>
+          </div>
+        </article>
+      ))}
     </div>
-  </div>
 
-  <section class="admin-grid admin-grid--metrics">
-    {dashboard.metrics.map((metric) => (
-      <article class="admin-stat-card">
-        <div class="admin-card-eyebrow">{metric.label}</div>
-        <div class="admin-stat-value">{metric.value}</div>
-        <p class="admin-stat-copy">{metric.copy}</p>
+    <div class="admin-dashboard-shell__grid admin-section">
+      <article class="admin-content-card admin-dashboard-shell__overview">
+        <div class="admin-section-head admin-section-head--compact">
+          <div>
+            <div class="admin-card-eyebrow">Overview</div>
+            <h2 class="admin-section-title">Estado da operação editorial</h2>
+          </div>
+          <span class="admin-dashboard-shell__meta">Leitura trimestral</span>
+        </div>
+
+        <div class="admin-dashboard-shell__overview-body">
+          <div class="admin-dashboard-shell__overview-main">
+            <div class="admin-dashboard-shell__lead">
+              <span class="admin-card-eyebrow">Ativos publicados</span>
+              <strong>{dashboard.metrics[0].value}</strong>
+              <p>{dashboard.metrics[0].copy}</p>
+            </div>
+
+            <div class="admin-dashboard-shell__matrix">
+              {dashboardOverviewCells.map((item) => (
+                <div class="admin-dashboard-shell__matrix-cell">
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="admin-dashboard-shell__chart">
+            <div class="admin-dashboard-shell__chart-axis">
+              <span>100%</span>
+              <span>75%</span>
+              <span>50%</span>
+              <span>25%</span>
+              <span>0%</span>
+            </div>
+
+            <div class="admin-dashboard-shell__chart-plot">
+              <div class="admin-dashboard-shell__chart-lines">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="admin-dashboard-shell__chart-bars">
+                {dashboardOverviewSeries.map((item) => (
+                  <div class="admin-dashboard-shell__chart-group">
+                    <div class="admin-dashboard-shell__chart-stack">
+                      <span class="is-previous" style={`height:${item.previous}%`}></span>
+                      <span class="is-current" style={`height:${item.current}%`}></span>
+                    </div>
+                    <strong>{item.label}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </article>
-    ))}
-  </section>
 
-  <section class="admin-dashboard-command admin-section">
-    <article class="admin-command-card admin-command-card--primary">
-      <div class="admin-card-eyebrow">Command center</div>
-      <h2 class="admin-command-title">O painel precisa responder crescimento, risco e ownership.</h2>
-      <p class="admin-command-copy">
-        O objetivo aqui não é acumular dados. É deixar claro o que proteger, o que empurrar e o que bloquear antes de mexer na arquitetura do domínio.
-      </p>
+      <aside class="admin-dashboard-shell__side">
+        <article class="admin-content-card">
+          <div class="admin-section-head admin-section-head--compact">
+            <div>
+              <div class="admin-card-eyebrow">Prioridades</div>
+              <h2 class="admin-section-title">O que precisa de ownership</h2>
+            </div>
+          </div>
 
-      <div class="admin-command-list">
-        {executiveStreams.map((stream) => (
-          <article class="admin-command-item">
-            <div class="admin-card-eyebrow">{stream.label}</div>
-            <strong>{stream.title}</strong>
-            <p>{stream.copy}</p>
-          </article>
-        ))}
-      </div>
-    </article>
+          <div class="admin-dashboard-shell__signal-list">
+            {executiveStreams.map((stream) => (
+              <article class="admin-dashboard-shell__signal">
+                <span class="admin-card-eyebrow">{stream.label}</span>
+                <strong>{stream.title}</strong>
+                <p>{stream.copy}</p>
+              </article>
+            ))}
+          </div>
+        </article>
 
-    <article class="admin-command-card">
-      <div class="admin-card-eyebrow">Ritmo da semana</div>
-      <h2 class="admin-section-title">Leitura executiva</h2>
-      <ul class="admin-rule-list">
-        <li class="admin-rule-card">
-          <strong>Segunda</strong>
-          <span>Praça Barueri / Alphaville, query families e leads locais.</span>
-        </li>
-        <li class="admin-rule-card">
-          <strong>Quarta</strong>
-          <span>Home vencedora, AI Overviews e passagem de autoridade para páginas irmãs.</span>
-        </li>
-        <li class="admin-rule-card">
-          <strong>Sexta</strong>
-          <span>Saúde técnica, canibalização e refresh do que já tem tração.</span>
-        </li>
-      </ul>
-    </article>
+        <article class="admin-content-card">
+          <div class="admin-section-head admin-section-head--compact">
+            <div>
+              <div class="admin-card-eyebrow">Cadência</div>
+              <h2 class="admin-section-title">Ritmo da semana</h2>
+            </div>
+          </div>
 
-    <article class="admin-command-card">
-      <div class="admin-card-eyebrow">Gates</div>
-      <h2 class="admin-section-title">Antes de abrir nova URL</h2>
-      <ul class="admin-rule-list">
-        <li class="admin-rule-card">
-          <strong>Demanda real</strong>
-          <span>Impressão, clique, lead ou adjacency semântica defensável.</span>
-        </li>
-        <li class="admin-rule-card">
-          <strong>Ownership claro</strong>
-          <span>Definir qual URL deve ganhar a família de query e qual só pode apoiar.</span>
-        </li>
-        <li class="admin-rule-card">
-          <strong>Alternativas esgotadas</strong>
-          <span>Primeiro link interno, snippet, FAQ, reframing e refresh. Depois URL nova.</span>
-        </li>
-      </ul>
-    </article>
+          <div class="admin-dashboard-shell__mini-list">
+            {dashboardCadence.map((item) => (
+              <div class="admin-dashboard-shell__mini-item">
+                <span>{item.day}</span>
+                <strong>{item.copy}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div class="admin-dashboard-shell__divider"></div>
+
+          <div class="admin-section-head admin-section-head--compact">
+            <div>
+              <div class="admin-card-eyebrow">Últimos ativos</div>
+              <h3 class="admin-section-title admin-section-title--compact">Feed editorial</h3>
+            </div>
+          </div>
+
+          <div class="admin-dashboard-shell__mini-list">
+            {dashboardRecentFeed.map((item) => (
+              <a class="admin-dashboard-shell__mini-item admin-dashboard-shell__mini-item--link" href={item.path}>
+                <span>{item.note}</span>
+                <strong>{item.label}</strong>
+              </a>
+            ))}
+          </div>
+        </article>
+      </aside>
+    </div>
   </section>
 
   <section class="admin-section" data-admin-capture-summary-root hidden>

@@ -1,32 +1,33 @@
 ---
 import SeoHead from '../../components/SeoHead.astro';
+import AdminIcon from '../../components/admin/AdminIcon.astro';
 import '../../styles/admin-prototype.css';
 
 const menuGroups = [
   {
     title: 'Menu',
     items: [
-      { label: 'Dashboard', count: '3', active: true },
-      { label: 'Pipeline' },
-      { label: 'Leads' },
-      { label: 'Atividades' }
+      { label: 'Dashboard', count: '3', active: true, icon: 'dashboard' },
+      { label: 'Pipeline', icon: 'pipeline' },
+      { label: 'Leads', icon: 'leads' },
+      { label: 'Atividades', icon: 'activities' }
     ]
   },
   {
     title: 'Editorial',
     items: [
-      { label: 'Conteúdos' },
-      { label: 'Clusters' },
-      { label: 'Workflow' }
+      { label: 'Conteúdos', icon: 'content' },
+      { label: 'Clusters', icon: 'clusters' },
+      { label: 'Workflow', icon: 'workflow' }
     ]
   }
 ];
 
 const metricCards = [
-  { label: 'Receita aberta', value: 'R$ 184.000', delta: '+12%' },
-  { label: 'Leads qualificados', value: '27', delta: '+4' },
-  { label: 'Publicações ativas', value: '151', delta: '+9' },
-  { label: 'Clusters em ação', value: '7', delta: '2 locais' }
+  { label: 'Receita aberta', value: 'R$ 184.000', delta: '+12%', icon: 'revenue' },
+  { label: 'Leads qualificados', value: '27', delta: '+4', icon: 'users' },
+  { label: 'Publicações ativas', value: '151', delta: '+9', icon: 'published' },
+  { label: 'Clusters em ação', value: '7', delta: '2 locais', icon: 'stack' }
 ];
 
 const overviewMatrix = [
@@ -74,6 +75,18 @@ const recentAssets = [
   ['Ontem', 'Agência x consultoria para AI Overviews'],
   ['Seg', 'Refresh de agência de SEO']
 ];
+
+const overviewSeries = [
+  { month: 'Fev', previous: 42, current: 48 },
+  { month: 'Mar', previous: 45, current: 54 },
+  { month: 'Abr', previous: 37, current: 44 },
+  { month: 'Mai', previous: 52, current: 61 },
+  { month: 'Jun', previous: 48, current: 58 },
+  { month: 'Jul', previous: 59, current: 66 },
+  { month: 'Ago', previous: 55, current: 63 },
+  { month: 'Set', previous: 68, current: 79 },
+  { month: 'Out', previous: 57, current: 69 }
+];
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -103,7 +116,10 @@ const recentAssets = [
             <nav class="proto-menu">
               {group.items.map((item) => (
                 <a class:list={['proto-menu__item', item.active && 'is-active']} href="#">
-                  <span>{item.label}</span>
+                  <span class="proto-menu__label">
+                    <AdminIcon name={item.icon} class="proto-menu__icon" size={18} />
+                    <span>{item.label}</span>
+                  </span>
                   {item.count && <em>{item.count}</em>}
                 </a>
               ))}
@@ -126,9 +142,9 @@ const recentAssets = [
           </div>
 
           <div class="proto-topbar__actions">
-            <span class="proto-icon-button" aria-hidden="true"></span>
-            <span class="proto-icon-button" aria-hidden="true"></span>
-            <span class="proto-icon-button" aria-hidden="true"></span>
+            <span class="proto-icon-button" aria-hidden="true"><AdminIcon name="search" size={18} /></span>
+            <span class="proto-icon-button" aria-hidden="true"><AdminIcon name="grid" size={18} /></span>
+            <span class="proto-icon-button" aria-hidden="true"><AdminIcon name="bell" size={18} /></span>
             <a class="proto-primary-button" href="/admin/">Admin real</a>
             <span class="proto-avatar" aria-hidden="true">AS</span>
           </div>
@@ -138,7 +154,9 @@ const recentAssets = [
           <section class="proto-metrics">
             {metricCards.map((item) => (
               <article class="proto-card proto-card--metric">
-                <span class="proto-metric__icon" aria-hidden="true"></span>
+                <span class="proto-metric__icon" aria-hidden="true">
+                  <AdminIcon name={item.icon} class="proto-metric__icon-svg" size={24} stroke={1.7} />
+                </span>
                 <div class="proto-metric__body">
                   <span class="proto-metric__label">{item.label}</span>
                   <div class="proto-metric__row">
@@ -179,21 +197,31 @@ const recentAssets = [
                 </div>
 
                 <div class="proto-chart" aria-label="Gráfico ilustrativo">
-                  <div class="proto-chart__bars">
-                    {[28, 34, 25, 39, 32, 41, 37, 48, 43].map((value) => (
-                      <span style={`height:${value}%`}></span>
-                    ))}
+                  <div class="proto-chart__yaxis">
+                    <span>40k</span>
+                    <span>30k</span>
+                    <span>20k</span>
+                    <span>10k</span>
+                    <span>0k</span>
                   </div>
-                  <div class="proto-chart__axis">
-                    <span>Fev</span>
-                    <span>Mar</span>
-                    <span>Abr</span>
-                    <span>Mai</span>
-                    <span>Jun</span>
-                    <span>Jul</span>
-                    <span>Ago</span>
-                    <span>Set</span>
-                    <span>Out</span>
+                  <div class="proto-chart__plot">
+                    <div class="proto-chart__grid-lines">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="proto-chart__bars">
+                      {overviewSeries.map((item) => (
+                        <div class="proto-chart__group">
+                          <div class="proto-chart__group-bars">
+                            <span class="is-previous" style={`height:${item.previous}%`}></span>
+                            <span class="is-current" style={`height:${item.current}%`}></span>
+                          </div>
+                          <strong>{item.month}</strong>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

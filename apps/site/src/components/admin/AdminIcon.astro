@@ -1,0 +1,75 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+  stroke?: number;
+  class?: string;
+}
+
+const {
+  name,
+  size = 20,
+  stroke = 1.8,
+  class: className = ''
+} = Astro.props as Props;
+
+function getPaths(icon: string) {
+  switch (icon) {
+    case 'dashboard':
+      return [
+        'M4.75 4.75h6.5v6.5h-6.5z',
+        'M12.75 4.75h6.5v4.5h-6.5z',
+        'M12.75 11.75h6.5v7.5h-6.5z',
+        'M4.75 13.75h4.5v5.5h-4.5z'
+      ];
+    case 'pipeline':
+      return ['M5 18.5V13', 'M12 18.5V9', 'M19 18.5V5', 'M3.5 20.5h17'];
+    case 'leads':
+      return ['M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z', 'M5 20a7 7 0 0 1 14 0'];
+    case 'activities':
+      return ['M7.5 4v3', 'M16.5 4v3', 'M5 9.5h14', 'M6.75 6.5h10.5A1.75 1.75 0 0 1 19 8.25v9A1.75 1.75 0 0 1 17.25 19h-10.5A1.75 1.75 0 0 1 5 17.25v-9A1.75 1.75 0 0 1 6.75 6.5Z'];
+    case 'content':
+      return ['M6.75 5.5h10.5A1.75 1.75 0 0 1 19 7.25v9.5A1.75 1.75 0 0 1 17.25 18.5H6.75A1.75 1.75 0 0 1 5 16.75v-9.5A1.75 1.75 0 0 1 6.75 5.5Z', 'M9 9.25h6', 'M9 12.25h6', 'M9 15.25h4'];
+    case 'clusters':
+      return ['M12 5.25 18.25 8.75v6.5L12 18.75l-6.25-3.5v-6.5Z', 'M12 5.25v13.5', 'M18.25 8.75 12 12.25 5.75 8.75'];
+    case 'workflow':
+      return ['M5 7h8', 'M13 7l-2.5-2.5', 'M13 7l-2.5 2.5', 'M19 17h-8', 'M11 17l2.5-2.5', 'M11 17l2.5 2.5'];
+    case 'search':
+      return ['M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z', 'M20 20l-4-4'];
+    case 'grid':
+      return ['M4.75 4.75h5.5v5.5h-5.5z', 'M13.75 4.75h5.5v5.5h-5.5z', 'M4.75 13.75h5.5v5.5h-5.5z', 'M13.75 13.75h5.5v5.5h-5.5z'];
+    case 'bell':
+      return ['M9 18h6', 'M6.5 15.5h11l-1.25-1.75v-3.5a4.25 4.25 0 1 0-8.5 0v3.5Z'];
+    case 'revenue':
+      return ['M12 4.75v14.5', 'M15.5 7.5c-.65-.92-1.95-1.5-3.5-1.5-2.07 0-3.75 1.1-3.75 2.75S9.93 11.5 12 11.5s3.75 1.1 3.75 2.75S14.07 17 12 17c-1.55 0-2.85-.58-3.5-1.5'];
+    case 'users':
+      return ['M9 11a3.25 3.25 0 1 0-3.25-3.25A3.25 3.25 0 0 0 9 11Z', 'M17 12.5a2.5 2.5 0 1 0-2.5-2.5 2.5 2.5 0 0 0 2.5 2.5Z', 'M3.75 18a5.25 5.25 0 0 1 10.5 0', 'M14 18a4 4 0 0 1 6.25 0'];
+    case 'published':
+      return ['M7 4.75h7l4 4v10.5A1.75 1.75 0 0 1 16.25 21h-9.5A1.75 1.75 0 0 1 5 19.25V6.5A1.75 1.75 0 0 1 6.75 4.75Z', 'M14 4.75v4h4', 'M8.5 13h7', 'M8.5 16h5'];
+    case 'stack':
+      return ['M12 4.5 19 8l-7 3.5L5 8Z', 'M5 12l7 3.5 7-3.5', 'M5 16l7 3.5 7-3.5'];
+    case 'spark':
+      return ['M12 3.5v4', 'M12 16.5v4', 'M4.5 12h4', 'M15.5 12h4', 'M6.25 6.25l2.75 2.75', 'M15 15l2.75 2.75', 'M17.75 6.25 15 9', 'M9 15l-2.75 2.75'];
+    case 'alert':
+      return ['M12 5.25 19 18.25H5Z', 'M12 9.5v4.25', 'M12 16.5h.01'];
+    default:
+      return ['M12 5v14', 'M5 12h14'];
+  }
+}
+
+const paths = getPaths(name);
+---
+<svg
+  class={className}
+  viewBox="0 0 24 24"
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width={stroke}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {paths.map((path) => <path d={path}></path>)}
+</svg>
