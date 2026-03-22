@@ -56,6 +56,24 @@ const timeline = [
   ['Qui', 'Ler Search Console por família de query'],
   ['Sex', 'Validar saúde técnica do cluster']
 ];
+
+const focusBlocks = [
+  ['Cluster local', '4 ativos em execução'],
+  ['AI Overviews', '3 ativos comerciais'],
+  ['Refresh crítico', '2 páginas canônicas']
+];
+
+const alerts = [
+  ['Alta', '3 follow-ups comerciais vencem hoje'],
+  ['Média', '2 artigos BOFU aguardam revisão final'],
+  ['Baixa', '1 money page precisa só de ajuste de snippet']
+];
+
+const recentAssets = [
+  ['Hoje', 'Quanto custa SEO em Alphaville'],
+  ['Ontem', 'Agência x consultoria para AI Overviews'],
+  ['Seg', 'Refresh de agência de SEO']
+];
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -182,20 +200,66 @@ const timeline = [
             </article>
 
             <aside class="proto-side-column">
-              <article class="proto-card proto-card--gauge">
+              <article class="proto-card proto-card--focus">
                 <div class="proto-card__head">
                   <div>
-                    <span class="proto-card__eyebrow">Evolução</span>
+                    <span class="proto-card__eyebrow">Foco</span>
                     <h2>Foco do trimestre</h2>
                   </div>
                 </div>
 
-                <div class="proto-gauge">
-                  <div class="proto-gauge__ring">
-                    <div class="proto-gauge__core">76%</div>
+                <div class="proto-focus">
+                  <div class="proto-focus__lead">
+                    <div class="proto-focus__progress">
+                      <div class="proto-focus__bar">
+                        <span style="width:76%"></span>
+                      </div>
+                      <strong>76%</strong>
+                    </div>
+                    <p>Prioridade concentrada em Alphaville/Barueri e expansão nacional orientada a SEO comercial.</p>
                   </div>
-                  <strong>Cluster local + AI Overviews</strong>
-                  <p>Prioridade concentrada em Alphaville/Barueri e expansão nacional orientada a SEO comercial.</p>
+
+                  <div class="proto-focus__list">
+                    {focusBlocks.map((item) => (
+                      <div class="proto-focus__item">
+                        <span>{item[0]}</span>
+                        <strong>{item[1]}</strong>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </article>
+
+              <article class="proto-card">
+                <div class="proto-card__head">
+                  <div>
+                    <span class="proto-card__eyebrow">Alertas</span>
+                    <h2>Leitura operacional</h2>
+                  </div>
+                </div>
+
+                <div class="proto-alert-list">
+                  {alerts.map((item) => (
+                    <div class="proto-alert-item">
+                      <em>{item[0]}</em>
+                      <strong>{item[1]}</strong>
+                    </div>
+                  ))}
+                </div>
+
+                <div class="proto-card__divider"></div>
+
+                <div class="proto-mini-feed">
+                  <div class="proto-mini-feed__head">
+                    <span class="proto-card__eyebrow">Publicados</span>
+                    <span class="proto-card__meta">últimos ativos</span>
+                  </div>
+                  {recentAssets.map((item) => (
+                    <div class="proto-mini-feed__item">
+                      <span>{item[0]}</span>
+                      <strong>{item[1]}</strong>
+                    </div>
+                  ))}
                 </div>
               </article>
             </aside>
