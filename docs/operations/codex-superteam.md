@@ -181,3 +181,8 @@ o cluster so entra em producao quando houver:
 - schema e interlinking definidos
 - atribuicao de lead por pagina
 - owner de qualidade nomeado
+
+## Operating Cadence
+
+- weekly executive cadence:
+  - [SEO Automation Operating Cadence](/Applications/MAMP/htdocs/auditseo/docs/operations/seo-automation-operating-cadence.md)
