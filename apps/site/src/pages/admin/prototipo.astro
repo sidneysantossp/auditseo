@@ -1,0 +1,254 @@
+---
+import SeoHead from '../../components/SeoHead.astro';
+import '../../styles/admin-prototype.css';
+
+const navPrimary = [
+  'Overview',
+  'Pipeline',
+  'Leads',
+  'Atividades'
+];
+
+const navSecondary = [
+  'Conteúdos',
+  'Clusters',
+  'Workflow'
+];
+
+const kpis = [
+  { label: 'Receita aberta', value: 'R$ 184k', note: '18 oportunidades em andamento' },
+  { label: 'Hot leads', value: '07', note: '4 pedem follow-up hoje' },
+  { label: 'Publicações', value: '151', note: '12 ativos em produção' },
+  { label: 'CTR alvo', value: '4,8%', note: 'páginas money e clusters locais' }
+];
+
+const boardColumns = [
+  {
+    title: 'Inbound',
+    count: '06',
+    items: [
+      { company: 'Clínica Atlas', meta: 'Agência SEO • Site', value: 'R$ 9k' },
+      { company: 'Solar Prime', meta: 'Consultoria • Indicação', value: 'R$ 12k' }
+    ]
+  },
+  {
+    title: 'Proposta',
+    count: '04',
+    items: [
+      { company: 'Lex Barueri', meta: 'Auditoria • Orgânico', value: 'R$ 7k' },
+      { company: 'Oral Design', meta: 'Agência SEO • WhatsApp', value: 'R$ 11k' }
+    ]
+  },
+  {
+    title: 'Follow-up',
+    count: '05',
+    items: [
+      { company: 'B2B Signal', meta: 'Consultoria • Evento', value: 'R$ 15k' },
+      { company: 'Alpha Med', meta: 'Agência SEO • Site', value: 'R$ 8k' }
+    ]
+  }
+];
+
+const leads = [
+  ['Clínica Atlas', 'Agência', 'SEO Local', 'Hot', 'Site'],
+  ['Solar Prime', 'Consultoria', 'SEO + IA', 'Warm', 'Indicação'],
+  ['Lex Barueri', 'Auditoria', 'Diagnóstico', 'Warm', 'Orgânico'],
+  ['Alpha Med', 'Agência', 'SEO Técnico', 'Cold', 'WhatsApp']
+];
+
+const editorialQueue = [
+  ['Money page', 'Agência de SEO em Barueri', 'Hoje'],
+  ['BOFU', 'Quanto custa SEO em Alphaville', 'Amanhã'],
+  ['Refresh', 'Agência de SEO', 'Qui'],
+  ['Cluster', 'AI Overviews comercial', 'Sex']
+];
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <SeoHead
+      title="Protótipo Admin Clean"
+      description="Estudo de interface para o próximo admin da AUDITSEO em linguagem monocromática."
+      canonicalPath="/admin/prototipo/"
+      noindex={true}
+    />
+  </head>
+  <body class="admin-prototype-body">
+    <div class="proto-app">
+      <aside class="proto-sidebar">
+        <div class="proto-brand">
+          <span class="proto-kicker">AUDITSEO</span>
+          <h1>Admin prototype</h1>
+          <p>Estudo de layout em preto e branco para validar hierarquia, densidade e ritmo visual.</p>
+        </div>
+
+        <nav class="proto-nav" aria-label="Navegação primária">
+          {navPrimary.map((item, index) => (
+            <a class:list={['proto-nav__link', index === 0 && 'is-active']} href="#">
+              <span>{item}</span>
+            </a>
+          ))}
+        </nav>
+
+        <div class="proto-divider"></div>
+
+        <nav class="proto-nav proto-nav--secondary" aria-label="Navegação editorial">
+          {navSecondary.map((item) => (
+            <a class="proto-nav__link" href="#">
+              <span>{item}</span>
+            </a>
+          ))}
+        </nav>
+
+        <div class="proto-sidebar__meta">
+          <div>
+            <span class="proto-label">Modo</span>
+            <strong>Público com visão privada opcional</strong>
+          </div>
+          <div>
+            <span class="proto-label">Objetivo</span>
+            <strong>Operar CRM, conteúdo e expansão sem ruído visual</strong>
+          </div>
+        </div>
+      </aside>
+
+      <main class="proto-main">
+        <header class="proto-topbar">
+          <div>
+            <span class="proto-label">Estudo de interface</span>
+            <h2>Dashboard admin clean</h2>
+          </div>
+
+          <div class="proto-topbar__actions">
+            <span class="proto-pill">Monocromático</span>
+            <span class="proto-pill">Mock data</span>
+            <a class="proto-button" href="/admin/">Voltar ao admin atual</a>
+          </div>
+        </header>
+
+        <section class="proto-intro">
+          <div>
+            <span class="proto-label">Leitura principal</span>
+            <h3>Uma superfície sóbria, menos caixas e mais orientação.</h3>
+          </div>
+          <p>
+            O foco aqui é validar espaçamento, contraste, ritmo de leitura e como CRM, pipeline e editorial podem conviver em uma malha realmente administrativa.
+          </p>
+        </section>
+
+        <section class="proto-rail" aria-label="KPIs">
+          {kpis.map((item) => (
+            <article class="proto-rail__item">
+              <span class="proto-label">{item.label}</span>
+              <strong>{item.value}</strong>
+              <p>{item.note}</p>
+            </article>
+          ))}
+        </section>
+
+        <section class="proto-grid">
+          <article class="proto-surface proto-surface--board">
+            <div class="proto-surface__head">
+              <div>
+                <span class="proto-label">Pipeline</span>
+                <h3>Visão por etapa</h3>
+              </div>
+              <span class="proto-surface__meta">18 oportunidades • R$ 184k</span>
+            </div>
+
+            <div class="proto-board">
+              {boardColumns.map((column) => (
+                <section class="proto-board__column">
+                  <header class="proto-board__head">
+                    <div>
+                      <span class="proto-label">{column.title}</span>
+                      <strong>{column.count}</strong>
+                    </div>
+                  </header>
+
+                  <div class="proto-board__stack">
+                    {column.items.map((item) => (
+                      <article class="proto-lead-card">
+                        <strong>{item.company}</strong>
+                        <span>{item.meta}</span>
+                        <em>{item.value}</em>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </article>
+
+          <article class="proto-surface">
+            <div class="proto-surface__head">
+              <div>
+                <span class="proto-label">Operação</span>
+                <h3>Sinais que precisam aparecer</h3>
+              </div>
+            </div>
+
+            <ul class="proto-list">
+              <li>Topbar discreta, sem disputar com o workspace.</li>
+              <li>Sidebar com presença, mas sem roubar o canvas.</li>
+              <li>Uma rail de KPI contínua, em vez de mosaico de cards.</li>
+              <li>Tabelas só onde realmente ajudam a decidir.</li>
+              <li>Board com menos cor e mais scanning.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="proto-grid proto-grid--bottom">
+          <article class="proto-surface">
+            <div class="proto-surface__head">
+              <div>
+                <span class="proto-label">Leads</span>
+                <h3>Fila de entrada</h3>
+              </div>
+              <span class="proto-surface__meta">filtro por intenção e origem</span>
+            </div>
+
+            <div class="proto-table">
+              <div class="proto-table__row proto-table__row--head">
+                <span>Conta</span>
+                <span>Entrada</span>
+                <span>Serviço</span>
+                <span>Temp.</span>
+                <span>Origem</span>
+              </div>
+              {leads.map((lead) => (
+                <div class="proto-table__row">
+                  {lead.map((item) => (
+                    <span>{item}</span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <article class="proto-surface">
+            <div class="proto-surface__head">
+              <div>
+                <span class="proto-label">Editorial</span>
+                <h3>Fila de produção</h3>
+              </div>
+              <span class="proto-surface__meta">uma lista, não uma parede de cards</span>
+            </div>
+
+            <div class="proto-queue">
+              {editorialQueue.map((item) => (
+                <div class="proto-queue__item">
+                  <div>
+                    <span class="proto-label">{item[0]}</span>
+                    <strong>{item[1]}</strong>
+                  </div>
+                  <em>{item[2]}</em>
+                </div>
+              ))}
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
