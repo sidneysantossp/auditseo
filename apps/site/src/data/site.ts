@@ -1,4 +1,4 @@
-const rawCrmCaptureEndpoint = import.meta.env.PUBLIC_CMS_CAPTURE_ENDPOINT?.trim?.() || '';
+const rawCrmCaptureEndpoint = import.meta.env?.PUBLIC_CMS_CAPTURE_ENDPOINT?.trim?.() || '';
 
 export const siteMetadata = {
   brandName: 'AUDITSEO',
