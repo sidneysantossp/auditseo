@@ -37,22 +37,24 @@
         .mobile-menu .nav-cta { font-size: 1rem; padding: 1rem 2rem; margin-top: 1rem; }
         
         /* Hero */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 3rem 4rem; position: relative; }
-        .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 80%, rgba(230,57,70,.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(212,165,116,.1) 0%, transparent 50%); pointer-events: none; }
-        .hero-content { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
-        .hero-badge { display: inline-flex; align-items: center; gap: .8rem; font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 2rem; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 8rem 3rem 4rem; position: relative; overflow: hidden; isolation: isolate; }
+        .hero-bg { position: absolute; inset: 0; background-image: linear-gradient(90deg, rgba(10,10,10,.96) 0%, rgba(10,10,10,.9) 24%, rgba(10,10,10,.7) 52%, rgba(10,10,10,.86) 100%), linear-gradient(180deg, rgba(10,10,10,.42) 0%, rgba(10,10,10,.12) 38%, rgba(10,10,10,.88) 100%), radial-gradient(ellipse at 18% 86%, rgba(230,57,70,.2) 0%, transparent 48%), radial-gradient(ellipse at 80% 16%, rgba(212,165,116,.18) 0%, transparent 42%), url('/images/agencia-de-seo.png'); background-position: center, center, center, center, center right; background-size: auto, auto, auto, auto, cover; background-repeat: no-repeat; transform: scale(1.03); pointer-events: none; }
+        .hero-bg::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(230,57,70,.08) 0%, transparent 34%, transparent 100%); mix-blend-mode: screen; opacity: .85; }
+        .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 70% 18%, rgba(255,255,255,.16) 0%, transparent 18%), radial-gradient(circle at 18% 84%, rgba(230,57,70,.16) 0%, transparent 34%), linear-gradient(180deg, transparent 0%, rgba(10,10,10,.12) 55%, rgba(10,10,10,.58) 100%); }
+        .hero-content { width: min(100%, 1400px); margin: 0 auto; position: relative; z-index: 1; }
+        .hero-badge { display: inline-flex; align-items: center; gap: .8rem; font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: 3px; color: var(--accent-gold); margin-bottom: 2.2rem; }
         .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--accent-red); border-radius: 50%; animation: pulse 2s ease infinite; }
-        .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 12vw, 10rem); line-height: .9; letter-spacing: -3px; margin-bottom: 2rem; }
-        .hero-title .line-1 { color: var(--text-dim); text-decoration: line-through; text-decoration-color: var(--accent-red); display: block; }
-        .hero-title .line-2 { background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
-        .hero-subtitle { font-size: 1.4rem; color: var(--text-muted); max-width: 700px; margin-bottom: 3rem; }
+        .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3.5rem, 12vw, 10rem); line-height: .9; letter-spacing: -3px; margin-bottom: 2rem; text-shadow: 0 20px 48px rgba(0,0,0,.35); }
+        .hero-title .line-1 { color: rgba(248,248,248,.38); text-decoration: line-through; text-decoration-color: var(--accent-red); text-decoration-thickness: .12em; display: block; }
+        .hero-title .line-2 { max-width: 13ch; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
+        .hero-subtitle { font-size: 1.4rem; color: rgba(244,232,216,.78); max-width: 760px; margin-bottom: 3rem; text-wrap: balance; }
         .hero-subtitle strong { color: var(--accent-cream); }
         .hero-stats { display: flex; gap: 4rem; margin-bottom: 3rem; }
         .stat { position: relative; }
         .stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; background: var(--gradient-fire); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
-        .stat-label { font-family: 'JetBrains Mono', monospace; font-size: .65rem; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; }
+        .stat-label { font-family: 'JetBrains Mono', monospace; font-size: .65rem; letter-spacing: 2px; color: rgba(248,248,248,.72); text-transform: uppercase; }
         .stat-source { display: block; margin-top: .3rem; font-family: 'JetBrains Mono', monospace; font-size: .55rem; font-style: normal; letter-spacing: 0; }
-        .stat-source a { color: var(--text-dim); text-decoration: none; transition: color .3s; }
+        .stat-source a { color: rgba(248,248,248,.34); text-decoration: none; transition: color .3s; }
         .stat-source a:hover { color: var(--accent-gold); }
         .hero-cta-group { display: flex; gap: 1.5rem; }
         
@@ -321,6 +323,8 @@
             .nav-cta { display: none; }
             .hamburger { display: flex; }
             .hero { padding: 6rem 1.5rem 3rem; }
+            .hero-bg { background-position: center, center, center, center, 64% center; }
+            .hero-title .line-2 { max-width: 11ch; }
             .hero-stats { flex-direction: column; gap: 1.5rem; }
             .hero-cta-group { flex-direction: column; }
             .manifesto { padding: 4rem 1.5rem; }
