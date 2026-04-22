@@ -1,5 +1,4 @@
 ---
-import AgencySeoLocalCluster from '../components/AgencySeoLocalCluster.astro';
 import HomeEnhancements from '../components/HomeEnhancements.astro';
 import HomeLegacyContent from '../components/HomeLegacyContent.astro';
 import HomeLayout from '../layouts/HomeLayout.astro';
@@ -12,50 +11,5 @@ import HomeLayout from '../layouts/HomeLayout.astro';
   breadcrumbs={[{ label: 'Home', path: '/' }]}
 >
   <HomeLegacyContent />
-  <AgencySeoLocalCluster
-    eyebrow="Cluster vencedor"
-    title="A VITORIA EM SAO PAULO AGORA PRECISA PUXAR TODO O CLUSTER COMERCIAL"
-    subtitle="A home continua validando a tese de agencia de SEO em Sao Paulo especializada em AI Overviews. O proximo passo nao e inflar URLs por sinonimo, e sim distribuir autoridade para agencia, consultoria, auditoria, AI Overview Optimization e a camada local da Grande Sao Paulo."
-    signals={[
-      'Agencia de SEO em Sao Paulo',
-      'AI Overviews',
-      'Consultoria SEO',
-      'Auditoria SEO',
-      'SEO generativo',
-      'Barueri e Alphaville'
-    ]}
-    links={[
-      {
-        title: 'Agencia de SEO',
-        copy: 'Hub comercial principal da tese AI-first. Deve receber a demanda ampla de agencia e redistribuir peso para consultoria, auditoria e comparativos BOFU.',
-        path: '/agencia-de-seo/'
-      },
-      {
-        title: 'Consultoria SEO',
-        copy: 'Entrada para operacoes que chegam por consultor SEO, especialista em SEO e backlog continuo com governanca de execucao.',
-        path: '/servicos/consultoria-seo/'
-      },
-      {
-        title: 'Auditoria SEO',
-        copy: 'Porta tecnica para diagnostico quando a empresa ainda nao sabe se o gargalo principal esta em arquitetura, tecnica ou citabilidade.',
-        path: '/servicos/auditoria-seo/'
-      },
-      {
-        title: 'AI Overview Optimization',
-        copy: 'Servico canonico que traduz a especializacao em AI Overviews para uma proposta comercial clara, sem deixar o tema solto do restante do portfolio.',
-        path: '/servicos/ai-overview-optimization/'
-      },
-      {
-        title: 'Sao Paulo',
-        copy: 'Hub de apoio da capital para reforcar contexto geografico, competicao e aplicacao comercial sem disputar ownership com a home vencedora.',
-        path: '/cidades/sao-paulo/'
-      },
-      {
-        title: 'Barueri e Alphaville',
-        copy: 'Expansao local mais proxima da Grande Sao Paulo, com cluster ja operacional para buscas de agencia, consultoria e auditoria.',
-        path: '/servicos/agencia-de-seo-em-barueri/'
-      }
-    ]}
-  />
   <HomeEnhancements />
 </HomeLayout>
